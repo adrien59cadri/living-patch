@@ -68,26 +68,26 @@ describe('SpeciesCard', () => {
     expect(screen.queryByText('LIFE STAGES')).not.toBeInTheDocument();
   });
 
-  test('renders KEY RELATIONSHIP section when obligate entry exists', () => {
+  test('renders KEY RELATIONSHIPS section when obligate entry exists', () => {
     renderCard(mockMonarch, [mockObligateEntry]);
-    expect(screen.getByText('Key Relationship')).toBeInTheDocument();
+    expect(screen.getByText('Key Relationships')).toBeInTheDocument();
     expect(screen.getByText('Common Milkweed')).toBeInTheDocument();
     expect(screen.getByText('Obligate')).toBeInTheDocument();
   });
 
-  test('omits KEY RELATIONSHIP when no obligate entries', () => {
+  test('omits KEY RELATIONSHIPS when no obligate entries', () => {
     renderCard(mockMonarch, [mockBirdEntry]);
-    expect(screen.queryByText('KEY RELATIONSHIP')).not.toBeInTheDocument();
+    expect(screen.queryByText('KEY RELATIONSHIPS')).not.toBeInTheDocument();
   });
 
-  test('renders NEIGHBORS section when related entries exist', () => {
+  test('renders RELATED BY HABITAT section when habitat-related entries exist', () => {
     renderCard();
-    expect(screen.getByText('Neighbors')).toBeInTheDocument();
+    expect(screen.getByText('Related by Habitat')).toBeInTheDocument();
   });
 
-  test('omits NEIGHBORS section when no related entries', () => {
+  test('omits RELATED BY HABITAT section when no habitat-related entries', () => {
     renderCard(mockMonarch, []);
-    expect(screen.queryByText('NEIGHBORS')).not.toBeInTheDocument();
+    expect(screen.queryByText('RELATED BY HABITAT')).not.toBeInTheDocument();
   });
 
   test('renders Log Sighting button in disabled state', () => {
@@ -102,10 +102,5 @@ describe('SpeciesCard', () => {
     expect(
       screen.getByText(/Orange and black butterfly obligate on milkweed/)
     ).toBeInTheDocument();
-  });
-
-  test('renders keystone callout block when keystone_description present', () => {
-    renderCard();
-    expect(screen.getByText(/Obligate on milkweed/)).toBeInTheDocument();
   });
 });

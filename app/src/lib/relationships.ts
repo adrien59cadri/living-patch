@@ -1,4 +1,5 @@
 import type { Species, Symbiosis, Relation } from '../types';
+import { formLabel, formIcon } from './labels';
 
 export type SymbiosisRole =
   | 'mutualism'
@@ -136,4 +137,75 @@ export function getCategoryGroups(entries: RelatedEntry[]): NeighborCategory[] {
 
 export function getKeyRelationship(entries: RelatedEntry[]): RelatedEntry | null {
   return entries.find(e => e.obligate) ?? null;
+}
+
+// ─── Key relationship grouping ──────────────────────────────────────────────
+
+const KEY_ROLES: SymbiosisRole[] = ['mutualism', 'parasitism', 'predation'];
+
+export function getKeyRoleEntries(entries: RelatedEntry[]): RelatedEntry[] {
+  return entries.filter(e => KEY_ROLES.includes(e.role));
+}
+
+export type KeyRoleGroupedRelations = Record<SymbiosisRole, RelatedEntry[]>;
+
+export function groupKeyRolesByObligation(
+  entries: RelatedEntry[]
+): KeyRoleGroupedRelations {
+  const keyEntries = getKeyRoleEntries(entries);
+  const groups = Object.fromEntries(
+    KEY_ROLES.map(r => [r, [] as RelatedEntry[]])
+  ) as KeyRoleGroupedRelations;
+
+  for (const entry of keyEntries) {
+    groups[entry.role].push(entry);
+  }
+
+  for (const role of KEY_ROLES) {
+    groups[role].sort((a, b) => Number(b.obligate) - Number(a.obligate));
+  }
+
+  return groups;
+}
+
+// ─── Taxonomy relations ─────────────────────────────────────────────────────
+
+export function getTaxonomyRelations(entries: RelatedEntry[]): RelatedEntry[] {
+  return entries.filter(e => e.role === 'related');
+}
+
+export interface TaxonomyGroup {
+  label: string;
+  icon: string;
+  entries: RelatedEntry[];
+}
+
+export function groupTaxonomyRelations(entries: RelatedEntry[]): TaxonomyGroup[] {
+  const taxonomyEntries = getTaxonomyRelations(entries);
+
+  if (taxonomyEntries.length === 0) {
+    return [];
+  }
+
+  const grouped: Map<string, RelatedEntry[]> = new Map();
+
+  for (const entry of taxonomyEntries) {
+    const label = formLabel(entry.species.form);
+    if (!grouped.has(label)) {
+      grouped.set(label, []);
+    }
+    grouped.get(label)!.push(entry);
+  }
+
+  const groups: TaxonomyGroup[] = [];
+  for (const [label, relEntries] of grouped) {
+    const firstForm = relEntries[0]?.species.form;
+    groups.push({
+      label,
+      icon: firstForm ? formIcon(firstForm) : '🔗',
+      entries: relEntries,
+    });
+  }
+
+  return groups;
 }
