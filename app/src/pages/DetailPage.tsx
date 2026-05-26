@@ -1,15 +1,15 @@
 import { useParams, Link } from 'react-router-dom';
 import { useDataset } from '../hooks/useDataset';
-import { getRelatedEntries } from '../lib/relationships';
+import { getRelatedEntries, getSymbiotes, getHabitatNeighbors } from '../lib/relationships';
 import { SpeciesCard } from '../components/SpeciesCard';
 
 export default function DetailPage() {
   const { id } = useParams<{ id: string }>();
-  const { speciesById, symbiosisBySpeciesId, relationsBySpeciesId } = useDataset();
+  const { species, speciesById, symbiosisBySpeciesId, relationsBySpeciesId } = useDataset();
 
-  const species = id ? speciesById.get(id) : undefined;
+  const currentSpecies = id ? speciesById.get(id) : undefined;
 
-  if (!species) {
+  if (!currentSpecies) {
     return (
       <div className="text-center py-12 space-y-3">
         <p className="text-stone-400">Species not found.</p>
@@ -20,8 +20,21 @@ export default function DetailPage() {
     );
   }
 
+  const symbiotes = getSymbiotes(
+    currentSpecies.id,
+    symbiosisBySpeciesId,
+    speciesById
+  );
+
+  const habitatNeighbors = getHabitatNeighbors(
+    currentSpecies.id,
+    species,
+    speciesById,
+    symbiosisBySpeciesId
+  );
+
   const related = getRelatedEntries(
-    species.id,
+    currentSpecies.id,
     symbiosisBySpeciesId,
     relationsBySpeciesId,
     speciesById
@@ -35,7 +48,12 @@ export default function DetailPage() {
       >
         ← All species
       </Link>
-      <SpeciesCard species={species} related={related} />
+      <SpeciesCard
+        species={currentSpecies}
+        symbiotes={symbiotes}
+        habitatNeighbors={habitatNeighbors}
+        related={related}
+      />
     </div>
   );
 }

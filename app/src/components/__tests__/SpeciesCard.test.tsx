@@ -14,11 +14,13 @@ import type { RelatedEntry } from '../../lib/relationships';
 
 function renderCard(
   species = mockMonarch,
+  symbiotes: RelatedEntry[] = [mockObligateEntry],
+  habitatNeighbors = [],
   related: RelatedEntry[] = [mockObligateEntry, mockBirdEntry]
 ) {
   return render(
     <MemoryRouter>
-      <SpeciesCard species={species} related={related} />
+      <SpeciesCard species={species} symbiotes={symbiotes} habitatNeighbors={habitatNeighbors} related={related} />
     </MemoryRouter>
   );
 }
@@ -52,7 +54,7 @@ describe('SpeciesCard', () => {
   });
 
   test('renders "Year-round" chip for Jan-Dec active_months', () => {
-    renderCard(mockMonarchYearRound, []);
+    renderCard(mockMonarchYearRound, [], [], []);
     expect(screen.getByText('Year-round')).toBeInTheDocument();
   });
 
@@ -64,7 +66,7 @@ describe('SpeciesCard', () => {
   });
 
   test('omits LIFE STAGES section for string-only stages', () => {
-    renderCard(mockNoLifeStages, []);
+    renderCard(mockNoLifeStages, [], [], []);
     expect(screen.queryByText('LIFE STAGES')).not.toBeInTheDocument();
   });
 
@@ -76,7 +78,7 @@ describe('SpeciesCard', () => {
   });
 
   test('omits KEY RELATIONSHIPS when no obligate entries', () => {
-    renderCard(mockMonarch, [mockBirdEntry]);
+    renderCard(mockMonarch, [], [], [mockBirdEntry]);
     expect(screen.queryByText('KEY RELATIONSHIPS')).not.toBeInTheDocument();
   });
 
@@ -86,7 +88,7 @@ describe('SpeciesCard', () => {
   });
 
   test('omits RELATED BY HABITAT section when no habitat-related entries', () => {
-    renderCard(mockMonarch, []);
+    renderCard(mockMonarch, [], [], []);
     expect(screen.queryByText('RELATED BY HABITAT')).not.toBeInTheDocument();
   });
 
