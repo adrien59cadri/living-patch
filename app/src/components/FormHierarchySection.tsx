@@ -7,12 +7,14 @@ interface FormHierarchySectionProps {
   expanded: string | null;
   onToggle: (form: string | null) => void;
   speciesById: Map<string, Species>;
+  taxonomicGroupIds?: Set<string>;
 }
 
 export default function FormHierarchySection({
   expanded,
   onToggle,
   speciesById,
+  taxonomicGroupIds = new Set(),
 }: FormHierarchySectionProps) {
   const forms = Object.entries(FORM_DEFINITIONS);
 
@@ -30,7 +32,7 @@ export default function FormHierarchySection({
           const examples = getFormExamples(formKey, speciesById);
           const isExpanded = expanded === formKey;
           const exampleCount = Array.from(speciesById.values()).filter(
-            (s) => s.form === formKey && !s.is_group,
+            (s) => s.form === formKey && !taxonomicGroupIds.has(s.id),
           ).length;
 
           return (

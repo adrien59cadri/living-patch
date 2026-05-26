@@ -16,11 +16,21 @@ interface ScrapedImage {
 /**
  * Converts a species name to a Wikipedia page title
  * Handles URL encoding and spaces
+ * For scientific names (e.g., "Quercus alba"), preserves original casing
+ * For common names (e.g., "White Oak"), applies title case
  */
 function speciesNameToWikiTitle(name: string): string {
-  return name
-    .trim()
-    .split(/\s+/)
+  const trimmed = name.trim();
+  const words = trimmed.split(/\s+/);
+  
+  // Check if it looks like a scientific name (two words, first capitalized, second lowercase)
+  if (words.length === 2 && /^[A-Z]/.test(words[0]) && /^[a-z]/.test(words[1])) {
+    // Preserve original casing for scientific names
+    return words.join('_');
+  }
+  
+  // Apply title case for common names
+  return words
     .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
     .join('_');
 }
@@ -109,13 +119,25 @@ export async function fetchFilePageAndExtractData(fileLink: string): Promise<Scr
     const $ = load(html);
 
     // Extract image URL from the file page
-    // Look for the actual image link in the file description page
+    // Look for the actual image in the file description page
     let imageUrl: string | null = null;
     
-    // Try to find the original file link
-    const originalLink = $('a:contains("Original file")').first().attr('href');
-    if (originalLink) {
-      imageUrl = originalLink.startsWith('http') ? originalLink : `https:${originalLink}`;
+    // Primary approach: Look for the actual image on the page (the file itself)
+    // This should be an img tag with src containing upload.wikimedia.org/wikipedia/commons
+    const fileImages = $('img[src*="upload.wikimedia.org/wikipedia/commons"]');
+    if (fileImages.length > 0) {
+      const src = fileImages.first().attr('src');
+      if (src) {
+        imageUrl = src.startsWith('http') ? src : 'https:' + src;
+      }
+    }
+    
+    // Fallback: Try to find the original file link (some pages have this)
+    if (!imageUrl) {
+      const originalLink = $('a:contains("Original file")').first().attr('href');
+      if (originalLink) {
+        imageUrl = originalLink.startsWith('http') ? originalLink : `https:${originalLink}`;
+      }
     }
 
     // Fallback: look for any link to upload.wikimedia.org
@@ -210,13 +232,21 @@ export async function scrapeSpeciesImage(
   latinName: string | null | undefined,
   commonName: string,
 ): Promise<ScrapedImage | null> {
-  // Try latin name first (more unique), then common name
-  const namesToTry = [];
+  // Build list of names to try, prioritizing scientific names
+  const namesToTry: string[] = [];
   
   if (latinName && latinName.trim()) {
     namesToTry.push(latinName);
+    
+    // For "spp." (plural species) names, also try just the genus
+    // e.g., "Solidago spp." → also try "Solidago"
+    const sppMatch = latinName.match(/^(\w+)\s+spp\.?$/i);
+    if (sppMatch) {
+      namesToTry.push(sppMatch[1]); // Add genus name
+    }
   }
   
+  // Always try common name as fallback
   namesToTry.push(commonName);
 
   for (const name of namesToTry) {

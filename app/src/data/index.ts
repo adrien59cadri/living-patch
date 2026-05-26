@@ -5,6 +5,7 @@ const dataset = rawDataset as unknown as Dataset;
 
 export const species: Species[] = dataset.species;
 export const taxonomicGroups: Species[] = dataset.taxonomic_groups || [];
+export const symbiosis: Symbiosis[] = dataset.symbiosis || [];
 
 export const taxonomicGroupIds = new Set<string>(
   (dataset.taxonomic_groups || []).map(g => g.id)

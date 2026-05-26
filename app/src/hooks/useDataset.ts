@@ -5,7 +5,7 @@ import {
   speciesById,
   symbiosisBySpeciesId,
   relationsBySpeciesId,
-  allSymbiosis,
+  symbiosis,
 } from '../data';
 
 export function useDataset() {
@@ -16,6 +16,6 @@ export function useDataset() {
     speciesById,
     symbiosisBySpeciesId,
     relationsBySpeciesId,
-    symbiosis: allSymbiosis,
+    symbiosis,
   };
 }

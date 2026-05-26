@@ -170,10 +170,11 @@ export const SYMBIOSIS_DEFINITIONS: Record<string, SymbiosisDefinition> = {
   },
 };
 
-export function getFormExamples(form: string, speciesById: Map<string, Species>): Species[] {
+export function getFormExamples(form: string, speciesById: Map<string, Species>, taxonomicGroupIds?: Set<string>): Species[] {
+  const groupIds = taxonomicGroupIds || new Set<string>();
   const examples: Species[] = [];
   speciesById.forEach((species) => {
-    if (species.form === form && !species.is_group && examples.length < 3) {
+    if (species.form === form && !groupIds.has(species.id) && examples.length < 3) {
       examples.push(species);
     }
   });
