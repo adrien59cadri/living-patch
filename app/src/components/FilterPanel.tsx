@@ -1,10 +1,11 @@
 import type { FilterState } from '../lib/filters';
-import { formLabel, seasonLabel, habitatLabel } from '../lib/labels';
+import { formLabel, habitatLabel, keystoneTypeLabel } from '../lib/labels';
 
 interface FilterOptions {
   forms: string[];
   seasons: string[];
   habitats: string[];
+  keystone_types: string[];
 }
 
 interface Props {
@@ -17,27 +18,25 @@ function toggle(arr: string[], val: string): string[] {
   return arr.includes(val) ? arr.filter(v => v !== val) : [...arr, val];
 }
 
-function Chip({
+function CheckboxItem({
   label,
-  active,
-  onClick,
+  checked,
+  onChange,
 }: {
   label: string;
-  active: boolean;
-  onClick: () => void;
+  checked: boolean;
+  onChange: () => void;
 }) {
   return (
-    <button
-      onClick={onClick}
-      className={[
-        'px-3 py-1 rounded-full text-xs font-medium transition-colors',
-        active
-          ? 'bg-emerald-600 text-white'
-          : 'bg-white text-stone-600 border border-stone-200 hover:border-emerald-300',
-      ].join(' ')}
-    >
-      {label}
-    </button>
+    <label className="flex items-center gap-2 cursor-pointer group">
+      <input
+        type="checkbox"
+        checked={checked}
+        onChange={onChange}
+        className="w-3.5 h-3.5 rounded border-stone-300 text-emerald-600 accent-emerald-600"
+      />
+      <span className="text-xs text-stone-600 group-hover:text-stone-900">{label}</span>
+    </label>
   );
 }
 
@@ -45,57 +44,91 @@ export function FilterPanel({ options, filters, onChange }: Props) {
   const hasActive =
     filters.forms.length > 0 ||
     filters.seasons.length > 0 ||
-    filters.habitats.length > 0;
+    filters.habitats.length > 0 ||
+    filters.keystone_types.length > 0;
 
   return (
-    <div className="space-y-2">
-      <div className="flex flex-wrap gap-1.5 items-center">
-        <span className="text-xs text-stone-400 mr-1">Form</span>
-        {options.forms.map(form => (
-          <Chip
-            key={form}
-            label={formLabel(form)}
-            active={filters.forms.includes(form)}
-            onClick={() => onChange({ ...filters, forms: toggle(filters.forms, form) })}
-          />
-        ))}
+    <div className="bg-stone-50 border border-stone-200 rounded-xl p-4 space-y-4">
+
+      {/* Form */}
+      <div className="space-y-1.5">
+        <label className="block text-xs font-medium text-stone-500 uppercase tracking-wide">
+          Form
+        </label>
+        <select
+          value={filters.forms[0] ?? ''}
+          onChange={e =>
+            onChange({ ...filters, forms: e.target.value ? [e.target.value] : [] })
+          }
+          className="w-full text-sm border border-stone-200 rounded-lg px-3 py-1.5 bg-white text-stone-700 focus:outline-none focus:ring-2 focus:ring-emerald-400"
+        >
+          <option value="">All forms</option>
+          {options.forms.map(form => (
+            <option key={form} value={form}>
+              {formLabel(form)}
+            </option>
+          ))}
+        </select>
       </div>
 
-      <div className="flex flex-wrap gap-1.5 items-center">
-        <span className="text-xs text-stone-400 mr-1">Season</span>
-        {options.seasons.map(s => (
-          <Chip
-            key={s}
-            label={seasonLabel(s)}
-            active={filters.seasons.includes(s)}
-            onClick={() => onChange({ ...filters, seasons: toggle(filters.seasons, s) })}
-          />
-        ))}
+      {/* Habitat */}
+      <div className="space-y-1.5">
+        <span className="block text-xs font-medium text-stone-500 uppercase tracking-wide">
+          Habitat
+        </span>
+        <div className="grid grid-cols-2 gap-x-6 gap-y-1.5">
+          {options.habitats.map(h => (
+            <CheckboxItem
+              key={h}
+              label={habitatLabel(h)}
+              checked={filters.habitats.includes(h)}
+              onChange={() => onChange({ ...filters, habitats: toggle(filters.habitats, h) })}
+            />
+          ))}
+        </div>
       </div>
 
-      <div className="flex flex-wrap gap-1.5 items-center">
-        <span className="text-xs text-stone-400 mr-1">Habitat</span>
-        {options.habitats.map(h => (
-          <Chip
-            key={h}
-            label={habitatLabel(h)}
-            active={filters.habitats.includes(h)}
-            onClick={() =>
-              onChange({ ...filters, habitats: toggle(filters.habitats, h) })
-            }
-          />
-        ))}
-        {hasActive && (
-          <button
-            onClick={() =>
-              onChange({ search: filters.search, forms: [], seasons: [], habitats: [] })
-            }
-            className="text-xs text-stone-400 hover:text-stone-600 ml-1 underline"
-          >
-            Clear filters
-          </button>
-        )}
-      </div>
+      {/* Keystone type */}
+      {options.keystone_types.length > 0 && (
+        <div className="space-y-1.5">
+          <span className="block text-xs font-medium text-stone-500 uppercase tracking-wide">
+            Keystone type
+          </span>
+          <div className="flex flex-col gap-1.5">
+            {options.keystone_types.map(kt => (
+              <CheckboxItem
+                key={kt}
+                label={keystoneTypeLabel(kt)}
+                checked={filters.keystone_types.includes(kt)}
+                onChange={() =>
+                  onChange({
+                    ...filters,
+                    keystone_types: toggle(filters.keystone_types, kt),
+                  })
+                }
+              />
+            ))}
+          </div>
+        </div>
+      )}
+
+      {hasActive && (
+        <button
+          onClick={() =>
+            onChange({
+              search: filters.search,
+              forms: [],
+              seasons: [],
+              habitats: [],
+              keystone_types: [],
+            })
+          }
+          className="text-xs text-stone-400 hover:text-stone-700 underline"
+        >
+          Clear filters
+        </button>
+      )}
     </div>
   );
 }
+

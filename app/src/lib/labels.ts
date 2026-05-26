@@ -112,6 +112,15 @@ export function formIcon(form: string): string {
   return FORM_ICONS[form] ?? '🌱';
 }
 
+export function keystoneTypeLabel(type: string): string {
+  const labels: Record<string, string> = {
+    ecosystem_engineer: 'Ecosystem Engineer',
+    predator: 'Predator',
+    mutualist: 'Mutualist',
+  };
+  return labels[type] ?? type.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+}
+
 export function activeMonthsLabel(active_months?: string[]): string | null {
   if (!active_months || active_months.length === 0) return null;
   const first = active_months[0];
