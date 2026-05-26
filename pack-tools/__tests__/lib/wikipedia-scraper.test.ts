@@ -3,7 +3,7 @@
  */
 
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { extractImageLink, fetchFilePageAndExtractData } from '../../lib/wikipedia-scraper.js';
+import { extractImageLink, fetchFilePageAndExtractData, scrapeSpeciesImage } from '../../lib/wikipedia-scraper.js';
 
 // Mock HTML fixtures
 const mockInforboxWithImage = `
@@ -200,6 +200,232 @@ describe('Wikipedia Scraper', () => {
       const result = await fetchFilePageAndExtractData('/wiki/File:Test.jpg');
 
       expect(result?.url).toMatch(/^https:/);
+    });
+  });
+
+  describe('scrapeSpeciesImage', () => {
+    beforeEach(() => {
+      vi.clearAllMocks();
+    });
+
+    it('should prioritize scientific name over common name', async () => {
+      const mockPageWithImage = `
+        <!DOCTYPE html>
+        <html>
+        <body>
+        <table class="infobox biota">
+          <tr>
+            <td colspan="2">
+              <a href="/wiki/File:Scientific_name_image.jpg" class="image">
+                <img src="/test.jpg" />
+              </a>
+            </td>
+          </tr>
+        </table>
+        </body>
+        </html>
+      `;
+
+      const mockFilePageWithImage = `
+        <!DOCTYPE html>
+        <html>
+        <body>
+        <img src="//upload.wikimedia.org/wikipedia/commons/thumb/test.jpg" />
+        <table class="fileinfotpl-type-information">
+          <tr><td>Author</td><td>John Doe</td></tr>
+        </table>
+        </body>
+        </html>
+      `;
+
+      global.fetch = vi.fn().mockImplementation(async (url: string | URL) => {
+        const urlStr = url.toString();
+        if (urlStr.includes('File:')) {
+          return {
+            ok: true,
+            text: async () => mockFilePageWithImage,
+          };
+        }
+        return {
+          ok: true,
+          text: async () => mockPageWithImage,
+        };
+      });
+
+      const result = await scrapeSpeciesImage('Quercus alba', 'White Oak');
+
+      expect(result).toBeTruthy();
+      expect(result?.author).toBe('John Doe');
+    });
+
+    it('should handle spp. names by trying genus as fallback', async () => {
+      const mockGenusPageWithImage = `
+        <!DOCTYPE html>
+        <html>
+        <body>
+        <table class="infobox biota">
+          <tr>
+            <td colspan="2">
+              <a href="/wiki/File:Genus_image.jpg" class="image">
+                <img src="/test.jpg" />
+              </a>
+            </td>
+          </tr>
+        </table>
+        </body>
+        </html>
+      `;
+
+      const mockFilePageWithImage = `
+        <!DOCTYPE html>
+        <html>
+        <body>
+        <img src="//upload.wikimedia.org/wikipedia/commons/thumb/genus.jpg" />
+        <table class="fileinfotpl-type-information">
+          <tr><td>Author</td><td>Jane Smith</td></tr>
+        </table>
+        </body>
+        </html>
+      `;
+
+      global.fetch = vi.fn().mockImplementation(async (url: string | URL) => {
+        const urlStr = url.toString();
+        if (urlStr.includes('File:')) {
+          return {
+            ok: true,
+            text: async () => mockFilePageWithImage,
+          };
+        }
+        // Return success only for genus name
+        if (urlStr.includes('Solidago') && !urlStr.includes('spp')) {
+          return {
+            ok: true,
+            text: async () => mockGenusPageWithImage,
+          };
+        }
+        return { ok: false };
+      });
+
+      const result = await scrapeSpeciesImage('Solidago spp.', 'Goldenrod');
+
+      expect(result).toBeTruthy();
+      expect(result?.author).toBe('Jane Smith');
+    });
+
+    it('should fall back to common name if scientific name fails', async () => {
+      const mockPageWithImage = `
+        <!DOCTYPE html>
+        <html>
+        <body>
+        <table class="infobox biota">
+          <tr>
+            <td colspan="2">
+              <a href="/wiki/File:Common_name_image.jpg" class="image">
+                <img src="/test.jpg" />
+              </a>
+            </td>
+          </tr>
+        </table>
+        </body>
+        </html>
+      `;
+
+      const mockFilePageWithImage = `
+        <!DOCTYPE html>
+        <html>
+        <body>
+        <img src="//upload.wikimedia.org/wikipedia/commons/thumb/test.jpg" />
+        <table class="fileinfotpl-type-information">
+          <tr><td>Author</td><td>Test Author</td></tr>
+        </table>
+        </body>
+        </html>
+      `;
+
+      global.fetch = vi.fn().mockImplementation(async (url: string | URL) => {
+        const urlStr = url.toString();
+        if (urlStr.includes('File:')) {
+          return {
+            ok: true,
+            text: async () => mockFilePageWithImage,
+          };
+        }
+        // Succeed only on common name, not scientific name
+        if (urlStr.includes('Common_Name')) {
+          return {
+            ok: true,
+            text: async () => mockPageWithImage,
+          };
+        }
+        return { ok: false };
+      });
+
+      const result = await scrapeSpeciesImage('Nonexistent scientificname', 'Common Name');
+
+      expect(result).toBeTruthy();
+      expect(result?.author).toBe('Test Author');
+    });
+
+    it('should return null when all names fail', async () => {
+      global.fetch = vi.fn().mockResolvedValue({
+        ok: false,
+        status: 404,
+      });
+
+      const result = await scrapeSpeciesImage('Fake species name', 'Also fake');
+
+      expect(result).toBeNull();
+    });
+
+    it('should prioritize commons images over other image sources', async () => {
+      const mockFilePageWithCommonsImage = `
+        <!DOCTYPE html>
+        <html>
+        <body>
+        <img src="//upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Real_photo.jpg" />
+        <img src="//upload.wikimedia.org/wikipedia/en/thumb/logo.svg" />
+        <table class="fileinfotpl-type-information">
+          <tr><td>Author</td><td>Photographer</td></tr>
+        </table>
+        </body>
+        </html>
+      `;
+
+      const mockPageWithImage = `
+        <!DOCTYPE html>
+        <html>
+        <body>
+        <table class="infobox biota">
+          <tr>
+            <td colspan="2">
+              <a href="/wiki/File:Test.jpg" class="image">
+                <img src="/test.jpg" />
+              </a>
+            </td>
+          </tr>
+        </table>
+        </body>
+        </html>
+      `;
+
+      global.fetch = vi.fn().mockImplementation(async (url: string | URL) => {
+        const urlStr = url.toString();
+        if (urlStr.includes('File:')) {
+          return {
+            ok: true,
+            text: async () => mockFilePageWithCommonsImage,
+          };
+        }
+        return {
+          ok: true,
+          text: async () => mockPageWithImage,
+        };
+      });
+
+      const result = await scrapeSpeciesImage('Test species', 'Test');
+
+      expect(result?.url).toContain('Real_photo.jpg');
+      expect(result?.author).toBe('Photographer');
     });
   });
 });
