@@ -46,8 +46,17 @@ export function SpeciesCard({ species, symbiotes, habitatNeighbors, related }: P
   return (
     <div className="space-y-6">
       {/* 1. Hero photo area */}
-      <div className="w-full h-48 bg-stone-100 rounded-xl flex items-center justify-center text-stone-300">
-        <span className="text-5xl">📷</span>
+      <div className="w-full h-48 bg-stone-100 rounded-xl flex items-center justify-center text-stone-300 overflow-hidden">
+        {species.image?.url ? (
+          <img
+            src={species.image.url}
+            alt={species.common_name}
+            loading="lazy"
+            className="w-full h-full object-cover"
+          />
+        ) : (
+          <span className="text-5xl">📷</span>
+        )}
       </div>
 
       {/* 2. Name block */}
