@@ -1245,7 +1245,6 @@
         "wetland",
         "forest_edge"
       ],
-      "is_group": true,
       "functional_description": "Additional native PA Asclepias: Poke Milkweed (A. exaltata, forest shade), Whorled Milkweed (A. verticillata, dry open), Four-leaved Milkweed (A. quadrifolia, woodland), Purple Milkweed (A. purpurascens, rare). All support Monarch breeding. Note: Tropical Milkweed (A. curassavica) is non-native and disrupts Monarch migration — not included.",
       "life_stages": [],
       "region": "northeast_pa",
@@ -1261,7 +1260,6 @@
         "woodland",
         "swamp"
       ],
-      "is_group": true,
       "functional_description": "Native PA oaks beyond White and Red: Black Oak (Q. velutina), Scarlet Oak (Q. coccinea), Pin Oak (Q. palustris, wet soils), Chestnut Oak (Q. montana, rocky ridges), Swamp White Oak (Q. bicolor, floodplains), Chinkapin Oak (Q. muehlenbergii). All share the same 557-species Lepidoptera support network. All produce acorns.",
       "life_stages": [],
       "region": "northeast_pa",
@@ -1277,7 +1275,6 @@
         "wetland",
         "streamside"
       ],
-      "is_group": true,
       "functional_description": "Native PA willows beyond Black Willow: Pussy Willow (S. discolor — the ornamental spring catkin species), Silky Willow (S. sericea), Heartleaf Willow (S. eriocephala), Prairie Willow (S. humilis, dry uplands). All feed Beaver and support 289+ Lepidoptera. All provide early spring pollen for bumble bee queens.",
       "life_stages": [],
       "region": "northeast_pa",
@@ -1293,7 +1290,6 @@
         "wetland",
         "meadow"
       ],
-      "is_group": true,
       "functional_description": "Native Apiaceae used by Black Swallowtail larvae: Golden Alexanders (Zizia aurea — best native option), Water Hemlock (Cicuta maculata, wetlands — toxic to humans), Water Parsnip (Sium suave, wetland edges), Meadow Parsnip (Thaspium). Also uses naturalized Queen Anne's Lace, plus garden parsley, dill, fennel, carrot. Black Swallowtail is obligate at family level.",
       "life_stages": [],
       "region": "northeast_pa",
@@ -1310,7 +1306,6 @@
         "garden",
         "riparian"
       ],
-      "is_group": true,
       "functional_description": "Native berry-producing shrubs important to Cedar Waxwing, Eastern Bluebird, and other frugivores: Serviceberry (Amelanchier spp. — first spring fruit), Dogwood (Cornus florida, C. alternifolia), Viburnum (V. lentago, V. nudum), Elderberry (Sambucus canadensis), Winterberry (Ilex verticillata), Highbush Blueberry (Vaccinium corymbosum). All are seed-dispersed by birds.",
       "life_stages": [],
       "region": "northeast_pa",
@@ -1326,7 +1321,6 @@
         "riparian",
         "pond"
       ],
-      "is_group": true,
       "functional_description": "Other native PA Ardeidae sharing wetland habitat with Great Blue Heron: Green Heron (Butorides virescens — small, uses tools), Great Egret (Ardea alba — white, similar size), Snowy Egret (Egretta thula), Black-crowned Night-Heron (Nycticorax), American Bittern (Botaurus lentiginosus — rare, marsh interior).",
       "life_stages": [],
       "region": "northeast_pa",
@@ -1342,7 +1336,6 @@
         "woodland",
         "garden"
       ],
-      "is_group": true,
       "functional_description": "Other native PA Picidae beyond Pileated and Downy: Hairy Woodpecker (Dryobates villosus, larger Downy lookalike), Red-bellied Woodpecker (Melanerpes carolinus, expanding northward), Yellow-bellied Sapsucker (Sphyrapicus varius, sap wells used by hummingbirds), Northern Flicker (Colaptes auratus, ground forager), Red-headed Woodpecker (rare in PA).",
       "life_stages": [],
       "region": "northeast_pa",
@@ -1359,7 +1352,6 @@
         "forest",
         "stream"
       ],
-      "is_group": true,
       "functional_description": "Other native PA frogs sharing habitat with Bullfrog: Green Frog (Lithobates clamitans — similar but smaller, banjo-twang call), Pickerel Frog (L. palustris — toxic to some predators), Wood Frog (L. sylvaticus — breeds in vernal pools, freezes solid in winter), Spring Peeper (Pseudacris crucifer — first spring call), Gray Treefrog (Hyla versicolor).",
       "life_stages": [],
       "region": "northeast_pa",
