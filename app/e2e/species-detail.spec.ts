@@ -39,6 +39,9 @@ test.describe('Species detail page — Monarch Butterfly', () => {
   test('key relationships section shows obligate milkweed', async ({ page }) => {
     await page.goto(MONARCH_URL);
     await expect(page.getByText('Common Milkweed', { exact: true }).first()).toBeVisible();
+    // Expand Parasitism & Hosting section to reveal obligate badge
+    const expandButton = page.getByRole('button', { name: /Parasitism & Hosting/ }).first();
+    await expandButton.click();
     await expect(page.getByText('Obligate', { exact: true }).first()).toBeVisible();
   });
 

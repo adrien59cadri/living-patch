@@ -41,7 +41,7 @@ describe('SpeciesCard', () => {
     expect(screen.queryByText(/Keystone/i)).not.toBeInTheDocument();
   });
 
-  test.skip('hides latin name by default and reveals on toggle', async () => {
+  test('hides latin name by default and reveals on toggle', async () => {
     renderCard();
     expect(screen.queryByText('Danaus plexippus')).not.toBeInTheDocument();
     await userEvent.click(screen.getByText('+ Scientific name'));
