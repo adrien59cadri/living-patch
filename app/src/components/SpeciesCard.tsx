@@ -7,6 +7,7 @@ import { LifeStageRow } from './LifeStageRow';
 import { KeyRelationshipsSection } from './KeyRelationshipsSection';
 import { NeighborsGrid } from './NeighborsGrid';
 import { TaxonomyRelatedGrid } from './TaxonomyRelatedGrid';
+import { HabitatNeighborsSection } from './HabitatNeighborsSection';
 import { LogSightingButton } from './LogSightingButton';
 import {
   formLabel,
@@ -18,6 +19,8 @@ import {
 
 interface Props {
   species: Species;
+  symbiotes: RelatedEntry[];
+  habitatNeighbors: Species[];
   related: RelatedEntry[];
 }
 
@@ -29,7 +32,7 @@ function Tag({ label }: { label: string }) {
   );
 }
 
-export function SpeciesCard({ species, related }: Props) {
+export function SpeciesCard({ species, symbiotes, habitatNeighbors, related }: Props) {
   const [latinVisible, setLatinVisible] = useState(false);
 
   const stages = (species.life_stages as LifeStage[]).filter(
@@ -96,10 +99,13 @@ export function SpeciesCard({ species, related }: Props) {
         </div>
       )}
 
-      {/* 6. Key relationships */}
-      <KeyRelationshipsSection related={related} />
+      {/* 6. Symbiotes */}
+      <KeyRelationshipsSection related={symbiotes} />
 
-      {/* 7. Related by habitat */}
+      {/* 7. Habitat neighbors */}
+      <HabitatNeighborsSection neighbors={habitatNeighbors} />
+
+      {/* 8. Related by habitat (legacy - may hide if all species are now showing as neighbors/symbiotes) */}
       {habitatCategories.length > 0 && (
         <div>
           <div className="text-xs font-semibold uppercase tracking-wide text-stone-400 mb-3">
@@ -109,10 +115,10 @@ export function SpeciesCard({ species, related }: Props) {
         </div>
       )}
 
-      {/* 8. Related by taxonomy */}
+      {/* 9. Related by taxonomy */}
       <TaxonomyRelatedGrid related={related} speciesId={species.id} />
 
-      {/* 9. Log sighting */}
+      {/* 10. Log sighting */}
       <LogSightingButton />
     </div>
   );

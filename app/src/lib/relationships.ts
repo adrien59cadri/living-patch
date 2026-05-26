@@ -209,3 +209,76 @@ export function groupTaxonomyRelations(entries: RelatedEntry[]): TaxonomyGroup[]
 
   return groups;
 }
+
+// ─── Symbiotes and habitat neighbors ────────────────────────────────────────
+
+export function getSymbiotes(
+  speciesId: string,
+  symbiosisBySpeciesId: Map<string, Symbiosis[]>,
+  speciesById: Map<string, Species>
+): RelatedEntry[] {
+  const entries: RelatedEntry[] = [];
+
+  for (const sym of symbiosisBySpeciesId.get(speciesId) ?? []) {
+    const partnerId = sym.members.find(id => id !== speciesId);
+    if (!partnerId) continue;
+    const partner = speciesById.get(partnerId);
+    if (!partner) continue;
+    entries.push({
+      species: partner,
+      symbiosis: sym,
+      role: sym.type,
+      obligate: sym.obligate ?? false,
+      notes: sym.notes,
+    });
+  }
+
+  return entries;
+}
+
+export function getHabitatNeighbors(
+  speciesId: string,
+  species: Species[],
+  speciesById: Map<string, Species>,
+  symbiosisBySpeciesId: Map<string, Symbiosis[]>
+): Species[] {
+  const focal = speciesById.get(speciesId);
+  if (!focal || !focal.habitat || focal.habitat.length === 0) {
+    return [];
+  }
+
+  const focalHabitats = new Set(focal.habitat);
+
+  // Get all symbiote IDs to exclude them
+  const symbiotesSet = new Set<string>();
+  for (const sym of symbiosisBySpeciesId.get(speciesId) ?? []) {
+    for (const memberId of sym.members) {
+      if (memberId !== speciesId) {
+        symbiotesSet.add(memberId);
+      }
+    }
+  }
+
+  // Find species sharing habitat but not symbiotes
+  const neighbors: Species[] = [];
+  for (const other of species) {
+    if (other.id === speciesId) continue;
+    if (symbiotesSet.has(other.id)) continue;
+    if (!other.habitat || other.habitat.length === 0) continue;
+
+    // Check if they share at least one habitat
+    const hasSharedHabitat = other.habitat.some(h => focalHabitats.has(h));
+    if (hasSharedHabitat) {
+      neighbors.push(other);
+    }
+  }
+
+  // Sort by shared habitat count (descending) and limit to top 5
+  neighbors.sort((a, b) => {
+    const aShared = a.habitat!.filter(h => focalHabitats.has(h)).length;
+    const bShared = b.habitat!.filter(h => focalHabitats.has(h)).length;
+    return bShared - aShared;
+  });
+
+  return neighbors.slice(0, 5);
+}
