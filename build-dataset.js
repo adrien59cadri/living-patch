@@ -138,8 +138,19 @@ try {
   }
 
   // Output: array of packs (preserving pack identity)
+  // Remove redundant images array since images are already attached to species
+  const packsForOutput = dataPacks.map(pack => ({
+    metadata: pack.metadata,
+    data: {
+      species: pack.data.species,
+      taxonomic_groups: pack.data.taxonomic_groups,
+      symbiosis: pack.data.symbiosis,
+      relations: pack.data.relations,
+    },
+  }));
+
   const output = {
-    packs: dataPacks,
+    packs: packsForOutput,
   };
 
   // Write output
