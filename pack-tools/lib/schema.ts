@@ -79,6 +79,12 @@ export const RelationSchema = z.object({
   notes: z.string().min(1),
 });
 
+export const ImageEntrySchema = z.object({
+  speciesId: z.string().min(1),
+  url: z.string().url('URL must be a valid URI'),
+  author: z.string().min(1),
+});
+
 export const PackMetadataSchema = z.object({
   id: z
     .string()
@@ -101,81 +107,44 @@ export const PackDataSchema = z.object({
   taxonomic_groups: z.array(TaxonomicGroupSchema).optional(),
   symbiosis: z.array(SymbiosisSchema).optional(),
   relations: z.array(RelationSchema).optional(),
+  images: z.array(ImageEntrySchema).optional(),
 });
 
-export const DataPackSchema = z.object({
+export const PackSchema = z.object({
   metadata: PackMetadataSchema,
   data: PackDataSchema,
 });
 
+// Alias for backward compatibility
+export const DataPackSchema = PackSchema;
+
 /**
  * Validate a pack against the schema
  * @param data Unknown data to validate
- * @returns Validated DataPack or throws ZodError
+ * @returns Validated Pack or throws ZodError
  */
 export function validatePack(data: unknown) {
-  return DataPackSchema.parse(data);
+  return PackSchema.parse(data);
 }
 
 /**
  * Validate a pack safely (returns result instead of throwing)
  */
 export function validatePackSafe(data: unknown) {
-  return DataPackSchema.safeParse(data);
+  return PackSchema.safeParse(data);
 }
 
-export type DataPack = z.infer<typeof DataPackSchema>;
+// Aliases for backward compatibility
+export const validateImagesPack = validatePack;
+export const validateImagesPackSafe = validatePackSafe;
+
+export type Pack = z.infer<typeof PackSchema>;
+export type DataPack = Pack;
+export type ImagesPack = Pack;
+export type ImageEntry = z.infer<typeof ImageEntrySchema>;
 export type Species = z.infer<typeof SpeciesSchema>;
 export type Symbiosis = z.infer<typeof SymbiosisSchema>;
 export type Relation = z.infer<typeof RelationSchema>;
 export type PackMetadata = z.infer<typeof PackMetadataSchema>;
 export type PackData = z.infer<typeof PackDataSchema>;
-
-/**
- * Images pack validation schemas
- */
-
-export const ImageEntrySchema = z.object({
-  speciesId: z.string().min(1),
-  url: z.string().url('URL must be a valid URI'),
-  author: z.string().min(1),
-});
-
-export const ImagesMetadataSchema = z.object({
-  id: z
-    .string()
-    .min(1)
-    .regex(PACK_ID_PATTERN, 'Pack ID must contain only lowercase letters, numbers, hyphens, and underscores'),
-  createdDate: z.string().datetime('createdDate must be a valid ISO 8601 datetime'),
-  status: z.enum(['draft', 'published']).default('draft'),
-  packId: z
-    .string()
-    .min(1)
-    .regex(PACK_ID_PATTERN, 'packId must reference a valid pack ID'),
-  description: z.string().optional(),
-});
-
-export const ImagesPackSchema = z.object({
-  metadata: ImagesMetadataSchema,
-  data: z.array(ImageEntrySchema),
-});
-
-/**
- * Validate an images pack against the schema
- * @param data Unknown data to validate
- * @returns Validated ImagesPack or throws ZodError
- */
-export function validateImagesPack(data: unknown) {
-  return ImagesPackSchema.parse(data);
-}
-
-/**
- * Validate an images pack safely (returns result instead of throwing)
- */
-export function validateImagesPackSafe(data: unknown) {
-  return ImagesPackSchema.safeParse(data);
-}
-
-export type ImageEntry = z.infer<typeof ImageEntrySchema>;
-export type ImagesMetadata = z.infer<typeof ImagesMetadataSchema>;
 export type ImagesPack = z.infer<typeof ImagesPackSchema>;

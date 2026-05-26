@@ -82,6 +82,13 @@
           "items": {
             "$ref": "#/definitions/Relation"
           }
+        },
+        "images": {
+          "type": "array",
+          "description": "Array of species images (Wikimedia Commons)",
+          "items": {
+            "$ref": "#/definitions/ImageEntry"
+          }
         }
       },
       "additionalProperties": false
@@ -273,6 +280,29 @@
         },
         "notes": {
           "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "ImageEntry": {
+      "type": "object",
+      "description": "Species image from Wikimedia Commons",
+      "required": ["speciesId", "url", "author"],
+      "properties": {
+        "speciesId": {
+          "type": "string",
+          "description": "ID of the species this image belongs to",
+          "minLength": 1
+        },
+        "url": {
+          "type": "string",
+          "description": "Wikimedia Commons image URL",
+          "format": "uri"
+        },
+        "author": {
+          "type": "string",
+          "description": "Photographer or creator attribution",
           "minLength": 1
         }
       },

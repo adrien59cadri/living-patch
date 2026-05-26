@@ -39,16 +39,18 @@ try {
     throw new Error(`Packs directory not found: ${PACKS_DIR}`);
   }
 
-  // Load all packs (excluding images packs)
+  // Load all packs (unified format: data packs and image packs share the same schema)
   const files = fs.readdirSync(PACKS_DIR)
-    .filter(f => f.endsWith('.json') && !f.startsWith('images-'));
-  
+    .filter(f => f.endsWith('.json'));
+
   if (files.length === 0) {
     throw new Error(`No pack files found in ${PACKS_DIR}`);
   }
 
   const packs = [];
   const skippedDrafts = [];
+  const imagesBySpeciesId = new Map();
+  let imagesLoaded = 0;
 
   for (const file of files) {
     try {
@@ -69,46 +71,23 @@ try {
         continue;
       }
 
-      packs.push(data);
-      console.log(`   ✓ Loaded: ${data.metadata.id} (${status})`);
-    } catch (err) {
-      console.warn(`⚠️  Error loading ${file}:`, err instanceof Error ? err.message : String(err));
-    }
-  }
-
-  if (packs.length === 0) {
-    throw new Error(`No valid packs to merge`);
-  }
-
-  // Load all images packs and create index
-  const imageFiles = fs.readdirSync(PACKS_DIR)
-    .filter(f => f.startsWith('images-') && f.endsWith('.json'));
-  
-  const imagesBySpeciesId = new Map();
-  let imagesLoaded = 0;
-
-  for (const file of imageFiles) {
-    try {
-      const filePath = path.join(PACKS_DIR, file);
-      const rawData = fs.readFileSync(filePath, 'utf-8');
-      const imagesPack = JSON.parse(rawData);
-
-      if (!imagesPack.data || !Array.isArray(imagesPack.data)) {
-        console.warn(`⚠️  Skipped ${file}: Invalid images pack structure`);
-        continue;
-      }
-
-      for (const imageEntry of imagesPack.data) {
-        if (imageEntry.speciesId && imageEntry.url && imageEntry.author) {
-          imagesBySpeciesId.set(imageEntry.speciesId, {
-            url: imageEntry.url,
-            author: imageEntry.author,
-          });
-          imagesLoaded++;
+      // Index images from this pack (data.images is the unified images entry)
+      if (data.data.images && Array.isArray(data.data.images)) {
+        for (const imageEntry of data.data.images) {
+          if (imageEntry.speciesId && imageEntry.url && imageEntry.author) {
+            imagesBySpeciesId.set(imageEntry.speciesId, {
+              url: imageEntry.url,
+              author: imageEntry.author,
+            });
+            imagesLoaded++;
+          }
         }
+        console.log(`   ✓ Loaded: ${data.metadata.id} (${status}) — 🖼️  ${data.data.images.length} images`);
+      } else {
+        console.log(`   ✓ Loaded: ${data.metadata.id} (${status})`);
       }
 
-      console.log(`   ✓ Loaded images: ${file} (${imagesPack.data.length} entries)`);
+      packs.push(data);
     } catch (err) {
       console.warn(`⚠️  Error loading ${file}:`, err instanceof Error ? err.message : String(err));
     }
@@ -118,6 +97,14 @@ try {
     console.log(`   📸 Total images indexed: ${imagesLoaded}`);
   }
   console.log('');
+
+  const dataPacks = packs.filter(p =>
+    p.data.species || p.data.taxonomic_groups || p.data.symbiosis || p.data.relations
+  );
+
+  if (dataPacks.length === 0) {
+    throw new Error(`No valid data packs to merge`);
+  }
 
   // Merge packs into single dataset
   const merged = {
@@ -130,7 +117,7 @@ try {
   const speciesIds = new Set();
   const groupIds = new Set();
 
-  for (const pack of packs) {
+  for (const pack of dataPacks) {
     const { data } = pack;
 
     // Track IDs for duplicate detection

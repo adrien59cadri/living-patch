@@ -85,12 +85,18 @@ export interface PackData {
   symbiosis?: Symbiosis[];
   /** Array of general relations */
   relations?: Relation[];
+  /** Array of species images (Wikimedia Commons) */
+  images?: ImageEntry[];
 }
 
-export interface DataPack {
+export interface Pack {
   metadata: PackMetadata;
   data: PackData;
 }
+
+// Aliases for backward compatibility
+export type DataPack = Pack;
+export type ImagesPack = Pack;
 
 /**
  * Full dataset after merging multiple packs
@@ -121,12 +127,6 @@ export interface ConflictReport {
   }>;
 }
 
-/**
- * Image Pack Type Definitions
- * 
- * Images pack stores Wikipedia-sourced images and metadata for species
- */
-
 export interface ImageEntry {
   /** Species ID this image is for */
   speciesId: string;
@@ -134,22 +134,4 @@ export interface ImageEntry {
   url: string;
   /** Author/creator of the image */
   author: string;
-}
-
-export interface ImagesMetadata {
-  /** Unique identifier for the images pack */
-  id: string;
-  /** ISO 8601 date when images were fetched */
-  createdDate: string;
-  /** Status: draft (incomplete) or published (complete) */
-  status: 'draft' | 'published';
-  /** ID of the source data pack these images are for */
-  packId: string;
-  /** Optional: human-readable description */
-  description?: string;
-}
-
-export interface ImagesPack {
-  metadata: ImagesMetadata;
-  data: ImageEntry[];
 }

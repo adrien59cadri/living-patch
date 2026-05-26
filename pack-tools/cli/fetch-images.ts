@@ -13,10 +13,10 @@
 import fs from 'fs';
 import path from 'path';
 import chalk from 'chalk';
-import { validatePackSafe, validateImagesPackSafe } from '../lib/schema.js';
+import { validatePackSafe } from '../lib/schema.js';
 import { scrapeSpeciesImage } from '../lib/wikipedia-scraper.js';
 import { RateLimiter } from '../lib/rate-limiter.js';
-import type { DataPack, ImagesPack, ImageEntry } from '../types.js';
+import type { DataPack, Pack, ImageEntry } from '../types.js';
 
 const args = process.argv.slice(2);
 
@@ -181,22 +181,26 @@ async function main() {
   console.log(`${chalk.yellow('✗ Failed:')} ${failedSpecies.length}/${speciesToProcess.length}`);
   console.log(`${chalk.gray('⊘ Skipped:')} ${skippedSpecies.length}/${speciesToProcess.length}`);
 
-  // Create images pack
+  // Create images pack (unified format)
   const now = new Date().toISOString();
-  const imagesPack: ImagesPack = {
+  const imagesPack: Pack = {
     metadata: {
       id: `images-${pack.metadata.id}`,
       createdDate: now,
+      author: 'LivingPatch Bot',
+      version: '1.0.0',
+      schemaVersion: '1.0.0',
       status: successfulImages.length === speciesToProcess.length ? 'published' : 'draft',
-      packId: pack.metadata.id,
       description: `Wikipedia images for ${pack.metadata.id} (${successfulImages.length}/${speciesToProcess.length} species)`,
     },
-    data: successfulImages,
+    data: {
+      images: successfulImages,
+    },
   };
 
-  // Validate images pack
-  const validationResult = validateImagesPackSafe(imagesPack);
-  
+  // Validate pack
+  const validationResult = validatePackSafe(imagesPack);
+
   if (!validationResult.success) {
     console.error(chalk.red('❌ Error: Generated images pack is invalid'));
     validationResult.error.issues.forEach(issue => {
