@@ -45,7 +45,7 @@ test.describe('Species detail page — Monarch Butterfly', () => {
     await expect(page.getByText('Obligate', { exact: true }).first()).toBeVisible();
   });
 
-  test('related by habitat section shows plants category', async ({ page }) => {
+  test('habitat neighbors section shows plants category', async ({ page }) => {
     await page.goto(MONARCH_URL);
     await expect(page.getByText('Plants')).toBeVisible();
   });

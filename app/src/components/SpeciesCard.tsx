@@ -1,11 +1,10 @@
 import { useState } from 'react';
 import type { Species, LifeStage } from '../types';
 import type { RelatedEntry } from '../lib/relationships';
-import { getCategoryGroups } from '../lib/relationships';
+import { getHabitatNeighborsByCategory } from '../lib/relationships';
 import { KeystoneBadge } from './KeystoneBadge';
 import { LifeStageRow } from './LifeStageRow';
 import { KeyRelationshipsSection } from './KeyRelationshipsSection';
-import { NeighborsGrid } from './NeighborsGrid';
 import { TaxonomyRelatedGrid } from './TaxonomyRelatedGrid';
 import { HabitatNeighborsSection } from './HabitatNeighborsSection';
 import { LogSightingButton } from './LogSightingButton';
@@ -38,8 +37,7 @@ export function SpeciesCard({ species, symbiotes, habitatNeighbors, related }: P
     s => typeof s === 'object' && s !== null
   );
 
-  const allCategories = getCategoryGroups(related);
-  const habitatCategories = allCategories.filter(c => c.slug !== 'related');
+  const habitatNeighborCategories = getHabitatNeighborsByCategory(habitatNeighbors);
 
   const seasonChip = activeMonthsLabel(species.active_months);
 
@@ -117,23 +115,13 @@ export function SpeciesCard({ species, symbiotes, habitatNeighbors, related }: P
       {/* 6. Symbiotes */}
       <KeyRelationshipsSection related={symbiotes} />
 
-      {/* 7. Habitat neighbors */}
-      <HabitatNeighborsSection neighbors={habitatNeighbors} />
+      {/* 7. Habitat neighbors (organized by category) */}
+      <HabitatNeighborsSection categories={habitatNeighborCategories} speciesId={species.id} />
 
-      {/* 8. Related by habitat (legacy - may hide if all species are now showing as neighbors/symbiotes) */}
-      {habitatCategories.length > 0 && (
-        <div>
-          <div className="text-xs font-semibold uppercase tracking-wide text-stone-400 mb-3">
-            Related by Habitat
-          </div>
-          <NeighborsGrid categories={habitatCategories} speciesId={species.id} />
-        </div>
-      )}
-
-      {/* 9. Related by taxonomy */}
+      {/* 8. Related by taxonomy */}
       <TaxonomyRelatedGrid related={related} speciesId={species.id} />
 
-      {/* 10. Log sighting */}
+      {/* 9. Log sighting */}
       <LogSightingButton />
     </div>
   );

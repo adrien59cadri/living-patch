@@ -57,9 +57,9 @@ describe('DetailPage', () => {
     expect(screen.getAllByText('Obligate').length).toBeGreaterThan(0);
   });
 
-  test('renders habitat-related grid for monarch', () => {
+  test('renders habitat neighbors for monarch', () => {
     renderDetailPage('insect_monarch-butterfly');
-    expect(screen.getByText('Related by Habitat')).toBeInTheDocument();
+    expect(screen.getByText('Habitat Neighbors')).toBeInTheDocument();
   });
 
   test('renders disabled log sighting button', () => {

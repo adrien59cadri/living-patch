@@ -3,6 +3,7 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
 import { SpeciesCard } from '../SpeciesCard';
+import type { Species } from '../../types';
 import {
   mockMonarch,
   mockMonarchYearRound,
@@ -15,7 +16,7 @@ import type { RelatedEntry } from '../../lib/relationships';
 function renderCard(
   species = mockMonarch,
   symbiotes: RelatedEntry[] = [mockObligateEntry],
-  habitatNeighbors = [],
+  habitatNeighbors: Species[] = [],
   related: RelatedEntry[] = [mockObligateEntry, mockBirdEntry]
 ) {
   return render(
@@ -84,14 +85,16 @@ describe('SpeciesCard', () => {
     expect(screen.queryByText('KEY RELATIONSHIPS')).not.toBeInTheDocument();
   });
 
-  test('renders RELATED BY HABITAT section when habitat-related entries exist', () => {
-    renderCard();
-    expect(screen.getByText('Related by Habitat')).toBeInTheDocument();
+  test('renders HABITAT NEIGHBORS section when neighbors exist', () => {
+    const habitatNeighbor = { ...mockMonarch, id: 'neighbor-id', common_name: 'Test Neighbor' };
+    renderCard(mockMonarch, [], [habitatNeighbor], [mockBirdEntry]);
+    expect(screen.getByText('Habitat Neighbors')).toBeInTheDocument();
+    expect(screen.getByText('Test Neighbor')).toBeInTheDocument();
   });
 
-  test('omits RELATED BY HABITAT section when no habitat-related entries', () => {
+  test('omits HABITAT NEIGHBORS section when no neighbors exist', () => {
     renderCard(mockMonarch, [], [], []);
-    expect(screen.queryByText('RELATED BY HABITAT')).not.toBeInTheDocument();
+    expect(screen.queryByText('HABITAT NEIGHBORS')).not.toBeInTheDocument();
   });
 
   test('renders Log Sighting button in disabled state', () => {

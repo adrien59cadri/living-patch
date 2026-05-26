@@ -298,12 +298,58 @@ export function getHabitatNeighbors(
     }
   }
 
-  // Sort by shared habitat count (descending) and limit to top 5
+  // Sort by shared habitat count (descending)
   neighbors.sort((a, b) => {
     const aShared = a.habitat!.filter(h => focalHabitats.has(h)).length;
     const bShared = b.habitat!.filter(h => focalHabitats.has(h)).length;
     return bShared - aShared;
   });
 
-  return neighbors.slice(0, 5);
+  return neighbors;
+}
+
+// Helper to get category slug for a Species (not RelatedEntry)
+function getSpeciesCategorySlug(species: Species): NeighborCategorySlug | null {
+  const form = species.form;
+  if (BIRD_FORMS.has(form))    return 'birds';
+  if (PLANT_FORMS.has(form))   return 'plants';
+  if (INSECT_FORMS.has(form))  return 'insects';
+  if (WILDLIFE_FORMS.has(form)) return 'wildlife';
+  return null;
+}
+
+export interface HabitatNeighborCategory {
+  slug: NeighborCategorySlug;
+  label: string;
+  icon: string;
+  species: Species[];
+}
+
+export function getHabitatNeighborsByCategory(neighbors: Species[]): HabitatNeighborCategory[] {
+  const map = new Map<NeighborCategorySlug, Species[]>();
+  
+  for (const species of neighbors) {
+    const slug = getSpeciesCategorySlug(species);
+    if (!slug) continue;
+    const list = map.get(slug) ?? [];
+    list.push(species);
+    map.set(slug, list);
+  }
+
+  const categories: HabitatNeighborCategory[] = [];
+  // Order by birds, plants, insects, wildlife
+  const order: NeighborCategorySlug[] = ['birds', 'plants', 'insects', 'wildlife'];
+  
+  for (const slug of order) {
+    const catSpecies = map.get(slug);
+    if (catSpecies && catSpecies.length > 0) {
+      categories.push({
+        slug,
+        ...CATEGORY_META[slug],
+        species: catSpecies,
+      });
+    }
+  }
+
+  return categories;
 }
