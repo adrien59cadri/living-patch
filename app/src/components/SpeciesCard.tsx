@@ -52,7 +52,7 @@ export function SpeciesCard({ species, symbiotes, habitatNeighbors, related }: P
             src={species.image.url}
             alt={species.common_name}
             loading="lazy"
-            className="w-full h-full object-contain"
+            className="max-w-full max-h-full object-contain"
           />
         ) : (
           <span className="text-5xl">📷</span>
