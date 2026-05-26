@@ -1,15 +1,7 @@
 import rawDataset from './dataset.json';
 import type { Dataset, Species, Symbiosis, Relation } from '../types';
 
-const rawData = rawDataset as unknown as Dataset;
-
-const dataset: Dataset = {
-  ...rawData,
-  species: rawData.species.map(s => ({
-    ...s,
-    is_group: s.is_group ?? s.id.startsWith('group_'),
-  })),
-};
+const dataset = rawDataset as unknown as Dataset;
 
 export const species: Species[] = dataset.species;
 export const taxonomicGroups: Species[] = dataset.taxonomic_groups || [];
