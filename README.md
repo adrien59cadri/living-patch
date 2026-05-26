@@ -127,28 +127,18 @@ Two workflows:
 
 To enable Pages deployment: Repo Settings → Pages → Source → "GitHub Actions"
 
-### Run CI locally with `act`
+### Run CI locally
 
-Test the entire CI pipeline locally before pushing:
+Test the CI pipeline locally before pushing using `act` (GitHub Actions simulator):
 
 ```bash
-# Install act (once)
-brew install act
-
-# Run the CI job locally (requires Docker Desktop running)
-npm run ci:local
-
-# Or run E2E tests locally
-npm run ci:local:e2e
-
-# Or run specific jobs
-act push --workflows .github/workflows/ci.yml --job ci
-act push --workflows .github/workflows/ci.yml --job e2e
+npm run ci:local      # Run CI job (lint → type-check → test → build)
+npm run ci:local:e2e  # Run E2E tests
 ```
 
-**Note:** `act` requires Docker Desktop to be running. Install from [docker.com](https://www.docker.com/products/docker-desktop).
+**Setup:** `brew install act` + Docker Desktop running. Install Docker from [docker.com](https://www.docker.com/products/docker-desktop).
 
-**Known limitation:** The artifact upload step fails locally (expected) — `act` doesn't support GitHub Actions tokens. This doesn't affect linting, type-checking, testing, or building.
+**Note:** Artifact upload fails locally (expected) — doesn't affect linting, type-checking, testing, or building.
 
 ## Documentation
 
