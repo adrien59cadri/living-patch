@@ -43,15 +43,15 @@ describe('DetailPage', () => {
     expect(screen.getByText('Egg')).toBeInTheDocument();
   });
 
-  test('renders key relationship for monarch (has obligate symbiosis)', () => {
+  test('renders key relationships for monarch (has obligate symbiosis)', () => {
     renderDetailPage('insect_monarch-butterfly');
-    expect(screen.getByText('Key Relationship')).toBeInTheDocument();
-    expect(screen.getByText('Obligate')).toBeInTheDocument();
+    expect(screen.getByText('Key Relationships')).toBeInTheDocument();
+    expect(screen.getAllByText('Obligate').length).toBeGreaterThan(0);
   });
 
-  test('renders neighbors grid for monarch', () => {
+  test('renders habitat-related grid for monarch', () => {
     renderDetailPage('insect_monarch-butterfly');
-    expect(screen.getByText('Neighbors')).toBeInTheDocument();
+    expect(screen.getByText('Related by Habitat')).toBeInTheDocument();
   });
 
   test('renders disabled log sighting button', () => {

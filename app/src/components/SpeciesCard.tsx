@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import type { Species, LifeStage } from '../types';
 import type { RelatedEntry } from '../lib/relationships';
-import { getCategoryGroups, getKeyRelationship } from '../lib/relationships';
+import { getCategoryGroups } from '../lib/relationships';
 import { KeystoneBadge } from './KeystoneBadge';
 import { LifeStageRow } from './LifeStageRow';
-import { KeyRelationshipTile } from './KeyRelationshipTile';
+import { KeyRelationshipsSection } from './KeyRelationshipsSection';
 import { NeighborsGrid } from './NeighborsGrid';
+import { TaxonomyRelatedGrid } from './TaxonomyRelatedGrid';
 import { LogSightingButton } from './LogSightingButton';
 import {
   formLabel,
@@ -35,8 +36,8 @@ export function SpeciesCard({ species, related }: Props) {
     s => typeof s === 'object' && s !== null
   );
 
-  const keyRelationship = getKeyRelationship(related);
-  const categories = getCategoryGroups(related);
+  const allCategories = getCategoryGroups(related);
+  const habitatCategories = allCategories.filter(c => c.slug !== 'related');
 
   const seasonChip = activeMonthsLabel(species.active_months);
 
@@ -85,16 +86,6 @@ export function SpeciesCard({ species, related }: Props) {
         {species.functional_description}
       </p>
 
-      {/* Keystone callout */}
-      {species.is_keystone && species.keystone_description && (
-        <div className="bg-amber-50 border border-amber-200 rounded-lg p-4">
-          <div className="text-xs font-semibold uppercase tracking-wide text-amber-700 mb-1">
-            Keystone role
-          </div>
-          <p className="text-sm text-amber-900">{species.keystone_description}</p>
-        </div>
-      )}
-
       {/* 5. Life stages */}
       {stages.length > 0 && (
         <div>
@@ -105,27 +96,23 @@ export function SpeciesCard({ species, related }: Props) {
         </div>
       )}
 
-      {/* 6. Key relationship */}
-      {keyRelationship && (
+      {/* 6. Key relationships */}
+      <KeyRelationshipsSection related={related} />
+
+      {/* 7. Related by habitat */}
+      {habitatCategories.length > 0 && (
         <div>
           <div className="text-xs font-semibold uppercase tracking-wide text-stone-400 mb-3">
-            Key Relationship
+            Related by Habitat
           </div>
-          <KeyRelationshipTile entry={keyRelationship} />
+          <NeighborsGrid categories={habitatCategories} speciesId={species.id} />
         </div>
       )}
 
-      {/* 7. Neighbors grid */}
-      {categories.length > 0 && (
-        <div>
-          <div className="text-xs font-semibold uppercase tracking-wide text-stone-400 mb-3">
-            Neighbors
-          </div>
-          <NeighborsGrid categories={categories} speciesId={species.id} />
-        </div>
-      )}
+      {/* 8. Related by taxonomy */}
+      <TaxonomyRelatedGrid related={related} speciesId={species.id} />
 
-      {/* 8. Log sighting */}
+      {/* 9. Log sighting */}
       <LogSightingButton />
     </div>
   );
