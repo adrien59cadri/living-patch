@@ -4,6 +4,7 @@ import HomePage from './pages/HomePage';
 import DetailPage from './pages/DetailPage';
 import NeighborListView from './pages/NeighborListView';
 import LearnPage from './pages/LearnPage';
+import PacksPage from './pages/PacksPage';
 
 export default function App() {
   return (
@@ -20,18 +21,27 @@ export default function App() {
               </Link>
               <span className="text-stone-400 text-xs">NE Pennsylvania</span>
             </div>
-            <Link
-              to="/learn"
-              className="text-sm text-stone-600 hover:text-emerald-700 no-underline"
-            >
-              Learn
-            </Link>
+            <div className="flex items-center gap-4">
+              <Link
+                to="/learn"
+                className="text-sm text-stone-600 hover:text-emerald-700 no-underline"
+              >
+                Learn
+              </Link>
+              <Link
+                to="/packs"
+                className="text-sm text-stone-600 hover:text-emerald-700 no-underline"
+              >
+                Packs
+              </Link>
+            </div>
           </div>
         </header>
         <main className="max-w-3xl mx-auto px-4 py-6">
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/learn" element={<LearnPage />} />
+            <Route path="/packs" element={<PacksPage />} />
             <Route path="/species/:id" element={<DetailPage />} />
             <Route path="/species/:id/neighbors/:category" element={<NeighborListView />} />
           </Routes>
