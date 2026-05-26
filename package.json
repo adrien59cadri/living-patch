@@ -13,8 +13,8 @@
     "test": "cd app && npm run test",
     "test:watch": "cd app && npm run test:watch",
     "test:e2e": "cd app && npm run test:e2e",
-    "ci:local": "act push --workflows .github/workflows/ci.yml --job ci",
-    "e2e:local": "act push --workflows .github/workflows/ci.yml --job e2e",
+    "ci:local": "act push --container-architecture linux/amd64 -P ubuntu-latest=ghcr.io/catthehacker/ubuntu:act-22.04 --workflows .github/workflows/ci.yml --job ci",
+    "e2e:local": "act push --container-architecture linux/amd64 -P ubuntu-latest=ghcr.io/catthehacker/ubuntu:act-22.04 --workflows .github/workflows/ci.yml --job e2e",
     "pack:validate": "cd pack-tools && npm run validate",
     "pack:merge": "cd pack-tools && npm run merge",
     "pack:migrate": "cd pack-tools && npm run migrate"
