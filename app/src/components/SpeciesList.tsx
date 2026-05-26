@@ -8,9 +8,7 @@ interface Props {
   groups: Species[];
 }
 
-function SpeciesRow({ species }: { species: Species }) {
-  const isGroup = species.is_group === true;
-
+function SpeciesRow({ species, isGroup }: { species: Species; isGroup: boolean }) {
   const inner = (
     <div
       className={[
@@ -64,7 +62,7 @@ export function SpeciesList({ species, groups }: Props) {
   return (
     <div className="space-y-2">
       {species.map(s => (
-        <SpeciesRow key={s.id} species={s} />
+        <SpeciesRow key={s.id} species={s} isGroup={false} />
       ))}
       {groups.length > 0 && (
         <>
@@ -72,7 +70,7 @@ export function SpeciesList({ species, groups }: Props) {
             Species Groups
           </div>
           {groups.map(g => (
-            <SpeciesRow key={g.id} species={g} />
+            <SpeciesRow key={g.id} species={g} isGroup={true} />
           ))}
         </>
       )}

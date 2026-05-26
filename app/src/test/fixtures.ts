@@ -50,7 +50,6 @@ export const mockGroupSpecies: Species = {
   functional_description: 'Group placeholder.',
   life_stages: [],
   region: 'northeast_pa',
-  is_group: true,
 };
 
 const mockLifeStages: LifeStage[] = [

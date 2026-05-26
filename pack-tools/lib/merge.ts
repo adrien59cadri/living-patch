@@ -75,13 +75,7 @@ export function mergePacks(packs: DataPack[], options: MergeOptions = {}): Merge
   // Merge all data
   for (const pack of packs) {
     if (pack.data.species) {
-      for (const species of pack.data.species) {
-        if (species.is_group) {
-          mergedGroups.push(species);
-        } else {
-          mergedSpecies.push(species);
-        }
-      }
+      mergedSpecies.push(...pack.data.species);
     }
 
     if (pack.data.taxonomic_groups) {

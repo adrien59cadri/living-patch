@@ -44,9 +44,34 @@ export function SpeciesCard({ species, symbiotes, habitatNeighbors, related }: P
   return (
     <div className="space-y-6">
       {/* 1. Hero photo area */}
-      <div className="w-full h-48 bg-stone-100 rounded-xl flex items-center justify-center text-stone-300">
-        <span className="text-5xl">📷</span>
-      </div>
+      {species.image ? (
+        <div className="relative group">
+          <img
+            src={species.image.url}
+            alt={species.common_name}
+            className="w-full h-48 object-cover rounded-xl"
+          />
+          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent rounded-b-xl p-3 opacity-0 group-hover:opacity-100 transition-opacity">
+            <p className="text-xs text-white">
+              Photo by{' '}
+              <span className="font-semibold">{species.image.author}</span>
+              {' '}via{' '}
+              <a
+                href="https://commons.wikimedia.org"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-stone-200"
+              >
+                Wikimedia Commons
+              </a>
+            </p>
+          </div>
+        </div>
+      ) : (
+        <div className="w-full h-48 bg-stone-100 rounded-xl flex items-center justify-center text-stone-300">
+          <span className="text-5xl">📷</span>
+        </div>
+      )}
 
       {/* 2. Name block */}
       <div>

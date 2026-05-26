@@ -3,12 +3,15 @@ import type { Dataset, Species, Symbiosis, Relation } from '../types';
 
 const dataset = rawDataset as unknown as Dataset;
 
-export const nonGroupSpecies: Species[] = dataset.species.filter(s => !s.is_group);
-export const groupSpecies: Species[] = dataset.species.filter(s => s.is_group);
-export const allSymbiosis: Symbiosis[] = dataset.symbiosis;
+export const species: Species[] = dataset.species;
+export const taxonomicGroups: Species[] = dataset.taxonomic_groups || [];
+
+export const taxonomicGroupIds = new Set<string>(
+  (dataset.taxonomic_groups || []).map(g => g.id)
+);
 
 export const speciesById = new Map<string, Species>(
-  dataset.species.map(s => [s.id, s])
+  [...(dataset.species || []), ...(dataset.taxonomic_groups || [])].map(s => [s.id, s])
 );
 
 export const symbiosisBySpeciesId = new Map<string, Symbiosis[]>();

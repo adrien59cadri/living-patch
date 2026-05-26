@@ -9,7 +9,7 @@ import { symbiosisLabel } from '../lib/labels';
 
 export default function NeighborListView() {
   const { id, category } = useParams<{ id: string; category: string }>();
-  const { speciesById, symbiosisBySpeciesId, relationsBySpeciesId } = useDataset();
+  const { speciesById, symbiosisBySpeciesId, relationsBySpeciesId, taxonomicGroupIds } = useDataset();
 
   const species = id ? speciesById.get(id) : undefined;
 
@@ -24,7 +24,7 @@ export default function NeighborListView() {
     );
   }
 
-  const entries = getRelatedEntries(id!, symbiosisBySpeciesId, relationsBySpeciesId, speciesById);
+  const entries = getRelatedEntries(id!, symbiosisBySpeciesId, relationsBySpeciesId, speciesById, taxonomicGroupIds);
   const categoryGroups = getCategoryGroups(entries);
   const currentCategory = categoryGroups.find(c => c.slug === category);
 
@@ -78,11 +78,12 @@ function symBadgeClass(role: string): string {
 }
 
 function SpeciesTile({ entry }: { entry: RelatedEntry }) {
+  const isGroup = entry.isGroup ?? false;
   const tile = (
     <div
       className={[
         'flex items-start gap-3 p-3 rounded-lg border',
-        entry.species.is_group
+        isGroup
           ? 'bg-stone-50 border-stone-100 opacity-70'
           : 'bg-white border-stone-200 hover:border-emerald-300 hover:shadow-sm transition-all',
       ].join(' ')}
@@ -90,7 +91,7 @@ function SpeciesTile({ entry }: { entry: RelatedEntry }) {
       <div className="flex-1 min-w-0">
         <div
           className={`text-sm font-medium text-stone-800 leading-tight ${
-            entry.species.is_group ? 'italic' : ''
+            isGroup ? 'italic' : ''
           }`}
         >
           {entry.species.common_name}
@@ -114,7 +115,7 @@ function SpeciesTile({ entry }: { entry: RelatedEntry }) {
     </div>
   );
 
-  if (entry.species.is_group) return tile;
+  if (isGroup) return tile;
 
   return (
     <Link to={`/species/${entry.species.id}`} className="block no-underline">

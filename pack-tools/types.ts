@@ -32,7 +32,7 @@ export interface LifeStage {
 export interface Species {
   id: string;
   common_name: string;
-  latin_name?: string;
+  latin_name?: string | null;
   form: string;
   habitat: string[];
   diet: string[];
@@ -41,17 +41,20 @@ export interface Species {
   functional_description: string;
   life_stages: LifeStage[] | string[];
   region: string;
-  ecological_role?: string;
+  ecological_role?: string | null;
   is_keystone?: boolean;
   keystone_type?: string | null;
   keystone_description?: string | null;
-  active_months?: string[];
-  taxonomic_group?: string;
-  /** Flag indicating this is a taxonomic/thematic group, not an individual species */
-  is_group?: boolean;
-  label?: string; // For taxonomic groups
-  common_traits?: string; // For taxonomic groups
-  notes?: string; // For taxonomic groups
+  active_months?: string[] | null;
+  taxonomic_group?: string | null;
+  label?: string | null;
+  common_traits?: string | null;
+  notes?: string | null;
+  /** Wikipedia image if available */
+  image?: {
+    url: string;
+    author: string;
+  };
 }
 
 export interface Symbiosis {
@@ -59,7 +62,7 @@ export interface Symbiosis {
   /** Array of species IDs involved in this relationship */
   members: string[];
   /** Optional: specific species impacted by this relationship */
-  impacted_species?: string;
+  impacted_species?: string | null;
   /** Whether the relationship is obligate (required for survival) */
   obligate?: boolean;
   /** Notes explaining the relationship */
@@ -116,4 +119,37 @@ export interface ConflictReport {
     packId?: string;
     affectedIds?: string[];
   }>;
+}
+
+/**
+ * Image Pack Type Definitions
+ * 
+ * Images pack stores Wikipedia-sourced images and metadata for species
+ */
+
+export interface ImageEntry {
+  /** Species ID this image is for */
+  speciesId: string;
+  /** URL to the image on Wikimedia Commons */
+  url: string;
+  /** Author/creator of the image */
+  author: string;
+}
+
+export interface ImagesMetadata {
+  /** Unique identifier for the images pack */
+  id: string;
+  /** ISO 8601 date when images were fetched */
+  createdDate: string;
+  /** Status: draft (incomplete) or published (complete) */
+  status: 'draft' | 'published';
+  /** ID of the source data pack these images are for */
+  packId: string;
+  /** Optional: human-readable description */
+  description?: string;
+}
+
+export interface ImagesPack {
+  metadata: ImagesMetadata;
+  data: ImageEntry[];
 }

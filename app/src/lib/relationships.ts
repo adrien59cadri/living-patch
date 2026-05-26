@@ -17,14 +17,17 @@ export interface RelatedEntry {
   obligate: boolean;
   notes: string;
   isImpacted: boolean;
+  isGroup?: boolean;
 }
 
 export function getRelatedEntries(
   speciesId: string,
   symbiosisBySpeciesId: Map<string, Symbiosis[]>,
   relationsBySpeciesId: Map<string, Relation[]>,
-  speciesById: Map<string, Species>
+  speciesById: Map<string, Species>,
+  taxonomicGroupIds?: Set<string>
 ): RelatedEntry[] {
+  const groupIds = taxonomicGroupIds || new Set<string>();
   const entries: RelatedEntry[] = [];
 
   for (const sym of symbiosisBySpeciesId.get(speciesId) ?? []) {
@@ -44,6 +47,7 @@ export function getRelatedEntries(
       obligate: sym.obligate ?? false,
       notes: sym.notes,
       isImpacted,
+      isGroup: groupIds.has(partnerId),
     });
   }
 
@@ -59,6 +63,7 @@ export function getRelatedEntries(
         obligate: false,
         notes: rel.notes,
         isImpacted: false,
+        isGroup: groupIds.has(memberId),
       });
     }
   }

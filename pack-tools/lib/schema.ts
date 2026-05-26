@@ -36,26 +36,33 @@ export const SpeciesSchema = z.object({
     .string()
     .min(1)
     .regex(SPECIES_ID_PATTERN, 'Species ID must match pattern: category_slug (e.g., bird_pileated-woodpecker)'),
-  common_name: z.string().min(1),
+  common_name: z.string().optional(),
   latin_name: z.string().optional().nullable(),
-  form: z.string().min(1),
-  habitat: z.array(z.string()).min(0),
-  diet: z.array(z.string()).min(0),
-  behavior: z.array(z.string()).min(0),
-  season: z.array(z.string()).min(0),
-  functional_description: z.string().min(1),
-  life_stages: z.union([z.array(LifeStageSchema), z.array(z.string())]),
-  region: z.string().min(1),
+  form: z.string().optional(),
+  habitat: z.array(z.string()).optional(),
+  diet: z.array(z.string()).optional(),
+  behavior: z.array(z.string()).optional(),
+  season: z.array(z.string()).optional(),
+  functional_description: z.string().optional(),
+  life_stages: z.union([z.array(LifeStageSchema), z.array(z.string())]).optional(),
+  region: z.string().optional(),
   ecological_role: z.string().optional().nullable(),
   is_keystone: z.boolean().optional(),
   keystone_type: z.string().optional().nullable(),
   keystone_description: z.string().optional().nullable(),
   active_months: z.array(z.string()).optional().nullable(),
   taxonomic_group: z.string().optional().nullable(),
-  is_group: z.boolean().optional(),
   label: z.string().optional().nullable(),
   common_traits: z.string().optional().nullable(),
   notes: z.string().optional().nullable(),
+  image: z.object({ url: z.string(), author: z.string() }).optional(),
+});
+
+export const TaxonomicGroupSchema = z.object({
+  id: z.string().min(1).regex(SPECIES_ID_PATTERN),
+  label: z.string().min(1),
+  common_traits: z.string().min(1),
+  notes: z.string().optional(),
 });
 
 export const SymbiosisSchema = z.object({
@@ -91,7 +98,7 @@ export const PackMetadataSchema = z.object({
 
 export const PackDataSchema = z.object({
   species: z.array(SpeciesSchema).optional(),
-  taxonomic_groups: z.array(SpeciesSchema).optional(),
+  taxonomic_groups: z.array(TaxonomicGroupSchema).optional(),
   symbiosis: z.array(SymbiosisSchema).optional(),
   relations: z.array(RelationSchema).optional(),
 });
@@ -123,3 +130,52 @@ export type Symbiosis = z.infer<typeof SymbiosisSchema>;
 export type Relation = z.infer<typeof RelationSchema>;
 export type PackMetadata = z.infer<typeof PackMetadataSchema>;
 export type PackData = z.infer<typeof PackDataSchema>;
+
+/**
+ * Images pack validation schemas
+ */
+
+export const ImageEntrySchema = z.object({
+  speciesId: z.string().min(1),
+  url: z.string().url('URL must be a valid URI'),
+  author: z.string().min(1),
+});
+
+export const ImagesMetadataSchema = z.object({
+  id: z
+    .string()
+    .min(1)
+    .regex(PACK_ID_PATTERN, 'Pack ID must contain only lowercase letters, numbers, hyphens, and underscores'),
+  createdDate: z.string().datetime('createdDate must be a valid ISO 8601 datetime'),
+  status: z.enum(['draft', 'published']).default('draft'),
+  packId: z
+    .string()
+    .min(1)
+    .regex(PACK_ID_PATTERN, 'packId must reference a valid pack ID'),
+  description: z.string().optional(),
+});
+
+export const ImagesPackSchema = z.object({
+  metadata: ImagesMetadataSchema,
+  data: z.array(ImageEntrySchema),
+});
+
+/**
+ * Validate an images pack against the schema
+ * @param data Unknown data to validate
+ * @returns Validated ImagesPack or throws ZodError
+ */
+export function validateImagesPack(data: unknown) {
+  return ImagesPackSchema.parse(data);
+}
+
+/**
+ * Validate an images pack safely (returns result instead of throwing)
+ */
+export function validateImagesPackSafe(data: unknown) {
+  return ImagesPackSchema.safeParse(data);
+}
+
+export type ImageEntry = z.infer<typeof ImageEntrySchema>;
+export type ImagesMetadata = z.infer<typeof ImagesMetadataSchema>;
+export type ImagesPack = z.infer<typeof ImagesPackSchema>;

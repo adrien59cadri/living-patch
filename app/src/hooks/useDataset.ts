@@ -1,6 +1,7 @@
 import {
-  nonGroupSpecies,
-  groupSpecies,
+  species,
+  taxonomicGroups,
+  taxonomicGroupIds,
   speciesById,
   symbiosisBySpeciesId,
   relationsBySpeciesId,
@@ -9,8 +10,9 @@ import {
 
 export function useDataset() {
   return {
-    species: nonGroupSpecies,
-    groups: groupSpecies,
+    species,
+    groups: taxonomicGroups,
+    taxonomicGroupIds,
     speciesById,
     symbiosisBySpeciesId,
     relationsBySpeciesId,

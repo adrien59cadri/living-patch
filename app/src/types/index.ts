@@ -8,7 +8,7 @@ export interface LifeStage {
 export interface Species {
   id: string;
   common_name: string;
-  latin_name?: string;
+  latin_name?: string | null;
   form: string;
   habitat: string[];
   diet: string[];
@@ -17,12 +17,16 @@ export interface Species {
   functional_description: string;
   life_stages: LifeStage[] | string[];
   region: string;
-  ecological_role?: string;
+  ecological_role?: string | null;
   is_keystone?: boolean;
   keystone_type?: string | null;
   keystone_description?: string | null;
-  active_months?: string[];
-  is_group?: boolean;
+  active_months?: string[] | null;
+  /** Wikipedia image if available */
+  image?: {
+    url: string;
+    author: string;
+  };
 }
 
 export interface Symbiosis {
@@ -41,6 +45,7 @@ export interface Relation {
 
 export interface Dataset {
   species: Species[];
+  taxonomic_groups: Species[];
   symbiosis: Symbiosis[];
   relations: Relation[];
 }

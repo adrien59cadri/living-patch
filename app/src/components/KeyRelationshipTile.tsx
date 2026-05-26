@@ -7,6 +7,7 @@ interface Props {
 }
 
 export function KeyRelationshipTile({ entry }: Props) {
+  const isGroup = entry.isGroup ?? false;
   const inner = (
     <div className="flex items-start gap-3 bg-emerald-50 border border-emerald-200 rounded-lg p-4">
       <span
@@ -42,7 +43,7 @@ export function KeyRelationshipTile({ entry }: Props) {
     </div>
   );
 
-  if (entry.species.is_group) return inner;
+  if (isGroup) return inner;
 
   return (
     <Link to={`/species/${entry.species.id}`} className="block no-underline">

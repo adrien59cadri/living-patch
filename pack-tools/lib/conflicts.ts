@@ -106,7 +106,7 @@ export function checkAgainstExistingData(
 
   // Check for duplicate species IDs
   for (const species of packSpecies) {
-    if (!species.is_group && existingSpeciesIds.has(species.id)) {
+    if (existingSpeciesIds.has(species.id)) {
       conflicts.push({
         type: 'duplicate_species_id',
         severity: 'error',
@@ -119,26 +119,13 @@ export function checkAgainstExistingData(
 
   // Check for duplicate group IDs
   for (const group of packGroups) {
-    if (group.is_group && existingGroupIds.has(group.id)) {
+    if (existingGroupIds.has(group.id)) {
       conflicts.push({
         type: 'duplicate_group_id',
         severity: 'error',
         message: `Pack taxonomic group ID conflicts with existing data: ${group.id}`,
         packId: pack.metadata.id,
         affectedIds: [group.id],
-      });
-    }
-  }
-
-  // Also check species marked as groups in the species array
-  for (const species of packSpecies) {
-    if (species.is_group && existingGroupIds.has(species.id)) {
-      conflicts.push({
-        type: 'duplicate_group_id',
-        severity: 'error',
-        message: `Pack taxonomic group ID conflicts with existing data: ${species.id}`,
-        packId: pack.metadata.id,
-        affectedIds: [species.id],
       });
     }
   }
@@ -165,55 +152,33 @@ export function checkMultiplePackConflicts(
 
     // Check species
     for (const species of packSpecies) {
-      if (!species.is_group) {
-        if (seenSpeciesIds.has(species.id)) {
-          const otherPack = seenSpeciesIds.get(species.id)!;
-          conflicts.push({
-            type: 'duplicate_species_id',
-            severity: 'error',
-            message: `Species ID ${species.id} exists in both pack "${pack.metadata.id}" and "${otherPack}"`,
-            packId: pack.metadata.id,
-            affectedIds: [species.id],
-          });
-        } else {
-          seenSpeciesIds.set(species.id, pack.metadata.id);
-        }
+      if (seenSpeciesIds.has(species.id)) {
+        const otherPack = seenSpeciesIds.get(species.id)!;
+        conflicts.push({
+          type: 'duplicate_species_id',
+          severity: 'error',
+          message: `Species ID ${species.id} exists in both pack "${pack.metadata.id}" and "${otherPack}"`,
+          packId: pack.metadata.id,
+          affectedIds: [species.id],
+        });
+      } else {
+        seenSpeciesIds.set(species.id, pack.metadata.id);
       }
     }
 
     // Check groups
     for (const group of packGroups) {
-      if (group.is_group) {
-        if (seenGroupIds.has(group.id)) {
-          const otherPack = seenGroupIds.get(group.id)!;
-          conflicts.push({
-            type: 'duplicate_group_id',
-            severity: 'error',
-            message: `Taxonomic group ${group.id} exists in both pack "${pack.metadata.id}" and "${otherPack}"`,
-            packId: pack.metadata.id,
-            affectedIds: [group.id],
-          });
-        } else {
-          seenGroupIds.set(group.id, pack.metadata.id);
-        }
-      }
-    }
-
-    // Also check species array for is_group flag
-    for (const species of packSpecies) {
-      if (species.is_group) {
-        if (seenGroupIds.has(species.id)) {
-          const otherPack = seenGroupIds.get(species.id)!;
-          conflicts.push({
-            type: 'duplicate_group_id',
-            severity: 'error',
-            message: `Taxonomic group ${species.id} exists in both pack "${pack.metadata.id}" and "${otherPack}"`,
-            packId: pack.metadata.id,
-            affectedIds: [species.id],
-          });
-        } else {
-          seenGroupIds.set(species.id, pack.metadata.id);
-        }
+      if (seenGroupIds.has(group.id)) {
+        const otherPack = seenGroupIds.get(group.id)!;
+        conflicts.push({
+          type: 'duplicate_group_id',
+          severity: 'error',
+          message: `Taxonomic group ${group.id} exists in both pack "${pack.metadata.id}" and "${otherPack}"`,
+          packId: pack.metadata.id,
+          affectedIds: [group.id],
+        });
+      } else {
+        seenGroupIds.set(group.id, pack.metadata.id);
       }
     }
   }

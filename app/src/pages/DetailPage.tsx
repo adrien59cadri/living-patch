@@ -5,7 +5,7 @@ import { SpeciesCard } from '../components/SpeciesCard';
 
 export default function DetailPage() {
   const { id } = useParams<{ id: string }>();
-  const { species, speciesById, symbiosisBySpeciesId, relationsBySpeciesId } = useDataset();
+  const { species, speciesById, symbiosisBySpeciesId, relationsBySpeciesId, taxonomicGroupIds } = useDataset();
 
   const currentSpecies = id ? speciesById.get(id) : undefined;
 
@@ -37,7 +37,8 @@ export default function DetailPage() {
     currentSpecies.id,
     symbiosisBySpeciesId,
     relationsBySpeciesId,
-    speciesById
+    speciesById,
+    taxonomicGroupIds
   );
 
   return (

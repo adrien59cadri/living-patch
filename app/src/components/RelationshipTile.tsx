@@ -5,14 +5,15 @@ interface Props {
   species: Species;
   obligate: boolean;
   notes: string;
+  isGroup?: boolean;
 }
 
-export function RelationshipTile({ species, obligate, notes }: Props) {
+export function RelationshipTile({ species, obligate, notes, isGroup = false }: Props) {
   const inner = (
     <div
       className={[
         'flex flex-col gap-1 p-3 rounded-lg border text-left transition-all',
-        species.is_group
+        isGroup
           ? 'bg-stone-50 border-stone-200 text-stone-500 cursor-default'
           : 'bg-white border-stone-200 hover:border-emerald-300 hover:shadow-sm cursor-pointer',
         obligate ? 'border-l-2 border-l-amber-400' : '',
@@ -35,7 +36,7 @@ export function RelationshipTile({ species, obligate, notes }: Props) {
     </div>
   );
 
-  if (species.is_group) return inner;
+  if (isGroup) return inner;
 
   return (
     <Link to={`/species/${species.id}`} className="block no-underline">

@@ -121,7 +121,7 @@ export function keystoneTypeLabel(type: string): string {
   return labels[type] ?? type.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
 }
 
-export function activeMonthsLabel(active_months?: string[]): string | null {
+export function activeMonthsLabel(active_months?: string[] | null): string | null {
   if (!active_months || active_months.length === 0) return null;
   const first = active_months[0];
   return first === 'Jan-Dec' ? 'Year-round' : first;
