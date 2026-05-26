@@ -1,4 +1,54 @@
 {
+  "taxonomic_groups": [
+    {
+      "id": "group_herons-and-egrets",
+      "label": "Herons & Egrets",
+      "common_traits": "Wading birds; stalk and strike prey in shallow water; colonial nesters in heronries",
+      "notes": "Family Ardeidae"
+    },
+    {
+      "id": "group_woodpeckers",
+      "label": "Woodpeckers",
+      "common_traits": "Bark foragers; excavate wood for food and nesting; primary and secondary cavity creators",
+      "notes": "Family Picidae"
+    },
+    {
+      "id": "group_oaks",
+      "label": "Oaks",
+      "common_traits": "Mast-producing trees; support 557+ Lepidoptera species; foundational forest structure",
+      "notes": "Genus Quercus"
+    },
+    {
+      "id": "group_milkweeds",
+      "label": "Milkweeds",
+      "common_traits": "Cardenolide-producing host plants for Monarch and milkweed guild specialists; nectar sources",
+      "notes": "Genus Asclepias"
+    },
+    {
+      "id": "group_willows",
+      "label": "Willows",
+      "common_traits": "Early-blooming riparian trees and shrubs; beaver food source; support 289+ Lepidoptera species",
+      "notes": "Genus Salix"
+    },
+    {
+      "id": "group_frogs",
+      "label": "Frogs",
+      "common_traits": "Aquatic breeders; bioindicators of water quality; chorus callers in spring; pond and wetland predators",
+      "notes": "Order Anura; families Ranidae and Hylidae"
+    },
+    {
+      "id": "group_carrot-family-plants",
+      "label": "Carrot-Family Plants",
+      "common_traits": "Flat-topped flower clusters (umbels); obligate hosts for Black Swallowtail larvae at family level",
+      "notes": "Family Apiaceae"
+    },
+    {
+      "id": "group_fruiting-shrubs",
+      "label": "Native Fruiting Shrubs",
+      "common_traits": "Berry-producing native shrubs; bird-dispersed seeds; critical fall and winter food for frugivores",
+      "notes": "Various families; includes Amelanchier, Cornus, Viburnum, Sambucus, Ilex, Vaccinium"
+    }
+  ],
   "species": [
     {
       "id": "bird_pileated-woodpecker",
@@ -24,7 +74,8 @@
       "ecological_role": "carnivore",
       "is_keystone": true,
       "keystone_type": "ecosystem_engineer",
-      "keystone_description": "Primary cavity excavator. Abandoned cavities used by Great Horned Owl, American Kestrel, Wood Duck, and flying squirrels. Creates snags that structure the entire forest bird community."
+      "keystone_description": "Primary cavity excavator. Abandoned cavities used by Great Horned Owl, American Kestrel, Wood Duck, and flying squirrels. Creates snags that structure the entire forest bird community.",
+      "taxonomic_group": "group_woodpeckers"
     },
     {
       "id": "bird_red-tailed-hawk",
@@ -74,7 +125,7 @@
       "season": [
         "year_round"
       ],
-      "functional_description": "Largest owl in PA. Earlike tufts, yellow eyes. Hunts at night. Earliest-nesting PA bird \u2014 eggs laid January\u2013February. Uniquely tolerates skunk spray.",
+      "functional_description": "Largest owl in PA. Earlike tufts, yellow eyes. Hunts at night. Earliest-nesting PA bird — eggs laid January–February. Uniquely tolerates skunk spray.",
       "life_stages": [],
       "region": "northeast_pa",
       "ecological_role": "carnivore",
@@ -107,7 +158,7 @@
       "season": [
         "year_round"
       ],
-      "functional_description": "Sleek crested bird with yellow tail tip, red wax wing spots. One of PA's latest-nesting birds \u2014 timed to summer fruit peak. Highly frugivorous; major seed disperser of native shrubs.",
+      "functional_description": "Sleek crested bird with yellow tail tip, red wax wing spots. One of PA's latest-nesting birds — timed to summer fruit peak. Highly frugivorous; major seed disperser of native shrubs.",
       "life_stages": [],
       "region": "northeast_pa",
       "ecological_role": "omnivore",
@@ -196,7 +247,7 @@
       "season": [
         "year_round"
       ],
-      "functional_description": "Small thrush with electric blue back, rusty breast. Cavity nester; uses nest boxes. Eats insects in summer, native berries in winter. Secondary cavity user \u2014 depends on woodpecker holes.",
+      "functional_description": "Small thrush with electric blue back, rusty breast. Cavity nester; uses nest boxes. Eats insects in summer, native berries in winter. Secondary cavity user — depends on woodpecker holes.",
       "life_stages": [],
       "region": "northeast_pa",
       "ecological_role": "omnivore",
@@ -223,13 +274,14 @@
       "season": [
         "year_round"
       ],
-      "functional_description": "Smallest PA woodpecker. Black-and-white with small bill. Joins mixed winter flocks. Key winter forager: excavates goldenrod galls to eat Eurosta gall fly larvae inside \u2014 a critical food-web link.",
+      "functional_description": "Smallest PA woodpecker. Black-and-white with small bill. Joins mixed winter flocks. Key winter forager: excavates goldenrod galls to eat Eurosta gall fly larvae inside — a critical food-web link.",
       "life_stages": [],
       "region": "northeast_pa",
       "ecological_role": "carnivore",
       "is_keystone": false,
       "keystone_type": null,
-      "keystone_description": null
+      "keystone_description": null,
+      "taxonomic_group": "group_woodpeckers"
     },
     {
       "id": "bird_ruby-throated-hummingbird",
@@ -287,13 +339,14 @@
         "summer",
         "fall"
       ],
-      "functional_description": "Largest heron in NA \u2014 4 ft tall. Stands motionless in shallows then strikes. Eats fish, frogs, snakes, rodents. Nests colonially in heronries of up to 500 nests. Strongly associated with beaver ponds in PA.",
+      "functional_description": "Largest heron in NA — 4 ft tall. Stands motionless in shallows then strikes. Eats fish, frogs, snakes, rodents. Nests colonially in heronries of up to 500 nests. Strongly associated with beaver ponds in PA.",
       "life_stages": [],
       "region": "northeast_pa",
       "ecological_role": "carnivore",
       "is_keystone": false,
       "keystone_type": null,
-      "keystone_description": null
+      "keystone_description": null,
+      "taxonomic_group": "group_herons-and-egrets"
     },
     {
       "id": "mammal_beaver",
@@ -315,7 +368,7 @@
       "season": [
         "year_round"
       ],
-      "functional_description": "Largest NA rodent. Fells trees, builds dams, creates ponds. Transforms streams into wetland habitat that supports herons, ducks, frogs, and countless other species. Kits born April\u2013June in lodge.",
+      "functional_description": "Largest NA rodent. Fells trees, builds dams, creates ponds. Transforms streams into wetland habitat that supports herons, ducks, frogs, and countless other species. Kits born April–June in lodge.",
       "life_stages": [],
       "region": "northeast_pa",
       "ecological_role": "herbivore",
@@ -343,7 +396,7 @@
       "season": [
         "year_round"
       ],
-      "functional_description": "Gray bushy-tailed rodent. Buries acorns in scatter-hoards, forgetting many \u2014 making it a critical oak regenerator alongside Blue Jays. Prefers White Oak acorns (lower tannins). Active year-round; no hibernation.",
+      "functional_description": "Gray bushy-tailed rodent. Buries acorns in scatter-hoards, forgetting many — making it a critical oak regenerator alongside Blue Jays. Prefers White Oak acorns (lower tannins). Active year-round; no hibernation.",
       "life_stages": [],
       "region": "northeast_pa",
       "ecological_role": "herbivore",
@@ -371,7 +424,7 @@
       "season": [
         "year_round"
       ],
-      "functional_description": "Most abundant large mammal in PA. Overabundant in absence of natural predators. Suppresses oak seedlings, eliminates native wildflowers (Trillium, orchids), and facilitates invasive plants. Fawns born (spotted) late May\u2013June.",
+      "functional_description": "Most abundant large mammal in PA. Overabundant in absence of natural predators. Suppresses oak seedlings, eliminates native wildflowers (Trillium, orchids), and facilitates invasive plants. Fawns born (spotted) late May–June.",
       "life_stages": [],
       "region": "northeast_pa",
       "ecological_role": "herbivore",
@@ -396,7 +449,7 @@
       "season": [
         "year_round"
       ],
-      "functional_description": "Large tree with lobed leaves and rounded acorns. Preferred by wildlife over red oak \u2014 lower tannins make acorns palatable immediately on drop. Acorns germinate in fall. Supports 557 Lepidoptera species (genus Quercus). Lives 200+ years.",
+      "functional_description": "Large tree with lobed leaves and rounded acorns. Preferred by wildlife over red oak — lower tannins make acorns palatable immediately on drop. Acorns germinate in fall. Supports 557 Lepidoptera species (genus Quercus). Lives 200+ years.",
       "life_stages": [
         "seedling",
         "sapling",
@@ -407,7 +460,8 @@
       "ecological_role": "producer",
       "is_keystone": true,
       "keystone_type": "structural",
-      "keystone_description": "Hosts more wildlife than almost any other native tree. Acorns feed squirrels, deer, turkey, jays, woodpeckers, black bear. Leaves support 557 Lepidoptera caterpillar species. Long-lived \u2014 a single mature white oak feeds dozens of species."
+      "keystone_description": "Hosts more wildlife than almost any other native tree. Acorns feed squirrels, deer, turkey, jays, woodpeckers, black bear. Leaves support 557 Lepidoptera caterpillar species. Long-lived — a single mature white oak feeds dozens of species.",
+      "taxonomic_group": "group_oaks"
     },
     {
       "id": "plant_northern-red-oak",
@@ -425,7 +479,7 @@
       "season": [
         "year_round"
       ],
-      "functional_description": "Large oak with bristle-tipped leaf lobes and red fall color. Acorns take 2 years to mature, ripen in fall and germinate the following spring \u2014 different from White Oak. Same 557-species Lepidoptera support as other native oaks.",
+      "functional_description": "Large oak with bristle-tipped leaf lobes and red fall color. Acorns take 2 years to mature, ripen in fall and germinate the following spring — different from White Oak. Same 557-species Lepidoptera support as other native oaks.",
       "life_stages": [
         "seedling",
         "sapling",
@@ -436,7 +490,8 @@
       "ecological_role": "producer",
       "is_keystone": true,
       "keystone_type": "structural",
-      "keystone_description": "Co-dominant with White Oak in NE PA upland forests. Acorns high-tannin \u2014 cached by squirrels longer than white oak acorns. Same broad wildlife support as Q. alba."
+      "keystone_description": "Co-dominant with White Oak in NE PA upland forests. Acorns high-tannin — cached by squirrels longer than white oak acorns. Same broad wildlife support as Q. alba.",
+      "taxonomic_group": "group_oaks"
     },
     {
       "id": "plant_black-willow",
@@ -457,7 +512,7 @@
       "season": [
         "year_round"
       ],
-      "functional_description": "Fast-growing tree of streambanks and floodplains. March\u2013April catkins are critical early nectar/pollen for emerging bumble bee queens and Andrena bees. Primary food tree of Beaver. Roots stabilize eroding banks. Hosts 289+ Lepidoptera species.",
+      "functional_description": "Fast-growing tree of streambanks and floodplains. March–April catkins are critical early nectar/pollen for emerging bumble bee queens and Andrena bees. Primary food tree of Beaver. Roots stabilize eroding banks. Hosts 289+ Lepidoptera species.",
       "life_stages": [
         "seedling",
         "mature",
@@ -470,7 +525,8 @@
       "keystone_description": null,
       "active_months": [
         "Mar-Jun"
-      ]
+      ],
+      "taxonomic_group": "group_willows"
     },
     {
       "id": "plant_common-milkweed",
@@ -491,7 +547,7 @@
       "season": [
         "summer"
       ],
-      "functional_description": "Tall perennial with pink-purple globe flowers and milky toxic sap. Sole host for Monarch caterpillars (obligate at genus). Also hosts Red Milkweed Beetle, Large Milkweed Bug, and Milkweed Tussock Moth \u2014 all sequester its cardenolide toxins for self-defense.",
+      "functional_description": "Tall perennial with pink-purple globe flowers and milky toxic sap. Sole host for Monarch caterpillars (obligate at genus). Also hosts Red Milkweed Beetle, Large Milkweed Bug, and Milkweed Tussock Moth — all sequester its cardenolide toxins for self-defense.",
       "life_stages": [
         "seedling",
         "mature",
@@ -505,7 +561,8 @@
       "keystone_description": "Anchor of the milkweed guild. Monarch cannot breed without it. Also essential for Red Milkweed Beetle (root larvae obligate), Large Milkweed Bug (seed specialist), Milkweed Tussock Moth, and 11 additional Asclepias-specialist insects. Critical fall nectar source.",
       "active_months": [
         "Apr-Oct"
-      ]
+      ],
+      "taxonomic_group": "group_milkweeds"
     },
     {
       "id": "plant_butterfly-weed",
@@ -534,7 +591,8 @@
       "ecological_role": "producer",
       "is_keystone": false,
       "keystone_type": null,
-      "keystone_description": null
+      "keystone_description": null,
+      "taxonomic_group": "group_milkweeds"
     },
     {
       "id": "plant_swamp-milkweed",
@@ -553,7 +611,7 @@
       "season": [
         "summer"
       ],
-      "functional_description": "Pink-flowered milkweed of wet soils and stream edges. Host for Monarch caterpillars. Primary host for Swamp Milkweed Leaf Beetle. Blooms July\u2013August, providing late summer nectar. Co-occurs with Joe-Pye weed, cardinal flower, blue vervain.",
+      "functional_description": "Pink-flowered milkweed of wet soils and stream edges. Host for Monarch caterpillars. Primary host for Swamp Milkweed Leaf Beetle. Blooms July–August, providing late summer nectar. Co-occurs with Joe-Pye weed, cardinal flower, blue vervain.",
       "life_stages": [
         "mature",
         "flowering",
@@ -563,7 +621,8 @@
       "ecological_role": "producer",
       "is_keystone": false,
       "keystone_type": null,
-      "keystone_description": null
+      "keystone_description": null,
+      "taxonomic_group": "group_milkweeds"
     },
     {
       "id": "plant_goldenrod",
@@ -586,7 +645,7 @@
         "late_summer",
         "fall"
       ],
-      "functional_description": "Yellow-flowered native perennials \u2014 PA has 15+ species. NOT the cause of hay fever (ragweed is). Blooms Aug\u2013Oct, providing the most important late-season nectar in NE PA. Host for Eurosta gall fly (ball galls on stems, conspicuous in winter), whose larvae Downy Woodpeckers excavate. Supports 43 specialist bee species.",
+      "functional_description": "Yellow-flowered native perennials — PA has 15+ species. NOT the cause of hay fever (ragweed is). Blooms Aug–Oct, providing the most important late-season nectar in NE PA. Host for Eurosta gall fly (ball galls on stems, conspicuous in winter), whose larvae Downy Woodpeckers excavate. Supports 43 specialist bee species.",
       "life_stages": [
         "mature",
         "flowering",
@@ -620,7 +679,7 @@
       "season": [
         "spring"
       ],
-      "functional_description": "Red and yellow tubular flowers on rocky woodland slopes. Blooms late April\u2013May \u2014 timed with Ruby-throated Hummingbird arrival. Primary pollinator is the hummingbird; bumble bees also access nectar. Host for Columbine Duskywing butterfly and Columbine Leafminer fly.",
+      "functional_description": "Red and yellow tubular flowers on rocky woodland slopes. Blooms late April–May — timed with Ruby-throated Hummingbird arrival. Primary pollinator is the hummingbird; bumble bees also access nectar. Host for Columbine Duskywing butterfly and Columbine Leafminer fly.",
       "life_stages": [
         "mature",
         "flowering",
@@ -654,7 +713,7 @@
       "season": [
         "year_round"
       ],
-      "functional_description": "Fragrant understory shrub. Earliest woody bloom in PA forests (March\u2013April), providing critical nectar before other plants open. Obligate host for Spicebush Swallowtail. Dioecious \u2014 only female plants produce the high-fat red berries that fuel fall migrating thrushes.",
+      "functional_description": "Fragrant understory shrub. Earliest woody bloom in PA forests (March–April), providing critical nectar before other plants open. Obligate host for Spicebush Swallowtail. Dioecious — only female plants produce the high-fat red berries that fuel fall migrating thrushes.",
       "life_stages": [
         "mature",
         "flowering",
@@ -688,7 +747,7 @@
       "season": [
         "year_round"
       ],
-      "functional_description": "Medium tree \u2014 backbone of the Allegheny Plateau timber industry. Hosts 456 Lepidoptera species (genus Prunus). Small dark cherries in August eaten by 30+ bird species and many mammals. Primary PA host for Eastern Tiger Swallowtail and Eastern Tent Caterpillar.",
+      "functional_description": "Medium tree — backbone of the Allegheny Plateau timber industry. Hosts 456 Lepidoptera species (genus Prunus). Small dark cherries in August eaten by 30+ bird species and many mammals. Primary PA host for Eastern Tiger Swallowtail and Eastern Tent Caterpillar.",
       "life_stages": [
         "seedling",
         "mature",
@@ -699,7 +758,7 @@
       "ecological_role": "producer",
       "is_keystone": true,
       "keystone_type": "prey",
-      "keystone_description": "Second only to oaks in total Lepidoptera support (456 species). Cherries fuel migrant thrushes, waxwings, and many other birds. Primary host for Eastern Tiger Swallowtail in PA. Eastern Tent Caterpillar \u2014 conspicuous spring indicator \u2014 depends on it."
+      "keystone_description": "Second only to oaks in total Lepidoptera support (456 species). Cherries fuel migrant thrushes, waxwings, and many other birds. Primary host for Eastern Tiger Swallowtail in PA. Eastern Tent Caterpillar — conspicuous spring indicator — depends on it."
     },
     {
       "id": "insect_monarch-butterfly",
@@ -724,10 +783,10 @@
         "summer",
         "fall_migrant"
       ],
-      "functional_description": "Orange and black butterfly toxic to most predators. Caterpillars obligate on genus Asclepias. 2\u20133 summer breeding generations in NE PA (June\u2013September). Fall 'Methuselah' generation migrates 3,000+ miles to Mexico. Adults fuel on Goldenrod and asters during fall migration.",
+      "functional_description": "Orange and black butterfly toxic to most predators. Caterpillars obligate on genus Asclepias. 2–3 summer breeding generations in NE PA (June–September). Fall 'Methuselah' generation migrates 3,000+ miles to Mexico. Adults fuel on Goldenrod and asters during fall migration.",
       "life_stages": [
         {
-          "icon": "\ud83e\udd5a",
+          "icon": "🥚",
           "name": "Egg",
           "description": "Tiny cream egg on underside of milkweed leaf",
           "months": [
@@ -735,7 +794,7 @@
           ]
         },
         {
-          "icon": "\ud83d\udc1b",
+          "icon": "🐛",
           "name": "Caterpillar",
           "description": "Yellow, black, and white striped; feeds only on milkweed",
           "months": [
@@ -743,7 +802,7 @@
           ]
         },
         {
-          "icon": "\ud83e\uded8",
+          "icon": "🫘",
           "name": "Chrysalis",
           "description": "Jade green with gold spots; hangs from milkweed or nearby surface",
           "months": [
@@ -751,7 +810,7 @@
           ]
         },
         {
-          "icon": "\ud83e\udd8b",
+          "icon": "🦋",
           "name": "Adult",
           "description": "Orange and black; look near milkweed and goldenrod",
           "months": [
@@ -763,7 +822,7 @@
       "ecological_role": "herbivore",
       "is_keystone": true,
       "keystone_type": "mutualist",
-      "keystone_description": "Obligate on milkweed \u2014 cannot breed without genus Asclepias. Pollinates milkweed and goldenrod. Iconic indicator of agricultural landscape health.",
+      "keystone_description": "Obligate on milkweed — cannot breed without genus Asclepias. Pollinates milkweed and goldenrod. Iconic indicator of agricultural landscape health.",
       "active_months": [
         "May-Oct"
       ]
@@ -792,7 +851,7 @@
       "functional_description": "Black butterfly with yellow spots, red eyespots on hindwing. Larvae obligate at Apiaceae family (carrot family): native Golden Alexanders, water hemlock, water parsnip; also Queen Anne's lace, dill, parsley. Young larvae mimic bird droppings. 2 broods in PA.",
       "life_stages": [
         {
-          "icon": "\ud83e\udd5a",
+          "icon": "🥚",
           "name": "Egg",
           "description": "Yellow sphere on carrot-family plant",
           "months": [
@@ -800,7 +859,7 @@
           ]
         },
         {
-          "icon": "\ud83d\udc1b",
+          "icon": "🐛",
           "name": "Caterpillar",
           "description": "Green with black bands and yellow dots on carrot-family foliage",
           "months": [
@@ -809,7 +868,7 @@
           ]
         },
         {
-          "icon": "\ud83e\uded8",
+          "icon": "🫘",
           "name": "Chrysalis",
           "description": "Green or brown; overwinters",
           "months": [
@@ -818,7 +877,7 @@
           ]
         },
         {
-          "icon": "\ud83e\udd8b",
+          "icon": "🦋",
           "name": "Adult",
           "description": "Black with yellow spots",
           "months": [
@@ -854,10 +913,10 @@
         "spring",
         "summer"
       ],
-      "functional_description": "Large yellow-and-black striped butterfly. Primary PA host is Black Cherry; also uses tulip tree, ash, willow, birch, and others \u2014 broad generalist. Late-instar caterpillars have large false eyespots mimicking a snake's head. Males gather at mud puddles. 2 broods in PA.",
+      "functional_description": "Large yellow-and-black striped butterfly. Primary PA host is Black Cherry; also uses tulip tree, ash, willow, birch, and others — broad generalist. Late-instar caterpillars have large false eyespots mimicking a snake's head. Males gather at mud puddles. 2 broods in PA.",
       "life_stages": [
         {
-          "icon": "\ud83e\udd5a",
+          "icon": "🥚",
           "name": "Egg",
           "description": "Green sphere on host plant leaf",
           "months": [
@@ -865,7 +924,7 @@
           ]
         },
         {
-          "icon": "\ud83d\udc1b",
+          "icon": "🐛",
           "name": "Caterpillar",
           "description": "Green with snake-eye eyespots; rests in rolled leaf",
           "months": [
@@ -873,7 +932,7 @@
           ]
         },
         {
-          "icon": "\ud83e\uded8",
+          "icon": "🫘",
           "name": "Chrysalis",
           "description": "Mottled brown; overwinters",
           "months": [
@@ -882,7 +941,7 @@
           ]
         },
         {
-          "icon": "\ud83e\udd8b",
+          "icon": "🦋",
           "name": "Adult",
           "description": "Large tiger-striped butterfly; dark-form females mimic Pipevine Swallowtail",
           "months": [
@@ -916,10 +975,10 @@
         "spring",
         "summer"
       ],
-      "functional_description": "Iridescent blue-green butterfly obligate on Lauraceae family \u2014 primarily Spicebush and Sassafras in PA. Caterpillars build silk-sealed leaf shelters on host plant (unfold curled leaves to find them). Late instars have spectacular false snake eyespots. Mimics toxic Pipevine Swallowtail as adult.",
+      "functional_description": "Iridescent blue-green butterfly obligate on Lauraceae family — primarily Spicebush and Sassafras in PA. Caterpillars build silk-sealed leaf shelters on host plant (unfold curled leaves to find them). Late instars have spectacular false snake eyespots. Mimics toxic Pipevine Swallowtail as adult.",
       "life_stages": [
         {
-          "icon": "\ud83e\udd5a",
+          "icon": "🥚",
           "name": "Egg",
           "description": "On Spicebush or Sassafras leaf",
           "months": [
@@ -927,7 +986,7 @@
           ]
         },
         {
-          "icon": "\ud83d\udc1b",
+          "icon": "🐛",
           "name": "Caterpillar",
           "description": "Green with huge eyespots; inside silk-sealed folded leaf",
           "months": [
@@ -935,7 +994,7 @@
           ]
         },
         {
-          "icon": "\ud83e\uded8",
+          "icon": "🫘",
           "name": "Chrysalis",
           "description": "Brown or green; overwinters",
           "months": [
@@ -944,7 +1003,7 @@
           ]
         },
         {
-          "icon": "\ud83e\udd8b",
+          "icon": "🦋",
           "name": "Adult",
           "description": "Blue-green iridescence on hindwing",
           "months": [
@@ -977,10 +1036,10 @@
       "season": [
         "summer"
       ],
-      "functional_description": "Bright red-and-black longhorn beetle obligate on milkweed. Adults feed on foliage and flowers; uniquely, larvae develop in milkweed roots (hidden but critical). Sequesters cardenolide toxins \u2014 toxic and avoided by most birds. Adults active June\u2013August on milkweed plants.",
+      "functional_description": "Bright red-and-black longhorn beetle obligate on milkweed. Adults feed on foliage and flowers; uniquely, larvae develop in milkweed roots (hidden but critical). Sequesters cardenolide toxins — toxic and avoided by most birds. Adults active June–August on milkweed plants.",
       "life_stages": [
         {
-          "icon": "\ud83e\udeb2",
+          "icon": "🪲",
           "name": "Adult",
           "description": "Red with black spots on milkweed foliage and flowers",
           "months": [
@@ -988,9 +1047,9 @@
           ]
         },
         {
-          "icon": "\ud83d\udc1b",
+          "icon": "🐛",
           "name": "Larva",
-          "description": "In milkweed roots \u2014 not visible without digging",
+          "description": "In milkweed roots — not visible without digging",
           "months": [
             "Jan-May",
             "Aug-Dec"
@@ -1024,10 +1083,10 @@
         "summer",
         "fall"
       ],
-      "functional_description": "Orange-and-black bug specialist on milkweed seeds. Sequesters cardenolide toxins \u2014 few predators. NE PA populations are migratory \u2014 cannot overwinter here; recolonize from southern states each summer. Nymphs form conspicuous red-and-black clusters on milkweed pods July\u2013October.",
+      "functional_description": "Orange-and-black bug specialist on milkweed seeds. Sequesters cardenolide toxins — few predators. NE PA populations are migratory — cannot overwinter here; recolonize from southern states each summer. Nymphs form conspicuous red-and-black clusters on milkweed pods July–October.",
       "life_stages": [
         {
-          "icon": "\ud83d\udfe0",
+          "icon": "🟠",
           "name": "Nymph",
           "description": "Red and black; gregarious clusters on milkweed pods",
           "months": [
@@ -1035,7 +1094,7 @@
           ]
         },
         {
-          "icon": "\ud83d\udfe0",
+          "icon": "🟠",
           "name": "Adult",
           "description": "Orange and black X-pattern; on milkweed seeds and pods",
           "months": [
@@ -1075,18 +1134,18 @@
         "summer",
         "fall"
       ],
-      "functional_description": "Fuzzy native bees \u2014 PA has 7+ resident species including Bombus impatiens (most common) and B. bimaculatus (earliest, late March). Only bumble bees can 'buzz pollinate' \u2014 vibrating to release pollen from blueberry, tomato, and other flowers. Queens overwinter in soil; workers and males die at frost. 43 specialist goldenrod bee species in Solidago genus.",
+      "functional_description": "Fuzzy native bees — PA has 7+ resident species including Bombus impatiens (most common) and B. bimaculatus (earliest, late March). Only bumble bees can 'buzz pollinate' — vibrating to release pollen from blueberry, tomato, and other flowers. Queens overwinter in soil; workers and males die at frost. 43 specialist goldenrod bee species in Solidago genus.",
       "life_stages": [
         {
-          "icon": "\ud83d\udc51",
+          "icon": "👑",
           "name": "Queen",
-          "description": "Large; emerges from soil in early spring (March\u2013April)",
+          "description": "Large; emerges from soil in early spring (March–April)",
           "months": [
             "Mar-Apr"
           ]
         },
         {
-          "icon": "\ud83d\udc1d",
+          "icon": "🐝",
           "name": "Worker",
           "description": "Medium; foraging at flowers",
           "months": [
@@ -1094,7 +1153,7 @@
           ]
         },
         {
-          "icon": "\ud83d\udc1d",
+          "icon": "🐝",
           "name": "New queen/male",
           "description": "New queens (fat, large) mating in late summer",
           "months": [
@@ -1131,34 +1190,34 @@
         "summer",
         "fall"
       ],
-      "functional_description": "Largest NA frog. Native to NE PA (invasive only in western US). Tadpoles take 1\u20132 winters to metamorphose \u2014 a rare multi-year aquatic life stage. Adults eat anything they can catch: insects, crayfish, fish, smaller frogs, small snakes. Deep jug-o-rum call carries long distances.",
+      "functional_description": "Largest NA frog. Native to NE PA (invasive only in western US). Tadpoles take 1–2 winters to metamorphose — a rare multi-year aquatic life stage. Adults eat anything they can catch: insects, crayfish, fish, smaller frogs, small snakes. Deep jug-o-rum call carries long distances.",
       "life_stages": [
         {
-          "icon": "\ud83e\udee7",
+          "icon": "🫧",
           "name": "Egg mass",
-          "description": "Floating film of up to 20,000 eggs in June\u2013July",
+          "description": "Floating film of up to 20,000 eggs in June–July",
           "months": [
             "Jun-Jul"
           ]
         },
         {
-          "icon": "\ud83d\udc38",
+          "icon": "🐸",
           "name": "Tadpole",
-          "description": "Large; dark; in ponds and beaver impoundments \u2014 overwinters 1-2 years",
+          "description": "Large; dark; in ponds and beaver impoundments — overwinters 1-2 years",
           "months": [
             "Jan-Dec"
           ]
         },
         {
-          "icon": "\ud83d\udc38",
+          "icon": "🐸",
           "name": "Froglet",
-          "description": "Emerging from water with tail stub; July\u2013September of year 2 or 3",
+          "description": "Emerging from water with tail stub; July–September of year 2 or 3",
           "months": [
             "Jul-Sep"
           ]
         },
         {
-          "icon": "\ud83d\udc38",
+          "icon": "🐸",
           "name": "Adult",
           "description": "Large green-brown frog with round eardrum larger than eye (male)",
           "months": [
@@ -1173,7 +1232,8 @@
       "keystone_description": null,
       "active_months": [
         "Apr-Oct"
-      ]
+      ],
+      "taxonomic_group": "group_frogs"
     },
     {
       "id": "group_other-native-milkweeds",
@@ -1186,9 +1246,10 @@
         "forest_edge"
       ],
       "is_group": true,
-      "functional_description": "Additional native PA Asclepias: Poke Milkweed (A. exaltata, forest shade), Whorled Milkweed (A. verticillata, dry open), Four-leaved Milkweed (A. quadrifolia, woodland), Purple Milkweed (A. purpurascens, rare). All support Monarch breeding. Note: Tropical Milkweed (A. curassavica) is non-native and disrupts Monarch migration \u2014 not included.",
+      "functional_description": "Additional native PA Asclepias: Poke Milkweed (A. exaltata, forest shade), Whorled Milkweed (A. verticillata, dry open), Four-leaved Milkweed (A. quadrifolia, woodland), Purple Milkweed (A. purpurascens, rare). All support Monarch breeding. Note: Tropical Milkweed (A. curassavica) is non-native and disrupts Monarch migration — not included.",
       "life_stages": [],
-      "region": "northeast_pa"
+      "region": "northeast_pa",
+      "taxonomic_group": "group_milkweeds"
     },
     {
       "id": "group_other-native-pa-oaks",
@@ -1203,7 +1264,8 @@
       "is_group": true,
       "functional_description": "Native PA oaks beyond White and Red: Black Oak (Q. velutina), Scarlet Oak (Q. coccinea), Pin Oak (Q. palustris, wet soils), Chestnut Oak (Q. montana, rocky ridges), Swamp White Oak (Q. bicolor, floodplains), Chinkapin Oak (Q. muehlenbergii). All share the same 557-species Lepidoptera support network. All produce acorns.",
       "life_stages": [],
-      "region": "northeast_pa"
+      "region": "northeast_pa",
+      "taxonomic_group": "group_oaks"
     },
     {
       "id": "group_other-native-pa-willows",
@@ -1216,9 +1278,10 @@
         "streamside"
       ],
       "is_group": true,
-      "functional_description": "Native PA willows beyond Black Willow: Pussy Willow (S. discolor \u2014 the ornamental spring catkin species), Silky Willow (S. sericea), Heartleaf Willow (S. eriocephala), Prairie Willow (S. humilis, dry uplands). All feed Beaver and support 289+ Lepidoptera. All provide early spring pollen for bumble bee queens.",
+      "functional_description": "Native PA willows beyond Black Willow: Pussy Willow (S. discolor — the ornamental spring catkin species), Silky Willow (S. sericea), Heartleaf Willow (S. eriocephala), Prairie Willow (S. humilis, dry uplands). All feed Beaver and support 289+ Lepidoptera. All provide early spring pollen for bumble bee queens.",
       "life_stages": [],
-      "region": "northeast_pa"
+      "region": "northeast_pa",
+      "taxonomic_group": "group_willows"
     },
     {
       "id": "group_carrot-family-host-plants",
@@ -1231,9 +1294,10 @@
         "meadow"
       ],
       "is_group": true,
-      "functional_description": "Native Apiaceae used by Black Swallowtail larvae: Golden Alexanders (Zizia aurea \u2014 best native option), Water Hemlock (Cicuta maculata, wetlands \u2014 toxic to humans), Water Parsnip (Sium suave, wetland edges), Meadow Parsnip (Thaspium). Also uses naturalized Queen Anne's Lace, plus garden parsley, dill, fennel, carrot. Black Swallowtail is obligate at family level.",
+      "functional_description": "Native Apiaceae used by Black Swallowtail larvae: Golden Alexanders (Zizia aurea — best native option), Water Hemlock (Cicuta maculata, wetlands — toxic to humans), Water Parsnip (Sium suave, wetland edges), Meadow Parsnip (Thaspium). Also uses naturalized Queen Anne's Lace, plus garden parsley, dill, fennel, carrot. Black Swallowtail is obligate at family level.",
       "life_stages": [],
-      "region": "northeast_pa"
+      "region": "northeast_pa",
+      "taxonomic_group": "group_carrot-family-plants"
     },
     {
       "id": "group_native-fruiting-shrubs",
@@ -1247,9 +1311,10 @@
         "riparian"
       ],
       "is_group": true,
-      "functional_description": "Native berry-producing shrubs important to Cedar Waxwing, Eastern Bluebird, and other frugivores: Serviceberry (Amelanchier spp. \u2014 first spring fruit), Dogwood (Cornus florida, C. alternifolia), Viburnum (V. lentago, V. nudum), Elderberry (Sambucus canadensis), Winterberry (Ilex verticillata), Highbush Blueberry (Vaccinium corymbosum). All are seed-dispersed by birds.",
+      "functional_description": "Native berry-producing shrubs important to Cedar Waxwing, Eastern Bluebird, and other frugivores: Serviceberry (Amelanchier spp. — first spring fruit), Dogwood (Cornus florida, C. alternifolia), Viburnum (V. lentago, V. nudum), Elderberry (Sambucus canadensis), Winterberry (Ilex verticillata), Highbush Blueberry (Vaccinium corymbosum). All are seed-dispersed by birds.",
       "life_stages": [],
-      "region": "northeast_pa"
+      "region": "northeast_pa",
+      "taxonomic_group": "group_fruiting-shrubs"
     },
     {
       "id": "group_other-pa-herons-and-egrets",
@@ -1262,9 +1327,10 @@
         "pond"
       ],
       "is_group": true,
-      "functional_description": "Other native PA Ardeidae sharing wetland habitat with Great Blue Heron: Green Heron (Butorides virescens \u2014 small, uses tools), Great Egret (Ardea alba \u2014 white, similar size), Snowy Egret (Egretta thula), Black-crowned Night-Heron (Nycticorax), American Bittern (Botaurus lentiginosus \u2014 rare, marsh interior).",
+      "functional_description": "Other native PA Ardeidae sharing wetland habitat with Great Blue Heron: Green Heron (Butorides virescens — small, uses tools), Great Egret (Ardea alba — white, similar size), Snowy Egret (Egretta thula), Black-crowned Night-Heron (Nycticorax), American Bittern (Botaurus lentiginosus — rare, marsh interior).",
       "life_stages": [],
-      "region": "northeast_pa"
+      "region": "northeast_pa",
+      "taxonomic_group": "group_herons-and-egrets"
     },
     {
       "id": "group_other-pa-woodpeckers",
@@ -1279,7 +1345,8 @@
       "is_group": true,
       "functional_description": "Other native PA Picidae beyond Pileated and Downy: Hairy Woodpecker (Dryobates villosus, larger Downy lookalike), Red-bellied Woodpecker (Melanerpes carolinus, expanding northward), Yellow-bellied Sapsucker (Sphyrapicus varius, sap wells used by hummingbirds), Northern Flicker (Colaptes auratus, ground forager), Red-headed Woodpecker (rare in PA).",
       "life_stages": [],
-      "region": "northeast_pa"
+      "region": "northeast_pa",
+      "taxonomic_group": "group_woodpeckers"
     },
     {
       "id": "group_other-native-pa-frogs",
@@ -1293,86 +1360,10 @@
         "stream"
       ],
       "is_group": true,
-      "functional_description": "Other native PA frogs sharing habitat with Bullfrog: Green Frog (Lithobates clamitans \u2014 similar but smaller, banjo-twang call), Pickerel Frog (L. palustris \u2014 toxic to some predators), Wood Frog (L. sylvaticus \u2014 breeds in vernal pools, freezes solid in winter), Spring Peeper (Pseudacris crucifer \u2014 first spring call), Gray Treefrog (Hyla versicolor).",
+      "functional_description": "Other native PA frogs sharing habitat with Bullfrog: Green Frog (Lithobates clamitans — similar but smaller, banjo-twang call), Pickerel Frog (L. palustris — toxic to some predators), Wood Frog (L. sylvaticus — breeds in vernal pools, freezes solid in winter), Spring Peeper (Pseudacris crucifer — first spring call), Gray Treefrog (Hyla versicolor).",
       "life_stages": [],
-      "region": "northeast_pa"
-    }
-  ],
-  "life_stages_phenology": [
-    {
-      "species_id": "plant_black-willow",
-      "notes": "Earliest catkins in NE PA \u2014 critical first spring pollen for bumble bee queens",
-      "bloom_months": [
-        "Mar-Apr"
-      ],
-      "seed_months": [
-        "May-Jun"
-      ]
-    },
-    {
-      "species_id": "plant_eastern-columbine",
-      "notes": "Bloom coincides with Ruby-throated Hummingbird spring arrival late April",
-      "bloom_months": [
-        "Apr-May"
-      ],
-      "seed_months": [
-        "Jun-Jul"
-      ]
-    },
-    {
-      "species_id": "plant_spicebush",
-      "notes": "Earliest woody bloom in PA forest; berries ripen September for migrant birds",
-      "bloom_months": [
-        "Mar-Apr"
-      ],
-      "fruit_months": [
-        "Sep-Oct"
-      ]
-    },
-    {
-      "species_id": "plant_common-milkweed",
-      "notes": "Monarch oviposition peaks June\u2013July when milkweed in bloom",
-      "bloom_months": [
-        "Jun-Aug"
-      ],
-      "seed_months": [
-        "Sep-Oct"
-      ]
-    },
-    {
-      "species_id": "plant_goldenrod",
-      "notes": "Peak August\u2013September; Eurosta ball galls conspicuous on dead stems November\u2013March",
-      "bloom_months": [
-        "Jul-Oct"
-      ]
-    },
-    {
-      "species_id": "insect_monarch-butterfly",
-      "notes": "Migratory generation passes through NE PA late August\u2013early October southbound",
-      "flight_months": [
-        "May-Oct"
-      ]
-    },
-    {
-      "species_id": "bird_ruby-throated-hummingbird",
-      "notes": "Arrives late April with Columbine bloom; departs August\u2013early October",
-      "active_months": [
-        "May-Sep"
-      ]
-    },
-    {
-      "species_id": "bird_great-horned-owl",
-      "notes": "Earliest PA nester \u2014 eggs January\u2013February; courtship duets start December",
-      "active_months": [
-        "Jan-Dec"
-      ]
-    },
-    {
-      "species_id": "amphibian_american-bullfrog",
-      "notes": "Calling chorus May\u2013July; tadpoles overwinter 1\u20132 years before metamorphosis",
-      "active_months": [
-        "Apr-Oct"
-      ]
+      "region": "northeast_pa",
+      "taxonomic_group": "group_frogs"
     }
   ],
   "symbiosis": [
@@ -1394,7 +1385,7 @@
       ],
       "impacted_species": "insect_monarch-butterfly",
       "obligate": true,
-      "notes": "Butterfly Weed is used by Monarch larvae \u2014 lower latex than A. syriaca."
+      "notes": "Butterfly Weed is used by Monarch larvae — lower latex than A. syriaca."
     },
     {
       "type": "parasitism",
@@ -1422,9 +1413,9 @@
         "insect_monarch-butterfly",
         "plant_goldenrod"
       ],
-      "impacted_species": "insect_monarch-butterfly",
+      "impacted_species": "plant_goldenrod",
       "obligate": false,
-      "notes": "Monarchs nectar heavily on goldenrod during fall migration \u2014 critical fat-building fuel before Mexico journey."
+      "notes": "Monarchs nectar heavily on goldenrod during fall migration — critical fat-building fuel before Mexico journey."
     },
     {
       "type": "parasitism",
@@ -1434,7 +1425,7 @@
       ],
       "impacted_species": "insect_red-milkweed-beetle",
       "obligate": true,
-      "notes": "Red Milkweed Beetle obligate on genus Asclepias. Adults on foliage/flowers; larvae develop in roots \u2014 unique in Cerambycidae."
+      "notes": "Red Milkweed Beetle obligate on genus Asclepias. Adults on foliage/flowers; larvae develop in roots — unique in Cerambycidae."
     },
     {
       "type": "parasitism",
@@ -1452,7 +1443,7 @@
         "insect_large-milkweed-bug",
         "plant_common-milkweed"
       ],
-      "impacted_species": "insect_large-milkweed-bug",
+      "impacted_species": "plant_common-milkweed",
       "obligate": true,
       "notes": "Large Milkweed Bug specialist on Asclepias seeds. Also feeds on pods, flowers, and vegetative tissue. Sequesters cardenolides."
     },
@@ -1462,7 +1453,7 @@
         "insect_large-milkweed-bug",
         "plant_butterfly-weed"
       ],
-      "impacted_species": "insect_large-milkweed-bug",
+      "impacted_species": "plant_butterfly-weed",
       "obligate": true,
       "notes": "Feeds on Butterfly Weed seeds and pods."
     },
@@ -1472,7 +1463,7 @@
         "insect_large-milkweed-bug",
         "plant_swamp-milkweed"
       ],
-      "impacted_species": "insect_large-milkweed-bug",
+      "impacted_species": "plant_swamp-milkweed",
       "obligate": true,
       "notes": "Feeds on Swamp Milkweed seeds."
     },
@@ -1482,7 +1473,7 @@
         "insect_native-bumble-bees",
         "plant_common-milkweed"
       ],
-      "notes": "Bumble bees are primary diurnal pollinators of Common Milkweed \u2014 produce 8x more mature pods than nocturnal moth visitors per Fritz & Morse 1981."
+      "notes": "Bumble bees are primary diurnal pollinators of Common Milkweed — produce 8x more mature pods than nocturnal moth visitors per Fritz & Morse 1981."
     },
     {
       "type": "mutualism",
@@ -1522,7 +1513,7 @@
         "insect_native-bumble-bees",
         "plant_black-willow"
       ],
-      "notes": "Black Willow catkins (March\u2013April) are critical first-of-spring pollen and nectar for emerging bumble bee queens before other plants open."
+      "notes": "Black Willow catkins (March–April) are critical first-of-spring pollen and nectar for emerging bumble bee queens before other plants open."
     },
     {
       "type": "mutualism",
@@ -1538,7 +1529,7 @@
         "bird_ruby-throated-hummingbird",
         "plant_eastern-columbine"
       ],
-      "notes": "Ruby-throated Hummingbird is primary pollinator of Eastern Columbine \u2014 deposits 10x more pollen per visit than bees per University of Maryland Extension. Bloom timing co-evolved with hummingbird spring arrival."
+      "notes": "Ruby-throated Hummingbird is primary pollinator of Eastern Columbine — deposits 10x more pollen per visit than bees per University of Maryland Extension. Bloom timing co-evolved with hummingbird spring arrival."
     },
     {
       "type": "parasitism",
@@ -1568,7 +1559,7 @@
       ],
       "impacted_species": "insect_eastern-tiger-swallowtail",
       "obligate": false,
-      "notes": "White Oak is a facultative host for Eastern Tiger Swallowtail \u2014 used alongside many other woody plants."
+      "notes": "White Oak is a facultative host for Eastern Tiger Swallowtail — used alongside many other woody plants."
     },
     {
       "type": "parasitism",
@@ -1606,9 +1597,9 @@
         "mammal_beaver",
         "plant_black-willow"
       ],
-      "impacted_species": "mammal_beaver",
+      "impacted_species": "plant_black-willow",
       "obligate": false,
-      "notes": "Black Willow is a primary food tree for Beaver \u2014 bark and cambium eaten; tree felled for dam/lodge construction."
+      "notes": "Black Willow is a primary food tree for Beaver — bark and cambium eaten; tree felled for dam/lodge construction."
     },
     {
       "type": "predation",
@@ -1616,7 +1607,7 @@
         "mammal_beaver",
         "group_other-native-pa-willows"
       ],
-      "impacted_species": "mammal_beaver",
+      "impacted_species": "group_other-native-pa-willows",
       "obligate": false,
       "notes": "Beaver uses all native willow species for food and dam construction material."
     },
@@ -1634,7 +1625,7 @@
         "bird_great-blue-heron",
         "amphibian_american-bullfrog"
       ],
-      "impacted_species": "bird_great-blue-heron",
+      "impacted_species": "amphibian_american-bullfrog",
       "obligate": false,
       "notes": "Great Blue Heron is a primary predator of American Bullfrog adults and large tadpoles."
     },
@@ -1660,9 +1651,9 @@
         "bird_great-horned-owl",
         "bird_red-tailed-hawk"
       ],
-      "impacted_species": "bird_great-horned-owl",
+      "impacted_species": "bird_red-tailed-hawk",
       "obligate": false,
-      "notes": "Great Horned Owl is the primary natural predator of Red-tailed Hawk \u2014 takes eggs, nestlings, and occasionally adults."
+      "notes": "Great Horned Owl is the primary natural predator of Red-tailed Hawk — takes eggs, nestlings, and occasionally adults."
     },
     {
       "type": "predation",
@@ -1670,7 +1661,7 @@
         "bird_red-tailed-hawk",
         "mammal_eastern-gray-squirrel"
       ],
-      "impacted_species": "bird_red-tailed-hawk",
+      "impacted_species": "mammal_eastern-gray-squirrel",
       "obligate": false,
       "notes": "Eastern Gray Squirrel is a major prey item for Red-tailed Hawk in forested PA landscapes."
     },
@@ -1680,7 +1671,7 @@
         "bird_red-tailed-hawk",
         "mammal_white-tailed-deer"
       ],
-      "impacted_species": "bird_red-tailed-hawk",
+      "impacted_species": "mammal_white-tailed-deer",
       "obligate": false,
       "notes": "Red-tailed Hawk occasionally takes White-tailed Deer fawns, though this is uncommon."
     },
@@ -1690,7 +1681,7 @@
         "bird_great-horned-owl",
         "mammal_eastern-gray-squirrel"
       ],
-      "impacted_species": "bird_great-horned-owl",
+      "impacted_species": "mammal_eastern-gray-squirrel",
       "obligate": false,
       "notes": "Eastern Gray Squirrel is a significant prey item for Great Horned Owl, especially in winter."
     },
@@ -1700,7 +1691,7 @@
         "bird_great-horned-owl",
         "amphibian_american-bullfrog"
       ],
-      "impacted_species": "bird_great-horned-owl",
+      "impacted_species": "amphibian_american-bullfrog",
       "obligate": false,
       "notes": "Great Horned Owl takes large frogs including Bullfrog adults near beaver ponds and wetlands."
     },
@@ -1710,9 +1701,9 @@
         "mammal_eastern-gray-squirrel",
         "plant_white-oak"
       ],
-      "impacted_species": "mammal_eastern-gray-squirrel",
+      "impacted_species": "plant_white-oak",
       "obligate": false,
-      "notes": "Gray Squirrel preferentially caches and eats White Oak acorns (lower tannins, less bitter than red oak). A critical oak-regeneration mutualism \u2014 forgotten caches germinate into new trees."
+      "notes": "Gray Squirrel preferentially caches and eats White Oak acorns (lower tannins, less bitter than red oak). A critical oak-regeneration mutualism — forgotten caches germinate into new trees."
     },
     {
       "type": "predation",
@@ -1720,9 +1711,9 @@
         "mammal_eastern-gray-squirrel",
         "plant_northern-red-oak"
       ],
-      "impacted_species": "mammal_eastern-gray-squirrel",
+      "impacted_species": "plant_northern-red-oak",
       "obligate": false,
-      "notes": "Gray Squirrel caches Red Oak acorns \u2014 nips embryo tip before burial (preventing germination) then retrieves them. Red Oak acorns cached longer than white oak."
+      "notes": "Gray Squirrel caches Red Oak acorns — nips embryo tip before burial (preventing germination) then retrieves them. Red Oak acorns cached longer than white oak."
     },
     {
       "type": "predation",
@@ -1730,9 +1721,9 @@
         "mammal_eastern-gray-squirrel",
         "group_other-native-pa-oaks"
       ],
-      "impacted_species": "mammal_eastern-gray-squirrel",
+      "impacted_species": "group_other-native-pa-oaks",
       "obligate": false,
-      "notes": "Gray Squirrel uses all native oak species \u2014 primary mast consumer and seed disperser across all Quercus."
+      "notes": "Gray Squirrel uses all native oak species — primary mast consumer and seed disperser across all Quercus."
     },
     {
       "type": "predation",
@@ -1740,9 +1731,9 @@
         "mammal_white-tailed-deer",
         "plant_white-oak"
       ],
-      "impacted_species": "mammal_white-tailed-deer",
+      "impacted_species": "plant_white-oak",
       "obligate": false,
-      "notes": "White-tailed Deer eats White Oak acorns intensively in fall, and browses seedlings year-round \u2014 overabundant deer suppresses oak regeneration."
+      "notes": "White-tailed Deer eats White Oak acorns intensively in fall, and browses seedlings year-round — overabundant deer suppresses oak regeneration."
     },
     {
       "type": "predation",
@@ -1750,9 +1741,9 @@
         "mammal_white-tailed-deer",
         "plant_spicebush"
       ],
-      "impacted_species": "mammal_white-tailed-deer",
+      "impacted_species": "plant_spicebush",
       "obligate": false,
-      "notes": "Deer browse Spicebush stems and leaves \u2014 heavy deer pressure can suppress Spicebush in understory, reducing Spicebush Swallowtail habitat."
+      "notes": "Deer browse Spicebush stems and leaves — heavy deer pressure can suppress Spicebush in understory, reducing Spicebush Swallowtail habitat."
     },
     {
       "type": "predation",
@@ -1760,9 +1751,9 @@
         "bird_cedar-waxwing",
         "plant_black-cherry"
       ],
-      "impacted_species": "bird_cedar-waxwing",
+      "impacted_species": "plant_black-cherry",
       "obligate": false,
-      "notes": "Black Cherry is a major Cedar Waxwing food source \u2014 flocks strip cherries in August. Waxwings pass seeds through gut intact, dispersing them widely."
+      "notes": "Black Cherry is a major Cedar Waxwing food source — flocks strip cherries in August. Waxwings pass seeds through gut intact, dispersing them widely."
     },
     {
       "type": "predation",
@@ -1770,7 +1761,7 @@
         "bird_cedar-waxwing",
         "plant_spicebush"
       ],
-      "impacted_species": "bird_cedar-waxwing",
+      "impacted_species": "plant_spicebush",
       "obligate": false,
       "notes": "High-fat Spicebush berries (female plants only) are critical fall food for Cedar Waxwings and migrant thrushes."
     },
@@ -1780,9 +1771,9 @@
         "bird_cedar-waxwing",
         "group_native-fruiting-shrubs"
       ],
-      "impacted_species": "bird_cedar-waxwing",
+      "impacted_species": "group_native-fruiting-shrubs",
       "obligate": false,
-      "notes": "Cedar Waxwing is a generalist frugivore of all native berry-producing shrubs \u2014 serviceberry, viburnum, dogwood, elderberry, winterberry. Major seed disperser."
+      "notes": "Cedar Waxwing is a generalist frugivore of all native berry-producing shrubs — serviceberry, viburnum, dogwood, elderberry, winterberry. Major seed disperser."
     },
     {
       "type": "predation",
@@ -1790,7 +1781,7 @@
         "bird_eastern-bluebird",
         "plant_black-cherry"
       ],
-      "impacted_species": "bird_eastern-bluebird",
+      "impacted_species": "plant_black-cherry",
       "obligate": false,
       "notes": "Eastern Bluebird eats Black Cherry fruit in late summer and fall."
     },
@@ -1800,7 +1791,7 @@
         "bird_eastern-bluebird",
         "group_native-fruiting-shrubs"
       ],
-      "impacted_species": "bird_eastern-bluebird",
+      "impacted_species": "group_native-fruiting-shrubs",
       "obligate": false,
       "notes": "Bluebirds shift to native berries (viburnum, sumac, bayberry, holly) in winter when insects unavailable."
     },
@@ -1810,7 +1801,7 @@
         "bird_american-kestrel",
         "bird_eastern-bluebird"
       ],
-      "impacted_species": "bird_american-kestrel",
+      "impacted_species": "bird_eastern-bluebird",
       "obligate": false,
       "notes": "American Kestrel occasionally preys on Eastern Bluebird, especially where both use open-country nest boxes."
     },
@@ -1820,9 +1811,9 @@
         "bird_downy-woodpecker",
         "plant_goldenrod"
       ],
-      "impacted_species": "bird_downy-woodpecker",
+      "impacted_species": "plant_goldenrod",
       "obligate": false,
-      "notes": "Downy Woodpecker excavates Eurosta gall fly ball-galls on goldenrod stems in winter to eat larvae inside \u2014 a critical food-web link between goldenrod and forest birds."
+      "notes": "Downy Woodpecker excavates Eurosta gall fly ball-galls on goldenrod stems in winter to eat larvae inside — a critical food-web link between goldenrod and forest birds."
     },
     {
       "type": "predation",
@@ -1830,7 +1821,7 @@
         "bird_common-yellowthroat",
         "insect_monarch-butterfly"
       ],
-      "impacted_species": "bird_common-yellowthroat",
+      "impacted_species": "insect_monarch-butterfly",
       "obligate": false,
       "notes": "Common Yellowthroat catches butterflies and other flying insects including occasional Monarch adults."
     },
@@ -1842,7 +1833,7 @@
       ],
       "impacted_species": "insect_monarch-butterfly",
       "obligate": true,
-      "notes": "All native PA Asclepias species \u2014 Poke Milkweed (forest shade), Whorled Milkweed (dry open), Four-leaved (woodland) \u2014 support Monarch larvae."
+      "notes": "All native PA Asclepias species — Poke Milkweed (forest shade), Whorled Milkweed (dry open), Four-leaved (woodland) — support Monarch larvae."
     },
     {
       "type": "parasitism",
@@ -1855,70 +1846,5 @@
       "notes": "Eastern Tiger Swallowtail uses multiple oak species as facultative larval hosts beyond White and Red Oak."
     }
   ],
-  "relations": [
-    {
-      "type": "taxonomic_group",
-      "members": [
-        "bird_great-blue-heron",
-        "group_other-pa-herons-and-egrets"
-      ],
-      "notes": "Great Blue Heron shares wetland and riparian foraging habitat with other native PA Ardeidae \u2014 Green Heron, Great Egret, American Bittern."
-    },
-    {
-      "type": "taxonomic_group",
-      "members": [
-        "bird_pileated-woodpecker",
-        "group_other-pa-woodpeckers"
-      ],
-      "notes": "Pileated is the largest PA woodpecker; shares forested habitat with Hairy, Downy, Red-bellied, Yellow-bellied Sapsucker, and Northern Flicker."
-    },
-    {
-      "type": "taxonomic_group",
-      "members": [
-        "bird_downy-woodpecker",
-        "group_other-pa-woodpeckers"
-      ],
-      "notes": "Downy Woodpecker joins mixed-species winter flocks with chickadees, titmice, and nuthatches. Shares forest habitat with all other PA Picidae."
-    },
-    {
-      "type": "taxonomic_group",
-      "members": [
-        "plant_white-oak",
-        "group_other-native-pa-oaks"
-      ],
-      "notes": "White Oak co-occurs with and shares most ecological relationships with all other native PA oak species \u2014 same mast consumers, same Lepidoptera community, same forest associates."
-    },
-    {
-      "type": "taxonomic_group",
-      "members": [
-        "plant_northern-red-oak",
-        "group_other-native-pa-oaks"
-      ],
-      "notes": "Red Oak and other PA oaks share the same Lepidoptera and mast-consumer community."
-    },
-    {
-      "type": "taxonomic_group",
-      "members": [
-        "plant_common-milkweed",
-        "group_other-native-milkweeds"
-      ],
-      "notes": "Common Milkweed is the most widespread PA Asclepias. All native Asclepias share the milkweed guild of specialist insects and are obligate hosts for Monarch."
-    },
-    {
-      "type": "taxonomic_group",
-      "members": [
-        "plant_black-willow",
-        "group_other-native-pa-willows"
-      ],
-      "notes": "Black Willow is the largest native PA Salix. All native PA willows share Beaver as consumer and bumble bee queens as early spring pollinators."
-    },
-    {
-      "type": "taxonomic_group",
-      "members": [
-        "amphibian_american-bullfrog",
-        "group_other-native-pa-frogs"
-      ],
-      "notes": "American Bullfrog shares ponds and beaver impoundments with Green Frog, Pickerel Frog, and other native PA ranids. Bullfrog tadpoles can outcompete smaller frog tadpoles."
-    }
-  ]
+  "relations": []
 }

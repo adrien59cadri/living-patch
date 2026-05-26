@@ -1413,7 +1413,7 @@
         "insect_monarch-butterfly",
         "plant_goldenrod"
       ],
-      "impacted_species": "insect_monarch-butterfly",
+      "impacted_species": "plant_goldenrod",
       "obligate": false,
       "notes": "Monarchs nectar heavily on goldenrod during fall migration — critical fat-building fuel before Mexico journey."
     },
@@ -1443,7 +1443,7 @@
         "insect_large-milkweed-bug",
         "plant_common-milkweed"
       ],
-      "impacted_species": "insect_large-milkweed-bug",
+      "impacted_species": "plant_common-milkweed",
       "obligate": true,
       "notes": "Large Milkweed Bug specialist on Asclepias seeds. Also feeds on pods, flowers, and vegetative tissue. Sequesters cardenolides."
     },
@@ -1453,7 +1453,7 @@
         "insect_large-milkweed-bug",
         "plant_butterfly-weed"
       ],
-      "impacted_species": "insect_large-milkweed-bug",
+      "impacted_species": "plant_butterfly-weed",
       "obligate": true,
       "notes": "Feeds on Butterfly Weed seeds and pods."
     },
@@ -1463,7 +1463,7 @@
         "insect_large-milkweed-bug",
         "plant_swamp-milkweed"
       ],
-      "impacted_species": "insect_large-milkweed-bug",
+      "impacted_species": "plant_swamp-milkweed",
       "obligate": true,
       "notes": "Feeds on Swamp Milkweed seeds."
     },
@@ -1597,7 +1597,7 @@
         "mammal_beaver",
         "plant_black-willow"
       ],
-      "impacted_species": "mammal_beaver",
+      "impacted_species": "plant_black-willow",
       "obligate": false,
       "notes": "Black Willow is a primary food tree for Beaver — bark and cambium eaten; tree felled for dam/lodge construction."
     },
@@ -1607,7 +1607,7 @@
         "mammal_beaver",
         "group_other-native-pa-willows"
       ],
-      "impacted_species": "mammal_beaver",
+      "impacted_species": "group_other-native-pa-willows",
       "obligate": false,
       "notes": "Beaver uses all native willow species for food and dam construction material."
     },
@@ -1625,7 +1625,7 @@
         "bird_great-blue-heron",
         "amphibian_american-bullfrog"
       ],
-      "impacted_species": "bird_great-blue-heron",
+      "impacted_species": "amphibian_american-bullfrog",
       "obligate": false,
       "notes": "Great Blue Heron is a primary predator of American Bullfrog adults and large tadpoles."
     },
@@ -1651,7 +1651,7 @@
         "bird_great-horned-owl",
         "bird_red-tailed-hawk"
       ],
-      "impacted_species": "bird_great-horned-owl",
+      "impacted_species": "bird_red-tailed-hawk",
       "obligate": false,
       "notes": "Great Horned Owl is the primary natural predator of Red-tailed Hawk — takes eggs, nestlings, and occasionally adults."
     },
@@ -1661,7 +1661,7 @@
         "bird_red-tailed-hawk",
         "mammal_eastern-gray-squirrel"
       ],
-      "impacted_species": "bird_red-tailed-hawk",
+      "impacted_species": "mammal_eastern-gray-squirrel",
       "obligate": false,
       "notes": "Eastern Gray Squirrel is a major prey item for Red-tailed Hawk in forested PA landscapes."
     },
@@ -1671,7 +1671,7 @@
         "bird_red-tailed-hawk",
         "mammal_white-tailed-deer"
       ],
-      "impacted_species": "bird_red-tailed-hawk",
+      "impacted_species": "mammal_white-tailed-deer",
       "obligate": false,
       "notes": "Red-tailed Hawk occasionally takes White-tailed Deer fawns, though this is uncommon."
     },
@@ -1681,7 +1681,7 @@
         "bird_great-horned-owl",
         "mammal_eastern-gray-squirrel"
       ],
-      "impacted_species": "bird_great-horned-owl",
+      "impacted_species": "mammal_eastern-gray-squirrel",
       "obligate": false,
       "notes": "Eastern Gray Squirrel is a significant prey item for Great Horned Owl, especially in winter."
     },
@@ -1691,7 +1691,7 @@
         "bird_great-horned-owl",
         "amphibian_american-bullfrog"
       ],
-      "impacted_species": "bird_great-horned-owl",
+      "impacted_species": "amphibian_american-bullfrog",
       "obligate": false,
       "notes": "Great Horned Owl takes large frogs including Bullfrog adults near beaver ponds and wetlands."
     },
@@ -1701,7 +1701,7 @@
         "mammal_eastern-gray-squirrel",
         "plant_white-oak"
       ],
-      "impacted_species": "mammal_eastern-gray-squirrel",
+      "impacted_species": "plant_white-oak",
       "obligate": false,
       "notes": "Gray Squirrel preferentially caches and eats White Oak acorns (lower tannins, less bitter than red oak). A critical oak-regeneration mutualism — forgotten caches germinate into new trees."
     },
@@ -1711,7 +1711,7 @@
         "mammal_eastern-gray-squirrel",
         "plant_northern-red-oak"
       ],
-      "impacted_species": "mammal_eastern-gray-squirrel",
+      "impacted_species": "plant_northern-red-oak",
       "obligate": false,
       "notes": "Gray Squirrel caches Red Oak acorns — nips embryo tip before burial (preventing germination) then retrieves them. Red Oak acorns cached longer than white oak."
     },
@@ -1721,7 +1721,7 @@
         "mammal_eastern-gray-squirrel",
         "group_other-native-pa-oaks"
       ],
-      "impacted_species": "mammal_eastern-gray-squirrel",
+      "impacted_species": "group_other-native-pa-oaks",
       "obligate": false,
       "notes": "Gray Squirrel uses all native oak species — primary mast consumer and seed disperser across all Quercus."
     },
@@ -1731,7 +1731,7 @@
         "mammal_white-tailed-deer",
         "plant_white-oak"
       ],
-      "impacted_species": "mammal_white-tailed-deer",
+      "impacted_species": "plant_white-oak",
       "obligate": false,
       "notes": "White-tailed Deer eats White Oak acorns intensively in fall, and browses seedlings year-round — overabundant deer suppresses oak regeneration."
     },
@@ -1741,7 +1741,7 @@
         "mammal_white-tailed-deer",
         "plant_spicebush"
       ],
-      "impacted_species": "mammal_white-tailed-deer",
+      "impacted_species": "plant_spicebush",
       "obligate": false,
       "notes": "Deer browse Spicebush stems and leaves — heavy deer pressure can suppress Spicebush in understory, reducing Spicebush Swallowtail habitat."
     },
@@ -1751,7 +1751,7 @@
         "bird_cedar-waxwing",
         "plant_black-cherry"
       ],
-      "impacted_species": "bird_cedar-waxwing",
+      "impacted_species": "plant_black-cherry",
       "obligate": false,
       "notes": "Black Cherry is a major Cedar Waxwing food source — flocks strip cherries in August. Waxwings pass seeds through gut intact, dispersing them widely."
     },
@@ -1761,7 +1761,7 @@
         "bird_cedar-waxwing",
         "plant_spicebush"
       ],
-      "impacted_species": "bird_cedar-waxwing",
+      "impacted_species": "plant_spicebush",
       "obligate": false,
       "notes": "High-fat Spicebush berries (female plants only) are critical fall food for Cedar Waxwings and migrant thrushes."
     },
@@ -1771,7 +1771,7 @@
         "bird_cedar-waxwing",
         "group_native-fruiting-shrubs"
       ],
-      "impacted_species": "bird_cedar-waxwing",
+      "impacted_species": "group_native-fruiting-shrubs",
       "obligate": false,
       "notes": "Cedar Waxwing is a generalist frugivore of all native berry-producing shrubs — serviceberry, viburnum, dogwood, elderberry, winterberry. Major seed disperser."
     },
@@ -1781,7 +1781,7 @@
         "bird_eastern-bluebird",
         "plant_black-cherry"
       ],
-      "impacted_species": "bird_eastern-bluebird",
+      "impacted_species": "plant_black-cherry",
       "obligate": false,
       "notes": "Eastern Bluebird eats Black Cherry fruit in late summer and fall."
     },
@@ -1791,7 +1791,7 @@
         "bird_eastern-bluebird",
         "group_native-fruiting-shrubs"
       ],
-      "impacted_species": "bird_eastern-bluebird",
+      "impacted_species": "group_native-fruiting-shrubs",
       "obligate": false,
       "notes": "Bluebirds shift to native berries (viburnum, sumac, bayberry, holly) in winter when insects unavailable."
     },
@@ -1801,7 +1801,7 @@
         "bird_american-kestrel",
         "bird_eastern-bluebird"
       ],
-      "impacted_species": "bird_american-kestrel",
+      "impacted_species": "bird_eastern-bluebird",
       "obligate": false,
       "notes": "American Kestrel occasionally preys on Eastern Bluebird, especially where both use open-country nest boxes."
     },
@@ -1811,7 +1811,7 @@
         "bird_downy-woodpecker",
         "plant_goldenrod"
       ],
-      "impacted_species": "bird_downy-woodpecker",
+      "impacted_species": "plant_goldenrod",
       "obligate": false,
       "notes": "Downy Woodpecker excavates Eurosta gall fly ball-galls on goldenrod stems in winter to eat larvae inside — a critical food-web link between goldenrod and forest birds."
     },
@@ -1821,7 +1821,7 @@
         "bird_common-yellowthroat",
         "insect_monarch-butterfly"
       ],
-      "impacted_species": "bird_common-yellowthroat",
+      "impacted_species": "insect_monarch-butterfly",
       "obligate": false,
       "notes": "Common Yellowthroat catches butterflies and other flying insects including occasional Monarch adults."
     },

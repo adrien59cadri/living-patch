@@ -35,6 +35,7 @@ function makeEntry(
     role,
     obligate,
     notes: '',
+    isImpacted: false,
   };
 }
 

@@ -119,6 +119,7 @@ export const mockObligateEntry: RelatedEntry = {
   role: 'parasitism',
   obligate: true,
   notes: mockObligateSymbiosis.notes,
+  isImpacted: true,
 };
 
 export const mockBirdEntry: RelatedEntry = {
@@ -127,6 +128,7 @@ export const mockBirdEntry: RelatedEntry = {
   role: 'mutualism',
   obligate: false,
   notes: mockMutualismSymbiosis.notes,
+  isImpacted: false,
 };
 
 export const mockGroupEntry: RelatedEntry = {
@@ -135,4 +137,5 @@ export const mockGroupEntry: RelatedEntry = {
   role: 'parasitism',
   obligate: true,
   notes: 'Group placeholder entry.',
+  isImpacted: true,
 };

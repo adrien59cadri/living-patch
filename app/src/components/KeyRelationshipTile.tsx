@@ -25,9 +25,16 @@ export function KeyRelationshipTile({ entry }: Props) {
         </div>
       </div>
       <div className="flex flex-col items-end gap-1.5 flex-shrink-0">
-        <span className="text-xs bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded font-medium whitespace-nowrap">
-          Obligate
-        </span>
+        {entry.obligate && (
+          <span className="text-xs bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded font-medium whitespace-nowrap">
+            Obligate
+          </span>
+        )}
+        {entry.isImpacted && (
+          <span className="text-xs bg-red-100 text-red-700 px-2 py-0.5 rounded font-medium whitespace-nowrap">
+            Impacted
+          </span>
+        )}
         <span className="text-stone-300 text-sm" aria-label="Not yet logged">
           ☐
         </span>

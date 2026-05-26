@@ -1,5 +1,6 @@
 import { describe, test, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { MemoryRouter, Routes, Route } from 'react-router-dom';
 import DetailPage from '../DetailPage';
 
@@ -22,7 +23,7 @@ describe('DetailPage', () => {
   test('renders species name for valid monarch id', () => {
     renderDetailPage('insect_monarch-butterfly');
     expect(
-      screen.getByRole('heading', { name: 'Monarch Butterfly' })
+      screen.getByRole('heading', { name: /Monarch Butterfly/ })
     ).toBeInTheDocument();
   });
 
@@ -43,9 +44,16 @@ describe('DetailPage', () => {
     expect(screen.getByText('Egg')).toBeInTheDocument();
   });
 
-  test('renders key relationships for monarch (has obligate symbiosis)', () => {
+  test('renders key relationships for monarch (has obligate symbiosis)', async () => {
     renderDetailPage('insect_monarch-butterfly');
     expect(screen.getByText('Key Relationships')).toBeInTheDocument();
+    // Expand one of the relationship sections to see the obligate badge
+    const expandButtons = screen.getAllByRole('button').filter(btn => 
+      btn.textContent?.includes('Parasitism')
+    );
+    if (expandButtons.length > 0) {
+      await userEvent.click(expandButtons[0]);
+    }
     expect(screen.getAllByText('Obligate').length).toBeGreaterThan(0);
   });
 

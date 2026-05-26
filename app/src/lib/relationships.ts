@@ -16,6 +16,7 @@ export interface RelatedEntry {
   role: SymbiosisRole;
   obligate: boolean;
   notes: string;
+  isImpacted: boolean;
 }
 
 export function getRelatedEntries(
@@ -31,12 +32,18 @@ export function getRelatedEntries(
     if (!partnerId) continue;
     const partner = speciesById.get(partnerId);
     if (!partner) continue;
+    
+    // Determine if current species is negatively impacted
+    const isImpacted = (sym.type === 'predation' || sym.type === 'parasitism') &&
+      sym.impacted_species === speciesId;
+    
     entries.push({
       species: partner,
       symbiosis: sym,
       role: sym.type,
       obligate: sym.obligate ?? false,
       notes: sym.notes,
+      isImpacted,
     });
   }
 
@@ -51,6 +58,7 @@ export function getRelatedEntries(
         role: 'related',
         obligate: false,
         notes: rel.notes,
+        isImpacted: false,
       });
     }
   }
@@ -77,7 +85,13 @@ export function groupByRole(entries: RelatedEntry[]): GroupedRelations {
     groups[entry.role].push(entry);
   }
   for (const role of ROLES) {
-    groups[role].sort((a, b) => Number(b.obligate) - Number(a.obligate));
+    // Sort by: isImpacted (true first), then obligate (true first)
+    groups[role].sort((a, b) => {
+      if (a.isImpacted !== b.isImpacted) {
+        return Number(b.isImpacted) - Number(a.isImpacted);
+      }
+      return Number(b.obligate) - Number(a.obligate);
+    });
   }
   return groups;
 }
@@ -224,12 +238,18 @@ export function getSymbiotes(
     if (!partnerId) continue;
     const partner = speciesById.get(partnerId);
     if (!partner) continue;
+    
+    // Determine if current species is negatively impacted
+    const isImpacted = (sym.type === 'predation' || sym.type === 'parasitism') &&
+      sym.impacted_species === speciesId;
+    
     entries.push({
       species: partner,
       symbiosis: sym,
       role: sym.type,
       obligate: sym.obligate ?? false,
       notes: sym.notes,
+      isImpacted,
     });
   }
 
