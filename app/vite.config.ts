@@ -35,4 +35,11 @@ export default defineConfig({
     faviconPlugin,
     process.env.VITE_SINGLE_FILE ? viteSingleFile() : null,
   ].filter(Boolean),
+  build: {
+    rollupOptions: {
+      output: {
+        codeSplitting: false,
+      },
+    },
+  },
 })

@@ -2,33 +2,18 @@ import { useState } from 'react';
 import type { Species, LifeStage } from '../types';
 import type { RelatedEntry } from '../lib/relationships';
 import { getHabitatNeighborsByCategory } from '../lib/relationships';
-import { KeystoneBadge } from './KeystoneBadge';
 import { LifeStageRow } from './LifeStageRow';
 import { KeyRelationshipsSection } from './KeyRelationshipsSection';
 import { TaxonomyRelatedGrid } from './TaxonomyRelatedGrid';
 import { HabitatNeighborsSection } from './HabitatNeighborsSection';
 import { LogSightingButton } from './LogSightingButton';
-import {
-  formLabel,
-  habitatLabel,
-  dietLabel,
-  behaviorLabel,
-  activeMonthsLabel,
-} from '../lib/labels';
+import { TagRow } from './TagRow';
 
 interface Props {
   species: Species;
   symbiotes: RelatedEntry[];
   habitatNeighbors: Species[];
   related: RelatedEntry[];
-}
-
-function Tag({ label }: { label: string }) {
-  return (
-    <span className="inline-block text-xs bg-stone-100 text-stone-600 px-2 py-0.5 rounded-full">
-      {label}
-    </span>
-  );
 }
 
 export function SpeciesCard({ species, symbiotes, habitatNeighbors, related }: Props) {
@@ -38,8 +23,6 @@ export function SpeciesCard({ species, symbiotes, habitatNeighbors, related }: P
   );
 
   const habitatNeighborCategories = getHabitatNeighborsByCategory(habitatNeighbors);
-
-  const seasonChip = activeMonthsLabel(species.active_months);
 
   return (
     <div className="space-y-6">
@@ -59,18 +42,15 @@ export function SpeciesCard({ species, symbiotes, habitatNeighbors, related }: P
 
       {/* 2. Name block */}
       <div>
-        <div className="flex items-start gap-3 flex-wrap">
-          <div>
-            <h1 className="text-2xl font-bold text-stone-800 leading-tight">
-              {species.common_name}
-            </h1>
-            {showScientificName && species.latin_name && (
-              <p className="text-sm text-stone-600 mt-1 italic">
-                {species.latin_name}
-              </p>
-            )}
-          </div>
-          {species.is_keystone && <KeystoneBadge type={species.keystone_type} />}
+        <div>
+          <h1 className="text-2xl font-bold text-stone-800 leading-tight">
+            {species.common_name}
+          </h1>
+          {showScientificName && species.latin_name && (
+            <p className="text-sm text-stone-600 mt-1 italic">
+              {species.latin_name}
+            </p>
+          )}
         </div>
         {species.latin_name && (
           <button
@@ -83,19 +63,7 @@ export function SpeciesCard({ species, symbiotes, habitatNeighbors, related }: P
       </div>
 
       {/* 3. Tags row */}
-      <div className="flex flex-wrap gap-1.5">
-        <Tag label={formLabel(species.form)} />
-        {(species.habitat ?? []).map(h => (
-          <Tag key={h} label={habitatLabel(h)} />
-        ))}
-        {(species.diet ?? []).map(d => (
-          <Tag key={d} label={dietLabel(d)} />
-        ))}
-        {(species.behavior ?? []).map(b => (
-          <Tag key={b} label={behaviorLabel(b)} />
-        ))}
-        {seasonChip && <Tag label={seasonChip} />}
-      </div>
+      <TagRow species={species} />
 
       {/* 4. Functional description */}
       <p className="text-stone-600 text-sm leading-relaxed">
