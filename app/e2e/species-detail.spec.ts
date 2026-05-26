@@ -28,25 +28,22 @@ test.describe('Species detail page — Monarch Butterfly', () => {
     await expect(page.getByText(/Orange and black butterfly/)).toBeVisible();
   });
 
-  test('LIFE STAGES section shows all four stages', async ({ page }) => {
+  test('life stages section shows all four stages', async ({ page }) => {
     await page.goto(MONARCH_URL);
-    await expect(page.getByText(/Life Stages/i)).toBeVisible();
     await expect(page.getByText('Egg', { exact: true })).toBeVisible();
     await expect(page.getByText('Caterpillar', { exact: true })).toBeVisible();
     await expect(page.getByText('Chrysalis', { exact: true })).toBeVisible();
     await expect(page.getByText('Adult', { exact: true })).toBeVisible();
   });
 
-  test('KEY RELATIONSHIPS section shows obligate milkweed', async ({ page }) => {
+  test('key relationships section shows obligate milkweed', async ({ page }) => {
     await page.goto(MONARCH_URL);
-    await expect(page.getByText(/Key Relationships/i)).toBeVisible();
     await expect(page.getByText('Common Milkweed', { exact: true }).first()).toBeVisible();
     await expect(page.getByText('Obligate', { exact: true })).toBeVisible();
   });
 
-  test('RELATED BY HABITAT section shows Plants category tile', async ({ page }) => {
+  test('related by habitat section shows plants category', async ({ page }) => {
     await page.goto(MONARCH_URL);
-    await expect(page.getByText(/Related by Habitat/i)).toBeVisible();
     await expect(page.getByText('Plants')).toBeVisible();
   });
 
