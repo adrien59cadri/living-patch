@@ -118,12 +118,37 @@ npm run build && npm run test:e2e
 
 ## CI/CD
 
-GitHub Actions (`.github/workflows/ci.yml`):
-1. **`ci` job**: Lint → TypeScript check → Unit tests → Build
-2. **`e2e` job**: Playwright tests (after `ci` passes)
-3. **`deploy` job**: Deploy to GitHub Pages (on `main` merge, after both pass)
+Two workflows:
+- **CI** (`.github/workflows/ci.yml`): Runs on every push and pull request
+  1. **`ci` job**: Lint → TypeScript check → Unit tests → Build
+  2. **`e2e` job**: Playwright tests (after `ci` passes)
+- **Deploy** (`.github/workflows/deploy.yml`): Auto-triggers after CI passes on `main` branch
+  - Downloads build artifact and deploys to GitHub Pages
 
 To enable Pages deployment: Repo Settings → Pages → Source → "GitHub Actions"
+
+### Run CI locally with `act`
+
+Test the entire CI pipeline locally before pushing:
+
+```bash
+# Install act (once)
+brew install act
+
+# Run the CI job locally (requires Docker Desktop running)
+npm run ci:local
+
+# Or run E2E tests locally
+npm run ci:local:e2e
+
+# Or run specific jobs
+act push --workflows .github/workflows/ci.yml --job ci
+act push --workflows .github/workflows/ci.yml --job e2e
+```
+
+**Note:** `act` requires Docker Desktop to be running. Install from [docker.com](https://www.docker.com/products/docker-desktop).
+
+**Known limitation:** The artifact upload step fails locally (expected) — `act` doesn't support GitHub Actions tokens. This doesn't affect linting, type-checking, testing, or building.
 
 ## Documentation
 
