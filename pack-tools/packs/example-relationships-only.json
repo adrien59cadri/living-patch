@@ -1,0 +1,29 @@
+{
+  "metadata": {
+    "id": "example-add-relationships",
+    "createdDate": "2026-05-26T00:00:00Z",
+    "author": "LivingPatch Contributors",
+    "version": "1.0.0",
+    "schemaVersion": "1.0.0",
+    "description": "Example pack demonstrating how to add new symbiosis relationships linking existing species without redefining them",
+    "status": "draft"
+  },
+  "data": {
+    "species": [],
+    "symbiosis": [
+      {
+        "type": "predation",
+        "members": ["bird_american-kestrel", "insect_monarch-butterfly"],
+        "impacted_species": "insect_monarch-butterfly",
+        "obligate": false,
+        "notes": "American Kestrel occasionally hunts Monarch butterflies, though they are toxic and avoided when better prey available."
+      },
+      {
+        "type": "mutualism",
+        "members": ["insect_native-bumble-bees", "plant_eastern-columbine"],
+        "notes": "Long-tongued bumble bee workers can reach nectar deep in columbine flower spurs. Short-tongued bees rob nectar through spur holes."
+      }
+    ],
+    "relations": []
+  }
+}

@@ -49,6 +49,68 @@ npm run test:e2e   # Run 13 E2E tests (Playwright, requires build)
 - **13 E2E tests** (Playwright, full user workflows)
 - **GitHub Actions CI/CD** (lint → type-check → test → build → E2E → deploy to Pages)
 
+## Data Packs System
+
+The app uses a **modular data pack system** where the dataset is split into separate, versionable JSON files located in [`pack-tools/packs/`](pack-tools/packs/). Each pack contains metadata (author, version, creation date) and a dataset of species, taxonomic groups, symbiosis relationships, and general relations.
+
+### Pack Status
+
+Each pack has a `status` field:
+- **`"published"`**: Reviewed and approved. Always loaded by the app.
+- **`"draft"`**: Work-in-progress. Only loaded when explicitly enabled via `VITE_INCLUDE_DRAFT_PACKS=true`.
+
+### Available Packs
+
+- **`0-base.json`** (published): Core LivingPatch dataset with NE Pennsylvania species and ecological relationships
+- **`example-new-species.json`** (draft): Template for adding new species
+- **`example-relationships-only.json`** (draft): Template for adding relationships only
+
+### Creating and Contributing a Pack
+
+1. **Create** a new pack using the templates in [`pack-tools/packs/example-*.json`](pack-tools/packs/)
+2. **Validate** your pack locally:
+   ```bash
+   npm run pack:validate packs/my-pack.json
+   ```
+3. **Test** by merging with base:
+   ```bash
+   npm run pack:merge packs/0-base.json packs/my-pack.json
+   ```
+4. **Mark as draft** while under review (set `"status": "draft"` in metadata)
+5. **Submit** via pull request — reviewers will validate and approve
+6. **Change to published** once approved (set `"status": "published"`)
+
+See [`pack-tools/README.md`](pack-tools/README.md) for full pack format documentation and [`pack-tools/.instructions.md`](pack-tools/.instructions.md) for pack creation guidelines.
+
+### For Developers: Pack CLI Tools
+
+```bash
+# Validate a single pack
+npm run pack:validate packs/my-pack.json
+
+# Preview merging multiple packs (skip drafts by default)
+npm run pack:merge packs/0-base.json packs/custom.json
+
+# Include draft packs in merge preview
+npm run pack:merge packs/0-base.json packs/draft.json --include-drafts
+
+# Migrate existing dataset to pack format
+npm run pack:migrate
+```
+
+### Environment Variables
+
+To load draft packs during development:
+```bash
+# Start dev server with draft packs enabled
+VITE_INCLUDE_DRAFT_PACKS=true npm run dev
+
+# Build with draft packs included
+VITE_INCLUDE_DRAFT_PACKS=true npm run build
+```
+
+(App integration for loading packs from pack-tools directory is planned for Phase 2)
+
 ## Try These
 
 1. **Search**: Type "milkweed" or "monarch"  
@@ -159,8 +221,19 @@ npm run e2e:local   # Run E2E tests
 ## Build & Deploy
 
 ```bash
-npm run build     # TypeScript check + Vite build → app/dist/
-npm run preview   # Serve app/dist/ locally on :4173
+npm run build:dataset  # Generate app/src/data/dataset.json from packs
+npm run build          # Build: auto-generates dataset, then builds app → app/dist/
+npm run preview        # Serve app/dist/ locally on :4173
+```
+
+The `npm run build` command automatically:
+1. Merges all published packs from `pack-tools/packs/`
+2. Generates `app/src/data/dataset.json`
+3. Builds the app with TypeScript checking and Vite optimization
+
+To include draft packs during build:
+```bash
+INCLUDE_DRAFTS=true npm run build
 ```
 
 GitHub Pages deploys automatically on `main` push (via GitHub Actions).

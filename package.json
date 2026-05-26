@@ -2,16 +2,21 @@
   "name": "livingpatch",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "description": "Ecological literacy tool for NE Pennsylvania species",
   "scripts": {
     "dev": "cd app && npm run dev",
-    "build": "cd app && npm run build",
+    "build:dataset": "node build-dataset.js",
+    "build": "npm run build:dataset && cd app && npm run build",
     "preview": "cd app && npm run preview",
     "lint": "cd app && npm run lint",
     "test": "cd app && npm run test",
-    "test:run": "cd app && npm run test:run",
+    "test:watch": "cd app && npm run test:watch",
     "test:e2e": "cd app && npm run test:e2e",
     "ci:local": "act push --workflows .github/workflows/ci.yml --job ci",
-    "e2e:local": "act push --workflows .github/workflows/ci.yml --job e2e"
+    "e2e:local": "act push --workflows .github/workflows/ci.yml --job e2e",
+    "pack:validate": "cd pack-tools && npm run validate",
+    "pack:merge": "cd pack-tools && npm run merge",
+    "pack:migrate": "cd pack-tools && npm run migrate"
   }
 }

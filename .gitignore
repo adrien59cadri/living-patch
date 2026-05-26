@@ -9,3 +9,4 @@ build/
 package-lock.json
 playwright-report/
 test-results/
+app/src/data/dataset.json

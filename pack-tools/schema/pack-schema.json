@@ -1,0 +1,282 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://livingpatch.local/schema/pack.schema.json",
+  "title": "LivingPatch Data Pack Schema",
+  "description": "Schema for LivingPatch data pack files containing species, taxonomic groups, symbiosis, and relations",
+  "type": "object",
+  "required": ["metadata", "data"],
+  "properties": {
+    "metadata": {
+      "type": "object",
+      "description": "Pack metadata",
+      "required": ["id", "createdDate", "author", "version", "schemaVersion", "description"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the pack (allows future version superseding)",
+          "pattern": "^[a-z0-9_-]+$",
+          "minLength": 1
+        },
+        "createdDate": {
+          "type": "string",
+          "description": "ISO 8601 date when pack was created",
+          "format": "date-time"
+        },
+        "author": {
+          "type": "string",
+          "description": "Author/creator of the pack",
+          "minLength": 1
+        },
+        "version": {
+          "type": "string",
+          "description": "Semantic version of this pack",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$"
+        },
+        "schemaVersion": {
+          "type": "string",
+          "description": "Schema version this pack targets",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$"
+        },
+        "description": {
+          "type": "string",
+          "description": "Human-readable description of pack contents",
+          "minLength": 1
+        },
+        "status": {
+          "type": "string",
+          "description": "Pack status: published (reviewed, always loaded) or draft (requires flag to load)",
+          "enum": ["published", "draft"],
+          "default": "published"
+        }
+      },
+      "additionalProperties": false
+    },
+    "data": {
+      "type": "object",
+      "description": "Pack data content",
+      "properties": {
+        "species": {
+          "type": "array",
+          "description": "Array of species and taxonomic groups",
+          "items": {
+            "$ref": "#/definitions/Species"
+          }
+        },
+        "taxonomic_groups": {
+          "type": "array",
+          "description": "Array of taxonomic groups (legacy, for backward compatibility)",
+          "items": {
+            "$ref": "#/definitions/Species"
+          }
+        },
+        "symbiosis": {
+          "type": "array",
+          "description": "Array of symbiotic relationships",
+          "items": {
+            "$ref": "#/definitions/Symbiosis"
+          }
+        },
+        "relations": {
+          "type": "array",
+          "description": "Array of general relations",
+          "items": {
+            "$ref": "#/definitions/Relation"
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false,
+  "definitions": {
+    "LifeStage": {
+      "type": "object",
+      "properties": {
+        "icon": {
+          "type": "string",
+          "description": "Emoji or icon representing the life stage"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "months": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": ["name", "description"],
+      "additionalProperties": false
+    },
+    "Species": {
+      "type": "object",
+      "description": "Individual species or taxonomic group",
+      "required": ["id", "common_name", "form", "habitat", "diet", "behavior", "season", "functional_description", "life_stages", "region"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier (format: category_slug)",
+          "pattern": "^[a-z]+_[a-z0-9-]+$"
+        },
+        "common_name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "latin_name": {
+          "type": ["string", "null"]
+        },
+        "form": {
+          "type": "string",
+          "minLength": 1
+        },
+        "habitat": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "diet": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "behavior": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "season": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "functional_description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "life_stages": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/LifeStage"
+              }
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ]
+        },
+        "region": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ecological_role": {
+          "type": ["string", "null"]
+        },
+        "is_keystone": {
+          "type": "boolean"
+        },
+        "keystone_type": {
+          "type": ["string", "null"]
+        },
+        "keystone_description": {
+          "type": ["string", "null"]
+        },
+        "active_months": {
+          "type": ["array", "null"],
+          "items": {
+            "type": "string"
+          }
+        },
+        "taxonomic_group": {
+          "type": ["string", "null"]
+        },
+        "is_group": {
+          "type": "boolean",
+          "description": "Flag indicating this is a taxonomic/thematic group"
+        },
+        "label": {
+          "type": ["string", "null"],
+          "description": "Display label for taxonomic groups"
+        },
+        "common_traits": {
+          "type": ["string", "null"],
+          "description": "Common traits of taxonomic group members"
+        },
+        "notes": {
+          "type": ["string", "null"]
+        }
+      },
+      "additionalProperties": false
+    },
+    "Symbiosis": {
+      "type": "object",
+      "description": "Symbiotic relationship between species",
+      "required": ["type", "members", "notes"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["mutualism", "parasitism", "predation", "competition", "commensalism"]
+        },
+        "members": {
+          "type": "array",
+          "description": "Array of species IDs involved",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 2
+        },
+        "impacted_species": {
+          "type": ["string", "null"],
+          "description": "Optional: specific species impacted by this relationship"
+        },
+        "obligate": {
+          "type": "boolean",
+          "description": "Whether the relationship is obligate (required for survival)"
+        },
+        "notes": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "Relation": {
+      "type": "object",
+      "description": "General relation between species",
+      "required": ["type", "members", "notes"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "minLength": 1
+        },
+        "members": {
+          "type": "array",
+          "description": "Array of species IDs involved",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 2
+        },
+        "notes": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}
