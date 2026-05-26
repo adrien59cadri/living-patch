@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import type { RelatedEntry, SymbiosisRole } from '../lib/relationships';
-import { groupKeyRolesByObligation } from '../lib/relationships';
+import { groupByRole } from '../lib/relationships';
 import { KeyRelationshipTile } from './KeyRelationshipTile';
 import { symbiosisLabel } from '../lib/labels';
 
@@ -8,27 +8,20 @@ interface Props {
   related: RelatedEntry[];
 }
 
+const KEY_ROLES: SymbiosisRole[] = ['mutualism', 'parasitism', 'predation'];
+
 export function KeyRelationshipsSection({ related }: Props) {
-  const groups = groupKeyRolesByObligation(related);
-  const [expandedRoles, setExpandedRoles] = useState<Set<SymbiosisRole>>(new Set());
+  const groups = groupByRole(related);
+  const [expandedRole, setExpandedRole] = useState<SymbiosisRole | null>(null);
 
-  const rolesWithRelations = (Object.keys(groups) as SymbiosisRole[]).filter(
-    role => groups[role].length > 0
-  );
+  const keyRelations = KEY_ROLES.map(role => ({
+    role,
+    entries: groups[role],
+  })).filter(({ entries }) => entries.length > 0);
 
-  if (rolesWithRelations.length === 0) {
+  if (keyRelations.length === 0) {
     return null;
   }
-
-  const toggleRole = (role: SymbiosisRole) => {
-    const newExpanded = new Set(expandedRoles);
-    if (newExpanded.has(role)) {
-      newExpanded.delete(role);
-    } else {
-      newExpanded.add(role);
-    }
-    setExpandedRoles(newExpanded);
-  };
 
   return (
     <div>
@@ -36,33 +29,41 @@ export function KeyRelationshipsSection({ related }: Props) {
         Key Relationships
       </div>
       <div className="space-y-4">
-        {rolesWithRelations.map(role => {
-          const entries = groups[role];
-          const obligateEntries = entries.filter(e => e.obligate);
-          const facultativeEntries = entries.filter(e => !e.obligate);
-          const isExpanded = expandedRoles.has(role);
-          const hasMore = facultativeEntries.length > 0;
+        {keyRelations.map(({ role, entries }) => {
+          const isExpanded = expandedRole === role;
+          const firstTwoNames = entries.slice(0, 2).map(e => e.species.common_name);
+          const remainingCount = Math.max(0, entries.length - 2);
 
           return (
             <div key={role}>
-              <div className="text-xs font-semibold text-stone-500 mb-2">
-                {symbiosisLabel(role)}
-              </div>
-              <div className="space-y-2">
-                {obligateEntries.map((entry, idx) => (
-                  <KeyRelationshipTile key={`${role}-obligate-${idx}`} entry={entry} />
-                ))}
-                {isExpanded && facultativeEntries.map((entry, idx) => (
-                  <KeyRelationshipTile key={`${role}-facultative-${idx}`} entry={entry} />
-                ))}
-              </div>
-              {hasMore && (
+              <div className="flex items-center justify-between">
                 <button
-                  onClick={() => toggleRole(role)}
-                  className="text-xs text-stone-500 hover:text-stone-700 mt-2 py-1"
+                  onClick={() => setExpandedRole(isExpanded ? null : role)}
+                  className="text-left flex-1"
                 >
-                  {isExpanded ? '−' : '+'} Show {facultativeEntries.length} more
+                  <div className="text-xs font-semibold text-stone-500">
+                    {symbiosisLabel(role)}: {entries.length} {entries.length === 1 ? 'species' : 'species'}
+                  </div>
+                  <div className="text-sm text-stone-700 mt-1">
+                    {firstTwoNames.join(', ')}
+                    {remainingCount > 0 && (
+                      <span className="text-stone-500">…</span>
+                    )}
+                  </div>
                 </button>
+                <button
+                  onClick={() => setExpandedRole(isExpanded ? null : role)}
+                  className="ml-2 text-xs text-stone-500 hover:text-stone-700 font-medium whitespace-nowrap"
+                >
+                  {isExpanded ? '−' : '+'}
+                </button>
+              </div>
+              {isExpanded && (
+                <div className="mt-3 space-y-2">
+                  {entries.map((entry, idx) => (
+                    <KeyRelationshipTile key={`${role}-${idx}`} entry={entry} />
+                  ))}
+                </div>
               )}
             </div>
           );

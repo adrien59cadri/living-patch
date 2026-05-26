@@ -11,13 +11,16 @@ export function HabitatNeighborsSection({ neighbors }: Props) {
     return null;
   }
 
+  const displayedNeighbors = neighbors.slice(0, 4);
+  const remainingCount = Math.max(0, neighbors.length - 4);
+
   return (
     <div>
       <div className="text-xs font-semibold uppercase tracking-wide text-stone-400 mb-3">
         Habitat Neighbors
       </div>
-      <div className="space-y-2">
-        {neighbors.map(species => (
+      <div className="grid grid-cols-4 gap-3">
+        {displayedNeighbors.map(species => (
           <Link
             key={species.id}
             to={`/species/${species.id}`}
@@ -35,6 +38,14 @@ export function HabitatNeighborsSection({ neighbors }: Props) {
             </div>
           </Link>
         ))}
+        {remainingCount > 0 && (
+          <div className="bg-stone-50 border border-stone-200 rounded-lg p-3 flex items-center justify-center text-center">
+            <div>
+              <div className="text-sm font-semibold text-stone-500">More</div>
+              <div className="text-xs text-stone-400">+{remainingCount}</div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

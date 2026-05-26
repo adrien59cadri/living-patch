@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import type { Species, LifeStage } from '../types';
 import type { RelatedEntry } from '../lib/relationships';
 import { getCategoryGroups } from '../lib/relationships';
@@ -33,8 +32,6 @@ function Tag({ label }: { label: string }) {
 }
 
 export function SpeciesCard({ species, symbiotes, habitatNeighbors, related }: Props) {
-  const [latinVisible, setLatinVisible] = useState(false);
-
   const stages = (species.life_stages as LifeStage[]).filter(
     s => typeof s === 'object' && s !== null
   );
@@ -56,17 +53,14 @@ export function SpeciesCard({ species, symbiotes, habitatNeighbors, related }: P
         <div className="flex items-start gap-3 flex-wrap">
           <h1 className="text-2xl font-bold text-stone-800 leading-tight">
             {species.common_name}
+            {species.latin_name && (
+              <span className="text-lg font-normal text-stone-500 ml-2">
+                ({species.latin_name})
+              </span>
+            )}
           </h1>
           {species.is_keystone && <KeystoneBadge type={species.keystone_type} />}
         </div>
-        {species.latin_name && (
-          <button
-            onClick={() => setLatinVisible(v => !v)}
-            className="mt-1 text-xs text-stone-400 hover:text-stone-600"
-          >
-            {latinVisible ? `— ${species.latin_name}` : '+ Scientific name'}
-          </button>
-        )}
       </div>
 
       {/* 3. Tags row */}
