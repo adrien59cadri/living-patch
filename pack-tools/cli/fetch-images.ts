@@ -30,6 +30,7 @@ function printUsage() {
   console.error(`${chalk.gray('Options:')}`);
   console.error(`  --delay <ms>        Delay between requests in milliseconds (default: 1000)`);
   console.error(`  --max <count>       Maximum number of species to process (for testing)`);
+  console.error(`  --merge             Merge images into original pack file instead of creating separate images-*.json`);
 }
 
 /**
@@ -39,6 +40,7 @@ function parseArgs(cliArgs: string[]): {
   packFile: string;
   delay: number;
   maxSpecies?: number;
+  merge: boolean;
 } | null {
   const packFile = cliArgs.find(arg => !arg.startsWith('--'));
   
@@ -50,6 +52,7 @@ function parseArgs(cliArgs: string[]): {
 
   let delay = 1000;
   let maxSpecies: number | undefined;
+  let merge = false;
 
   for (let i = 0; i < cliArgs.length; i++) {
     if (cliArgs[i] === '--delay' && cliArgs[i + 1]) {
@@ -58,10 +61,12 @@ function parseArgs(cliArgs: string[]): {
     } else if (cliArgs[i] === '--max' && cliArgs[i + 1]) {
       maxSpecies = parseInt(cliArgs[i + 1], 10);
       i++;
+    } else if (cliArgs[i] === '--merge') {
+      merge = true;
     }
   }
 
-  return { packFile, delay, maxSpecies };
+  return { packFile, delay, maxSpecies, merge };
 }
 
 /**
@@ -103,12 +108,14 @@ async function main() {
     process.exit(1);
   }
 
-  const { packFile, delay: requestDelay, maxSpecies } = parsed;
+  const { packFile, delay: requestDelay, maxSpecies, merge } = parsed;
   const pack = loadPack(packFile);
   
   if (!pack) {
     process.exit(1);
   }
+
+  const absolutePackPath = path.resolve(packFile);
 
   console.log(chalk.blue('🔍 Fetching Wikipedia images...'));
   console.log(`${chalk.gray('Pack:')} ${pack.metadata.id} (v${pack.metadata.version})`);
@@ -209,18 +216,44 @@ async function main() {
     process.exit(1);
   }
 
-  // Write output file
-  const outputDir = path.dirname(packFile);
-  const outputFile = path.join(outputDir, `images-${pack.metadata.id}.json`);
-  
   try {
-    fs.writeFileSync(outputFile, JSON.stringify(imagesPack, null, 2), 'utf-8');
-    console.log();
-    console.log(chalk.green('✓ Images pack saved:'));
-    console.log(`  ${path.relative(process.cwd(), outputFile)}`);
-    process.exit(0);
+    if (merge) {
+      // Merge images into original pack
+      const updatedPack = { ...pack };
+      updatedPack.data = { ...pack.data, images: successfulImages };
+      
+      // Validate merged pack
+      const mergeValidation = validatePackSafe(updatedPack);
+      if (!mergeValidation.success) {
+        console.error(chalk.red('❌ Error: Merged pack is invalid'));
+        mergeValidation.error.issues.forEach(issue => {
+          console.error(`  ${chalk.gray('•')} ${issue.path.join('.')}: ${issue.message}`);
+        });
+        process.exit(1);
+      }
+
+      fs.writeFileSync(absolutePackPath, JSON.stringify(updatedPack, null, 2), 'utf-8');
+      console.log();
+      console.log(chalk.green('✓ Images merged into pack:'));
+      console.log(`  ${path.relative(process.cwd(), absolutePackPath)}`);
+      console.log(`  ${chalk.cyan(successfulImages.length)} images added to data.images`);
+      process.exit(0);
+    } else {
+      // Create separate images pack
+      const outputDir = path.dirname(packFile);
+      const outputFile = path.join(outputDir, `images-${pack.metadata.id}.json`);
+      
+      fs.writeFileSync(outputFile, JSON.stringify(imagesPack, null, 2), 'utf-8');
+      console.log();
+      console.log(chalk.green('✓ Images pack saved:'));
+      console.log(`  ${path.relative(process.cwd(), outputFile)}`);
+      console.log();
+      console.log(chalk.gray('💡 Tip: Use --merge flag to merge images into your pack file:'));
+      console.log(`  npm run fetch-images ${packFile} --merge`);
+      process.exit(0);
+    }
   } catch (error) {
-    console.error(chalk.red('❌ Error writing output file:'));
+    console.error(chalk.red('❌ Error writing pack file:'));
     console.error(chalk.gray(error instanceof Error ? error.message : String(error)));
     process.exit(1);
   }

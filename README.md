@@ -72,12 +72,33 @@ Each pack has a `status` field:
    ```bash
    npm run pack:validate packs/my-pack.json
    ```
-3. **Test** by merging with base:
+3. **Add images** (optional but recommended):
+   ```bash
+   npm run pack:fetch-images packs/my-pack.json --merge
+   ```
+   See [Image Validation Workflow](#image-validation-workflow) below for details.
+4. **Test** by merging with base:
    ```bash
    npm run pack:merge packs/0-base.json packs/my-pack.json
    ```
-4. **Mark as draft** while under review (set `"status": "draft"` in metadata)
-5. **Submit** via pull request — reviewers will validate and approve
+5. **Mark as draft** while under review (set `"status": "draft"` in metadata)
+6. **Submit** via pull request — reviewers will validate and approve
+
+### Image Validation Workflow
+
+When your pack has species but no images, validation shows warnings. Use the fetch-images CLI to automatically add Wikipedia images to your pack:
+
+```bash
+npm run pack:fetch-images packs/my-pack.json --merge
+```
+
+This command:
+- Searches Wikipedia for images (tries scientific name, then common name)
+- Extracts Wikimedia Commons URLs and author info
+- Merges images directly into your pack file
+- Shows progress (successful, failed, skipped)
+
+**Full workflow documentation**: See [Image Validation Workflow](pack-tools/README.md#image-validation-workflow) in the pack-tools README.
 6. **Change to published** once approved (set `"status": "published"`)
 
 See [`pack-tools/README.md`](pack-tools/README.md) for full pack format documentation and [`pack-tools/.instructions.md`](pack-tools/.instructions.md) for pack creation guidelines.

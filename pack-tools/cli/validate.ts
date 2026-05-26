@@ -115,8 +115,8 @@ try {
     });
     console.log('');
     console.log(chalk.gray('💡 Suggestion: Run the following to fetch images from Wikipedia:'));
-    console.log(chalk.gray(`   npm run fetch-images packs/${pack.metadata.id}.json`));
-    console.log(chalk.gray('   Then merge the generated images-*.json into this pack by adding the "images" array to the data object.'));
+    console.log(chalk.gray(`   npm run fetch-images packs/${pack.metadata.id}.json --merge`));
+    console.log(chalk.gray('   This will automatically add Wikipedia images to your pack (or create images-*.json if not using --merge).'));
   }
 
   if (status === 'draft') {

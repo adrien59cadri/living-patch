@@ -156,6 +156,101 @@ Output:
 - ✓ ID uniqueness checks
 - ✓ Reference validation
 - ✓ Pack summary (species count, relationships, etc.)
+- ⚠ Image coverage warnings (if species exist but lack images)
+
+### Image Validation Workflow
+
+When validating a pack with species but no images, you'll see warnings:
+
+```bash
+npm run validate packs/my-pack.json
+```
+
+Output:
+```
+⚠ Image Coverage Warnings:
+  ⊘ Pack has 5 species but no images field defined
+
+💡 Suggestion: Run the following to fetch images from Wikipedia:
+   npm run fetch-images packs/my-pack.json --merge
+   Then merge the generated images-*.json into this pack...
+```
+
+#### Step 1: Fetch Images from Wikipedia
+
+```bash
+npm run fetch-images packs/my-pack.json --merge
+```
+
+This command:
+- Searches Wikipedia for each species (scientific name first, then common name)
+- Extracts Wikimedia Commons image URLs
+- **Automatically merges the images into your pack file** (with `--merge` flag)
+- Shows progress and results (successful, failed, skipped)
+
+Example output:
+```
+[1/5] Searching for Great Horned Owl... ✓ Found
+[2/5] Searching for Red-tailed Hawk... ✓ Found
+[3/5] Searching for Pileated Woodpecker... ✓ Found
+[4/5] Searching for American Black Bear... ✓ Found
+[5/5] Searching for White Oak... ✗ Not found
+
+Summary:
+✓ Successful: 4/5
+✗ Failed: 1/5
+⊘ Skipped: 0/5
+
+✓ Images merged into pack:
+  packs/my-pack.json
+  4 images added to data.images
+```
+
+#### Step 2: Validate Again
+
+```bash
+npm run validate packs/my-pack.json
+```
+
+Now the pack passes with no image warnings:
+
+```
+✓ Validation Passed
+
+Pack: my-pack (v1.0.0)
+Content:
+  5 species/groups
+  4 🖼️  images
+```
+
+#### Options
+
+- **`--merge`** (recommended): Merge images directly into your original pack file. Clean workflow, no separate files.
+- **`--delay <ms>`**: Milliseconds to wait between Wikipedia requests (default: 1000). Increase if rate-limited.
+- **`--max <count>`**: Only process first N species (useful for testing).
+
+#### Without `--merge` Flag
+
+If you prefer to keep images separate:
+
+```bash
+npm run fetch-images packs/my-pack.json
+```
+
+This creates a separate `packs/images-my-pack.json` file that you can manually merge:
+
+```json
+{
+  "data": {
+    "images": [
+      { "speciesId": "bird_great-horned-owl", "url": "...", "author": "..." },
+      ...
+    ]
+  }
+}
+```
+
+Then manually merge into your pack's `data.images` array.
 
 ### Preview Merge
 
