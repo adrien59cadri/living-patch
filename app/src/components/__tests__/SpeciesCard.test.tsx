@@ -107,4 +107,47 @@ describe('SpeciesCard', () => {
       screen.getByText(/Orange and black butterfly obligate on milkweed/)
     ).toBeInTheDocument();
   });
+
+  describe('Hero image rendering', () => {
+    test('shows emoji placeholder when no image data', () => {
+      renderCard({ ...mockMonarch, image: undefined });
+      expect(screen.getByText('📷')).toBeInTheDocument();
+    });
+
+    test('shows emoji placeholder when image URL is empty', () => {
+      renderCard({ ...mockMonarch, image: { url: '', author: 'Unknown' } });
+      expect(screen.getByText('📷')).toBeInTheDocument();
+    });
+
+    test('renders actual image when good image URL is provided', () => {
+      const speciesWithImage = {
+        ...mockMonarch,
+        image: {
+          url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/test.jpg/960px-test.jpg',
+          author: 'Test Author',
+        },
+      };
+      renderCard(speciesWithImage);
+      const img = screen.getByRole('img', { name: /Monarch Butterfly/ });
+      expect(img).toBeInTheDocument();
+      expect(img).toHaveAttribute(
+        'src',
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/test.jpg/960px-test.jpg'
+      );
+      expect(img).toHaveAttribute('loading', 'lazy');
+    });
+
+    test('image has correct alt text', () => {
+      const speciesWithImage = {
+        ...mockMonarch,
+        image: {
+          url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/test.jpg/960px-test.jpg',
+          author: 'Test Author',
+        },
+      };
+      renderCard(speciesWithImage);
+      const img = screen.getByRole('img', { name: /Monarch Butterfly/ });
+      expect(img).toHaveAttribute('alt', 'Monarch Butterfly');
+    });
+  });
 });
