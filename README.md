@@ -6,18 +6,21 @@ A personal ecological literacy tool for exploring NE Pennsylvania species and th
 
 ```bash
 cd app
-npm install        # First time setup
+npm install        # First time setup (run once in app/ folder)
 npm run dev        # Start dev server → http://localhost:5174/
 ```
 
 ## Development Commands
 
+Run from the **repo root** (commands delegate to `app/` folder):
+
 ```bash
+npm run dev        # Start dev server → http://localhost:5174/
+npm run build      # TypeScript check + Vite build → dist/
+npm run preview    # Serve dist/ locally → http://localhost:4173/
 npm run lint       # Run ESLint
 npm run test:run   # Run 60 unit tests (Vitest + React Testing Library)
 npm run test:e2e   # Run 13 E2E tests (Playwright, requires build)
-npm run build      # TypeScript check + Vite build → dist/
-npm run preview    # Serve dist/ locally
 ```
 
 ## Features
@@ -141,9 +144,8 @@ To enable Pages deployment: Repo Settings → Pages → Source → "GitHub Actio
 ## Build & Deploy
 
 ```bash
-cd app
-npm run build     # TypeScript check + Vite build → dist/
-npm run preview   # Serve dist/ locally on :4173
+npm run build     # TypeScript check + Vite build → app/dist/
+npm run preview   # Serve app/dist/ locally on :4173
 ```
 
 GitHub Pages deploys automatically on `main` push (via GitHub Actions).
