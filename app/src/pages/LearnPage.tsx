@@ -6,7 +6,6 @@ import SymbiosisSection from '../components/SymbiosisSection';
 
 export default function LearnPage() {
   const { speciesById, symbiosis } = useDataset();
-  const [expandedForm, setExpandedForm] = useState<string | null>(null);
   const [expandedKeystoneType, setExpandedKeystoneType] = useState<string | null>(null);
   const [expandedSymbiosisType, setExpandedSymbiosisType] = useState<string | null>(null);
 
@@ -21,11 +20,7 @@ export default function LearnPage() {
         </div>
 
         <div className="space-y-8">
-          <FormHierarchySection
-            expanded={expandedForm}
-            onToggle={setExpandedForm}
-            speciesById={speciesById}
-          />
+          <FormHierarchySection speciesById={speciesById} />
 
           <KeystoneTypesSection
             expanded={expandedKeystoneType}
