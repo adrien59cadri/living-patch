@@ -30,7 +30,7 @@ test.describe('Species detail page — Monarch Butterfly', () => {
 
   test('LIFE STAGES section shows all four stages', async ({ page }) => {
     await page.goto(MONARCH_URL);
-    await expect(page.getByText('LIFE STAGES')).toBeVisible();
+    await expect(page.getByText('Life Stages')).toBeVisible();
     await expect(page.getByText('Egg', { exact: true })).toBeVisible();
     await expect(page.getByText('Caterpillar', { exact: true })).toBeVisible();
     await expect(page.getByText('Chrysalis', { exact: true })).toBeVisible();
