@@ -3,40 +3,32 @@ import { test, expect } from '@playwright/test';
 test.describe('Species list page basic functionality', () => {
   test('homepage loads successfully', async ({ page }) => {
     await page.goto('/');
-    await page.waitForLoadState('domcontentloaded');
+    await page.waitForLoadState('networkidle');
   });
 
   test('page title or heading is present', async ({ page }) => {
     await page.goto('/');
-    await page.waitForLoadState('domcontentloaded');
+    await page.waitForLoadState('networkidle');
 
-    // Look for any heading on the page
-    const heading = page.getByRole('heading').first();
-    const isHeadingVisible = await heading.isVisible().catch(() => false);
-
-    // Or look for search bar which should be on the page
-    const searchBar = page.getByRole('searchbox').first();
-    const isSearchVisible = await searchBar.isVisible().catch(() => false);
-
-    // At least one of these should exist
-    expect(isHeadingVisible || isSearchVisible).toBeTruthy();
+    // Look for search bar which should be on the page (most reliable indicator of page load)
+    const searchBar = page.getByRole('searchbox');
+    await expect(searchBar).toBeVisible();
   });
 
   test('search bar is on the page', async ({ page }) => {
     await page.goto('/');
-    await page.waitForLoadState('domcontentloaded');
+    await page.waitForLoadState('networkidle');
 
-    const searchBar = page.getByRole('searchbox').first();
-    const exists = await searchBar.isVisible().catch(() => false);
-    expect(exists).toBeTruthy();
+    const searchBar = page.getByRole('searchbox');
+    await expect(searchBar).toBeVisible();
   });
 
   test('species list text is visible', async ({ page }) => {
     await page.goto('/');
-    await page.waitForLoadState('domcontentloaded');
+    await page.waitForLoadState('networkidle');
 
-    const speciesText = page.getByText(/species/, { exact: false }).first();
-    const exists = await speciesText.isVisible().catch(() => false);
-    expect(exists).toBeTruthy();
+    // Look for species in the list (try common name or "species" text)
+    const speciesText = page.getByText('Pileated Woodpecker').or(page.getByText(/species/, { exact: false }));
+    await expect(speciesText.first()).toBeVisible();
   });
 });
