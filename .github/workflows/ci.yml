@@ -72,8 +72,6 @@ jobs:
 
       - name: Build for preview
         run: npm run build
-        env:
-          VITE_BASE_PATH: /${{ github.event.repository.name }}/
 
       - name: Run E2E tests
         run: npm run test:e2e
