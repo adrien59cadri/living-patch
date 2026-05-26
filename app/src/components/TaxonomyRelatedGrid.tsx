@@ -6,7 +6,7 @@ interface Props {
   speciesId: string;
 }
 
-export function TaxonomyRelatedGrid({ related, speciesId }: Props) {
+export function TaxonomyRelatedGrid({ related }: Props) {
   const allCategories = getCategoryGroups(related);
   const taxonomyCategories = allCategories.filter(c => c.slug === 'related');
 
