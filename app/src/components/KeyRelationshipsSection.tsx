@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import type { RelatedEntry, SymbiosisRole } from '../lib/relationships';
 import { groupByRole } from '../lib/relationships';
 import { KeyRelationshipTile } from './KeyRelationshipTile';
@@ -31,7 +32,7 @@ export function KeyRelationshipsSection({ related }: Props) {
       <div className="space-y-4">
         {keyRelations.map(({ role, entries }) => {
           const isExpanded = expandedRole === role;
-          const firstTwoNames = entries.slice(0, 2).map(e => e.species.common_name);
+          const firstTwo = entries.slice(0, 2);
           const remainingCount = Math.max(0, entries.length - 2);
 
           return (
@@ -45,7 +46,18 @@ export function KeyRelationshipsSection({ related }: Props) {
                     {symbiosisLabel(role)}: {entries.length} {entries.length === 1 ? 'species' : 'species'}
                   </div>
                   <div className="text-sm text-stone-700 mt-1">
-                    {firstTwoNames.join(', ')}
+                    {firstTwo.map((entry, idx) => (
+                      <span key={entry.species.id}>
+                        <Link
+                          to={`/species/${entry.species.id}`}
+                          onClick={(e) => e.stopPropagation()}
+                          className="text-emerald-600 hover:text-emerald-700 underline"
+                        >
+                          {entry.species.common_name}
+                        </Link>
+                        {idx < firstTwo.length - 1 && <span>, </span>}
+                      </span>
+                    ))}
                     {remainingCount > 0 && (
                       <span className="text-stone-500">…</span>
                     )}
