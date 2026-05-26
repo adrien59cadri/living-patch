@@ -106,21 +106,13 @@ try {
     throw new Error(`No valid data packs to merge`);
   }
 
-  // Merge packs into single dataset
-  const merged = {
-    taxonomic_groups: [],
-    species: [],
-    symbiosis: [],
-    relations: [],
-  };
-
+  // Check for duplicate IDs across all packs
   const speciesIds = new Set();
   const groupIds = new Set();
 
   for (const pack of dataPacks) {
     const { data } = pack;
 
-    // Track IDs for duplicate detection
     if (data.species) {
       for (const spec of data.species) {
         if (speciesIds.has(spec.id)) {
@@ -133,7 +125,6 @@ try {
           spec.image = imagesBySpeciesId.get(spec.id);
         }
       }
-      merged.species.push(...data.species);
     }
 
     if (data.taxonomic_groups) {
@@ -143,17 +134,13 @@ try {
         }
         groupIds.add(group.id);
       }
-      merged.taxonomic_groups.push(...data.taxonomic_groups);
-    }
-
-    if (data.symbiosis) {
-      merged.symbiosis.push(...data.symbiosis);
-    }
-
-    if (data.relations) {
-      merged.relations.push(...data.relations);
     }
   }
+
+  // Output: array of packs (preserving pack identity)
+  const output = {
+    packs: dataPacks,
+  };
 
   // Write output
   const outputDir = path.dirname(OUTPUT_PATH);
@@ -161,23 +148,39 @@ try {
     fs.mkdirSync(outputDir, { recursive: true });
   }
 
-  fs.writeFileSync(OUTPUT_PATH, JSON.stringify(merged, null, 2));
+  fs.writeFileSync(OUTPUT_PATH, JSON.stringify(output, null, 2));
 
   console.log('');
-  console.log(`✓ Dataset built successfully`);
-  console.log(`  ${merged.species.length} species`);
-  console.log(`  ${merged.taxonomic_groups.length} taxonomic groups`);
-  console.log(`  ${merged.symbiosis.length} symbiosis relationships`);
-  console.log(`  ${merged.relations.length} general relations`);
-  
+  console.log(`✓ Dataset built successfully with ${dataPacks.length} pack(s)`);
+
+  let totalSpecies = 0;
+  let totalGroups = 0;
+  let totalSymbiosis = 0;
+  let totalRelations = 0;
   let speciesWithImages = 0;
-  for (const spec of merged.species) {
-    if (spec.image) speciesWithImages++;
+
+  for (const pack of dataPacks) {
+    const { data } = pack;
+    if (data.species) {
+      totalSpecies += data.species.length;
+      for (const spec of data.species) {
+        if (spec.image) speciesWithImages++;
+      }
+    }
+    if (data.taxonomic_groups) totalGroups += data.taxonomic_groups.length;
+    if (data.symbiosis) totalSymbiosis += data.symbiosis.length;
+    if (data.relations) totalRelations += data.relations.length;
   }
+
+  console.log(`  ${totalSpecies} species`);
+  console.log(`  ${totalGroups} taxonomic groups`);
+  console.log(`  ${totalSymbiosis} symbiosis relationships`);
+  console.log(`  ${totalRelations} general relations`);
+
   if (speciesWithImages > 0) {
     console.log(`  🖼️  ${speciesWithImages} species with Wikipedia images`);
   }
-  
+
   if (skippedDrafts.length > 0) {
     console.log(`  ⊘ Skipped ${skippedDrafts.length} draft pack(s): ${skippedDrafts.join(', ')}`);
   }
