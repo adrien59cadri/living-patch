@@ -17,7 +17,6 @@
     "e2e:local": "act push --container-architecture linux/amd64 -P ubuntu-latest=ghcr.io/catthehacker/ubuntu:act-22.04 --workflows .github/workflows/ci.yml --job e2e",
     "pack:validate": "cd pack-tools && npm run validate",
     "pack:merge": "cd pack-tools && npm run merge",
-    "pack:migrate": "cd pack-tools && npm run migrate",
     "bundle:packs": "node build-dataset.js",
     "bundle:app": "npm run bundle:packs && cd app && npx vite build",
     "bundle:single-file": "npm run bundle:packs && cd app && VITE_SINGLE_FILE=true npx vite build && mv dist/index.html ../bundle.html && rm -rf dist"

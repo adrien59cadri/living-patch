@@ -28,9 +28,11 @@ function SpeciesRow({ species, isGroup }: { species: Species; isGroup: boolean }
           >
             {species.common_name}
           </span>
-          <span className="text-xs bg-stone-100 text-stone-500 px-2 py-0.5 rounded-full">
-            {formLabel(species.form)}
-          </span>
+          {!isGroup && species.form && (
+            <span className="text-xs bg-stone-100 text-stone-500 px-2 py-0.5 rounded-full">
+              {formLabel(species.form)}
+            </span>
+          )}
           {species.is_keystone && <KeystoneBadge type={species.keystone_type} />}
         </div>
         <p className="mt-1 text-sm text-stone-500 line-clamp-2">
