@@ -39,14 +39,14 @@ test.describe('Species detail page — Monarch Butterfly', () => {
 
   test('KEY RELATIONSHIPS section shows obligate milkweed', async ({ page }) => {
     await page.goto(MONARCH_URL);
-    await expect(page.getByText('KEY RELATIONSHIPS')).toBeVisible();
+    await expect(page.getByText('Key Relationships')).toBeVisible();
     await expect(page.getByText('Common Milkweed', { exact: true }).first()).toBeVisible();
     await expect(page.getByText('Obligate', { exact: true })).toBeVisible();
   });
 
   test('RELATED BY HABITAT section shows Plants category tile', async ({ page }) => {
     await page.goto(MONARCH_URL);
-    await expect(page.getByText('RELATED BY HABITAT')).toBeVisible();
+    await expect(page.getByText('Related by Habitat')).toBeVisible();
     await expect(page.getByText('Plants')).toBeVisible();
   });
 
