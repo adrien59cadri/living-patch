@@ -2,6 +2,7 @@ import { HashRouter, Routes, Route } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import DetailPage from './pages/DetailPage';
+import NeighborListView from './pages/NeighborListView';
 
 export default function App() {
   return (
@@ -22,6 +23,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/species/:id" element={<DetailPage />} />
+            <Route path="/species/:id/neighbors/:category" element={<NeighborListView />} />
           </Routes>
         </main>
       </div>

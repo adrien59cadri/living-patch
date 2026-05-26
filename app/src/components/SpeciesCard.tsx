@@ -1,20 +1,23 @@
 import { useState } from 'react';
 import type { Species, LifeStage } from '../types';
-import type { GroupedRelations } from '../lib/relationships';
+import type { RelatedEntry } from '../lib/relationships';
+import { getCategoryGroups, getKeyRelationship } from '../lib/relationships';
 import { KeystoneBadge } from './KeystoneBadge';
 import { LifeStageRow } from './LifeStageRow';
-import { RelationshipsPanel } from './RelationshipsPanel';
+import { KeyRelationshipTile } from './KeyRelationshipTile';
+import { NeighborsGrid } from './NeighborsGrid';
+import { LogSightingButton } from './LogSightingButton';
 import {
   formLabel,
   habitatLabel,
   dietLabel,
   behaviorLabel,
-  seasonLabel,
+  activeMonthsLabel,
 } from '../lib/labels';
 
 interface Props {
   species: Species;
-  grouped: GroupedRelations;
+  related: RelatedEntry[];
 }
 
 function Tag({ label }: { label: string }) {
@@ -25,21 +28,26 @@ function Tag({ label }: { label: string }) {
   );
 }
 
-export function SpeciesCard({ species, grouped }: Props) {
+export function SpeciesCard({ species, related }: Props) {
   const [latinVisible, setLatinVisible] = useState(false);
 
   const stages = (species.life_stages as LifeStage[]).filter(
     s => typeof s === 'object' && s !== null
   );
 
+  const keyRelationship = getKeyRelationship(related);
+  const categories = getCategoryGroups(related);
+
+  const seasonChip = activeMonthsLabel(species.active_months);
+
   return (
     <div className="space-y-6">
-      {/* Photo placeholder */}
+      {/* 1. Hero photo area */}
       <div className="w-full h-48 bg-stone-100 rounded-xl flex items-center justify-center text-stone-300">
         <span className="text-5xl">📷</span>
       </div>
 
-      {/* Name */}
+      {/* 2. Name block */}
       <div>
         <div className="flex items-start gap-3 flex-wrap">
           <h1 className="text-2xl font-bold text-stone-800 leading-tight">
@@ -57,7 +65,7 @@ export function SpeciesCard({ species, grouped }: Props) {
         )}
       </div>
 
-      {/* Tags */}
+      {/* 3. Tags row */}
       <div className="flex flex-wrap gap-1.5">
         <Tag label={formLabel(species.form)} />
         {(species.habitat ?? []).map(h => (
@@ -69,12 +77,10 @@ export function SpeciesCard({ species, grouped }: Props) {
         {(species.behavior ?? []).map(b => (
           <Tag key={b} label={behaviorLabel(b)} />
         ))}
-        {(species.season ?? []).map(s => (
-          <Tag key={s} label={seasonLabel(s)} />
-        ))}
+        {seasonChip && <Tag label={seasonChip} />}
       </div>
 
-      {/* Functional description */}
+      {/* 4. Functional description */}
       <p className="text-stone-600 text-sm leading-relaxed">
         {species.functional_description}
       </p>
@@ -89,7 +95,7 @@ export function SpeciesCard({ species, grouped }: Props) {
         </div>
       )}
 
-      {/* Life stages */}
+      {/* 5. Life stages */}
       {stages.length > 0 && (
         <div>
           <div className="text-xs font-semibold uppercase tracking-wide text-stone-400 mb-3">
@@ -99,8 +105,29 @@ export function SpeciesCard({ species, grouped }: Props) {
         </div>
       )}
 
-      {/* Relationships */}
-      <RelationshipsPanel grouped={grouped} />
+      {/* 6. Key relationship */}
+      {keyRelationship && (
+        <div>
+          <div className="text-xs font-semibold uppercase tracking-wide text-stone-400 mb-3">
+            Key Relationship
+          </div>
+          <KeyRelationshipTile entry={keyRelationship} />
+        </div>
+      )}
+
+      {/* 7. Neighbors grid */}
+      {categories.length > 0 && (
+        <div>
+          <div className="text-xs font-semibold uppercase tracking-wide text-stone-400 mb-3">
+            Neighbors
+          </div>
+          <NeighborsGrid categories={categories} speciesId={species.id} />
+        </div>
+      )}
+
+      {/* 8. Log sighting */}
+      <LogSightingButton />
     </div>
   );
 }
+

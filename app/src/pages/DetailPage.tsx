@@ -1,6 +1,6 @@
 import { useParams, Link } from 'react-router-dom';
 import { useDataset } from '../hooks/useDataset';
-import { getRelatedEntries, groupByRole } from '../lib/relationships';
+import { getRelatedEntries } from '../lib/relationships';
 import { SpeciesCard } from '../components/SpeciesCard';
 
 export default function DetailPage() {
@@ -26,7 +26,6 @@ export default function DetailPage() {
     relationsBySpeciesId,
     speciesById
   );
-  const grouped = groupByRole(related);
 
   return (
     <div className="space-y-4">
@@ -36,7 +35,7 @@ export default function DetailPage() {
       >
         ← All species
       </Link>
-      <SpeciesCard species={species} grouped={grouped} />
+      <SpeciesCard species={species} related={related} />
     </div>
   );
 }

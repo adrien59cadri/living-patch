@@ -88,3 +88,32 @@ export function symbiosisLabel(type: string): string {
   };
   return labels[type] ?? type;
 }
+
+const FORM_ICONS: Record<string, string> = {
+  woodpecker:  '🦅',
+  raptor:      '🦅',
+  owl:         '🦉',
+  songbird:    '🐦',
+  warbler:     '🐦',
+  hummingbird: '🐦',
+  wading_bird: '🦢',
+  mammal:      '🦫',
+  tree:        '🌳',
+  wildflower:  '🌸',
+  shrub:       '🌿',
+  butterfly:   '🦋',
+  beetle:      '🪲',
+  bug:         '🐛',
+  bee:         '🐝',
+  frog:        '🐸',
+};
+
+export function formIcon(form: string): string {
+  return FORM_ICONS[form] ?? '🌱';
+}
+
+export function activeMonthsLabel(active_months?: string[]): string | null {
+  if (!active_months || active_months.length === 0) return null;
+  const first = active_months[0];
+  return first === 'Jan-Dec' ? 'Year-round' : first;
+}
