@@ -188,3 +188,69 @@ export function checkMultiplePackConflicts(
     conflicts,
   };
 }
+
+/**
+ * Check if species in a pack are missing images when images exist in the pack
+ * @param pack Pack to check
+ * @returns Report with warnings for species without images
+ */
+export function checkMissingImages(pack: DataPack): ConflictReport {
+  const conflicts: Conflict[] = [];
+
+  // Only check if pack has species
+  const hasSpecies = (pack.data.species && pack.data.species.length > 0);
+  const hasImages = (pack.data.images && pack.data.images.length > 0);
+
+  if (!hasSpecies) {
+    return { hasConflicts: false, conflicts: [] };
+  }
+
+  // If pack has species but no images array, suggest fetching
+  if (!pack.data.images) {
+    const allSpecies = pack.data.species || [];
+    // Skip taxonomic groups for count
+    const actualSpecies = allSpecies.filter(s => !s.taxonomic_group || s.latin_name).length;
+
+    if (actualSpecies > 0) {
+      conflicts.push({
+        type: 'id_format_violation', // Reuse existing type for warnings
+        severity: 'warning',
+        message: `Pack has ${actualSpecies} species but no images field defined`,
+        packId: pack.metadata.id,
+        affectedIds: [],
+      });
+    }
+    return { hasConflicts: conflicts.length > 0, conflicts };
+  }
+
+  // Build set of species with images (only count actual species, not groups)
+  const imagesBySpeciesId = new Map<string, boolean>();
+  for (const img of pack.data.images || []) {
+    imagesBySpeciesId.set(img.speciesId, true);
+  }
+
+  // Check each species (skip taxonomic groups: those without latin_name)
+  const allSpecies = pack.data.species || [];
+
+  for (const species of allSpecies) {
+    // Skip taxonomic groups (identified by taxonomic_group field + no latin_name)
+    if (species.taxonomic_group && !species.latin_name) {
+      continue;
+    }
+
+    if (!imagesBySpeciesId.has(species.id)) {
+      conflicts.push({
+        type: 'id_format_violation', // Reuse existing type for warnings
+        severity: 'warning',
+        message: `Species "${species.common_name}" (${species.id}) is missing an image`,
+        packId: pack.metadata.id,
+        affectedIds: [species.id],
+      });
+    }
+  }
+
+  return {
+    hasConflicts: conflicts.length > 0,
+    conflicts,
+  };
+}

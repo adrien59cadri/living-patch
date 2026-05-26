@@ -11,7 +11,7 @@ import fs from 'fs';
 import path from 'path';
 import chalk from 'chalk';
 import { validatePackSafe } from '../lib/schema.js';
-import { checkInternalConflicts } from '../lib/conflicts.js';
+import { checkInternalConflicts, checkMissingImages } from '../lib/conflicts.js';
 
 const args = process.argv.slice(2);
 
@@ -81,10 +81,14 @@ try {
     process.exit(1);
   }
 
+  // Check for missing images (warnings only)
+  const imageWarnings = checkMissingImages(pack);
+
   // Success!
   const totalSpecies = (pack.data.species?.length || 0) + (pack.data.taxonomic_groups?.length || 0);
   const totalSymbiosis = pack.data.symbiosis?.length || 0;
   const totalRelations = pack.data.relations?.length || 0;
+  const totalImages = pack.data.images?.length || 0;
   const status = pack.metadata.status || 'published';
 
   console.log(chalk.green('✓ Validation Passed'));
@@ -98,8 +102,22 @@ try {
   console.log('');
   console.log(chalk.bold('Content:'));
   console.log(`  ${chalk.cyan(totalSpecies)} species/groups`);
-  console.log(`  ${chalk.cyan(totalSymbiosis)} symbiosis relationships`);
-  console.log(`  ${chalk.cyan(totalRelations)} general relations`);
+  if (totalSymbiosis > 0) console.log(`  ${chalk.cyan(totalSymbiosis)} symbiosis relationships`);
+  if (totalRelations > 0) console.log(`  ${chalk.cyan(totalRelations)} general relations`);
+  if (totalImages > 0) console.log(`  ${chalk.cyan(totalImages)} 🖼️  images`);
+
+  // Show image coverage warnings
+  if (imageWarnings.hasConflicts && imageWarnings.conflicts.length > 0) {
+    console.log('');
+    console.log(chalk.yellow('⚠ Image Coverage Warnings:'));
+    imageWarnings.conflicts.forEach((warning) => {
+      console.log(`  ${chalk.yellow('⊘')} ${warning.message}`);
+    });
+    console.log('');
+    console.log(chalk.gray('💡 Suggestion: Run the following to fetch images from Wikipedia:'));
+    console.log(chalk.gray(`   npm run fetch-images packs/${pack.metadata.id}.json`));
+    console.log(chalk.gray('   Then merge the generated images-*.json into this pack by adding the "images" array to the data object.'));
+  }
 
   if (status === 'draft') {
     console.log('');

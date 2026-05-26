@@ -147,4 +147,3 @@ export type Symbiosis = z.infer<typeof SymbiosisSchema>;
 export type Relation = z.infer<typeof RelationSchema>;
 export type PackMetadata = z.infer<typeof PackMetadataSchema>;
 export type PackData = z.infer<typeof PackDataSchema>;
-export type ImagesPack = z.infer<typeof ImagesPackSchema>;
