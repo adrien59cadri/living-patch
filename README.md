@@ -132,8 +132,8 @@ To enable Pages deployment: Repo Settings → Pages → Source → "GitHub Actio
 Test the CI pipeline locally before pushing using `act` (GitHub Actions simulator):
 
 ```bash
-npm run ci:local      # Run CI job (lint → type-check → test → build)
-npm run ci:local:e2e  # Run E2E tests
+npm run ci:local    # Run CI job (lint → type-check → test → build)
+npm run e2e:local   # Run E2E tests
 ```
 
 **Setup:** `brew install act` + Docker Desktop running. Install Docker from [docker.com](https://www.docker.com/products/docker-desktop).

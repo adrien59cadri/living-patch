@@ -10,6 +10,8 @@
     "lint": "cd app && npm run lint",
     "test": "cd app && npm run test",
     "test:run": "cd app && npm run test:run",
-    "test:e2e": "cd app && npm run test:e2e"
+    "test:e2e": "cd app && npm run test:e2e",
+    "ci:local": "act push --workflows .github/workflows/ci.yml --job ci",
+    "e2e:local": "act push --workflows .github/workflows/ci.yml --job e2e"
   }
 }
