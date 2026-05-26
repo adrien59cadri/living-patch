@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import type { Species } from '../types';
 import { FORM_DEFINITIONS, getFormExamples, FORM_HIERARCHY, type FormHierarchyNode } from '../lib/learnContent';
 import { formIcon } from '../lib/labels';
@@ -72,17 +73,22 @@ function FormNodeItem({
             </p>
 
             {examples.length > 0 && (
-              <div className="space-y-1">
-                <p className="text-xs font-semibold uppercase tracking-wide text-stone-400">
-                  Examples
-                </p>
-                <div className="space-y-1">
-                  {examples.map((species) => (
-                    <div key={species.id} className="text-sm">
+              <div className="space-y-2">
+                <p className="text-sm text-stone-600">
+                  <span className="font-medium">Examples:</span>{' '}
+                  {examples.map((species, idx) => (
+                    <span key={species.id}>
                       <ExampleSpeciesLink species={species} />
-                    </div>
+                      {idx < examples.length - 1 && <span className="text-stone-400">, </span>}
+                    </span>
                   ))}
-                </div>
+                </p>
+                <Link
+                  to={`/?form=${node.key}`}
+                  className="inline-text text-xs text-emerald-600 hover:underline font-medium"
+                >
+                  See all {definition.label.toLowerCase()}
+                </Link>
               </div>
             )}
           </div>

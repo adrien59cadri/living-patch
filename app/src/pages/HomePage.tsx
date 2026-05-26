@@ -1,4 +1,5 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { useDataset } from '../hooks/useDataset';
 import { filterSpecies, getFilterOptions } from '../lib/filters';
 import type { FilterState } from '../lib/filters';
@@ -8,6 +9,7 @@ import { SpeciesList } from '../components/SpeciesList';
 
 export default function HomePage() {
   const { species, groups } = useDataset();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const [isAdvancedOpen, setIsAdvancedOpen] = useState(false);
 
@@ -18,6 +20,14 @@ export default function HomePage() {
     habitats: [],
     keystone_types: [],
   });
+
+  useEffect(() => {
+    const formParam = searchParams.get('form');
+    if (formParam) {
+      setFilters(f => ({ ...f, forms: [formParam] }));
+      setIsAdvancedOpen(true);
+    }
+  }, [searchParams]);
 
   const options = useMemo(() => getFilterOptions(species), [species]);
   const filteredSpecies = useMemo(() => filterSpecies(species, filters), [species, filters]);
