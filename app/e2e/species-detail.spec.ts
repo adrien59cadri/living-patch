@@ -19,7 +19,7 @@ test.describe('Species detail page — Monarch Butterfly', () => {
 
   test('tags row shows form and active_months chip', async ({ page }) => {
     await page.goto(MONARCH_URL);
-    await expect(page.getByText('Butterfly', { exact: true })).toBeVisible();
+    await expect(page.getByText('Butterfly', { exact: true }).first()).toBeVisible();
     await expect(page.getByText('May-Oct', { exact: true }).first()).toBeVisible();
   });
 
