@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import type { RelatedEntry, SymbiosisRole, KeyRoleGroupedRelations } from '../lib/relationships';
+import type { RelatedEntry, SymbiosisRole } from '../lib/relationships';
 import { groupKeyRolesByObligation } from '../lib/relationships';
 import { KeyRelationshipTile } from './KeyRelationshipTile';
 import { symbiosisLabel } from '../lib/labels';
