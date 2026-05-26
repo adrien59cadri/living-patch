@@ -5,6 +5,7 @@ const dataset = rawDataset as unknown as Dataset;
 
 export const nonGroupSpecies: Species[] = dataset.species.filter(s => !s.is_group);
 export const groupSpecies: Species[] = dataset.species.filter(s => s.is_group);
+export const allSymbiosis: Symbiosis[] = dataset.symbiosis;
 
 export const speciesById = new Map<string, Species>(
   dataset.species.map(s => [s.id, s])
