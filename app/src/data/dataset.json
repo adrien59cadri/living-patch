@@ -75,11 +75,7 @@
       "is_keystone": true,
       "keystone_type": "ecosystem_engineer",
       "keystone_description": "Primary cavity excavator. Abandoned cavities used by Great Horned Owl, American Kestrel, Wood Duck, and flying squirrels. Creates snags that structure the entire forest bird community.",
-      "taxonomic_group": "group_woodpeckers",
-      "image": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/PileatedWoodpeckerFeedingonTree%2C_crop.jpg/960px-PileatedWoodpeckerFeedingonTree%2C_crop.jpg",
-        "author": "Joshlaymon"
-      }
+      "taxonomic_group": "group_woodpeckers"
     },
     {
       "id": "bird_red-tailed-hawk",
@@ -107,11 +103,7 @@
       "ecological_role": "carnivore",
       "is_keystone": true,
       "keystone_type": "predator",
-      "keystone_description": "Apex daytime predator of open habitats. Controls gray squirrel, vole, and cottontail populations. Major fall migration corridor at Kittatinny Ridge (Hawk Mountain).",
-      "image": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Red-tailed_Hawk_%2845812546121%29.jpg/960px-Red-tailed_Hawk_%2845812546121%29.jpg",
-        "author": "Becky Matsubara from El Sobrante, California"
-      }
+      "keystone_description": "Apex daytime predator of open habitats. Controls gray squirrel, vole, and cottontail populations. Major fall migration corridor at Kittatinny Ridge (Hawk Mountain)."
     },
     {
       "id": "bird_great-horned-owl",
@@ -142,11 +134,7 @@
       "keystone_description": "Apex nocturnal predator. Controls rabbits, squirrels, skunks, and even other raptors. Depends on Pileated Woodpecker cavities and abandoned Red-tailed Hawk nests.",
       "active_months": [
         "Jan-Dec"
-      ],
-      "image": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Bubo_virginianus_06.jpg/500px-Bubo_virginianus_06.jpg",
-        "author": "Greg Hume"
-      }
+      ]
     },
     {
       "id": "bird_cedar-waxwing",
@@ -176,11 +164,7 @@
       "ecological_role": "omnivore",
       "is_keystone": false,
       "keystone_type": null,
-      "keystone_description": null,
-      "image": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Cedar_Waxwing_-_Bombycilla_cedrorum%2C_George_Washington%27s_Birthplace_National_Monument%2C_Colonial_Beach%2C_Virginia_%2839997434862%29.jpg/500px-Cedar_Waxwing_-_Bombycilla_cedrorum%2C_George_Washington%27s_Birthplace_National_Monument%2C_Colonial_Beach%2C_Virginia_%2839997434862%29.jpg",
-        "author": "Judy Gallagher"
-      }
+      "keystone_description": null
     },
     {
       "id": "bird_common-yellowthroat",
@@ -210,11 +194,7 @@
       "ecological_role": "carnivore",
       "is_keystone": false,
       "keystone_type": null,
-      "keystone_description": null,
-      "image": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Common_yellowthroat_in_PP_%2814155%29.jpg/960px-Common_yellowthroat_in_PP_%2814155%29.jpg",
-        "author": "Rhododendrites"
-      }
+      "keystone_description": null
     },
     {
       "id": "bird_american-kestrel",
@@ -243,11 +223,7 @@
       "ecological_role": "carnivore",
       "is_keystone": false,
       "keystone_type": null,
-      "keystone_description": null,
-      "image": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/American_kestrel_%28Falco_sparverius_cinnamominus%29_male_Leona_Amarga.jpg/960px-American_kestrel_%28Falco_sparverius_cinnamominus%29_male_Leona_Amarga.jpg",
-        "author": "Wikimedia Commons"
-      }
+      "keystone_description": null
     },
     {
       "id": "bird_eastern-bluebird",
@@ -277,11 +253,7 @@
       "ecological_role": "omnivore",
       "is_keystone": false,
       "keystone_type": null,
-      "keystone_description": null,
-      "image": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Sialia_sialis_-Michigan%2C_USA_-pair-8c.jpg/960px-Sialia_sialis_-Michigan%2C_USA_-pair-8c.jpg",
-        "author": "Sandysphotos2009"
-      }
+      "keystone_description": null
     },
     {
       "id": "bird_downy-woodpecker",
@@ -309,11 +281,7 @@
       "is_keystone": false,
       "keystone_type": null,
       "keystone_description": null,
-      "taxonomic_group": "group_woodpeckers",
-      "image": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Dryobates_pubescens_UL_03.jpg/960px-Dryobates_pubescens_UL_03.jpg",
-        "author": "Cephas"
-      }
+      "taxonomic_group": "group_woodpeckers"
     },
     {
       "id": "bird_ruby-throated-hummingbird",
@@ -346,11 +314,7 @@
       "keystone_description": null,
       "active_months": [
         "May-Sep"
-      ],
-      "image": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Archilochus_colubris_-flying_-male-8.jpg/960px-Archilochus_colubris_-flying_-male-8.jpg",
-        "author": "jeffreyw"
-      }
+      ]
     },
     {
       "id": "bird_great-blue-heron",
@@ -382,11 +346,7 @@
       "is_keystone": false,
       "keystone_type": null,
       "keystone_description": null,
-      "taxonomic_group": "group_herons-and-egrets",
-      "image": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/GreatBlueHeronInARiver.jpg/960px-GreatBlueHeronInARiver.jpg",
-        "author": "DallasPenner"
-      }
+      "taxonomic_group": "group_herons-and-egrets"
     },
     {
       "id": "mammal_beaver",
@@ -414,11 +374,7 @@
       "ecological_role": "herbivore",
       "is_keystone": true,
       "keystone_type": "ecosystem_engineer",
-      "keystone_description": "Single most powerful landscape engineer in NE PA. Beaver ponds create habitat for Great Blue Heron, Wood Duck, Hooded Merganser, American Bullfrog, Spotted Salamander, painted turtles, and muskrat. Beaver-killed snags multiply cavity supply for Pileated Woodpecker.",
-      "image": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/6/6b/American_Beaver.jpg",
-        "author": "Steve from Washington, DC, USA"
-      }
+      "keystone_description": "Single most powerful landscape engineer in NE PA. Beaver ponds create habitat for Great Blue Heron, Wood Duck, Hooded Merganser, American Bullfrog, Spotted Salamander, painted turtles, and muskrat. Beaver-killed snags multiply cavity supply for Pileated Woodpecker."
     },
     {
       "id": "mammal_eastern-gray-squirrel",
@@ -446,11 +402,7 @@
       "ecological_role": "herbivore",
       "is_keystone": false,
       "keystone_type": null,
-      "keystone_description": null,
-      "image": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/EasternGraySquirrel_GAm.jpg/960px-EasternGraySquirrel_GAm.jpg",
-        "author": "JeffreyGammon"
-      }
+      "keystone_description": null
     },
     {
       "id": "mammal_white-tailed-deer",
@@ -478,11 +430,7 @@
       "ecological_role": "herbivore",
       "is_keystone": false,
       "keystone_type": null,
-      "keystone_description": null,
-      "image": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/White-tailed_deer.jpg/960px-White-tailed_deer.jpg",
-        "author": "USDA photo by Scott Bauer"
-      }
+      "keystone_description": null
     },
     {
       "id": "plant_white-oak",
@@ -513,11 +461,7 @@
       "is_keystone": true,
       "keystone_type": "structural",
       "keystone_description": "Hosts more wildlife than almost any other native tree. Acorns feed squirrels, deer, turkey, jays, woodpeckers, black bear. Leaves support 557 Lepidoptera caterpillar species. Long-lived — a single mature white oak feeds dozens of species.",
-      "taxonomic_group": "group_oaks",
-      "image": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Keeler_Oak_Tree_-_distance_photo%2C_May_2013.jpg/960px-Keeler_Oak_Tree_-_distance_photo%2C_May_2013.jpg",
-        "author": "Marty Aligata at English Wikipedia"
-      }
+      "taxonomic_group": "group_oaks"
     },
     {
       "id": "plant_northern-red-oak",
@@ -547,11 +491,7 @@
       "is_keystone": true,
       "keystone_type": "structural",
       "keystone_description": "Co-dominant with White Oak in NE PA upland forests. Acorns high-tannin — cached by squirrels longer than white oak acorns. Same broad wildlife support as Q. alba.",
-      "taxonomic_group": "group_oaks",
-      "image": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Quercus_rubra_%40_Tortworth_Court.jpg/960px-Quercus_rubra_%40_Tortworth_Court.jpg",
-        "author": "No machine-readable author provided. Velela"
-      }
+      "taxonomic_group": "group_oaks"
     },
     {
       "id": "plant_black-willow",
@@ -586,11 +526,7 @@
       "active_months": [
         "Mar-Jun"
       ],
-      "taxonomic_group": "group_willows",
-      "image": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Salix_nigra_Morton_180-88-3.jpg/500px-Salix_nigra_Morton_180-88-3.jpg",
-        "author": "Bruce Marlin"
-      }
+      "taxonomic_group": "group_willows"
     },
     {
       "id": "plant_common-milkweed",
@@ -626,11 +562,7 @@
       "active_months": [
         "Apr-Oct"
       ],
-      "taxonomic_group": "group_milkweeds",
-      "image": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Asclepias_syriacus.tif/lossy-page1-500px-Asclepias_syriacus.tif.jpg",
-        "author": "Amos Oliver Doyle"
-      }
+      "taxonomic_group": "group_milkweeds"
     },
     {
       "id": "plant_butterfly-weed",
@@ -660,11 +592,7 @@
       "is_keystone": false,
       "keystone_type": null,
       "keystone_description": null,
-      "taxonomic_group": "group_milkweeds",
-      "image": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Asclepias_tuberosa_interior.jpg/960px-Asclepias_tuberosa_interior.jpg",
-        "author": "Eric Hunt"
-      }
+      "taxonomic_group": "group_milkweeds"
     },
     {
       "id": "plant_swamp-milkweed",
@@ -694,11 +622,7 @@
       "is_keystone": false,
       "keystone_type": null,
       "keystone_description": null,
-      "taxonomic_group": "group_milkweeds",
-      "image": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/2/21/Swamp_milkweed_monarch.jpg",
-        "author": "The original uploader was Teune at English Wikipedia."
-      }
+      "taxonomic_group": "group_milkweeds"
     },
     {
       "id": "plant_goldenrod",
@@ -734,11 +658,7 @@
       "keystone_description": "Dominant late-season nectar source for migrating Monarchs, 43 specialist native bee species, bumble bee gynes (fall queens building fat reserves), and dozens of generalist pollinators. Eurosta gall larvae are critical winter food for Downy Woodpeckers and Black-capped Chickadees.",
       "active_months": [
         "Jul-Oct"
-      ],
-      "image": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Solidago_virgaurea_var._leiocarpa_02-2.jpg/960px-Solidago_virgaurea_var._leiocarpa_02-2.jpg",
-        "author": "Σ64 (talk)"
-      }
+      ]
     },
     {
       "id": "plant_eastern-columbine",
@@ -772,11 +692,7 @@
       "keystone_description": null,
       "active_months": [
         "Apr-May"
-      ],
-      "image": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Wild_Columbine.jpg/960px-Wild_Columbine.jpg",
-        "author": "Ragesoss"
-      }
+      ]
     },
     {
       "id": "plant_spicebush",
@@ -811,11 +727,7 @@
       "active_months": [
         "Mar-Apr",
         "Sep-Oct"
-      ],
-      "image": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Spicebush_%284506720062%29.jpg/500px-Spicebush_%284506720062%29.jpg",
-        "author": "Jason Hollinger"
-      }
+      ]
     },
     {
       "id": "plant_black-cherry",
@@ -846,11 +758,7 @@
       "ecological_role": "producer",
       "is_keystone": true,
       "keystone_type": "prey",
-      "keystone_description": "Second only to oaks in total Lepidoptera support (456 species). Cherries fuel migrant thrushes, waxwings, and many other birds. Primary host for Eastern Tiger Swallowtail in PA. Eastern Tent Caterpillar — conspicuous spring indicator — depends on it.",
-      "image": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Amerikaanse_vogelkers_Prunus_serotina_closeup.jpg/500px-Amerikaanse_vogelkers_Prunus_serotina_closeup.jpg",
-        "author": "Wikimedia Commons"
-      }
+      "keystone_description": "Second only to oaks in total Lepidoptera support (456 species). Cherries fuel migrant thrushes, waxwings, and many other birds. Primary host for Eastern Tiger Swallowtail in PA. Eastern Tent Caterpillar — conspicuous spring indicator — depends on it."
     },
     {
       "id": "insect_monarch-butterfly",
@@ -917,11 +825,7 @@
       "keystone_description": "Obligate on milkweed — cannot breed without genus Asclepias. Pollinates milkweed and goldenrod. Iconic indicator of agricultural landscape health.",
       "active_months": [
         "May-Oct"
-      ],
-      "image": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Monarch_Butterfly_Danaus_plexippus_Male_2664px.jpg/960px-Monarch_Butterfly_Danaus_plexippus_Male_2664px.jpg",
-        "author": "Photo by and (c)2007 Derek Ramsey (Ram-Man)"
-      }
+      ]
     },
     {
       "id": "insect_black-swallowtail",
@@ -985,11 +889,7 @@
       "ecological_role": "herbivore",
       "is_keystone": false,
       "keystone_type": null,
-      "keystone_description": null,
-      "image": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Black_Swallowtail%2C_male%2C_Ottawa.jpg/960px-Black_Swallowtail%2C_male%2C_Ottawa.jpg",
-        "author": "D. Gordon E. Robertson"
-      }
+      "keystone_description": null
     },
     {
       "id": "insect_eastern-tiger-swallowtail",
@@ -1053,11 +953,7 @@
       "ecological_role": "herbivore",
       "is_keystone": false,
       "keystone_type": null,
-      "keystone_description": null,
-      "image": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Pristine_Eastern_Tiger_Swallowtail.jpg/960px-Pristine_Eastern_Tiger_Swallowtail.jpg",
-        "author": "HaarFager at English Wikipedia"
-      }
+      "keystone_description": null
     },
     {
       "id": "insect_spicebush-swallowtail",
@@ -1119,11 +1015,7 @@
       "ecological_role": "herbivore",
       "is_keystone": false,
       "keystone_type": null,
-      "keystone_description": null,
-      "image": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Spicebush02.jpg/960px-Spicebush02.jpg",
-        "author": "Greg Hume"
-      }
+      "keystone_description": null
     },
     {
       "id": "insect_red-milkweed-beetle",
@@ -1168,11 +1060,7 @@
       "ecological_role": "herbivore",
       "is_keystone": false,
       "keystone_type": null,
-      "keystone_description": null,
-      "image": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Red_Milkweed_Beetle_%28Tetraopes_tetrophthalmus%29_Consuming_Common_Milkweed_Flower.jpg/960px-Red_Milkweed_Beetle_%28Tetraopes_tetrophthalmus%29_Consuming_Common_Milkweed_Flower.jpg",
-        "author": "Rbreidbrown"
-      }
+      "keystone_description": null
     },
     {
       "id": "insect_large-milkweed-bug",
@@ -1218,11 +1106,7 @@
       "ecological_role": "herbivore",
       "is_keystone": false,
       "keystone_type": null,
-      "keystone_description": null,
-      "image": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Large_milkweed_bug_%2823188%29.jpg/960px-Large_milkweed_bug_%2823188%29.jpg",
-        "author": "Rhododendrites"
-      }
+      "keystone_description": null
     },
     {
       "id": "insect_native-bumble-bees",
@@ -1281,11 +1165,7 @@
       "ecological_role": "pollinator",
       "is_keystone": true,
       "keystone_type": "pollinator",
-      "keystone_description": "Essential pollinators of milkweed, columbine, goldenrod, native blueberries, and 100+ other plants. Primary pollinators of Common Milkweed (produce 8x more seed pods than nocturnal moths). Buzz pollination is unique among bees. Black Willow catkins are critical first-of-spring food.",
-      "image": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Bombus_lapidarius_-_Melilotus_officinalis_-_Tallinn.jpg/500px-Bombus_lapidarius_-_Melilotus_officinalis_-_Tallinn.jpg",
-        "author": "Ivar Leidus"
-      }
+      "keystone_description": "Essential pollinators of milkweed, columbine, goldenrod, native blueberries, and 100+ other plants. Primary pollinators of Common Milkweed (produce 8x more seed pods than nocturnal moths). Buzz pollination is unique among bees. Black Willow catkins are critical first-of-spring food."
     },
     {
       "id": "amphibian_american-bullfrog",
@@ -1353,11 +1233,129 @@
       "active_months": [
         "Apr-Oct"
       ],
-      "taxonomic_group": "group_frogs",
-      "image": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/North-American-bullfrog1.jpg/960px-North-American-bullfrog1.jpg",
-        "author": "Carl D. Howe"
-      }
+      "taxonomic_group": "group_frogs"
+    },
+    {
+      "id": "group_other-native-milkweeds",
+      "common_name": "Other Native Milkweeds",
+      "latin_name": "Asclepias spp.",
+      "form": "wildflower",
+      "habitat": [
+        "field",
+        "wetland",
+        "forest_edge"
+      ],
+      "functional_description": "Additional native PA Asclepias: Poke Milkweed (A. exaltata, forest shade), Whorled Milkweed (A. verticillata, dry open), Four-leaved Milkweed (A. quadrifolia, woodland), Purple Milkweed (A. purpurascens, rare). All support Monarch breeding. Note: Tropical Milkweed (A. curassavica) is non-native and disrupts Monarch migration — not included.",
+      "life_stages": [],
+      "region": "northeast_pa",
+      "taxonomic_group": "group_milkweeds"
+    },
+    {
+      "id": "group_other-native-pa-oaks",
+      "common_name": "Other Native PA Oaks",
+      "latin_name": "Quercus spp.",
+      "form": "tree",
+      "habitat": [
+        "forest",
+        "woodland",
+        "swamp"
+      ],
+      "functional_description": "Native PA oaks beyond White and Red: Black Oak (Q. velutina), Scarlet Oak (Q. coccinea), Pin Oak (Q. palustris, wet soils), Chestnut Oak (Q. montana, rocky ridges), Swamp White Oak (Q. bicolor, floodplains), Chinkapin Oak (Q. muehlenbergii). All share the same 557-species Lepidoptera support network. All produce acorns.",
+      "life_stages": [],
+      "region": "northeast_pa",
+      "taxonomic_group": "group_oaks"
+    },
+    {
+      "id": "group_other-native-pa-willows",
+      "common_name": "Other Native PA Willows",
+      "latin_name": "Salix spp.",
+      "form": "shrub",
+      "habitat": [
+        "riparian",
+        "wetland",
+        "streamside"
+      ],
+      "functional_description": "Native PA willows beyond Black Willow: Pussy Willow (S. discolor — the ornamental spring catkin species), Silky Willow (S. sericea), Heartleaf Willow (S. eriocephala), Prairie Willow (S. humilis, dry uplands). All feed Beaver and support 289+ Lepidoptera. All provide early spring pollen for bumble bee queens.",
+      "life_stages": [],
+      "region": "northeast_pa",
+      "taxonomic_group": "group_willows"
+    },
+    {
+      "id": "group_carrot-family-host-plants",
+      "common_name": "Carrot-Family Host Plants",
+      "latin_name": "Apiaceae",
+      "form": "wildflower",
+      "habitat": [
+        "field",
+        "wetland",
+        "meadow"
+      ],
+      "functional_description": "Native Apiaceae used by Black Swallowtail larvae: Golden Alexanders (Zizia aurea — best native option), Water Hemlock (Cicuta maculata, wetlands — toxic to humans), Water Parsnip (Sium suave, wetland edges), Meadow Parsnip (Thaspium). Also uses naturalized Queen Anne's Lace, plus garden parsley, dill, fennel, carrot. Black Swallowtail is obligate at family level.",
+      "life_stages": [],
+      "region": "northeast_pa",
+      "taxonomic_group": "group_carrot-family-plants"
+    },
+    {
+      "id": "group_native-fruiting-shrubs",
+      "common_name": "Native Fruiting Shrubs",
+      "latin_name": "Various",
+      "form": "shrub",
+      "habitat": [
+        "forest_edge",
+        "woodland",
+        "garden",
+        "riparian"
+      ],
+      "functional_description": "Native berry-producing shrubs important to Cedar Waxwing, Eastern Bluebird, and other frugivores: Serviceberry (Amelanchier spp. — first spring fruit), Dogwood (Cornus florida, C. alternifolia), Viburnum (V. lentago, V. nudum), Elderberry (Sambucus canadensis), Winterberry (Ilex verticillata), Highbush Blueberry (Vaccinium corymbosum). All are seed-dispersed by birds.",
+      "life_stages": [],
+      "region": "northeast_pa",
+      "taxonomic_group": "group_fruiting-shrubs"
+    },
+    {
+      "id": "group_other-pa-herons-and-egrets",
+      "common_name": "Other PA Herons and Egrets",
+      "latin_name": "Ardeidae",
+      "form": "wading_bird",
+      "habitat": [
+        "wetland",
+        "riparian",
+        "pond"
+      ],
+      "functional_description": "Other native PA Ardeidae sharing wetland habitat with Great Blue Heron: Green Heron (Butorides virescens — small, uses tools), Great Egret (Ardea alba — white, similar size), Snowy Egret (Egretta thula), Black-crowned Night-Heron (Nycticorax), American Bittern (Botaurus lentiginosus — rare, marsh interior).",
+      "life_stages": [],
+      "region": "northeast_pa",
+      "taxonomic_group": "group_herons-and-egrets"
+    },
+    {
+      "id": "group_other-pa-woodpeckers",
+      "common_name": "Other PA Woodpeckers",
+      "latin_name": "Picidae",
+      "form": "woodpecker",
+      "habitat": [
+        "forest",
+        "woodland",
+        "garden"
+      ],
+      "functional_description": "Other native PA Picidae beyond Pileated and Downy: Hairy Woodpecker (Dryobates villosus, larger Downy lookalike), Red-bellied Woodpecker (Melanerpes carolinus, expanding northward), Yellow-bellied Sapsucker (Sphyrapicus varius, sap wells used by hummingbirds), Northern Flicker (Colaptes auratus, ground forager), Red-headed Woodpecker (rare in PA).",
+      "life_stages": [],
+      "region": "northeast_pa",
+      "taxonomic_group": "group_woodpeckers"
+    },
+    {
+      "id": "group_other-native-pa-frogs",
+      "common_name": "Other Native PA Frogs",
+      "latin_name": "Ranidae and others",
+      "form": "frog",
+      "habitat": [
+        "pond",
+        "wetland",
+        "forest",
+        "stream"
+      ],
+      "functional_description": "Other native PA frogs sharing habitat with Bullfrog: Green Frog (Lithobates clamitans — similar but smaller, banjo-twang call), Pickerel Frog (L. palustris — toxic to some predators), Wood Frog (L. sylvaticus — breeds in vernal pools, freezes solid in winter), Spring Peeper (Pseudacris crucifer — first spring call), Gray Treefrog (Hyla versicolor).",
+      "life_stages": [],
+      "region": "northeast_pa",
+      "taxonomic_group": "group_frogs"
     }
   ],
   "symbiosis": [
@@ -1395,7 +1393,7 @@
       "type": "parasitism",
       "members": [
         "insect_monarch-butterfly",
-        "group_milkweeds"
+        "group_other-native-milkweeds"
       ],
       "impacted_species": "insect_monarch-butterfly",
       "obligate": true,
@@ -1579,7 +1577,7 @@
       "type": "parasitism",
       "members": [
         "insect_black-swallowtail",
-        "group_carrot-family-plants"
+        "group_carrot-family-host-plants"
       ],
       "impacted_species": "insect_black-swallowtail",
       "obligate": true,
@@ -1599,7 +1597,7 @@
       "type": "predation",
       "members": [
         "mammal_beaver",
-        "group_willows"
+        "group_other-native-pa-willows"
       ],
       "impacted_species": "group_other-native-pa-willows",
       "obligate": false,
@@ -1713,7 +1711,7 @@
       "type": "predation",
       "members": [
         "mammal_eastern-gray-squirrel",
-        "group_oaks"
+        "group_other-native-pa-oaks"
       ],
       "impacted_species": "group_other-native-pa-oaks",
       "obligate": false,
@@ -1763,7 +1761,7 @@
       "type": "predation",
       "members": [
         "bird_cedar-waxwing",
-        "group_fruiting-shrubs"
+        "group_native-fruiting-shrubs"
       ],
       "impacted_species": "group_native-fruiting-shrubs",
       "obligate": false,
@@ -1783,7 +1781,7 @@
       "type": "predation",
       "members": [
         "bird_eastern-bluebird",
-        "group_fruiting-shrubs"
+        "group_native-fruiting-shrubs"
       ],
       "impacted_species": "group_native-fruiting-shrubs",
       "obligate": false,
@@ -1823,7 +1821,7 @@
       "type": "parasitism",
       "members": [
         "insect_monarch-butterfly",
-        "group_milkweeds"
+        "group_other-native-milkweeds"
       ],
       "impacted_species": "insect_monarch-butterfly",
       "obligate": true,
@@ -1833,7 +1831,7 @@
       "type": "parasitism",
       "members": [
         "insect_eastern-tiger-swallowtail",
-        "group_oaks"
+        "group_other-native-pa-oaks"
       ],
       "impacted_species": "insect_eastern-tiger-swallowtail",
       "obligate": false,

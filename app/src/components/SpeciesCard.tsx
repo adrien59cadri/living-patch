@@ -33,8 +33,7 @@ function Tag({ label }: { label: string }) {
 }
 
 export function SpeciesCard({ species, symbiotes, habitatNeighbors, related }: Props) {
-  const [showLatinName, setShowLatinName] = useState(false);
-  
+  const [showScientificName, setShowScientificName] = useState(false);
   const stages = (species.life_stages as LifeStage[]).filter(
     s => typeof s === 'object' && s !== null
   );
@@ -47,62 +46,31 @@ export function SpeciesCard({ species, symbiotes, habitatNeighbors, related }: P
   return (
     <div className="space-y-6">
       {/* 1. Hero photo area */}
-      {species.image ? (
-        <div className="relative group">
-          <img
-            src={species.image.url}
-            alt={species.common_name}
-            className="w-full h-48 object-cover rounded-xl"
-          />
-          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent rounded-b-xl p-3 opacity-0 group-hover:opacity-100 transition-opacity">
-            <p className="text-xs text-white">
-              Photo by{' '}
-              <span className="font-semibold">{species.image.author}</span>
-              {' '}via{' '}
-              <a
-                href="https://commons.wikimedia.org"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline hover:text-stone-200"
-              >
-                Wikimedia Commons
-              </a>
-            </p>
-          </div>
-        </div>
-      ) : (
-        <div className="w-full h-48 bg-stone-100 rounded-xl flex items-center justify-center text-stone-300">
-          <span className="text-5xl">📷</span>
-        </div>
-      )}
+      <div className="w-full h-48 bg-stone-100 rounded-xl flex items-center justify-center text-stone-300">
+        <span className="text-5xl">📷</span>
+      </div>
 
       {/* 2. Name block */}
       <div>
         <div className="flex items-start gap-3 flex-wrap">
-          <h1 className="text-2xl font-bold text-stone-800 leading-tight">
-            {species.common_name}
-            {showLatinName && species.latin_name && (
-              <span className="text-lg font-normal text-stone-500 ml-2">
-                ({species.latin_name})
-              </span>
+          <div>
+            <h1 className="text-2xl font-bold text-stone-800 leading-tight">
+              {species.common_name}
+            </h1>
+            {showScientificName && species.latin_name && (
+              <p className="text-sm text-stone-600 mt-1 italic">
+                {species.latin_name}
+              </p>
             )}
-          </h1>
+          </div>
           {species.is_keystone && <KeystoneBadge type={species.keystone_type} />}
         </div>
-        {species.latin_name && !showLatinName && (
+        {species.latin_name && (
           <button
-            onClick={() => setShowLatinName(true)}
-            className="mt-2 text-sm text-emerald-600 hover:text-emerald-700 font-medium"
+            onClick={() => setShowScientificName(!showScientificName)}
+            className="text-sm text-emerald-600 hover:text-emerald-700 mt-2 font-medium"
           >
-            + Scientific name
-          </button>
-        )}
-        {species.latin_name && showLatinName && (
-          <button
-            onClick={() => setShowLatinName(false)}
-            className="mt-2 text-sm text-emerald-600 hover:text-emerald-700 font-medium"
-          >
-            − Scientific name
+            {showScientificName ? '− Scientific name' : '+ Scientific name'}
           </button>
         )}
       </div>

@@ -74,10 +74,9 @@ describe('SpeciesCard', () => {
     renderCard(mockMonarch, [mockObligateEntry]);
     expect(screen.getByText('Key Relationships')).toBeInTheDocument();
     expect(screen.getByText('Common Milkweed')).toBeInTheDocument();
-    // Expand parasitism section to see the obligate badge
-    const expandButton = screen.getByRole('button', { name: /Parasitism/ });
-    await userEvent.click(expandButton);
-    expect(screen.getByText('Obligate')).toBeInTheDocument();
+    // Obligate badge is now visible in collapsed view
+    const obligateBadges = screen.getAllByText('Obligate');
+    expect(obligateBadges.length).toBeGreaterThan(0);
   });
 
   test('omits KEY RELATIONSHIPS when no obligate entries', () => {

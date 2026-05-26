@@ -34,6 +34,8 @@ export function KeyRelationshipsSection({ related }: Props) {
           const isExpanded = expandedRole === role;
           const firstTwo = entries.slice(0, 2);
           const remainingCount = Math.max(0, entries.length - 2);
+          const obligateCount = entries.filter(e => e.obligate).length;
+          const impactedCount = entries.filter(e => e.isImpacted).length;
 
           return (
             <div key={role}>
@@ -42,8 +44,20 @@ export function KeyRelationshipsSection({ related }: Props) {
                   onClick={() => setExpandedRole(isExpanded ? null : role)}
                   className="text-left flex-1"
                 >
-                  <div className="text-xs font-semibold text-stone-500">
-                    {symbiosisLabel(role)}: {entries.length} {entries.length === 1 ? 'species' : 'species'}
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <div className="text-xs font-semibold text-stone-500">
+                      {symbiosisLabel(role)}: {entries.length} {entries.length === 1 ? 'species' : 'species'}
+                    </div>
+                    {obligateCount > 0 && (
+                      <span className="text-xs bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded font-medium">
+                        Obligate
+                      </span>
+                    )}
+                    {impactedCount > 0 && (
+                      <span className="text-xs bg-red-100 text-red-700 px-2 py-0.5 rounded font-medium">
+                        Impacted
+                      </span>
+                    )}
                   </div>
                   <div className="text-sm text-stone-700 mt-1">
                     {firstTwo.map((entry, idx) => (
