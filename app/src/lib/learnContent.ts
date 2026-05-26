@@ -17,6 +17,11 @@ export interface SymbiosisDefinition {
 }
 
 export const FORM_DEFINITIONS: Record<string, FormDefinition> = {
+  bird: {
+    label: 'Bird',
+    description:
+      'Feathered vertebrates with wings, beaks, and hollow bones. Birds fill diverse ecological roles from apex predators to seed dispersers, pollinators, and cavity creators.',
+  },
   woodpecker: {
     label: 'Woodpecker',
     description:
@@ -71,6 +76,16 @@ export const FORM_DEFINITIONS: Record<string, FormDefinition> = {
     label: 'Shrub',
     description:
       'Woody plants smaller than trees that provide dense cover, nesting sites, and food (berries, seeds). Create layered habitat structure.',
+  },
+  plant: {
+    label: 'Plant',
+    description:
+      'Photosynthetic organisms that form the foundation of food webs, provide shelter and nesting sites, produce oxygen, stabilize soil, and cycle nutrients.',
+  },
+  insect: {
+    label: 'Insect',
+    description:
+      'Six-legged arthropods with incredible diversity. Essential pollinators, decomposers, and food sources for birds and other animals. Indicators of ecosystem health.',
   },
   butterfly: {
     label: 'Butterfly',
@@ -208,3 +223,46 @@ export function getSymbiosisExample(
   const matches = getSymbiosisByType(type, symbiosis);
   return matches.length > 0 ? matches[0] : undefined;
 }
+
+export interface FormHierarchyNode {
+  key: string;
+  children?: FormHierarchyNode[];
+}
+
+export const FORM_HIERARCHY: FormHierarchyNode[] = [
+  {
+    key: 'bird',
+    children: [
+      { key: 'woodpecker' },
+      { key: 'raptor' },
+      { key: 'owl' },
+      {
+        key: 'songbird',
+        children: [
+          { key: 'warbler' },
+          { key: 'hummingbird' },
+        ],
+      },
+      { key: 'wading_bird' },
+    ],
+  },
+  { key: 'mammal' },
+  {
+    key: 'plant',
+    children: [
+      { key: 'tree' },
+      { key: 'wildflower' },
+      { key: 'shrub' },
+    ],
+  },
+  {
+    key: 'insect',
+    children: [
+      { key: 'butterfly' },
+      { key: 'beetle' },
+      { key: 'bug' },
+      { key: 'bee' },
+    ],
+  },
+  { key: 'frog' },
+];
