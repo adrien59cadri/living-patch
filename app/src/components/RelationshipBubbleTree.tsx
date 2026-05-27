@@ -364,23 +364,7 @@ export const RelationshipBubbleTree: React.FC<RelationshipBubbleTreeProps> = ({
             // Only allow clicking on non-focal species nodes
             onNodeClick(d.id);
           }
-        })
-        .on('mouseenter', function (this: SVGGElement) {
-          d3.select(this)
-            .selectAll('circle')
-            .transition()
-            .duration(200)
-            .attr('opacity', 1)
-            .attr('filter', 'drop-shadow(0 0 4px rgba(0,0,0,0.3))');
-        } as any)
-        .on('mouseleave', function (this: SVGGElement, d: any) {
-          d3.select(this)
-            .selectAll('circle')
-            .transition()
-            .duration(200)
-            .attr('opacity', getNodeOpacityByDepth(d.depth))
-            .attr('filter', 'none');
-        } as any);
+        });
 
       // Ensure nodes are rendered on top of links
       nodeGroup.raise();
