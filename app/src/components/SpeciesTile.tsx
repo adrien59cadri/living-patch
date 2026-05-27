@@ -53,7 +53,7 @@ export function SpeciesTile({ species, related, isGroup }: Props) {
             </span>
           )}
         </div>
-        <p className="mt-1 text-sm text-stone-500 line-clamp-2">
+        <p className="mt-1 text-sm text-stone-500">
           {description}
         </p>
       </div>
