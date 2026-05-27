@@ -118,7 +118,7 @@ describe('DiagramCard - Direct Relationships Display', () => {
     vi.spyOn(dataHook, 'useDataset').mockReturnValue({
       species: mockSpecies,
       symbiosis: mockSymbiosis,
-    } as any);
+    } as ReturnType<typeof dataHook.useDataset>);
   });
 
   // Helper to extract full text from text elements with tspan support
@@ -267,7 +267,7 @@ describe('DiagramCard - Direct Relationships Display', () => {
     vi.spyOn(dataHook, 'useDataset').mockReturnValue({
       species: extendedSpecies,
       symbiosis: extendedSymbiosis,
-    } as any);
+    } as ReturnType<typeof dataHook.useDataset>);
 
     const { container } = render(
       <BrowserRouter>
