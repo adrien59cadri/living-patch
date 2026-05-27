@@ -1,6 +1,51 @@
 import { test, expect } from '@playwright/test';
 
 test.describe('Species list page basic functionality', () => {
+  test('app mounts and renders without errors', async ({ page }) => {
+    const errors: string[] = [];
+
+    // Capture console errors and uncaught exceptions
+    page.on('console', (msg) => {
+      if (msg.type() === 'error') {
+        errors.push(msg.text());
+      }
+    });
+
+    page.on('pageerror', (error) => {
+      errors.push(`Uncaught exception: ${error.message}`);
+    });
+
+    await page.goto('/');
+    await page.waitForLoadState('networkidle');
+
+    // Check that the root element exists in DOM (React mounted)
+    const root = page.locator('#root');
+    const rootCount = await root.count();
+    expect(rootCount).toBe(1, 'React root element should exist in DOM');
+    
+    // Check if root has content (children elements)
+    const rootContent = await root.locator('> *').count();
+    expect(rootContent).toBeGreaterThan(0, 'React root should have rendered children');
+    
+    // Verify no errors occurred during app mounting
+    expect(errors).toEqual([], `Expected no console errors, but got: ${errors.join(', ')}`);
+    
+    // Check for visibility/CSS issues with root element
+    const computedStyle = await root.evaluate((el) => {
+      const style = window.getComputedStyle(el);
+      return {
+        display: style.display,
+        visibility: style.visibility,
+        opacity: style.opacity,
+        width: style.width,
+        height: style.height,
+      };
+    });
+    
+    // Log the computed style for debugging
+    console.log('Root element computed style:', computedStyle);
+  });
+
   test('homepage loads successfully', async ({ page }) => {
     await page.goto('/');
     await page.waitForLoadState('networkidle');

@@ -33,13 +33,11 @@ export default defineConfig({
     react(),
     tailwindcss(),
     faviconPlugin,
-    process.env.VITE_SINGLE_FILE ? viteSingleFile() : null,
+    // Only use single-file plugin if explicitly requested
+    process.env.VITE_SINGLE_FILE === 'true' ? viteSingleFile() : null,
   ].filter(Boolean),
   build: {
-    rollupOptions: {
-      output: {
-        codeSplitting: false,
-      },
-    },
+    // Use esbuild minifier (default) with default code splitting
+    chunkSizeWarningLimit: 1000,
   },
 })
