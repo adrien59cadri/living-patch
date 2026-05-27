@@ -3,14 +3,17 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MemoryRouter, Routes, Route } from 'react-router-dom';
 import DetailPage from '../DetailPage';
+import { UserPreferencesProvider } from '../../stores/userPreferences';
 
 function renderDetailPage(speciesId: string) {
   return render(
-    <MemoryRouter initialEntries={[`/species/${speciesId}`]}>
-      <Routes>
-        <Route path="/species/:id" element={<DetailPage />} />
-      </Routes>
-    </MemoryRouter>
+    <UserPreferencesProvider>
+      <MemoryRouter initialEntries={[`/species/${speciesId}`]}>
+        <Routes>
+          <Route path="/species/:id" element={<DetailPage />} />
+        </Routes>
+      </MemoryRouter>
+    </UserPreferencesProvider>
   );
 }
 

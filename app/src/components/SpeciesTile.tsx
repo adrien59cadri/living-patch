@@ -3,6 +3,7 @@ import type { Species } from '../types';
 import type { RelatedEntry } from '../lib/relationships';
 import { KeystoneBadge } from './KeystoneBadge';
 import { formLabel } from '../lib/labels';
+import { useUserPreferences } from '../hooks/useUserPreferences';
 
 interface Props {
   species: Species;
@@ -17,6 +18,8 @@ export function SpeciesTile({ species, related, isGroup }: Props) {
   // Choose description text based on whether we have relationship data
   const description = related?.notes ?? species.functional_description;
 
+  const { preferences } = useUserPreferences();
+
   const inner = (
     <div
       className={[
@@ -26,6 +29,19 @@ export function SpeciesTile({ species, related, isGroup }: Props) {
           : 'border-stone-200 bg-white hover:border-emerald-300 hover:shadow-sm',
       ].join(' ')}
     >
+      {!actualIsGroup && preferences.showThumbnailsInList && (
+        <div className="shrink-0 w-12 h-12 bg-stone-100 rounded-md flex items-center justify-center overflow-hidden border border-stone-200">
+          {species.image?.url ? (
+            <img
+              src={species.image.url}
+              alt={species.common_name}
+              className="w-full h-full object-cover"
+            />
+          ) : (
+            <span className="text-lg">📷</span>
+          )}
+        </div>
+      )}
       <div className="flex-1 min-w-0">
         <div className="flex items-center gap-2 flex-wrap">
           <span
