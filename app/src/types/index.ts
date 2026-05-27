@@ -49,3 +49,24 @@ export interface Dataset {
   symbiosis: Symbiosis[];
   relations: Relation[];
 }
+
+export interface DiagramNode {
+  id: string;
+  name: string;
+  depth: number;
+  relationshipType?: string;
+  val?: number;
+}
+
+export interface DiagramLink {
+  source: string;
+  target: string;
+  relationshipType: string;
+  obligate?: boolean;
+  directional?: boolean;
+}
+
+export interface ForceGraphData {
+  nodes: DiagramNode[];
+  links: DiagramLink[];
+}

@@ -4,6 +4,7 @@ import type { RelatedEntry } from '../lib/relationships';
 import { getHabitatNeighborsByCategory } from '../lib/relationships';
 import { LifeStageRow } from './LifeStageRow';
 import { KeyRelationshipsSection } from './KeyRelationshipsSection';
+import { DiagramCard } from './DiagramCard';
 import { TaxonomyRelatedGrid } from './TaxonomyRelatedGrid';
 import { HabitatNeighborsSection } from './HabitatNeighborsSection';
 import { LogSightingButton } from './LogSightingButton';
@@ -82,6 +83,9 @@ export function SpeciesCard({ species, symbiotes, habitatNeighbors, related }: P
 
       {/* 6. Symbiotes */}
       <KeyRelationshipsSection related={symbiotes} />
+
+      {/* 6.5. Relationship Diagram */}
+      <DiagramCard speciesId={species.id} />
 
       {/* 7. Habitat neighbors (organized by category) */}
       <HabitatNeighborsSection categories={habitatNeighborCategories} speciesId={species.id} />
