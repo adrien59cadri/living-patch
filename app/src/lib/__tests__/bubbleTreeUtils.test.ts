@@ -1,19 +1,18 @@
 import { describe, it, expect } from 'vitest';
 import {
-  buildBubbleTreeHierarchy,
-  categoryLabel,
   getRelationshipColor,
-  getNodeRadius,
-  getNodeOpacity,
-  getLabelSize,
-  getLabelWeight,
+  transformToNodesEdges,
+  getNodeSizeByDepth,
+  getNodeOpacityByDepth,
+  getFormColor,
+  getLinkStrokeWidth,
 } from '../bubbleTreeUtils';
 import type { Species, Symbiosis } from '../../types';
 
-const createMockSpecies = (id: string, name: string): Species => ({
+const createMockSpecies = (id: string, name: string, form: string = 'animal'): Species => ({
   id,
   common_name: name,
-  form: 'animal',
+  form,
   habitat: ['forest'],
   diet: [],
   behavior: [],
@@ -25,17 +24,32 @@ const createMockSpecies = (id: string, name: string): Species => ({
 
 const createMockSymbiosis = (
   type: 'mutualism' | 'predation' | 'parasitism' | 'competition' | 'commensalism',
-  members: string[]
+  members: string[],
+  impactedSpecies?: string
 ): Symbiosis => ({
   type,
   members,
   obligate: false,
   notes: 'Test relationship',
+  impacted_species: impactedSpecies,
 });
 
-describe('bubbleTreeUtils', () => {
-  describe('buildBubbleTreeHierarchy', () => {
-    it('should build hierarchy with focal species and relationships', () => {
+describe('bubbleTreeUtils - Nodes/Edges Model', () => {
+  describe('transformToNodesEdges', () => {
+    it('should create focal node at depth 0', () => {
+      const focal = createMockSpecies('focal-1', 'Focal Species');
+      const speciesById = new Map([['focal-1', focal]]);
+      const symbiosisBySpeciesId = new Map();
+
+      const { nodes } = transformToNodesEdges('focal-1', speciesById, symbiosisBySpeciesId, 1);
+
+      expect(nodes.length).toBe(1);
+      expect(nodes[0].id).toBe('focal-1');
+      expect(nodes[0].depth).toBe(0);
+      expect(nodes[0].name).toBe('Focal Species');
+    });
+
+    it('should create depth-1 nodes for direct relationships', () => {
       const focal = createMockSpecies('focal-1', 'Focal Species');
       const partner = createMockSpecies('partner-1', 'Partner Species');
 
@@ -45,101 +59,61 @@ describe('bubbleTreeUtils', () => {
       ]);
 
       const symbiosisBySpeciesId = new Map([
-        [
-          'focal-1',
-          [createMockSymbiosis('mutualism', ['focal-1', 'partner-1'])],
-        ],
+        ['focal-1', [createMockSymbiosis('mutualism', ['focal-1', 'partner-1'])]],
       ]);
 
-      const hierarchy = buildBubbleTreeHierarchy(
-        'focal-1',
-        speciesById,
-        symbiosisBySpeciesId,
-        new Map()
-      );
+      const { nodes, links } = transformToNodesEdges('focal-1', speciesById, symbiosisBySpeciesId, 1);
 
-      expect(hierarchy.id).toBe('focal-1');
-      expect(hierarchy.name).toBe('Focal Species');
-      expect(hierarchy.type).toBe('focal');
-      expect(hierarchy.children).toBeDefined();
-      expect(hierarchy.children!.length).toBe(1); // One category (mutualism)
+      expect(nodes.length).toBe(2);
+      expect(nodes.find((c) => c.depth === 1)).toBeDefined();
+      expect(links.length).toBeGreaterThan(0);
     });
 
-    it('should organize relationships by category', () => {
+    it('should filter links to only forward edges in BFS tree', () => {
       const focal = createMockSpecies('focal-1', 'Focal');
-      const mutualism = createMockSpecies('mutualism-1', 'Mutualism Partner');
-      const predation = createMockSpecies('predation-1', 'Predation Partner');
+      const level1 = createMockSpecies('level1-1', 'Level 1');
+      const level2 = createMockSpecies('level2-1', 'Level 2');
 
       const speciesById = new Map([
         ['focal-1', focal],
-        ['mutualism-1', mutualism],
-        ['predation-1', predation],
+        ['level1-1', level1],
+        ['level2-1', level2],
       ]);
 
       const symbiosisBySpeciesId = new Map([
-        [
-          'focal-1',
-          [
-            createMockSymbiosis('mutualism', ['focal-1', 'mutualism-1']),
-            createMockSymbiosis('predation', ['focal-1', 'predation-1']),
-          ],
-        ],
+        ['focal-1', [createMockSymbiosis('mutualism', ['focal-1', 'level1-1'])]],
+        ['level1-1', [createMockSymbiosis('mutualism', ['level1-1', 'level2-1'])]],
       ]);
 
-      const hierarchy = buildBubbleTreeHierarchy(
-        'focal-1',
-        speciesById,
-        symbiosisBySpeciesId,
-        new Map()
-      );
+      const { links } = transformToNodesEdges('focal-1', speciesById, symbiosisBySpeciesId, 2);
 
-      expect(hierarchy.children).toBeDefined();
-      expect(hierarchy.children!.length).toBe(2); // Two categories
-      
-      const categories = hierarchy.children!.map(c => c.id);
-      expect(categories).toContain('category-mutualism');
-      expect(categories).toContain('category-predation');
+      // Should only have links where target depth > source depth
+      links.forEach((link) => {
+        expect(link.target).not.toBe('focal-1');
+      });
     });
 
-    it('should throw error for missing focal species', () => {
-      const speciesById = new Map();
-      const symbiosisBySpeciesId = new Map();
-
-      expect(() => {
-        buildBubbleTreeHierarchy(
-          'nonexistent',
-          speciesById,
-          symbiosisBySpeciesId,
-          new Map()
-        );
-      }).toThrow('Focal species not found');
-    });
-
-    it('should handle empty relationships', () => {
+    it('should respect maxDepth parameter', () => {
       const focal = createMockSpecies('focal-1', 'Focal');
-      const speciesById = new Map([['focal-1', focal]]);
-      const symbiosisBySpeciesId = new Map();
+      const level1 = createMockSpecies('level1-1', 'Level 1');
+      const level2 = createMockSpecies('level2-1', 'Level 2');
 
-      const hierarchy = buildBubbleTreeHierarchy(
-        'focal-1',
-        speciesById,
-        symbiosisBySpeciesId,
-        new Map()
-      );
+      const speciesById = new Map([
+        ['focal-1', focal],
+        ['level1-1', level1],
+        ['level2-1', level2],
+      ]);
 
-      expect(hierarchy.id).toBe('focal-1');
-      expect(hierarchy.children).toBeDefined();
-      expect(hierarchy.children!.length).toBe(0); // No categories
-    });
-  });
+      const symbiosisBySpeciesId = new Map([
+        ['focal-1', [createMockSymbiosis('mutualism', ['focal-1', 'level1-1'])]],
+        ['level1-1', [createMockSymbiosis('mutualism', ['level1-1', 'level2-1'])]],
+      ]);
 
-  describe('categoryLabel', () => {
-    it('should return correct labels for each category', () => {
-      expect(categoryLabel('mutualism')).toBe('Mutualism');
-      expect(categoryLabel('predation')).toBe('Predation');
-      expect(categoryLabel('parasitism')).toBe('Parasitism');
-      expect(categoryLabel('competition')).toBe('Competition');
-      expect(categoryLabel('commensalism')).toBe('Commensalism');
+      const { nodes: nodes1 } = transformToNodesEdges('focal-1', speciesById, symbiosisBySpeciesId, 1);
+      const { nodes: nodes2 } = transformToNodesEdges('focal-1', speciesById, symbiosisBySpeciesId, 2);
+
+      expect(nodes1.length).toBe(2); // focal + level1
+      expect(nodes2.length).toBe(3); // focal + level1 + level2
     });
   });
 
@@ -158,35 +132,52 @@ describe('bubbleTreeUtils', () => {
     });
   });
 
-  describe('getNodeRadius', () => {
-    it('should return correct radius for each node type', () => {
-      expect(getNodeRadius('focal')).toBe(80);
-      expect(getNodeRadius('category')).toBe(50);
-      expect(getNodeRadius('species')).toBe(30);
+  describe('getNodeSizeByDepth', () => {
+    it('should return correct size for each depth', () => {
+      expect(getNodeSizeByDepth(0)).toBe(40); // focal: 80px diameter
+      expect(getNodeSizeByDepth(1)).toBe(17.5); // depth-1: 35px diameter
+      expect(getNodeSizeByDepth(2)).toBe(12.5); // depth-2+: 25px diameter
+      expect(getNodeSizeByDepth(3)).toBe(12.5); // depth-3: 25px diameter
     });
   });
 
-  describe('getNodeOpacity', () => {
-    it('should return correct opacity for each node type', () => {
-      expect(getNodeOpacity('focal')).toBe(1.0);
-      expect(getNodeOpacity('category')).toBe(1.0);
-      expect(getNodeOpacity('species')).toBe(0.8);
+  describe('getNodeOpacityByDepth', () => {
+    it('should return correct opacity for each depth', () => {
+      expect(getNodeOpacityByDepth(0)).toBe(1.0);
+      expect(getNodeOpacityByDepth(1)).toBe(1.0);
+      expect(getNodeOpacityByDepth(2)).toBe(0.5);
+      expect(getNodeOpacityByDepth(3)).toBe(0.5);
     });
   });
 
-  describe('getLabelSize', () => {
-    it('should return correct font size for each node type', () => {
-      expect(getLabelSize('focal')).toBe(1.1);
-      expect(getLabelSize('category')).toBe(0.9);
-      expect(getLabelSize('species')).toBe(0.7);
+  describe('getFormColor', () => {
+    it('should return correct color for base forms', () => {
+      expect(getFormColor('bird')).toBe('#f39c12');
+      expect(getFormColor('plant')).toBe('#27ae60');
+      expect(getFormColor('insect')).toBe('#e74c3c');
+      expect(getFormColor('mammal')).toBe('#3498db');
+      expect(getFormColor('amphibian')).toBe('#1abc9c');
+      expect(getFormColor('reptile')).toBe('#9b59b6');
+    });
+
+    it('should return correct color for derived forms', () => {
+      expect(getFormColor('woodpecker')).toBe('#f39c12'); // bird form
+      expect(getFormColor('tree')).toBe('#27ae60'); // plant form
+      expect(getFormColor('frog')).toBe('#1abc9c'); // amphibian form
+    });
+
+    it('should return gray for unknown form', () => {
+      expect(getFormColor('unknown')).toBe('#95a5a6');
     });
   });
 
-  describe('getLabelWeight', () => {
-    it('should return correct font weight for each node type', () => {
-      expect(getLabelWeight('focal')).toBe('bold');
-      expect(getLabelWeight('category')).toBe('600');
-      expect(getLabelWeight('species')).toBe('normal');
+  describe('getLinkStrokeWidth', () => {
+    it('should return 3px for obligate relationships', () => {
+      expect(getLinkStrokeWidth(true)).toBe(3);
+    });
+
+    it('should return 1.5px for non-obligate relationships', () => {
+      expect(getLinkStrokeWidth(false)).toBe(1.5);
     });
   });
 });

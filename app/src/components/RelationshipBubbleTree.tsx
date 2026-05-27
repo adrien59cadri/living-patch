@@ -170,6 +170,40 @@ export const RelationshipBubbleTree: React.FC<RelationshipBubbleTreeProps> = ({
         nodePositions.set(node.id, { x, y, depth: node.depth });
       });
 
+      // ===== CALCULATE LINK ENDPOINTS =====
+      interface LinkEndpoints {
+        x1: number;
+        y1: number;
+        x2: number;
+        y2: number;
+      }
+
+      const calculateLinkEndpoints = (link: any): LinkEndpoints => {
+        const sourcePos = nodePositions.get(link.source);
+        const targetPos = nodePositions.get(link.target);
+        if (!sourcePos || !targetPos) return { x1: 0, y1: 0, x2: 0, y2: 0 };
+
+        const dx = targetPos.x - sourcePos.x;
+        const dy = targetPos.y - sourcePos.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        if (distance === 0) return { x1: sourcePos.x, y1: sourcePos.y, x2: targetPos.x, y2: targetPos.y };
+
+        const sourceNodeData = nodes.find(n => n.id === link.source);
+        const targetNodeData = nodes.find(n => n.id === link.target);
+        const sourceRadius = sourceNodeData ? getNodeSizeByDepth(sourceNodeData.depth) : 0;
+        const targetRadius = targetNodeData ? getNodeSizeByDepth(targetNodeData.depth) : 0;
+
+        return {
+          x1: sourcePos.x + (dx / distance) * sourceRadius,
+          y1: sourcePos.y + (dy / distance) * sourceRadius,
+          x2: targetPos.x - (dx / distance) * targetRadius,
+          y2: targetPos.y - (dy / distance) * targetRadius,
+        };
+      };
+
+      // Pre-calculate all link endpoints
+      const linkEndpointMap = new Map(links.map(link => [link, calculateLinkEndpoints(link)]));
+
       // ===== RENDER LINKS =====
       const linkGroup = mainGroup.append('g').attr('class', 'links');
 
@@ -178,74 +212,10 @@ export const RelationshipBubbleTree: React.FC<RelationshipBubbleTreeProps> = ({
         .data(links)
         .join('line')
         .attr('class', 'diagram-link')
-        .attr('x1', (d: any) => {
-          const sourcePos = nodePositions.get(d.source);
-          const targetPos = nodePositions.get(d.target);
-          if (!sourcePos || !targetPos) return 0;
-          
-          // Calculate direction vector
-          const dx = targetPos.x - sourcePos.x;
-          const dy = targetPos.y - sourcePos.y;
-          const distance = Math.sqrt(dx * dx + dy * dy);
-          if (distance === 0) return sourcePos.x;
-          
-          // Get source node radius and move toward target by that amount
-          const sourceNodeData = nodes.find(n => n.id === d.source);
-          const sourceRadius = sourceNodeData ? getNodeSizeByDepth(sourceNodeData.depth) : 0;
-          
-          return sourcePos.x + (dx / distance) * sourceRadius;
-        })
-        .attr('y1', (d: any) => {
-          const sourcePos = nodePositions.get(d.source);
-          const targetPos = nodePositions.get(d.target);
-          if (!sourcePos || !targetPos) return 0;
-          
-          // Calculate direction vector
-          const dx = targetPos.x - sourcePos.x;
-          const dy = targetPos.y - sourcePos.y;
-          const distance = Math.sqrt(dx * dx + dy * dy);
-          if (distance === 0) return sourcePos.y;
-          
-          // Get source node radius and move toward target by that amount
-          const sourceNodeData = nodes.find(n => n.id === d.source);
-          const sourceRadius = sourceNodeData ? getNodeSizeByDepth(sourceNodeData.depth) : 0;
-          
-          return sourcePos.y + (dy / distance) * sourceRadius;
-        })
-        .attr('x2', (d: any) => {
-          const sourcePos = nodePositions.get(d.source);
-          const targetPos = nodePositions.get(d.target);
-          if (!sourcePos || !targetPos) return 0;
-          
-          // Calculate direction vector
-          const dx = targetPos.x - sourcePos.x;
-          const dy = targetPos.y - sourcePos.y;
-          const distance = Math.sqrt(dx * dx + dy * dy);
-          if (distance === 0) return targetPos.x;
-          
-          // Get target node radius and move toward source by that amount
-          const targetNodeData = nodes.find(n => n.id === d.target);
-          const targetRadius = targetNodeData ? getNodeSizeByDepth(targetNodeData.depth) : 0;
-          
-          return targetPos.x - (dx / distance) * targetRadius;
-        })
-        .attr('y2', (d: any) => {
-          const sourcePos = nodePositions.get(d.source);
-          const targetPos = nodePositions.get(d.target);
-          if (!sourcePos || !targetPos) return 0;
-          
-          // Calculate direction vector
-          const dx = targetPos.x - sourcePos.x;
-          const dy = targetPos.y - sourcePos.y;
-          const distance = Math.sqrt(dx * dx + dy * dy);
-          if (distance === 0) return targetPos.y;
-          
-          // Get target node radius and move toward source by that amount
-          const targetNodeData = nodes.find(n => n.id === d.target);
-          const targetRadius = targetNodeData ? getNodeSizeByDepth(targetNodeData.depth) : 0;
-          
-          return targetPos.y - (dy / distance) * targetRadius;
-        })
+        .attr('x1', (d: any) => linkEndpointMap.get(d)?.x1 ?? 0)
+        .attr('y1', (d: any) => linkEndpointMap.get(d)?.y1 ?? 0)
+        .attr('x2', (d: any) => linkEndpointMap.get(d)?.x2 ?? 0)
+        .attr('y2', (d: any) => linkEndpointMap.get(d)?.y2 ?? 0)
         .attr('stroke', (d: any) => {
           if (['predation', 'parasitism'].includes(d.type)) {
             return getRelationshipColor(d.type);
@@ -401,101 +371,99 @@ export const RelationshipBubbleTree: React.FC<RelationshipBubbleTreeProps> = ({
       nodeGroup.raise();
 
       // ===== LEGEND (bottom left) =====
-      const formColors: Record<string, string> = {
-        bird: '#f39c12',
-        plant: '#27ae60',
-        insect: '#e74c3c',
-        mammal: '#3498db',
-        amphibian: '#1abc9c',
-        reptile: '#9b59b6',
-      };
+      const formColors = Object.fromEntries(
+        ['bird', 'plant', 'insect', 'mammal', 'amphibian', 'reptile']
+          .map(form => [form, getFormColor(form)])
+      );
 
-      const relationshipColors: Record<string, string> = {
-        mutualism: '#27ae60',
-        predation: '#e74c3c',
-        parasitism: '#f39c12',
-        competition: '#95a5a6',
-        commensalism: '#3b82f6',
-      };
+      const relationshipColors = Object.fromEntries(
+        ['mutualism', 'predation', 'parasitism', 'competition', 'commensalism']
+          .map(rel => [rel, getRelationshipColor(rel)])
+      );
 
-      // Create legend group
       const legendGroup = svg.append('g').attr('class', 'legend');
-
-      // Legend position (bottom left)
       const legendX = 10;
       const legendY = dimensions.height - 50;
 
-      // Forms legend (line 1)
-      let formX = legendX;
-      legendGroup
-        .append('text')
-        .attr('x', formX)
-        .attr('y', legendY)
-        .attr('font-size', '11px')
-        .attr('font-weight', 'bold')
-        .text('form: ');
-      formX += 32;
-
-      Object.entries(formColors).forEach(([form]) => {
-        const color = formColors[form];
-        // Circle
-        legendGroup
-          .append('circle')
-          .attr('class', 'legend-item')
-          .attr('cx', formX + 5)
-          .attr('cy', legendY - 4)
-          .attr('r', 4)
-          .attr('fill', color);
+      // Helper to render legend section with items and dynamic spacing
+      const renderLegendSection = (
+        config: {
+          label: string;
+          items: Record<string, string>;
+          y: number;
+          isCircle: boolean;
+        },
+        startX: number
+      ): number => {
+        let x = startX;
 
         // Label
         legendGroup
           .append('text')
-          .attr('x', formX + 12)
-          .attr('y', legendY)
-          .attr('font-size', '10px')
-          .text(form);
+          .attr('x', x)
+          .attr('y', config.y)
+          .attr('font-size', '11px')
+          .attr('font-weight', 'bold')
+          .text(config.label);
 
-        // Dynamic spacing: circle (10px) + label width + padding (8px)
-        const textLength = form.length * 5.5;
-        formX += 10 + textLength + 8;
-      });
+        x += config.label.length * 6 + 5;
 
-      // Relationships legend (line 2)
-      let relX = legendX;
-      const relY = legendY + 15;
-      legendGroup
-        .append('text')
-        .attr('x', relX)
-        .attr('y', relY)
-        .attr('font-size', '11px')
-        .attr('font-weight', 'bold')
-        .text('relation: ');
-      relX += 55;
+        // Items
+        Object.entries(config.items).forEach(([name, color]) => {
+          if (config.isCircle) {
+            // Render circle for forms
+            legendGroup
+              .append('circle')
+              .attr('class', 'legend-item')
+              .attr('cx', x + 5)
+              .attr('cy', config.y - 4)
+              .attr('r', 4)
+              .attr('fill', color);
 
-      Object.entries(relationshipColors).forEach(([rel]) => {
-        const color = relationshipColors[rel];
-        // Line
-        legendGroup
-          .append('line')
-          .attr('x1', relX)
-          .attr('y1', relY - 3)
-          .attr('x2', relX + 10)
-          .attr('y2', relY - 3)
-          .attr('stroke', color)
-          .attr('stroke-width', 2);
+            legendGroup
+              .append('text')
+              .attr('x', x + 12)
+              .attr('y', config.y)
+              .attr('font-size', '10px')
+              .text(name);
 
-        // Label
-        legendGroup
-          .append('text')
-          .attr('x', relX + 15)
-          .attr('y', relY)
-          .attr('font-size', '10px')
-          .text(rel);
+            x += 10 + name.length * 5.5 + 8;
+          } else {
+            // Render line for relationships
+            legendGroup
+              .append('line')
+              .attr('x1', x)
+              .attr('y1', config.y - 3)
+              .attr('x2', x + 10)
+              .attr('y2', config.y - 3)
+              .attr('stroke', color)
+              .attr('stroke-width', 2);
 
-        // Dynamic spacing: line (10px) + gap (5px) + label width + padding (8px)
-        const textLength = rel.length * 5.5;
-        relX += 10 + 5 + textLength + 8;
-      });
+            legendGroup
+              .append('text')
+              .attr('x', x + 15)
+              .attr('y', config.y)
+              .attr('font-size', '10px')
+              .text(name);
+
+            x += 10 + 5 + name.length * 5.5 + 8;
+          }
+        });
+
+        return x;
+      };
+
+      // Render form legend (line 1)
+      renderLegendSection(
+        { label: 'form: ', items: formColors, y: legendY, isCircle: true },
+        legendX
+      );
+
+      // Render relationship legend (line 2)
+      renderLegendSection(
+        { label: 'relation: ', items: relationshipColors, y: legendY + 15, isCircle: false },
+        legendX
+      );
 
       // ===== ZOOM/PAN (only for maxDepth=3) =====
       if (maxDepth === 3) {
