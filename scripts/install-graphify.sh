@@ -16,11 +16,8 @@ fi
 
 echo "✅ Found 'uv'"
 echo ""
-echo "📦 Installing Python dependencies..."
-python -m pip install openai
-echo ""
-echo "📦 Installing graphifyy..."
-uv tool install graphifyy
+echo "📦 Installing graphifyy with dependencies..."
+uv tool install openai graphifyy
 
 echo ""
 echo "✅ Graphifyy installed successfully!"
