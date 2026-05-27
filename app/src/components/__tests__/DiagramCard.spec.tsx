@@ -118,7 +118,12 @@ describe('DiagramCard - Direct Relationships Display', () => {
     vi.spyOn(dataHook, 'useDataset').mockReturnValue({
       species: mockSpecies,
       symbiosis: mockSymbiosis,
-    } as any);
+      groups: [],
+      taxonomicGroupIds: [],
+      speciesById: {},
+      symbiosisBySpeciesId: {},
+      relationsBySpeciesId: {},
+    });
   });
 
   // Helper to extract full text from text elements with tspan support
@@ -267,7 +272,12 @@ describe('DiagramCard - Direct Relationships Display', () => {
     vi.spyOn(dataHook, 'useDataset').mockReturnValue({
       species: extendedSpecies,
       symbiosis: extendedSymbiosis,
-    } as any);
+      groups: [],
+      taxonomicGroupIds: [],
+      speciesById: {},
+      symbiosisBySpeciesId: {},
+      relationsBySpeciesId: {},
+    });
 
     const { container } = render(
       <BrowserRouter>

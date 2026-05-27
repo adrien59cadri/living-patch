@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
 import type { Species, Symbiosis } from '../types';
 import {
   getFormColor as designGetFormColor,
@@ -61,7 +59,7 @@ export function getLinkStrokeWidth(obligate: boolean): number {
 /**
  * Get opacity for node by depth.
  */
-export function getNodeOpacityByDepth(_depth: number): number {
+export function getNodeOpacityByDepth(): number {
   return 1.0;
 }
 

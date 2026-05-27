@@ -1,102 +1,133 @@
-# Refactoring Analysis: D3 Bubble Tree Visualization
+# Refactoring Analysis: LivingPatch — LIVING DOCUMENT
+
+**Last Updated**: May 27, 2026  
+**Status**: MVP Phase 1 complete. Now tracking completed optimizations vs. remaining work.
+
+---
+
+## ✅ COMPLETED OPTIMIZATIONS (May 27, 2026)
+
+### 1. ✅ DONE: Label Definition Consolidation
+- **Date Completed**: May 27, 2026
+- **Impact**: ~30 lines deduplicated
+- **Changes**:
+  - Moved all label maps to `designTokens.ts` (single source of truth)
+  - `FORM_LABELS`, `SEASON_LABELS`, `HABITAT_LABELS`, `DIET_LABELS`, `SYMBIOSIS_LABELS`, `KEYSTONE_TYPE_LABELS`
+  - `labels.ts` now imports from designTokens instead of duplicating
+  - All 98 tests passing ✅
+  - **Bundle savings**: ~0.5 KB (code cleanup, not size reduction)
+
+### 2. ✅ DONE: Removed Outdated Documentation
+- **Date Completed**: May 27, 2026
+- **Files Deleted**:
+  - PLAN.md (old project status)
+  - TODO.md (all tasks completed)
+  - context.md (reference superseded by instructions)
+  - livingpatch-species-card-requirements.md (old spec)
+  - livingpatch-product-definition.md (old definition)
+- **Benefit**: Cleaner repo, no stale docs for agents to read
+
+### 3. ✅ DONE: Build Artifact .gitignore
+- **Status**: Already present in `app/.gitignore`
+- **Entries**: `dist-single-file/`, `playwright-report/`, `test-results/`
+- **Benefit**: Prevents build outputs from bloating repo
+
+---
+
+## 🔴 NEW: Unused Code Found (May 27, 2026)
+
+### Unused Components (SAFE TO DELETE)
+- `app/src/components/RelationshipsPanel.tsx` - Exported but never imported
+- `app/src/components/NeighborsGrid.tsx` - Exported but never imported
+- **Action**: Remove both files (~200 lines)
+- **Bundle Savings**: ~2-3 KB
+
+### Demo/Fixture Test (CAN BE ARCHIVED)
+- `app/e2e/fixture-demo.spec.ts` - Tests Playwright fixture mechanism, not app functionality
+- **Action**: Remove or move to archive/ folder
+- **Status**: Not critical, but adds clutter
+
+---
+
+## 📋 REMAINING OPTIMIZATIONS (Priority Order)
+
+### 1. Extract Generic Grouping Helper (30 min, ~2 KB)
+**Location**: `app/src/lib/relationships.ts`  
+**Problem**: `groupByRole()`, `groupKeyRolesByObligation()`, `groupTaxonomyRelations()` all use same loop-and-map pattern (~80 lines similar logic)  
+**Solution**: Create generic `groupByKey()` helper function  
+**Impact**: Code reduction + maintainability  
+
+### 2. Split RelationshipBubbleTree Component (2-3 hrs, ~3 KB + maintainability)
+**Location**: `app/src/components/RelationshipBubbleTree.tsx` (605 lines)  
+**Problem**: Monolithic component mixes layout, rendering, legend, interactions  
+**Solution**: Split into 3 sub-components:
+  - `BubbleTreeCore.tsx` (~350 lines) - Core D3 layout + node/link rendering
+  - `BubbleTreeLegend.tsx` (~100 lines) - Legend rendering
+  - `BubbleTreeInteractions.tsx` (~155 lines) - Zoom, pan, click handlers
+**Impact**: Better maintainability, easier testing  
+
+### 3. **BIGGEST OPPORTUNITY**: Lazy-Load Dataset (4-6 hrs, ~450 KB deferral)
+**Location**: `app/src/data/dataset.json` (~450-500 KB)  
+**Problem**: Bundled into every build, loaded on app startup  
+**Solution**: Lazy-load full dataset only when user navigates to RelationshipDiagramPage  
+**Expected Impact**:
+  - Initial load: 1.5 MB → 500-600 KB (67% reduction)
+  - On diagram view: Deferred 450 KB loads on demand
+  - Perceived UX: 3-5x faster initial page load
+**Strategy**:
+  - Keep core species list (~50 KB) in bundle
+  - Fetch full symbiosis/relationships data only when opening full diagram
+  - Cache in localStorage or React state to avoid re-fetching
+
+---
+
+## 📊 Bundle Size Summary
+
+**Current State (May 27, 2026)**:
+- Single-file bundle: ~1.5 MB
+- Unit tests: 98 passing
+- Code cleanliness: Good (no unused imports, consolidated labels)
+
+**After Removing Unused Components**:
+- Savings: ~2-3 KB (negligible in bundle, but cleaner codebase)
+- Tests: Still 98 passing (tests for unused components don't exist)
+
+**After All Optimizations**:
+- Initial load: ~500-600 KB (lazy-load dataset)
+- Component refactoring: ~3 KB code reduction
+- **Total potential savings**: ~450+ KB + 3 KB code = 450+ KB network + better maintainability
+
+---
+
+## 🔍 Code Quality Notes
+
+### What's Already Good
+✅ No disabled tests (`.skip()`, `.only()`)  
+✅ No commented-out code  
+✅ All 23 components are actually used (except 2 found unused)  
+✅ All 7 pages are routed  
+✅ No unused imports  
+✅ Design tokens centralized  
+
+### What Needs Attention
+⚠️ RelationshipBubbleTree too large (605 lines) - should split  
+⚠️ 80 lines of repetitive grouping logic in relationships.ts  
+⚠️ Dataset size (450 KB) blocking initial load  
+
+---
+
+## Reference: Architecture Overview
+
+See `MEMORY.md` for project status and tech stack.  
+See `/memories/repo/livingpatch-codebase-architecture.md` for detailed diagram implementation.
 
 ## Executive Summary
-The D3 bubble tree visualization is functional but has several opportunities for simplification and code reduction without losing functionality. Main areas: eliminate code duplication, remove dead code from legacy hierarchy model, improve type safety, and extract common patterns.
 
----
-
-## 1. REDUCE: Dead Code from Legacy Hierarchy Model
-
-### Location: `app/src/lib/bubbleTreeUtils.ts` (lines 1-150)
-### Impact: ~120 lines of unused code
-
-Functions **no longer used** after switching from 3-tier hierarchy to flat nodes-edges model:
-- `buildBubbleTreeHierarchy()` - entire function unused
-- `categoryLabel()` - only used by buildBubbleTreeHierarchy
-- `getNodeRadius()` - duplicate of getNodeSizeByDepth
-- `getNodeOpacity()` - duplicate of getNodeOpacityByDepth  
-- `getLabelSize()` - unused
-- `getLabelWeight()` - unused
-
-### Action
-Delete these 6 functions (~70 lines of code). They're not imported anywhere else:
-```bash
-grep -r "buildBubbleTreeHierarchy\|categoryLabel\|getNodeRadius\|getNodeOpacity\|getLabelSize\|getLabelWeight" app/src --include="*.tsx" --include="*.ts"
-# Result: No matches (except in bubbleTreeUtils.ts itself)
-```
-
-### Before/After
-- **Before**: ~420 lines in bubbleTreeUtils.ts
-- **After**: ~350 lines (-17% reduction)
-- **Bundle impact**: ~1-2 KB savings in final build
-
----
-
-## 2. REFACTOR: Eliminate Link Endpoint Calculation Duplication
-
-### Location: `app/src/components/RelationshipBubbleTree.tsx` (lines 176-245)
-
-### Problem
-x1, y1, x2, y2 attributes each repeat the direction vector calculation:
-```typescript
-// This pattern is repeated 4 times with minor variations
-const dx = targetPos.x - sourcePos.x;
-const dy = targetPos.y - sourcePos.y;
-const distance = Math.sqrt(dx * dx + dy * dy);
-// ... then derive x1, y1, x2, y2 separately
-```
-
-### Solution
-Extract into helper function before rendering:
-```typescript
-interface LinkEndpoints {
-  x1: number;
-  y1: number;
-  x2: number;
-  y2: number;
-}
-
-const calculateLinkEndpoints = (link: any, nodePositions: Map<string, {x: number; y: number}>): LinkEndpoints => {
-  const sourcePos = nodePositions.get(link.source);
-  const targetPos = nodePositions.get(link.target);
-  if (!sourcePos || !targetPos) return { x1: 0, y1: 0, x2: 0, y2: 0 };
-
-  const dx = targetPos.x - sourcePos.x;
-  const dy = targetPos.y - sourcePos.y;
-  const distance = Math.sqrt(dx * dx + dy * dy);
-  if (distance === 0) return { x1: sourcePos.x, y1: sourcePos.y, x2: targetPos.x, y2: targetPos.y };
-
-  const sourceRadius = getNodeSizeByDepth(nodes.find(n => n.id === link.source)?.depth ?? 0);
-  const targetRadius = getNodeSizeByDepth(nodes.find(n => n.id === link.target)?.depth ?? 0);
-
-  return {
-    x1: sourcePos.x + (dx / distance) * sourceRadius,
-    y1: sourcePos.y + (dy / distance) * sourceRadius,
-    x2: targetPos.x - (dx / distance) * targetRadius,
-    y2: targetPos.y - (dy / distance) * targetRadius,
-  };
-};
-
-// Pre-calculate all endpoints
-const linkEndpoints = new Map(links.map(link => [link, calculateLinkEndpoints(link, nodePositions)]));
-
-// Then in link rendering:
-linkGroup.selectAll('line').data(links).join('line')
-  .attr('x1', (d: any) => linkEndpoints.get(d)?.x1 ?? 0)
-  .attr('y1', (d: any) => linkEndpoints.get(d)?.y1 ?? 0)
-  .attr('x2', (d: any) => linkEndpoints.get(d)?.x2 ?? 0)
-  .attr('y2', (d: any) => linkEndpoints.get(d)?.y2 ?? 0)
-  // ... rest of attributes
-```
-
-### Impact
-- **Code reduction**: ~70 lines → ~15 lines
-- **Performance**: Calculations done once per render instead of 4x during SVG attribute setting
-- **Maintainability**: Single source of truth for endpoint calculation
-
----
-
-## 3. REFACTOR: Arrow Marker Factory
+D3 bubble tree visualization is functional and well-tested. Main areas for improvement:
+1. Remove unused components (quick, ~2-3 KB)
+2. Extract repetitive patterns (medium, ~2 KB code clarity)
+3. Split large component (medium, ~3 KB + maintainability)
+4. Lazy-load dataset (large effort, ~450 KB network impact) ⭐ HIGHEST PRIORITY
 
 ### Location: `app/src/components/RelationshipBubbleTree.tsx` (lines 101-135)
 

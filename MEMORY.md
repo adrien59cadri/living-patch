@@ -1,11 +1,11 @@
 # LivingPatch — Development Memory
 
-## Project Status: ✅ MVP COMPLETE
-Full Phase 1 (Dataset Explorer with D3 Diagram) implemented, tested, and refactored.
+## Project Status: ✅ MVP COMPLETE + Code Optimization (May 27, 2026)
+Full Phase 1 (Dataset Explorer with D3 Diagram) implemented, tested, refactored, and optimized.
 - **Live**: http://localhost:5174/ (run `npm run dev` in root)
 - **Build**: 160ms, 625 modules
 - **Tests**: 98 passing across 9 test files
-- **Git**: Commits tracked, latest: refactoring work complete
+- **Latest**: Label consolidation (designTokens.ts now single source), cleanup complete
 
 ## What Works
 ✅ **D3 Radial Bubble Tree** - Interactive species relationship diagram
@@ -28,8 +28,9 @@ Helps nature hobbyists understand ecological relationships in their area.
 - **Styling**: TailwindCSS v4
 - **Visualization**: D3.js v7+ (radial bubble tree)
 - **Routing**: React Router v6 (HashRouter for offline)
-- **Testing**: Vitest + React Testing Library + Playwright
+- **Testing**: Vitest + React Testing Library + Playwright (98 unit/component tests passing)
 - **Data**: Static JSON indexed into Maps (O(1) lookups)
+- **Design Tokens**: Centralized in designTokens.ts (colors, icons, labels)
 
 ## Dataset Facts
 - File: app/src/data/dataset.json (62KB, 1923 lines)
@@ -164,8 +165,10 @@ RelationshipBubbleTree renders with D3 (SVG)
 | app/src/components/RelationshipBubbleTree.tsx | D3 radial bubble tree component |
 | app/src/components/SpeciesBubbleTree.tsx | React wrapper |
 | app/src/lib/bubbleTreeUtils.ts | Data transformation + styling utils |
-| app/src/data/dataset.json | Complete dataset (62KB) |
+| app/src/lib/designTokens.ts | Colors, icons, labels (single source of truth) |
+| app/src/lib/labels.ts | Label functions + formatters (imports from designTokens) |
+| app/src/data/dataset.json | Complete dataset (~62KB) |
 | app/src/data/index.ts | Dataset loading + indexing |
 | app/src/hooks/useDataset.ts | Data access hook |
-| REFACTORING_ANALYSIS.md | Complete refactoring opportunities analysis |
+| REFACTORING_ANALYSIS.md | Ongoing refactoring guide (living document) |
 | /memories/repo/livingpatch-codebase-architecture.md | Detailed architecture doc |
