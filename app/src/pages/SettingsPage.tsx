@@ -1,4 +1,4 @@
-import { useUserPreferences } from '../stores/userPreferences';
+import { useUserPreferences } from '../hooks/useUserPreferences';
 import { loadedPacks } from '../data';
 
 export default function SettingsPage() {

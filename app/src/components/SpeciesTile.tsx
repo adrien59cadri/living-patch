@@ -3,7 +3,7 @@ import type { Species } from '../types';
 import type { RelatedEntry } from '../lib/relationships';
 import { KeystoneBadge } from './KeystoneBadge';
 import { formLabel } from '../lib/labels';
-import { useUserPreferences } from '../stores/userPreferences';
+import { useUserPreferences } from '../hooks/useUserPreferences';
 
 interface Props {
   species: Species;
