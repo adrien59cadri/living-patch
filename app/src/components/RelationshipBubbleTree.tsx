@@ -136,12 +136,28 @@ export const RelationshipBubbleTree: React.FC<RelationshipBubbleTreeProps> = ({
         nodePositions.set(focalNode.id, { x: centerX, y: centerY, depth: 0 });
       }
 
-      // Depth-1 nodes in circle
+      // Depth-1 nodes: prioritize above/below to minimize text overlap
       const depth1Nodes = nodes.filter(n => n.depth === 1);
       const depth1Count = depth1Nodes.length;
       const depth1Radius = Math.min(150, maxRadius * 0.4);
-      depth1Nodes.forEach((node, i) => {
+      
+      // Position nodes in a pattern that prioritizes top/bottom
+      // Top, Bottom, Top-Right, Bottom-Right, Top-Left, Bottom-Left, etc.
+      const depth1Angles: number[] = [];
+      if (depth1Count >= 1) depth1Angles.push(-Math.PI / 2); // top
+      if (depth1Count >= 2) depth1Angles.push(Math.PI / 2);  // bottom
+      if (depth1Count >= 3) depth1Angles.push(-Math.PI / 4); // top-right
+      if (depth1Count >= 4) depth1Angles.push(Math.PI / 4);  // bottom-right
+      if (depth1Count >= 5) depth1Angles.push(-3 * Math.PI / 4); // top-left
+      if (depth1Count >= 6) depth1Angles.push(3 * Math.PI / 4);  // bottom-left
+      // For more than 6, distribute the rest
+      for (let i = depth1Angles.length; i < depth1Count; i++) {
         const angle = (i / depth1Count) * 2 * Math.PI;
+        depth1Angles.push(angle);
+      }
+      
+      depth1Nodes.forEach((node, i) => {
+        const angle = depth1Angles[i] || 0;
         const x = centerX + depth1Radius * Math.cos(angle);
         const y = centerY + depth1Radius * Math.sin(angle);
         nodePositions.set(node.id, { x, y, depth: 1 });
@@ -204,7 +220,11 @@ export const RelationshipBubbleTree: React.FC<RelationshipBubbleTreeProps> = ({
       nodeElements
         .append('circle')
         .attr('r', (d: any) => getNodeSizeByDepth(d.depth))
-        .attr('fill', (d: any) => getFormColor(d.form))
+        .attr('fill', (d: any) => {
+          // Use bolder color for focal node
+          if (d.depth === 0) return '#cc8800';
+          return getFormColor(d.form);
+        })
         .attr('stroke', (d: any) => (d.depth === 0 ? '#333' : '#666'))
         .attr('stroke-width', (d: any) => (d.depth === 0 ? 3 : 2))
         .attr('opacity', (d: any) => getNodeOpacityByDepth(d.depth))
