@@ -177,10 +177,74 @@ export const RelationshipBubbleTree: React.FC<RelationshipBubbleTreeProps> = ({
         .selectAll('line')
         .data(links)
         .join('line')
-        .attr('x1', (d: any) => nodePositions.get(d.source)?.x ?? 0)
-        .attr('y1', (d: any) => nodePositions.get(d.source)?.y ?? 0)
-        .attr('x2', (d: any) => nodePositions.get(d.target)?.x ?? 0)
-        .attr('y2', (d: any) => nodePositions.get(d.target)?.y ?? 0)
+        .attr('x1', (d: any) => {
+          const sourcePos = nodePositions.get(d.source);
+          const targetPos = nodePositions.get(d.target);
+          if (!sourcePos || !targetPos) return 0;
+          
+          // Calculate direction vector
+          const dx = targetPos.x - sourcePos.x;
+          const dy = targetPos.y - sourcePos.y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+          if (distance === 0) return sourcePos.x;
+          
+          // Get source node radius and move toward target by that amount
+          const sourceNodeData = nodes.find(n => n.id === d.source);
+          const sourceRadius = sourceNodeData ? getNodeSizeByDepth(sourceNodeData.depth) : 0;
+          
+          return sourcePos.x + (dx / distance) * sourceRadius;
+        })
+        .attr('y1', (d: any) => {
+          const sourcePos = nodePositions.get(d.source);
+          const targetPos = nodePositions.get(d.target);
+          if (!sourcePos || !targetPos) return 0;
+          
+          // Calculate direction vector
+          const dx = targetPos.x - sourcePos.x;
+          const dy = targetPos.y - sourcePos.y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+          if (distance === 0) return sourcePos.y;
+          
+          // Get source node radius and move toward target by that amount
+          const sourceNodeData = nodes.find(n => n.id === d.source);
+          const sourceRadius = sourceNodeData ? getNodeSizeByDepth(sourceNodeData.depth) : 0;
+          
+          return sourcePos.y + (dy / distance) * sourceRadius;
+        })
+        .attr('x2', (d: any) => {
+          const sourcePos = nodePositions.get(d.source);
+          const targetPos = nodePositions.get(d.target);
+          if (!sourcePos || !targetPos) return 0;
+          
+          // Calculate direction vector
+          const dx = targetPos.x - sourcePos.x;
+          const dy = targetPos.y - sourcePos.y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+          if (distance === 0) return targetPos.x;
+          
+          // Get target node radius and move toward source by that amount
+          const targetNodeData = nodes.find(n => n.id === d.target);
+          const targetRadius = targetNodeData ? getNodeSizeByDepth(targetNodeData.depth) : 0;
+          
+          return targetPos.x - (dx / distance) * targetRadius;
+        })
+        .attr('y2', (d: any) => {
+          const sourcePos = nodePositions.get(d.source);
+          const targetPos = nodePositions.get(d.target);
+          if (!sourcePos || !targetPos) return 0;
+          
+          // Calculate direction vector
+          const dx = targetPos.x - sourcePos.x;
+          const dy = targetPos.y - sourcePos.y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+          if (distance === 0) return targetPos.y;
+          
+          // Get target node radius and move toward source by that amount
+          const targetNodeData = nodes.find(n => n.id === d.target);
+          const targetRadius = targetNodeData ? getNodeSizeByDepth(targetNodeData.depth) : 0;
+          
+          return targetPos.y - (dy / distance) * targetRadius;
+        })
         .attr('stroke', (d: any) => {
           if (['predation', 'parasitism'].includes(d.type)) {
             return getRelationshipColor(d.type);
