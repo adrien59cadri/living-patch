@@ -274,7 +274,6 @@ export const RelationshipBubbleTree: React.FC<RelationshipBubbleTreeProps> = ({
         .attr('class', 'diagram-node')
         .attr('r', (d: any) => getNodeSizeByDepth(d.depth))
         .attr('fill', (d: any) => getFormColor(d.form))
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         .attr('opacity', (d: any) => getNodeOpacityByDepth(d.depth))
         .style('cursor', 'pointer');
 
