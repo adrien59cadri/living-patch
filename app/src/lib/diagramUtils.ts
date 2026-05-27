@@ -112,3 +112,61 @@ export function buildForceGraphData(
     links: Array.from(links.values()),
   };
 }
+
+export function buildCytoscapeStyles(focalSpeciesId: string) {
+  return [
+    {
+      selector: 'node',
+      style: {
+        'background-color': (ele: any) => getNodeColor(ele.data('relationshipType')),
+        'width': (ele: any) => getNodeSize(ele.data('depth')) * 2.5,
+        'height': (ele: any) => getNodeSize(ele.data('depth')) * 2.5,
+        'opacity': (ele: any) => getNodeOpacity(ele.data('depth')),
+        'label': 'data(name)',
+        'text-valign': 'center',
+        'text-halign': 'center',
+        'font-size': 10,
+        'color': '#000',
+        'text-opacity': 0.9,
+      },
+    },
+    {
+      selector: 'node[id = "' + focalSpeciesId + '"]',
+      style: {
+        'background-color': '#10b981',
+        'border-color': '#10b981',
+        'border-width': 2,
+        'opacity': 1.0,
+      },
+    },
+    {
+      selector: 'node:hover',
+      style: {
+        'background-color': '#059669',
+        'opacity': 1.0,
+      },
+    },
+    {
+      selector: 'edge',
+      style: {
+        'line-color': (ele: any) => getNodeColor(ele.data('relationshipType')),
+        'width': (ele: any) => (ele.data('obligate') ? 2 : 1),
+        'opacity': 0.5,
+        'line-style': (ele: any) => {
+          const sourceDepth = ele.source().data('depth');
+          const targetDepth = ele.target().data('depth');
+          if (sourceDepth === 1 && targetDepth === 1) return 'solid';
+          if (sourceDepth === 2 || targetDepth === 2) return 'dashed';
+          return 'dotted';
+        },
+      },
+    },
+    {
+      selector: 'edge:hover',
+      style: {
+        'opacity': 1,
+        'width': (ele: any) => (ele.data('obligate') ? 2.5 : 1.5),
+      },
+    },
+  ];
+}

@@ -1,17 +1,13 @@
-import { useRef, useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useCallback } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { ForceGraph2D } from 'react-force-graph';
-import type { DiagramNode } from '../types';
-import { buildForceGraphData, getNodeColor, getNodeSize, getNodeOpacity } from '../lib/diagramUtils';
+import { CytoscapeWrapper } from '../components/CytoscapeWrapper';
+import { buildForceGraphData, buildCytoscapeStyles } from '../lib/diagramUtils';
 import { useDataset } from '../hooks/useDataset';
 
 export function RelationshipDiagramPage() {
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const { speciesById, symbiosisBySpeciesId } = useDataset();
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const fgRef = useRef<any>(null);
-  const [hoveredNode, setHoveredNode] = useState<string | null>(null);
 
   const focalSpeciesId = searchParams.get('focal');
 
@@ -26,28 +22,55 @@ export function RelationshipDiagramPage() {
     }
   }, [focalSpeciesId, navigate]);
 
-  useEffect(() => {
-    if (fgRef.current && graphData) {
-      fgRef.current.d3Force('charge')?.strength(-500);
-      fgRef.current.d3Force('link')?.distance(150);
-      fgRef.current.zoomToFit(400, { padding: 0.5 });
-    }
-  }, [graphData]);
-
   if (!focalSpeciesId || !graphData) return null;
 
   const focalSpecies = speciesById.get(focalSpeciesId);
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const handleNodeClick = (node: any) => {
-    if (node.id === focalSpeciesId) return;
-    setSearchParams({ focal: node.id });
-  };
+  // Convert ForceGraphData to Cytoscape elements format
+  const elements = useMemo(() => {
+    if (!graphData) return [];
+    
+    const nodeElements = graphData.nodes.map(node => ({
+      data: {
+        id: node.id,
+        name: node.name,
+        depth: node.depth,
+        relationshipType: node.relationshipType,
+      },
+    }));
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const handleNodeHover = (node: any) => {
-    setHoveredNode(node?.id ?? null);
-  };
+    const edgeElements = graphData.links.map((link, idx) => {
+      // Handle both string IDs and node objects (in case ForceGraph2D converts them)
+      const sourceId = typeof link.source === 'string' ? link.source : (link.source as any).id;
+      const targetId = typeof link.target === 'string' ? link.target : (link.target as any).id;
+      
+      return {
+        data: {
+          id: `${sourceId}-${targetId}-${idx}`,
+          source: sourceId,
+          target: targetId,
+          relationshipType: link.relationshipType,
+          obligate: link.obligate,
+          directional: link.directional,
+        },
+      };
+    });
+
+    return [...nodeElements, ...edgeElements];
+  }, [graphData]);
+
+  const stylesheet = useMemo(() => buildCytoscapeStyles(focalSpeciesId), [focalSpeciesId]);
+
+  const handleNodeTap = useCallback((evt: any) => {
+    const node = evt.target;
+    if (node.isNode()) {
+      const nodeId = node.id();
+      if (nodeId === focalSpeciesId) return;
+      setSearchParams({ focal: nodeId });
+    }
+  }, [focalSpeciesId, setSearchParams]);
+
+  const onHandlers = useMemo(() => ({ tap: handleNodeTap }), [handleNodeTap]);
 
   const relationshipTypeColors: Record<string, string> = {
     mutualism: '#22c55e',
@@ -78,83 +101,24 @@ export function RelationshipDiagramPage() {
       </div>
 
       {/* Main diagram area */}
-      <div className="flex-1 flex items-center justify-center overflow-hidden">
-        <ForceGraph2D
-          ref={fgRef}
-          graphData={graphData}
-          nodeColor={(node: unknown) => {
-            const n = node as DiagramNode;
-            const isHovered = hoveredNode === n.id;
-            const isFocal = n.id === focalSpeciesId;
-            const baseColor = getNodeColor(n.relationshipType);
-
-            if (isFocal) return '#10b981';
-            if (isHovered) return '#059669';
-            return baseColor;
+      <div className="flex-1 overflow-hidden relative">
+        <CytoscapeWrapper
+          elements={elements}
+          style={{ width: '100%', height: '100%' }}
+          stylesheet={stylesheet}
+          layout={{
+            name: 'cose',
+            nodeSpacing: 15,
+            animate: true,
+            animationDuration: 500,
+            spacingFactor: 1.3,
+            gravity: 1,
+            numIter: 1000,
           }}
-          nodeVal={(node: unknown) => {
-            const n = node as DiagramNode;
-            return getNodeSize(n.depth);
-          }}
-          nodeLabel={(node: unknown) => {
-            const n = node as DiagramNode;
-            return n.name;
-          }}
-          nodeCanvasObject={(node: unknown, ctx: CanvasRenderingContext2D) => {
-            const n = node as DiagramNode;
-            const size = getNodeSize(n.depth);
-            const isFocal = n.id === focalSpeciesId;
-            const opacity = getNodeOpacity(n.depth);
-            const x = n.x || 0;
-            const y = n.y || 0;
-
-            ctx.fillStyle = getNodeColor(n.relationshipType);
-            ctx.globalAlpha = opacity;
-            ctx.beginPath();
-            ctx.arc(x, y, size, 0, 2 * Math.PI);
-            ctx.fill();
-
-            if (isFocal) {
-              ctx.strokeStyle = '#10b981';
-              ctx.lineWidth = 3;
-              ctx.globalAlpha = 1;
-              ctx.stroke();
-            }
-
-            ctx.globalAlpha = 1;
-          }}
-          linkColor={(link: unknown) => {
-            const l = link as Record<string, unknown>;
-            const source = l.source as DiagramNode;
-            const target = l.target as DiagramNode;
-            const isConnected =
-              hoveredNode === null ||
-              (source.id === hoveredNode || target.id === hoveredNode);
-            const color = getNodeColor(l.relationshipType as string);
-            return isConnected ? color : '#d1d5db';
-          }}
-          linkWidth={(link: unknown) => {
-            const l = link as Record<string, unknown>;
-            const source = l.source as DiagramNode;
-            const target = l.target as DiagramNode;
-            const isConnected =
-              hoveredNode === null ||
-              (source.id === hoveredNode || target.id === hoveredNode);
-            const obligate = l.obligate as boolean;
-            return obligate ? (isConnected ? 2.5 : 1) : isConnected ? 1.5 : 0.5;
-          }}
-          linkLineDash={(link: unknown) => {
-            const l = link as Record<string, unknown>;
-            const source = l.source as DiagramNode;
-            const target = l.target as DiagramNode;
-            if (source.depth === 1 && target.depth === 1) return [];
-            if (source.depth === 2 || target.depth === 2) return [5, 5];
-            return [2, 2];
-          }}
-          onNodeClick={handleNodeClick}
-          onNodeHover={handleNodeHover}
-          height={window.innerHeight - 60}
-          width={window.innerWidth}
+          wheelSensitivity={0.1}
+          boxSelectionEnabled={false}
+          autounselectify={true}
+          on={onHandlers}
         />
       </div>
 
