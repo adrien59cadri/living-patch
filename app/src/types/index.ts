@@ -72,3 +72,19 @@ export interface ForceGraphData {
   nodes: DiagramNode[];
   links: DiagramLink[];
 }
+
+export interface BubbleTreeNode {
+  id: string;
+  name: string;
+  type: 'focal' | 'category' | 'species';
+  relationshipType?: string;
+  children?: BubbleTreeNode[];
+}
+
+export interface HierarchyInput {
+  id: string;
+  name: string;
+  type: 'focal' | 'category' | 'species';
+  relationshipType?: string;
+  children?: HierarchyInput[];
+}

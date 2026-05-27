@@ -1,8 +1,7 @@
 import { useEffect, useMemo, useCallback } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import Cytoscape from 'cytoscape';
-import { CytoscapeWrapper, type Element } from '../components/CytoscapeWrapper';
-import { buildForceGraphData, buildCytoscapeStyles } from '../lib/diagramUtils';
+import RelationshipBubbleTree from '../components/RelationshipBubbleTree';
+import { buildBubbleTreeHierarchy } from '../lib/bubbleTreeUtils';
 import { useDataset } from '../hooks/useDataset';
 
 export function RelationshipDiagramPage() {
@@ -12,74 +11,36 @@ export function RelationshipDiagramPage() {
 
   const focalSpeciesId = searchParams.get('focal');
 
-  const graphData = useMemo(() => {
+  const hierarchyData = useMemo(() => {
     if (!focalSpeciesId) return null;
-    return buildForceGraphData(focalSpeciesId, 3, speciesById, symbiosisBySpeciesId);
+    try {
+      return buildBubbleTreeHierarchy(
+        focalSpeciesId,
+        speciesById,
+        symbiosisBySpeciesId,
+        new Map(),
+        3
+      );
+    } catch (error) {
+      console.error('Error building bubble tree hierarchy:', error);
+      return null;
+    }
   }, [focalSpeciesId, speciesById, symbiosisBySpeciesId]);
 
-  // Convert ForceGraphData to Cytoscape elements format - MUST BE BEFORE EARLY RETURN
-  const elements = useMemo(() => {
-    if (!graphData) return [];
-    
-    const nodeElements = graphData.nodes.map(node => ({
-      data: {
-        id: node.id,
-        name: node.name,
-        depth: node.depth,
-        relationshipType: node.relationshipType,
-      },
-    }));
-
-    const edgeElements = graphData.links.map((link, idx) => {
-      // Handle both string IDs and node objects
-      const sourceId = typeof link.source === 'string' ? link.source : String((link.source as Record<string, unknown>).id);
-      const targetId = typeof link.target === 'string' ? link.target : String((link.target as Record<string, unknown>).id);
-      
-      return {
-        data: {
-          id: `${sourceId}-${targetId}-${idx}`,
-          source: sourceId,
-          target: targetId,
-          relationshipType: link.relationshipType,
-          obligate: link.obligate,
-          directional: link.directional,
-        },
-      };
-    });
-
-    return [...nodeElements, ...edgeElements] as unknown as Element[];
-  }, [graphData]);
-
-  const stylesheet = useMemo(() => buildCytoscapeStyles(focalSpeciesId || ''), [focalSpeciesId]);
-
-  const handleNodeTap = useCallback((evt: Record<string, unknown>) => {
-    const node = evt.target as Record<string, () => unknown>;
-    if ((node.isNode as () => boolean)()) {
-      const nodeId = (node.id as () => string)();
-      setSearchParams({ focal: nodeId });
-    }
+  const handleNodeClick = useCallback((speciesNodeId: string) => {
+    setSearchParams({ focal: speciesNodeId });
   }, [setSearchParams]);
 
-  const onHandlers = useMemo(() => ({ tap: handleNodeTap }), [handleNodeTap]);
-
-  // NOW CHECK FOR EARLY RETURN AFTER ALL HOOKS
+  // Check for early return after all hooks
   useEffect(() => {
     if (!focalSpeciesId) {
       navigate('/');
     }
   }, [focalSpeciesId, navigate]);
 
-  if (!focalSpeciesId || !graphData) return null;
+  if (!focalSpeciesId || !hierarchyData) return null;
 
   const focalSpecies = speciesById.get(focalSpeciesId);
-
-  const relationshipTypeColors: Record<string, string> = {
-    mutualism: '#22c55e',
-    predation: '#ef4444',
-    parasitism: '#a855f7',
-    competition: '#f97316',
-    commensalism: '#3b82f6',
-  };
 
   return (
     <div className="h-screen flex flex-col bg-stone-50">
@@ -103,41 +64,36 @@ export function RelationshipDiagramPage() {
 
       {/* Main diagram area */}
       <div className="flex-1 overflow-hidden relative">
-        <CytoscapeWrapper
-          elements={elements}
-          style={{ width: '100%', height: '100%' }}
-          stylesheet={stylesheet as unknown as Cytoscape.StylesheetCSS[]}
-          layout={{
-            name: 'cose',
-            animate: true,
-            animationDuration: 500,
-            spacingFactor: 1.3,
-            gravity: 1,
-            numIter: 1000,
-          } as Cytoscape.LayoutOptions}
-          wheelSensitivity={0.1}
-          boxSelectionEnabled={false}
-          autounselectify={true}
-          on={onHandlers as unknown as Record<string, (evt: Cytoscape.EventObject) => void>}
+        <RelationshipBubbleTree
+          focalId={focalSpeciesId}
+          data={hierarchyData}
+          onNodeClick={handleNodeClick}
+          maxDepth={3}
         />
       </div>
 
       {/* Legend */}
       <div className="absolute bottom-4 left-4 bg-white p-4 rounded-lg shadow border border-stone-200 text-xs space-y-2">
         <div className="font-semibold text-stone-800 mb-3">Relationship Types</div>
-        {Object.entries(relationshipTypeColors).map(([type, color]) => (
-          <div key={type} className="flex items-center gap-2">
-            <div
-              className="w-3 h-3 rounded-full"
-              style={{ backgroundColor: color }}
-            />
-            <span className="text-stone-600 capitalize">{type}</span>
-          </div>
-        ))}
-        <div className="border-t border-stone-200 pt-2 mt-3">
-          <div className="text-stone-600">Depth 1: Full opacity</div>
-          <div className="text-stone-500">Depth 2: 50% opacity</div>
-          <div className="text-stone-400">Depth 3: 25% opacity</div>
+        <div className="flex items-center gap-2">
+          <div className="w-3 h-3 rounded-full" style={{ backgroundColor: '#27ae60' }} />
+          <span className="text-stone-600">Mutualism</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <div className="w-3 h-3 rounded-full" style={{ backgroundColor: '#e74c3c' }} />
+          <span className="text-stone-600">Predation</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <div className="w-3 h-3 rounded-full" style={{ backgroundColor: '#f39c12' }} />
+          <span className="text-stone-600">Parasitism</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <div className="w-3 h-3 rounded-full" style={{ backgroundColor: '#95a5a6' }} />
+          <span className="text-stone-600">Competition</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <div className="w-3 h-3 rounded-full" style={{ backgroundColor: '#3b82f6' }} />
+          <span className="text-stone-600">Commensalism</span>
         </div>
       </div>
     </div>

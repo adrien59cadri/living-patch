@@ -1,5 +1,8 @@
 import type { Species, Symbiosis, ForceGraphData, DiagramNode, DiagramLink } from '../types';
 
+// Legacy diagram utilities - kept for potential future use
+// Current implementation uses D3-based RelationshipBubbleTree instead
+
 export function getNodeColor(relationshipType?: string): string {
   switch (relationshipType) {
     case 'mutualism':
@@ -115,70 +118,4 @@ export function buildForceGraphData(
     nodes: Array.from(nodes.values()),
     links: Array.from(links.values()),
   };
-}
-
-export function buildCytoscapeStyles(focalSpeciesId: string) {
-  return [
-    {
-      selector: 'node',
-      style: {
-        'background-color': (ele: Record<string, unknown>) => getNodeColor((ele as Record<string, (key: string) => unknown>).data('relationshipType') as string),
-        'width': (ele: Record<string, unknown>) => getNodeSize((ele as Record<string, (key: string) => unknown>).data('depth') as number) * 2.5,
-        'height': (ele: Record<string, unknown>) => getNodeSize((ele as Record<string, (key: string) => unknown>).data('depth') as number) * 2.5,
-        'opacity': (ele: Record<string, unknown>) => getNodeOpacity((ele as Record<string, (key: string) => unknown>).data('depth') as number),
-        'label': 'data(name)',
-        'text-valign': 'center',
-        'text-halign': 'center',
-        'font-size': 10,
-        'color': '#000',
-        'text-opacity': 0.9,
-      },
-    },
-    {
-      selector: 'node[id = "' + focalSpeciesId + '"]',
-      style: {
-        'background-color': '#fbbf24', // amber/gold for focal node
-        'border-color': '#92400e',
-        'border-width': 3,
-        'opacity': 1.0,
-        'label': 'data(name)',
-        'text-valign': 'center',
-        'text-halign': 'center',
-        'font-size': 11,
-        'font-weight': 'bold',
-        'color': '#1f2937',
-        'text-opacity': 1.0,
-      },
-    },
-    {
-      selector: 'node:hover',
-      style: {
-        'background-color': '#059669',
-        'opacity': 1.0,
-      },
-    },
-    {
-      selector: 'edge',
-      style: {
-        'line-color': (ele: Record<string, unknown>) => getNodeColor((ele as Record<string, (key: string) => unknown>).data('relationshipType') as string),
-        'width': (ele: Record<string, unknown>) => (ele as Record<string, (key: string) => unknown>).data('obligate') as boolean ? 2.5 : 1.5,
-        'opacity': 0.7,
-        'line-style': (ele: Record<string, unknown>) => {
-          const el = ele as Record<string, () => Record<string, (key: string) => unknown>>;
-          const sourceDepth = (el.source().data('depth') as number);
-          const targetDepth = (el.target().data('depth') as number);
-          if (sourceDepth === 1 && targetDepth === 1) return 'solid';
-          if (sourceDepth === 2 || targetDepth === 2) return 'dashed';
-          return 'dotted';
-        },
-      },
-    },
-    {
-      selector: 'edge:hover',
-      style: {
-        'opacity': 1,
-        'width': (ele: Record<string, unknown>) => (ele as Record<string, (key: string) => unknown>).data('obligate') as boolean ? 2.5 : 1.5,
-      },
-    },
-  ];
 }
