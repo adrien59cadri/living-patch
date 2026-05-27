@@ -121,6 +121,17 @@ describe('DiagramCard - Direct Relationships Display', () => {
     } as any);
   });
 
+  // Helper to extract full text from text elements with tspan support
+  const extractTextContent = (textElement: Element): string => {
+    const tspans = textElement.querySelectorAll('tspan');
+    if (tspans.length > 0) {
+      // If text is wrapped across tspans, join them
+      return Array.from(tspans).map(ts => ts.textContent?.trim() || '').join(' ');
+    }
+    // Fallback for single-line text
+    return textElement.textContent?.trim() || '';
+  };
+
   it('should display focal species and ALL its direct relationships only', () => {
     const { container } = render(
       <BrowserRouter>
@@ -128,7 +139,7 @@ describe('DiagramCard - Direct Relationships Display', () => {
       </BrowserRouter>
     );
 
-    const textElements = Array.from(container.querySelectorAll('text')).map(el => el.textContent?.trim()).filter(Boolean);
+    const textElements = Array.from(container.querySelectorAll('text')).map(extractTextContent).filter(Boolean);
 
     // Should show focal species
     expect(textElements).toContain('Monarch Butterfly');
@@ -164,7 +175,7 @@ describe('DiagramCard - Direct Relationships Display', () => {
     const svg = container.querySelector('svg');
     expect(svg).toBeTruthy();
 
-    const textElements = Array.from(svg!.querySelectorAll('text')).map(el => el.textContent?.trim()).filter(Boolean);
+    const textElements = Array.from(svg!.querySelectorAll('text')).map(extractTextContent).filter(Boolean);
 
     // Allowed text: species names only
     const allowedNames = [
@@ -225,7 +236,7 @@ describe('DiagramCard - Direct Relationships Display', () => {
     const extendedSpecies = [
       ...mockSpecies,
       {
-        id: 'bird_monarch-predator',
+        id: 'insect_spider-orb-weaver',
         common_name: 'Orb Weaver Spider',
         latin_name: 'Neoscona sp.',
         form: 'insect',
@@ -242,12 +253,13 @@ describe('DiagramCard - Direct Relationships Display', () => {
 
     const extendedSymbiosis = [
       ...mockSymbiosis,
+      // Connect spider to milkweed (depth 1), making spider depth 2
       {
         type: 'predation',
-        members: ['bird_monarch-predator', 'insect_monarch-butterfly'],
-        impacted_species: 'insect_monarch-butterfly',
+        members: ['insect_spider-orb-weaver', 'plant_milkweed-common'],
+        impacted_species: 'plant_milkweed-common',
         obligate: false,
-        notes: 'Spider prey',
+        notes: 'Spider preys on insects on milkweed',
       } as Symbiosis,
     ];
 
@@ -263,10 +275,10 @@ describe('DiagramCard - Direct Relationships Display', () => {
     );
 
     const textElements = Array.from(container.querySelectorAll('text'))
-      .map(el => el.textContent?.trim())
+      .map(extractTextContent)
       .filter(Boolean);
 
-    // Should NOT show the spider (which would be depth-1 in this case)
+    // Should NOT show the spider (which would be depth-2 when maxDepth=1)
     expect(textElements).not.toContain('Orb Weaver Spider');
 
     // Should still show original direct relationships

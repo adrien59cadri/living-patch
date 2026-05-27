@@ -230,11 +230,43 @@ export const RelationshipBubbleTree: React.FC<RelationshipBubbleTreeProps> = ({
         .attr('opacity', (d: any) => getNodeOpacityByDepth(d.depth))
         .style('cursor', 'pointer');
 
-      // Node labels
+      // Helper function for smart text wrapping
+      const wrapText = (text: string, maxCharsPerLine: number = 10): string[] => {
+        if (text.length <= maxCharsPerLine) {
+          return [text];
+        }
+
+        // Try to split at word boundaries
+        const words = text.split(' ');
+        const lines: string[] = [];
+        let currentLine = '';
+
+        for (const word of words) {
+          if ((currentLine + word).length <= maxCharsPerLine) {
+            currentLine += (currentLine ? ' ' : '') + word;
+          } else {
+            if (currentLine) lines.push(currentLine);
+            currentLine = word;
+          }
+        }
+        if (currentLine) lines.push(currentLine);
+
+        // If still only 1 line, force split at maxCharsPerLine
+        if (lines.length === 1) {
+          const line = lines[0];
+          if (line.length > maxCharsPerLine) {
+            return [line.substring(0, maxCharsPerLine), line.substring(maxCharsPerLine)];
+          }
+        }
+
+        return lines.slice(0, 2); // Max 2 lines
+      };
+
+      // Node labels with smart wrapping
       nodeElements
         .append('text')
         .attr('text-anchor', 'middle')
-        .attr('dominant-baseline', 'central')
+        .attr('dominant-baseline', 'middle')
         .attr('font-size', (d: any) => {
           if (d.depth === 0) return '0.9em';
           if (d.depth === 1) return '0.75em';
@@ -243,10 +275,21 @@ export const RelationshipBubbleTree: React.FC<RelationshipBubbleTreeProps> = ({
         .attr('font-weight', (d: any) => (d.depth === 0 ? 'bold' : 'normal'))
         .attr('fill', '#333')
         .attr('pointer-events', 'none')
-        .text((d: any) => {
-          const text = d.name || '';
-          const maxLen = d.depth === 0 ? 20 : d.depth === 1 ? 15 : 12;
-          return text.length > maxLen ? text.substring(0, maxLen - 1) + '…' : text;
+        .each(function (d: any) {
+          const textElement = d3.select(this);
+          const lines = wrapText(d.name || '');
+
+          // Adjust vertical offset for multi-line text
+          const lineHeight = 1.2;
+          const startY = (lines.length - 1) * lineHeight * -0.5;
+
+          lines.forEach((line, i) => {
+            textElement
+              .append('tspan')
+              .attr('x', 0)
+              .attr('dy', i === 0 ? startY : lineHeight)
+              .text(line);
+          });
         });
 
       // ===== INTERACTIONS =====
