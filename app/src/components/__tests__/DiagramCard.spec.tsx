@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import { DiagramCard } from '../DiagramCard';
 import * as dataHook from '../../hooks/useDataset';
@@ -193,7 +193,6 @@ describe('DiagramCard - Direct Relationships Display', () => {
 
     // Get any text that might be a legend (relationship type labels)
     const legendTexts = ['Parasitism', 'Predation', 'Mutualism', 'Competition', 'Commensalism'];
-    const bodyText = container.body?.textContent || '';
 
     // If legend exists, it should be outside the bordered diagram area
     for (const legendText of legendTexts) {
