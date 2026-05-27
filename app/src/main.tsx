@@ -7,6 +7,7 @@ import App from './App.tsx'
 // This is needed because react-force-graph has transitive dependencies
 // that expect AFRAME to be available globally
 if (typeof window !== 'undefined') {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   (window as any).AFRAME = (window as any).AFRAME || {}
 }
 
