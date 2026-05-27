@@ -29,6 +29,14 @@ function Tag({ label, variant = 'season' }: TagProps) {
   );
 }
 
+interface FormTagProps {
+  form: string;
+}
+
+export function FormTag({ form }: FormTagProps) {
+  return <Tag label={formLabel(form)} variant="form" />;
+}
+
 interface TagRowProps {
   species: Species;
 }
@@ -38,7 +46,7 @@ export function TagRow({ species }: TagRowProps) {
 
   return (
     <div className="flex flex-wrap gap-1.5 items-center">
-      <Tag label={formLabel(species.form)} variant="form" />
+      <FormTag form={species.form} />
       {species.is_keystone && <KeystoneBadge type={species.keystone_type} />}
       {(species.habitat ?? []).map(h => (
         <Tag key={h} label={habitatLabel(h)} variant="habitat" />
