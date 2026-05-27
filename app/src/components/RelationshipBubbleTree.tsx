@@ -280,7 +280,7 @@ export const RelationshipBubbleTree: React.FC<RelationshipBubbleTreeProps> = ({
 
       // Helper function for balanced text wrapping
       // Tries to split at word boundaries for natural breaks and balanced line lengths
-      const wrapText = (text: string, maxCharsPerLine: number = 11): string[] => {
+      const wrapText = (text: string, maxCharsPerLine: number = 14): string[] => {
         if (text.length <= maxCharsPerLine) {
           return [text];
         }
