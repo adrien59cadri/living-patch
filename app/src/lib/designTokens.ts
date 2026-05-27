@@ -9,11 +9,11 @@
 
 export const FORM_COLORS: Record<string, string> = {
   bird: '#FFB366',           // pastel orange
-  plant: '#A8D8A8',          // pastel green
+  plant: '#C8E6A0',          // pastel chartreuse (yellow-green)
   insect: '#FF9999',         // pastel red/coral
   mammal: '#87CEEB',         // pastel blue (sky blue)
-  amphibian: '#B8E6B8',      // pastel lime green
-  frog: '#B8E6B8',           // pastel lime green
+  amphibian: '#A0E7E5',      // pastel turquoise (cyan)
+  frog: '#A0E7E5',           // pastel turquoise (cyan)
   reptile: '#D8B8FF',        // pastel purple/lavender
   default: '#D3D3D3',        // pastel gray
 };
@@ -23,7 +23,7 @@ export const FORM_COLORS: Record<string, string> = {
 // ============================================================================
 
 export const RELATIONSHIP_COLORS: Record<string, string> = {
-  mutualism: '#A8D8A8',      // pastel green
+  mutualism: '#C8E6A0',      // pastel chartreuse (cooperation/plants)
   predation: '#FF9999',      // pastel red
   parasitism: '#FFB366',     // pastel orange
   competition: '#D3D3D3',    // pastel gray
