@@ -9,6 +9,7 @@ import {
   getNodeOpacityByDepth,
   getLinkStrokeWidth,
   getRelationshipColor,
+  darkenHexColor,
 } from '../lib/bubbleTreeUtils';
 
 interface RelationshipBubbleTreeProps {
@@ -283,8 +284,8 @@ export const RelationshipBubbleTree: React.FC<RelationshipBubbleTreeProps> = ({
           if (d.depth === 0) return '#cc8800';
           return getFormColor(d.form);
         })
-        .attr('stroke', (d: any) => (d.depth === 0 ? '#333' : '#666'))
-        .attr('stroke-width', (d: any) => (d.depth === 0 ? 3 : 2))
+        .attr('stroke', (d: any) => darkenHexColor(getFormColor(d.form), 40))
+        .attr('stroke-width', (d: any) => (d.depth === 0 ? 1.5 : 1))
         .attr('opacity', (d: any) => getNodeOpacityByDepth(d.depth))
         .style('cursor', 'pointer');
 
