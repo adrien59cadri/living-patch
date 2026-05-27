@@ -19,8 +19,6 @@
     "pack:merge": "cd pack-tools && npm run merge",
     "bundle:packs": "node build-dataset.js",
     "bundle:app": "npm run bundle:packs && cd app && npx vite build",
-    "bundle:single-file": "npm run bundle:packs && cd app && VITE_SINGLE_FILE=true npx vite build --outDir dist-single-file && rm -f dist-single-file/favicon.svg",
-    "graphify:install": "bash scripts/install-graphify.sh",
-    "graphify": "graphify ."
+    "bundle:single-file": "npm run bundle:packs && cd app && VITE_SINGLE_FILE=true npx vite build --outDir dist-single-file && rm -f dist-single-file/favicon.svg"
   }
 }
