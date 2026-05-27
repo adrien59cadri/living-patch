@@ -141,23 +141,20 @@ export const RelationshipBubbleTree: React.FC<RelationshipBubbleTreeProps> = ({
       const depth1Count = depth1Nodes.length;
       const depth1Radius = Math.min(150, maxRadius * 0.4);
       
-      // Position nodes in a pattern that prioritizes top/bottom
-      // Top, Bottom, Top-Right, Bottom-Right, Top-Left, Bottom-Left, etc.
-      const depth1Angles: number[] = [];
-      if (depth1Count >= 1) depth1Angles.push(-Math.PI / 2); // top
-      if (depth1Count >= 2) depth1Angles.push(Math.PI / 2);  // bottom
-      if (depth1Count >= 3) depth1Angles.push(-Math.PI / 4); // top-right
-      if (depth1Count >= 4) depth1Angles.push(Math.PI / 4);  // bottom-right
-      if (depth1Count >= 5) depth1Angles.push(-3 * Math.PI / 4); // top-left
-      if (depth1Count >= 6) depth1Angles.push(3 * Math.PI / 4);  // bottom-left
-      // For more than 6, distribute the rest
-      for (let i = depth1Angles.length; i < depth1Count; i++) {
-        const angle = (i / depth1Count) * 2 * Math.PI;
-        depth1Angles.push(angle);
-      }
+      // Better balanced distribution: alternate left-right from top/bottom
+      // This ensures left-right symmetry and reduces text overlap
+      const angleStep = 2 * Math.PI / Math.max(1, depth1Count);
       
       depth1Nodes.forEach((node, i) => {
-        const angle = depth1Angles[i] || 0;
+        let angle;
+        if (i === 0) {
+          // First node at top
+          angle = -Math.PI / 2;
+        } else {
+          // Alternate sides: odd indices go right, even go left
+          const offset = Math.ceil(i / 2) * angleStep;
+          angle = i % 2 === 1 ? -Math.PI / 2 + offset : -Math.PI / 2 - offset;
+        }
         const x = centerX + depth1Radius * Math.cos(angle);
         const y = centerY + depth1Radius * Math.sin(angle);
         nodePositions.set(node.id, { x, y, depth: 1 });
@@ -266,7 +263,7 @@ export const RelationshipBubbleTree: React.FC<RelationshipBubbleTreeProps> = ({
       nodeElements
         .append('text')
         .attr('text-anchor', 'middle')
-        .attr('dominant-baseline', 'middle')
+        .attr('dominant-baseline', 'central')
         .attr('font-size', (d: any) => {
           if (d.depth === 0) return '0.9em';
           if (d.depth === 1) return '0.75em';
@@ -279,16 +276,27 @@ export const RelationshipBubbleTree: React.FC<RelationshipBubbleTreeProps> = ({
           const textElement = d3.select(this);
           const lines = wrapText(d.name || '');
 
-          // Adjust vertical offset for multi-line text
-          const lineHeight = 1.2;
-          const startY = (lines.length - 1) * lineHeight * -0.5;
+          // Vertical line spacing in em units
+          const lineHeightEm = 1.4;
+          // Position first line at vertical offset
+          const startOffset = (lines.length - 1) * lineHeightEm * -0.5;
 
           lines.forEach((line, i) => {
-            textElement
-              .append('tspan')
-              .attr('x', 0)
-              .attr('dy', i === 0 ? startY : lineHeight)
-              .text(line);
+            if (i === 0) {
+              // First tspan gets explicit y position in em
+              textElement
+                .append('tspan')
+                .attr('x', 0)
+                .attr('y', startOffset + 'em')
+                .text(line);
+            } else {
+              // Subsequent tspans use dy for relative positioning
+              textElement
+                .append('tspan')
+                .attr('x', 0)
+                .attr('dy', lineHeightEm + 'em')
+                .text(line);
+            }
           });
         });
 
