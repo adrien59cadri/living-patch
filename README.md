@@ -2,6 +2,8 @@
 
 A personal ecological literacy tool for exploring NE Pennsylvania species and their relationships. **Phase 1 (MVP)**: read-only local webapp — no server, no accounts, fully offline.
 
+**🚀 Live Demo**: https://adrien59cadri.github.io/living-patch/
+
 ## Quick Start
 
 ```bash
