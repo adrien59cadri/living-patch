@@ -7,7 +7,6 @@ import {
   getFormColor,
   getNodeSizeByDepth,
   getNodeOpacityByDepth,
-  getLinkStrokeWidth,
   getRelationshipColor,
 } from '../lib/bubbleTreeUtils';
 
@@ -247,7 +246,7 @@ export const RelationshipBubbleTree: React.FC<RelationshipBubbleTreeProps> = ({
           }
           return getRelationshipColor(d.type);
         })
-        .attr('stroke-width', (d: any) => getLinkStrokeWidth(d.obligate))
+        .attr('stroke-width', 1.5)
         .attr('stroke-linecap', 'round')
         .attr('marker-end', (d: any) => {
           if (d.type === 'predation') return 'url(#arrowPredation)';
