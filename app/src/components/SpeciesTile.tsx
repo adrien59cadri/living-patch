@@ -23,14 +23,14 @@ export function SpeciesTile({ species, related, isGroup }: Props) {
   const inner = (
     <div
       className={[
-        'p-4 rounded-lg border flex items-start gap-3 transition-all',
+        'rounded-lg border flex items-center gap-2 transition-all',
         actualIsGroup
-          ? 'border-stone-100 bg-stone-50 opacity-70'
-          : 'border-stone-200 bg-white hover:border-emerald-300 hover:shadow-sm',
+          ? 'border-stone-100 bg-stone-50 opacity-70 p-4'
+          : 'border-stone-200 bg-white hover:border-emerald-300 hover:shadow-sm pl-2 pt-2 pb-2 pr-4',
       ].join(' ')}
     >
       {!actualIsGroup && preferences.showThumbnailsInList && (
-        <div className="shrink-0 w-12 h-12 bg-stone-100 rounded-md flex items-center justify-center overflow-hidden border border-stone-200">
+        <div className="shrink-0 w-14 h-14 bg-stone-100 rounded-md flex items-center justify-center overflow-hidden border border-stone-200">
           {species.image?.url ? (
             <img
               src={species.image.url}
