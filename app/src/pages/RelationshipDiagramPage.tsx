@@ -54,34 +54,6 @@ export function RelationshipDiagramPage() {
           maxDepth={3}
         />
       </div>
-
-      {/* Legend */}
-      <div className="absolute bottom-4 left-4 bg-white p-4 rounded-lg shadow border border-stone-200 text-xs space-y-2">
-        <div className="font-semibold text-stone-800 mb-3">Relationship Types</div>
-        <div className="flex items-center gap-2">
-          <div className="w-3 h-3 rounded-full" style={{ backgroundColor: '#27ae60' }} />
-          <span className="text-stone-600">Mutualism (solid)</span>
-        </div>
-        <div className="flex items-center gap-2">
-          <div className="w-3 h-3 rounded-full" style={{ backgroundColor: '#e74c3c' }} />
-          <span className="text-stone-600">Predation (→ arrow)</span>
-        </div>
-        <div className="flex items-center gap-2">
-          <div className="w-3 h-3 rounded-full" style={{ backgroundColor: '#f39c12' }} />
-          <span className="text-stone-600">Parasitism (⠒ dashed →)</span>
-        </div>
-        <div className="flex items-center gap-2">
-          <div className="w-3 h-3 rounded-full" style={{ backgroundColor: '#95a5a6' }} />
-          <span className="text-stone-600">Competition (solid)</span>
-        </div>
-        <div className="flex items-center gap-2">
-          <div className="w-3 h-3 rounded-full" style={{ backgroundColor: '#3b82f6' }} />
-          <span className="text-stone-600">Commensalism (solid)</span>
-        </div>
-        <div className="text-xs text-stone-500 mt-3">
-          Bold lines = obligate | Thin lines = facultative
-        </div>
-      </div>
     </div>
   );
 }

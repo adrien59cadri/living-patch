@@ -158,8 +158,8 @@ describe('DiagramCard - Direct Relationships Display', () => {
       </BrowserRouter>
     );
 
-    // Get circles (nodes) in the diagram
-    const circles = container.querySelectorAll('svg circle');
+    // Get diagram node circles only (exclude legend circles)
+    const circles = container.querySelectorAll('svg circle.diagram-node');
 
     // Should have 5 nodes: 1 focal + 4 direct relationships
     expect(circles.length).toBe(5);
@@ -175,7 +175,8 @@ describe('DiagramCard - Direct Relationships Display', () => {
     const svg = container.querySelector('svg');
     expect(svg).toBeTruthy();
 
-    const textElements = Array.from(svg!.querySelectorAll('text')).map(extractTextContent).filter(Boolean);
+    // Only check text within node groups (not legend)
+    const nodeTextElements = Array.from(svg!.querySelectorAll('g.node text')).map(extractTextContent).filter(Boolean);
 
     // Allowed text: species names only
     const allowedNames = [
@@ -186,7 +187,7 @@ describe('DiagramCard - Direct Relationships Display', () => {
       'Goldenrod',
     ];
 
-    for (const text of textElements) {
+    for (const text of nodeTextElements) {
       expect(allowedNames).toContain(text);
     }
   });
@@ -224,8 +225,8 @@ describe('DiagramCard - Direct Relationships Display', () => {
       </BrowserRouter>
     );
 
-    // Get all lines/paths in SVG (links)
-    const lines = container.querySelectorAll('svg line');
+    // Get diagram link lines only (exclude legend lines)
+    const lines = container.querySelectorAll('svg line.diagram-link');
 
     // Should have 4 lines connecting focal to 4 direct relationships
     expect(lines.length).toBe(4);

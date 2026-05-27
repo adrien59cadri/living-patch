@@ -177,6 +177,7 @@ export const RelationshipBubbleTree: React.FC<RelationshipBubbleTreeProps> = ({
         .selectAll('line')
         .data(links)
         .join('line')
+        .attr('class', 'diagram-link')
         .attr('x1', (d: any) => {
           const sourcePos = nodePositions.get(d.source);
           const targetPos = nodePositions.get(d.target);
@@ -280,6 +281,7 @@ export const RelationshipBubbleTree: React.FC<RelationshipBubbleTreeProps> = ({
       // Node circles
       nodeElements
         .append('circle')
+        .attr('class', 'diagram-node')
         .attr('r', (d: any) => getNodeSizeByDepth(d.depth))
         .attr('fill', (d: any) => {
           // Use bolder color for focal node
@@ -391,6 +393,103 @@ export const RelationshipBubbleTree: React.FC<RelationshipBubbleTreeProps> = ({
 
       // Ensure nodes are rendered on top of links
       nodeGroup.raise();
+
+      // ===== LEGEND (bottom left) =====
+      const formColors: Record<string, string> = {
+        bird: '#f39c12',
+        plant: '#27ae60',
+        insect: '#e74c3c',
+        mammal: '#3498db',
+        amphibian: '#1abc9c',
+        reptile: '#9b59b6',
+      };
+
+      const relationshipColors: Record<string, string> = {
+        mutualism: '#27ae60',
+        predation: '#e74c3c',
+        parasitism: '#f39c12',
+        competition: '#95a5a6',
+        commensalism: '#3b82f6',
+      };
+
+      // Create legend group
+      const legendGroup = svg.append('g').attr('class', 'legend');
+
+      // Legend position (bottom left)
+      const legendX = 10;
+      const legendY = dimensions.height - 50;
+
+      // Forms legend (line 1)
+      let formX = legendX;
+      legendGroup
+        .append('text')
+        .attr('x', formX)
+        .attr('y', legendY)
+        .attr('font-size', '11px')
+        .attr('font-weight', 'bold')
+        .text('form: ');
+      formX += 32;
+
+      Object.entries(formColors).forEach(([form]) => {
+        const color = formColors[form];
+        // Circle
+        legendGroup
+          .append('circle')
+          .attr('class', 'legend-item')
+          .attr('cx', formX + 5)
+          .attr('cy', legendY - 4)
+          .attr('r', 4)
+          .attr('fill', color);
+
+        // Label
+        legendGroup
+          .append('text')
+          .attr('x', formX + 12)
+          .attr('y', legendY)
+          .attr('font-size', '10px')
+          .text(form);
+
+        // Dynamic spacing: circle (10px) + label width + padding (8px)
+        const textLength = form.length * 5.5;
+        formX += 10 + textLength + 8;
+      });
+
+      // Relationships legend (line 2)
+      let relX = legendX;
+      const relY = legendY + 15;
+      legendGroup
+        .append('text')
+        .attr('x', relX)
+        .attr('y', relY)
+        .attr('font-size', '11px')
+        .attr('font-weight', 'bold')
+        .text('relation: ');
+      relX += 55;
+
+      Object.entries(relationshipColors).forEach(([rel]) => {
+        const color = relationshipColors[rel];
+        // Line
+        legendGroup
+          .append('line')
+          .attr('x1', relX)
+          .attr('y1', relY - 3)
+          .attr('x2', relX + 10)
+          .attr('y2', relY - 3)
+          .attr('stroke', color)
+          .attr('stroke-width', 2);
+
+        // Label
+        legendGroup
+          .append('text')
+          .attr('x', relX + 15)
+          .attr('y', relY)
+          .attr('font-size', '10px')
+          .text(rel);
+
+        // Dynamic spacing: line (10px) + gap (5px) + label width + padding (8px)
+        const textLength = rel.length * 5.5;
+        relX += 10 + 5 + textLength + 8;
+      });
 
       // ===== ZOOM/PAN (only for maxDepth=3) =====
       if (maxDepth === 3) {
