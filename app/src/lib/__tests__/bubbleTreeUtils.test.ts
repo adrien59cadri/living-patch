@@ -142,11 +142,8 @@ describe('bubbleTreeUtils - Nodes/Edges Model', () => {
   });
 
   describe('getNodeOpacityByDepth', () => {
-    it('should return full opacity for all depths', () => {
-      expect(getNodeOpacityByDepth(0)).toBe(1.0);
-      expect(getNodeOpacityByDepth(1)).toBe(1.0);
-      expect(getNodeOpacityByDepth(2)).toBe(1.0);
-      expect(getNodeOpacityByDepth(3)).toBe(1.0);
+    it('should return full opacity', () => {
+      expect(getNodeOpacityByDepth()).toBe(1.0);
     });
   });
 

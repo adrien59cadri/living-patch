@@ -115,14 +115,24 @@ describe('DiagramCard - Direct Relationships Display', () => {
   ];
 
   beforeEach(() => {
+    const speciesById = new Map(mockSpecies.map(s => [s.id, s]));
+    const symbiosisBySpeciesId = new Map<string, Symbiosis[]>();
+
+    for (const symbiosis of mockSymbiosis) {
+      for (const memberId of symbiosis.members) {
+        const existing = symbiosisBySpeciesId.get(memberId) || [];
+        symbiosisBySpeciesId.set(memberId, [...existing, symbiosis]);
+      }
+    }
+
     vi.spyOn(dataHook, 'useDataset').mockReturnValue({
       species: mockSpecies,
       symbiosis: mockSymbiosis,
       groups: [],
-      taxonomicGroupIds: [],
-      speciesById: {},
-      symbiosisBySpeciesId: {},
-      relationsBySpeciesId: {},
+      taxonomicGroupIds: new Set<string>(),
+      speciesById,
+      symbiosisBySpeciesId,
+      relationsBySpeciesId: new Map(),
     });
   });
 
@@ -269,14 +279,24 @@ describe('DiagramCard - Direct Relationships Display', () => {
       } as Symbiosis,
     ];
 
+    const extendedSpeciesById = new Map(extendedSpecies.map(s => [s.id, s]));
+    const extendedSymbiosisBySpeciesId = new Map<string, Symbiosis[]>();
+
+    for (const symbiosis of extendedSymbiosis) {
+      for (const memberId of symbiosis.members) {
+        const existing = extendedSymbiosisBySpeciesId.get(memberId) || [];
+        extendedSymbiosisBySpeciesId.set(memberId, [...existing, symbiosis]);
+      }
+    }
+
     vi.spyOn(dataHook, 'useDataset').mockReturnValue({
       species: extendedSpecies,
       symbiosis: extendedSymbiosis,
       groups: [],
-      taxonomicGroupIds: [],
-      speciesById: {},
-      symbiosisBySpeciesId: {},
-      relationsBySpeciesId: {},
+      taxonomicGroupIds: new Set<string>(),
+      speciesById: extendedSpeciesById,
+      symbiosisBySpeciesId: extendedSymbiosisBySpeciesId,
+      relationsBySpeciesId: new Map(),
     });
 
     const { container } = render(
