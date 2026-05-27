@@ -9,6 +9,7 @@ import {
   getNodeOpacityByDepth,
   getLinkStrokeWidth,
   getRelationshipColor,
+  darkenHexColor,
 } from '../lib/bubbleTreeUtils';
 
 interface RelationshipBubbleTreeProps {
@@ -76,15 +77,6 @@ export const RelationshipBubbleTree: React.FC<RelationshipBubbleTreeProps> = ({
     try {
       // Transform data to nodes and edges
       const { nodes, links } = transformToNodesEdges(focalId, speciesById, symbiosisBySpeciesId, maxDepth);
-
-      // Helper to darken a hex color by reducing RGB components
-      const darkenColor = (hex: string): string => {
-        const num = parseInt(hex.replace('#', ''), 16);
-        const r = Math.max(0, (num >> 16) - 60);
-        const g = Math.max(0, ((num >> 8) & 255) - 60);
-        const b = Math.max(0, (num & 255) - 60);
-        return '#' + [r, g, b].map(x => x.toString(16).padStart(2, '0')).join('');
-      };
 
       const margin = 40;
       const width = Math.max(dimensions.width - margin * 2, 300);
@@ -347,7 +339,7 @@ export const RelationshipBubbleTree: React.FC<RelationshipBubbleTreeProps> = ({
         })
         .attr('font-weight', (d: any) => (d.depth === 0 ? 'bold' : 'normal'))
         .attr('fill', '#333333')
-        .attr('stroke', (d: any) => darkenColor(getFormColor(d.form)))
+        .attr('stroke', (d: any) => darkenHexColor(getFormColor(d.form)))
         .attr('stroke-width', '0.5px')
         .attr('stroke-linejoin', 'round')
         .attr('pointer-events', 'none')

@@ -1,6 +1,6 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import type { HabitatNeighborCategory } from '../lib/relationships';
+import { useExpandedState } from '../hooks/useExpandedState';
 
 interface Props {
   categories: HabitatNeighborCategory[];
@@ -8,21 +8,11 @@ interface Props {
 }
 
 export function HabitatNeighborsSection({ categories, speciesId }: Props) {
-  const [expandedCategories, setExpandedCategories] = useState<Set<string>>(new Set());
+  const [expandedCategories, toggleCategory] = useExpandedState();
 
   if (categories.length === 0) {
     return null;
   }
-
-  const toggleCategory = (slug: string) => {
-    const newExpanded = new Set(expandedCategories);
-    if (newExpanded.has(slug)) {
-      newExpanded.delete(slug);
-    } else {
-      newExpanded.add(slug);
-    }
-    setExpandedCategories(newExpanded);
-  };
 
   return (
     <div>

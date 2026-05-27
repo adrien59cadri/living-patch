@@ -1,25 +1,20 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import type { Species, Symbiosis } from '../types';
-
-/**
- * Get color for relationship category
- */
-export function getRelationshipColor(
-  category?: string
-): string {
-  const colors: Record<string, string> = {
-    mutualism: '#27ae60',      // green
-    predation: '#e74c3c',      // red
-    parasitism: '#f39c12',     // orange/gold
-    competition: '#95a5a6',    // gray
-    commensalism: '#3b82f6',   // blue
-  };
-  return colors[category || ''] || '#95a5a6';
-}
+import {
+  getFormColor as designGetFormColor,
+  getRelationshipColor as designGetRelationshipColor,
+} from './designTokens';
 
 // ============================================================================
-// NEW: Nodes-Edges Model for D3 Refactor
+// Re-export from designTokens for backwards compatibility
+// ============================================================================
+
+export const getFormColor = designGetFormColor;
+export const getRelationshipColor = designGetRelationshipColor;
+
+// ============================================================================
+// Nodes-Edges Model for D3 Refactor
 // ============================================================================
 
 export interface SpeciesNode {
@@ -40,48 +35,6 @@ export interface SpeciesEdge {
 export interface SpeciesNodesEdges {
   nodes: SpeciesNode[];
   links: SpeciesEdge[];
-}
-
-/**
- * Map form (e.g., "bird", "woodpecker", "plant") to base form for color lookup.
- * Specific forms like "woodpecker" → "bird", "shrub" → "plant", "frog" → "amphibian"
- */
-function getFormBase(form: string): string {
-  // Bird forms
-  if (['woodpecker', 'raptor', 'owl', 'songbird', 'warbler', 'hummingbird', 'wading_bird'].includes(form)) {
-    return 'bird';
-  }
-  // Plant forms
-  if (['tree', 'wildflower', 'shrub', 'plant'].includes(form)) {
-    return form === 'tree' || form === 'shrub' ? 'plant' : form;
-  }
-  // Amphibian forms
-  if (['frog', 'amphibian'].includes(form)) {
-    return 'amphibian';
-  }
-  // Insect forms
-  if (['butterfly', 'beetle', 'bug', 'bee', 'insect'].includes(form)) {
-    return 'insect';
-  }
-  return form;
-}
-
-/**
- * Map species form to color (hex).
- * Returns a sensible color based on form type.
- */
-export function getFormColor(form: string): string {
-  const baseForm = getFormBase(form);
-  const colors: Record<string, string> = {
-    bird: '#f39c12',           // orange
-    plant: '#27ae60',          // green
-    insect: '#e74c3c',         // red
-    mammal: '#3498db',         // blue
-    amphibian: '#1abc9c',      // teal
-    frog: '#1abc9c',           // teal
-    reptile: '#9b59b6',        // purple
-  };
-  return colors[baseForm] || '#95a5a6'; // default gray
 }
 
 /**
@@ -110,6 +63,18 @@ export function getLinkStrokeWidth(obligate: boolean): number {
  */
 export function getNodeOpacityByDepth(depth: number): number {
   return depth === 0 ? 1.0 : depth === 1 ? 1.0 : 0.5;
+}
+
+/**
+ * Darken a hex color by reducing RGB components.
+ * Used for text stroke outline effects.
+ */
+export function darkenHexColor(hex: string, amount: number = 60): string {
+  const num = parseInt(hex.replace('#', ''), 16);
+  const r = Math.max(0, (num >> 16) - amount);
+  const g = Math.max(0, ((num >> 8) & 255) - amount);
+  const b = Math.max(0, (num & 255) - amount);
+  return '#' + [r, g, b].map(x => x.toString(16).padStart(2, '0')).join('');
 }
 
 /**

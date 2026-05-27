@@ -1,14 +1,7 @@
 import type { Species, Symbiosis } from '../types';
 import { SYMBIOSIS_DEFINITIONS, getSymbiosisByType, getSymbiosisExample } from '../lib/learnContent';
+import { getSymbiosisIcon } from '../lib/designTokens';
 import ExampleSpeciesLink from './ExampleSpeciesLink';
-
-const SYMBIOSIS_ICONS: Record<string, string> = {
-  mutualism:    '🤝',
-  parasitism:   '🪱',
-  predation:    '🦅',
-  competition:  '⚡',
-  commensalism: '↗️',
-};
 
 interface SymbiosisSectionProps {
   expanded: string | null;
@@ -44,7 +37,7 @@ export default function SymbiosisSection({
           const relationships = getSymbiosisByType(typeKey, symbiosis);
           const example = getSymbiosisExample(typeKey, symbiosis);
           const isExpanded = expanded === typeKey;
-          const icon = SYMBIOSIS_ICONS[typeKey] ?? '🔗';
+          const icon = getSymbiosisIcon(typeKey);
 
           return (
             <div key={typeKey}>
