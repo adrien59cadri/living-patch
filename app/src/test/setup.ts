@@ -2,7 +2,8 @@ import { afterEach, vi } from 'vitest';
 import { cleanup } from '@testing-library/react';
 import '@testing-library/jest-dom/vitest';
 
-// Mock cytoscape to avoid loading heavy graph library in tests
+// Mock removed: cytoscape no longer used (replaced with D3)
+/*
 vi.mock('cytoscape', () => {
   return {
     default: vi.fn(() => ({
