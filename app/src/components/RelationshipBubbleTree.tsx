@@ -95,33 +95,33 @@ export const RelationshipBubbleTree: React.FC<RelationshipBubbleTreeProps> = ({
       // Add defs for arrow markers
       const defs = svg.append('defs');
       
-      // Predation arrow (red)
+      // Predation arrow (pastel coral)
       defs
         .append('marker')
         .attr('id', 'arrowPredation')
-        .attr('markerWidth', 10)
-        .attr('markerHeight', 10)
-        .attr('refX', 9)
-        .attr('refY', 3)
+        .attr('markerWidth', 8)
+        .attr('markerHeight', 8)
+        .attr('refX', 6)
+        .attr('refY', 2)
         .attr('orient', 'auto')
         .attr('markerUnits', 'strokeWidth')
         .append('path')
-        .attr('d', 'M0,0 L0,6 L9,3 z')
-        .attr('fill', '#e74c3c');
+        .attr('d', 'M0,0 L0,4 L6,2 z')
+        .attr('fill', '#FF9999');
 
-      // Parasitism arrow (orange)
+      // Parasitism arrow (pastel orange)
       defs
         .append('marker')
         .attr('id', 'arrowParasitism')
-        .attr('markerWidth', 10)
-        .attr('markerHeight', 10)
-        .attr('refX', 9)
-        .attr('refY', 3)
+        .attr('markerWidth', 8)
+        .attr('markerHeight', 8)
+        .attr('refX', 6)
+        .attr('refY', 2)
         .attr('orient', 'auto')
         .attr('markerUnits', 'strokeWidth')
         .append('path')
-        .attr('d', 'M0,0 L0,6 L9,3 z')
-        .attr('fill', '#f39c12');
+        .attr('d', 'M0,0 L0,4 L6,2 z')
+        .attr('fill', '#FFB366');
 
       // Create main group
       const mainGroup = svg.append('g');
