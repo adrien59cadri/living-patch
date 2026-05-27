@@ -19,6 +19,8 @@ export function getNodeColor(relationshipType?: string): string {
 
 export function getNodeOpacity(depth: number): number {
   switch (depth) {
+    case 0:
+      return 1.0; // focal node
     case 1:
       return 1.0;
     case 2:
@@ -32,6 +34,8 @@ export function getNodeOpacity(depth: number): number {
 
 export function getNodeSize(depth: number): number {
   switch (depth) {
+    case 0:
+      return 10; // focal node, slightly larger
     case 1:
       return 8;
     case 2:
@@ -104,8 +108,8 @@ export function buildForceGraphData(
     }
   };
 
-  // Start traversal from focal species
-  traverse(focalSpeciesId, 1);
+  // Start traversal from focal species at depth 0
+  traverse(focalSpeciesId, 0);
 
   return {
     nodes: Array.from(nodes.values()),
