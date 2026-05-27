@@ -9,11 +9,11 @@
 
 export const FORM_COLORS: Record<string, string> = {
   bird: '#f39c12',           // orange
-  plant: '#27ae60',          // green
+  plant: '#1e8449',          // dark forest green
   insect: '#e74c3c',         // red
   mammal: '#3498db',         // blue
-  amphibian: '#1abc9c',      // teal
-  frog: '#1abc9c',           // teal
+  amphibian: '#2ecc71',      // bright lime green
+  frog: '#2ecc71',           // bright lime green
   reptile: '#9b59b6',        // purple
   default: '#95a5a6',        // gray
 };
@@ -23,7 +23,7 @@ export const FORM_COLORS: Record<string, string> = {
 // ============================================================================
 
 export const RELATIONSHIP_COLORS: Record<string, string> = {
-  mutualism: '#27ae60',      // green
+  mutualism: '#1e8449',      // dark forest green
   predation: '#e74c3c',      // red
   parasitism: '#f39c12',     // orange/gold
   competition: '#95a5a6',    // gray

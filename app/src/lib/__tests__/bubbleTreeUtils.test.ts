@@ -119,7 +119,7 @@ describe('bubbleTreeUtils - Nodes/Edges Model', () => {
 
   describe('getRelationshipColor', () => {
     it('should return correct colors for each relationship type', () => {
-      expect(getRelationshipColor('mutualism')).toBe('#27ae60');
+      expect(getRelationshipColor('mutualism')).toBe('#1e8449');
       expect(getRelationshipColor('predation')).toBe('#e74c3c');
       expect(getRelationshipColor('parasitism')).toBe('#f39c12');
       expect(getRelationshipColor('competition')).toBe('#95a5a6');
@@ -153,17 +153,17 @@ describe('bubbleTreeUtils - Nodes/Edges Model', () => {
   describe('getFormColor', () => {
     it('should return correct color for base forms', () => {
       expect(getFormColor('bird')).toBe('#f39c12');
-      expect(getFormColor('plant')).toBe('#27ae60');
+      expect(getFormColor('plant')).toBe('#1e8449');
       expect(getFormColor('insect')).toBe('#e74c3c');
       expect(getFormColor('mammal')).toBe('#3498db');
-      expect(getFormColor('amphibian')).toBe('#1abc9c');
+      expect(getFormColor('amphibian')).toBe('#2ecc71');
       expect(getFormColor('reptile')).toBe('#9b59b6');
     });
 
     it('should return correct color for derived forms', () => {
       expect(getFormColor('woodpecker')).toBe('#f39c12'); // bird form
-      expect(getFormColor('tree')).toBe('#27ae60'); // plant form
-      expect(getFormColor('frog')).toBe('#1abc9c'); // amphibian form
+      expect(getFormColor('tree')).toBe('#1e8449'); // plant form
+      expect(getFormColor('frog')).toBe('#2ecc71'); // amphibian form
     });
 
     it('should return gray for unknown form', () => {

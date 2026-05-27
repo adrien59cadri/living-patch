@@ -279,11 +279,7 @@ export const RelationshipBubbleTree: React.FC<RelationshipBubbleTreeProps> = ({
         .append('circle')
         .attr('class', 'diagram-node')
         .attr('r', (d: any) => getNodeSizeByDepth(d.depth))
-        .attr('fill', (d: any) => {
-          // Use bolder color for focal node
-          if (d.depth === 0) return '#cc8800';
-          return getFormColor(d.form);
-        })
+        .attr('fill', (d: any) => getFormColor(d.form))
         .attr('stroke', (d: any) => darkenHexColor(getFormColor(d.form), 40))
         .attr('stroke-width', (d: any) => (d.depth === 0 ? 1.5 : 1))
         .attr('opacity', (d: any) => getNodeOpacityByDepth(d.depth))
