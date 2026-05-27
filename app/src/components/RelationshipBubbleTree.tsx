@@ -77,6 +77,15 @@ export const RelationshipBubbleTree: React.FC<RelationshipBubbleTreeProps> = ({
       // Transform data to nodes and edges
       const { nodes, links } = transformToNodesEdges(focalId, speciesById, symbiosisBySpeciesId, maxDepth);
 
+      // Helper to darken a hex color by reducing RGB components
+      const darkenColor = (hex: string): string => {
+        const num = parseInt(hex.replace('#', ''), 16);
+        const r = Math.max(0, (num >> 16) - 60);
+        const g = Math.max(0, ((num >> 8) & 255) - 60);
+        const b = Math.max(0, (num & 255) - 60);
+        return '#' + [r, g, b].map(x => x.toString(16).padStart(2, '0')).join('');
+      };
+
       const margin = 40;
       const width = Math.max(dimensions.width - margin * 2, 300);
       const height = Math.max(dimensions.height - margin * 2, 300);
@@ -337,9 +346,9 @@ export const RelationshipBubbleTree: React.FC<RelationshipBubbleTreeProps> = ({
           return '0.6em';
         })
         .attr('font-weight', (d: any) => (d.depth === 0 ? 'bold' : 'normal'))
-        .attr('fill', 'white')
-        .attr('stroke', '#222')
-        .attr('stroke-width', '0.3px')
+        .attr('fill', '#333333')
+        .attr('stroke', (d: any) => darkenColor(getFormColor(d.form)))
+        .attr('stroke-width', '0.5px')
         .attr('stroke-linejoin', 'round')
         .attr('pointer-events', 'none')
         .each(function (d: any) {
