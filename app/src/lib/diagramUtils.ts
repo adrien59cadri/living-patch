@@ -137,9 +137,9 @@ export function buildCytoscapeStyles(focalSpeciesId: string) {
     {
       selector: 'node[id = "' + focalSpeciesId + '"]',
       style: {
-        'background-color': '#10b981',
-        'border-color': '#10b981',
-        'border-width': 2,
+        'background-color': '#fbbf24', // amber/gold for focal node
+        'border-color': '#92400e',
+        'border-width': 3,
         'opacity': 1.0,
       },
     },
@@ -154,8 +154,8 @@ export function buildCytoscapeStyles(focalSpeciesId: string) {
       selector: 'edge',
       style: {
         'line-color': (ele: Record<string, unknown>) => getNodeColor((ele as Record<string, (key: string) => unknown>).data('relationshipType') as string),
-        'width': (ele: Record<string, unknown>) => (ele as Record<string, (key: string) => unknown>).data('obligate') as boolean ? 2 : 1,
-        'opacity': 0.5,
+        'width': (ele: Record<string, unknown>) => (ele as Record<string, (key: string) => unknown>).data('obligate') as boolean ? 2.5 : 1.5,
+        'opacity': 0.7,
         'line-style': (ele: Record<string, unknown>) => {
           const el = ele as Record<string, () => Record<string, (key: string) => unknown>>;
           const sourceDepth = (el.source().data('depth') as number);
