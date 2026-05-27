@@ -61,6 +61,10 @@ function FormNodeItem({
     (s) => s.form === node.key && !taxonomicGroupIds.has(s.id),
   ).length;
 
+  const displayCount = hasChildren
+    ? getTotalDescendantCount(node, speciesById, taxonomicGroupIds)
+    : exampleCount;
+
   const indent = level * 1.25;
 
   return (
@@ -74,8 +78,8 @@ function FormNodeItem({
         <span className={`flex-1 min-w-0 text-sm ${level === 0 ? 'font-semibold' : 'font-medium'} text-stone-800`}>
           {definition.label}
         </span>
-        {exampleCount > 0 && (
-          <span className="text-xs text-stone-400 flex-shrink-0">{exampleCount}</span>
+        {displayCount > 0 && (
+          <span className="text-xs text-stone-400 flex-shrink-0">{displayCount}</span>
         )}
         <span className="text-xs text-stone-300 flex-shrink-0">
           {isExpanded ? '▾' : '▸'}
@@ -90,11 +94,6 @@ function FormNodeItem({
           <p className="text-xs text-stone-500 leading-relaxed">
             {definition.description}
           </p>
-          {hasChildren && (
-            <p className="text-xs text-stone-400 mt-1 font-medium">
-              {getTotalDescendantCount(node, speciesById, taxonomicGroupIds)} total species
-            </p>
-          )}
           {examples.length > 0 && (
             <p className="text-xs text-stone-500 mt-1">
               <span className="font-medium">e.g.</span>{' '}
