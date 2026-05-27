@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import type { RelatedEntry, SymbiosisRole } from '../lib/relationships';
 import { groupByRole } from '../lib/relationships';
-import { KeyRelationshipTile } from './KeyRelationshipTile';
+import { SpeciesTile } from './SpeciesTile';
 import { symbiosisLabel } from '../lib/labels';
 
 interface Props {
@@ -87,7 +87,7 @@ export function KeyRelationshipsSection({ related }: Props) {
               {isExpanded && (
                 <div className="mt-3 space-y-2">
                   {entries.map((entry, idx) => (
-                    <KeyRelationshipTile key={`${role}-${idx}`} entry={entry} />
+                    <SpeciesTile key={`${role}-${idx}`} species={entry.species} related={entry} />
                   ))}
                 </div>
               )}
