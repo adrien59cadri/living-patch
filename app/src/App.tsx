@@ -1,19 +1,22 @@
 import { HashRouter, Routes, Route } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import { Suspense, lazy } from 'react';
 import HomePage from './pages/HomePage';
 import DetailPage from './pages/DetailPage';
 import NeighborListView from './pages/NeighborListView';
 import LearnPage from './pages/LearnPage';
 import SettingsPage from './pages/SettingsPage';
-import { RelationshipDiagramPage } from './pages/RelationshipDiagramPage';
 import { UserPreferencesProvider } from './stores/userPreferences';
+
+// Lazy load RelationshipDiagramPage to avoid loading ForceGraph2D and THREE.js until needed
+const RelationshipDiagramPage = lazy(() => import('./pages/RelationshipDiagramPage').then(m => ({ default: m.RelationshipDiagramPage })));
 
 export default function App() {
   return (
     <UserPreferencesProvider>
       <HashRouter>
         <Routes>
-          <Route path="/diagram" element={<RelationshipDiagramPage />} />
+          <Route path="/diagram" element={<Suspense fallback={<div className="flex items-center justify-center min-h-screen">Loading diagram...</div>}><RelationshipDiagramPage /></Suspense>} />
           <Route
             path="*"
             element={
