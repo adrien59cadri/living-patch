@@ -1,6 +1,7 @@
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect, useMemo, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { ForceGraph2D } from 'react-force-graph';
+import type { DiagramNode } from '../types';
 import { buildForceGraphData, getNodeColor, getNodeSize, getNodeOpacity } from '../lib/diagramUtils';
 import { useDataset } from '../hooks/useDataset';
 
@@ -8,21 +9,22 @@ export function RelationshipDiagramPage() {
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const { speciesById, symbiosisBySpeciesId } = useDataset();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const fgRef = useRef<any>(null);
-  const [graphData, setGraphData] = useState<any>(null);
   const [hoveredNode, setHoveredNode] = useState<string | null>(null);
 
   const focalSpeciesId = searchParams.get('focal');
 
+  const graphData = useMemo(() => {
+    if (!focalSpeciesId) return null;
+    return buildForceGraphData(focalSpeciesId, 3, speciesById, symbiosisBySpeciesId);
+  }, [focalSpeciesId, speciesById, symbiosisBySpeciesId]);
+
   useEffect(() => {
     if (!focalSpeciesId) {
       navigate('/');
-      return;
     }
-
-    const data = buildForceGraphData(focalSpeciesId, 3, speciesById, symbiosisBySpeciesId);
-    setGraphData(data);
-  }, [focalSpeciesId, speciesById, symbiosisBySpeciesId, navigate]);
+  }, [focalSpeciesId, navigate]);
 
   useEffect(() => {
     if (fgRef.current && graphData) {
@@ -36,11 +38,13 @@ export function RelationshipDiagramPage() {
 
   const focalSpecies = speciesById.get(focalSpeciesId);
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleNodeClick = (node: any) => {
     if (node.id === focalSpeciesId) return;
     setSearchParams({ focal: node.id });
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleNodeHover = (node: any) => {
     setHoveredNode(node?.id ?? null);
   };
@@ -78,26 +82,36 @@ export function RelationshipDiagramPage() {
         <ForceGraph2D
           ref={fgRef}
           graphData={graphData}
-          nodeColor={(node: any) => {
-            const isHovered = hoveredNode === node.id;
-            const isFocal = node.id === focalSpeciesId;
-            const baseColor = getNodeColor(node.relationshipType);
+          nodeColor={(node: unknown) => {
+            const n = node as DiagramNode;
+            const isHovered = hoveredNode === n.id;
+            const isFocal = n.id === focalSpeciesId;
+            const baseColor = getNodeColor(n.relationshipType);
 
-            if (isFocal) return '#10b981'; // Emerald for focal species
-            if (isHovered) return '#059669'; // Darker emerald on hover
+            if (isFocal) return '#10b981';
+            if (isHovered) return '#059669';
             return baseColor;
           }}
-          nodeVal={(node: any) => getNodeSize(node.depth)}
-          nodeLabel={(node: any) => node.name}
-          nodeCanvasObject={(node: any, ctx: CanvasRenderingContext2D) => {
-            const size = getNodeSize(node.depth);
-            const isFocal = node.id === focalSpeciesId;
-            const opacity = getNodeOpacity(node.depth);
+          nodeVal={(node: unknown) => {
+            const n = node as DiagramNode;
+            return getNodeSize(n.depth);
+          }}
+          nodeLabel={(node: unknown) => {
+            const n = node as DiagramNode;
+            return n.name;
+          }}
+          nodeCanvasObject={(node: unknown, ctx: CanvasRenderingContext2D) => {
+            const n = node as DiagramNode;
+            const size = getNodeSize(n.depth);
+            const isFocal = n.id === focalSpeciesId;
+            const opacity = getNodeOpacity(n.depth);
+            const x = n.x || 0;
+            const y = n.y || 0;
 
-            ctx.fillStyle = getNodeColor(node.relationshipType);
+            ctx.fillStyle = getNodeColor(n.relationshipType);
             ctx.globalAlpha = opacity;
             ctx.beginPath();
-            ctx.arc(node.x, node.y, size, 0, 2 * Math.PI);
+            ctx.arc(x, y, size, 0, 2 * Math.PI);
             ctx.fill();
 
             if (isFocal) {
@@ -109,22 +123,32 @@ export function RelationshipDiagramPage() {
 
             ctx.globalAlpha = 1;
           }}
-          linkColor={(link: any) => {
+          linkColor={(link: unknown) => {
+            const l = link as Record<string, unknown>;
+            const source = l.source as DiagramNode;
+            const target = l.target as DiagramNode;
             const isConnected =
               hoveredNode === null ||
-              (link.source.id === hoveredNode || link.target.id === hoveredNode);
-            const color = getNodeColor(link.relationshipType);
+              (source.id === hoveredNode || target.id === hoveredNode);
+            const color = getNodeColor(l.relationshipType as string);
             return isConnected ? color : '#d1d5db';
           }}
-          linkWidth={(link: any) => {
+          linkWidth={(link: unknown) => {
+            const l = link as Record<string, unknown>;
+            const source = l.source as DiagramNode;
+            const target = l.target as DiagramNode;
             const isConnected =
               hoveredNode === null ||
-              (link.source.id === hoveredNode || link.target.id === hoveredNode);
-            return link.obligate ? (isConnected ? 2.5 : 1) : isConnected ? 1.5 : 0.5;
+              (source.id === hoveredNode || target.id === hoveredNode);
+            const obligate = l.obligate as boolean;
+            return obligate ? (isConnected ? 2.5 : 1) : isConnected ? 1.5 : 0.5;
           }}
-          linkLineDash={(link: any) => {
-            if (link.source.depth === 1 && link.target.depth === 1) return [];
-            if (link.source.depth === 2 || link.target.depth === 2) return [5, 5];
+          linkLineDash={(link: unknown) => {
+            const l = link as Record<string, unknown>;
+            const source = l.source as DiagramNode;
+            const target = l.target as DiagramNode;
+            if (source.depth === 1 && target.depth === 1) return [];
+            if (source.depth === 2 || target.depth === 2) return [5, 5];
             return [2, 2];
           }}
           onNodeClick={handleNodeClick}

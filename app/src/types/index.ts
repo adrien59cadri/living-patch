@@ -56,6 +56,8 @@ export interface DiagramNode {
   depth: number;
   relationshipType?: string;
   val?: number;
+  x?: number;
+  y?: number;
 }
 
 export interface DiagramLink {

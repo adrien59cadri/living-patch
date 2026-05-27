@@ -1,6 +1,7 @@
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ForceGraph2D } from 'react-force-graph';
+import type { DiagramNode } from '../types';
 import { buildForceGraphData, getNodeColor, getNodeSize, getNodeOpacity } from '../lib/diagramUtils';
 import { useDataset } from '../hooks/useDataset';
 
@@ -11,14 +12,14 @@ interface Props {
 export function DiagramCard({ speciesId }: Props) {
   const navigate = useNavigate();
   const { speciesById, symbiosisBySpeciesId } = useDataset();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const fgRef = useRef<any>(null);
-  const [graphData, setGraphData] = useState<any>(null);
   const [hoveredNode, setHoveredNode] = useState<string | null>(null);
 
-  useEffect(() => {
-    const data = buildForceGraphData(speciesId, 1, speciesById, symbiosisBySpeciesId);
-    setGraphData(data);
-  }, [speciesId, speciesById, symbiosisBySpeciesId]);
+  const graphData = useMemo(
+    () => buildForceGraphData(speciesId, 1, speciesById, symbiosisBySpeciesId),
+    [speciesId, speciesById, symbiosisBySpeciesId]
+  );
 
   useEffect(() => {
     if (fgRef.current && graphData) {
@@ -30,10 +31,12 @@ export function DiagramCard({ speciesId }: Props) {
 
   if (!graphData) return null;
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleNodeClick = (node: any) => {
     navigate(`/species/${node.id}`);
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleNodeHover = (node: any) => {
     setHoveredNode(node?.id ?? null);
   };
@@ -56,25 +59,35 @@ export function DiagramCard({ speciesId }: Props) {
         <ForceGraph2D
           ref={fgRef}
           graphData={graphData}
-          nodeColor={(node: any) => {
-            const isHovered = hoveredNode === node.id;
-            const isFocal = node.id === speciesId;
-            const baseColor = getNodeColor(node.relationshipType);
+          nodeColor={(node: unknown) => {
+            const n = node as DiagramNode;
+            const isHovered = hoveredNode === n.id;
+            const isFocal = n.id === speciesId;
+            const baseColor = getNodeColor(n.relationshipType);
 
-            if (isFocal) return '#10b981'; // Emerald for focal species
-            if (isHovered) return '#059669'; // Darker emerald on hover
+            if (isFocal) return '#10b981';
+            if (isHovered) return '#059669';
             return baseColor;
           }}
-          nodeVal={(node: any) => getNodeSize(node.depth)}
-          nodeLabel={(node: any) => node.name}
-          nodeCanvasObject={(node: any, ctx: CanvasRenderingContext2D) => {
-            const size = getNodeSize(node.depth);
-            const isFocal = node.id === speciesId;
+          nodeVal={(node: unknown) => {
+            const n = node as DiagramNode;
+            return getNodeSize(n.depth);
+          }}
+          nodeLabel={(node: unknown) => {
+            const n = node as DiagramNode;
+            return n.name;
+          }}
+          nodeCanvasObject={(node: unknown, ctx: CanvasRenderingContext2D) => {
+            const n = node as DiagramNode;
+            const size = getNodeSize(n.depth);
+            const isFocal = n.id === speciesId;
+            const x = n.x || 0;
+            const y = n.y || 0;
 
-            ctx.fillStyle = getNodeColor(node.relationshipType);
-            ctx.globalAlpha = getNodeOpacity(node.depth);
+            ctx.fillStyle = getNodeColor(n.relationshipType);
+            ctx.globalAlpha = getNodeOpacity(n.depth);
             ctx.beginPath();
-            ctx.arc(node.x, node.y, size, 0, 2 * Math.PI);
+            ctx.arc(x, y, size, 0, 2 * Math.PI);
             ctx.fill();
 
             if (isFocal) {
@@ -85,18 +98,25 @@ export function DiagramCard({ speciesId }: Props) {
 
             ctx.globalAlpha = 1;
           }}
-          linkColor={(link: any) => {
+          linkColor={(link: unknown) => {
+            const l = link as Record<string, unknown>;
+            const source = l.source as DiagramNode;
+            const target = l.target as DiagramNode;
             const isConnected =
               hoveredNode === null ||
-              (link.source.id === hoveredNode || link.target.id === hoveredNode);
-            const color = getNodeColor(link.relationshipType);
+              (source.id === hoveredNode || target.id === hoveredNode);
+            const color = getNodeColor(l.relationshipType as string);
             return isConnected ? color : '#d1d5db';
           }}
-          linkWidth={(link: any) => {
+          linkWidth={(link: unknown) => {
+            const l = link as Record<string, unknown>;
+            const source = l.source as DiagramNode;
+            const target = l.target as DiagramNode;
             const isConnected =
               hoveredNode === null ||
-              (link.source.id === hoveredNode || link.target.id === hoveredNode);
-            return link.obligate ? (isConnected ? 2 : 1) : isConnected ? 1 : 0.5;
+              (source.id === hoveredNode || target.id === hoveredNode);
+            const obligate = l.obligate as boolean;
+            return obligate ? (isConnected ? 2 : 1) : isConnected ? 1 : 0.5;
           }}
           onNodeClick={handleNodeClick}
           onNodeHover={handleNodeHover}
