@@ -329,7 +329,7 @@ export const RelationshipBubbleTree: React.FC<RelationshipBubbleTreeProps> = ({
         .attr('text-anchor', 'middle')
         .attr('dominant-baseline', 'central')
         .attr('font-size', '0.75em')
-        .attr('font-weight', (d: any) => (d.depth === 0 ? 'bold' : 'normal'))
+        .attr('font-weight', (d: any) => (d.depth === 0 ? 'bold' : '500'))
         .attr('fill', '#333333')
         .attr('pointer-events', 'none')
         .each(function (d: any) {
