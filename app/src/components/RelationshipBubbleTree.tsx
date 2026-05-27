@@ -389,6 +389,9 @@ export const RelationshipBubbleTree: React.FC<RelationshipBubbleTreeProps> = ({
             .attr('filter', 'none');
         } as any);
 
+      // Ensure nodes are rendered on top of links
+      nodeGroup.raise();
+
       // ===== ZOOM/PAN (only for maxDepth=3) =====
       if (maxDepth === 3) {
         const zoom = d3
