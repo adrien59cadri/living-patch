@@ -141,6 +141,13 @@ export function buildCytoscapeStyles(focalSpeciesId: string) {
         'border-color': '#92400e',
         'border-width': 3,
         'opacity': 1.0,
+        'label': 'data(name)',
+        'text-valign': 'center',
+        'text-halign': 'center',
+        'font-size': 11,
+        'font-weight': 'bold',
+        'color': '#1f2937',
+        'text-opacity': 1.0,
       },
     },
     {
