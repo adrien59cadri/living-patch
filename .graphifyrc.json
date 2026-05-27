@@ -32,5 +32,5 @@
     "markdown",
     "json"
   ],
-  "outputDir": ".graphify-output"
+  "outputDir": "graphify-out"
 }

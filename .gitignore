@@ -12,3 +12,4 @@ test-results/
 app/src/data/dataset.json
 bundle.html
 .graphify-output/
+graphify-out/
