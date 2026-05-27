@@ -9,18 +9,21 @@ if ! command -v uv &> /dev/null; then
   echo "To install 'uv', run:"
   echo "  curl -LsSf https://astral.sh/uv/install.sh | sh"
   echo ""
-  echo "Then run this script again, or install graphify directly:"
-  echo "  uv tool install graphify"
+  echo "Then run this script again, or install graphifyy directly:"
+  echo "  uv tool install graphifyy"
   exit 1
 fi
 
 echo "✅ Found 'uv'"
 echo ""
-echo "📦 Installing graphify..."
-uv tool install graphify
+echo "📦 Installing Python dependencies..."
+python -m pip install openai
+echo ""
+echo "📦 Installing graphifyy..."
+uv tool install graphifyy
 
 echo ""
-echo "✅ Graphify installed successfully!"
+echo "✅ Graphifyy installed successfully!"
 echo ""
 echo "🚀 To generate the knowledge graph, run:"
 echo "  npm run graphify"
