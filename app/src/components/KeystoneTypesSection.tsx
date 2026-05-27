@@ -2,6 +2,16 @@ import type { Species } from '../types';
 import { KEYSTONE_DEFINITIONS, getKeystonesByType } from '../lib/learnContent';
 import ExampleSpeciesLink from './ExampleSpeciesLink';
 
+const KEYSTONE_ICONS: Record<string, string> = {
+  ecosystem_engineer: '⚙️',
+  predator:           '🦅',
+  mutualist:          '🤝',
+  pollinator:         '🐝',
+  host_plant:         '🌿',
+  prey:               '🐭',
+  structural:         '🌳',
+};
+
 interface KeystoneTypesSectionProps {
   expanded: string | null;
   onToggle: (type: string | null) => void;
@@ -16,7 +26,7 @@ export default function KeystoneTypesSection({
   const keystoneTypes = Object.entries(KEYSTONE_DEFINITIONS);
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-3">
       <div>
         <h2 className="text-lg font-bold text-stone-800">Keystone Characteristics</h2>
         <p className="text-sm text-stone-600 mt-1">
@@ -25,50 +35,48 @@ export default function KeystoneTypesSection({
         </p>
       </div>
 
-      <div className="space-y-2">
+      <div>
         {keystoneTypes.map(([typeKey, definition]) => {
           const keystoneSpecies = getKeystonesByType(typeKey, speciesById);
           const isExpanded = expanded === typeKey;
+          const icon = KEYSTONE_ICONS[typeKey] ?? '⭐';
 
           return (
-            <div
-              key={typeKey}
-              className="border border-stone-200 rounded-lg p-4 bg-white"
-            >
+            <div key={typeKey}>
               <button
                 onClick={() => onToggle(isExpanded ? null : typeKey)}
-                className="w-full flex items-start justify-between hover:bg-stone-50 rounded p-2 -m-2"
+                className="w-full flex items-center gap-2 py-1.5 px-2 hover:bg-stone-100/70 rounded-md transition-colors text-left"
               >
-                <div className="flex-1 text-left">
-                  <h3 className="font-semibold text-stone-800">{definition.label}</h3>
-                  <p className="text-xs text-stone-500">
-                    {keystoneSpecies.length} {keystoneSpecies.length === 1 ? 'species' : 'species'}
-                  </p>
-                </div>
-                <span className="text-stone-400 text-xl flex-shrink-0">
-                  {isExpanded ? '−' : '+'}
+                <span className="text-base flex-shrink-0">{icon}</span>
+                <span className="flex-1 min-w-0 text-sm font-medium text-stone-800">
+                  {definition.label}
+                </span>
+                {keystoneSpecies.length > 0 && (
+                  <span className="text-xs text-stone-400 flex-shrink-0">
+                    {keystoneSpecies.length}
+                  </span>
+                )}
+                <span className="text-xs text-stone-300 flex-shrink-0">
+                  {isExpanded ? '▾' : '▸'}
                 </span>
               </button>
 
               {isExpanded && (
-                <div className="mt-4 pt-4 border-t border-stone-100 space-y-3">
-                  <p className="text-sm text-stone-600 leading-relaxed">
+                <div className="pl-9 pr-3 pb-1.5">
+                  <p className="text-xs text-stone-500 leading-relaxed">
                     {definition.description}
                   </p>
-
                   {keystoneSpecies.length > 0 && (
-                    <div className="space-y-1">
-                      <p className="text-xs font-semibold uppercase tracking-wide text-stone-400">
-                        Species
-                      </p>
-                      <div className="space-y-1">
-                        {keystoneSpecies.map((species) => (
-                          <div key={species.id} className="text-sm">
-                            <ExampleSpeciesLink species={species} />
-                          </div>
-                        ))}
-                      </div>
-                    </div>
+                    <p className="text-xs text-stone-500 mt-1">
+                      {keystoneSpecies.map((species, idx) => (
+                        <span key={species.id}>
+                          <ExampleSpeciesLink species={species} />
+                          {idx < keystoneSpecies.length - 1 && (
+                            <span className="text-stone-400">, </span>
+                          )}
+                        </span>
+                      ))}
+                    </p>
                   )}
                 </div>
               )}

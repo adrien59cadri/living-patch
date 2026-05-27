@@ -37,74 +37,58 @@ function FormNodeItem({
     (s) => s.form === node.key && !taxonomicGroupIds.has(s.id),
   ).length;
 
+  const indent = level * 1.25;
+
   return (
-    <div key={node.key} className="space-y-2">
-      <div
-        style={{ paddingLeft: `${level * 1.5}rem` }}
-        className="border border-stone-200 rounded-lg p-4 bg-white hover:bg-stone-50 transition-colors"
+    <div>
+      <button
+        onClick={() => onToggleNode(node.key)}
+        style={{ paddingLeft: `${indent + 0.5}rem` }}
+        className="w-full flex items-center gap-2 py-1.5 pr-2 hover:bg-stone-100/70 rounded-md transition-colors text-left"
       >
-        <button
-          onClick={() => onToggleNode(node.key)}
-          className="w-full flex items-start justify-between"
+        <span className="text-base flex-shrink-0">{formIcon(node.key)}</span>
+        <span className={`flex-1 min-w-0 text-sm ${level === 0 ? 'font-semibold' : 'font-medium'} text-stone-800`}>
+          {definition.label}
+        </span>
+        {exampleCount > 0 && (
+          <span className="text-xs text-stone-400 flex-shrink-0">{exampleCount}</span>
+        )}
+        <span className="text-xs text-stone-300 flex-shrink-0">
+          {isExpanded ? '▾' : '▸'}
+        </span>
+      </button>
+
+      {isExpanded && (
+        <div
+          style={{ paddingLeft: `${indent + 2.25}rem` }}
+          className="pr-3 pb-1.5"
         >
-          <div className="flex items-start gap-3 flex-1 min-w-0">
-            {hasChildren && (
-              <span className="text-stone-400 text-lg flex-shrink-0 pt-0.5">
-                {isExpanded ? '▼' : '▶'}
-              </span>
-            )}
-            {!hasChildren && <span className="text-lg flex-shrink-0 pt-0.5 w-6" />}
-            <span className="text-2xl flex-shrink-0">{formIcon(node.key)}</span>
-            <div className="text-left min-w-0">
-              <h3 className="font-semibold text-stone-800">{definition.label}</h3>
-              {exampleCount > 0 && (
-                <p className="text-xs text-stone-500">
-                  {exampleCount} {exampleCount === 1 ? 'species' : 'species'}
-                </p>
-              )}
-            </div>
-          </div>
-        </button>
-
-        {isExpanded && !hasChildren && (
-          <div className="mt-4 pt-4 border-t border-stone-100 space-y-3">
-            <p className="text-sm text-stone-600 leading-relaxed">
-              {definition.description}
+          <p className="text-xs text-stone-500 leading-relaxed">
+            {definition.description}
+          </p>
+          {examples.length > 0 && (
+            <p className="text-xs text-stone-500 mt-1">
+              <span className="font-medium">e.g.</span>{' '}
+              {examples.map((species, idx) => (
+                <span key={species.id}>
+                  <ExampleSpeciesLink species={species} />
+                  {idx < examples.length - 1 && <span className="text-stone-400">, </span>}
+                </span>
+              ))}
+              {' · '}
+              <Link
+                to={`/?form=${node.key}`}
+                className="text-emerald-600 hover:underline"
+              >
+                see all
+              </Link>
             </p>
-
-            {examples.length > 0 && (
-              <div className="space-y-2">
-                <p className="text-sm text-stone-600">
-                  <span className="font-medium">Examples:</span>{' '}
-                  {examples.map((species, idx) => (
-                    <span key={species.id}>
-                      <ExampleSpeciesLink species={species} />
-                      {idx < examples.length - 1 && <span className="text-stone-400">, </span>}
-                    </span>
-                  ))}
-                </p>
-                <Link
-                  to={`/?form=${node.key}`}
-                  className="inline-text text-xs text-emerald-600 hover:underline font-medium"
-                >
-                  See all {definition.label.toLowerCase()}
-                </Link>
-              </div>
-            )}
-          </div>
-        )}
-
-        {isExpanded && hasChildren && (
-          <div className="mt-4 pt-4 border-t border-stone-100">
-            <p className="text-sm text-stone-600 leading-relaxed mb-4">
-              {definition.description}
-            </p>
-          </div>
-        )}
-      </div>
+          )}
+        </div>
+      )}
 
       {isExpanded && hasChildren && (
-        <div className="space-y-2">
+        <div>
           {node.children!.map((child) => (
             <FormNodeItem
               key={child.key}
@@ -139,7 +123,7 @@ export default function FormHierarchySection({
   };
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-3">
       <div>
         <h2 className="text-lg font-bold text-stone-800">Form Hierarchy</h2>
         <p className="text-sm text-stone-600 mt-1">
@@ -147,7 +131,7 @@ export default function FormHierarchySection({
         </p>
       </div>
 
-      <div className="space-y-2">
+      <div>
         {FORM_HIERARCHY.map((node) => (
           <FormNodeItem
             key={node.key}

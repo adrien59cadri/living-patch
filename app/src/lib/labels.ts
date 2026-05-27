@@ -90,7 +90,8 @@ export function symbiosisLabel(type: string): string {
 }
 
 const FORM_ICONS: Record<string, string> = {
-  woodpecker:  '🦅',
+  bird:        '🐦',
+  woodpecker:  '🪵',
   raptor:      '🦅',
   owl:         '🦉',
   songbird:    '🐦',
@@ -98,9 +99,11 @@ const FORM_ICONS: Record<string, string> = {
   hummingbird: '🐦',
   wading_bird: '🦢',
   mammal:      '🦫',
+  plant:       '🌱',
   tree:        '🌳',
   wildflower:  '🌸',
   shrub:       '🌿',
+  insect:      '🐜',
   butterfly:   '🦋',
   beetle:      '🪲',
   bug:         '🐛',

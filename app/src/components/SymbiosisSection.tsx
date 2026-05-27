@@ -2,6 +2,14 @@ import type { Species, Symbiosis } from '../types';
 import { SYMBIOSIS_DEFINITIONS, getSymbiosisByType, getSymbiosisExample } from '../lib/learnContent';
 import ExampleSpeciesLink from './ExampleSpeciesLink';
 
+const SYMBIOSIS_ICONS: Record<string, string> = {
+  mutualism:    '🤝',
+  parasitism:   '🪱',
+  predation:    '🦅',
+  competition:  '⚡',
+  commensalism: '↗️',
+};
+
 interface SymbiosisSectionProps {
   expanded: string | null;
   onToggle: (type: string | null) => void;
@@ -23,7 +31,7 @@ export default function SymbiosisSection({
   >;
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-3">
       <div>
         <h2 className="text-lg font-bold text-stone-800">Symbiotic Relations</h2>
         <p className="text-sm text-stone-600 mt-1">
@@ -31,84 +39,79 @@ export default function SymbiosisSection({
         </p>
       </div>
 
-      <div className="space-y-2">
+      <div>
         {symbiosisTypes.map(([typeKey, definition]) => {
           const relationships = getSymbiosisByType(typeKey, symbiosis);
           const example = getSymbiosisExample(typeKey, symbiosis);
           const isExpanded = expanded === typeKey;
+          const icon = SYMBIOSIS_ICONS[typeKey] ?? '🔗';
 
           return (
-            <div
-              key={typeKey}
-              className="border border-stone-200 rounded-lg p-4 bg-white"
-            >
+            <div key={typeKey}>
               <button
                 onClick={() => onToggle(isExpanded ? null : typeKey)}
-                className="w-full flex items-start justify-between hover:bg-stone-50 rounded p-2 -m-2"
+                className="w-full flex items-center gap-2 py-1.5 px-2 hover:bg-stone-100/70 rounded-md transition-colors text-left"
               >
-                <div className="flex-1 text-left">
-                  <h3 className="font-semibold text-stone-800">{definition.label}</h3>
-                  <p className="text-xs text-stone-500">
-                    {relationships.length}{' '}
-                    {relationships.length === 1 ? 'relationship' : 'relationships'}
-                  </p>
-                </div>
-                <span className="text-stone-400 text-xl flex-shrink-0">
-                  {isExpanded ? '−' : '+'}
+                <span className="text-base flex-shrink-0">{icon}</span>
+                <span className="flex-1 min-w-0 text-sm font-medium text-stone-800">
+                  {definition.label}
+                </span>
+                {relationships.length > 0 && (
+                  <span className="text-xs text-stone-400 flex-shrink-0">
+                    {relationships.length}
+                  </span>
+                )}
+                <span className="text-xs text-stone-300 flex-shrink-0">
+                  {isExpanded ? '▾' : '▸'}
                 </span>
               </button>
 
               {isExpanded && (
-                <div className="mt-4 pt-4 border-t border-stone-100 space-y-3">
-                  <p className="text-sm text-stone-600 leading-relaxed">
+                <div className="pl-9 pr-3 pb-1.5 space-y-1.5">
+                  <p className="text-xs text-stone-500 leading-relaxed">
                     {definition.explanation}
                   </p>
 
                   {example && (
-                    <div className="space-y-1">
-                      <p className="text-xs font-semibold uppercase tracking-wide text-stone-400">
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-wide text-stone-400 mb-0.5">
                         Example from our region
                       </p>
-                      <div className="text-sm space-y-1">
+                      <div className="text-xs text-stone-500 flex flex-wrap items-center gap-x-1">
                         {example.members.map((memberId, index) => {
                           const member = speciesById.get(memberId);
                           return (
-                            <div key={memberId}>
+                            <span key={memberId} className="flex items-center gap-x-1">
                               {member && <ExampleSpeciesLink species={member} />}
                               {index < example.members.length - 1 && (
-                                <span className="text-stone-400 mx-1">↔</span>
+                                <span className="text-stone-300">↔</span>
                               )}
-                            </div>
+                            </span>
                           );
                         })}
-                        {example.notes && (
-                          <p className="text-xs text-stone-600 italic mt-2">
-                            {example.notes}
-                          </p>
-                        )}
                       </div>
+                      {example.notes && (
+                        <p className="text-xs text-stone-400 italic mt-0.5">
+                          {example.notes}
+                        </p>
+                      )}
                     </div>
                   )}
 
                   {relationships.length > 0 && (
-                    <div className="space-y-1">
-                      <p className="text-xs font-semibold uppercase tracking-wide text-stone-400">
-                        All relationships ({relationships.length})
-                      </p>
-                      <details className="text-xs text-stone-600">
-                        <summary className="cursor-pointer hover:text-stone-700">
-                          Expand to see all
-                        </summary>
-                        <div className="mt-2 space-y-1 ml-2 pl-2 border-l border-stone-200">
-                          {relationships.map((rel, idx) => (
-                            <div key={idx} className="text-xs text-stone-600">
-                              {rel.members.map((m) => speciesById.get(m)?.common_name).join(' ↔ ')}
-                              {rel.obligate && ' (obligate)'}
-                            </div>
-                          ))}
-                        </div>
-                      </details>
-                    </div>
+                    <details className="text-xs text-stone-500">
+                      <summary className="cursor-pointer text-stone-400 hover:text-stone-600 select-none">
+                        All {relationships.length} relationships
+                      </summary>
+                      <div className="mt-1 space-y-0.5 ml-2 pl-2 border-l border-stone-200">
+                        {relationships.map((rel, idx) => (
+                          <div key={idx} className="text-xs text-stone-500">
+                            {rel.members.map((m) => speciesById.get(m)?.common_name).join(' ↔ ')}
+                            {rel.obligate && ' (obligate)'}
+                          </div>
+                        ))}
+                      </div>
+                    </details>
                   )}
                 </div>
               )}
