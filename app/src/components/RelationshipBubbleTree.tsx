@@ -337,7 +337,10 @@ export const RelationshipBubbleTree: React.FC<RelationshipBubbleTreeProps> = ({
           return '0.6em';
         })
         .attr('font-weight', (d: any) => (d.depth === 0 ? 'bold' : 'normal'))
-        .attr('fill', '#333')
+        .attr('fill', 'white')
+        .attr('stroke', '#222')
+        .attr('stroke-width', '0.3px')
+        .attr('stroke-linejoin', 'round')
         .attr('pointer-events', 'none')
         .each(function (d: any) {
           const textElement = d3.select(this);
