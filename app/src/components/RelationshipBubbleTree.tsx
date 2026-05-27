@@ -249,10 +249,6 @@ export const RelationshipBubbleTree: React.FC<RelationshipBubbleTreeProps> = ({
         })
         .attr('stroke-width', (d: any) => getLinkStrokeWidth(d.obligate))
         .attr('stroke-linecap', 'round')
-        .attr('stroke-dasharray', (d: any) => {
-          if (d.type === 'parasitism') return '4,2';
-          return 'none';
-        })
         .attr('marker-end', (d: any) => {
           if (d.type === 'predation') return 'url(#arrowPredation)';
           if (d.type === 'parasitism') return 'url(#arrowParasitism)';
