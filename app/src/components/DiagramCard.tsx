@@ -14,7 +14,7 @@ export function DiagramCard({ speciesId }: Props) {
   const { speciesById, symbiosisBySpeciesId } = useDataset();
 
   const graphData = useMemo(
-    () => buildForceGraphData(speciesId, 1, speciesById, symbiosisBySpeciesId),
+    () => buildForceGraphData(speciesId, 2, speciesById, symbiosisBySpeciesId),
     [speciesId, speciesById, symbiosisBySpeciesId]
   );
 
@@ -78,7 +78,7 @@ export function DiagramCard({ speciesId }: Props) {
         </button>
       </div>
 
-      <div className="border border-stone-200 rounded-lg overflow-hidden bg-stone-50" style={{ height: '400px', width: '100%' }}>
+      <div className="border border-stone-200 rounded-lg overflow-hidden bg-stone-50" style={{ height: '550px', width: '100%' }}>
         <CytoscapeWrapper
           elements={elements}
           style={{ width: '100%', height: '100%' }}
@@ -87,7 +87,9 @@ export function DiagramCard({ speciesId }: Props) {
             name: 'cose',
             animate: true,
             animationDuration: 500,
-            spacingFactor: 1.2,
+            spacingFactor: 1.3,
+            gravity: 1,
+            numIter: 1000,
           } as Cytoscape.LayoutOptions}
           wheelSensitivity={0.1}
           boxSelectionEnabled={false}
