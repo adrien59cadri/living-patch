@@ -8,14 +8,14 @@
 // ============================================================================
 
 export const FORM_COLORS: Record<string, string> = {
-  bird: '#f39c12',           // orange
-  plant: '#1e8449',          // dark forest green
-  insect: '#e74c3c',         // red
-  mammal: '#3498db',         // blue
-  amphibian: '#2ecc71',      // bright lime green
-  frog: '#2ecc71',           // bright lime green
-  reptile: '#9b59b6',        // purple
-  default: '#95a5a6',        // gray
+  bird: '#FFB366',           // pastel orange
+  plant: '#A8D8A8',          // pastel green
+  insect: '#FF9999',         // pastel red/coral
+  mammal: '#87CEEB',         // pastel blue (sky blue)
+  amphibian: '#B8E6B8',      // pastel lime green
+  frog: '#B8E6B8',           // pastel lime green
+  reptile: '#D8B8FF',        // pastel purple/lavender
+  default: '#D3D3D3',        // pastel gray
 };
 
 // ============================================================================
@@ -23,11 +23,11 @@ export const FORM_COLORS: Record<string, string> = {
 // ============================================================================
 
 export const RELATIONSHIP_COLORS: Record<string, string> = {
-  mutualism: '#1e8449',      // dark forest green
-  predation: '#e74c3c',      // red
-  parasitism: '#f39c12',     // orange/gold
-  competition: '#95a5a6',    // gray
-  commensalism: '#3b82f6',   // blue
+  mutualism: '#A8D8A8',      // pastel green
+  predation: '#FF9999',      // pastel red
+  parasitism: '#FFB366',     // pastel orange
+  competition: '#D3D3D3',    // pastel gray
+  commensalism: '#87CEEB',   // pastel blue
 };
 
 // ============================================================================

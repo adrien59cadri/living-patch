@@ -119,16 +119,16 @@ describe('bubbleTreeUtils - Nodes/Edges Model', () => {
 
   describe('getRelationshipColor', () => {
     it('should return correct colors for each relationship type', () => {
-      expect(getRelationshipColor('mutualism')).toBe('#1e8449');
-      expect(getRelationshipColor('predation')).toBe('#e74c3c');
-      expect(getRelationshipColor('parasitism')).toBe('#f39c12');
-      expect(getRelationshipColor('competition')).toBe('#95a5a6');
-      expect(getRelationshipColor('commensalism')).toBe('#3b82f6');
+      expect(getRelationshipColor('mutualism')).toBe('#A8D8A8');
+      expect(getRelationshipColor('predation')).toBe('#FF9999');
+      expect(getRelationshipColor('parasitism')).toBe('#FFB366');
+      expect(getRelationshipColor('competition')).toBe('#D3D3D3');
+      expect(getRelationshipColor('commensalism')).toBe('#87CEEB');
     });
 
     it('should return gray for unknown category', () => {
-      expect(getRelationshipColor('unknown')).toBe('#95a5a6');
-      expect(getRelationshipColor()).toBe('#95a5a6');
+      expect(getRelationshipColor('unknown')).toBe('#D3D3D3');
+      expect(getRelationshipColor()).toBe('#D3D3D3');
     });
   });
 
@@ -152,22 +152,22 @@ describe('bubbleTreeUtils - Nodes/Edges Model', () => {
 
   describe('getFormColor', () => {
     it('should return correct color for base forms', () => {
-      expect(getFormColor('bird')).toBe('#f39c12');
-      expect(getFormColor('plant')).toBe('#1e8449');
-      expect(getFormColor('insect')).toBe('#e74c3c');
-      expect(getFormColor('mammal')).toBe('#3498db');
-      expect(getFormColor('amphibian')).toBe('#2ecc71');
-      expect(getFormColor('reptile')).toBe('#9b59b6');
+      expect(getFormColor('bird')).toBe('#FFB366');
+      expect(getFormColor('plant')).toBe('#A8D8A8');
+      expect(getFormColor('insect')).toBe('#FF9999');
+      expect(getFormColor('mammal')).toBe('#87CEEB');
+      expect(getFormColor('amphibian')).toBe('#B8E6B8');
+      expect(getFormColor('reptile')).toBe('#D8B8FF');
     });
 
     it('should return correct color for derived forms', () => {
-      expect(getFormColor('woodpecker')).toBe('#f39c12'); // bird form
-      expect(getFormColor('tree')).toBe('#1e8449'); // plant form
-      expect(getFormColor('frog')).toBe('#2ecc71'); // amphibian form
+      expect(getFormColor('woodpecker')).toBe('#FFB366'); // bird form
+      expect(getFormColor('tree')).toBe('#A8D8A8'); // plant form
+      expect(getFormColor('frog')).toBe('#B8E6B8'); // amphibian form
     });
 
     it('should return gray for unknown form', () => {
-      expect(getFormColor('unknown')).toBe('#95a5a6');
+      expect(getFormColor('unknown')).toBe('#D3D3D3');
     });
   });
 
