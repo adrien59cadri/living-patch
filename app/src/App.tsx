@@ -9,7 +9,10 @@ import SettingsPage from './pages/SettingsPage';
 import { UserPreferencesProvider } from './stores/userPreferences';
 
 // Lazy load RelationshipDiagramPage to avoid loading ForceGraph2D and THREE.js until needed
-const RelationshipDiagramPage = lazy(() => import('./pages/RelationshipDiagramPage').then(m => ({ default: m.RelationshipDiagramPage })));
+const RelationshipDiagramPage = lazy(async () => {
+  const module = await import('./pages/RelationshipDiagramPage');
+  return { default: module.RelationshipDiagramPage };
+});
 
 export default function App() {
   return (

@@ -10,7 +10,10 @@ import { LogSightingButton } from './LogSightingButton';
 import { TagRow } from './TagRow';
 
 // Lazy load DiagramCard to avoid loading ForceGraph2D and THREE.js until needed
-const DiagramCard = lazy(() => import('./DiagramCard').then(m => ({ default: m.DiagramCard })));
+const DiagramCard = lazy(async () => {
+  const module = await import('./DiagramCard');
+  return { default: module.DiagramCard };
+});
 
 interface Props {
   species: Species;
