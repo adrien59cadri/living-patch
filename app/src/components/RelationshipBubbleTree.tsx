@@ -292,7 +292,7 @@ export const RelationshipBubbleTree: React.FC<RelationshipBubbleTreeProps> = ({
         .style('cursor', 'pointer');
 
       // Helper function for smart text wrapping
-      const wrapText = (text: string, maxCharsPerLine: number = 10): string[] => {
+      const wrapText = (text: string, maxCharsPerLine: number = 20): string[] => {
         if (text.length <= maxCharsPerLine) {
           return [text];
         }
