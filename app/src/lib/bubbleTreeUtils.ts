@@ -374,9 +374,22 @@ export function transformToNodesEdges(
 
   // Flatten nodes from all depths
   const nodes: SpeciesNode[] = [];
+  const nodeDepthMap = new Map<string, number>();
   for (let d = 0; d <= maxDepth; d++) {
     nodes.push(...(nodesByDepth.get(d) || []));
+    (nodesByDepth.get(d) || []).forEach(node => {
+      nodeDepthMap.set(node.id, node.depth);
+    });
   }
 
-  return { nodes, links };
+  // Filter links to only include "forward" edges in the BFS tree
+  // (from lower depth to higher depth, ensuring we only show the core connection path to focal)
+  const filteredLinks = links.filter(link => {
+    const sourceDepth = nodeDepthMap.get(link.source) ?? -1;
+    const targetDepth = nodeDepthMap.get(link.target) ?? -1;
+    // Only include if target is deeper than source (following BFS tree structure)
+    return targetDepth > sourceDepth;
+  });
+
+  return { nodes, links: filteredLinks };
 }

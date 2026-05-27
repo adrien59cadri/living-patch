@@ -39,7 +39,7 @@ export function RelationshipDiagramPage() {
           {focalSpecies && (
             <div>
               <h1 className="text-xl font-bold text-stone-800">{focalSpecies.common_name}</h1>
-              <p className="text-xs text-stone-500">Depth: 1–3 relationships (scroll/pinch to zoom/pan)</p>
+              <p className="text-xs text-stone-500">Depth: 1–2 relationships (scroll/pinch to zoom/pan)</p>
             </div>
           )}
         </div>
@@ -51,7 +51,7 @@ export function RelationshipDiagramPage() {
           focalId={focalSpeciesId}
           data={{ species, symbiosis }}
           onNodeClick={handleNodeClick}
-          maxDepth={3}
+          maxDepth={2}
         />
       </div>
     </div>

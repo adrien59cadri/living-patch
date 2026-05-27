@@ -16,8 +16,8 @@ interface SpeciesBubbleTreeProps {
   width?: number;
   /** Height in pixels (auto-detects container if not provided) */
   height?: number;
-  /** Maximum depth to display (1 for detail page, 3 for full diagram) */
-  maxDepth?: 1 | 3;
+  /** Maximum depth to display (1 for detail page, 2 for full diagram, 3 for expanded view) */
+  maxDepth?: 1 | 2 | 3;
 }
 
 /**
