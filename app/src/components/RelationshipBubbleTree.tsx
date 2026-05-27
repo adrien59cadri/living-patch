@@ -293,36 +293,42 @@ export const RelationshipBubbleTree: React.FC<RelationshipBubbleTreeProps> = ({
         .attr('opacity', (d: any) => getNodeOpacityByDepth(d.depth))
         .style('cursor', 'pointer');
 
-      // Helper function for smart text wrapping
-      const wrapText = (text: string, maxCharsPerLine: number = 20): string[] => {
+      // Helper function for balanced text wrapping
+      // Tries to split at word boundaries for natural breaks and balanced line lengths
+      const wrapText = (text: string, maxCharsPerLine: number = 11): string[] => {
         if (text.length <= maxCharsPerLine) {
           return [text];
         }
 
-        // Try to split at word boundaries
         const words = text.split(' ');
-        const lines: string[] = [];
-        let currentLine = '';
-
-        for (const word of words) {
-          if ((currentLine + word).length <= maxCharsPerLine) {
-            currentLine += (currentLine ? ' ' : '') + word;
-          } else {
-            if (currentLine) lines.push(currentLine);
-            currentLine = word;
-          }
-        }
-        if (currentLine) lines.push(currentLine);
-
-        // If still only 1 line, force split at maxCharsPerLine
-        if (lines.length === 1) {
-          const line = lines[0];
-          if (line.length > maxCharsPerLine) {
-            return [line.substring(0, maxCharsPerLine), line.substring(maxCharsPerLine)];
-          }
+        if (words.length === 1) {
+          // Single word longer than max chars - force split
+          return [text.substring(0, maxCharsPerLine), text.substring(maxCharsPerLine)];
         }
 
-        return lines.slice(0, 2); // Max 2 lines
+        // Try to find the best split point for balanced wrapping
+        let bestSplit = 1;
+        let bestBalance = Infinity;
+        
+        for (let i = 1; i < words.length; i++) {
+          const line1 = words.slice(0, i).join(' ');
+          const line2 = words.slice(i).join(' ');
+          
+          // Both lines must fit within maxCharsPerLine
+          if (line1.length <= maxCharsPerLine && line2.length <= maxCharsPerLine) {
+            // Prefer split that minimizes difference in line lengths (balanced)
+            const balance = Math.abs(line1.length - line2.length);
+            if (balance < bestBalance) {
+              bestBalance = balance;
+              bestSplit = i;
+            }
+          }
+        }
+        
+        return [
+          words.slice(0, bestSplit).join(' '),
+          words.slice(bestSplit).join(' ')
+        ];
       };
 
       // Node labels with smart wrapping
