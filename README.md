@@ -25,6 +25,34 @@ npm run test:run   # Run 60 unit tests (Vitest + React Testing Library)
 npm run test:e2e   # Run 13 E2E tests (Playwright, requires build)
 ```
 
+## Knowledge Graph (Graphify)
+
+Generate an interactive, queryable knowledge graph of the codebase to understand component relationships and data flows:
+
+**First-time setup** (install graphify):
+```bash
+npm run graphify:install
+```
+
+**Generate the knowledge graph** (anytime):
+```bash
+npm run graphify
+# Opens .graphify-output/index.html in your browser
+```
+
+This creates:
+- **Interactive visualization** — Explore component relationships, data flows, and design patterns
+- **Markdown report** — Summary of key concepts and connections
+- **JSON graph** — Structured data for Claude Code, Copilot, and other AI agents
+
+**Why it's useful:**
+- Helps Claude Code agents quickly understand the codebase architecture
+- Visualizes how React components, hooks, utilities, and data connect
+- Documents the species/symbiosis data model and pack system
+- Serves as onboarding for new contributors without reading 44 files
+
+See [.graphify-hints.md](.graphify-hints.md) for details about the data model and how components interact.
+
 ## Features
 
 ✨ **Search**: Full-text across species name, description, and tags  

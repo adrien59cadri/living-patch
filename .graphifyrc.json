@@ -1,0 +1,36 @@
+{
+  "include": [
+    "app/src",
+    "pack-tools",
+    "build-dataset.js",
+    "README.md",
+    ".claude.md",
+    ".instructions.md",
+    "context.md",
+    ".graphify-hints.md"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "dist-single-file",
+    ".git",
+    ".github",
+    "app/dist",
+    "app/node_modules",
+    "pack-tools/node_modules",
+    "playwright-report",
+    "test-results"
+  ],
+  "languages": [
+    "typescript",
+    "javascript",
+    "json",
+    "markdown"
+  ],
+  "outputFormats": [
+    "html",
+    "markdown",
+    "json"
+  ],
+  "outputDir": ".graphify-output"
+}
