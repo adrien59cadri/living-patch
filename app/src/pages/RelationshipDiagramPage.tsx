@@ -1,31 +1,14 @@
-import { useEffect, useMemo, useCallback } from 'react';
+import { useEffect, useCallback } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import RelationshipBubbleTree from '../components/RelationshipBubbleTree';
-import { buildBubbleTreeHierarchy } from '../lib/bubbleTreeUtils';
+import SpeciesBubbleTree from '../components/SpeciesBubbleTree';
 import { useDataset } from '../hooks/useDataset';
 
 export function RelationshipDiagramPage() {
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
-  const { speciesById, symbiosisBySpeciesId } = useDataset();
+  const { species, speciesById, symbiosis } = useDataset();
 
   const focalSpeciesId = searchParams.get('focal');
-
-  const hierarchyData = useMemo(() => {
-    if (!focalSpeciesId) return null;
-    try {
-      return buildBubbleTreeHierarchy(
-        focalSpeciesId,
-        speciesById,
-        symbiosisBySpeciesId,
-        new Map(),
-        3
-      );
-    } catch (error) {
-      console.error('Error building bubble tree hierarchy:', error);
-      return null;
-    }
-  }, [focalSpeciesId, speciesById, symbiosisBySpeciesId]);
 
   const handleNodeClick = useCallback((speciesNodeId: string) => {
     setSearchParams({ focal: speciesNodeId });
@@ -38,7 +21,7 @@ export function RelationshipDiagramPage() {
     }
   }, [focalSpeciesId, navigate]);
 
-  if (!focalSpeciesId || !hierarchyData) return null;
+  if (!focalSpeciesId) return null;
 
   const focalSpecies = speciesById.get(focalSpeciesId);
 
@@ -56,7 +39,7 @@ export function RelationshipDiagramPage() {
           {focalSpecies && (
             <div>
               <h1 className="text-xl font-bold text-stone-800">{focalSpecies.common_name}</h1>
-              <p className="text-xs text-stone-500">Depth: 1–3 relationships</p>
+              <p className="text-xs text-stone-500">Depth: 1–3 relationships (scroll/pinch to zoom/pan)</p>
             </div>
           )}
         </div>
@@ -64,9 +47,9 @@ export function RelationshipDiagramPage() {
 
       {/* Main diagram area */}
       <div className="flex-1 overflow-hidden relative">
-        <RelationshipBubbleTree
+        <SpeciesBubbleTree
           focalId={focalSpeciesId}
-          data={hierarchyData}
+          data={{ species, symbiosis }}
           onNodeClick={handleNodeClick}
           maxDepth={3}
         />
@@ -77,23 +60,26 @@ export function RelationshipDiagramPage() {
         <div className="font-semibold text-stone-800 mb-3">Relationship Types</div>
         <div className="flex items-center gap-2">
           <div className="w-3 h-3 rounded-full" style={{ backgroundColor: '#27ae60' }} />
-          <span className="text-stone-600">Mutualism</span>
+          <span className="text-stone-600">Mutualism (solid)</span>
         </div>
         <div className="flex items-center gap-2">
           <div className="w-3 h-3 rounded-full" style={{ backgroundColor: '#e74c3c' }} />
-          <span className="text-stone-600">Predation</span>
+          <span className="text-stone-600">Predation (→ arrow)</span>
         </div>
         <div className="flex items-center gap-2">
           <div className="w-3 h-3 rounded-full" style={{ backgroundColor: '#f39c12' }} />
-          <span className="text-stone-600">Parasitism</span>
+          <span className="text-stone-600">Parasitism (⠒ dashed →)</span>
         </div>
         <div className="flex items-center gap-2">
           <div className="w-3 h-3 rounded-full" style={{ backgroundColor: '#95a5a6' }} />
-          <span className="text-stone-600">Competition</span>
+          <span className="text-stone-600">Competition (solid)</span>
         </div>
         <div className="flex items-center gap-2">
           <div className="w-3 h-3 rounded-full" style={{ backgroundColor: '#3b82f6' }} />
-          <span className="text-stone-600">Commensalism</span>
+          <span className="text-stone-600">Commensalism (solid)</span>
+        </div>
+        <div className="text-xs text-stone-500 mt-3">
+          Bold lines = obligate | Thin lines = facultative
         </div>
       </div>
     </div>

@@ -1,47 +1,53 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useRef, useEffect, useState } from 'react';
 import * as d3 from 'd3';
-import type { HierarchyInput } from '../types';
+import type { Species, Symbiosis } from '../types';
 import {
+  transformToNodesEdges,
+  getFormColor,
+  getNodeSizeByDepth,
+  getNodeOpacityByDepth,
+  getLinkStrokeWidth,
   getRelationshipColor,
-  getNodeRadius,
-  getNodeOpacity,
-  getLabelSize,
-  getLabelWeight,
 } from '../lib/bubbleTreeUtils';
 
 interface RelationshipBubbleTreeProps {
   /** ID of focal (center) species */
   focalId: string;
-  /** Hierarchy data from buildBubbleTreeHierarchy */
-  data: HierarchyInput;
+  /** Species data map */
+  speciesById: Map<string, Species>;
+  /** Symbiosis relationships indexed by species ID */
+  symbiosisBySpeciesId: Map<string, Symbiosis[]>;
   /** Callback when a species node is clicked */
   onNodeClick?: (speciesId: string) => void;
   /** Width in pixels (auto-detects container if not provided) */
   width?: number;
   /** Height in pixels (auto-detects container if not provided) */
   height?: number;
-  /** Maximum depth to display (default 2) */
+  /** Maximum depth to display (1 for detail page, 3 for full diagram) */
   maxDepth?: number;
 }
 
 /**
- * D3 Radial bubble tree (mind-map style) displaying species and their relationships
+ * D3 Radial bubble tree displaying species and their relationships.
  *
- * Structure:
- * - Center (80px): Focal species, gold color, large bold text
- * - Middle (50px): Relationship categories (Mutualism, Predation, etc.), type-colored
- * - Outer (30px): Related species, white with outline, smaller text
- *
- * All connected by radial curves from focal → category → species
+ * Uses a flat nodes-edges model where:
+ * - Focal species at center (80px, bold text)
+ * - Depth-1 species in circle (35px)
+ * - Depth-2/3 species radiating out (25px, 50% opacity)
+ * - All nodes colored by form (bird, plant, insect, mammal, etc.)
+ * - Links styled by type (arrows for predation/parasitism, colors by relationship type)
+ * - Link stroke weight indicates obligate (3px) vs non-obligate (1.5px)
+ * - Zoom/pan available only when maxDepth=3 (full diagram page)
  */
 export const RelationshipBubbleTree: React.FC<RelationshipBubbleTreeProps> = ({
   focalId,
-  data,
+  speciesById,
+  symbiosisBySpeciesId,
   onNodeClick,
   width: providedWidth,
   height: providedHeight,
-  maxDepth = 2,
+  maxDepth = 1,
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const svgRef = useRef<SVGSVGElement>(null);
@@ -65,211 +71,203 @@ export const RelationshipBubbleTree: React.FC<RelationshipBubbleTreeProps> = ({
 
   // D3 rendering effect
   useEffect(() => {
-    if (!svgRef.current || !data || dimensions.width === 0 || dimensions.height === 0) return;
+    if (!svgRef.current || dimensions.width === 0 || dimensions.height === 0) return;
 
-    const margin = 40;
-    const width = Math.max(dimensions.width - margin * 2, 300);
-    const height = Math.max(dimensions.height - margin * 2, 300);
-    const radius = Math.min(width, height) / 2;
+    try {
+      // Transform data to nodes and edges
+      const { nodes, links } = transformToNodesEdges(focalId, speciesById, symbiosisBySpeciesId, maxDepth);
 
-    // Build D3 hierarchy
-    const hierarchy = d3.hierarchy<HierarchyInput>(data);
+      const margin = 40;
+      const width = Math.max(dimensions.width - margin * 2, 300);
+      const height = Math.max(dimensions.height - margin * 2, 300);
+      const centerX = dimensions.width / 2;
+      const centerY = dimensions.height / 2;
+      const maxRadius = Math.min(width, height) / 2 - 20;
 
-    // Create radial tree layout
-    const treeLayout = d3.tree<HierarchyInput>().size([2 * Math.PI, radius]);
+      // Clear and setup SVG
+      d3.select(svgRef.current).selectAll('*').remove();
 
-    const root = treeLayout(hierarchy);
+      const svg = d3
+        .select(svgRef.current)
+        .attr('width', dimensions.width)
+        .attr('height', dimensions.height);
 
-    // Collect all nodes and links
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const nodes: any[] = root.descendants().filter(d => !maxDepth || d.depth <= maxDepth);
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const links: any[] = root.links().filter(d => !maxDepth || d.target.depth <= maxDepth);
+      // Add defs for arrow markers
+      const defs = svg.append('defs');
+      
+      // Predation arrow (red)
+      defs
+        .append('marker')
+        .attr('id', 'arrowPredation')
+        .attr('markerWidth', 10)
+        .attr('markerHeight', 10)
+        .attr('refX', 9)
+        .attr('refY', 3)
+        .attr('orient', 'auto')
+        .attr('markerUnits', 'strokeWidth')
+        .append('path')
+        .attr('d', 'M0,0 L0,6 L9,3 z')
+        .attr('fill', '#e74c3c');
 
-    // Clear and setup SVG
-    d3.select(svgRef.current).selectAll('*').remove();
+      // Parasitism arrow (orange)
+      defs
+        .append('marker')
+        .attr('id', 'arrowParasitism')
+        .attr('markerWidth', 10)
+        .attr('markerHeight', 10)
+        .attr('refX', 9)
+        .attr('refY', 3)
+        .attr('orient', 'auto')
+        .attr('markerUnits', 'strokeWidth')
+        .append('path')
+        .attr('d', 'M0,0 L0,6 L9,3 z')
+        .attr('fill', '#f39c12');
 
-    const svg = d3
-      .select(svgRef.current)
-      .attr('width', dimensions.width)
-      .attr('height', dimensions.height)
-      .append('g')
-      .attr('transform', `translate(${dimensions.width / 2},${dimensions.height / 2})`);
+      // Create main group
+      const mainGroup = svg.append('g');
 
-    // ===== LINKS =====
-    const linkGroup = svg.append('g').attr('class', 'links');
+      // ===== POSITION NODES =====
+      // Manually calculate radial positions
+      const nodePositions = new Map<string, { x: number; y: number; depth: number }>();
 
-    // Use d3.linkRadial for polar coordinates
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const linkRadial = d3.linkRadial<any, any>()
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      .source((d: any) => [d.source.x, d.source.y])
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      .target((d: any) => [d.target.x, d.target.y]);
+      // Focal node at center
+      const focalNode = nodes.find(n => n.depth === 0);
+      if (focalNode) {
+        nodePositions.set(focalNode.id, { x: centerX, y: centerY, depth: 0 });
+      }
 
-    linkGroup
-      .selectAll('path')
-      .data(links)
-      .join('path')
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      .attr('d', (d: any) => linkRadial(d) as string)
-      .attr('fill', 'none')
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      .attr('stroke', (d: any) => {
-        const nodeType = d.target.data.type;
-        if (nodeType === 'species') {
-          return getRelationshipColor(d.target.data.relationshipType);
-        }
-        return '#ccc';
-      })
-      .attr('stroke-width', 1.5)
-      .attr('stroke-opacity', 0.6)
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      .attr('stroke-dasharray', (d: any) => {
-        // Dashed line for outer links (species level)
-        return d.target.data.type === 'species' ? '3,3' : 'none';
+      // Depth-1 nodes in circle
+      const depth1Nodes = nodes.filter(n => n.depth === 1);
+      const depth1Count = depth1Nodes.length;
+      const depth1Radius = Math.min(150, maxRadius * 0.4);
+      depth1Nodes.forEach((node, i) => {
+        const angle = (i / depth1Count) * 2 * Math.PI;
+        const x = centerX + depth1Radius * Math.cos(angle);
+        const y = centerY + depth1Radius * Math.sin(angle);
+        nodePositions.set(node.id, { x, y, depth: 1 });
       });
 
-    // ===== NODES =====
-    const nodeGroup = svg.append('g').attr('class', 'nodes');
+      // Depth-2+ nodes radiating further out
+      const deeperNodes = nodes.filter(n => n.depth >= 2);
+      const depth2Radius = Math.min(250, maxRadius * 0.7);
+      deeperNodes.forEach((node, i) => {
+        const angle = (i / Math.max(1, deeperNodes.length)) * 2 * Math.PI;
+        const x = centerX + depth2Radius * Math.cos(angle);
+        const y = centerY + depth2Radius * Math.sin(angle);
+        nodePositions.set(node.id, { x, y, depth: node.depth });
+      });
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const nodeElements = nodeGroup
-      .selectAll('g')
-      .data(nodes)
-      .join('g')
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      .attr('transform', (d: any) => `translate(${d.x},${d.y})`)
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      .attr('class', (d: any) => `node node-${d.data.type}`);
+      // ===== RENDER LINKS =====
+      const linkGroup = mainGroup.append('g').attr('class', 'links');
 
-    // Node circles
-    nodeElements
-      .append('circle')
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      .attr('r', (d: any) => getNodeRadius(d.data.type))
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      .attr('fill', (d: any) => {
-        if (d.data.type === 'focal') return '#fbbf24'; // gold
-        if (d.data.type === 'category') {
-          return getRelationshipColor(d.data.relationshipType);
-        }
-        return '#ffffff'; // white for species
-      })
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      .attr('stroke', (d: any) => {
-        if (d.data.type === 'species') return '#333'; // dark outline for species
-        return 'none';
-      })
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      .attr('stroke-width', (d: any) => {
-        return d.data.type === 'species' ? 2 : 0;
-      })
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      .attr('opacity', (d: any) => getNodeOpacity(d.data.type))
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      .style('cursor', (d: any) => (d.data.type === 'species' ? 'pointer' : 'default'));
+      linkGroup
+        .selectAll('line')
+        .data(links)
+        .join('line')
+        .attr('x1', (d: any) => nodePositions.get(d.source)?.x ?? 0)
+        .attr('y1', (d: any) => nodePositions.get(d.source)?.y ?? 0)
+        .attr('x2', (d: any) => nodePositions.get(d.target)?.x ?? 0)
+        .attr('y2', (d: any) => nodePositions.get(d.target)?.y ?? 0)
+        .attr('stroke', (d: any) => {
+          if (['predation', 'parasitism'].includes(d.type)) {
+            return getRelationshipColor(d.type);
+          }
+          return getRelationshipColor(d.type);
+        })
+        .attr('stroke-width', (d: any) => getLinkStrokeWidth(d.obligate))
+        .attr('stroke-linecap', 'round')
+        .attr('stroke-dasharray', (d: any) => {
+          if (d.type === 'parasitism') return '4,2';
+          return 'none';
+        })
+        .attr('marker-end', (d: any) => {
+          if (d.type === 'predation') return 'url(#arrowPredation)';
+          if (d.type === 'parasitism') return 'url(#arrowParasitism)';
+          return 'none';
+        })
+        .attr('opacity', 0.7);
 
-    // Node labels (text)
-    nodeElements
-      .append('text')
-      .attr('text-anchor', 'middle')
-      .attr('dominant-baseline', 'central')
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      .attr('font-size', (d: any) => `${getLabelSize(d.data.type)}em`)
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      .attr('font-weight', (d: any) => getLabelWeight(d.data.type))
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      .attr('fill', (d: any) => {
-        // Dark text for light backgrounds (focal, species)
-        if (d.data.type === 'focal' || d.data.type === 'species') return '#333';
-        // Light text for dark category backgrounds
-        return '#ffffff';
-      })
-      .attr('pointer-events', 'none')
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      .text((d: any) => {
-        const text = d.data.name || '';
-        // Truncate long names for smaller nodes
-        if (d.data.type === 'species' && text.length > 15) {
-          return text.substring(0, 12) + '...';
-        }
-        if (d.data.type === 'category' && text.length > 20) {
-          return text.substring(0, 17) + '...';
-        }
-        return text;
-      })
-      .style('word-wrap', 'break-word')
-      .style('white-space', 'normal');
+      // ===== RENDER NODES =====
+      const nodeGroup = mainGroup.append('g').attr('class', 'nodes');
 
-    // ===== INTERACTIONS =====
-    // Click handler for species nodes
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const clickHandler = (_event: any, d: any) => {
-      if (onNodeClick && d.data.id) {
-        onNodeClick(d.data.id);
-      }
-    };
+      const nodeElements = nodeGroup
+        .selectAll('g')
+        .data(nodes)
+        .join('g')
+        .attr('class', (d: any) => `node node-${d.id}`)
+        .attr('transform', (d: any) => {
+          const pos = nodePositions.get(d.id);
+          return `translate(${pos?.x ?? 0},${pos?.y ?? 0})`;
+        });
 
-    nodeElements
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      .filter((d: any) => d.data.type === 'species')
-      .on('click', clickHandler as any);
-
-    // Hover effects (subtle)
-    nodeElements
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      .filter((d: any) => d.data.type === 'species')
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      .on('mouseenter', function (this: SVGGElement) {
-        d3.select(this).selectAll('circle').attr('opacity', 1.0).attr('filter', 'drop-shadow(0 0 4px rgba(0,0,0,0.2))');
-      } as any)
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      .on('mouseleave', function (this: SVGGElement) {
-        d3.select(this)
-          .selectAll('circle')
-          .attr('opacity', 0.8)
-          .attr('filter', 'none');
-      } as any);
-
-    // ===== LEGEND (optional, positioned in corner) =====
-    const legend = svg.append('g').attr('class', 'legend').attr('transform', `translate(-${radius - 60},-${radius - 100})`);
-
-    legend
-      .append('text')
-      .attr('x', 0)
-      .attr('y', 0)
-      .attr('font-size', '0.9em')
-      .attr('font-weight', 'bold')
-      .attr('fill', '#333')
-      .text('Relationships');
-
-    const categories = [
-      { label: 'Mutualism', color: '#27ae60' },
-      { label: 'Predation', color: '#e74c3c' },
-      { label: 'Parasitism', color: '#f39c12' },
-      { label: 'Competition', color: '#95a5a6' },
-      { label: 'Commensalism', color: '#3b82f6' },
-    ];
-
-    categories.forEach((cat, i) => {
-      const legendY = 25 + i * 18;
-      legend
+      // Node circles
+      nodeElements
         .append('circle')
-        .attr('cx', 5)
-        .attr('cy', legendY)
-        .attr('r', 4)
-        .attr('fill', cat.color);
-      legend
+        .attr('r', (d: any) => getNodeSizeByDepth(d.depth))
+        .attr('fill', (d: any) => getFormColor(d.form))
+        .attr('stroke', (d: any) => (d.depth === 0 ? '#333' : '#666'))
+        .attr('stroke-width', (d: any) => (d.depth === 0 ? 3 : 2))
+        .attr('opacity', (d: any) => getNodeOpacityByDepth(d.depth))
+        .style('cursor', 'pointer');
+
+      // Node labels
+      nodeElements
         .append('text')
-        .attr('x', 15)
-        .attr('y', legendY)
-        .attr('font-size', '0.75em')
-        .attr('fill', '#333')
+        .attr('text-anchor', 'middle')
         .attr('dominant-baseline', 'central')
-        .text(cat.label);
-    });
-  }, [data, dimensions, maxDepth, onNodeClick, focalId]);
+        .attr('font-size', (d: any) => {
+          if (d.depth === 0) return '0.9em';
+          if (d.depth === 1) return '0.75em';
+          return '0.6em';
+        })
+        .attr('font-weight', (d: any) => (d.depth === 0 ? 'bold' : 'normal'))
+        .attr('fill', '#333')
+        .attr('pointer-events', 'none')
+        .text((d: any) => {
+          const text = d.name || '';
+          const maxLen = d.depth === 0 ? 20 : d.depth === 1 ? 15 : 12;
+          return text.length > maxLen ? text.substring(0, maxLen - 1) + '…' : text;
+        });
+
+      // ===== INTERACTIONS =====
+      nodeElements
+        .on('click', (_event: any, d: any) => {
+          if (onNodeClick && d.depth > 0) {
+            // Only allow clicking on non-focal species nodes
+            onNodeClick(d.id);
+          }
+        })
+        .on('mouseenter', function (this: SVGGElement) {
+          d3.select(this)
+            .selectAll('circle')
+            .transition()
+            .duration(200)
+            .attr('opacity', 1)
+            .attr('filter', 'drop-shadow(0 0 4px rgba(0,0,0,0.3))');
+        } as any)
+        .on('mouseleave', function (this: SVGGElement, d: any) {
+          d3.select(this)
+            .selectAll('circle')
+            .transition()
+            .duration(200)
+            .attr('opacity', getNodeOpacityByDepth(d.depth))
+            .attr('filter', 'none');
+        } as any);
+
+      // ===== ZOOM/PAN (only for maxDepth=3) =====
+      if (maxDepth === 3) {
+        const zoom = d3
+          .zoom<SVGSVGElement, unknown>()
+          .on('zoom', (event: any) => {
+            mainGroup.attr('transform', event.transform);
+          });
+
+        svg.call(zoom);
+      }
+    } catch (error) {
+      console.error('Error rendering RelationshipBubbleTree:', error);
+    }
+  }, [focalId, speciesById, symbiosisBySpeciesId, dimensions, maxDepth, onNodeClick]);
 
   return (
     <div

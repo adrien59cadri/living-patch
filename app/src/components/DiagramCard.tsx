@@ -1,7 +1,6 @@
-import { useMemo, useCallback } from 'react';
+import { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
-import RelationshipBubbleTree from './RelationshipBubbleTree';
-import { buildBubbleTreeHierarchy } from '../lib/bubbleTreeUtils';
+import SpeciesBubbleTree from './SpeciesBubbleTree';
 import { useDataset } from '../hooks/useDataset';
 
 interface Props {
@@ -10,32 +9,11 @@ interface Props {
 
 export function DiagramCard({ speciesId }: Props) {
   const navigate = useNavigate();
-  const { speciesById, symbiosisBySpeciesId } = useDataset();
-
-  const hierarchyData = useMemo(
-    () => {
-      try {
-        return buildBubbleTreeHierarchy(
-          speciesId,
-          speciesById,
-          symbiosisBySpeciesId,
-          new Map(),
-          2
-        );
-      } catch (error) {
-        console.error('Error building bubble tree hierarchy:', error);
-        return null;
-      }
-    },
-    [speciesId, speciesById, symbiosisBySpeciesId]
-  );
+  const { species, symbiosis } = useDataset();
 
   const handleNodeClick = useCallback((speciesNodeId: string) => {
     navigate(`/species/${speciesNodeId}`);
   }, [navigate]);
-
-  if (!hierarchyData) return null;
-
 
   return (
     <div className="space-y-4">
@@ -52,11 +30,12 @@ export function DiagramCard({ speciesId }: Props) {
       </div>
 
       <div className="border border-stone-200 rounded-lg overflow-hidden bg-stone-50">
-        <RelationshipBubbleTree
+        <SpeciesBubbleTree
           focalId={speciesId}
-          data={hierarchyData}
+          data={{ species, symbiosis }}
           onNodeClick={handleNodeClick}
           height={550}
+          maxDepth={1}
         />
       </div>
     </div>

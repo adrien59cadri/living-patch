@@ -1,49 +1,98 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render } from '@testing-library/react';
 import RelationshipBubbleTree from '../RelationshipBubbleTree';
-import type { HierarchyInput } from '../../types';
+import type { Species, Symbiosis } from '../../types';
 
-const createMockHierarchy = (): HierarchyInput => ({
-  id: 'focal-1',
-  name: 'Focal Species',
-  type: 'focal',
-  children: [
+const createMockSpecies = (): Map<string, Species> => {
+  const species: Species[] = [
     {
-      id: 'category-mutualism',
-      name: 'Mutualism',
-      type: 'category',
-      relationshipType: 'mutualism',
-      children: [
-        {
-          id: 'species-1',
-          name: 'Partner Species',
-          type: 'species',
-          relationshipType: 'mutualism',
-        },
-      ],
+      id: 'bird_focal',
+      common_name: 'Focal Bird',
+      latin_name: 'Avem focalis',
+      form: 'bird',
+      habitat: ['forest'],
+      diet: ['insect_eater'],
+      behavior: ['soaring'],
+      season: ['year_round'],
+      functional_description: 'A focal bird',
+      life_stages: [],
+      region: 'northeast_pa',
+      ecological_role: 'carnivore',
     },
     {
-      id: 'category-predation',
-      name: 'Predation',
-      type: 'category',
-      relationshipType: 'predation',
-      children: [
-        {
-          id: 'species-2',
-          name: 'Prey Species',
-          type: 'species',
-          relationshipType: 'predation',
-        },
-      ],
+      id: 'plant_partner',
+      common_name: 'Partner Plant',
+      latin_name: 'Planta mutualis',
+      form: 'tree',
+      habitat: ['forest'],
+      diet: [],
+      behavior: ['mast_producer'],
+      season: ['year_round'],
+      functional_description: 'A mutualist plant',
+      life_stages: [],
+      region: 'northeast_pa',
+      ecological_role: 'producer',
     },
-  ],
-});
+    {
+      id: 'mammal_prey',
+      common_name: 'Prey Mammal',
+      latin_name: 'Mus praedatus',
+      form: 'mammal',
+      habitat: ['field'],
+      diet: ['herbivore'],
+      behavior: ['grazer'],
+      season: ['year_round'],
+      functional_description: 'A prey mammal',
+      life_stages: [],
+      region: 'northeast_pa',
+      ecological_role: 'herbivore',
+    },
+  ];
+
+  return new Map(species.map(s => [s.id, s]));
+};
+
+const createMockSymbioses = (): Map<string, Symbiosis[]> => {
+  const symbioses: Symbiosis[] = [
+    {
+      type: 'mutualism',
+      members: ['bird_focal', 'plant_partner'],
+      obligate: false,
+      notes: 'Mock mutualism',
+    },
+    {
+      type: 'predation',
+      members: ['bird_focal', 'mammal_prey'],
+      impacted_species: 'mammal_prey',
+      obligate: false,
+      notes: 'Mock predation',
+    },
+  ];
+
+  const map = new Map<string, Symbiosis[]>();
+  for (const symbiosis of symbioses) {
+    for (const memberId of symbiosis.members) {
+      if (!map.has(memberId)) {
+        map.set(memberId, []);
+      }
+      map.get(memberId)!.push(symbiosis);
+    }
+  }
+
+  return map;
+};
 
 describe('RelationshipBubbleTree', () => {
   it('should render without crashing', () => {
-    const hierarchy = createMockHierarchy();
+    const speciesById = createMockSpecies();
+    const symbiosisBySpeciesId = createMockSymbioses();
+
     const { container } = render(
-      <RelationshipBubbleTree focalId="focal-1" data={hierarchy} />
+      <RelationshipBubbleTree
+        focalId="bird_focal"
+        speciesById={speciesById}
+        symbiosisBySpeciesId={symbiosisBySpeciesId}
+      />
     );
 
     expect(container).toBeTruthy();
@@ -52,9 +101,15 @@ describe('RelationshipBubbleTree', () => {
   });
 
   it('should render SVG with proper structure', () => {
-    const hierarchy = createMockHierarchy();
+    const speciesById = createMockSpecies();
+    const symbiosisBySpeciesId = createMockSymbioses();
+
     const { container } = render(
-      <RelationshipBubbleTree focalId="focal-1" data={hierarchy} />
+      <RelationshipBubbleTree
+        focalId="bird_focal"
+        speciesById={speciesById}
+        symbiosisBySpeciesId={symbiosisBySpeciesId}
+      />
     );
 
     const svg = container.querySelector('svg');
@@ -68,9 +123,15 @@ describe('RelationshipBubbleTree', () => {
   });
 
   it('should render nodes as circles', () => {
-    const hierarchy = createMockHierarchy();
+    const speciesById = createMockSpecies();
+    const symbiosisBySpeciesId = createMockSymbioses();
+
     const { container } = render(
-      <RelationshipBubbleTree focalId="focal-1" data={hierarchy} />
+      <RelationshipBubbleTree
+        focalId="bird_focal"
+        speciesById={speciesById}
+        symbiosisBySpeciesId={symbiosisBySpeciesId}
+      />
     );
 
     const circles = container.querySelectorAll('circle');
@@ -78,9 +139,15 @@ describe('RelationshipBubbleTree', () => {
   });
 
   it('should render labels for nodes', () => {
-    const hierarchy = createMockHierarchy();
+    const speciesById = createMockSpecies();
+    const symbiosisBySpeciesId = createMockSymbioses();
+
     const { container } = render(
-      <RelationshipBubbleTree focalId="focal-1" data={hierarchy} />
+      <RelationshipBubbleTree
+        focalId="bird_focal"
+        speciesById={speciesById}
+        symbiosisBySpeciesId={symbiosisBySpeciesId}
+      />
     );
 
     const textElements = container.querySelectorAll('text');
@@ -90,39 +157,48 @@ describe('RelationshipBubbleTree', () => {
     const textContent = Array.from(textElements)
       .map(el => el.textContent)
       .join(' ');
-    expect(textContent).toContain('Focal Species');
+    expect(textContent).toContain('Focal Bird');
   });
 
   it('should render links between nodes', () => {
-    const hierarchy = createMockHierarchy();
+    const speciesById = createMockSpecies();
+    const symbiosisBySpeciesId = createMockSymbioses();
+
     const { container } = render(
-      <RelationshipBubbleTree focalId="focal-1" data={hierarchy} />
+      <RelationshipBubbleTree
+        focalId="bird_focal"
+        speciesById={speciesById}
+        symbiosisBySpeciesId={symbiosisBySpeciesId}
+      />
     );
 
-    const paths = container.querySelectorAll('g.links path');
-    expect(paths.length).toBeGreaterThan(0);
+    const lines = container.querySelectorAll('line');
+    expect(lines.length).toBeGreaterThan(0);
   });
 
   it('should call onNodeClick when species node is clicked', async () => {
-    const hierarchy = createMockHierarchy();
+    const speciesById = createMockSpecies();
+    const symbiosisBySpeciesId = createMockSymbioses();
     const mockClick = vi.fn();
+
     const { container } = render(
       <RelationshipBubbleTree
-        focalId="focal-1"
-        data={hierarchy}
+        focalId="bird_focal"
+        speciesById={speciesById}
+        symbiosisBySpeciesId={symbiosisBySpeciesId}
         onNodeClick={mockClick}
       />
     );
 
-    // Find species nodes (should have class node-species)
-    const speciesNodes = container.querySelectorAll('g.node-species');
-    expect(speciesNodes.length).toBe(2); // Two species in the hierarchy
+    // Find all node groups
+    const nodeGroups = container.querySelectorAll('g.nodes g');
+    expect(nodeGroups.length).toBeGreaterThan(1); // Focal + at least one neighbor
 
-    // Click the first species node
-    if (speciesNodes.length > 0) {
-      const firstSpeciesNode = speciesNodes[0] as SVGGElement;
+    // Click on a non-focal node (e.g., the first neighbor)
+    if (nodeGroups.length > 1) {
+      const nonFocalNode = nodeGroups[1] as SVGGElement;
       const clickEvent = new MouseEvent('click', { bubbles: true });
-      firstSpeciesNode.dispatchEvent(clickEvent);
+      nonFocalNode.dispatchEvent(clickEvent);
 
       // Callback should be called
       expect(mockClick).toHaveBeenCalled();
@@ -130,11 +206,14 @@ describe('RelationshipBubbleTree', () => {
   });
 
   it('should respect height prop', () => {
-    const hierarchy = createMockHierarchy();
+    const speciesById = createMockSpecies();
+    const symbiosisBySpeciesId = createMockSymbioses();
+
     const { container } = render(
       <RelationshipBubbleTree
-        focalId="focal-1"
-        data={hierarchy}
+        focalId="bird_focal"
+        speciesById={speciesById}
+        symbiosisBySpeciesId={symbiosisBySpeciesId}
         height={500}
       />
     );
@@ -144,11 +223,14 @@ describe('RelationshipBubbleTree', () => {
   });
 
   it('should respect width prop', () => {
-    const hierarchy = createMockHierarchy();
+    const speciesById = createMockSpecies();
+    const symbiosisBySpeciesId = createMockSymbioses();
+
     const { container } = render(
       <RelationshipBubbleTree
-        focalId="focal-1"
-        data={hierarchy}
+        focalId="bird_focal"
+        speciesById={speciesById}
+        symbiosisBySpeciesId={symbiosisBySpeciesId}
         width={800}
       />
     );
@@ -157,61 +239,30 @@ describe('RelationshipBubbleTree', () => {
     expect(svg?.getAttribute('width')).toBe('800');
   });
 
-  it('should render legend with relationship types', () => {
-    const hierarchy = createMockHierarchy();
-    const { container } = render(
-      <RelationshipBubbleTree focalId="focal-1" data={hierarchy} />
-    );
-
-    const legendTexts = Array.from(container.querySelectorAll('text'))
-      .map(el => el.textContent)
-      .join(' ');
-
-    expect(legendTexts).toContain('Mutualism');
-    expect(legendTexts).toContain('Predation');
-  });
-
-  it('should handle maxDepth filtering', () => {
-    const hierarchy: HierarchyInput = {
-      id: 'focal-1',
-      name: 'Focal',
-      type: 'focal',
-      children: [
-        {
-          id: 'category-1',
-          name: 'Category',
-          type: 'category',
-          relationshipType: 'mutualism',
-          children: [
-            {
-              id: 'species-1',
-              name: 'Species 1',
-              type: 'species',
-              relationshipType: 'mutualism',
-            },
-          ],
-        },
-      ],
-    };
+  it('should respect maxDepth prop', () => {
+    const speciesById = createMockSpecies();
+    const symbiosisBySpeciesId = createMockSymbioses();
 
     const { container: container1 } = render(
       <RelationshipBubbleTree
-        focalId="focal-1"
-        data={hierarchy}
+        focalId="bird_focal"
+        speciesById={speciesById}
+        symbiosisBySpeciesId={symbiosisBySpeciesId}
         maxDepth={1}
       />
     );
 
-    const { container: container2 } = render(
+    const { container: container3 } = render(
       <RelationshipBubbleTree
-        focalId="focal-1"
-        data={hierarchy}
-        maxDepth={2}
+        focalId="bird_focal"
+        speciesById={speciesById}
+        symbiosisBySpeciesId={symbiosisBySpeciesId}
+        maxDepth={3}
       />
     );
 
-    // Both should render, but with different depths
+    // Both should render without error
     expect(container1.querySelector('svg')).toBeTruthy();
-    expect(container2.querySelector('svg')).toBeTruthy();
+    expect(container3.querySelector('svg')).toBeTruthy();
   });
 });
