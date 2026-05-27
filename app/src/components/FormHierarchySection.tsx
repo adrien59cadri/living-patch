@@ -12,6 +12,30 @@ interface FormHierarchySectionProps {
   taxonomicGroupIds?: Set<string>;
 }
 
+function getTotalDescendantCount(
+  node: FormHierarchyNode,
+  speciesById: Map<string, Species>,
+  taxonomicGroupIds: Set<string>,
+): number {
+  let total = 0;
+
+  const countForm = (formKey: string) => {
+    return Array.from(speciesById.values()).filter(
+      (s) => s.form === formKey && !taxonomicGroupIds.has(s.id),
+    ).length;
+  };
+
+  total += countForm(node.key);
+
+  if (node.children) {
+    for (const child of node.children) {
+      total += getTotalDescendantCount(child, speciesById, taxonomicGroupIds);
+    }
+  }
+
+  return total;
+}
+
 function FormNodeItem({
   node,
   speciesById,
@@ -66,6 +90,11 @@ function FormNodeItem({
           <p className="text-xs text-stone-500 leading-relaxed">
             {definition.description}
           </p>
+          {hasChildren && (
+            <p className="text-xs text-stone-400 mt-1 font-medium">
+              {getTotalDescendantCount(node, speciesById, taxonomicGroupIds)} total species
+            </p>
+          )}
           {examples.length > 0 && (
             <p className="text-xs text-stone-500 mt-1">
               <span className="font-medium">e.g.</span>{' '}
