@@ -136,37 +136,62 @@ export const RelationshipBubbleTree: React.FC<RelationshipBubbleTreeProps> = ({
         nodePositions.set(focalNode.id, { x: centerX, y: centerY, depth: 0 });
       }
 
-      // Depth-1 nodes: prioritize above/below to minimize text overlap
+      // Depth-1 nodes: assign to sectors (quadrants) for hierarchical layout
       const depth1Nodes = nodes.filter(n => n.depth === 1);
       const depth1Count = depth1Nodes.length;
       const depth1Radius = Math.min(150, maxRadius * 0.4);
-      
-      // Better balanced distribution: alternate left-right from top/bottom
-      // This ensures left-right symmetry and reduces text overlap
-      const angleStep = 2 * Math.PI / Math.max(1, depth1Count);
-      
-      depth1Nodes.forEach((node, i) => {
-        let angle;
-        if (i === 0) {
-          // First node at top
-          angle = -Math.PI / 2;
-        } else {
-          // Alternate sides: odd indices go right, even go left
-          const offset = Math.ceil(i / 2) * angleStep;
-          angle = i % 2 === 1 ? -Math.PI / 2 + offset : -Math.PI / 2 - offset;
-        }
-        const x = centerX + depth1Radius * Math.cos(angle);
-        const y = centerY + depth1Radius * Math.sin(angle);
-        nodePositions.set(node.id, { x, y, depth: 1 });
-      });
-
-      // Depth-2+ nodes radiating further out
-      const deeperNodes = nodes.filter(n => n.depth >= 2);
       const depth2Radius = Math.min(250, maxRadius * 0.7);
-      deeperNodes.forEach((node, i) => {
-        const angle = (i / Math.max(1, deeperNodes.length)) * 2 * Math.PI;
-        const x = centerX + depth2Radius * Math.cos(angle);
-        const y = centerY + depth2Radius * Math.sin(angle);
+      
+      // Divide circle into sectors for hierarchy: each depth-1 node gets a sector
+      const sectorAngle = (2 * Math.PI) / Math.max(1, depth1Count);
+      
+      // Build parent->children map for hierarchical positioning
+      const childrenByParent = new Map<string, typeof nodes>();
+      links.forEach((link: any) => {
+        const sourceId: string = typeof link.source === 'string' ? link.source : (link.source?.id || '');
+        const targetId: string = typeof link.target === 'string' ? link.target : (link.target?.id || '');
+        
+        if (!childrenByParent.has(sourceId)) {
+          childrenByParent.set(sourceId, []);
+        }
+        const childNode = nodes.find(n => n.id === targetId);
+        if (childNode && childNode.depth >= 1) {
+          childrenByParent.get(sourceId)!.push(childNode);
+        }
+      });
+      
+      // Position depth-1 nodes at sector centers, and their children within sectors
+      depth1Nodes.forEach((node, i) => {
+        // Place parent at center of sector
+        const sectorCenterAngle = i * sectorAngle;
+        const x = centerX + depth1Radius * Math.cos(sectorCenterAngle);
+        const y = centerY + depth1Radius * Math.sin(sectorCenterAngle);
+        nodePositions.set(node.id, { x, y, depth: 1 });
+        
+        // Position children within the parent's sector
+        const children = childrenByParent.get(node.id) || [];
+        const childCount = Math.max(1, children.length);
+        const sectorWidth = sectorAngle * 0.75; // Use 75% of sector for children to avoid overlap
+        
+        children.forEach((child, childIndex) => {
+          // Distribute children evenly within sector
+          const childAngleOffset = (childIndex / childCount) * sectorWidth - (sectorWidth / 2);
+          const childAngle = sectorCenterAngle + childAngleOffset;
+          const childX = centerX + depth2Radius * Math.cos(childAngle);
+          const childY = centerY + depth2Radius * Math.sin(childAngle);
+          nodePositions.set(child.id, { x: childX, y: childY, depth: child.depth });
+        });
+      });
+      
+      // Handle any unpositioned deeper nodes (depth 3+)
+      const unpositionedDeeper = nodes.filter(n => n.depth >= 2 && !nodePositions.has(n.id));
+      const deeperCount = unpositionedDeeper.length;
+      const deeperRadius = Math.min(300, maxRadius * 0.85);
+      
+      unpositionedDeeper.forEach((node, i) => {
+        const angle = (i / Math.max(1, deeperCount)) * 2 * Math.PI;
+        const x = centerX + deeperRadius * Math.cos(angle);
+        const y = centerY + deeperRadius * Math.sin(angle);
         nodePositions.set(node.id, { x, y, depth: node.depth });
       });
 
