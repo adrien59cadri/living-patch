@@ -1,6 +1,7 @@
 import { useMemo, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { CytoscapeWrapper } from './CytoscapeWrapper';
+import Cytoscape from 'cytoscape';
+import { CytoscapeWrapper, type Element } from './CytoscapeWrapper';
 import { buildForceGraphData, buildCytoscapeStyles } from '../lib/diagramUtils';
 import { useDataset } from '../hooks/useDataset';
 
@@ -32,8 +33,8 @@ export function DiagramCard({ speciesId }: Props) {
 
     const edgeElements = graphData.links.map((link, idx) => {
       // Handle both string IDs and node objects (in case ForceGraph2D converts them)
-      const sourceId = typeof link.source === 'string' ? link.source : (link.source as any).id;
-      const targetId = typeof link.target === 'string' ? link.target : (link.target as any).id;
+      const sourceId = typeof link.source === 'string' ? link.source : String((link.source as Record<string, unknown>).id);
+      const targetId = typeof link.target === 'string' ? link.target : String((link.target as Record<string, unknown>).id);
       
       return {
         data: {
@@ -47,15 +48,15 @@ export function DiagramCard({ speciesId }: Props) {
       };
     });
 
-    return [...nodeElements, ...edgeElements];
+    return [...nodeElements, ...edgeElements] as unknown as Element[];
   }, [graphData]);
 
   const stylesheet = useMemo(() => buildCytoscapeStyles(speciesId), [speciesId]);
 
-  const handleNodeTap = useCallback((evt: any) => {
-    const node = evt.target;
-    if (node.isNode()) {
-      navigate(`/species/${node.id()}`);
+  const handleNodeTap = useCallback((evt: Record<string, unknown>) => {
+    const node = evt.target as Record<string, () => unknown>;
+    if ((node.isNode as () => boolean)()) {
+      navigate(`/species/${(node.id as () => string)()}`);
     }
   }, [navigate]);
 
@@ -81,18 +82,17 @@ export function DiagramCard({ speciesId }: Props) {
         <CytoscapeWrapper
           elements={elements}
           style={{ width: '100%', height: '100%' }}
-          stylesheet={stylesheet}
+          stylesheet={stylesheet as unknown as Cytoscape.StylesheetCSS[]}
           layout={{
             name: 'cose',
-            nodeSpacing: 10,
             animate: true,
             animationDuration: 500,
             spacingFactor: 1.2,
-          }}
+          } as Cytoscape.LayoutOptions}
           wheelSensitivity={0.1}
           boxSelectionEnabled={false}
           autounselectify={true}
-          on={onHandlers}
+          on={onHandlers as unknown as Record<string, (evt: Cytoscape.EventObject) => void>}
         />
       </div>
     </div>

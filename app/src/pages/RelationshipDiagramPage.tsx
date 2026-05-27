@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useCallback } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { CytoscapeWrapper } from '../components/CytoscapeWrapper';
+import Cytoscape from 'cytoscape';
+import { CytoscapeWrapper, type Element } from '../components/CytoscapeWrapper';
 import { buildForceGraphData, buildCytoscapeStyles } from '../lib/diagramUtils';
 import { useDataset } from '../hooks/useDataset';
 
@@ -16,17 +17,7 @@ export function RelationshipDiagramPage() {
     return buildForceGraphData(focalSpeciesId, 3, speciesById, symbiosisBySpeciesId);
   }, [focalSpeciesId, speciesById, symbiosisBySpeciesId]);
 
-  useEffect(() => {
-    if (!focalSpeciesId) {
-      navigate('/');
-    }
-  }, [focalSpeciesId, navigate]);
-
-  if (!focalSpeciesId || !graphData) return null;
-
-  const focalSpecies = speciesById.get(focalSpeciesId);
-
-  // Convert ForceGraphData to Cytoscape elements format
+  // Convert ForceGraphData to Cytoscape elements format - MUST BE BEFORE EARLY RETURN
   const elements = useMemo(() => {
     if (!graphData) return [];
     
@@ -40,9 +31,9 @@ export function RelationshipDiagramPage() {
     }));
 
     const edgeElements = graphData.links.map((link, idx) => {
-      // Handle both string IDs and node objects (in case ForceGraph2D converts them)
-      const sourceId = typeof link.source === 'string' ? link.source : (link.source as any).id;
-      const targetId = typeof link.target === 'string' ? link.target : (link.target as any).id;
+      // Handle both string IDs and node objects
+      const sourceId = typeof link.source === 'string' ? link.source : String((link.source as Record<string, unknown>).id);
+      const targetId = typeof link.target === 'string' ? link.target : String((link.target as Record<string, unknown>).id);
       
       return {
         data: {
@@ -56,21 +47,31 @@ export function RelationshipDiagramPage() {
       };
     });
 
-    return [...nodeElements, ...edgeElements];
+    return [...nodeElements, ...edgeElements] as unknown as Element[];
   }, [graphData]);
 
-  const stylesheet = useMemo(() => buildCytoscapeStyles(focalSpeciesId), [focalSpeciesId]);
+  const stylesheet = useMemo(() => buildCytoscapeStyles(focalSpeciesId || ''), [focalSpeciesId]);
 
-  const handleNodeTap = useCallback((evt: any) => {
-    const node = evt.target;
-    if (node.isNode()) {
-      const nodeId = node.id();
-      if (nodeId === focalSpeciesId) return;
+  const handleNodeTap = useCallback((evt: Record<string, unknown>) => {
+    const node = evt.target as Record<string, () => unknown>;
+    if ((node.isNode as () => boolean)()) {
+      const nodeId = (node.id as () => string)();
       setSearchParams({ focal: nodeId });
     }
-  }, [focalSpeciesId, setSearchParams]);
+  }, [setSearchParams]);
 
   const onHandlers = useMemo(() => ({ tap: handleNodeTap }), [handleNodeTap]);
+
+  // NOW CHECK FOR EARLY RETURN AFTER ALL HOOKS
+  useEffect(() => {
+    if (!focalSpeciesId) {
+      navigate('/');
+    }
+  }, [focalSpeciesId, navigate]);
+
+  if (!focalSpeciesId || !graphData) return null;
+
+  const focalSpecies = speciesById.get(focalSpeciesId);
 
   const relationshipTypeColors: Record<string, string> = {
     mutualism: '#22c55e',
@@ -105,20 +106,19 @@ export function RelationshipDiagramPage() {
         <CytoscapeWrapper
           elements={elements}
           style={{ width: '100%', height: '100%' }}
-          stylesheet={stylesheet}
+          stylesheet={stylesheet as unknown as Cytoscape.StylesheetCSS[]}
           layout={{
             name: 'cose',
-            nodeSpacing: 15,
             animate: true,
             animationDuration: 500,
             spacingFactor: 1.3,
             gravity: 1,
             numIter: 1000,
-          }}
+          } as Cytoscape.LayoutOptions}
           wheelSensitivity={0.1}
           boxSelectionEnabled={false}
           autounselectify={true}
-          on={onHandlers}
+          on={onHandlers as unknown as Record<string, (evt: Cytoscape.EventObject) => void>}
         />
       </div>
 

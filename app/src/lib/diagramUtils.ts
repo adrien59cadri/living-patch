@@ -118,10 +118,10 @@ export function buildCytoscapeStyles(focalSpeciesId: string) {
     {
       selector: 'node',
       style: {
-        'background-color': (ele: any) => getNodeColor(ele.data('relationshipType')),
-        'width': (ele: any) => getNodeSize(ele.data('depth')) * 2.5,
-        'height': (ele: any) => getNodeSize(ele.data('depth')) * 2.5,
-        'opacity': (ele: any) => getNodeOpacity(ele.data('depth')),
+        'background-color': (ele: Record<string, unknown>) => getNodeColor((ele as Record<string, (key: string) => unknown>).data('relationshipType') as string),
+        'width': (ele: Record<string, unknown>) => getNodeSize((ele as Record<string, (key: string) => unknown>).data('depth') as number) * 2.5,
+        'height': (ele: Record<string, unknown>) => getNodeSize((ele as Record<string, (key: string) => unknown>).data('depth') as number) * 2.5,
+        'opacity': (ele: Record<string, unknown>) => getNodeOpacity((ele as Record<string, (key: string) => unknown>).data('depth') as number),
         'label': 'data(name)',
         'text-valign': 'center',
         'text-halign': 'center',
@@ -149,12 +149,13 @@ export function buildCytoscapeStyles(focalSpeciesId: string) {
     {
       selector: 'edge',
       style: {
-        'line-color': (ele: any) => getNodeColor(ele.data('relationshipType')),
-        'width': (ele: any) => (ele.data('obligate') ? 2 : 1),
+        'line-color': (ele: Record<string, unknown>) => getNodeColor((ele as Record<string, (key: string) => unknown>).data('relationshipType') as string),
+        'width': (ele: Record<string, unknown>) => (ele as Record<string, (key: string) => unknown>).data('obligate') as boolean ? 2 : 1,
         'opacity': 0.5,
-        'line-style': (ele: any) => {
-          const sourceDepth = ele.source().data('depth');
-          const targetDepth = ele.target().data('depth');
+        'line-style': (ele: Record<string, unknown>) => {
+          const el = ele as Record<string, () => Record<string, (key: string) => unknown>>;
+          const sourceDepth = (el.source().data('depth') as number);
+          const targetDepth = (el.target().data('depth') as number);
           if (sourceDepth === 1 && targetDepth === 1) return 'solid';
           if (sourceDepth === 2 || targetDepth === 2) return 'dashed';
           return 'dotted';
@@ -165,7 +166,7 @@ export function buildCytoscapeStyles(focalSpeciesId: string) {
       selector: 'edge:hover',
       style: {
         'opacity': 1,
-        'width': (ele: any) => (ele.data('obligate') ? 2.5 : 1.5),
+        'width': (ele: Record<string, unknown>) => (ele as Record<string, (key: string) => unknown>).data('obligate') as boolean ? 2.5 : 1.5,
       },
     },
   ];

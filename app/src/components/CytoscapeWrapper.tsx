@@ -1,15 +1,26 @@
 import { useEffect, useRef } from 'react';
 import Cytoscape from 'cytoscape';
 
+export interface ElementData {
+  id?: string;
+  source?: string | Record<string, unknown>;
+  target?: string | Record<string, unknown>;
+  [key: string]: unknown;
+}
+
+export interface Element {
+  data: ElementData;
+}
+
 interface CytoscapeWrapperProps {
-  elements: any[];
+  elements: Element[];
   style: React.CSSProperties;
-  stylesheet: any[];
-  layout: any;
+  stylesheet: Cytoscape.StylesheetCSS[];
+  layout: Cytoscape.LayoutOptions;
   wheelSensitivity?: number;
   boxSelectionEnabled?: boolean;
   autounselectify?: boolean;
-  on?: Record<string, (evt: any) => void>;
+  on?: Record<string, (evt: Cytoscape.EventObject) => void>;
 }
 
 export function CytoscapeWrapper({
@@ -31,11 +42,11 @@ export function CytoscapeWrapper({
     try {
       // Validate elements before passing to cytoscape
       const nodeIds = new Set<string>();
-      const validElements: any[] = [];
+      const validElements: Element[] = [];
 
       // First pass: collect all node IDs and add nodes
       for (const el of elements) {
-        if (el.data.source === undefined) {
+        if (el.data.source === undefined && el.data.id) {
           // It's a node
           nodeIds.add(el.data.id);
           validElements.push(el);
@@ -44,10 +55,10 @@ export function CytoscapeWrapper({
 
       // Second pass: add edges only if both source and target nodes exist
       for (const el of elements) {
-        if (el.data.source !== undefined) {
+        if (el.data.source !== undefined && el.data.target !== undefined) {
           // It's an edge
-          const sourceId = typeof el.data.source === 'string' ? el.data.source : el.data.source.id;
-          const targetId = typeof el.data.target === 'string' ? el.data.target : el.data.target.id;
+          const sourceId = typeof el.data.source === 'string' ? el.data.source : String((el.data.source as Record<string, unknown>).id);
+          const targetId = typeof el.data.target === 'string' ? el.data.target : String((el.data.target as Record<string, unknown>).id);
 
           if (nodeIds.has(sourceId) && nodeIds.has(targetId)) {
             validElements.push(el);
