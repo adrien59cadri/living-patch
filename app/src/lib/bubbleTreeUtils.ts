@@ -61,8 +61,8 @@ export function getLinkStrokeWidth(obligate: boolean): number {
 /**
  * Get opacity for node by depth.
  */
-export function getNodeOpacityByDepth(depth: number): number {
-  return depth === 0 ? 1.0 : depth === 1 ? 1.0 : 0.5;
+export function getNodeOpacityByDepth(_depth: number): number {
+  return 1.0;
 }
 
 /**
