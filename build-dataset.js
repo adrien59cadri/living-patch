@@ -2,19 +2,24 @@
 
 /**
  * Build script: Merge data packs and generate dataset.json for the app
- * 
+ *
  * This script:
  * 1. Loads all published packs from pack-tools/packs/
  * 2. Optionally includes draft packs if INCLUDE_DRAFTS=true
  * 3. Merges them into a single dataset
- * 4. Outputs to app/src/data/dataset.json
- * 
+ * 4. Applies enum shorthand compression if --compact flag is set
+ * 5. Outputs to app/src/data/dataset.json
+ *
  * Run before building the app:
  *   node build-dataset.js
  *   npm run build
- * 
+ *
+ * With compact format (27% size reduction):
+ *   node build-dataset.js --compact
+ *
  * Or with draft packs:
  *   INCLUDE_DRAFTS=true node build-dataset.js
+ *   INCLUDE_DRAFTS=true node build-dataset.js --compact
  */
 
 import fs from 'fs';
@@ -24,6 +29,19 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+// Dynamic imports for enum encoder and compact JSON formatter
+let encodePack;
+let compactJson;
+const COMPACT_MODE = process.argv.includes('--compact');
+
+// Conditionally load compression modules only if needed
+if (COMPACT_MODE) {
+  const { encodePack: encode } = await import('./pack-tools/lib/enum-encoder.js');
+  const { compactJson: compact } = await import('./pack-tools/lib/compact-json.js');
+  encodePack = encode;
+  compactJson = compact;
+}
+
 const PACKS_DIR = path.join(__dirname, 'pack-tools', 'packs');
 const OUTPUT_PATH = path.join(__dirname, 'app', 'src', 'data', 'dataset.json');
 const INCLUDE_DRAFTS = process.env.INCLUDE_DRAFTS === 'true';
@@ -32,6 +50,7 @@ console.log(`🔄 Building dataset from packs...`);
 console.log(`   Packs dir: ${PACKS_DIR}`);
 console.log(`   Output: ${OUTPUT_PATH}`);
 console.log(`   Include drafts: ${INCLUDE_DRAFTS ? 'YES' : 'NO'}`);
+console.log(`   Compact format: ${COMPACT_MODE ? 'YES (enum shorthands + 180-char lines)' : 'NO'}`);
 console.log('');
 
 try {
@@ -139,7 +158,7 @@ try {
 
   // Output: array of packs (preserving pack identity)
   // Remove redundant images array since images are already attached to species
-  const packsForOutput = dataPacks.map(pack => ({
+  let packsForOutput = dataPacks.map(pack => ({
     metadata: pack.metadata,
     data: {
       species: pack.data.species,
@@ -149,7 +168,12 @@ try {
     },
   }));
 
-  const output = {
+  // Apply enum shorthand compression if --compact flag is set
+  if (COMPACT_MODE && encodePack) {
+    packsForOutput = packsForOutput.map(pack => encodePack(pack));
+  }
+
+  let output = {
     packs: packsForOutput,
   };
 
@@ -159,7 +183,12 @@ try {
     fs.mkdirSync(outputDir, { recursive: true });
   }
 
-  fs.writeFileSync(OUTPUT_PATH, JSON.stringify(output, null, 2));
+  // Format output: use compact formatter if --compact, otherwise pretty-print
+  const outputJson = COMPACT_MODE && compactJson
+    ? compactJson(output)
+    : JSON.stringify(output, null, 2);
+
+  fs.writeFileSync(OUTPUT_PATH, outputJson);
 
   console.log('');
   console.log(`✓ Dataset built successfully with ${dataPacks.length} pack(s)`);
