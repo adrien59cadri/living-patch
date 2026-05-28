@@ -87,9 +87,13 @@ export function groupByRole(entries: RelatedEntry[]): GroupedRelations {
     ROLES.map(r => [r, [] as RelatedEntry[]])
   ) as GroupedRelations;
   for (const entry of entries) {
+    // Initialize group if it doesn't exist (for new predation subtypes, etc.)
+    if (!groups[entry.role]) {
+      groups[entry.role] = [];
+    }
     groups[entry.role].push(entry);
   }
-  for (const role of ROLES) {
+  for (const role of Object.keys(groups)) {
     // Sort by: isImpacted (true first), then obligate (true first)
     groups[role].sort((a, b) => {
       if (a.isImpacted !== b.isImpacted) {
