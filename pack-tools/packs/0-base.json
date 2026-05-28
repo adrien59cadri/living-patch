@@ -1273,6 +1273,294 @@
         "region": "northeast_pa",
         "ecological_role": "herbivore",
         "is_keystone": false
+      },
+      {
+        "id": "bird_northern-cardinal",
+        "common_name": "Northern Cardinal",
+        "latin_name": "Cardinalis cardinalis",
+        "form": "songbird",
+        "habitat": [
+          "forest_edge",
+          "shrubland",
+          "garden",
+          "woodland"
+        ],
+        "diet": [
+          "granivore",
+          "insect_eater"
+        ],
+        "behavior": [
+          "seed_feeder",
+          "ground_forager",
+          "cavity_nester"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "functional_description": "Brilliant red male with black face mask; duller tan female. Thick conical bill adapted for cracking seeds. Year-round resident eating primarily seeds from grasses, forbs, and shrubs; supplements with insects during breeding season. Males sing year-round from exposed perches. Strong pair bond; both parents feed fledglings.",
+        "life_stages": [],
+        "region": "northeast_pa",
+        "ecological_role": "omnivore",
+        "is_keystone": false,
+        "taxonomic_group": "group_songbirds"
+      },
+      {
+        "id": "bird_blue-jay",
+        "common_name": "Blue Jay",
+        "latin_name": "Cyanocitta cristata",
+        "form": "songbird",
+        "habitat": [
+          "forest",
+          "forest_edge",
+          "garden",
+          "woodland",
+          "park"
+        ],
+        "diet": [
+          "omnivore"
+        ],
+        "behavior": [
+          "acorn_cacher",
+          "cache_retriever",
+          "mobbing",
+          "vocal"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "functional_description": "Striking blue, white, and black jay with prominent crest. Loud, harsh calls and excellent mimicry of hawk calls. Caches thousands of acorns annually in soil and wood chips — many forgotten, dispersing oak trees across landscape. Omnivorous diet includes acorns, nuts, seeds, insects, eggs, and nestlings. Essential for oak regeneration via caching behavior.",
+        "life_stages": [],
+        "region": "northeast_pa",
+        "ecological_role": "omnivore",
+        "is_keystone": true,
+        "keystone_type": "seed_disperser",
+        "keystone_description": "Major acorn cacher and oak tree disperser. Caches enable forest regeneration. Mobile predator on bird nests; controls pest insects and caterpillars.",
+        "taxonomic_group": "group_songbirds"
+      },
+      {
+        "id": "bird_white-breasted-nuthatch",
+        "common_name": "White-breasted Nuthatch",
+        "latin_name": "Sitta carolinensis",
+        "form": "songbird",
+        "habitat": [
+          "forest",
+          "woodland",
+          "garden"
+        ],
+        "diet": [
+          "insect_eater",
+          "granivore"
+        ],
+        "behavior": [
+          "bark_forager",
+          "upside_down_forager",
+          "cavity_nester"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "functional_description": "Small, sleek, gray and white nuthatch that forages headfirst down tree trunks probing bark crevices for insects and spiders. Males have black caps; females gray. Acrobatic climber moving in all directions unlike other songbirds. Wedges sunflower seeds in bark crevices and hammers them open. Year-round resident that supplements winter diet with cached seeds.",
+        "life_stages": [],
+        "region": "northeast_pa",
+        "ecological_role": "carnivore",
+        "is_keystone": false,
+        "taxonomic_group": "group_songbirds"
+      },
+      {
+        "id": "bird_great-crested-flycatcher",
+        "common_name": "Great Crested Flycatcher",
+        "latin_name": "Myiarchus crinitus",
+        "form": "songbird",
+        "habitat": [
+          "forest",
+          "forest_edge",
+          "woodland",
+          "park"
+        ],
+        "diet": [
+          "insect_eater"
+        ],
+        "behavior": [
+          "aerial_hunter",
+          "cavity_nester",
+          "hawking"
+        ],
+        "season": [
+          "spring",
+          "summer",
+          "fall"
+        ],
+        "functional_description": "Crested flycatcher with yellowish belly and russet tail. Hunts flying insects from exposed perches using aerial sallies — sallying up to 100 feet to catch flying insects in mid-air. Loud, sharp 'wheep' call. Nests in tree cavities, often using shed snake skin as lining material — function unknown but possibly deters predators. Migratory; arrives late April, departs by early September.",
+        "life_stages": [],
+        "region": "northeast_pa",
+        "ecological_role": "carnivore",
+        "is_keystone": false,
+        "taxonomic_group": "group_songbirds"
+      },
+      {
+        "id": "insect_grasshopper",
+        "common_name": "Field Grasshopper",
+        "latin_name": "Acrididae family",
+        "form": "grasshopper",
+        "habitat": [
+          "field",
+          "meadow",
+          "grassland",
+          "field_edge"
+        ],
+        "diet": [
+          "herbivore"
+        ],
+        "behavior": [
+          "phytophage",
+          "jumping",
+          "acoustic_signaler"
+        ],
+        "season": [
+          "spring",
+          "summer",
+          "fall"
+        ],
+        "functional_description": "Common grasshoppers widespread in open habitats across PA. Short-horned locusts that jump using powerful hind legs. Males produce loud chirping songs by rubbing wings together to attract females. Important protein source for birds, reptiles, and small mammals. Nymphs and adults eat grasses, forbs, and crops. Peak abundance mid-summer through fall.",
+        "life_stages": [
+          {
+            "icon": "🥚",
+            "name": "Egg",
+            "description": "Laid in soil in late summer; overwinters",
+            "months": [
+              "Aug-Oct"
+            ]
+          },
+          {
+            "icon": "🦗",
+            "name": "Nymph",
+            "description": "Multiple instars; wingless; grow through spring and summer",
+            "months": [
+              "May-Aug"
+            ]
+          },
+          {
+            "icon": "🦗",
+            "name": "Adult",
+            "description": "Winged; active in fields; calling and singing",
+            "months": [
+              "Jul-Oct"
+            ]
+          }
+        ],
+        "region": "northeast_pa",
+        "ecological_role": "herbivore",
+        "is_keystone": false
+      },
+      {
+        "id": "insect_bark-beetle",
+        "common_name": "Engraver Bark Beetle",
+        "latin_name": "Ips pini",
+        "form": "beetle",
+        "habitat": [
+          "forest",
+          "woodland",
+          "dead_trees"
+        ],
+        "diet": [
+          "wood_eater"
+        ],
+        "behavior": [
+          "wood_borer",
+          "gallery_maker",
+          "aggregating_pheromone"
+        ],
+        "season": [
+          "spring",
+          "summer",
+          "fall"
+        ],
+        "functional_description": "Small bark beetles that tunnel through inner bark and sapwood of dead and dying pine, spruce, and fir trees. Adults and larvae create distinctive 'engraved' gallery patterns under bark. Important decomposers of dead wood, recycling nutrients back to soil. Attract predatory beetles and woodpeckers that excavate trees to hunt them. Each tunnel system represents multiple generations.",
+        "life_stages": [
+          {
+            "icon": "🥚",
+            "name": "Egg",
+            "description": "Laid in tunnel galleries under bark",
+            "months": [
+              "May-Jul"
+            ]
+          },
+          {
+            "icon": "🐛",
+            "name": "Larva",
+            "description": "White C-shaped grubs tunneling through wood",
+            "months": [
+              "Jun-Sep"
+            ]
+          },
+          {
+            "icon": "🪲",
+            "name": "Adult",
+            "description": "Small brown beetles; exit trees leaving tiny holes",
+            "months": [
+              "Jul-Oct"
+            ]
+          }
+        ],
+        "region": "northeast_pa",
+        "ecological_role": "decomposer",
+        "is_keystone": false
+      },
+      {
+        "id": "insect_orb-weaver-spider",
+        "common_name": "Common Orb-weaver Spider",
+        "latin_name": "Araneus species",
+        "form": "spider",
+        "habitat": [
+          "forest",
+          "garden",
+          "meadow",
+          "woodland",
+          "shrubland"
+        ],
+        "diet": [
+          "predator"
+        ],
+        "behavior": [
+          "web_builder",
+          "web_hunter",
+          "nocturnal"
+        ],
+        "season": [
+          "spring",
+          "summer",
+          "fall"
+        ],
+        "functional_description": "Medium to large spiders that construct intricate geometric orb webs to trap flying insects. Webs rebuilt nightly at dusk; abandoned sections removed and eaten (protein recycling). Excellent hunters catching flies, midges, small moths, and other flying insects. Coloration camouflages them in webs during day. Favorite food of nuthatches, flycatchers, and wasps. Females lay egg sacs that overwinter in protected sites.",
+        "life_stages": [
+          {
+            "icon": "🥚",
+            "name": "Egg sac",
+            "description": "Protected overwinter case on protected surfaces",
+            "months": [
+              "Oct-Apr"
+            ]
+          },
+          {
+            "icon": "🕷️",
+            "name": "Spiderling",
+            "description": "Tiny spiders emerging in spring; ballooning on silk threads",
+            "months": [
+              "Apr-May"
+            ]
+          },
+          {
+            "icon": "🕷️",
+            "name": "Adult",
+            "description": "Building webs in gardens, under eaves, and between plants",
+            "months": [
+              "Jun-Nov"
+            ]
+          }
+        ],
+        "region": "northeast_pa",
+        "ecological_role": "predator",
+        "is_keystone": false
       }
     ],
     "taxonomic_groups": [
@@ -1323,6 +1611,12 @@
         "label": "Native Fruiting Shrubs",
         "common_traits": "Berry-producing native shrubs; bird-dispersed seeds; critical fall and winter food for frugivores",
         "notes": "Various families; includes Amelanchier, Cornus, Viburnum, Sambucus, Ilex, Vaccinium"
+      },
+      {
+        "id": "group_songbirds",
+        "label": "Songbirds",
+        "common_traits": "Perching birds with complex vocalizations; diverse diets; important seed dispersers and insect controllers",
+        "notes": "Order Passeriformes; includes Cardinals, Jays, Nuthatches, Flycatchers, and other perching birds"
       }
     ],
     "symbiosis": [
