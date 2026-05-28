@@ -25,7 +25,7 @@ export interface SpeciesNode {
 export interface SpeciesEdge {
   source: string;
   target: string;
-  type: 'mutualism' | 'predation' | 'parasitism' | 'competition' | 'commensalism';
+  type: string;
   obligate: boolean;
   direction?: 'inward' | 'outward'; // for directional relationships
 }

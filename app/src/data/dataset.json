@@ -1320,6 +1320,85 @@
               "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/North-American-bullfrog1.jpg/960px-North-American-bullfrog1.jpg",
               "author": "Carl D. Howe"
             }
+          },
+          {
+            "id": "bird_wood-duck",
+            "common_name": "Wood Duck",
+            "latin_name": "Aix sponsa",
+            "form": "duck",
+            "habitat": [
+              "wetland",
+              "riparian",
+              "beaver_pond"
+            ],
+            "diet": [
+              "herbivore"
+            ],
+            "behavior": [
+              "cavity_nester"
+            ],
+            "season": [
+              "spring",
+              "summer",
+              "fall"
+            ],
+            "functional_description": "Most colorful NA duck. Males iridescent green head, females brown with white teardrop eye-patch. Nests in cavities — depends on large cavities like those excavated by Pileated Woodpeckers or created by beavers. Perches on branches.",
+            "life_stages": [],
+            "region": "northeast_pa",
+            "ecological_role": "herbivore",
+            "is_keystone": false
+          },
+          {
+            "id": "mammal_flying-squirrel",
+            "common_name": "Northern Flying Squirrel",
+            "latin_name": "Glaucomys sabrinus",
+            "form": "mammal",
+            "habitat": [
+              "forest",
+              "woodland"
+            ],
+            "diet": [
+              "herbivore"
+            ],
+            "behavior": [
+              "nocturnal",
+              "cavity_nester"
+            ],
+            "season": [
+              "year_round"
+            ],
+            "functional_description": "Nocturnal gliding squirrel. Stretches patagium (skin between limbs) to glide up to 150 feet. Nests in cavities created by Pileated Woodpeckers. Active at night hunting seeds, nuts, fungi, and insects.",
+            "life_stages": [],
+            "region": "northeast_pa",
+            "ecological_role": "omnivore",
+            "is_keystone": false
+          },
+          {
+            "id": "insect_eastern-tent-caterpillar",
+            "common_name": "Eastern Tent Caterpillar",
+            "latin_name": "Malacosoma americanum",
+            "form": "moth",
+            "habitat": [
+              "forest",
+              "woodland",
+              "forest_edge"
+            ],
+            "diet": [
+              "herbivore"
+            ],
+            "behavior": [
+              "tent_builder",
+              "gregarious"
+            ],
+            "season": [
+              "spring",
+              "summer"
+            ],
+            "functional_description": "Social caterpillars that build conspicuous silk tents in tree crotches during spring. Silk tents attract parasitoids and predatory wasps. Mass outbreaks occur cyclically (every 10-12 years). Important food source for birds.",
+            "life_stages": [],
+            "region": "northeast_pa",
+            "ecological_role": "herbivore",
+            "is_keystone": false
           }
         ],
         "taxonomic_groups": [
@@ -1414,7 +1493,7 @@
             "notes": "All native PA Asclepias species are valid Monarch hosts. Genus-level obligate."
           },
           {
-            "type": "predation",
+            "type": "predation-nectar_feeding",
             "members": [
               "insect_monarch-butterfly",
               "plant_goldenrod"
@@ -1444,7 +1523,7 @@
             "notes": "T. melanurus (tuberosa specialist) and occasionally T. tetrophthalmus use Butterfly Weed."
           },
           {
-            "type": "predation",
+            "type": "predation-seed_eating",
             "members": [
               "insect_large-milkweed-bug",
               "plant_common-milkweed"
@@ -1454,7 +1533,7 @@
             "notes": "Large Milkweed Bug specialist on Asclepias seeds. Also feeds on pods, flowers, and vegetative tissue. Sequesters cardenolides."
           },
           {
-            "type": "predation",
+            "type": "predation-seed_eating",
             "members": [
               "insect_large-milkweed-bug",
               "plant_butterfly-weed"
@@ -1464,7 +1543,7 @@
             "notes": "Feeds on Butterfly Weed seeds and pods."
           },
           {
-            "type": "predation",
+            "type": "predation-seed_eating",
             "members": [
               "insect_large-milkweed-bug",
               "plant_swamp-milkweed"
@@ -1598,7 +1677,7 @@
             "notes": "Black Swallowtail is obligate at family Apiaceae. Uses native Golden Alexanders, water hemlock, water parsnip, and naturalized/cultivated Queen Anne's lace, parsley, dill, fennel."
           },
           {
-            "type": "predation",
+            "type": "predation-grazing",
             "members": [
               "mammal_beaver",
               "plant_black-willow"
@@ -1608,7 +1687,7 @@
             "notes": "Black Willow is a primary food tree for Beaver — bark and cambium eaten; tree felled for dam/lodge construction."
           },
           {
-            "type": "predation",
+            "type": "predation-grazing",
             "members": [
               "mammal_beaver",
               "group_willows"
@@ -1702,7 +1781,7 @@
             "notes": "Great Horned Owl takes large frogs including Bullfrog adults near beaver ponds and wetlands."
           },
           {
-            "type": "predation",
+            "type": "predation-seed_eating",
             "members": [
               "mammal_eastern-gray-squirrel",
               "plant_white-oak"
@@ -1712,7 +1791,7 @@
             "notes": "Gray Squirrel preferentially caches and eats White Oak acorns (lower tannins, less bitter than red oak). A critical oak-regeneration mutualism — forgotten caches germinate into new trees."
           },
           {
-            "type": "predation",
+            "type": "predation-seed_eating",
             "members": [
               "mammal_eastern-gray-squirrel",
               "plant_northern-red-oak"
@@ -1722,7 +1801,7 @@
             "notes": "Gray Squirrel caches Red Oak acorns — nips embryo tip before burial (preventing germination) then retrieves them. Red Oak acorns cached longer than white oak."
           },
           {
-            "type": "predation",
+            "type": "predation-seed_eating",
             "members": [
               "mammal_eastern-gray-squirrel",
               "group_oaks"
@@ -1732,7 +1811,7 @@
             "notes": "Gray Squirrel uses all native oak species — primary mast consumer and seed disperser across all Quercus."
           },
           {
-            "type": "predation",
+            "type": "predation-seed_eating",
             "members": [
               "mammal_white-tailed-deer",
               "plant_white-oak"
@@ -1742,7 +1821,7 @@
             "notes": "White-tailed Deer eats White Oak acorns intensively in fall, and browses seedlings year-round — overabundant deer suppresses oak regeneration."
           },
           {
-            "type": "predation",
+            "type": "predation-grazing",
             "members": [
               "mammal_white-tailed-deer",
               "plant_spicebush"
@@ -1752,7 +1831,7 @@
             "notes": "Deer browse Spicebush stems and leaves — heavy deer pressure can suppress Spicebush in understory, reducing Spicebush Swallowtail habitat."
           },
           {
-            "type": "predation",
+            "type": "predation-fruit_eating",
             "members": [
               "bird_cedar-waxwing",
               "plant_black-cherry"
@@ -1762,7 +1841,7 @@
             "notes": "Black Cherry is a major Cedar Waxwing food source — flocks strip cherries in August. Waxwings pass seeds through gut intact, dispersing them widely."
           },
           {
-            "type": "predation",
+            "type": "predation-fruit_eating",
             "members": [
               "bird_cedar-waxwing",
               "plant_spicebush"
@@ -1772,7 +1851,7 @@
             "notes": "High-fat Spicebush berries (female plants only) are critical fall food for Cedar Waxwings and migrant thrushes."
           },
           {
-            "type": "predation",
+            "type": "predation-fruit_eating",
             "members": [
               "bird_cedar-waxwing",
               "group_fruiting-shrubs"
@@ -1782,7 +1861,7 @@
             "notes": "Cedar Waxwing is a generalist frugivore of all native berry-producing shrubs — serviceberry, viburnum, dogwood, elderberry, winterberry. Major seed disperser."
           },
           {
-            "type": "predation",
+            "type": "predation-fruit_eating",
             "members": [
               "bird_eastern-bluebird",
               "plant_black-cherry"
@@ -1792,7 +1871,7 @@
             "notes": "Eastern Bluebird eats Black Cherry fruit in late summer and fall."
           },
           {
-            "type": "predation",
+            "type": "predation-fruit_eating",
             "members": [
               "bird_eastern-bluebird",
               "group_fruiting-shrubs"
@@ -1812,7 +1891,7 @@
             "notes": "American Kestrel occasionally preys on Eastern Bluebird, especially where both use open-country nest boxes."
           },
           {
-            "type": "predation",
+            "type": "predation-seed_eating",
             "members": [
               "bird_downy-woodpecker",
               "plant_goldenrod"
@@ -1850,6 +1929,42 @@
             "impacted_species": "insect_eastern-tiger-swallowtail",
             "obligate": false,
             "notes": "Eastern Tiger Swallowtail uses multiple oak species as facultative larval hosts beyond White and Red Oak."
+          },
+          {
+            "type": "mutualism",
+            "members": [
+              "bird_pileated-woodpecker",
+              "bird_wood-duck"
+            ],
+            "notes": "Wood Duck nests in cavities excavated by Pileated Woodpecker. Woodpecker provides critical cavity homes in dead trees where wood ducks depend for successful breeding."
+          },
+          {
+            "type": "mutualism",
+            "members": [
+              "bird_pileated-woodpecker",
+              "mammal_flying-squirrel"
+            ],
+            "notes": "Northern Flying Squirrels nest in Pileated Woodpecker cavities. These large cavities (1.5 inches diameter) are critical winter shelter for flying squirrels — key to their survival in northern PA winters."
+          },
+          {
+            "type": "parasitism",
+            "members": [
+              "insect_eastern-tent-caterpillar",
+              "plant_black-cherry"
+            ],
+            "impacted_species": "insect_eastern-tent-caterpillar",
+            "obligate": false,
+            "notes": "Black Cherry is the primary PA host for Eastern Tent Caterpillar. Silk tents in spring branches are conspicuous ecosystem indicator. Mass outbreaks attract numerous predators and parasitoids."
+          },
+          {
+            "type": "parasitism",
+            "members": [
+              "insect_spicebush-swallowtail",
+              "plant_black-willow"
+            ],
+            "impacted_species": "insect_spicebush-swallowtail",
+            "obligate": false,
+            "notes": "Black Willow is a facultative host for Spicebush Swallowtail caterpillars alongside primary Lauraceae family hosts (Spicebush, Sassafras). Larvae build silk-sealed folded-leaf shelters."
           }
         ],
         "relations": []

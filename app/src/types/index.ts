@@ -30,7 +30,7 @@ export interface Species {
 }
 
 export interface Symbiosis {
-  type: 'mutualism' | 'parasitism' | 'predation' | 'competition' | 'commensalism';
+  type: string;
   members: string[];
   impacted_species?: string;
   obligate?: boolean;

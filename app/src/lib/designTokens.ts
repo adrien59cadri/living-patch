@@ -64,6 +64,10 @@ export const SYMBIOSIS_ICONS: Record<string, string> = {
   mutualism: '🤝',
   parasitism: '🪱',
   predation: '🦅',
+  'predation-grazing': '🌾',
+  'predation-seed_eating': '🌱',
+  'predation-fruit_eating': '🍒',
+  'predation-nectar_feeding': '🌼',
   competition: '⚡',
   commensalism: '↗️',
 };

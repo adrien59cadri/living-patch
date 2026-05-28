@@ -66,7 +66,7 @@ export const TaxonomicGroupSchema = z.object({
 });
 
 export const SymbiosisSchema = z.object({
-  type: z.enum(['mutualism', 'parasitism', 'predation', 'competition', 'commensalism']),
+  type: z.string().min(1),
   members: z.array(z.string()).min(2, 'Symbiosis must have at least 2 members'),
   impacted_species: z.string().optional().nullable(),
   obligate: z.boolean().optional(),
