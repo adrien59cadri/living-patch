@@ -1,127 +1,78 @@
+import {
+  getFormIcon,
+  getKeystoneLabel,
+  FORM_LABELS,
+  SEASON_LABELS,
+  HABITAT_LABELS,
+  DIET_LABELS,
+  SYMBIOSIS_LABELS,
+  KEYSTONE_TYPE_LABELS,
+} from './designTokens';
+
+/**
+ * Format a slug string to a human-readable label.
+ * Replaces underscores with spaces and title-cases.
+ */
+export function formatSlugToLabel(slug: string): string {
+  return slug.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+}
+
+/**
+ * Convert snake_case to space-separated words (no title case).
+ */
+export function snakeToSpaceCase(slug: string): string {
+  return slug.replace(/_/g, ' ');
+}
+
+/**
+ * Create a label map with fallback to slug formatting.
+ */
+function createLabelMap(map: Record<string, string>) {
+  return (key: string): string => map[key] ?? formatSlugToLabel(key);
+}
+
+// Label functions using factory pattern
+const formLabelImpl = createLabelMap(FORM_LABELS);
+const seasonLabelImpl = createLabelMap(SEASON_LABELS);
+const habitatLabelImpl = createLabelMap(HABITAT_LABELS);
+const dietLabelImpl = createLabelMap(DIET_LABELS);
+const keystoneTypeLabelImpl = createLabelMap(KEYSTONE_TYPE_LABELS);
+
 export function formLabel(form: string): string {
-  const labels: Record<string, string> = {
-    woodpecker: 'Woodpecker',
-    raptor: 'Raptor',
-    owl: 'Owl',
-    songbird: 'Songbird',
-    warbler: 'Warbler',
-    hummingbird: 'Hummingbird',
-    wading_bird: 'Wading Bird',
-    mammal: 'Mammal',
-    tree: 'Tree',
-    wildflower: 'Wildflower',
-    shrub: 'Shrub',
-    butterfly: 'Butterfly',
-    beetle: 'Beetle',
-    bug: 'Bug',
-    bee: 'Bee',
-    frog: 'Frog',
-  };
-  return (
-    labels[form] ??
-    form.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase())
-  );
+  return formLabelImpl(form);
 }
 
 export function seasonLabel(season: string): string {
-  const labels: Record<string, string> = {
-    year_round: 'Year-round',
-    spring: 'Spring',
-    summer: 'Summer',
-    fall: 'Fall',
-    fall_migrant: 'Fall migrant',
-    late_summer: 'Late summer',
-    winter: 'Winter',
-  };
-  return labels[season] ?? season.replace(/_/g, ' ');
+  return seasonLabelImpl(season);
 }
 
 export function habitatLabel(habitat: string): string {
-  const labels: Record<string, string> = {
-    forest: 'Forest',
-    woodland: 'Woodland',
-    forest_edge: 'Forest edge',
-    field: 'Field',
-    field_edge: 'Field edge',
-    meadow: 'Meadow',
-    garden: 'Garden',
-    wetland: 'Wetland',
-    marsh: 'Marsh',
-    pond: 'Pond',
-    riparian: 'Riparian',
-    streamside: 'Streamside',
-    dry_meadow: 'Dry meadow',
-    beaver_pond: 'Beaver pond',
-    rocky_slope: 'Rocky slope',
-    open_woodland: 'Open woodland',
-    wet_meadow: 'Wet meadow',
-  };
-  return labels[habitat] ?? habitat.replace(/_/g, ' ');
+  return habitatLabelImpl(habitat);
 }
 
 export function dietLabel(diet: string): string {
-  const labels: Record<string, string> = {
-    insect_eater: 'Insect eater',
-    predator: 'Predator',
-    fruit_eater: 'Fruit eater',
-    nectar_feeder: 'Nectar feeder',
-    herbivore: 'Herbivore',
-    pollen_eater: 'Pollen eater',
-  };
-  return labels[diet] ?? diet.replace(/_/g, ' ');
+  return dietLabelImpl(diet);
 }
 
 export function behaviorLabel(behavior: string): string {
-  return behavior
-    .replace(/_/g, ' ')
-    .replace(/\b\w/g, c => c.toUpperCase());
+  return formatSlugToLabel(behavior);
 }
 
 export function symbiosisLabel(type: string): string {
-  const labels: Record<string, string> = {
-    mutualism: 'Mutualism',
-    parasitism: 'Parasitism & Hosting',
-    predation: 'Predation',
-    competition: 'Competition',
-    commensalism: 'Commensalism',
-    related: 'Related Species',
-  };
-  return labels[type] ?? type;
+  return SYMBIOSIS_LABELS[type] ?? type;
 }
 
-const FORM_ICONS: Record<string, string> = {
-  bird:        '🐦',
-  woodpecker:  '🪵',
-  raptor:      '🦅',
-  owl:         '🦉',
-  songbird:    '🐦',
-  warbler:     '🐦',
-  hummingbird: '🐦',
-  wading_bird: '🦢',
-  mammal:      '🦫',
-  plant:       '🌱',
-  tree:        '🌳',
-  wildflower:  '🌸',
-  shrub:       '🌿',
-  insect:      '🐜',
-  butterfly:   '🦋',
-  beetle:      '🪲',
-  bug:         '🐛',
-  bee:         '🐝',
-  frog:        '🐸',
-};
-
 export function formIcon(form: string): string {
-  return FORM_ICONS[form] ?? '🌱';
+  return getFormIcon(form);
 }
 
 export function keystoneTypeLabel(type: string): string {
-  const labels: Record<string, string> = {
-    ecosystem_engineer: 'Ecosystem Engineer',
-    predator: 'Predator',
-    mutualist: 'Mutualist',
-  };
-  return labels[type] ?? type.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+  return keystoneTypeLabelImpl(type);
+}
+
+// Re-export designTokens for convenience
+export function keystoneLabel(type: string): string {
+  return getKeystoneLabel(type);
 }
 
 export function activeMonthsLabel(active_months?: string[] | null): string | null {

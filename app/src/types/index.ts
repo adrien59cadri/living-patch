@@ -49,3 +49,42 @@ export interface Dataset {
   symbiosis: Symbiosis[];
   relations: Relation[];
 }
+
+export interface DiagramNode {
+  id: string;
+  name: string;
+  depth: number;
+  relationshipType?: string;
+  val?: number;
+  x?: number;
+  y?: number;
+}
+
+export interface DiagramLink {
+  source: string;
+  target: string;
+  relationshipType: string;
+  obligate?: boolean;
+  directional?: boolean;
+}
+
+export interface ForceGraphData {
+  nodes: DiagramNode[];
+  links: DiagramLink[];
+}
+
+export interface BubbleTreeNode {
+  id: string;
+  name: string;
+  type: 'focal' | 'category' | 'species';
+  relationshipType?: string;
+  children?: BubbleTreeNode[];
+}
+
+export interface HierarchyInput {
+  id: string;
+  name: string;
+  type: 'focal' | 'category' | 'species';
+  relationshipType?: string;
+  children?: HierarchyInput[];
+}

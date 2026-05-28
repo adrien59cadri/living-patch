@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, Suspense, lazy } from 'react';
 import type { Species, LifeStage } from '../types';
 import type { RelatedEntry } from '../lib/relationships';
 import { getHabitatNeighborsByCategory } from '../lib/relationships';
@@ -8,6 +8,12 @@ import { TaxonomyRelatedGrid } from './TaxonomyRelatedGrid';
 import { HabitatNeighborsSection } from './HabitatNeighborsSection';
 import { LogSightingButton } from './LogSightingButton';
 import { TagRow } from './TagRow';
+
+// Lazy load DiagramCard to avoid loading ForceGraph2D and THREE.js until needed
+const DiagramCard = lazy(async () => {
+  const module = await import('./DiagramCard');
+  return { default: module.DiagramCard };
+});
 
 interface Props {
   species: Species;
@@ -82,6 +88,11 @@ export function SpeciesCard({ species, symbiotes, habitatNeighbors, related }: P
 
       {/* 6. Symbiotes */}
       <KeyRelationshipsSection related={symbiotes} />
+
+      {/* 6.5. Relationship Diagram */}
+      <Suspense fallback={<div className="text-center text-stone-500 py-4">Loading diagram...</div>}>
+        <DiagramCard speciesId={species.id} />
+      </Suspense>
 
       {/* 7. Habitat neighbors (organized by category) */}
       <HabitatNeighborsSection categories={habitatNeighborCategories} speciesId={species.id} />

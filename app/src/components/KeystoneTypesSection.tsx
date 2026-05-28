@@ -1,16 +1,7 @@
 import type { Species } from '../types';
 import { KEYSTONE_DEFINITIONS, getKeystonesByType } from '../lib/learnContent';
+import { getKeystoneIcon } from '../lib/designTokens';
 import ExampleSpeciesLink from './ExampleSpeciesLink';
-
-const KEYSTONE_ICONS: Record<string, string> = {
-  ecosystem_engineer: '⚙️',
-  predator:           '🦅',
-  mutualist:          '🤝',
-  pollinator:         '🐝',
-  host_plant:         '🌿',
-  prey:               '🐭',
-  structural:         '🌳',
-};
 
 interface KeystoneTypesSectionProps {
   expanded: string | null;
@@ -39,7 +30,7 @@ export default function KeystoneTypesSection({
         {keystoneTypes.map(([typeKey, definition]) => {
           const keystoneSpecies = getKeystonesByType(typeKey, speciesById);
           const isExpanded = expanded === typeKey;
-          const icon = KEYSTONE_ICONS[typeKey] ?? '⭐';
+          const icon = getKeystoneIcon(typeKey);
 
           return (
             <div key={typeKey}>

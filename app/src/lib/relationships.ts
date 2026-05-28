@@ -1,5 +1,11 @@
 import type { Species, Symbiosis, Relation } from '../types';
 import { formLabel, formIcon } from './labels';
+import {
+  BIRD_FORMS,
+  PLANT_FORMS,
+  INSECT_FORMS,
+  WILDLIFE_FORMS,
+} from './designTokens';
 
 export type SymbiosisRole =
   | 'mutualism'
@@ -102,13 +108,6 @@ export function groupByRole(entries: RelatedEntry[]): GroupedRelations {
 }
 
 // ─── Neighbor categories ────────────────────────────────────────────────────
-
-const BIRD_FORMS = new Set([
-  'woodpecker', 'raptor', 'owl', 'songbird', 'warbler', 'hummingbird', 'wading_bird',
-]);
-const PLANT_FORMS = new Set(['tree', 'wildflower', 'shrub']);
-const INSECT_FORMS = new Set(['butterfly', 'beetle', 'bug', 'bee']);
-const WILDLIFE_FORMS = new Set(['frog', 'mammal']);
 
 export type NeighborCategorySlug = 'birds' | 'plants' | 'insects' | 'wildlife' | 'related';
 
