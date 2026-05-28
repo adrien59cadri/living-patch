@@ -7,13 +7,7 @@ import {
   WILDLIFE_FORMS,
 } from './designTokens';
 
-export type SymbiosisRole =
-  | 'mutualism'
-  | 'parasitism'
-  | 'predation'
-  | 'competition'
-  | 'commensalism'
-  | 'related';
+export type SymbiosisRole = string;
 
 export interface RelatedEntry {
   species: Species;

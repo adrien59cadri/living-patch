@@ -1288,7 +1288,7 @@
         "notes": "All native PA Asclepias species are valid Monarch hosts. Genus-level obligate."
       },
       {
-        "type": "predation",
+        "type": "predation-nectar_feeding",
         "members": [
           "insect_monarch-butterfly",
           "plant_goldenrod"
@@ -1318,7 +1318,7 @@
         "notes": "T. melanurus (tuberosa specialist) and occasionally T. tetrophthalmus use Butterfly Weed."
       },
       {
-        "type": "predation",
+        "type": "predation-seed_eating",
         "members": [
           "insect_large-milkweed-bug",
           "plant_common-milkweed"
@@ -1328,7 +1328,7 @@
         "notes": "Large Milkweed Bug specialist on Asclepias seeds. Also feeds on pods, flowers, and vegetative tissue. Sequesters cardenolides."
       },
       {
-        "type": "predation",
+        "type": "predation-seed_eating",
         "members": [
           "insect_large-milkweed-bug",
           "plant_butterfly-weed"
@@ -1338,7 +1338,7 @@
         "notes": "Feeds on Butterfly Weed seeds and pods."
       },
       {
-        "type": "predation",
+        "type": "predation-seed_eating",
         "members": [
           "insect_large-milkweed-bug",
           "plant_swamp-milkweed"
@@ -1472,7 +1472,7 @@
         "notes": "Black Swallowtail is obligate at family Apiaceae. Uses native Golden Alexanders, water hemlock, water parsnip, and naturalized/cultivated Queen Anne's lace, parsley, dill, fennel."
       },
       {
-        "type": "predation",
+        "type": "predation-grazing",
         "members": [
           "mammal_beaver",
           "plant_black-willow"
@@ -1482,7 +1482,7 @@
         "notes": "Black Willow is a primary food tree for Beaver — bark and cambium eaten; tree felled for dam/lodge construction."
       },
       {
-        "type": "predation",
+        "type": "predation-grazing",
         "members": [
           "mammal_beaver",
           "group_willows"
@@ -1576,7 +1576,7 @@
         "notes": "Great Horned Owl takes large frogs including Bullfrog adults near beaver ponds and wetlands."
       },
       {
-        "type": "predation",
+        "type": "predation-seed_eating",
         "members": [
           "mammal_eastern-gray-squirrel",
           "plant_white-oak"
@@ -1586,7 +1586,7 @@
         "notes": "Gray Squirrel preferentially caches and eats White Oak acorns (lower tannins, less bitter than red oak). A critical oak-regeneration mutualism — forgotten caches germinate into new trees."
       },
       {
-        "type": "predation",
+        "type": "predation-seed_eating",
         "members": [
           "mammal_eastern-gray-squirrel",
           "plant_northern-red-oak"
@@ -1596,7 +1596,7 @@
         "notes": "Gray Squirrel caches Red Oak acorns — nips embryo tip before burial (preventing germination) then retrieves them. Red Oak acorns cached longer than white oak."
       },
       {
-        "type": "predation",
+        "type": "predation-seed_eating",
         "members": [
           "mammal_eastern-gray-squirrel",
           "group_oaks"
@@ -1606,7 +1606,7 @@
         "notes": "Gray Squirrel uses all native oak species — primary mast consumer and seed disperser across all Quercus."
       },
       {
-        "type": "predation",
+        "type": "predation-seed_eating",
         "members": [
           "mammal_white-tailed-deer",
           "plant_white-oak"
@@ -1616,7 +1616,7 @@
         "notes": "White-tailed Deer eats White Oak acorns intensively in fall, and browses seedlings year-round — overabundant deer suppresses oak regeneration."
       },
       {
-        "type": "predation",
+        "type": "predation-grazing",
         "members": [
           "mammal_white-tailed-deer",
           "plant_spicebush"
@@ -1626,7 +1626,7 @@
         "notes": "Deer browse Spicebush stems and leaves — heavy deer pressure can suppress Spicebush in understory, reducing Spicebush Swallowtail habitat."
       },
       {
-        "type": "predation",
+        "type": "predation-fruit_eating",
         "members": [
           "bird_cedar-waxwing",
           "plant_black-cherry"
@@ -1636,7 +1636,7 @@
         "notes": "Black Cherry is a major Cedar Waxwing food source — flocks strip cherries in August. Waxwings pass seeds through gut intact, dispersing them widely."
       },
       {
-        "type": "predation",
+        "type": "predation-fruit_eating",
         "members": [
           "bird_cedar-waxwing",
           "plant_spicebush"
@@ -1646,7 +1646,7 @@
         "notes": "High-fat Spicebush berries (female plants only) are critical fall food for Cedar Waxwings and migrant thrushes."
       },
       {
-        "type": "predation",
+        "type": "predation-fruit_eating",
         "members": [
           "bird_cedar-waxwing",
           "group_fruiting-shrubs"
@@ -1656,7 +1656,7 @@
         "notes": "Cedar Waxwing is a generalist frugivore of all native berry-producing shrubs — serviceberry, viburnum, dogwood, elderberry, winterberry. Major seed disperser."
       },
       {
-        "type": "predation",
+        "type": "predation-fruit_eating",
         "members": [
           "bird_eastern-bluebird",
           "plant_black-cherry"
@@ -1666,7 +1666,7 @@
         "notes": "Eastern Bluebird eats Black Cherry fruit in late summer and fall."
       },
       {
-        "type": "predation",
+        "type": "predation-fruit_eating",
         "members": [
           "bird_eastern-bluebird",
           "group_fruiting-shrubs"
@@ -1686,7 +1686,7 @@
         "notes": "American Kestrel occasionally preys on Eastern Bluebird, especially where both use open-country nest boxes."
       },
       {
-        "type": "predation",
+        "type": "predation-seed_eating",
         "members": [
           "bird_downy-woodpecker",
           "plant_goldenrod"
