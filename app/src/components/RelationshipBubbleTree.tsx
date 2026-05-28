@@ -190,7 +190,6 @@ export const RelationshipBubbleTree: React.FC<RelationshipBubbleTreeProps> = ({
       // Sort by form type (grouping), then by label width (larger first)
       depth1Nodes = sortNodesByFormThenWidth(depth1Nodes);
 
-      const depth1Count = depth1Nodes.length;
       const depth1Radius = Math.min(200, maxRadius * 0.55);
       const depth2Radius = Math.min(320, maxRadius * 0.85);
 
