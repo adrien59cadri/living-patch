@@ -8,6 +8,7 @@ import {
   getNodeSizeByDepth,
   getNodeOpacityByDepth,
   getRelationshipColor,
+  type SpeciesNode,
 } from '../lib/bubbleTreeUtils';
 
 interface RelationshipBubbleTreeProps {
@@ -28,16 +29,64 @@ interface RelationshipBubbleTreeProps {
 }
 
 /**
+ * Measure text width using canvas context.
+ * Used for balanced label-aware sector allocation.
+ */
+const measureTextWidth = (text: string, fontSize: number = 12): number => {
+  const canvas = document.createElement('canvas');
+  const ctx = canvas.getContext('2d');
+  if (!ctx) return text.length * 7; // fallback estimate
+
+  ctx.font = `500 ${fontSize}px sans-serif`;
+  return ctx.measureText(text).width;
+};
+
+/**
+ * Form type priority order for visual grouping.
+ * Earlier forms are positioned first (at start of circle).
+ */
+const FORM_ORDER: Record<string, number> = {
+  bird: 0,
+  mammal: 1,
+  amphibian: 2,
+  reptile: 3,
+  insect: 4,
+  plant: 5,
+};
+
+const getFormPriority = (form: string): number => FORM_ORDER[form] ?? 10;
+
+/**
+ * Sort depth-1 nodes by form type (for grouping), then by label width (larger first).
+ * Returns sorted array ready for angular distribution.
+ */
+const sortNodesByFormThenWidth = (nodes: SpeciesNode[]): SpeciesNode[] => {
+  return [...nodes].sort((a, b) => {
+    const formDiff = getFormPriority(a.form) - getFormPriority(b.form);
+    if (formDiff !== 0) return formDiff;
+
+    // Within same form, sort by label width descending (larger labels first)
+    const widthA = measureTextWidth(a.name, 11);
+    const widthB = measureTextWidth(b.name, 11);
+    return widthB - widthA;
+  });
+};
+
+/**
  * D3 Radial bubble tree displaying species and their relationships.
  *
  * Uses a flat nodes-edges model where:
  * - Focal species at center (80px, bold text)
- * - Depth-1 species in circle (35px)
+ * - Depth-1 species in circle (35px), grouped by form type
  * - Depth-2/3 species radiating out (25px, 50% opacity)
  * - All nodes colored by form (bird, plant, insect, mammal, etc.)
  * - Links styled by type (arrows for predation/parasitism, colors by relationship type)
  * - Link stroke weight indicates obligate (3px) vs non-obligate (1.5px)
  * - Zoom/pan available only when maxDepth=3 (full diagram page)
+ *
+ * Positioning: Depth-1 nodes use weighted sector allocation based on label width.
+ * Longer labels receive proportionally larger angular sectors to prevent crowding.
+ * Nodes are grouped by form type for visual clarity.
  */
 export const RelationshipBubbleTree: React.FC<RelationshipBubbleTreeProps> = ({
   focalId,
@@ -135,21 +184,25 @@ export const RelationshipBubbleTree: React.FC<RelationshipBubbleTreeProps> = ({
         nodePositions.set(focalNode.id, { x: centerX, y: centerY, depth: 0 });
       }
 
-      // Depth-1 nodes: assign to sectors (quadrants) for hierarchical layout
-      const depth1Nodes = nodes.filter(n => n.depth === 1);
-      const depth1Count = depth1Nodes.length;
+      // Depth-1 nodes: assign to sectors with label-aware weighting for better balance
+      let depth1Nodes = nodes.filter(n => n.depth === 1);
+
+      // Sort by form type (grouping), then by label width (larger first)
+      depth1Nodes = sortNodesByFormThenWidth(depth1Nodes);
+
       const depth1Radius = Math.min(200, maxRadius * 0.55);
       const depth2Radius = Math.min(320, maxRadius * 0.85);
-      
-      // Divide circle into sectors for hierarchy: each depth-1 node gets a sector
-      const sectorAngle = (2 * Math.PI) / Math.max(1, depth1Count);
-      
+
+      // Measure text widths and calculate total for weighted sector allocation
+      const labelWidths = depth1Nodes.map(n => measureTextWidth(n.name, 11));
+      const totalLabelWidth = labelWidths.reduce((a, b) => a + b, 0);
+
       // Build parent->children map for hierarchical positioning
       const childrenByParent = new Map<string, typeof nodes>();
       links.forEach((link: any) => {
         const sourceId: string = typeof link.source === 'string' ? link.source : (link.source?.id || '');
         const targetId: string = typeof link.target === 'string' ? link.target : (link.target?.id || '');
-        
+
         if (!childrenByParent.has(sourceId)) {
           childrenByParent.set(sourceId, []);
         }
@@ -158,28 +211,34 @@ export const RelationshipBubbleTree: React.FC<RelationshipBubbleTreeProps> = ({
           childrenByParent.get(sourceId)!.push(childNode);
         }
       });
-      
-      // Position depth-1 nodes at sector centers, and their children within sectors
+
+      // Position depth-1 nodes with weighted sector allocation
+      let accumulatedAngle = 0;
       depth1Nodes.forEach((node, i) => {
-        // Place parent at center of sector
-        const sectorCenterAngle = i * sectorAngle;
-        const x = centerX + depth1Radius * Math.cos(sectorCenterAngle);
-        const y = centerY + depth1Radius * Math.sin(sectorCenterAngle);
+        // Allocate sector angle proportional to label width
+        const weightedSectorAngle = (2 * Math.PI) * (labelWidths[i] / Math.max(1, totalLabelWidth));
+        const nodeCenterAngle = accumulatedAngle + (weightedSectorAngle / 2);
+
+        // Place parent at center of its sector
+        const x = centerX + depth1Radius * Math.cos(nodeCenterAngle);
+        const y = centerY + depth1Radius * Math.sin(nodeCenterAngle);
         nodePositions.set(node.id, { x, y, depth: 1 });
-        
+
         // Position children within the parent's sector
         const children = childrenByParent.get(node.id) || [];
         const childCount = Math.max(1, children.length);
-        const sectorWidth = sectorAngle * 0.75; // Use 75% of sector for children to avoid overlap
-        
+        const childSectorWidth = weightedSectorAngle * 0.75; // Use 75% of sector for children
+
         children.forEach((child, childIndex) => {
-          // Distribute children evenly within sector
-          const childAngleOffset = (childIndex / childCount) * sectorWidth - (sectorWidth / 2);
-          const childAngle = sectorCenterAngle + childAngleOffset;
+          // Distribute children evenly within parent's sector
+          const childAngleOffset = (childIndex / childCount) * childSectorWidth - (childSectorWidth / 2);
+          const childAngle = nodeCenterAngle + childAngleOffset;
           const childX = centerX + depth2Radius * Math.cos(childAngle);
           const childY = centerY + depth2Radius * Math.sin(childAngle);
           nodePositions.set(child.id, { x: childX, y: childY, depth: child.depth });
         });
+
+        accumulatedAngle += weightedSectorAngle;
       });
       
       // Handle any unpositioned deeper nodes (depth 3+)
