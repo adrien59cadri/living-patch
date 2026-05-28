@@ -1194,6 +1194,85 @@
           "Apr-Oct"
         ],
         "taxonomic_group": "group_frogs"
+      },
+      {
+        "id": "bird_wood-duck",
+        "common_name": "Wood Duck",
+        "latin_name": "Aix sponsa",
+        "form": "duck",
+        "habitat": [
+          "wetland",
+          "riparian",
+          "beaver_pond"
+        ],
+        "diet": [
+          "herbivore"
+        ],
+        "behavior": [
+          "cavity_nester"
+        ],
+        "season": [
+          "spring",
+          "summer",
+          "fall"
+        ],
+        "functional_description": "Most colorful NA duck. Males iridescent green head, females brown with white teardrop eye-patch. Nests in cavities — depends on large cavities like those excavated by Pileated Woodpeckers or created by beavers. Perches on branches.",
+        "life_stages": [],
+        "region": "northeast_pa",
+        "ecological_role": "herbivore",
+        "is_keystone": false
+      },
+      {
+        "id": "mammal_flying-squirrel",
+        "common_name": "Northern Flying Squirrel",
+        "latin_name": "Glaucomys sabrinus",
+        "form": "mammal",
+        "habitat": [
+          "forest",
+          "woodland"
+        ],
+        "diet": [
+          "herbivore"
+        ],
+        "behavior": [
+          "nocturnal",
+          "cavity_nester"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "functional_description": "Nocturnal gliding squirrel. Stretches patagium (skin between limbs) to glide up to 150 feet. Nests in cavities created by Pileated Woodpeckers. Active at night hunting seeds, nuts, fungi, and insects.",
+        "life_stages": [],
+        "region": "northeast_pa",
+        "ecological_role": "omnivore",
+        "is_keystone": false
+      },
+      {
+        "id": "insect_eastern-tent-caterpillar",
+        "common_name": "Eastern Tent Caterpillar",
+        "latin_name": "Malacosoma americanum",
+        "form": "moth",
+        "habitat": [
+          "forest",
+          "woodland",
+          "forest_edge"
+        ],
+        "diet": [
+          "herbivore"
+        ],
+        "behavior": [
+          "tent_builder",
+          "gregarious"
+        ],
+        "season": [
+          "spring",
+          "summer"
+        ],
+        "functional_description": "Social caterpillars that build conspicuous silk tents in tree crotches during spring. Silk tents attract parasitoids and predatory wasps. Mass outbreaks occur cyclically (every 10-12 years). Important food source for birds.",
+        "life_stages": [],
+        "region": "northeast_pa",
+        "ecological_role": "herbivore",
+        "is_keystone": false
       }
     ],
     "taxonomic_groups": [
@@ -1724,6 +1803,42 @@
         "impacted_species": "insect_eastern-tiger-swallowtail",
         "obligate": false,
         "notes": "Eastern Tiger Swallowtail uses multiple oak species as facultative larval hosts beyond White and Red Oak."
+      },
+      {
+        "type": "mutualism",
+        "members": [
+          "bird_pileated-woodpecker",
+          "bird_wood-duck"
+        ],
+        "notes": "Wood Duck nests in cavities excavated by Pileated Woodpecker. Woodpecker provides critical cavity homes in dead trees where wood ducks depend for successful breeding."
+      },
+      {
+        "type": "mutualism",
+        "members": [
+          "bird_pileated-woodpecker",
+          "mammal_flying-squirrel"
+        ],
+        "notes": "Northern Flying Squirrels nest in Pileated Woodpecker cavities. These large cavities (1.5 inches diameter) are critical winter shelter for flying squirrels — key to their survival in northern PA winters."
+      },
+      {
+        "type": "parasitism",
+        "members": [
+          "insect_eastern-tent-caterpillar",
+          "plant_black-cherry"
+        ],
+        "impacted_species": "insect_eastern-tent-caterpillar",
+        "obligate": false,
+        "notes": "Black Cherry is the primary PA host for Eastern Tent Caterpillar. Silk tents in spring branches are conspicuous ecosystem indicator. Mass outbreaks attract numerous predators and parasitoids."
+      },
+      {
+        "type": "parasitism",
+        "members": [
+          "insect_spicebush-swallowtail",
+          "plant_black-willow"
+        ],
+        "impacted_species": "insect_spicebush-swallowtail",
+        "obligate": false,
+        "notes": "Black Willow is a facultative host for Spicebush Swallowtail caterpillars alongside primary Lauraceae family hosts (Spicebush, Sassafras). Larvae build silk-sealed folded-leaf shelters."
       }
     ],
     "relations": [],
