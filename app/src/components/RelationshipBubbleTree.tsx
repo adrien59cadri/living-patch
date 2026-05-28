@@ -138,8 +138,8 @@ export const RelationshipBubbleTree: React.FC<RelationshipBubbleTreeProps> = ({
       // Depth-1 nodes: assign to sectors (quadrants) for hierarchical layout
       const depth1Nodes = nodes.filter(n => n.depth === 1);
       const depth1Count = depth1Nodes.length;
-      const depth1Radius = Math.min(150, maxRadius * 0.4);
-      const depth2Radius = Math.min(250, maxRadius * 0.7);
+      const depth1Radius = Math.min(200, maxRadius * 0.55);
+      const depth2Radius = Math.min(320, maxRadius * 0.85);
       
       // Divide circle into sectors for hierarchy: each depth-1 node gets a sector
       const sectorAngle = (2 * Math.PI) / Math.max(1, depth1Count);
@@ -185,7 +185,7 @@ export const RelationshipBubbleTree: React.FC<RelationshipBubbleTreeProps> = ({
       // Handle any unpositioned deeper nodes (depth 3+)
       const unpositionedDeeper = nodes.filter(n => n.depth >= 2 && !nodePositions.has(n.id));
       const deeperCount = unpositionedDeeper.length;
-      const deeperRadius = Math.min(300, maxRadius * 0.85);
+      const deeperRadius = Math.min(380, maxRadius * 1.0);
       
       unpositionedDeeper.forEach((node, i) => {
         const angle = (i / Math.max(1, deeperCount)) * 2 * Math.PI;
