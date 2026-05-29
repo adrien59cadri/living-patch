@@ -5,9 +5,10 @@
  * 
  * Usage: npm run fetch-images <pack-file> [options]
  * Example: npm run fetch-images packs/0-base.json
+ * Example: npm run fetch-images packs/0-base.json --only-missing
  * 
  * Scrapes Wikipedia for species images, extracts Wikimedia Commons URLs
- * and author information, and saves to packs/images-{pack-id}.json
+ * and author information, and writes directly to species.image properties
  */
 
 import fs from 'fs';
@@ -16,7 +17,7 @@ import chalk from 'chalk';
 import { validatePackSafe } from '../lib/schema.js';
 import { scrapeSpeciesImage } from '../lib/wikipedia-scraper.js';
 import { RateLimiter } from '../lib/rate-limiter.js';
-import type { DataPack, Pack, ImageEntry } from '../types.js';
+import type { DataPack, Pack } from '../types.js';
 
 const args = process.argv.slice(2);
 
@@ -26,11 +27,12 @@ const args = process.argv.slice(2);
 function printUsage() {
   console.error(`${chalk.gray('Usage:')} npm run fetch-images <pack-file> [options]`);
   console.error(`${chalk.gray('Example:')} npm run fetch-images packs/0-base.json`);
+  console.error(`${chalk.gray('Example:')} npm run fetch-images packs/0-base.json --only-missing`);
   console.error();
   console.error(`${chalk.gray('Options:')}`);
+  console.error(`  --only-missing      Skip species that already have images (update mode)`);
   console.error(`  --delay <ms>        Delay between requests in milliseconds (default: 1000)`);
   console.error(`  --max <count>       Maximum number of species to process (for testing)`);
-  console.error(`  --merge             Merge images into original pack file instead of creating separate images-*.json`);
 }
 
 /**
@@ -40,7 +42,7 @@ function parseArgs(cliArgs: string[]): {
   packFile: string;
   delay: number;
   maxSpecies?: number;
-  merge: boolean;
+  onlyMissing: boolean;
 } | null {
   const packFile = cliArgs.find(arg => !arg.startsWith('--'));
   
@@ -52,7 +54,7 @@ function parseArgs(cliArgs: string[]): {
 
   let delay = 1000;
   let maxSpecies: number | undefined;
-  let merge = false;
+  let onlyMissing = false;
 
   for (let i = 0; i < cliArgs.length; i++) {
     if (cliArgs[i] === '--delay' && cliArgs[i + 1]) {
@@ -61,12 +63,12 @@ function parseArgs(cliArgs: string[]): {
     } else if (cliArgs[i] === '--max' && cliArgs[i + 1]) {
       maxSpecies = parseInt(cliArgs[i + 1], 10);
       i++;
-    } else if (cliArgs[i] === '--merge') {
-      merge = true;
+    } else if (cliArgs[i] === '--only-missing') {
+      onlyMissing = true;
     }
   }
 
-  return { packFile, delay, maxSpecies, merge };
+  return { packFile, delay, maxSpecies, onlyMissing };
 }
 
 /**
@@ -108,7 +110,7 @@ async function main() {
     process.exit(1);
   }
 
-  const { packFile, delay: requestDelay, maxSpecies, merge } = parsed;
+  const { packFile, delay: requestDelay, maxSpecies, onlyMissing } = parsed;
   const pack = loadPack(packFile);
   
   if (!pack) {
@@ -120,6 +122,9 @@ async function main() {
   console.log(chalk.blue('🔍 Fetching Wikipedia images...'));
   console.log(`${chalk.gray('Pack:')} ${pack.metadata.id} (v${pack.metadata.version})`);
   console.log(`${chalk.gray('Request delay:')} ${requestDelay}ms`);
+  if (onlyMissing) {
+    console.log(`${chalk.gray('Mode:')} Only missing images (--only-missing)`);
+  }
   console.log();
 
   // Collect all species
@@ -134,9 +139,10 @@ async function main() {
   const rateLimiter = new RateLimiter(requestDelay);
 
   // Track results
-  const successfulImages: ImageEntry[] = [];
-  const failedSpecies: string[] = [];
-  const skippedSpecies: string[] = [];
+  let successfulImages = 0;
+  let failedSpecies: string[] = [];
+  let skippedSpecies: string[] = [];
+  let alreadyHadImages = 0;
 
   // Process each species
   for (let i = 0; i < speciesToProcess.length; i++) {
@@ -147,6 +153,13 @@ async function main() {
     if (species.taxonomic_group && !species.latin_name) {
       console.log(`${chalk.yellow(progress)} ${chalk.gray('⊘')} Skipped: ${species.common_name} (taxonomic group)`);
       skippedSpecies.push(species.id);
+      continue;
+    }
+
+    // Skip if --only-missing is set and species already has an image
+    if (onlyMissing && species.image?.url) {
+      console.log(`${chalk.gray(progress)} ${chalk.gray('✓')} Already has image: ${species.common_name}`);
+      alreadyHadImages++;
       continue;
     }
 
@@ -166,11 +179,12 @@ async function main() {
 
       if (imageData) {
         console.log(chalk.green('✓ Found'));
-        successfulImages.push({
-          speciesId: species.id,
+        // Write directly to species object
+        species.image = {
           url: imageData.url,
           author: imageData.author,
-        });
+        };
+        successfulImages++;
       } else {
         console.log(chalk.yellow('✗ Not found'));
         failedSpecies.push(species.id);
@@ -184,74 +198,35 @@ async function main() {
 
   console.log();
   console.log(chalk.bold('Summary:'));
-  console.log(`${chalk.green('✓ Successful:')} ${successfulImages.length}/${speciesToProcess.length}`);
-  console.log(`${chalk.yellow('✗ Failed:')} ${failedSpecies.length}/${speciesToProcess.length}`);
+  console.log(`${chalk.green('✓ Newly fetched:')} ${successfulImages}/${speciesToProcess.length - alreadyHadImages}`);
+  if (alreadyHadImages > 0) {
+    console.log(`${chalk.blue('→ Already had images:')} ${alreadyHadImages}/${speciesToProcess.length}`);
+  }
+  console.log(`${chalk.yellow('✗ Failed:')} ${failedSpecies.length}/${speciesToProcess.length - alreadyHadImages}`);
   console.log(`${chalk.gray('⊘ Skipped:')} ${skippedSpecies.length}/${speciesToProcess.length}`);
 
-  // Create images pack (unified format)
-  const now = new Date().toISOString();
-  const imagesPack: Pack = {
-    metadata: {
-      id: `images-${pack.metadata.id}`,
-      createdDate: now,
-      author: 'LivingPatch Bot',
-      version: '1.0.0',
-      schemaVersion: '1.0.0',
-      status: successfulImages.length === speciesToProcess.length ? 'published' : 'draft',
-      description: `Wikipedia images for ${pack.metadata.id} (${successfulImages.length}/${speciesToProcess.length} species)`,
-    },
-    data: {
-      images: successfulImages,
-    },
-  };
-
-  // Validate pack
-  const validationResult = validatePackSafe(imagesPack);
+  // Validate modified pack
+  const validationResult = validatePackSafe(pack);
 
   if (!validationResult.success) {
-    console.error(chalk.red('❌ Error: Generated images pack is invalid'));
+    console.error(chalk.red('❌ Error: Pack validation failed after image fetch'));
     validationResult.error.issues.forEach(issue => {
       console.error(`  ${chalk.gray('•')} ${issue.path.join('.')}: ${issue.message}`);
     });
     process.exit(1);
   }
 
+  // Write modified pack back to original file
   try {
-    if (merge) {
-      // Merge images into original pack
-      const updatedPack = { ...pack };
-      updatedPack.data = { ...pack.data, images: successfulImages };
-      
-      // Validate merged pack
-      const mergeValidation = validatePackSafe(updatedPack);
-      if (!mergeValidation.success) {
-        console.error(chalk.red('❌ Error: Merged pack is invalid'));
-        mergeValidation.error.issues.forEach(issue => {
-          console.error(`  ${chalk.gray('•')} ${issue.path.join('.')}: ${issue.message}`);
-        });
-        process.exit(1);
-      }
-
-      fs.writeFileSync(absolutePackPath, JSON.stringify(updatedPack, null, 2), 'utf-8');
-      console.log();
-      console.log(chalk.green('✓ Images merged into pack:'));
-      console.log(`  ${path.relative(process.cwd(), absolutePackPath)}`);
-      console.log(`  ${chalk.cyan(successfulImages.length)} images added to data.images`);
-      process.exit(0);
-    } else {
-      // Create separate images pack
-      const outputDir = path.dirname(packFile);
-      const outputFile = path.join(outputDir, `images-${pack.metadata.id}.json`);
-      
-      fs.writeFileSync(outputFile, JSON.stringify(imagesPack, null, 2), 'utf-8');
-      console.log();
-      console.log(chalk.green('✓ Images pack saved:'));
-      console.log(`  ${path.relative(process.cwd(), outputFile)}`);
-      console.log();
-      console.log(chalk.gray('💡 Tip: Use --merge flag to merge images into your pack file:'));
-      console.log(`  npm run fetch-images ${packFile} --merge`);
-      process.exit(0);
+    fs.writeFileSync(absolutePackPath, JSON.stringify(pack, null, 2), 'utf-8');
+    console.log();
+    console.log(chalk.green('✓ Pack updated with images:'));
+    console.log(`  ${path.relative(process.cwd(), absolutePackPath)}`);
+    console.log(`  ${chalk.cyan(successfulImages)} new images added to species.image property`);
+    if (onlyMissing && alreadyHadImages > 0) {
+      console.log(`  ${chalk.blue(alreadyHadImages)} species already had images (skipped)`);
     }
+    process.exit(0);
   } catch (error) {
     console.error(chalk.red('❌ Error writing pack file:'));
     console.error(chalk.gray(error instanceof Error ? error.message : String(error)));

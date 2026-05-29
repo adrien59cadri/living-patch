@@ -88,7 +88,8 @@ try {
   const totalSpecies = (pack.data.species?.length || 0) + (pack.data.taxonomic_groups?.length || 0);
   const totalSymbiosis = pack.data.symbiosis?.length || 0;
   const totalRelations = pack.data.relations?.length || 0;
-  const totalImages = pack.data.images?.length || 0;
+  // Count species with images
+  const totalImages = (pack.data.species || []).filter(s => s.image?.url).length;
   const status = pack.metadata.status || 'published';
 
   console.log(chalk.green('✓ Validation Passed'));

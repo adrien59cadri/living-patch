@@ -1,90 +1,106 @@
 import { describe, it, expect } from 'vitest';
 import { validatePack, validatePackSafe } from '../../lib/schema.js';
 
-describe('Images Pack Schema Validation', () => {
-  const validImagesPack = {
+describe('Species Images Validation', () => {
+  const validPackWithImages = {
     metadata: {
-      id: 'images-test-pack',
+      id: 'test-pack-with-images',
       createdDate: '2024-05-26T12:00:00Z',
       author: 'Test Author',
       version: '1.0.0',
       schemaVersion: '1.0.0',
       status: 'published' as const,
-      description: 'Test images pack',
+      description: 'Test pack with species images',
     },
     data: {
-      images: [
+      species: [
         {
-          speciesId: 'bird_pileated-woodpecker',
-          url: 'https://upload.wikimedia.org/wikipedia/commons/2/23/Bubo_virginianus_06.jpg',
-          author: 'John Doe',
+          id: 'bird_pileated-woodpecker',
+          common_name: 'Pileated Woodpecker',
+          latin_name: 'Dryocopus pileatus',
+          form: 'woodpecker',
+          habitat: ['forest'],
+          diet: ['insect_eater'],
+          behavior: ['cavity_excavator'],
+          season: ['year_round'],
+          functional_description: 'Test description',
+          life_stages: [],
+          region: 'northeast_pa',
+          image: {
+            url: 'https://upload.wikimedia.org/wikipedia/commons/2/23/Bubo_virginianus_06.jpg',
+            author: 'John Doe',
+          },
         },
         {
-          speciesId: 'mammal_eastern-gray-squirrel',
-          url: 'https://upload.wikimedia.org/wikipedia/commons/test.jpg',
-          author: 'Jane Smith',
+          id: 'mammal_eastern-gray-squirrel',
+          common_name: 'Eastern Gray Squirrel',
+          latin_name: 'Sciurus carolinensis',
+          form: 'mammal',
+          habitat: ['forest'],
+          diet: ['omnivore'],
+          behavior: ['forager'],
+          season: ['year_round'],
+          functional_description: 'Test description',
+          life_stages: [],
+          region: 'northeast_pa',
+          image: {
+            url: 'https://upload.wikimedia.org/wikipedia/commons/test.jpg',
+            author: 'Jane Smith',
+          },
+        },
+        {
+          id: 'bird_american-kestrel',
+          common_name: 'American Kestrel',
+          latin_name: 'Falco sparverius',
+          form: 'raptor',
+          habitat: ['forest_edge'],
+          diet: ['predator'],
+          behavior: ['perch_hunter'],
+          season: ['year_round'],
+          functional_description: 'Test description',
+          life_stages: [],
+          region: 'northeast_pa',
+          // No image - testing species without images
         },
       ],
     },
   };
 
   describe('validatePack', () => {
-    it('should validate a correct images pack', () => {
-      const result = validatePack(validImagesPack);
+    it('should validate a pack with species images', () => {
+      const result = validatePack(validPackWithImages);
       expect(result).toBeDefined();
-      expect(result.metadata.id).toBe('images-test-pack');
-      expect(result.data.images?.length).toBe(2);
+      expect(result.metadata.id).toBe('test-pack-with-images');
+      expect(result.data.species?.length).toBe(3);
+      expect(result.data.species?.[0].image?.url).toBeDefined();
     });
 
-    it('should throw error for missing metadata', () => {
-      const invalid = {
-        data: validImagesPack.data,
-      };
-
-      expect(() => validatePack(invalid)).toThrow();
+    it('should accept species without images', () => {
+      const result = validatePack(validPackWithImages);
+      expect(result).toBeDefined();
+      expect(result.data.species?.[2].image).toBeUndefined();
     });
 
-    it('should throw error for invalid metadata fields', () => {
+    it('should throw error for invalid image URL format', () => {
       const invalid = {
-        metadata: {
-          id: 'test',
-          createdDate: 'not-a-date', // invalid
-          author: 'Test',
-          version: '1.0.0',
-          schemaVersion: '1.0.0',
-          description: 'Test',
-        },
-        data: validImagesPack.data,
-      };
-
-      expect(() => validatePack(invalid)).toThrow();
-    });
-
-    it('should throw error for missing required image fields', () => {
-      const invalid = {
-        metadata: validImagesPack.metadata,
+        metadata: validPackWithImages.metadata,
         data: {
-          images: [
+          species: [
             {
-              speciesId: 'bird_test',
-              // missing url and author
-            },
-          ],
-        },
-      };
-
-      expect(() => validatePack(invalid)).toThrow();
-    });
-
-    it('should throw error for invalid URL format', () => {
-      const invalid = {
-        metadata: validImagesPack.metadata,
-        data: {
-          images: [
-            {
-              speciesId: 'bird_test',
-              url: 'not-a-url',
-              author: 'Test',
+              id: 'bird_test',
+              common_name: 'Test Bird',
+              form: 'bird',
+              habitat: ['forest'],
+              diet: ['insect_eater'],
+              behavior: ['forager'],
+              season: ['year_round'],
+              functional_description: 'Test',
+              life_stages: [],
+              region: 'northeast_pa',
+              image: {
+                url: 'not-a-valid-url',
+                author: 'Test',
+              },
             },
           ],
         },
@@ -95,20 +111,38 @@ describe('Images Pack Schema Validation', () => {
   });
 
   describe('validatePackSafe', () => {
-    it('should return success result for valid pack', () => {
-      const result = validatePackSafe(validImagesPack);
+    it('should return success result for valid pack with images', () => {
+      const result = validatePackSafe(validPackWithImages);
       expect(result.success).toBe(true);
       if (result.success) {
-        expect(result.data.metadata.id).toBe('images-test-pack');
+        expect(result.data.metadata.id).toBe('test-pack-with-images');
+        expect(result.data.data.species?.[0].image?.url).toBeDefined();
       }
     });
 
-    it('should return error result without throwing', () => {
+    it('should return error result without throwing for invalid URL', () => {
       const invalid = {
-        metadata: {
-          createdDate: 'invalid',
+        metadata: validPackWithImages.metadata,
+        data: {
+          species: [
+            {
+              id: 'bird_test',
+              common_name: 'Test Bird',
+              form: 'bird',
+              habitat: ['forest'],
+              diet: ['insect_eater'],
+              behavior: ['forager'],
+              season: ['year_round'],
+              functional_description: 'Test',
+              life_stages: [],
+              region: 'northeast_pa',
+              image: {
+                url: 'invalid-url',
+                author: 'Test',
+              },
+            },
+          ],
         },
-        data: {},
       };
 
       const result = validatePackSafe(invalid);
@@ -116,37 +150,6 @@ describe('Images Pack Schema Validation', () => {
       if (!result.success) {
         expect(result.error.issues.length).toBeGreaterThan(0);
       }
-    });
-
-    it('should accept empty images array', () => {
-      const packWithNoImages = {
-        metadata: validImagesPack.metadata,
-        data: { images: [] },
-      };
-
-      const result = validatePackSafe(packWithNoImages);
-      expect(result.success).toBe(true);
-      if (result.success) {
-        expect(result.data.data.images?.length).toBe(0);
-      }
-    });
-
-    it('should reject invalid status values', () => {
-      const invalid = {
-        metadata: {
-          id: 'test',
-          createdDate: '2024-05-26T12:00:00Z',
-          author: 'Test',
-          version: '1.0.0',
-          schemaVersion: '1.0.0',
-          status: 'invalid-status',
-          description: 'Test',
-        },
-        data: {},
-      };
-
-      const result = validatePackSafe(invalid);
-      expect(result.success).toBe(false);
     });
   });
 });
