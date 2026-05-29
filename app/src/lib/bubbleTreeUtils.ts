@@ -1,7 +1,9 @@
-import type { Species, Symbiosis } from '../types';
+import type { Species, Symbiosis, SymbiosisStrength } from '../types';
 import {
   getFormColor as designGetFormColor,
   getRelationshipColor as designGetRelationshipColor,
+  RELATIONSHIP_COLORS_CRITICAL,
+  RELATIONSHIP_COLORS_IMPORTANT,
 } from './designTokens';
 
 // ============================================================================
@@ -26,7 +28,7 @@ export interface SpeciesEdge {
   source: string;
   target: string;
   type: string;
-  obligate: boolean;
+  strength: SymbiosisStrength;
   direction?: 'inward' | 'outward'; // for directional relationships
 }
 
@@ -50,10 +52,32 @@ export function getNodeSizeByDepth(depth: number): number {
 }
 
 /**
- * Get stroke width (px) for link based on obligate status.
+ * Get stroke width (px) for link based on relationship strength.
  */
-export function getLinkStrokeWidth(obligate: boolean): number {
-  return obligate ? 3 : 1.5;
+export function getLinkStrokeWidth(strength: SymbiosisStrength): number {
+  if (strength === 'critical') return 3;
+  if (strength === 'important') return 2;
+  return 1.5; // incidental
+}
+
+/**
+ * Get opacity for link based on relationship strength.
+ * Critical relationships are most opaque, incidental are faint.
+ */
+export function getLinkOpacityByStrength(strength: SymbiosisStrength): number {
+  if (strength === 'critical') return 0.9;
+  if (strength === 'important') return 0.75;
+  return 0.5; // incidental
+}
+
+/**
+ * Get link color based on relationship type and strength.
+ * Critical and important use saturated color palettes; incidental keeps the pastel base.
+ */
+export function getLinkColorByStrength(type: string, strength: SymbiosisStrength): string {
+  if (strength === 'critical') return RELATIONSHIP_COLORS_CRITICAL[type] ?? getRelationshipColor(type);
+  if (strength === 'important') return RELATIONSHIP_COLORS_IMPORTANT[type] ?? getRelationshipColor(type);
+  return getRelationshipColor(type); // incidental: pastel
 }
 
 /**
@@ -168,7 +192,7 @@ export function transformToNodesEdges(
             source: currentId,
             target: otherId,
             type: symbiosis.type,
-            obligate: symbiosis.obligate ?? false,
+            strength: symbiosis.strength,
             direction: linkDirection,
           });
 

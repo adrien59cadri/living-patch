@@ -1,4 +1,4 @@
-import type { Species, Symbiosis, Relation } from '../types';
+import type { Species, Symbiosis, Relation, SymbiosisStrength } from '../types';
 import { formLabel, formIcon } from './labels';
 import {
   BIRD_FORMS,
@@ -14,7 +14,8 @@ export interface RelatedEntry {
   symbiosis?: Symbiosis;
   relation?: Relation;
   role: SymbiosisRole;
-  obligate: boolean;
+  strength: SymbiosisStrength;
+  grp?: string | null;
   notes: string;
   isImpacted: boolean;
   isGroup?: boolean;
@@ -44,7 +45,8 @@ export function getRelatedEntries(
       species: partner,
       symbiosis: sym,
       role: sym.type,
-      obligate: sym.obligate ?? false,
+      strength: sym.strength,
+      grp: sym.grp ?? null,
       notes: sym.notes,
       isImpacted,
       isGroup: groupIds.has(partnerId),
@@ -60,7 +62,8 @@ export function getRelatedEntries(
         species: partner,
         relation: rel,
         role: 'related',
-        obligate: false,
+        strength: 'incidental',
+        grp: null,
         notes: rel.notes,
         isImpacted: false,
         isGroup: groupIds.has(memberId),
@@ -70,6 +73,12 @@ export function getRelatedEntries(
 
   return entries;
 }
+
+const STRENGTH_ORDER: Record<SymbiosisStrength, number> = {
+  critical: 0,
+  important: 1,
+  incidental: 2,
+};
 
 export type GroupedRelations = Record<SymbiosisRole, RelatedEntry[]>;
 
@@ -94,12 +103,12 @@ export function groupByRole(entries: RelatedEntry[]): GroupedRelations {
     groups[entry.role].push(entry);
   }
   for (const role of Object.keys(groups)) {
-    // Sort by: isImpacted (true first), then obligate (true first)
+    // Sort by: isImpacted (true first), then strength (critical < important < incidental)
     groups[role].sort((a, b) => {
       if (a.isImpacted !== b.isImpacted) {
         return Number(b.isImpacted) - Number(a.isImpacted);
       }
-      return Number(b.obligate) - Number(a.obligate);
+      return STRENGTH_ORDER[a.strength] - STRENGTH_ORDER[b.strength];
     });
   }
   return groups;
@@ -152,7 +161,7 @@ export function getCategoryGroups(entries: RelatedEntry[]): NeighborCategory[] {
 }
 
 export function getKeyRelationship(entries: RelatedEntry[]): RelatedEntry | null {
-  return entries.find(e => e.obligate) ?? null;
+  return entries.find(e => e.strength === 'critical') ?? null;
 }
 
 // ─── Key relationship grouping ──────────────────────────────────────────────
@@ -178,7 +187,7 @@ export function groupKeyRolesByObligation(
   }
 
   for (const role of KEY_ROLES) {
-    groups[role].sort((a, b) => Number(b.obligate) - Number(a.obligate));
+    groups[role].sort((a, b) => STRENGTH_ORDER[a.strength] - STRENGTH_ORDER[b.strength]);
   }
 
   return groups;
@@ -249,7 +258,8 @@ export function getSymbiotes(
       species: partner,
       symbiosis: sym,
       role: sym.type,
-      obligate: sym.obligate ?? false,
+      strength: sym.strength,
+      grp: sym.grp ?? null,
       notes: sym.notes,
       isImpacted,
     });
@@ -349,4 +359,85 @@ export function getHabitatNeighborsByCategory(neighbors: Species[]): HabitatNeig
   }
 
   return categories;
+}
+
+// ─── Relation group resolution ───────────────────────────────────────────────
+
+export interface RelationGroupEntry {
+  isRelationGroup: true;
+  groupSlug: string;
+  entries: RelatedEntry[];
+  strength: SymbiosisStrength;
+  role: SymbiosisRole;
+}
+
+export type RenderableEntry = RelatedEntry | RelationGroupEntry;
+
+/**
+ * Resolves a list of RelatedEntry (within a single role/type section) into
+ * RenderableEntry[]: entries sharing a grp slug are collapsed into one
+ * RelationGroupEntry tile; ungrouped entries pass through as-is.
+ *
+ * Validation:
+ * - Mixed strength within a group → warn, use lowest (most permissive)
+ * - Mixed type within a group → warn, disable grouping for that slug
+ */
+export function resolveRelationGroups(entries: RelatedEntry[]): RenderableEntry[] {
+  const grouped = new Map<string, RelatedEntry[]>();
+  const ungrouped: RelatedEntry[] = [];
+
+  for (const entry of entries) {
+    if (entry.grp) {
+      const list = grouped.get(entry.grp) ?? [];
+      list.push(entry);
+      grouped.set(entry.grp, list);
+    } else {
+      ungrouped.push(entry);
+    }
+  }
+
+  const result: RenderableEntry[] = [...ungrouped];
+
+  for (const [slug, groupEntries] of grouped) {
+    // Validate: mixed type → disable grouping
+    const types = new Set(groupEntries.map(e => e.role));
+    if (types.size > 1) {
+      if (import.meta.env.DEV) {
+        console.warn(`[symbiosis] grp "${slug}" spans multiple types — grouping disabled for this group`);
+      }
+      result.push(...groupEntries);
+      continue;
+    }
+
+    // Validate: mixed strength → warn, use lowest
+    const strengths = groupEntries.map(e => e.strength);
+    const uniqueStrengths = new Set(strengths);
+    let resolvedStrength: SymbiosisStrength = groupEntries[0]?.strength ?? 'incidental';
+    if (uniqueStrengths.size > 1) {
+      if (import.meta.env.DEV) {
+        console.warn(`[symbiosis] grp "${slug}" has mixed strength values — using lowest`);
+      }
+      const lowestOrder = Math.max(...strengths.map(s => STRENGTH_ORDER[s]));
+      resolvedStrength = (Object.keys(STRENGTH_ORDER) as SymbiosisStrength[]).find(
+        k => STRENGTH_ORDER[k] === lowestOrder
+      ) ?? 'incidental';
+    }
+
+    result.push({
+      isRelationGroup: true,
+      groupSlug: slug,
+      entries: groupEntries,
+      strength: resolvedStrength,
+      role: groupEntries[0]?.role ?? 'mutualism',
+    });
+  }
+
+  // Re-sort: groups by their resolved strength alongside individual entries
+  result.sort((a, b) => {
+    const aStrength = 'isRelationGroup' in a ? a.strength : a.strength;
+    const bStrength = 'isRelationGroup' in b ? b.strength : b.strength;
+    return STRENGTH_ORDER[aStrength] - STRENGTH_ORDER[bStrength];
+  });
+
+  return result;
 }

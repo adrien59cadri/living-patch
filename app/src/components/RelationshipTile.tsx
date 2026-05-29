@@ -1,14 +1,15 @@
 import { Link } from 'react-router-dom';
 import type { Species } from '../types';
+import type { SymbiosisStrength } from '../types';
 
 interface Props {
   species: Species;
-  obligate: boolean;
+  strength: SymbiosisStrength;
   notes: string;
   isGroup?: boolean;
 }
 
-export function RelationshipTile({ species, obligate, notes, isGroup = false }: Props) {
+export function RelationshipTile({ species, strength, notes, isGroup = false }: Props) {
   const inner = (
     <div
       className={[
@@ -16,7 +17,7 @@ export function RelationshipTile({ species, obligate, notes, isGroup = false }: 
         isGroup
           ? 'bg-stone-50 border-stone-200 text-stone-500 cursor-default'
           : 'bg-white border-stone-200 hover:border-emerald-300 hover:shadow-sm cursor-pointer',
-        obligate ? 'border-l-2 border-l-amber-400' : '',
+        strength === 'critical' ? 'border-l-2 border-l-amber-400' : '',
       ].join(' ')}
       title={notes}
     >
@@ -24,9 +25,14 @@ export function RelationshipTile({ species, obligate, notes, isGroup = false }: 
         <span className="text-sm font-medium text-stone-800 leading-tight">
           {species.common_name}
         </span>
-        {obligate && (
+        {strength === 'critical' && (
           <span className="text-xs bg-amber-100 text-amber-700 px-1.5 py-0.5 rounded font-medium leading-tight">
-            Obligate
+            Critical
+          </span>
+        )}
+        {strength === 'important' && (
+          <span className="text-xs bg-indigo-100 text-indigo-700 px-1.5 py-0.5 rounded font-medium leading-tight">
+            Important
           </span>
         )}
       </div>

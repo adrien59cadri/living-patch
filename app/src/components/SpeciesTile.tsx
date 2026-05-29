@@ -58,9 +58,14 @@ export function SpeciesTile({ species, related, isGroup }: Props) {
             </span>
           )}
           {species.is_keystone && <KeystoneBadge type={species.keystone_type} />}
-          {related?.obligate && (
+          {related?.strength === 'critical' && (
             <span className="text-xs bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded font-medium">
-              Obligate
+              Critical
+            </span>
+          )}
+          {related?.strength === 'important' && (
+            <span className="text-xs bg-indigo-100 text-indigo-700 px-2 py-0.5 rounded font-medium">
+              Important
             </span>
           )}
           {related?.isImpacted && (

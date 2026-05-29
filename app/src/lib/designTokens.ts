@@ -30,6 +30,24 @@ export const RELATIONSHIP_COLORS: Record<string, string> = {
   commensalism: '#87CEEB',   // pastel blue
 };
 
+// Saturated relationship colors for critical strength (full intensity)
+export const RELATIONSHIP_COLORS_CRITICAL: Record<string, string> = {
+  mutualism: '#3a9e1a',      // deep green
+  predation: '#cc1111',      // deep red
+  parasitism: '#cc6600',     // deep orange
+  competition: '#555555',    // dark gray
+  commensalism: '#0077bb',   // deep blue
+};
+
+// Medium-saturation relationship colors for important strength
+export const RELATIONSHIP_COLORS_IMPORTANT: Record<string, string> = {
+  mutualism: '#6dc040',      // medium green
+  predation: '#e03333',      // medium red
+  parasitism: '#e08800',     // medium amber
+  competition: '#999999',    // medium gray
+  commensalism: '#2299dd',   // medium blue
+};
+
 // ============================================================================
 // FORM ICONS - Emoji representation for each form type
 // ============================================================================

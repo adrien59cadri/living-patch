@@ -7,6 +7,9 @@ import {
   getFormColor,
   getNodeSizeByDepth,
   getNodeOpacityByDepth,
+  getLinkStrokeWidth,
+  getLinkOpacityByStrength,
+  getLinkColorByStrength,
   getRelationshipColor,
   type SpeciesNode,
 } from '../lib/bubbleTreeUtils';
@@ -81,7 +84,7 @@ const sortNodesByFormThenWidth = (nodes: SpeciesNode[]): SpeciesNode[] => {
  * - Depth-2/3 species radiating out (25px, 50% opacity)
  * - All nodes colored by form (bird, plant, insect, mammal, etc.)
  * - Links styled by type (arrows for predation/parasitism, colors by relationship type)
- * - Link stroke weight indicates obligate (3px) vs non-obligate (1.5px)
+ * - Link stroke weight indicates critical (3px) / important (2px) / incidental (1.5px)
  * - Zoom/pan available only when maxDepth=3 (full diagram page)
  *
  * Positioning: Depth-1 nodes use weighted sector allocation based on label width.
@@ -299,20 +302,15 @@ export const RelationshipBubbleTree: React.FC<RelationshipBubbleTreeProps> = ({
         .attr('y1', (d: any) => linkEndpointMap.get(d)?.y1 ?? 0)
         .attr('x2', (d: any) => linkEndpointMap.get(d)?.x2 ?? 0)
         .attr('y2', (d: any) => linkEndpointMap.get(d)?.y2 ?? 0)
-        .attr('stroke', (d: any) => {
-          if (['predation', 'parasitism'].includes(d.type)) {
-            return getRelationshipColor(d.type);
-          }
-          return getRelationshipColor(d.type);
-        })
-        .attr('stroke-width', 1.5)
+        .attr('stroke', (d: any) => getLinkColorByStrength(d.type, d.strength))
+        .attr('stroke-width', (d: any) => getLinkStrokeWidth(d.strength))
         .attr('stroke-linecap', 'round')
         .attr('marker-end', (d: any) => {
           if (d.type === 'predation') return 'url(#arrowPredation)';
           if (d.type === 'parasitism') return 'url(#arrowParasitism)';
           return 'none';
         })
-        .attr('opacity', 0.7);
+        .attr('opacity', (d: any) => getLinkOpacityByStrength(d.strength));
 
       // ===== RENDER NODES =====
       const nodeGroup = mainGroup.append('g').attr('class', 'nodes');
@@ -436,7 +434,7 @@ export const RelationshipBubbleTree: React.FC<RelationshipBubbleTreeProps> = ({
 
       const legendGroup = svg.append('g').attr('class', 'legend');
       const legendX = 10;
-      const legendY = dimensions.height - 50;
+      const legendY = dimensions.height - 65;
 
       // Helper to render legend section with items and dynamic spacing
       const renderLegendSection = (
@@ -517,6 +515,76 @@ export const RelationshipBubbleTree: React.FC<RelationshipBubbleTreeProps> = ({
         { label: 'relation: ', items: relationshipColors, y: legendY + 15, isCircle: false },
         legendX
       );
+
+      // Render strength legend (line 3)
+      let strengthX = legendX;
+      legendGroup
+        .append('text')
+        .attr('x', strengthX)
+        .attr('y', legendY + 30)
+        .attr('font-size', '11px')
+        .attr('font-weight', 'bold')
+        .text('strength: ');
+
+      strengthX += 'strength: '.length * 6 + 5;
+
+      // Critical (thick, opaque)
+      legendGroup
+        .append('line')
+        .attr('x1', strengthX)
+        .attr('y1', legendY + 30 - 3)
+        .attr('x2', strengthX + 10)
+        .attr('y2', legendY + 30 - 3)
+        .attr('stroke', '#999999')
+        .attr('stroke-width', 3)
+        .attr('opacity', 0.9);
+
+      legendGroup
+        .append('text')
+        .attr('x', strengthX + 15)
+        .attr('y', legendY + 30)
+        .attr('font-size', '10px')
+        .text('critical');
+
+      strengthX += 10 + 5 + 'critical'.length * 5.5 + 8;
+
+      // Important (medium)
+      legendGroup
+        .append('line')
+        .attr('x1', strengthX)
+        .attr('y1', legendY + 30 - 3)
+        .attr('x2', strengthX + 10)
+        .attr('y2', legendY + 30 - 3)
+        .attr('stroke', '#999999')
+        .attr('stroke-width', 2)
+        .attr('opacity', 0.7);
+
+      legendGroup
+        .append('text')
+        .attr('x', strengthX + 15)
+        .attr('y', legendY + 30)
+        .attr('font-size', '10px')
+        .text('important');
+
+      strengthX += 10 + 5 + 'important'.length * 5.5 + 8;
+
+      // Incidental (thin, faint)
+      legendGroup
+        .append('line')
+        .attr('x1', strengthX)
+        .attr('y1', legendY + 30 - 3)
+        .attr('x2', strengthX + 10)
+        .attr('y2', legendY + 30 - 3)
+        .attr('stroke', '#999999')
+        .attr('stroke-width', 1.5)
+        .attr('opacity', 0.4);
+
+      legendGroup
+        .append('text')
+        .attr('x', strengthX + 15)
+        .attr('y', legendY + 30)
+        .attr('font-size', '10px')
+        .text('incidental');
 
       // ===== ZOOM/PAN (only for maxDepth=3) =====
       if (maxDepth === 3) {

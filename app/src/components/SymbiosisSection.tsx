@@ -100,7 +100,7 @@ export default function SymbiosisSection({
                         {relationships.map((rel, idx) => (
                           <div key={idx} className="text-xs text-stone-500">
                             {rel.members.map((m) => speciesById.get(m)?.common_name).join(' ↔ ')}
-                            {rel.obligate && ' (obligate)'}
+                            {rel.strength !== 'incidental' ? ` (${rel.strength})` : ''}
                           </div>
                         ))}
                       </div>

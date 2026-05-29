@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import type { RelatedEntry, SymbiosisRole } from '../lib/relationships';
-import { groupByRole } from '../lib/relationships';
+import { groupByRole, resolveRelationGroups } from '../lib/relationships';
 import { SpeciesTile } from './SpeciesTile';
+import { RelationGroupTile } from './RelationGroupTile';
 import { symbiosisLabel } from '../lib/labels';
 
 interface Props {
@@ -13,7 +14,7 @@ const KEY_ROLES: SymbiosisRole[] = ['mutualism', 'parasitism', 'predation'];
 
 export function KeyRelationshipsSection({ related }: Props) {
   const groups = groupByRole(related);
-  const [expandedRole, setExpandedRole] = useState<SymbiosisRole | null>(null);
+  const [expandedRole, setExpandedRole] = useState<SymbiosisRole | null>(KEY_ROLES[0] ?? null);
 
   const keyRelations = KEY_ROLES.map(role => ({
     role,
@@ -32,9 +33,10 @@ export function KeyRelationshipsSection({ related }: Props) {
       <div className="space-y-4">
         {keyRelations.map(({ role, entries }) => {
           const isExpanded = expandedRole === role;
-          const firstTwo = entries.slice(0, 2);
-          const remainingCount = Math.max(0, entries.length - 2);
-          const obligateCount = entries.filter(e => e.obligate).length;
+          const resolved = resolveRelationGroups(entries);
+          const firstTwo = resolved.slice(0, 2);
+          const remainingCount = Math.max(0, resolved.length - 2);
+          const criticalCount = entries.filter(e => e.strength === 'critical').length;
           const impactedCount = entries.filter(e => e.isImpacted).length;
 
           return (
@@ -48,9 +50,9 @@ export function KeyRelationshipsSection({ related }: Props) {
                     <div className="text-xs font-semibold text-stone-500">
                       {symbiosisLabel(role)}: {entries.length} {entries.length === 1 ? 'species' : 'species'}
                     </div>
-                    {obligateCount > 0 && (
+                    {criticalCount > 0 && (
                       <span className="text-xs bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded font-medium">
-                        Obligate
+                        Critical
                       </span>
                     )}
                     {impactedCount > 0 && (
@@ -60,18 +62,29 @@ export function KeyRelationshipsSection({ related }: Props) {
                     )}
                   </div>
                   <div className="text-sm text-stone-700 mt-1">
-                    {firstTwo.map((entry, idx) => (
-                      <span key={entry.species.id}>
-                        <Link
-                          to={`/species/${entry.species.id}`}
-                          onClick={(e) => e.stopPropagation()}
-                          className="text-emerald-600 hover:text-emerald-700 underline"
-                        >
-                          {entry.species.common_name}
-                        </Link>
-                        {idx < firstTwo.length - 1 && <span>, </span>}
-                      </span>
-                    ))}
+                    {firstTwo.map((item, idx) => {
+                      const name = 'isRelationGroup' in item
+                        ? item.entries.slice(0, 2).map(e => e.species.common_name).join(', ') +
+                          (item.entries.length > 2 ? ` (+${item.entries.length - 2})` : '')
+                        : item.species.common_name;
+                      const linkTo = 'isRelationGroup' in item ? null : `/species/${item.species.id}`;
+                      return (
+                        <span key={idx}>
+                          {linkTo ? (
+                            <Link
+                              to={linkTo}
+                              onClick={(e) => e.stopPropagation()}
+                              className="text-emerald-600 hover:text-emerald-700 underline"
+                            >
+                              {name}
+                            </Link>
+                          ) : (
+                            <span className="text-emerald-600">{name}</span>
+                          )}
+                          {idx < firstTwo.length - 1 && <span>, </span>}
+                        </span>
+                      );
+                    })}
                     {remainingCount > 0 && (
                       <span className="text-stone-500">…</span>
                     )}
@@ -86,9 +99,13 @@ export function KeyRelationshipsSection({ related }: Props) {
               </div>
               {isExpanded && (
                 <div className="mt-3 space-y-2">
-                  {entries.map((entry, idx) => (
-                    <SpeciesTile key={`${role}-${idx}`} species={entry.species} related={entry} />
-                  ))}
+                  {resolved.map((item, idx) =>
+                    'isRelationGroup' in item ? (
+                      <RelationGroupTile key={`${role}-grp-${item.groupSlug}`} groupEntry={item} />
+                    ) : (
+                      <SpeciesTile key={`${role}-${idx}`} species={item.species} related={item} />
+                    )
+                  )}
                 </div>
               )}
             </div>
