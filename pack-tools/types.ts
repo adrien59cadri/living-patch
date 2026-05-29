@@ -57,14 +57,18 @@ export interface Species {
   };
 }
 
+export type SymbiosisStrength = 'critical' | 'important' | 'incidental';
+
 export interface Symbiosis {
   type: 'mutualism' | 'parasitism' | 'predation' | 'competition' | 'commensalism';
   /** Array of species IDs involved in this relationship */
   members: string[];
   /** Optional: specific species impacted by this relationship */
   impacted_species?: string | null;
-  /** Whether the relationship is obligate (required for survival) */
-  obligate?: boolean;
+  /** Ecological importance of this relationship */
+  strength: SymbiosisStrength;
+  /** Optional group slug linking multiple pair-wise entries into one logical relationship */
+  grp?: string | null;
   /** Notes explaining the relationship */
   notes: string;
 }
@@ -85,8 +89,6 @@ export interface PackData {
   symbiosis?: Symbiosis[];
   /** Array of general relations */
   relations?: Relation[];
-  /** Array of species images (Wikimedia Commons) */
-  images?: ImageEntry[];
 }
 
 export interface Pack {
@@ -127,11 +129,4 @@ export interface ConflictReport {
   }>;
 }
 
-export interface ImageEntry {
-  /** Species ID this image is for */
-  speciesId: string;
-  /** URL to the image on Wikimedia Commons */
-  url: string;
-  /** Author/creator of the image */
-  author: string;
-}
+

@@ -29,11 +29,14 @@ export interface Species {
   };
 }
 
+export type SymbiosisStrength = 'critical' | 'important' | 'incidental';
+
 export interface Symbiosis {
   type: string;
   members: string[];
   impacted_species?: string;
-  obligate?: boolean;
+  strength: SymbiosisStrength;
+  grp?: string | null;
   notes: string;
 }
 
@@ -64,7 +67,6 @@ export interface DiagramLink {
   source: string;
   target: string;
   relationshipType: string;
-  obligate?: boolean;
   directional?: boolean;
 }
 

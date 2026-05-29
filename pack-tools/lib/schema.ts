@@ -69,7 +69,8 @@ export const SymbiosisSchema = z.object({
   type: z.string().min(1),
   members: z.array(z.string()).min(2, 'Symbiosis must have at least 2 members'),
   impacted_species: z.string().optional().nullable(),
-  obligate: z.boolean().optional(),
+  strength: z.enum(['critical', 'important', 'incidental']),
+  grp: z.string().nullable().optional(),
   notes: z.string().min(1),
 });
 
@@ -77,12 +78,6 @@ export const RelationSchema = z.object({
   type: z.string().min(1),
   members: z.array(z.string()).min(2, 'Relation must have at least 2 members'),
   notes: z.string().min(1),
-});
-
-export const ImageEntrySchema = z.object({
-  speciesId: z.string().min(1),
-  url: z.string().url('URL must be a valid URI'),
-  author: z.string().min(1),
 });
 
 export const PackMetadataSchema = z.object({
@@ -107,7 +102,6 @@ export const PackDataSchema = z.object({
   taxonomic_groups: z.array(TaxonomicGroupSchema).optional(),
   symbiosis: z.array(SymbiosisSchema).optional(),
   relations: z.array(RelationSchema).optional(),
-  images: z.array(ImageEntrySchema).optional(),
 });
 
 export const PackSchema = z.object({
@@ -141,7 +135,6 @@ export const validateImagesPackSafe = validatePackSafe;
 export type Pack = z.infer<typeof PackSchema>;
 export type DataPack = Pack;
 export type ImagesPack = Pack;
-export type ImageEntry = z.infer<typeof ImageEntrySchema>;
 export type Species = z.infer<typeof SpeciesSchema>;
 export type Symbiosis = z.infer<typeof SymbiosisSchema>;
 export type Relation = z.infer<typeof RelationSchema>;

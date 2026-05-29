@@ -82,13 +82,6 @@
           "items": {
             "$ref": "#/definitions/Relation"
           }
-        },
-        "images": {
-          "type": "array",
-          "description": "Array of species images (Wikimedia Commons)",
-          "items": {
-            "$ref": "#/definitions/ImageEntry"
-          }
         }
       },
       "additionalProperties": false
@@ -232,7 +225,7 @@
     "Symbiosis": {
       "type": "object",
       "description": "Symbiotic relationship between species",
-      "required": ["type", "members", "notes"],
+      "required": ["type", "members", "strength", "notes"],
       "properties": {
         "type": {
           "type": "string",
@@ -250,9 +243,14 @@
           "type": ["string", "null"],
           "description": "Optional: specific species impacted by this relationship"
         },
-        "obligate": {
-          "type": "boolean",
-          "description": "Whether the relationship is obligate (required for survival)"
+        "strength": {
+          "type": "string",
+          "enum": ["critical", "important", "incidental"],
+          "description": "Ecological importance: critical (obligate), important (strong), incidental (opportunistic)"
+        },
+        "grp": {
+          "type": ["string", "null"],
+          "description": "Optional group slug linking multiple pair-wise entries into one logical relationship"
         },
         "notes": {
           "type": "string",
@@ -280,29 +278,6 @@
         },
         "notes": {
           "type": "string",
-          "minLength": 1
-        }
-      },
-      "additionalProperties": false
-    },
-    "ImageEntry": {
-      "type": "object",
-      "description": "Species image from Wikimedia Commons",
-      "required": ["speciesId", "url", "author"],
-      "properties": {
-        "speciesId": {
-          "type": "string",
-          "description": "ID of the species this image belongs to",
-          "minLength": 1
-        },
-        "url": {
-          "type": "string",
-          "description": "Wikimedia Commons image URL",
-          "format": "uri"
-        },
-        "author": {
-          "type": "string",
-          "description": "Photographer or creator attribution",
           "minLength": 1
         }
       },
