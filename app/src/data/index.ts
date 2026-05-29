@@ -67,3 +67,33 @@ for (const rel of relations) {
     relationsBySpeciesId.set(memberId, existing);
   }
 }
+
+if (import.meta.env.DEV) {
+  const grpStrengths = new Map<string, string>();
+  const grpTypes = new Map<string, string>();
+  for (const sym of symbiosis) {
+    const [a, b] = sym.members;
+    if (!sym.strength) {
+      console.warn(`[symbiosis] missing strength on entry between ${a} and ${b}`);
+    }
+    for (const memberId of sym.members) {
+      if (!speciesById.has(memberId)) {
+        console.warn(`[symbiosis] unknown species id "${memberId}"`);
+      }
+    }
+    if (sym.grp) {
+      const prevStrength = grpStrengths.get(sym.grp);
+      if (prevStrength && prevStrength !== sym.strength) {
+        console.warn(`[symbiosis] grp "${sym.grp}" has mixed strength values — using lowest`);
+      } else {
+        grpStrengths.set(sym.grp, sym.strength);
+      }
+      const prevType = grpTypes.get(sym.grp);
+      if (prevType && prevType !== sym.type) {
+        console.warn(`[symbiosis] grp "${sym.grp}" spans multiple types — grouping disabled for this group`);
+      } else {
+        grpTypes.set(sym.grp, sym.type);
+      }
+    }
+  }
+}
