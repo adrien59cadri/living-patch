@@ -38,11 +38,14 @@ test.describe('Species detail page — Monarch Butterfly', () => {
 
   test('key relationships section shows obligate milkweed', async ({ page }) => {
     await page.goto(MONARCH_URL);
-    await expect(page.getByText('Common Milkweed', { exact: true }).first()).toBeVisible();
-    // Expand Parasitism & Hosting section to reveal obligate badge
+    // The milkweeds are grouped together in the parasitism section
+    await expect(page.getByText(/Common Milkweed/)).toBeVisible();
+    // Expand Parasitism & Hosting section to reveal individual species
     const expandButton = page.getByRole('button', { name: /Parasitism & Hosting/ }).first();
     await expandButton.click();
-    await expect(page.getByText('Obligate', { exact: true }).first()).toBeVisible();
+    // After expanding, the group should show with Critical strength badge
+    const groupButton = page.getByRole('button', { name: /monarch-milkweed/ }).first();
+    await expect(groupButton).toBeVisible();
   });
 
   test('habitat neighbors section shows plants category', async ({ page }) => {

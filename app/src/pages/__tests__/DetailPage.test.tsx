@@ -47,17 +47,17 @@ describe('DetailPage', () => {
     expect(screen.getByText('Egg')).toBeInTheDocument();
   });
 
-  test('renders key relationships for monarch (has obligate symbiosis)', async () => {
+  test('renders key relationships for monarch (has critical symbiosis)', async () => {
     renderDetailPage('insect_monarch-butterfly');
     expect(screen.getByText('Key Relationships')).toBeInTheDocument();
-    // Expand one of the relationship sections to see the obligate badge
+    // Expand one of the relationship sections to see the critical badge
     const expandButtons = screen.getAllByRole('button').filter(btn => 
       btn.textContent?.includes('Parasitism')
     );
     if (expandButtons.length > 0) {
       await userEvent.click(expandButtons[0]);
     }
-    expect(screen.getAllByText('Obligate').length).toBeGreaterThan(0);
+    expect(screen.getAllByText('Critical').length).toBeGreaterThan(0);
   });
 
   test('renders habitat neighbors for monarch', () => {

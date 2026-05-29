@@ -57,14 +57,14 @@ const createMockSymbioses = (): Map<string, Symbiosis[]> => {
     {
       type: 'mutualism',
       members: ['bird_focal', 'plant_partner'],
-      obligate: false,
+      strength: 'incidental',
       notes: 'Mock mutualism',
     },
     {
       type: 'predation',
       members: ['bird_focal', 'mammal_prey'],
       impacted_species: 'mammal_prey',
-      obligate: false,
+      strength: 'incidental',
       notes: 'Mock predation',
     },
   ];

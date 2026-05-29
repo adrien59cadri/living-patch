@@ -99,14 +99,14 @@ export const mockObligateSymbiosis: Symbiosis = {
   type: 'parasitism',
   members: ['insect_monarch-butterfly', 'plant_common-milkweed'],
   impacted_species: 'insect_monarch-butterfly',
-  obligate: true,
+  strength: 'critical',
   notes: 'Monarch caterpillars obligate on Asclepias syriaca.',
 };
 
 export const mockMutualismSymbiosis: Symbiosis = {
   type: 'mutualism',
   members: ['insect_monarch-butterfly', 'bird_american-robin'],
-  obligate: false,
+  strength: 'incidental',
   notes: 'Robin and Monarch share meadow habitat.',
 };
 
@@ -116,7 +116,7 @@ export const mockObligateEntry: RelatedEntry = {
   species: mockPlantSpecies,
   symbiosis: mockObligateSymbiosis,
   role: 'parasitism',
-  obligate: true,
+  strength: 'critical',
   notes: mockObligateSymbiosis.notes,
   isImpacted: true,
 };
@@ -125,7 +125,7 @@ export const mockBirdEntry: RelatedEntry = {
   species: mockBirdSpecies,
   symbiosis: mockMutualismSymbiosis,
   role: 'mutualism',
-  obligate: false,
+  strength: 'incidental',
   notes: mockMutualismSymbiosis.notes,
   isImpacted: false,
 };
@@ -134,7 +134,7 @@ export const mockGroupEntry: RelatedEntry = {
   species: mockGroupSpecies,
   symbiosis: mockObligateSymbiosis,
   role: 'parasitism',
-  obligate: true,
+  strength: 'critical',
   notes: 'Group placeholder entry.',
   isImpacted: true,
 };

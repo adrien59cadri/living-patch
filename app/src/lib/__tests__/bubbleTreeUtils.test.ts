@@ -29,7 +29,7 @@ const createMockSymbiosis = (
 ): Symbiosis => ({
   type,
   members,
-  obligate: false,
+  strength: 'incidental' as const,
   notes: 'Test relationship',
   impacted_species: impactedSpecies,
 });
@@ -175,12 +175,16 @@ describe('bubbleTreeUtils - Nodes/Edges Model', () => {
   });
 
   describe('getLinkStrokeWidth', () => {
-    it('should return 3px for obligate relationships', () => {
-      expect(getLinkStrokeWidth(true)).toBe(3);
+    it('should return 3px for critical relationships', () => {
+      expect(getLinkStrokeWidth('critical')).toBe(3);
     });
 
-    it('should return 1.5px for non-obligate relationships', () => {
-      expect(getLinkStrokeWidth(false)).toBe(1.5);
+    it('should return 2px for important relationships', () => {
+      expect(getLinkStrokeWidth('important')).toBe(2);
+    });
+
+    it('should return 1.5px for incidental relationships', () => {
+      expect(getLinkStrokeWidth('incidental')).toBe(1.5);
     });
   });
 });

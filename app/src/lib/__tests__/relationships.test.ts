@@ -28,12 +28,12 @@ function makeSpecies(id: string, form: string, extra: Partial<Species> = {}): Sp
 function makeEntry(
   form: string,
   role: RelatedEntry['role'],
-  obligate = false
+  strength: RelatedEntry['strength'] = 'incidental'
 ): RelatedEntry {
   return {
     species: makeSpecies(`species_${form}`, form),
     role,
-    obligate,
+    strength,
     notes: '',
     isImpacted: false,
   };
@@ -42,21 +42,21 @@ function makeEntry(
 // ── getKeyRelationship ───────────────────────────────────────────────────────
 
 describe('getKeyRelationship', () => {
-  test('returns first obligate entry', () => {
+  test('returns first critical entry', () => {
     const entries: RelatedEntry[] = [
-      makeEntry('songbird', 'mutualism', false),
-      makeEntry('wildflower', 'parasitism', true),
-      makeEntry('tree', 'parasitism', true),
+      makeEntry('songbird', 'mutualism', 'incidental'),
+      makeEntry('wildflower', 'parasitism', 'critical'),
+      makeEntry('tree', 'parasitism', 'critical'),
     ];
     const result = getKeyRelationship(entries);
     expect(result).not.toBeNull();
     expect(result!.species.form).toBe('wildflower');
   });
 
-  test('returns null when no obligate entries', () => {
+  test('returns null when no critical entries', () => {
     const entries: RelatedEntry[] = [
-      makeEntry('songbird', 'mutualism', false),
-      makeEntry('tree', 'predation', false),
+      makeEntry('songbird', 'mutualism', 'incidental'),
+      makeEntry('tree', 'predation', 'important'),
     ];
     expect(getKeyRelationship(entries)).toBeNull();
   });
@@ -147,7 +147,7 @@ describe('getRelatedEntries', () => {
   const symbiosis: Symbiosis = {
     type: 'mutualism',
     members: ['species_a', 'species_b'],
-    obligate: false,
+    strength: 'incidental',
     notes: 'Mutualism AB',
   };
 
@@ -185,11 +185,11 @@ describe('getRelatedEntries', () => {
     expect(partnerIds).toContain('species_c');
   });
 
-  test('assigns obligate flag from symbiosis', () => {
-    const obligateSym: Symbiosis = { ...symbiosis, obligate: true };
-    const symMap = new Map([['species_a', [obligateSym]]]);
+  test('assigns strength from symbiosis', () => {
+    const criticalSym: Symbiosis = { ...symbiosis, strength: 'critical' };
+    const symMap = new Map([['species_a', [criticalSym]]]);
     const result = getRelatedEntries('species_a', symMap, new Map(), speciesById);
-    expect(result[0].obligate).toBe(true);
+    expect(result[0].strength).toBe('critical');
   });
 
   test('relation entries use role "related"', () => {
@@ -206,7 +206,7 @@ describe('getRelatedEntries', () => {
     const badSym: Symbiosis = {
       type: 'mutualism',
       members: ['species_a', 'nonexistent'],
-      obligate: false,
+      strength: 'incidental',
       notes: '',
     };
     const result = getRelatedEntries(

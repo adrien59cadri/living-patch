@@ -71,16 +71,16 @@ describe('SpeciesCard', () => {
     expect(screen.queryByText('LIFE STAGES')).not.toBeInTheDocument();
   });
 
-  test('renders KEY RELATIONSHIPS section when obligate entry exists', async () => {
+  test('renders KEY RELATIONSHIPS section when critical entry exists', async () => {
     renderCard(mockMonarch, [mockObligateEntry]);
     expect(screen.getByText('Key Relationships')).toBeInTheDocument();
     expect(screen.getByText('Common Milkweed')).toBeInTheDocument();
-    // Obligate badge is now visible in collapsed view
-    const obligateBadges = screen.getAllByText('Obligate');
-    expect(obligateBadges.length).toBeGreaterThan(0);
+    // Critical badge is now visible in collapsed view
+    const criticalBadges = screen.getAllByText('Critical');
+    expect(criticalBadges.length).toBeGreaterThan(0);
   });
 
-  test('omits KEY RELATIONSHIPS when no obligate entries', () => {
+  test('omits KEY RELATIONSHIPS when no critical entries', () => {
     renderCard(mockMonarch, [], [], [mockBirdEntry]);
     expect(screen.queryByText('KEY RELATIONSHIPS')).not.toBeInTheDocument();
   });
