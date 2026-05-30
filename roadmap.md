@@ -55,12 +55,15 @@ Enhance relation visualization in graphs:
 
 **Impact**: Makes ecological relationships more immediately understandable.
 
-### 7. Global Life List System
+### 7. Global Life List System ✅ Planned
 Create a comprehensive system to track species observations:
-- Allow users to maintain a personal or collaborative life list
-- Track sightings with location, date, and notes
+- Allow users to maintain a personal life list stored locally in the browser (localStorage)
+- Track sightings with date, location, and notes
+- Familiarity tiers: Noticed → Familiar → Know It Well → Steward
+- Calendar view of sightings, statistics and insights
 - Cross-reference with the living patch dataset
-- Generate statistics and insights from life list data
+
+**Implementation plan**: See [`LIFE-LIST-PLAN.md`](LIFE-LIST-PLAN.md) for full architecture, component breakdown, data model, and step-by-step implementation sequence.
 
 **Impact**: Adds engaging tracking features and personal connection to the data.
 
