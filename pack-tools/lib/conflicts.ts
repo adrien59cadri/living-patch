@@ -52,14 +52,14 @@ export function checkInternalConflicts(pack: DataPack): ConflictReport {
   // Check all symbiosis references exist
   if (pack.data.symbiosis) {
     for (const symbiosis of pack.data.symbiosis) {
-      for (const memberId of symbiosis.members) {
-        if (!allSpeciesIds.has(memberId)) {
+      for (const id of [symbiosis.source, ...symbiosis.targets]) {
+        if (!allSpeciesIds.has(id)) {
           conflicts.push({
             type: 'orphaned_reference',
             severity: 'error',
-            message: `Symbiosis references non-existent species: ${memberId}`,
+            message: `Symbiosis references non-existent species: ${id}`,
             packId: pack.metadata.id,
-            affectedIds: [memberId],
+            affectedIds: [id],
             location: `symbiosis[type=${symbiosis.type}]`,
           });
         }

@@ -146,7 +146,8 @@ describe('getRelatedEntries', () => {
 
   const symbiosis: Symbiosis = {
     type: 'mutualism',
-    members: ['species_a', 'species_b'],
+    source: 'species_a',
+    targets: ['species_b'],
     strength: 'incidental',
     notes: 'Mutualism AB',
   };
@@ -205,7 +206,8 @@ describe('getRelatedEntries', () => {
   test('skips entries for unknown partner ids', () => {
     const badSym: Symbiosis = {
       type: 'mutualism',
-      members: ['species_a', 'nonexistent'],
+      source: 'species_a',
+      targets: ['nonexistent'],
       strength: 'incidental',
       notes: '',
     };

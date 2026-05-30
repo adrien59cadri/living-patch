@@ -21,8 +21,8 @@ npm run dev        # Start dev server → http://localhost:5174/
 npm run build      # TypeScript check + Vite build → dist/
 npm run preview    # Serve dist/ locally → http://localhost:4173/
 npm run lint       # Run ESLint
-npm run test:run   # Run 60 unit tests (Vitest + React Testing Library)
-npm run test:e2e   # Run 13 E2E tests (Playwright, requires build)
+npm run test       # Run 121 unit tests (Vitest + React Testing Library)
+npm run test:e2e   # Run 21 E2E tests (Playwright)
 ```
 
 ## Features
@@ -34,26 +34,26 @@ npm run test:e2e   # Run 13 E2E tests (Playwright, requires build)
 🌍 **Neighbors Grid**: Category-based drill-down (Birds, Plants, Insects, Wildlife, Related)  
 📱 **Responsive**: Mobile-first design  
 ⚡ **Offline**: Zero network requests, fully local  
-✅ **Tested**: 60 unit tests + 13 E2E tests, GitHub Actions CI/CD  
+✅ **Tested**: 121 unit tests + 21 E2E tests, GitHub Actions CI/CD  
 
 ## What's Included
 
-- **~30 species** + 8 taxonomic groups
-- **~50 symbiosis entries** + taxonomic relations
+- **56 species** + 9 taxonomic groups
+- **66 symbiosis entries** + 3 general relations
 - **Full-text search** across name, description, all tags
 - **Multi-select filters** (form, season, habitat — combinable)
 - **Species detail page** with 8 sections:
   - Hero photo, name, tags, description, keystone callout, life stages
   - **Key Relationship** tile (pinned obligate symbiosis)
   - **Neighbors Grid** (category-based drill-down by type)
-  - Log Sighting button (Phase 1 placeholder, disabled)
-- **60 unit tests** (Vitest + React Testing Library)
-- **13 E2E tests** (Playwright, full user workflows)
+  - Log Sighting button (opens the Life List sighting workflow)
+- **121 unit tests** (Vitest + React Testing Library)
+- **21 E2E tests** (Playwright, full user workflows)
 - **GitHub Actions CI/CD** (lint → type-check → test → build → E2E → deploy to Pages)
 
 ## Data Packs System
 
-The app uses a **modular data pack system** where the dataset is split into separate, versionable JSON files located in [`pack-tools/packs/`](pack-tools/packs/). Each pack contains metadata (author, version, creation date) and a dataset of species, taxonomic groups, symbiosis relationships, and general relations.
+The app uses a **data pack system** with versioned JSON files in [`pack-tools/packs/`](pack-tools/packs/). The production dataset is currently consolidated into a single published pack: `0-base.json`.
 
 ### Pack Status
 
@@ -63,13 +63,11 @@ Each pack has a `status` field:
 
 ### Available Packs
 
-- **`0-base.json`** (published): Core LivingPatch dataset with NE Pennsylvania species and ecological relationships
-- **`example-new-species.json`** (draft): Template for adding new species
-- **`example-relationships-only.json`** (draft): Template for adding relationships only
+- **`0-base.json`** (published): Core LivingPatch dataset with NE Pennsylvania species, taxonomic groups, symbiosis relationships, and relations
 
 ### Creating and Contributing a Pack
 
-1. **Create** a new pack using the templates in [`pack-tools/packs/example-*.json`](pack-tools/packs/)
+1. **Create** a new pack JSON file in `pack-tools/packs/` (copying structure from `0-base.json` metadata/data layout)
 2. **Validate** your pack locally:
    ```bash
    npm run pack:validate packs/my-pack.json
@@ -184,17 +182,17 @@ e2e/
 
 ## Testing
 
-**Unit tests (60 passing):**
+**Unit tests (121 passing):**
 ```bash
-npm run test:run
+npm run test
 ```
 - `src/lib/__tests__/` — Relationship utilities, label formatting
 - `src/components/__tests__/` — SpeciesCard, all UI sections
 - `src/pages/__tests__/` — DetailPage, NeighborListView, navigation
 
-**E2E tests (13 passing):**
+**E2E tests (21 passing):**
 ```bash
-npm run build && npm run test:e2e
+npm run test:e2e
 ```
 - Species page render, keystone badge, latin name toggle
 - Life stages, key relationship, neighbors grid display

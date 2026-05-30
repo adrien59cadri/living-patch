@@ -100,29 +100,27 @@ export function darkenHexColor(hex: string, amount: number = 60): string {
 }
 
 /**
- * Determine link direction based on impacted_species and relationship type.
+ * Determine link direction based on relationship type and the symbiosis source.
  * - Predation/Parasitism: directional (arrow)
- *   - if impacted_species is the target → outward (source → target)
- *   - if impacted_species is the source → inward (target → source)
+ *   - if sym source is the edge source → outward (source → target)
+ *   - if sym source is the edge target → inward (target → source)
  * - Others: no arrow
  */
 function getLinkDirection(
-  sourceId: string,
-  targetId: string,
+  edgeSourceId: string,
+  edgeTargetId: string,
   type: string,
-  impactedSpeciesId?: string
+  symSourceId: string
 ): 'inward' | 'outward' | undefined {
-  if (!['predation', 'parasitism'].includes(type)) {
+  const typeBase = type.split('-')[0];
+  if (typeBase !== 'predation' && typeBase !== 'parasitism') {
     return undefined; // no direction for mutualism, competition, commensalism
   }
-  // For directional types, if impacted is target, direction is outward
-  if (impactedSpeciesId === targetId) {
+  // Direction is always sym.source → sym.targets
+  if (symSourceId === edgeSourceId) {
     return 'outward';
   }
-  if (impactedSpeciesId === sourceId) {
-    return 'inward';
-  }
-  return 'outward'; // default
+  return 'inward';
 }
 
 /**
@@ -173,19 +171,19 @@ export function transformToNodesEdges(
 
       for (const symbiosis of symbioses) {
         // Find the other species in this relationship
-        const otherIds = symbiosis.members.filter(id => id !== currentId);
+        const otherIds = symbiosis.source === currentId
+          ? symbiosis.targets
+          : [symbiosis.source];
 
         for (const otherId of otherIds) {
           const otherSpecies = speciesById.get(otherId);
           if (!otherSpecies) continue;
 
-          // Add link in both directions (symbiosis is bidirectional data-wise,
-          // but we'll use direction field to indicate arrow direction)
           const linkDirection = getLinkDirection(
             currentId,
             otherId,
             symbiosis.type,
-            symbiosis.impacted_species
+            symbiosis.source
           );
 
           links.push({

@@ -97,15 +97,16 @@ export const mockNoLifeStages: Species = {
 
 export const mockObligateSymbiosis: Symbiosis = {
   type: 'parasitism',
-  members: ['insect_monarch-butterfly', 'plant_common-milkweed'],
-  impacted_species: 'insect_monarch-butterfly',
+  source: 'insect_monarch-butterfly',
+  targets: ['plant_common-milkweed'],
   strength: 'critical',
   notes: 'Monarch caterpillars obligate on Asclepias syriaca.',
 };
 
 export const mockMutualismSymbiosis: Symbiosis = {
   type: 'mutualism',
-  members: ['insect_monarch-butterfly', 'bird_american-robin'],
+  source: 'insect_monarch-butterfly',
+  targets: ['bird_american-robin'],
   strength: 'incidental',
   notes: 'Robin and Monarch share meadow habitat.',
 };

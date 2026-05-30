@@ -8,7 +8,10 @@ interface Props {
 
 export function RelationGroupTile({ groupEntry }: Props) {
   const [expanded, setExpanded] = useState(false);
-  const { entries, strength, groupSlug } = groupEntry;
+  const { entries, strength, fulfillment, symbiosis } = groupEntry;
+  const groupKey = symbiosis.source;
+
+  const fulfillmentLabel = fulfillment === 'any' ? 'any of:' : fulfillment === 'all' ? 'all of:' : null;
 
   const displayNames = entries
     .slice(0, 2)
@@ -27,10 +30,13 @@ export function RelationGroupTile({ groupEntry }: Props) {
         onClick={() => setExpanded(v => !v)}
         className="w-full flex items-center gap-2 p-3 text-left hover:bg-stone-50 rounded-lg"
         aria-expanded={expanded}
-        aria-label={`${groupSlug} group — ${displayNames}${overflow}`}
+        aria-label={`${groupKey} group — ${displayNames}${overflow}`}
       >
         <span className="text-stone-400 text-xs" aria-hidden>⊞</span>
         <span className="flex-1 min-w-0 text-sm font-medium text-stone-800 truncate">
+          {fulfillmentLabel && (
+            <span className="text-stone-400 font-normal mr-1">{fulfillmentLabel}</span>
+          )}
           {displayNames}
           {overflow && <span className="text-stone-500 font-normal">{overflow}</span>}
         </span>
@@ -50,7 +56,7 @@ export function RelationGroupTile({ groupEntry }: Props) {
       {expanded && (
         <div className="px-3 pb-3 space-y-2">
           {entries.map((entry, idx) => (
-            <SpeciesTile key={`${groupSlug}-${idx}`} species={entry.species} related={entry} />
+            <SpeciesTile key={`${groupKey}-${idx}`} species={entry.species} related={entry} />
           ))}
         </div>
       )}

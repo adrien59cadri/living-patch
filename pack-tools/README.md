@@ -89,12 +89,18 @@ Optional fields:
 ```json
 {
   "type": "mutualism|parasitism|predation|competition|commensalism",
-  "members": ["species_id_1", "species_id_2"],
-  "impacted_species": "species_id_1",
-  "obligate": true,
+  "source": "species_id_actor",
+  "targets": ["species_id_partner_1", "species_id_partner_2"],
+  "fulfillment": "any|all",
+  "strength": "critical|important|incidental",
   "notes": "Description of the relationship"
 }
 ```
+
+Notes:
+- `source` is the actor/needing party (predator/parasite/focal species for authored relationship)
+- `targets` contains one or more partner species
+- `fulfillment` is optional and only meaningful for multi-target entries (`targets.length > 1`)
 
 ### Relation Schema
 

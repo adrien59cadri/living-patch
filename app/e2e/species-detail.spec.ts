@@ -53,11 +53,11 @@ test.describe('Species detail page — Monarch Butterfly', () => {
     await expect(page.getByText('Plants')).toBeVisible();
   });
 
-  test('Log Sighting button is present and disabled', async ({ page }) => {
+  test('Log Sighting button is present and enabled', async ({ page }) => {
     await page.goto(MONARCH_URL);
     const btn = page.getByRole('button', { name: /log sighting/i });
     await expect(btn).toBeVisible();
-    await expect(btn).toBeDisabled();
+    await expect(btn).toBeEnabled();
   });
 });
 

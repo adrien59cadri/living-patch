@@ -67,11 +67,25 @@ export const TaxonomicGroupSchema = z.object({
 
 export const SymbiosisSchema = z.object({
   type: z.string().min(1),
-  members: z.array(z.string()).min(2, 'Symbiosis must have at least 2 members'),
-  impacted_species: z.string().optional().nullable(),
+  source: z.string().min(1),
+  targets: z.array(z.string()).min(1, 'Symbiosis must have at least one target'),
+  fulfillment: z.enum(['any', 'all']).optional(),
   strength: z.enum(['critical', 'important', 'incidental']),
-  grp: z.string().nullable().optional(),
   notes: z.string().min(1),
+}).superRefine((val, ctx) => {
+  if (val.fulfillment !== undefined && val.targets.length === 1) {
+    ctx.addIssue({
+      code: z.ZodIssueCode.custom,
+      message: '[symbiosis] fulfillment set on single-target entry — ignored',
+      fatal: false,
+    });
+  }
+  if (val.targets.length === 0) {
+    ctx.addIssue({
+      code: z.ZodIssueCode.custom,
+      message: '[symbiosis] targets must contain at least one species id',
+    });
+  }
 });
 
 export const RelationSchema = z.object({

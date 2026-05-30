@@ -15,7 +15,7 @@ export interface RelatedEntry {
   relation?: Relation;
   role: SymbiosisRole;
   strength: SymbiosisStrength;
-  grp?: string | null;
+  fulfillment?: 'any' | 'all';
   notes: string;
   isImpacted: boolean;
   isGroup?: boolean;
@@ -31,26 +31,43 @@ export function getRelatedEntries(
   const groupIds = taxonomicGroupIds || new Set<string>();
   const entries: RelatedEntry[] = [];
 
+  const isDirectional = (type: string) =>
+    type === 'predation' || type === 'parasitism' || type.startsWith('predation-');
+
   for (const sym of symbiosisBySpeciesId.get(speciesId) ?? []) {
-    const partnerId = sym.members.find(id => id !== speciesId);
-    if (!partnerId) continue;
-    const partner = speciesById.get(partnerId);
-    if (!partner) continue;
-    
-    // Determine if current species is negatively impacted
-    const isImpacted = (sym.type === 'predation' || sym.type === 'parasitism') &&
-      sym.impacted_species === speciesId;
-    
-    entries.push({
-      species: partner,
-      symbiosis: sym,
-      role: sym.type,
-      strength: sym.strength,
-      grp: sym.grp ?? null,
-      notes: sym.notes,
-      isImpacted,
-      isGroup: groupIds.has(partnerId),
-    });
+    if (sym.source === speciesId) {
+      // We are the actor — one entry per target
+      for (const targetId of sym.targets) {
+        const partner = speciesById.get(targetId);
+        if (!partner) continue;
+        entries.push({
+          species: partner,
+          symbiosis: sym,
+          role: sym.type,
+          strength: sym.strength,
+          fulfillment: sym.fulfillment,
+          notes: sym.notes,
+          isImpacted: false,
+          isGroup: groupIds.has(targetId),
+        });
+      }
+    } else {
+      // We are a target — one entry for the source
+      const partner = speciesById.get(sym.source);
+      if (!partner) continue;
+      // We are the prey/host when the relationship is directional
+      const isImpacted = isDirectional(sym.type);
+      entries.push({
+        species: partner,
+        symbiosis: sym,
+        role: sym.type,
+        strength: sym.strength,
+        fulfillment: sym.fulfillment,
+        notes: sym.notes,
+        isImpacted,
+        isGroup: groupIds.has(sym.source),
+      });
+    }
   }
 
   for (const rel of relationsBySpeciesId.get(speciesId) ?? []) {
@@ -244,25 +261,38 @@ export function getSymbiotes(
 ): RelatedEntry[] {
   const entries: RelatedEntry[] = [];
 
+  const isDirectional = (type: string) =>
+    type === 'predation' || type === 'parasitism' || type.startsWith('predation-');
+
   for (const sym of symbiosisBySpeciesId.get(speciesId) ?? []) {
-    const partnerId = sym.members.find(id => id !== speciesId);
-    if (!partnerId) continue;
-    const partner = speciesById.get(partnerId);
-    if (!partner) continue;
-    
-    // Determine if current species is negatively impacted
-    const isImpacted = (sym.type === 'predation' || sym.type === 'parasitism') &&
-      sym.impacted_species === speciesId;
-    
-    entries.push({
-      species: partner,
-      symbiosis: sym,
-      role: sym.type,
-      strength: sym.strength,
-      grp: sym.grp ?? null,
-      notes: sym.notes,
-      isImpacted,
-    });
+    if (sym.source === speciesId) {
+      for (const targetId of sym.targets) {
+        const partner = speciesById.get(targetId);
+        if (!partner) continue;
+        entries.push({
+          species: partner,
+          symbiosis: sym,
+          role: sym.type,
+          strength: sym.strength,
+          fulfillment: sym.fulfillment,
+          notes: sym.notes,
+          isImpacted: false,
+        });
+      }
+    } else {
+      const partner = speciesById.get(sym.source);
+      if (!partner) continue;
+      const isImpacted = isDirectional(sym.type);
+      entries.push({
+        species: partner,
+        symbiosis: sym,
+        role: sym.type,
+        strength: sym.strength,
+        fulfillment: sym.fulfillment,
+        notes: sym.notes,
+        isImpacted,
+      });
+    }
   }
 
   return entries;
@@ -284,10 +314,9 @@ export function getHabitatNeighbors(
   // Get all symbiote IDs to exclude them
   const symbiotesSet = new Set<string>();
   for (const sym of symbiosisBySpeciesId.get(speciesId) ?? []) {
-    for (const memberId of sym.members) {
-      if (memberId !== speciesId) {
-        symbiotesSet.add(memberId);
-      }
+    if (sym.source !== speciesId) symbiotesSet.add(sym.source);
+    for (const targetId of sym.targets) {
+      if (targetId !== speciesId) symbiotesSet.add(targetId);
     }
   }
 
@@ -365,32 +394,32 @@ export function getHabitatNeighborsByCategory(neighbors: Species[]): HabitatNeig
 
 export interface RelationGroupEntry {
   isRelationGroup: true;
-  groupSlug: string;
+  symbiosis: Symbiosis;
   entries: RelatedEntry[];
   strength: SymbiosisStrength;
   role: SymbiosisRole;
+  fulfillment?: 'any' | 'all';
 }
 
 export type RenderableEntry = RelatedEntry | RelationGroupEntry;
 
 /**
  * Resolves a list of RelatedEntry (within a single role/type section) into
- * RenderableEntry[]: entries sharing a grp slug are collapsed into one
- * RelationGroupEntry tile; ungrouped entries pass through as-is.
- *
- * Validation:
- * - Mixed strength within a group → warn, use lowest (most permissive)
- * - Mixed type within a group → warn, disable grouping for that slug
+ * RenderableEntry[]: entries sharing the same multi-target Symbiosis object
+ * are collapsed into one RelationGroupEntry tile; ungrouped entries pass through as-is.
  */
 export function resolveRelationGroups(entries: RelatedEntry[]): RenderableEntry[] {
-  const grouped = new Map<string, RelatedEntry[]>();
+  // Group by Symbiosis object reference (only when the entry comes from a multi-target sym
+  // and we are the source — i.e. multiple entries share the same sym and isImpacted === false)
+  const grouped = new Map<Symbiosis, RelatedEntry[]>();
   const ungrouped: RelatedEntry[] = [];
 
   for (const entry of entries) {
-    if (entry.grp) {
-      const list = grouped.get(entry.grp) ?? [];
+    const sym = entry.symbiosis;
+    if (sym && sym.targets.length > 1 && !entry.isImpacted) {
+      const list = grouped.get(sym) ?? [];
       list.push(entry);
-      grouped.set(entry.grp, list);
+      grouped.set(sym, list);
     } else {
       ungrouped.push(entry);
     }
@@ -398,41 +427,18 @@ export function resolveRelationGroups(entries: RelatedEntry[]): RenderableEntry[
 
   const result: RenderableEntry[] = [...ungrouped];
 
-  for (const [slug, groupEntries] of grouped) {
-    // Validate: mixed type → disable grouping
-    const types = new Set(groupEntries.map(e => e.role));
-    if (types.size > 1) {
-      if (import.meta.env.DEV) {
-        console.warn(`[symbiosis] grp "${slug}" spans multiple types — grouping disabled for this group`);
-      }
-      result.push(...groupEntries);
-      continue;
-    }
-
-    // Validate: mixed strength → warn, use lowest
-    const strengths = groupEntries.map(e => e.strength);
-    const uniqueStrengths = new Set(strengths);
-    let resolvedStrength: SymbiosisStrength = groupEntries[0]?.strength ?? 'incidental';
-    if (uniqueStrengths.size > 1) {
-      if (import.meta.env.DEV) {
-        console.warn(`[symbiosis] grp "${slug}" has mixed strength values — using lowest`);
-      }
-      const lowestOrder = Math.max(...strengths.map(s => STRENGTH_ORDER[s]));
-      resolvedStrength = (Object.keys(STRENGTH_ORDER) as SymbiosisStrength[]).find(
-        k => STRENGTH_ORDER[k] === lowestOrder
-      ) ?? 'incidental';
-    }
-
+  for (const [sym, groupEntries] of grouped) {
     result.push({
       isRelationGroup: true,
-      groupSlug: slug,
+      symbiosis: sym,
       entries: groupEntries,
-      strength: resolvedStrength,
+      strength: groupEntries[0]?.strength ?? 'incidental',
       role: groupEntries[0]?.role ?? 'mutualism',
+      fulfillment: sym.fulfillment,
     });
   }
 
-  // Re-sort: groups by their resolved strength alongside individual entries
+  // Re-sort by strength
   result.sort((a, b) => {
     const aStrength = 'isRelationGroup' in a ? a.strength : a.strength;
     const bStrength = 'isRelationGroup' in b ? b.strength : b.strength;

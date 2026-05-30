@@ -33,10 +33,10 @@ export type SymbiosisStrength = 'critical' | 'important' | 'incidental';
 
 export interface Symbiosis {
   type: string;
-  members: string[];
-  impacted_species?: string;
+  source: string;
+  targets: string[];
+  fulfillment?: 'any' | 'all';
   strength: SymbiosisStrength;
-  grp?: string | null;
   notes: string;
 }
 

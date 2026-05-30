@@ -61,14 +61,14 @@ export type SymbiosisStrength = 'critical' | 'important' | 'incidental';
 
 export interface Symbiosis {
   type: 'mutualism' | 'parasitism' | 'predation' | 'competition' | 'commensalism';
-  /** Array of species IDs involved in this relationship */
-  members: string[];
-  /** Optional: specific species impacted by this relationship */
-  impacted_species?: string | null;
+  /** The actor or needing party: predator, parasite, or species whose requirement this describes */
+  source: string;
+  /** One or more partner species. Single entry for standard pairwise; multiple for one-to-many */
+  targets: string[];
+  /** Only meaningful when targets.length > 1. 'any' = any single target satisfies the need. 'all' = all targets simultaneously. */
+  fulfillment?: 'any' | 'all';
   /** Ecological importance of this relationship */
   strength: SymbiosisStrength;
-  /** Optional group slug linking multiple pair-wise entries into one logical relationship */
-  grp?: string | null;
   /** Notes explaining the relationship */
   notes: string;
 }

@@ -24,14 +24,14 @@ const createMockSpecies = (id: string, name: string, form: string = 'animal'): S
 
 const createMockSymbiosis = (
   type: 'mutualism' | 'predation' | 'parasitism' | 'competition' | 'commensalism',
-  members: string[],
-  impactedSpecies?: string
+  source: string,
+  targets: string[]
 ): Symbiosis => ({
   type,
-  members,
+  source,
+  targets,
   strength: 'incidental' as const,
   notes: 'Test relationship',
-  impacted_species: impactedSpecies,
 });
 
 describe('bubbleTreeUtils - Nodes/Edges Model', () => {
@@ -59,7 +59,7 @@ describe('bubbleTreeUtils - Nodes/Edges Model', () => {
       ]);
 
       const symbiosisBySpeciesId = new Map([
-        ['focal-1', [createMockSymbiosis('mutualism', ['focal-1', 'partner-1'])]],
+        ['focal-1', [createMockSymbiosis('mutualism', 'focal-1', ['partner-1'])]],
       ]);
 
       const { nodes, links } = transformToNodesEdges('focal-1', speciesById, symbiosisBySpeciesId, 1);
@@ -81,8 +81,8 @@ describe('bubbleTreeUtils - Nodes/Edges Model', () => {
       ]);
 
       const symbiosisBySpeciesId = new Map([
-        ['focal-1', [createMockSymbiosis('mutualism', ['focal-1', 'level1-1'])]],
-        ['level1-1', [createMockSymbiosis('mutualism', ['level1-1', 'level2-1'])]],
+        ['focal-1', [createMockSymbiosis('mutualism', 'focal-1', ['level1-1'])]],
+        ['level1-1', [createMockSymbiosis('mutualism', 'level1-1', ['level2-1'])]],
       ]);
 
       const { links } = transformToNodesEdges('focal-1', speciesById, symbiosisBySpeciesId, 2);
@@ -105,8 +105,8 @@ describe('bubbleTreeUtils - Nodes/Edges Model', () => {
       ]);
 
       const symbiosisBySpeciesId = new Map([
-        ['focal-1', [createMockSymbiosis('mutualism', ['focal-1', 'level1-1'])]],
-        ['level1-1', [createMockSymbiosis('mutualism', ['level1-1', 'level2-1'])]],
+        ['focal-1', [createMockSymbiosis('mutualism', 'focal-1', ['level1-1'])]],
+        ['level1-1', [createMockSymbiosis('mutualism', 'level1-1', ['level2-1'])]],
       ]);
 
       const { nodes: nodes1 } = transformToNodesEdges('focal-1', speciesById, symbiosisBySpeciesId, 1);

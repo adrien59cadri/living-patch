@@ -56,14 +56,15 @@ const createMockSymbioses = (): Map<string, Symbiosis[]> => {
   const symbioses: Symbiosis[] = [
     {
       type: 'mutualism',
-      members: ['bird_focal', 'plant_partner'],
+      source: 'bird_focal',
+      targets: ['plant_partner'],
       strength: 'incidental',
       notes: 'Mock mutualism',
     },
     {
       type: 'predation',
-      members: ['bird_focal', 'mammal_prey'],
-      impacted_species: 'mammal_prey',
+      source: 'bird_focal',
+      targets: ['mammal_prey'],
       strength: 'incidental',
       notes: 'Mock predation',
     },
@@ -71,11 +72,11 @@ const createMockSymbioses = (): Map<string, Symbiosis[]> => {
 
   const map = new Map<string, Symbiosis[]>();
   for (const symbiosis of symbioses) {
-    for (const memberId of symbiosis.members) {
-      if (!map.has(memberId)) {
-        map.set(memberId, []);
+    for (const id of [symbiosis.source, ...symbiosis.targets]) {
+      if (!map.has(id)) {
+        map.set(id, []);
       }
-      map.get(memberId)!.push(symbiosis);
+      map.get(id)!.push(symbiosis);
     }
   }
 

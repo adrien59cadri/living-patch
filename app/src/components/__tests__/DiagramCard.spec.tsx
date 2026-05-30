@@ -86,29 +86,16 @@ describe('DiagramCard - Direct Relationships Display', () => {
   const mockSymbiosis: Symbiosis[] = [
     {
       type: 'parasitism',
-      members: ['insect_monarch-butterfly', 'plant_common-milkweed'],
-      impacted_species: 'insect_monarch-butterfly',
+      source: 'insect_monarch-butterfly',
+      targets: ['plant_common-milkweed', 'plant_butterfly-weed', 'plant_swamp-milkweed'],
+      fulfillment: 'any',
       strength: 'critical',
-      notes: 'Larval host plant',
-    },
-    {
-      type: 'parasitism',
-      members: ['insect_monarch-butterfly', 'plant_butterfly-weed'],
-      impacted_species: 'insect_monarch-butterfly',
-      strength: 'critical',
-      notes: 'Alternative host plant',
-    },
-    {
-      type: 'parasitism',
-      members: ['insect_monarch-butterfly', 'plant_swamp-milkweed'],
-      impacted_species: 'insect_monarch-butterfly',
-      strength: 'critical',
-      notes: 'Wet habitat host',
+      notes: 'Larval host plants',
     },
     {
       type: 'predation',
-      members: ['insect_monarch-butterfly', 'plant_goldenrod'],
-      impacted_species: 'plant_goldenrod',
+      source: 'insect_monarch-butterfly',
+      targets: ['plant_goldenrod'],
       strength: 'incidental',
       notes: 'Nectar source',
     },
@@ -119,9 +106,9 @@ describe('DiagramCard - Direct Relationships Display', () => {
     const symbiosisBySpeciesId = new Map<string, Symbiosis[]>();
 
     for (const symbiosis of mockSymbiosis) {
-      for (const memberId of symbiosis.members) {
-        const existing = symbiosisBySpeciesId.get(memberId) || [];
-        symbiosisBySpeciesId.set(memberId, [...existing, symbiosis]);
+      for (const id of [symbiosis.source, ...symbiosis.targets]) {
+        const existing = symbiosisBySpeciesId.get(id) || [];
+        symbiosisBySpeciesId.set(id, [...existing, symbiosis]);
       }
     }
 
@@ -267,25 +254,25 @@ describe('DiagramCard - Direct Relationships Display', () => {
       } as Species,
     ];
 
-    const extendedSymbiosis = [
+    const extendedSymbiosis: Symbiosis[] = [
       ...mockSymbiosis,
       // Connect spider to milkweed (depth 1), making spider depth 2
       {
         type: 'predation',
-        members: ['insect_spider-orb-weaver', 'plant_milkweed-common'],
-        impacted_species: 'plant_milkweed-common',
+        source: 'insect_spider-orb-weaver',
+        targets: ['plant_milkweed-common'],
         strength: 'incidental',
         notes: 'Spider preys on insects on milkweed',
-      } as Symbiosis,
+      },
     ];
 
     const extendedSpeciesById = new Map(extendedSpecies.map(s => [s.id, s]));
     const extendedSymbiosisBySpeciesId = new Map<string, Symbiosis[]>();
 
     for (const symbiosis of extendedSymbiosis) {
-      for (const memberId of symbiosis.members) {
-        const existing = extendedSymbiosisBySpeciesId.get(memberId) || [];
-        extendedSymbiosisBySpeciesId.set(memberId, [...existing, symbiosis]);
+      for (const id of [symbiosis.source, ...symbiosis.targets]) {
+        const existing = extendedSymbiosisBySpeciesId.get(id) || [];
+        extendedSymbiosisBySpeciesId.set(id, [...existing, symbiosis]);
       }
     }
 

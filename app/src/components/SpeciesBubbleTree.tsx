@@ -48,11 +48,11 @@ export const SpeciesBubbleTree: React.FC<SpeciesBubbleTreeProps> = ({
   // Build symbiosis index: speciesId → [all symbioses involving that species]
   const symbiosisBySpeciesId = new Map<string, Symbiosis[]>();
   for (const symbiosis of data.symbiosis) {
-    for (const memberId of symbiosis.members) {
-      if (!symbiosisBySpeciesId.has(memberId)) {
-        symbiosisBySpeciesId.set(memberId, []);
+    for (const id of [symbiosis.source, ...symbiosis.targets]) {
+      if (!symbiosisBySpeciesId.has(id)) {
+        symbiosisBySpeciesId.set(id, []);
       }
-      symbiosisBySpeciesId.get(memberId)!.push(symbiosis);
+      symbiosisBySpeciesId.get(id)!.push(symbiosis);
     }
   }
 

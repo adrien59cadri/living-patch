@@ -225,32 +225,34 @@
     "Symbiosis": {
       "type": "object",
       "description": "Symbiotic relationship between species",
-      "required": ["type", "members", "strength", "notes"],
+      "required": ["type", "source", "targets", "strength", "notes"],
       "properties": {
         "type": {
           "type": "string",
           "enum": ["mutualism", "parasitism", "predation", "competition", "commensalism"]
         },
-        "members": {
+        "source": {
+          "type": "string",
+          "description": "The actor or needing party: predator, parasite, or species whose requirement this describes",
+          "minLength": 1
+        },
+        "targets": {
           "type": "array",
-          "description": "Array of species IDs involved",
+          "description": "One or more partner species. Single entry for pairwise; multiple for one-to-many",
           "items": {
             "type": "string"
           },
-          "minItems": 2
+          "minItems": 1
         },
-        "impacted_species": {
-          "type": ["string", "null"],
-          "description": "Optional: specific species impacted by this relationship"
+        "fulfillment": {
+          "type": "string",
+          "enum": ["any", "all"],
+          "description": "Only meaningful when targets.length > 1. 'any' = any single target satisfies the need. 'all' = all targets simultaneously."
         },
         "strength": {
           "type": "string",
           "enum": ["critical", "important", "incidental"],
           "description": "Ecological importance: critical (obligate), important (strong), incidental (opportunistic)"
-        },
-        "grp": {
-          "type": ["string", "null"],
-          "description": "Optional group slug linking multiple pair-wise entries into one logical relationship"
         },
         "notes": {
           "type": "string",

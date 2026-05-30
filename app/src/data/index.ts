@@ -52,10 +52,10 @@ export const speciesById = new Map<string, Species>(
 
 export const symbiosisBySpeciesId = new Map<string, Symbiosis[]>();
 for (const sym of symbiosis) {
-  for (const memberId of sym.members) {
-    const existing = symbiosisBySpeciesId.get(memberId) ?? [];
+  for (const id of [sym.source, ...sym.targets]) {
+    const existing = symbiosisBySpeciesId.get(id) ?? [];
     existing.push(sym);
-    symbiosisBySpeciesId.set(memberId, existing);
+    symbiosisBySpeciesId.set(id, existing);
   }
 }
 
@@ -69,31 +69,20 @@ for (const rel of relations) {
 }
 
 if (import.meta.env.DEV) {
-  const grpStrengths = new Map<string, string>();
-  const grpTypes = new Map<string, string>();
   for (const sym of symbiosis) {
-    const [a, b] = sym.members;
     if (!sym.strength) {
-      console.warn(`[symbiosis] missing strength on entry between ${a} and ${b}`);
+      console.warn(`[symbiosis] missing strength on entry: source=${sym.source}`);
     }
-    for (const memberId of sym.members) {
-      if (!speciesById.has(memberId)) {
-        console.warn(`[symbiosis] unknown species id "${memberId}"`);
+    if (!speciesById.has(sym.source)) {
+      console.warn(`[symbiosis] unknown source id "${sym.source}"`);
+    }
+    for (const targetId of sym.targets) {
+      if (!speciesById.has(targetId)) {
+        console.warn(`[symbiosis] unknown target id "${targetId}"`);
       }
     }
-    if (sym.grp) {
-      const prevStrength = grpStrengths.get(sym.grp);
-      if (prevStrength && prevStrength !== sym.strength) {
-        console.warn(`[symbiosis] grp "${sym.grp}" has mixed strength values — using lowest`);
-      } else {
-        grpStrengths.set(sym.grp, sym.strength);
-      }
-      const prevType = grpTypes.get(sym.grp);
-      if (prevType && prevType !== sym.type) {
-        console.warn(`[symbiosis] grp "${sym.grp}" spans multiple types — grouping disabled for this group`);
-      } else {
-        grpTypes.set(sym.grp, sym.type);
-      }
+    if (sym.fulfillment !== undefined && sym.targets.length === 1) {
+      console.warn(`[symbiosis] fulfillment set on single-target entry (source: ${sym.source}) — ignored`);
     }
   }
 }

@@ -71,12 +71,12 @@ export default function SymbiosisSection({
                         Example from our region
                       </p>
                       <div className="text-xs text-stone-500 flex flex-wrap items-center gap-x-1">
-                        {example.members.map((memberId, index) => {
+                        {[example.source, ...example.targets].map((memberId, index, arr) => {
                           const member = speciesById.get(memberId);
                           return (
                             <span key={memberId} className="flex items-center gap-x-1">
                               {member && <ExampleSpeciesLink species={member} />}
-                              {index < example.members.length - 1 && (
+                              {index < arr.length - 1 && (
                                 <span className="text-stone-300">↔</span>
                               )}
                             </span>
@@ -99,7 +99,7 @@ export default function SymbiosisSection({
                       <div className="mt-1 space-y-0.5 ml-2 pl-2 border-l border-stone-200">
                         {relationships.map((rel, idx) => (
                           <div key={idx} className="text-xs text-stone-500">
-                            {rel.members.map((m) => speciesById.get(m)?.common_name).join(' ↔ ')}
+                            {[rel.source, ...rel.targets].map((m) => speciesById.get(m)?.common_name).join(' ↔ ')}
                             {rel.strength !== 'incidental' ? ` (${rel.strength})` : ''}
                           </div>
                         ))}
