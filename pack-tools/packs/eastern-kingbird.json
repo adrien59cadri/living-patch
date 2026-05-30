@@ -1,0 +1,106 @@
+{
+  "metadata": {
+    "id": "eastern-kingbird",
+    "createdDate": "2026-05-30T00:00:00Z",
+    "author": "LivingPatch Contributors",
+    "version": "1.0.0",
+    "schemaVersion": "1.0.0",
+    "description": "Eastern Kingbird species with ecological relationships and behavioral characteristics",
+    "status": "draft"
+  },
+  "data": {
+    "species": [
+      {
+        "id": "bird_eastern-kingbird",
+        "common_name": "Eastern Kingbird",
+        "latin_name": "Tyrannus tyrannus",
+        "form": "songbird",
+        "habitat": [
+          "open_field",
+          "woodland_edge",
+          "riparian",
+          "wetland_edge",
+          "farmland"
+        ],
+        "diet": [
+          "insect_eater"
+        ],
+        "behavior": [
+          "aerial_hunter",
+          "territorial",
+          "aggressive",
+          "migratory",
+          "open_perch_nester"
+        ],
+        "season": [
+          "spring",
+          "summer",
+          "fall"
+        ],
+        "active_months": [
+          "May-Sep"
+        ],
+        "functional_description": "Medium-sized flycatcher (8-9 inches) with distinctive black and white plumage and concealed red crown patch (rarely visible). Aggressive and highly territorial — known for chasing larger birds including hawks and crows from their territory. Expert aerial insectivore constantly sallying out to catch insects in flight. Nests in open branches where nests are highly visible. Harsh, buzzing calls are characteristic of open field habitat.",
+        "life_stages": [
+          {
+            "icon": "🏠",
+            "name": "Territorial Arrival",
+            "description": "Males arrive before females to establish and defend breeding territory",
+            "months": [
+              "May"
+            ]
+          },
+          {
+            "icon": "🏗️",
+            "name": "Nest Building",
+            "description": "Pairs build cup nests on open branches in trees or shrubs",
+            "months": [
+              "May-Jun"
+            ]
+          },
+          {
+            "icon": "🥚",
+            "name": "Egg",
+            "description": "Clutch of 3-5 whitish eggs with dark spots",
+            "months": [
+              "Jun"
+            ]
+          },
+          {
+            "icon": "🐦",
+            "name": "Chick",
+            "description": "Nestlings in open nest; parents make continuous insect-catching flights",
+            "months": [
+              "Jun-Jul"
+            ]
+          },
+          {
+            "icon": "🪶",
+            "name": "Fledgling",
+            "description": "Young kingbirds still being fed by parents; learning to catch insects",
+            "months": [
+              "Jul-Aug"
+            ]
+          },
+          {
+            "icon": "✈️",
+            "name": "Pre-migration",
+            "description": "Feeding intensively before southbound migration to Central/South America",
+            "months": [
+              "Aug-Sep"
+            ]
+          }
+        ],
+        "region": "northeast_pa",
+        "ecological_role": "insectivore",
+        "is_keystone": false,
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Eastern_kingbird_on_the_hunt_%2856948%29.jpg/960px-Eastern_kingbird_on_the_hunt_%2856948%29.jpg",
+          "author": "Rhododendrites"
+        }
+      }
+    ],
+    "symbiosis": [],
+    "relations": []
+  }
+}
