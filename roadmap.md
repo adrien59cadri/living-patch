@@ -46,14 +46,15 @@ Make it easy to view all species associated with a given habitat:
 
 **Impact**: Improves navigation and exploration of the dataset.
 
-### 6. Thicken Relation Lines on Graphs
-Enhance relation visualization in graphs:
-- Vary line thickness based on relation strength
-- Improve visual distinction between critical and weak relations
-- Use color coding in addition to line thickness for clarity
-- Make graphs more intuitive to read
+### 6. Plant Trait Expansion: Allergen & Reproduction Info
+Extend plant species data with human health and reproduction information:
+- Add allergen classification (highly allergenic, mildly allergenic, non-allergenic)
+- Document mode of reproduction (seed, vegetative, fragmentation, etc.)
+- Display on species cards to help users identify allergenic plants and understand plant strategies
+- Support filtering by allergen status and reproduction type
+- Cross-reference with related plants using same reproduction strategy
 
-**Impact**: Makes ecological relationships more immediately understandable.
+**Impact**: Provides practical information for users with allergies; enhances understanding of plant ecology and life strategies.
 
 ### 7. Global Life List System
 Create a comprehensive system to track species observations:
