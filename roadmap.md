@@ -2,16 +2,7 @@
 
 ## Future Ideas & Enhancements
 
-### 1. Relation Strength System
-Create a strength scale for relations to separate critical relations from weak ones. This allows users to:
-- Focus on important relationships without being overwhelmed by all connections
-- Filter relations by strength level (critical → strong → weak)
-- Customize which relation strengths are displayed in graphs
-- Better understand ecological hierarchy and impact
-
-**Impact**: Improves usability by reducing visual clutter while maintaining data completeness.
-
-### 2. Keystone Keyword & Value Shorthands
+### 1. Keystone Keyword & Value Shorthands
 Implement a shorthand system for changing keystone keywords and values in datasets:
 - Define shorthand aliases (e.g., `PH` → `pH`, `N` → `Nitrogen`)
 - Apply shorthands consistently across datasets
@@ -20,7 +11,7 @@ Implement a shorthand system for changing keystone keywords and values in datase
 
 **Impact**: Streamlines dataset creation and makes collaboration easier.
 
-### 3. Native/Invasive Species Classification
+### 2. Native/Invasive Species Classification
 Add native/invasive and other species classification info to datasets:
 - Extend dataset schema to include species classification (native, invasive, endemic, etc.)
 - Display this information on the learning page using shorthand labels
@@ -29,7 +20,7 @@ Add native/invasive and other species classification info to datasets:
 
 **Impact**: Provides richer ecological context and educational value.
 
-### 4. Expand Keystone Species Coverage
+### 3. Expand Keystone Species Coverage
 Add more keystone species to datasets:
 - Identify and include additional keystone species for various habitats
 - Document keystone species relationships more thoroughly
@@ -37,7 +28,7 @@ Add more keystone species to datasets:
 
 **Impact**: Increases dataset comprehensiveness and educational scope.
 
-### 5. Species List per Habitat
+### 4. Species List per Habitat
 Make it easy to view all species associated with a given habitat:
 - Create a habitat detail view showing its complete species list
 - Support filtering by species type, classification, or role
@@ -46,7 +37,7 @@ Make it easy to view all species associated with a given habitat:
 
 **Impact**: Improves navigation and exploration of the dataset.
 
-### 6. Plant Trait Expansion: Allergen & Reproduction Info
+### 5. Plant Trait Expansion: Allergen & Reproduction Info
 Extend plant species data with human health and reproduction information:
 - Add allergen classification (highly allergenic, mildly allergenic, non-allergenic)
 - Document mode of reproduction (seed, vegetative, fragmentation, etc.)
@@ -56,7 +47,7 @@ Extend plant species data with human health and reproduction information:
 
 **Impact**: Provides practical information for users with allergies; enhances understanding of plant ecology and life strategies.
 
-### 7. Global Life List System ✅ Planned
+### 6. Global Life List System ✅ Planned
 Create a comprehensive system to track species observations:
 - Allow users to maintain a personal life list stored locally in the browser (localStorage)
 - Track sightings with date, location, and notes
@@ -68,7 +59,7 @@ Create a comprehensive system to track species observations:
 
 **Impact**: Adds engaging tracking features and personal connection to the data.
 
-### 8. Multi-Dataset Support
+### 7. Multi-Dataset Support
 Enable the app to load and manage multiple datasets:
 - Support loading multiple datasets simultaneously
 - Implement deduplication logic to handle species/relations appearing in multiple datasets
@@ -78,7 +69,7 @@ Enable the app to load and manage multiple datasets:
 
 **Impact**: Dramatically increases data coverage and flexibility; enables community dataset contributions.
 
-### 9. One-to-Many Relationship Model
+### 8. One-to-Many Relationship Model
 Redesign the `Symbiosis` model to support first-class directional and one-to-many relationships:
 - Replace `members[]` + `impacted_species` hack with explicit `source` + `targets[]` fields
 - Add `fulfillment: 'any' | 'all'` to express whether *any one* or *all* targets satisfy the relationship
