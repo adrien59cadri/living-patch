@@ -1,9 +1,12 @@
-export function LogSightingButton() {
+interface Props {
+  onClick: () => void;
+}
+
+export function LogSightingButton({ onClick }: Props) {
   return (
     <button
-      disabled
-      className="w-full py-3 rounded-lg border-2 border-stone-200 text-stone-400 text-sm font-medium cursor-not-allowed bg-stone-50 flex items-center justify-center gap-2"
-      title="Sighting logs coming soon"
+      onClick={onClick}
+      className="w-full py-3 rounded-lg border-2 border-emerald-300 text-emerald-700 text-sm font-medium bg-emerald-50 hover:bg-emerald-100 hover:border-emerald-400 transition-colors flex items-center justify-center gap-2"
     >
       ☐ Log sighting
     </button>

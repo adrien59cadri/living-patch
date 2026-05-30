@@ -6,6 +6,7 @@ import DetailPage from './pages/DetailPage';
 import NeighborListView from './pages/NeighborListView';
 import LearnPage from './pages/LearnPage';
 import SettingsPage from './pages/SettingsPage';
+import LifeListPage from './pages/LifeListPage';
 import { UserPreferencesProvider } from './stores/userPreferences';
 
 // Lazy load RelationshipDiagramPage to avoid loading ForceGraph2D and THREE.js until needed
@@ -37,6 +38,12 @@ export default function App() {
                     </div>
                     <div className="flex items-center gap-4">
                       <Link
+                        to="/life-list"
+                        className="text-sm text-stone-600 hover:text-emerald-700 no-underline"
+                      >
+                        Life List
+                      </Link>
+                      <Link
                         to="/learn"
                         className="text-sm text-stone-600 hover:text-emerald-700 no-underline"
                       >
@@ -54,6 +61,7 @@ export default function App() {
                 <main className="max-w-3xl mx-auto px-4 py-6">
                   <Routes>
                     <Route path="/" element={<HomePage />} />
+                    <Route path="/life-list" element={<LifeListPage />} />
                     <Route path="/learn" element={<LearnPage />} />
                     <Route path="/settings" element={<SettingsPage />} />
                     <Route path="/species/:id" element={<DetailPage />} />

@@ -90,3 +90,28 @@ export interface HierarchyInput {
   relationshipType?: string;
   children?: HierarchyInput[];
 }
+
+// ── Life List ────────────────────────────────────────────────────────────────
+
+export type FamiliarityTier = 'noticed' | 'familiar' | 'know-it-well' | 'steward';
+
+export interface Sighting {
+  id: string;
+  speciesId: string;
+  date: string; // ISO 8601: YYYY-MM-DD
+  location?: string;
+  notes?: string;
+  conditions?: {
+    weather?: 'sunny' | 'cloudy' | 'rainy' | 'snowy';
+    time?: 'morning' | 'afternoon' | 'evening' | 'night';
+  };
+  createdAt: number; // timestamp
+}
+
+export interface LifeListEntry {
+  speciesId: string;
+  tier: FamiliarityTier;
+  firstSightedDate?: string;
+  sightingCount: number;
+  lastUpdated: number;
+}

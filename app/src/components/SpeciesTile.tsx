@@ -4,6 +4,8 @@ import type { RelatedEntry } from '../lib/relationships';
 import { KeystoneBadge } from './KeystoneBadge';
 import { formLabel } from '../lib/labels';
 import { useUserPreferences } from '../hooks/useUserPreferences';
+import { SpeciesTierBadge } from './SpeciesTierBadge';
+import { useSpeciesTier, useSpeciesSightingCount } from '../hooks/useLifeList';
 
 interface Props {
   species: Species;
@@ -19,6 +21,8 @@ export function SpeciesTile({ species, related, isGroup }: Props) {
   const description = related?.notes ?? species.functional_description;
 
   const { preferences } = useUserPreferences();
+  const tier = useSpeciesTier(species.id);
+  const sightingCount = useSpeciesSightingCount(species.id);
 
   const inner = (
     <div
@@ -71,6 +75,12 @@ export function SpeciesTile({ species, related, isGroup }: Props) {
           {related?.isImpacted && (
             <span className="text-xs bg-red-100 text-red-700 px-2 py-0.5 rounded font-medium">
               Impacted
+            </span>
+          )}
+          {!actualIsGroup && tier && <SpeciesTierBadge tier={tier} />}
+          {!actualIsGroup && sightingCount > 0 && (
+            <span className="text-xs bg-stone-100 text-stone-500 px-2 py-0.5 rounded-full">
+              {sightingCount}×
             </span>
           )}
         </div>

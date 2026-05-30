@@ -8,6 +8,9 @@ import { TaxonomyRelatedGrid } from './TaxonomyRelatedGrid';
 import { HabitatNeighborsSection } from './HabitatNeighborsSection';
 import { LogSightingButton } from './LogSightingButton';
 import { TagRow } from './TagRow';
+import { TierSelector } from './TierSelector';
+import { RecentSightings } from './RecentSightings';
+import { SightingModal } from './SightingModal';
 
 // Lazy load DiagramCard to avoid loading ForceGraph2D and THREE.js until needed
 const DiagramCard = lazy(async () => {
@@ -24,6 +27,7 @@ interface Props {
 
 export function SpeciesCard({ species, symbiotes, habitatNeighbors, related }: Props) {
   const [showScientificName, setShowScientificName] = useState(false);
+  const [sightingModalOpen, setSightingModalOpen] = useState(false);
   const stages = (species.life_stages as LifeStage[]).filter(
     s => typeof s === 'object' && s !== null
   );
@@ -100,8 +104,21 @@ export function SpeciesCard({ species, symbiotes, habitatNeighbors, related }: P
       {/* 8. Related by taxonomy */}
       <TaxonomyRelatedGrid related={related} speciesId={species.id} />
 
-      {/* 9. Log sighting */}
-      <LogSightingButton />
+      {/* 9. Life list: tier + recent sightings */}
+      <div className="space-y-4 pt-2 border-t border-stone-100">
+        <TierSelector speciesId={species.id} />
+        <RecentSightings speciesId={species.id} />
+        <LogSightingButton onClick={() => setSightingModalOpen(true)} />
+      </div>
+
+      {/* 10. Sighting modal */}
+      {sightingModalOpen && (
+        <SightingModal
+          speciesId={species.id}
+          speciesName={species.common_name}
+          onClose={() => setSightingModalOpen(false)}
+        />
+      )}
     </div>
   );
 }

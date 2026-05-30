@@ -1,9 +1,23 @@
-import { describe, test, expect } from 'vitest';
+import { describe, test, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MemoryRouter, Routes, Route } from 'react-router-dom';
 import DetailPage from '../DetailPage';
 import { UserPreferencesProvider } from '../../stores/userPreferences';
+
+// Mock life list hooks so DetailPage unit tests don't depend on Zustand/localStorage
+vi.mock('../../hooks/useLifeList', () => ({
+  useLifeList: () => ({
+    addSighting: vi.fn(),
+    setTier: vi.fn(),
+    getTier: () => null,
+    entries: [],
+    sightings: [],
+  }),
+  useSpeciesTier: () => null,
+  useSpeciesSightings: () => [],
+  useSpeciesSightingCount: () => 0,
+}));
 
 function renderDetailPage(speciesId: string) {
   return render(
@@ -65,9 +79,10 @@ describe('DetailPage', () => {
     expect(screen.getByText('Habitat Neighbors')).toBeInTheDocument();
   });
 
-  test('renders disabled log sighting button', () => {
+  test('renders log sighting button (enabled)', () => {
     renderDetailPage('insect_monarch-butterfly');
     const btn = screen.getByRole('button', { name: /log sighting/i });
-    expect(btn).toBeDisabled();
+    expect(btn).toBeInTheDocument();
+    expect(btn).not.toBeDisabled();
   });
 });

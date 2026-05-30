@@ -1,4 +1,4 @@
-import { describe, test, expect } from 'vitest';
+import { describe, test, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
@@ -12,6 +12,20 @@ import {
   mockBirdEntry,
 } from '../../test/fixtures';
 import type { RelatedEntry } from '../../lib/relationships';
+
+// Mock life list hooks so SpeciesCard unit tests don't depend on Zustand/localStorage
+vi.mock('../../hooks/useLifeList', () => ({
+  useLifeList: () => ({
+    addSighting: vi.fn(),
+    setTier: vi.fn(),
+    getTier: () => null,
+    entries: [],
+    sightings: [],
+  }),
+  useSpeciesTier: () => null,
+  useSpeciesSightings: () => [],
+  useSpeciesSightingCount: () => 0,
+}));
 
 function renderCard(
   species = mockMonarch,
@@ -97,11 +111,11 @@ describe('SpeciesCard', () => {
     expect(screen.queryByText('HABITAT NEIGHBORS')).not.toBeInTheDocument();
   });
 
-  test('renders Log Sighting button in disabled state', () => {
+  test('renders Log Sighting button', () => {
     renderCard();
     const btn = screen.getByRole('button', { name: /log sighting/i });
     expect(btn).toBeInTheDocument();
-    expect(btn).toBeDisabled();
+    expect(btn).not.toBeDisabled();
   });
 
   test('renders the functional description', () => {

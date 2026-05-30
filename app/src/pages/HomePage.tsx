@@ -6,6 +6,7 @@ import type { FilterState } from '../lib/filters';
 import { SearchBar } from '../components/SearchBar';
 import { FilterPanel } from '../components/FilterPanel';
 import { SpeciesList } from '../components/SpeciesList';
+import { LifeListStats } from '../components/LifeListStats';
 
 export default function HomePage() {
   const { species, groups } = useDataset();
@@ -33,6 +34,7 @@ export default function HomePage() {
 
   return (
     <div className="space-y-4">
+      <LifeListStats />
       <div className="flex items-center gap-2">
         <div className="flex-1">
           <SearchBar
