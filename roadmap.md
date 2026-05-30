@@ -78,6 +78,17 @@ Enable the app to load and manage multiple datasets:
 
 **Impact**: Dramatically increases data coverage and flexibility; enables community dataset contributions.
 
+### 9. One-to-Many Relationship Model
+Redesign the `Symbiosis` model to support first-class directional and one-to-many relationships:
+- Replace `members[]` + `impacted_species` hack with explicit `source` + `targets[]` fields
+- Add `fulfillment: 'any' | 'all'` to express whether *any one* or *all* targets satisfy the relationship
+- Remove `grp` slug workaround — multiple targets in a single object replace it
+- Migrate all 44 directional entries in `0-base.json` and collapse the 3-entry `monarch-milkweed` group into one entry
+
+**Spec**: [`one-to-many-relationship-model.md`](./one-to-many-relationship-model.md)
+
+**Impact**: Enables semantically correct representation of host-plant alternatives, pollinator guilds, and other ecological "any one of N" relationships.
+
 ---
 
 ## Implementation Notes
