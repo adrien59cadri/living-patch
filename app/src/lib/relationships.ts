@@ -80,7 +80,6 @@ export function getRelatedEntries(
         relation: rel,
         role: 'related',
         strength: 'incidental',
-        grp: null,
         notes: rel.notes,
         isImpacted: false,
         isGroup: groupIds.has(memberId),

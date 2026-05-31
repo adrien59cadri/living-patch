@@ -81,8 +81,8 @@ test.describe('Species list page basic functionality', () => {
     await page.goto('/');
     await page.waitForLoadState('networkidle');
 
-    // Check for species count text - should show "41 species"
-    const speciesCountText = page.getByText('41 species');
+    // Check for species count text - should show "56 species"
+    const speciesCountText = page.getByText('56 species');
     await expect(speciesCountText).toBeVisible();
   });
 

@@ -108,7 +108,7 @@ export function darkenHexColor(hex: string, amount: number = 60): string {
  */
 function getLinkDirection(
   edgeSourceId: string,
-  edgeTargetId: string,
+  _edgeTargetId: string,
   type: string,
   symSourceId: string
 ): 'inward' | 'outward' | undefined {

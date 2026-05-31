@@ -44,7 +44,7 @@ test.describe('Species detail page — Monarch Butterfly', () => {
     const expandButton = page.getByRole('button', { name: /Parasitism & Hosting/ }).first();
     await expandButton.click();
     // After expanding, the group should show with Critical strength badge
-    const groupButton = page.getByRole('button', { name: /monarch-milkweed/ }).first();
+    const groupButton = page.getByRole('button', { name: /insect_monarch-butterfly group/ }).first();
     await expect(groupButton).toBeVisible();
   });
 

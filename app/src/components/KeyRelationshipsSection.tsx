@@ -101,7 +101,7 @@ export function KeyRelationshipsSection({ related }: Props) {
                 <div className="mt-3 space-y-2">
                   {resolved.map((item, idx) =>
                     'isRelationGroup' in item ? (
-                      <RelationGroupTile key={`${role}-grp-${item.groupSlug}`} groupEntry={item} />
+                      <RelationGroupTile key={`${role}-grp-${idx}`} groupEntry={item} />
                     ) : (
                       <SpeciesTile key={`${role}-${idx}`} species={item.species} related={item} />
                     )
