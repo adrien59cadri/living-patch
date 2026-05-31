@@ -3643,6 +3643,196 @@
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Tilia_americana_%28American_Linden%29_%2828268263222%29.jpg/500px-Tilia_americana_%28American_Linden%29_%2828268263222%29.jpg",
           "author": "Plant Image Library"
         }
+      },
+      {
+        "id": "mammal_meadow-vole",
+        "common_name": "Meadow Vole",
+        "latin_name": "Microtus pennsylvanicus",
+        "form": "mammal",
+        "habitat": [
+          "field",
+          "meadow",
+          "wet_meadow",
+          "field_edge"
+        ],
+        "diet": [
+          "herbivore"
+        ],
+        "behavior": [
+          "colonial",
+          "fossorial",
+          "year_round_active"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "active_months": [
+          "Jan-Dec"
+        ],
+        "functional_description": "Small, stout, short-tailed vole abundant in grassy fields, meadows, and wet meadow edges throughout NE PA. Creates dense surface runway networks through grass and under snow. Herbivore eating grasses, sedges, roots, and bulbs — capable of significant vegetation impacts at high densities. Population undergoes boom-bust cycles every 2–4 years, with peak years reaching 1,000+ individuals per acre. These cycles drive corresponding fluctuations in predator populations across open habitats: Red-tailed Hawk, American Kestrel, Red Fox, and American Mink all increase when voles peak. Active year-round including under snow, where subnivean runway systems provide winter foraging. Among the most important prey species in NE PA food webs.",
+        "life_stages": [],
+        "region": "northeast_pa",
+        "ecological_role": "consumer",
+        "is_keystone": true,
+        "keystone_type": "prey",
+        "keystone_description": "One of NE PA's most abundant small mammals and the foundational prey species of open habitats. Population cycles drive corresponding booms and crashes in Red-tailed Hawk, American Kestrel, Red Fox, Eastern Coyote, and American Mink abundance. A landscape-level driver of predator population dynamics across meadows and fields.",
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Meadow_vole_microtus_pennsylvanicus.jpg/500px-Meadow_vole_microtus_pennsylvanicus.jpg",
+          "author": "Gilles Gonthier"
+        }
+      },
+      {
+        "id": "mammal_white-footed-mouse",
+        "common_name": "White-footed Mouse",
+        "latin_name": "Peromyscus leucopus",
+        "form": "mammal",
+        "habitat": [
+          "forest",
+          "woodland",
+          "forest_edge",
+          "field_edge",
+          "garden"
+        ],
+        "diet": [
+          "insect_eater",
+          "fruit_eater"
+        ],
+        "behavior": [
+          "nocturnal",
+          "scatter_hoarder",
+          "solitary"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "active_months": [
+          "Jan-Dec"
+        ],
+        "functional_description": "Perhaps Pennsylvania's most abundant wild mammal, found in virtually every woodland, forest edge, and brushy habitat in NE PA. Eats insects, acorns, berries, mushrooms, and seeds — an omnivore linking plant and animal food webs. Scatter-hoards thousands of acorns per fall, caching more than it retrieves and acting as a secondary oak disperser. Active year-round with population peaks in late fall following mast years. Primary reservoir host for the Lyme disease bacterium (Borrelia burgdorferi): larval deer ticks feed on white-footed mice in July, pick up the spirochete, and molt into infectious nymphs the following spring. Prey for Great Horned Owl, Barred Owl, Red Fox, and Weasels.",
+        "life_stages": [],
+        "region": "northeast_pa",
+        "ecological_role": "consumer",
+        "is_keystone": false,
+        "keystone_type": null,
+        "keystone_description": null,
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/White-footed_mouse_Peromyscus_leucopus.jpg/500px-White-footed_mouse_Peromyscus_leucopus.jpg",
+          "author": "CDC / James Gathany"
+        }
+      },
+      {
+        "id": "mammal_river-otter",
+        "common_name": "North American River Otter",
+        "latin_name": "Lontra canadensis",
+        "form": "mammal",
+        "habitat": [
+          "riparian",
+          "wetland",
+          "pond",
+          "streamside",
+          "beaver_pond"
+        ],
+        "diet": [
+          "predator"
+        ],
+        "behavior": [
+          "semi-aquatic",
+          "social",
+          "diurnal"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "active_months": [
+          "Jan-Dec"
+        ],
+        "functional_description": "Largest member of the weasel family (mustelidae) in NE PA. Superbly adapted swimmer — dense waterproof fur, webbed feet, and muscular tail enable pursuit of fish at up to 6 mph underwater. Primarily eats fish, crayfish, and frogs; opportunistically takes muskrat and water birds. Lives in family groups; highly playful and social compared to other mustelids. The Pocono Mountains historically harbored one of Pennsylvania's last non-extirpated otter populations during the 19th-20th century pollution era; wild Pocono otters served as founder stock for statewide reintroduction efforts beginning in 1982. Now reestablished throughout the Delaware River watershed and major NE PA streams. Presence indicates high water quality and abundant fish prey.",
+        "life_stages": [],
+        "region": "northeast_pa",
+        "ecological_role": "carnivore",
+        "is_keystone": true,
+        "keystone_type": "predator",
+        "keystone_description": "Apex aquatic predator that structures fish communities through selective predation on slow or stressed individuals, improving average fish health. Otter haul-out sites concentrate nutrients from aquatic to terrestrial systems. As a top predator sensitive to water quality, otter presence or absence is a reliable indicator of watershed health. Pocono populations never went fully extinct, making NE PA central to the species' statewide recovery.",
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/River_otter_in_Texas.jpg/500px-River_otter_in_Texas.jpg",
+          "author": "USFWS"
+        }
+      },
+      {
+        "id": "bird_indigo-bunting",
+        "common_name": "Indigo Bunting",
+        "latin_name": "Passerina cyanea",
+        "form": "songbird",
+        "habitat": [
+          "field",
+          "field_edge",
+          "meadow",
+          "forest_edge"
+        ],
+        "diet": [
+          "insect_eater",
+          "fruit_eater"
+        ],
+        "behavior": [
+          "migratory",
+          "territorial",
+          "perch_singer"
+        ],
+        "season": [
+          "spring",
+          "summer",
+          "fall_migrant"
+        ],
+        "active_months": [
+          "May-Sep"
+        ],
+        "functional_description": "Electric-blue songbird of brushy fields and forest edges — one of the most visually striking summer residents of NE PA. Males are unmistakably iridescent cobalt blue in breeding plumage (actually structural color; the feathers contain no blue pigment). Breeds in early-successional habitats: brushy roadsides, powerline corridors, forest clearcuts, and old field edges with shrubby structure. Diet shifts seasonally: insects dominate in summer (protein for nestlings), seeds and small berries in migration. Males sing persistently from exposed perches throughout June and July, navigating by the stars during nocturnal migration to Central America. One of the most abundant breeding songbirds in disturbed and edge habitats in NE PA.",
+        "life_stages": [],
+        "region": "northeast_pa",
+        "ecological_role": "consumer",
+        "is_keystone": false,
+        "keystone_type": null,
+        "keystone_description": null,
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Indigo_Bunting_-_male_-_4%2B_yr_old_%28mdf%29.jpg/500px-Indigo_Bunting_-_male_-_4%2B_yr_old_%28mdf%29.jpg",
+          "author": "Mdf"
+        }
+      },
+      {
+        "id": "plant_wild-indigo",
+        "common_name": "Yellow Wild Indigo",
+        "latin_name": "Baptisia tinctoria",
+        "form": "wildflower",
+        "habitat": [
+          "dry_meadow",
+          "field",
+          "open_woodland",
+          "rocky_slope"
+        ],
+        "diet": [],
+        "behavior": [
+          "nitrogen_fixer",
+          "drought_tolerant",
+          "deer_resistant"
+        ],
+        "season": [
+          "spring",
+          "summer"
+        ],
+        "active_months": [
+          "May-Aug"
+        ],
+        "functional_description": "Clump-forming native wildflower of dry, acidic, open ground — tolerant of poor sandy or rocky soils where few other wildflowers establish. Yellow pea-like flowers bloom in June–July, followed by inflated black seed pods that rattle in fall. Fixes atmospheric nitrogen via root bacteria, enriching thin soils. The foliage turns charcoal black upon frost. Leaves are bluish-green and slightly waxy, giving the plant a distinctive cool tone in the landscape. Deer resistant due to alkaloids. Larval host for Wild Indigo Duskywing skipper and Frosted Elfin butterfly — both specialists that cannot complete their life cycles without Baptisia. Provides nectar for bumble bees, which are its primary pollinators. Long-lived once established; plants may persist 20+ years from a single root crown.",
+        "life_stages": [],
+        "region": "northeast_pa",
+        "ecological_role": "producer",
+        "is_keystone": false,
+        "keystone_type": null,
+        "keystone_description": null,
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Baptisia_tinctoria_NRCS-1.jpg/500px-Baptisia_tinctoria_NRCS-1.jpg",
+          "author": "USDA NRCS"
+        }
       }
     ],
     "taxonomic_groups": [
@@ -5098,6 +5288,143 @@
         ],
         "strength": "important",
         "notes": "Common Whitetail males perch on cattail stalks and emergent vegetation to defend territories and ambush prey. The tall vertical structure of cattail beds is used heavily during warm midday hours. Nymphs also use submerged cattail stems as habitat and emergence substrate."
+      },
+      {
+        "type": "predation",
+        "source": "bird_red-tailed-hawk",
+        "targets": [
+          "mammal_meadow-vole"
+        ],
+        "strength": "critical",
+        "notes": "Meadow Vole is the Red-tailed Hawk's primary prey in NE PA open habitats. Hawks hunt voles by hovering over fields or perching on utility poles and fence posts, dropping onto runways in the grass. Vole population cycles directly drive Red-tailed Hawk breeding success and local density — hawk numbers increase 2–3-fold in vole peak years."
+      },
+      {
+        "type": "predation",
+        "source": "bird_american-kestrel",
+        "targets": [
+          "mammal_meadow-vole"
+        ],
+        "strength": "important",
+        "notes": "American Kestrel is a major vole predator during fall and winter when grasshoppers are absent. Kestrels hover over fields using UV vision to detect vole urine trails in runways. Vole abundance strongly predicts kestrel density in open habitats."
+      },
+      {
+        "type": "predation",
+        "source": "bird_great-horned-owl",
+        "targets": [
+          "mammal_meadow-vole"
+        ],
+        "strength": "critical",
+        "notes": "Great Horned Owl is the primary nocturnal vole predator. Using directional hearing and night vision, owls hunt field runways from low silent glides. Vole is the most important small mammal prey item for Great Horned Owl in NE PA winter and early spring."
+      },
+      {
+        "type": "predation",
+        "source": "mammal_red-fox",
+        "targets": [
+          "mammal_meadow-vole"
+        ],
+        "strength": "critical",
+        "notes": "Meadow Vole is the primary prey of Red Fox in NE PA fields. Foxes use auditory cues to locate voles under snow, performing a characteristic high-arcing pounce ('mousing') to break through the snow crust. During vole peak years, a single fox may consume 10+ voles per day."
+      },
+      {
+        "type": "predation",
+        "source": "mammal_eastern-coyote",
+        "targets": [
+          "mammal_meadow-vole"
+        ],
+        "strength": "important",
+        "notes": "Meadow Vole is a significant dietary component for Eastern Coyote across NE PA fields and meadows, particularly in winter when deer carrion is unavailable and prey is limited. Coyotes use both auditory hunting and scent to locate voles in runway systems."
+      },
+      {
+        "type": "predation",
+        "source": "mammal_mink",
+        "targets": [
+          "mammal_meadow-vole"
+        ],
+        "strength": "important",
+        "notes": "American Mink pursues Meadow Voles actively in wet meadow and riparian margins where vole and mink habitats overlap. Mink enters vole runway tunnels to extract prey — their slender mustelid body shape is adapted for pursuing small rodents in burrows and runways."
+      },
+      {
+        "type": "predation",
+        "source": "bird_red-tailed-hawk",
+        "targets": [
+          "mammal_white-footed-mouse"
+        ],
+        "strength": "incidental",
+        "notes": "White-footed Mouse is taken opportunistically by Red-tailed Hawk at forest edges and in open woodland — secondary to Meadow Vole in open habitat hunting but important in woodland edge contexts."
+      },
+      {
+        "type": "predation",
+        "source": "bird_great-horned-owl",
+        "targets": [
+          "mammal_white-footed-mouse"
+        ],
+        "strength": "important",
+        "notes": "White-footed Mouse is among the most common prey items for Great Horned Owl in forested and forest-edge habitats. Owls hunt mouse-sized prey throughout the night, with White-footed Mouse often the most abundant nocturnal mammal in woodland habitats."
+      },
+      {
+        "type": "predation",
+        "source": "mammal_red-fox",
+        "targets": [
+          "mammal_white-footed-mouse"
+        ],
+        "strength": "important",
+        "notes": "White-footed Mouse is taken regularly by Red Fox in woodland and forest edge habitats. Fox uses acute hearing to detect mice moving in leaf litter, and in winter uses similar mousing behavior to capture mice beneath light snow cover."
+      },
+      {
+        "type": "predation-seed_eating",
+        "source": "mammal_white-footed-mouse",
+        "targets": [
+          "plant_white-oak",
+          "plant_northern-red-oak"
+        ],
+        "fulfillment": "any",
+        "strength": "important",
+        "notes": "White-footed Mouse is a major acorn consumer and scatter-hoarder. In mast years, mice cache thousands of acorns per individual, storing them in shallow soil caches for winter. Uncached or forgotten caches germinate — White-footed Mouse is an important secondary oak disperser after Blue Jay. High mouse densities during mast years are followed by Lyme disease nymph pulses the following spring as larval ticks fed on that fall's abundant mice."
+      },
+      {
+        "type": "predation",
+        "source": "mammal_river-otter",
+        "targets": [
+          "amphibian_green-frog"
+        ],
+        "strength": "important",
+        "notes": "Green Frog is a common prey item for River Otter along pond edges and slow streams. Otters hunt frogs through ambush and pursuit in shallow water, and frogs are especially important in early spring before fish become more active."
+      },
+      {
+        "type": "competition",
+        "source": "mammal_river-otter",
+        "targets": [
+          "mammal_mink"
+        ],
+        "strength": "important",
+        "notes": "River Otter and American Mink share overlapping aquatic territories and prey (fish, frogs, crayfish). Otter is substantially larger and dominant at shared sites; mink typically cede prime fishing spots to otters when both are present. Mink compensate by exploiting shallower, smaller water bodies less accessible to otters. Where otters have recovered, mink may shift to smaller tributaries and upland habitat."
+      },
+      {
+        "type": "predation-seed_eating",
+        "source": "bird_indigo-bunting",
+        "targets": [
+          "plant_goldenrod"
+        ],
+        "strength": "important",
+        "notes": "Indigo Bunting feeds heavily on Goldenrod seeds during late summer and fall migration staging. Migrating flocks of buntings descend on goldenrod fields in August–September, consuming seeds and building fat reserves for trans-Gulf migration. Goldenrod seed heads are a critical pre-migration energy source."
+      },
+      {
+        "type": "predation-seed_eating",
+        "source": "bird_indigo-bunting",
+        "targets": [
+          "plant_new-england-aster"
+        ],
+        "strength": "incidental",
+        "notes": "Indigo Bunting takes New England Aster seeds during fall migration staging, foraging with mixed flocks in late-blooming aster fields. Aster seeds provide late-season fuel for southward migration."
+      },
+      {
+        "type": "mutualism",
+        "source": "insect_native-bumble-bees",
+        "targets": [
+          "plant_wild-indigo"
+        ],
+        "strength": "important",
+        "notes": "Wild Indigo flowers have a 'trip mechanism' — bee weight triggers pollen release onto the bee's body as it enters the flower. Bumble bees are the primary pollinators because they are heavy enough to trigger this mechanism. The June–July bloom period is critical: it provides a significant nectar and pollen pulse during the gap between spring wildflowers and summer composites. Bumble bees are essential for seed set."
       }
     ],
     "relations": [
