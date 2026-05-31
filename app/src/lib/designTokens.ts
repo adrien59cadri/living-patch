@@ -72,6 +72,7 @@ export const FORM_ICONS: Record<string, string> = {
   beetle: '🪲',
   bug: '🐛',
   bee: '🐝',
+  dragonfly: '🦟',
   frog: '🐸',
 };
 
@@ -135,7 +136,7 @@ export const BIRD_FORMS = new Set([
 
 export const PLANT_FORMS = new Set(['tree', 'wildflower', 'shrub', 'plant']);
 
-export const INSECT_FORMS = new Set(['butterfly', 'beetle', 'bug', 'bee', 'insect']);
+export const INSECT_FORMS = new Set(['butterfly', 'beetle', 'bug', 'bee', 'insect', 'dragonfly']);
 
 export const WILDLIFE_FORMS = new Set(['frog', 'amphibian', 'mammal', 'reptile', 'bat']);
 
@@ -160,6 +161,7 @@ export const FORM_LABELS: Record<string, string> = {
   beetle: 'Beetle',
   bug: 'Bug',
   bee: 'Bee',
+  dragonfly: 'Dragonfly',
   frog: 'Frog',
 };
 

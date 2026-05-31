@@ -1918,9 +1918,74 @@
         "active_months": [
           "May-Sep"
         ],
+        "taxonomic_group": "group_dragonflies",
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Eastern_Pondhawk%2C_male%2C_Florida.jpg/960px-Eastern_Pondhawk%2C_male%2C_Florida.jpg",
           "author": "D. Gordon E. Robertson"
+        }
+      },
+      {
+        "id": "insect_common-whitetail",
+        "common_name": "Common Whitetail",
+        "latin_name": "Plathemis lydia",
+        "form": "dragonfly",
+        "habitat": [
+          "pond",
+          "wetland",
+          "marsh",
+          "stream_edge",
+          "open_field"
+        ],
+        "diet": [
+          "predator"
+        ],
+        "behavior": [
+          "aerial_hunter",
+          "territorial",
+          "perch_hunter"
+        ],
+        "season": [
+          "spring",
+          "summer",
+          "fall"
+        ],
+        "active_months": [
+          "May-Sep"
+        ],
+        "functional_description": "One of the most recognizable dragonflies in NE PA. Adult males have a distinctive chalk-white abdomen with dark wing patches at the base and tips; females and immature males are brown with lateral yellow spots. Among the most abundant dragonflies at ponds, beaver ponds, slow streams, and even open fields far from water. Males fiercely territorial — perching on rocks, logs, or bare ground and repeatedly returning to the same spot after each aerial sortie. Adults catch mosquitoes, small flies, gnats, and other small flying insects in agile aerial pursuit. Aquatic nymphs spend 1–2 years in pond substrate hunting invertebrates and small tadpoles. Both life stages provide meaningful mosquito and pest insect control.",
+        "life_stages": [
+          {
+            "icon": "🥚",
+            "name": "Egg",
+            "description": "Female dips abdomen to water surface to release eggs in flight",
+            "months": [
+              "May-Aug"
+            ]
+          },
+          {
+            "icon": "🐛",
+            "name": "Nymph",
+            "description": "Aquatic; buries in sediment; predatory on invertebrates and small tadpoles; 1–2 year development",
+            "months": [
+              "Jan-Dec"
+            ]
+          },
+          {
+            "icon": "🦟",
+            "name": "Adult",
+            "description": "Male chalk-white abdomen; female brown with yellow spots; territorial perching at pond edge and field openings",
+            "months": [
+              "May-Sep"
+            ]
+          }
+        ],
+        "region": "northeast_pa",
+        "ecological_role": "predator",
+        "is_keystone": false,
+        "taxonomic_group": "group_dragonflies",
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Common_whitetail.jpg/500px-Common_whitetail.jpg",
+          "author": "Bruce Marlin"
         }
       },
       {
@@ -3543,6 +3608,41 @@
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Prunus_virginiana_flowers.jpg/500px-Prunus_virginiana_flowers.jpg",
           "author": "Nadiatalent"
         }
+      },
+      {
+        "id": "plant_american-basswood",
+        "common_name": "American Basswood",
+        "latin_name": "Tilia americana",
+        "form": "tree",
+        "habitat": [
+          "forest",
+          "woodland",
+          "forest_edge",
+          "riparian"
+        ],
+        "diet": [],
+        "behavior": [
+          "mast_host",
+          "cavity_provider",
+          "bird_dispersed"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "active_months": [
+          "Jan-Dec"
+        ],
+        "functional_description": "Large forest tree (60–120 ft) known throughout NE PA as the 'bee tree.' Produces dense clusters of pale yellow, intensely fragrant flowers in late June–early July — among the most productive nectar sources of any eastern North American tree. A single basswood in full bloom can be heard buzzing from 50 feet away as hundreds of bees work it simultaneously. The bloom is brief (7–10 days) but immense: a single mature tree can produce more nectar during its bloom than an acre of clover. Soft, light wood decays relatively quickly, creating hollow trunks and cavity-rich snags. Hosts 130+ Lepidoptera species including Eastern Tiger Swallowtail. Inner bark (bast) was used by Indigenous peoples for rope, cordage, and baskets — the source of the name 'basswood.'",
+        "life_stages": [],
+        "region": "northeast_pa",
+        "ecological_role": "producer",
+        "is_keystone": true,
+        "keystone_type": "mutualist",
+        "keystone_description": "Premier midsummer pollinator tree of NE PA forests. When spring wildflowers are gone and summer has few blooming species, basswood delivers an enormous single-species nectar pulse in late June–July that sustains bumble bee colonies through peak queen production. Soft decaying wood creates cavity habitat for woodpeckers, Wood Ducks, and small mammals. A landscape-level resource that many species time their activity around.",
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Tilia_americana_%28American_Linden%29_%2828268263222%29.jpg/500px-Tilia_americana_%28American_Linden%29_%2828268263222%29.jpg",
+          "author": "Plant Image Library"
+        }
       }
     ],
     "taxonomic_groups": [
@@ -3623,6 +3723,12 @@
         "label": "Wild Cherries & Chokecherry",
         "common_traits": "Native Prunus trees and shrubs; prolific fruit producers fueling frugivore migration; primary hosts for Eastern Tent Caterpillar and 456+ Lepidoptera species; early spring bloomers for pollinators",
         "notes": "Genus Prunus (family Rosaceae); Black Cherry, Pin Cherry, and Chokecherry are the key NE PA representatives"
+      },
+      {
+        "id": "group_dragonflies",
+        "label": "Dragonflies",
+        "common_traits": "Aerial and aquatic predators; nymphs spend 1–3 years as top invertebrate predators in ponds and streams; adults control flying insect populations including mosquitoes",
+        "notes": "Order Odonata, suborder Anisoptera; Eastern Pondhawk and Common Whitetail are the most visible NE PA representatives"
       }
     ],
     "symbiosis": [
@@ -4929,6 +5035,69 @@
         ],
         "strength": "important",
         "notes": "Chokecherry blooms in May with dense white flower racemes that are heavily visited by bumble bees for nectar and pollen. Bumble bees are primary pollinators. The abundant early-season bloom makes chokecherry thickets important foraging habitat for native bees."
+      },
+      {
+        "type": "mutualism",
+        "source": "insect_native-bumble-bees",
+        "targets": [
+          "plant_american-basswood"
+        ],
+        "strength": "critical",
+        "notes": "American Basswood is one of the most important midsummer nectar sources in NE PA. Bumble bees are among the most frequent and effective pollinators; basswood nectar is so abundant that the bloom period (late June–July) sustains colony growth peaks. Bumble bees transfer pollen between flowers, enabling seed set in this wind-and-insect pollinated species."
+      },
+      {
+        "type": "commensalism",
+        "source": "bird_pileated-woodpecker",
+        "targets": [
+          "plant_american-basswood"
+        ],
+        "strength": "important",
+        "notes": "Mature and dying American Basswood develop heart rot cavities that Pileated Woodpeckers excavate for carpenter ants and beetle larvae. Large Pileated foraging excavations in soft basswood wood create the rectangular cavities characteristic of this species. Old basswood snags are priority foraging and cavity-nesting sites."
+      },
+      {
+        "type": "parasitism",
+        "source": "insect_eastern-tiger-swallowtail",
+        "targets": [
+          "plant_american-basswood"
+        ],
+        "strength": "incidental",
+        "notes": "Eastern Tiger Swallowtail caterpillars feed on American Basswood leaves, one of several preferred larval host trees. Adults also nectar on basswood flowers in midsummer, making basswood important at multiple life stages."
+      },
+      {
+        "type": "predation",
+        "source": "bird_eastern-kingbird",
+        "targets": [
+          "insect_common-whitetail"
+        ],
+        "strength": "incidental",
+        "notes": "Eastern Kingbirds are aggressive aerial insectivores that regularly capture large dragonflies including Common Whitetail. Kingbirds hunt from exposed perches near water and fields, sallying after dragonflies in open airspace."
+      },
+      {
+        "type": "predation",
+        "source": "bird_great-blue-heron",
+        "targets": [
+          "insect_eastern-pondhawk"
+        ],
+        "strength": "incidental",
+        "notes": "Great Blue Herons occasionally capture large dragonflies including Eastern Pondhawk at the water surface or in emergent vegetation. Dragonflies are minor prey items compared to fish and frogs but are taken opportunistically during perching near pond edges."
+      },
+      {
+        "type": "commensalism",
+        "source": "insect_eastern-pondhawk",
+        "targets": [
+          "plant_common-cattail"
+        ],
+        "strength": "important",
+        "notes": "Eastern Pondhawk uses Common Cattail stems as perching and thermoregulation sites, and emergent cattail vegetation provides structure for nymphs to climb during adult emergence. Cattail beds are preferred perch territories for male pondhawks guarding mating sites."
+      },
+      {
+        "type": "commensalism",
+        "source": "insect_common-whitetail",
+        "targets": [
+          "plant_common-cattail"
+        ],
+        "strength": "important",
+        "notes": "Common Whitetail males perch on cattail stalks and emergent vegetation to defend territories and ambush prey. The tall vertical structure of cattail beds is used heavily during warm midday hours. Nymphs also use submerged cattail stems as habitat and emergence substrate."
       }
     ],
     "relations": [
@@ -5001,6 +5170,14 @@
           "plant_chokecherry"
         ],
         "notes": "Three native NE PA members of genus Prunus (family Rosaceae). Collectively support 456+ Lepidoptera species, are the primary Eastern Tent Caterpillar hosts, and produce fruit that fuels Cedar Waxwing, American Robin, thrush, and Black Bear fattening cycles. Black Cherry is the large forest tree; Pin Cherry is the disturbance pioneer; Chokecherry is the riparian-edge shrub. Together they provide Prunus resources across every successional stage."
+      },
+      {
+        "type": "taxonomic_group",
+        "members": [
+          "insect_eastern-pondhawk",
+          "insect_common-whitetail"
+        ],
+        "notes": "Two of the most abundant and visible dragonflies of NE PA ponds and slow streams. Both are perch-and-pursue hunters with strong sexual dimorphism — males brilliantly colored (blue in Pondhawk, chalky white in Whitetail), females cryptic green/brown. Nymphs are top invertebrate predators in lentic systems; adults control aerial insect populations including mosquitoes. Both species can be seen patrolling the same pond simultaneously."
       }
     ]
   }
