@@ -3178,6 +3178,37 @@
             }
           },
           {
+            "id": "plant_bear-corn",
+            "common_name": "Bear Corn (Squawroot)",
+            "latin_name": "Conopholis americana",
+            "form": "wildflower",
+            "habitat": [
+              "forest",
+              "woodland"
+            ],
+            "diet": [],
+            "behavior": [
+              "holoparasitic",
+              "spring_ephemeral"
+            ],
+            "season": [
+              "spring",
+              "summer"
+            ],
+            "active_months": [
+              "Apr-Jun"
+            ],
+            "functional_description": "A holoparasitic plant with no chlorophyll — steals carbohydrates entirely from the roots of oaks (Quercus spp.). Emerges as pale yellow-brown, corn-cob-like clusters from the forest floor in April–June. Cannot photosynthesize; its entire carbon budget comes from host root connections that develop as a dense underground tuber-like mass. One of the most important early-spring food sources for American Black Bear: bears emerge from dens in late March–April when calorie-rich foods are scarce and actively seek bear corn patches, which recur in the same locations year to year. The plant's common name derives directly from this relationship.",
+            "life_stages": [],
+            "region": "northeast_pa",
+            "ecological_role": "parasite",
+            "is_keystone": false,
+            "image": {
+              "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Conopholis_americana_-_Bear_Corn.jpg/500px-Conopholis_americana_-_Bear_Corn.jpg",
+              "author": "Fritzflohrreynolds"
+            }
+          },
+          {
             "id": "mammal_red-fox",
             "common_name": "Red Fox",
             "latin_name": "Vulpes vulpes",
@@ -4406,6 +4437,44 @@
             ],
             "strength": "important",
             "notes": "Baltimore Oriole eats ripe Black Cherry fruits heavily in July and August, coinciding with peak fruit ripening before southbound migration. Orioles are among the most efficient cherry consumers in NE PA's forest edge, consuming whole cherries and dispersing seeds via defecation across the landscape."
+          },
+          {
+            "type": "parasitism",
+            "source": "plant_bear-corn",
+            "targets": [
+              "plant_white-oak",
+              "plant_northern-red-oak"
+            ],
+            "fulfillment": "any",
+            "strength": "critical",
+            "notes": "Bear Corn (Conopholis americana) is an obligate holoparasite of oak roots — it cannot survive without a host Quercus. The underground tuber-like attachment mass penetrates oak lateral roots and extracts water and carbohydrates entirely. White Oak is the preferred host in NE PA; Northern Red Oak is frequently used where White Oak is less abundant. A single host oak may support multiple bear corn clusters for decades."
+          },
+          {
+            "type": "predation",
+            "source": "mammal_black-bear",
+            "targets": [
+              "plant_bear-corn"
+            ],
+            "strength": "important",
+            "notes": "American Black Bear is the primary consumer of Bear Corn in NE PA. Bears emerging from dens in late March–April actively seek out bear corn patches, eating entire above-ground clusters before spring berries and mast become available. Bear corn is calorie-dense relative to other early spring foods and its predictable, year-to-year emergence at fixed locations makes it a reliable post-denning resource. The plant's common name reflects this dependence."
+          },
+          {
+            "type": "predation-fruit_eating",
+            "source": "mammal_virginia-opossum",
+            "targets": [
+              "plant_black-cherry"
+            ],
+            "strength": "important",
+            "notes": "Virginia Opossum is a significant consumer and seed disperser of Black Cherry fruit in late summer, eating fallen and low-hanging fruit and defecating seeds across home range. Opossums' broad foraging range and tolerance of secondary habitats (forest edge, suburban woodland) makes them effective dispersers of cherry seeds into fragmented landscapes."
+          },
+          {
+            "type": "competition",
+            "source": "mammal_virginia-opossum",
+            "targets": [
+              "mammal_raccoon"
+            ],
+            "strength": "incidental",
+            "notes": "Virginia Opossum and Raccoon extensively overlap in habitat use, nocturnal activity timing, diet (fruit, carrion, invertebrates, bird eggs), and den site selection (tree cavities, groundhog burrows). Where both are abundant, they compete for the same fallen fruit patches, carrion resources, and cavity dens. Raccoon is dominant in direct interactions; opossum avoids confrontation using thanatosis (playing dead) rather than aggression."
           }
         ],
         "relations": [
