@@ -2731,6 +2731,176 @@
         }
       },
       {
+        "id": "bird_baltimore-oriole",
+        "common_name": "Baltimore Oriole",
+        "latin_name": "Icterus galbula",
+        "form": "songbird",
+        "habitat": [
+          "forest_edge",
+          "woodland",
+          "riparian",
+          "garden"
+        ],
+        "diet": [
+          "insect_eater",
+          "nectivore",
+          "frugivore"
+        ],
+        "behavior": [
+          "migratory",
+          "nest_weaver",
+          "territorial",
+          "vocal"
+        ],
+        "season": [
+          "spring",
+          "summer",
+          "fall"
+        ],
+        "active_months": [
+          "May-Sep"
+        ],
+        "functional_description": "Brilliant orange-and-black male; olive-yellow female. Builds a distinctive woven pendant nest 4–7 inches deep hanging from branch tips over open areas or water — often in black willow, sycamore, or elm. One of few songbirds that eats hairy caterpillars (tent caterpillars, fall webworm) that other birds avoid due to chemical defenses; a key natural check on spring caterpillar outbreaks. Pollinates tubular flowers when nectaring. Eats ripe cherries, elderberries, and mulberries in mid-summer. Arrives early May; departs by early September for neotropical wintering grounds in Central America.",
+        "life_stages": [
+          {
+            "icon": "🏠",
+            "name": "Territory Establishment",
+            "description": "Males arrive and begin defending territory with song from canopy perches",
+            "months": [
+              "May"
+            ]
+          },
+          {
+            "icon": "🏗️",
+            "name": "Nest Building",
+            "description": "Female weaves intricate pendant nest hanging from branch tips, often over water",
+            "months": [
+              "May-Jun"
+            ]
+          },
+          {
+            "icon": "🥚",
+            "name": "Egg",
+            "description": "Clutch of 3-6 pale gray eggs with dark irregular markings",
+            "months": [
+              "Jun"
+            ]
+          },
+          {
+            "icon": "🐦",
+            "name": "Chick",
+            "description": "Nestlings raised in pendant nest; parents deliver caterpillars and insects",
+            "months": [
+              "Jun-Jul"
+            ]
+          },
+          {
+            "icon": "🪶",
+            "name": "Fledgling",
+            "description": "Young orioles follow parents while learning to forage; diet shifts to fruit and nectar",
+            "months": [
+              "Jul-Aug"
+            ]
+          },
+          {
+            "icon": "✈️",
+            "name": "Pre-migration",
+            "description": "Building fat reserves on fruit and insects before southbound migration to Central America",
+            "months": [
+              "Aug-Sep"
+            ]
+          }
+        ],
+        "region": "northeast_pa",
+        "ecological_role": "omnivore",
+        "is_keystone": false,
+        "taxonomic_group": "group_songbirds",
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Baltimore_Oriole-_dorsum.jpg/500px-Baltimore_Oriole-_dorsum.jpg",
+          "author": "TonyCastro"
+        }
+      },
+      {
+        "id": "bird_orchard-oriole",
+        "common_name": "Orchard Oriole",
+        "latin_name": "Icterus spurius",
+        "form": "songbird",
+        "habitat": [
+          "forest_edge",
+          "shrubland",
+          "garden",
+          "meadow"
+        ],
+        "diet": [
+          "insect_eater",
+          "nectivore",
+          "frugivore"
+        ],
+        "behavior": [
+          "migratory",
+          "nest_weaver",
+          "territorial"
+        ],
+        "season": [
+          "spring",
+          "summer"
+        ],
+        "active_months": [
+          "May-Aug"
+        ],
+        "functional_description": "Smallest North American oriole. Adult males have rich chestnut body with black hood and back; first-year males are olive-yellow with a black bib; females olive-yellow throughout. More nectarivorous than Baltimore Oriole — probes a wider variety of flowers and is a consistent pollinator in open habitats. Arrives late May (1–2 weeks after Baltimore), but departs by early August — the shortest summer residency of any NE PA breeder. Nests in orchards, shrubby riparian edges, and open forest margins. Caterpillars and other insects dominate spring diet; shifts to nectar and soft fruit through summer.",
+        "life_stages": [
+          {
+            "icon": "🏠",
+            "name": "Arrival",
+            "description": "Males arrive and quickly establish territories in open woodland edges and orchards",
+            "months": [
+              "May"
+            ]
+          },
+          {
+            "icon": "🏗️",
+            "name": "Nest Building",
+            "description": "Female builds compact woven cup nest, shallower than Baltimore Oriole's deep pendant",
+            "months": [
+              "May-Jun"
+            ]
+          },
+          {
+            "icon": "🥚",
+            "name": "Egg",
+            "description": "Clutch of 3-5 pale blue eggs with brown markings",
+            "months": [
+              "Jun"
+            ]
+          },
+          {
+            "icon": "🐦",
+            "name": "Chick",
+            "description": "Nestlings fed insects and caterpillars; rapid growth and early fledging",
+            "months": [
+              "Jun-Jul"
+            ]
+          },
+          {
+            "icon": "✈️",
+            "name": "Early Departure",
+            "description": "Adults and fledglings begin southbound migration — earliest of NE PA's summer residents",
+            "months": [
+              "Jul-Aug"
+            ]
+          }
+        ],
+        "region": "northeast_pa",
+        "ecological_role": "omnivore",
+        "is_keystone": false,
+        "taxonomic_group": "group_songbirds",
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Orchard_Oriole_by_Dan_Pancamo_1.jpg/500px-Orchard_Oriole_by_Dan_Pancamo_1.jpg",
+          "author": "Dan Pancamo"
+        }
+      },
+      {
         "id": "plant_eastern-hemlock",
         "common_name": "Eastern Hemlock",
         "latin_name": "Tsuga canadensis",
@@ -4180,6 +4350,60 @@
         ],
         "strength": "incidental",
         "notes": "Red-tailed Hawk nests in the tall crown forks of mature hemlock trees in NE PA, using the dense evergreen branches for nest concealment and structural support."
+      },
+      {
+        "type": "predation",
+        "source": "bird_baltimore-oriole",
+        "targets": [
+          "insect_eastern-tent-caterpillar"
+        ],
+        "strength": "important",
+        "notes": "Baltimore Oriole is one of the few songbirds that consistently eats hairy caterpillars — including Eastern Tent Caterpillar — that most birds avoid due to defensive hairs and chemical secretions. Orioles beat caterpillars against branches to remove the hairs before swallowing. During spring tent caterpillar outbreaks, orioles can significantly reduce colony size."
+      },
+      {
+        "type": "predation",
+        "source": "bird_orchard-oriole",
+        "targets": [
+          "insect_eastern-tent-caterpillar"
+        ],
+        "strength": "incidental",
+        "notes": "Orchard Oriole also takes tent caterpillars opportunistically during spring outbreaks, using the same dehusking technique as Baltimore Oriole. Less frequent than Baltimore Oriole due to later arrival timing."
+      },
+      {
+        "type": "mutualism",
+        "source": "bird_baltimore-oriole",
+        "targets": [
+          "plant_eastern-columbine"
+        ],
+        "strength": "important",
+        "notes": "Baltimore Oriole is a secondary pollinator of Eastern Columbine — probes the elongated nectar spurs and transfers pollen on its forehead and bill. Orioles supplement Ruby-throated Hummingbird as columbine pollinators in forest edge habitat."
+      },
+      {
+        "type": "mutualism",
+        "source": "bird_orchard-oriole",
+        "targets": [
+          "plant_eastern-columbine"
+        ],
+        "strength": "important",
+        "notes": "Orchard Oriole is a frequent nectarivore at Eastern Columbine, probing tubular flowers and transferring pollen. More consistently nectarivorous than Baltimore Oriole, making it an important secondary pollinator of columbine and other native tubular-flowered plants."
+      },
+      {
+        "type": "commensalism",
+        "source": "bird_baltimore-oriole",
+        "targets": [
+          "plant_black-willow"
+        ],
+        "strength": "important",
+        "notes": "Baltimore Oriole preferentially hangs its distinctive pendant nest from the flexible branch tips of Black Willow overhanging water — the pendulous branches provide structural support for the woven nest pouch while the water below deters mammalian predators. Willows along NE PA riparian corridors are among the most-used nesting trees for this species."
+      },
+      {
+        "type": "predation-fruit_eating",
+        "source": "bird_baltimore-oriole",
+        "targets": [
+          "plant_black-cherry"
+        ],
+        "strength": "important",
+        "notes": "Baltimore Oriole eats ripe Black Cherry fruits heavily in July and August, coinciding with peak fruit ripening before southbound migration. Orioles are among the most efficient cherry consumers in NE PA's forest edge, consuming whole cherries and dispersing seeds via defecation across the landscape."
       }
     ],
     "relations": [
@@ -4227,6 +4451,14 @@
           "mammal_red-fox"
         ],
         "notes": "NE PA mesofauna sharing abandoned burrow infrastructure. Groundhog excavates the burrows; abandoned systems are reused by Red Fox (natal dens), Raccoon (winter shelter), and Virginia Opossum (winter refuge). This secondary use network means Groundhog burrow density has outsized effects on local mesopredator populations beyond its direct role as prey."
+      },
+      {
+        "type": "taxonomic_group",
+        "members": [
+          "bird_baltimore-oriole",
+          "bird_orchard-oriole"
+        ],
+        "notes": "Both members of Icteridae (blackbird) family, genus Icterus. Share pendulous woven nest construction, neotropical migration, and diet spanning insects, nectar, and fruit. Baltimore Oriole is the larger and more common of the two in NE PA; Orchard Oriole has the briefest summer residency of any NE PA breeder, departing in late July."
       }
     ]
   }
