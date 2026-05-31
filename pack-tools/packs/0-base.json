@@ -2794,7 +2794,7 @@
         "targets": [
           "plant_goldenrod"
         ],
-        "strength": "incidental",
+        "strength": "important",
         "notes": "Monarchs nectar heavily on goldenrod during fall migration — critical fat-building fuel before Mexico journey."
       },
       {
@@ -2987,7 +2987,7 @@
         "notes": "Beaver uses all native willow species for food and dam construction material."
       },
       {
-        "type": "mutualism",
+        "type": "commensalism",
         "source": "bird_great-blue-heron",
         "targets": [
           "mammal_beaver"
@@ -3005,7 +3005,7 @@
         "notes": "Great Blue Heron is a primary predator of American Bullfrog adults and large tadpoles."
       },
       {
-        "type": "mutualism",
+        "type": "commensalism",
         "source": "bird_pileated-woodpecker",
         "targets": [
           "bird_great-horned-owl"
@@ -3014,7 +3014,7 @@
         "notes": "Pileated Woodpecker excavates cavities used by Great Horned Owl for nesting."
       },
       {
-        "type": "mutualism",
+        "type": "commensalism",
         "source": "bird_pileated-woodpecker",
         "targets": [
           "bird_american-kestrel"
@@ -3039,15 +3039,6 @@
         ],
         "strength": "incidental",
         "notes": "Eastern Gray Squirrel is a major prey item for Red-tailed Hawk in forested PA landscapes."
-      },
-      {
-        "type": "predation",
-        "source": "bird_red-tailed-hawk",
-        "targets": [
-          "mammal_white-tailed-deer"
-        ],
-        "strength": "incidental",
-        "notes": "Red-tailed Hawk occasionally takes White-tailed Deer fawns, though this is uncommon."
       },
       {
         "type": "predation",
@@ -3203,7 +3194,7 @@
         "notes": "Eastern Tiger Swallowtail uses multiple oak species as facultative larval hosts beyond White and Red Oak."
       },
       {
-        "type": "mutualism",
+        "type": "commensalism",
         "source": "bird_pileated-woodpecker",
         "targets": [
           "bird_wood-duck"
@@ -3212,7 +3203,7 @@
         "notes": "Wood Duck nests in cavities excavated by Pileated Woodpecker. Woodpecker provides critical cavity homes in dead trees where wood ducks depend for successful breeding."
       },
       {
-        "type": "mutualism",
+        "type": "commensalism",
         "source": "bird_pileated-woodpecker",
         "targets": [
           "mammal_flying-squirrel"
@@ -3372,6 +3363,190 @@
         ],
         "strength": "important",
         "notes": "Both species forage in same areas and feed on flying insects. Often seen in mixed-species feeding flocks during migration. Different nesting substrate preferences minimize direct competition."
+      },
+      {
+        "type": "predation-fruit_eating",
+        "source": "bird_northern-cardinal",
+        "targets": [
+          "plant_black-cherry"
+        ],
+        "strength": "incidental",
+        "notes": "Northern Cardinal eats Black Cherry fruit in late summer. Males and females both take ripe cherries — a consistent consumer whose seeds pass through gut intact."
+      },
+      {
+        "type": "predation",
+        "source": "bird_red-tailed-hawk",
+        "targets": [
+          "bird_northern-cardinal"
+        ],
+        "strength": "incidental",
+        "notes": "Red-tailed Hawk occasionally takes Northern Cardinal at forest edges and near brush piles — an opportunistic prey item rather than a dietary staple."
+      },
+      {
+        "type": "mutualism",
+        "source": "bird_white-breasted-nuthatch",
+        "targets": [
+          "plant_white-oak"
+        ],
+        "strength": "important",
+        "notes": "White-breasted Nuthatch caches White Oak acorns in bark crevices and ground soil for winter use. Uncached acorns germinate — nuthatch is a secondary oak disperser alongside Blue Jay, operating at shorter range within its territory."
+      },
+      {
+        "type": "commensalism",
+        "source": "bird_pileated-woodpecker",
+        "targets": [
+          "bird_white-breasted-nuthatch"
+        ],
+        "strength": "incidental",
+        "notes": "White-breasted Nuthatch uses smaller abandoned cavities created by Pileated Woodpecker and Northern Flicker for roosting and winter insulation. Also forages in bark furrows opened by woodpecker excavation."
+      },
+      {
+        "type": "commensalism",
+        "source": "bird_pileated-woodpecker",
+        "targets": [
+          "bird_great-crested-flycatcher"
+        ],
+        "strength": "important",
+        "notes": "Great Crested Flycatcher is an obligate cavity nester — preferentially uses large abandoned Pileated Woodpecker cavities and Northern Flicker holes in NE PA. Famously lines nest with shed snakeskin."
+      },
+      {
+        "type": "predation",
+        "source": "bird_great-crested-flycatcher",
+        "targets": [
+          "insect_eastern-tent-caterpillar"
+        ],
+        "strength": "incidental",
+        "notes": "Great Crested Flycatcher takes large caterpillars including Eastern Tent Caterpillar during spring outbreaks — sallies from perch to grab crawling caterpillars from branches."
+      },
+      {
+        "type": "predation",
+        "source": "bird_american-kestrel",
+        "targets": [
+          "insect_grasshopper"
+        ],
+        "strength": "critical",
+        "notes": "Field Grasshopper is the primary summer prey for American Kestrel in NE PA open habitats — grasshoppers can comprise 50%+ of summer diet. Kestrel hovers over meadows specifically targeting grasshoppers."
+      },
+      {
+        "type": "predation",
+        "source": "bird_eastern-bluebird",
+        "targets": [
+          "insect_grasshopper"
+        ],
+        "strength": "important",
+        "notes": "Eastern Bluebird hunts grasshoppers and crickets in open fields, dropping from low perches onto prey. Grasshoppers are critical summer protein especially for nestlings."
+      },
+      {
+        "type": "parasitism",
+        "source": "insect_bark-beetle",
+        "targets": [
+          "plant_black-cherry"
+        ],
+        "strength": "important",
+        "notes": "Engraver Bark Beetles (Ips spp.) colonize stressed, dying, or recently-dead Black Cherry trees. Larvae engrave characteristic gallery patterns under bark, girdling cambium and accelerating tree death. Mass outbreaks follow drought or ice damage."
+      },
+      {
+        "type": "predation",
+        "source": "bird_pileated-woodpecker",
+        "targets": [
+          "insect_bark-beetle"
+        ],
+        "strength": "critical",
+        "notes": "Bark beetles and carpenter ants are the two primary prey driving Pileated Woodpecker foraging. Pileated excavates large rectangular holes specifically to reach bark beetle larval galleries in dead and dying trees — the foundational predation link explaining why Pileated Woodpeckers are drawn to snags."
+      },
+      {
+        "type": "predation",
+        "source": "bird_downy-woodpecker",
+        "targets": [
+          "insect_bark-beetle"
+        ],
+        "strength": "important",
+        "notes": "Downy Woodpecker forages on smaller bark beetle galleries near the bark surface — especially on smaller-diameter branches where Pileated cannot reach. Downy and Pileated partition the bark beetle resource by tree diameter and depth."
+      },
+      {
+        "type": "predation",
+        "source": "insect_orb-weaver-spider",
+        "targets": [
+          "insect_monarch-butterfly",
+          "insect_native-bumble-bees"
+        ],
+        "fulfillment": "any",
+        "strength": "incidental",
+        "notes": "Common Orb-weaver Spider builds large orb webs (up to 60 cm) in meadow and forest-edge vegetation where Monarchs and bumble bees forage. Spiders opportunistically capture both species — though Monarchs' cardenolide load sometimes causes spiders to release them."
+      },
+      {
+        "type": "predation",
+        "source": "bird_common-yellowthroat",
+        "targets": [
+          "insect_orb-weaver-spider"
+        ],
+        "strength": "incidental",
+        "notes": "Common Yellowthroat actively gleans spiders from vegetation and low shrubs — spiders are a consistent dietary item. Orb-weaver spiders in meadow edge habitat are frequently taken during the Yellowthroat's low foraging passes."
+      },
+      {
+        "type": "parasitism",
+        "source": "insect_waved-sphinx-moth",
+        "targets": [
+          "plant_white-oak"
+        ],
+        "strength": "important",
+        "notes": "Ceratomia undulosa (Waved Sphinx Moth) uses White Oak as a primary larval host in NE PA. Caterpillars feed on oak foliage from June–August. Related Sphingidae also use Ash and Fringe Tree but White Oak is the dominant PA host."
+      },
+      {
+        "type": "predation",
+        "source": "bird_eastern-kingbird",
+        "targets": [
+          "insect_waved-sphinx-moth"
+        ],
+        "strength": "incidental",
+        "notes": "Eastern Kingbird is an aerial predator of large moths including hawkmoths (Sphingidae). Waved Sphinx Moths fly at dusk along forest edges — exactly the habitat where Kingbirds make late-evening aerial sallies."
+      },
+      {
+        "type": "predation",
+        "source": "bird_eastern-kingbird",
+        "targets": [
+          "insect_native-bumble-bees"
+        ],
+        "strength": "incidental",
+        "notes": "Eastern Kingbird's original name was 'Bee Martin' — it regularly captures large bees and wasps in aerial sallies. Bumble bees are taken along meadow edges and near beaver ponds. Kingbirds remove stingers by rubbing prey against a perch before swallowing."
+      },
+      {
+        "type": "predation",
+        "source": "bird_eastern-kingbird",
+        "targets": [
+          "insect_eastern-pondhawk"
+        ],
+        "strength": "incidental",
+        "notes": "Eastern Kingbird forages over open water and beaver pond edges where dragonflies concentrate. Eastern Pondhawk is a conspicuous mid-sized dragonfly in the same open habitats — a regular prey item for aerial sallying kingbirds."
+      },
+      {
+        "type": "commensalism",
+        "source": "mammal_beaver",
+        "targets": [
+          "amphibian_american-bullfrog",
+          "amphibian_green-frog"
+        ],
+        "fulfillment": "any",
+        "strength": "critical",
+        "notes": "Beaver pond creation transforms stream channels into the still, shallow, productive water that American Bullfrog and Green Frog require for breeding and year-round residence. A single active beaver colony supports dozens of adult frogs and thousands of tadpoles annually."
+      },
+      {
+        "type": "predation",
+        "source": "amphibian_american-bullfrog",
+        "targets": [
+          "amphibian_spotted-salamander"
+        ],
+        "strength": "incidental",
+        "notes": "American Bullfrog is an opportunistic predator in shared wetland habitat — takes Spotted Salamander adults migrating to breeding pools, and consumes egg masses and larvae when they overlap with bullfrog foraging range."
+      },
+      {
+        "type": "predation",
+        "source": "bird_blue-jay",
+        "targets": [
+          "insect_eastern-tent-caterpillar"
+        ],
+        "strength": "incidental",
+        "notes": "Blue Jay preys on Eastern Tent Caterpillar larvae during mass outbreak years. Silk tent colonies on Black Cherry attract conspicuous predation — Blue Jays tear open tents and take caterpillars directly."
       }
     ],
     "relations": [
