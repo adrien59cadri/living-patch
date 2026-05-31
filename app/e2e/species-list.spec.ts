@@ -236,3 +236,75 @@ test.describe('Search bar', () => {
     await expect(page.getByText('Monarch Butterfly', { exact: true })).toBeVisible();
   });
 });
+
+test.describe('Quick filter bar', () => {
+  test('form chips are visible on the list page', async ({ page }) => {
+    await page.goto('/');
+    await page.waitForLoadState('networkidle');
+
+    // The QuickFilterBar renders form chips as buttons matching form labels
+    await expect(page.getByRole('button', { name: 'Butterfly', exact: true })).toBeVisible();
+    await expect(page.getByRole('button', { name: 'Tree', exact: true })).toBeVisible();
+    await expect(page.getByRole('button', { name: 'Woodpecker', exact: true })).toBeVisible();
+  });
+
+  test('clicking form chip filters species list', async ({ page }) => {
+    await page.goto('/');
+    await page.waitForLoadState('networkidle');
+
+    await page.getByRole('button', { name: 'Butterfly', exact: true }).click();
+
+    // Monarch Butterfly (a butterfly) should remain visible
+    await expect(page.getByText('Monarch Butterfly', { exact: true })).toBeVisible();
+    // Pileated Woodpecker (a woodpecker) should be hidden
+    await expect(page.getByText('Pileated Woodpecker', { exact: true })).not.toBeVisible();
+  });
+
+  test('clicking active form chip again deselects it and restores full list', async ({ page }) => {
+    await page.goto('/');
+    await page.waitForLoadState('networkidle');
+
+    const chip = page.getByRole('button', { name: 'Butterfly', exact: true });
+    await chip.click();
+    await expect(page.getByText('Pileated Woodpecker', { exact: true })).not.toBeVisible();
+
+    // Click again to deselect
+    await chip.click();
+    await expect(page.getByText('56 species', { exact: true })).toBeVisible();
+    await expect(page.getByText('Pileated Woodpecker', { exact: true })).toBeVisible();
+  });
+
+  test('habitat chip filters species list', async ({ page }) => {
+    await page.goto('/');
+    await page.waitForLoadState('networkidle');
+
+    const forestChip = page.getByRole('button', { name: 'Forest', exact: true });
+    await expect(forestChip).toBeVisible();
+    await forestChip.click();
+
+    // Count should no longer be "56 species" (some species filtered out)
+    await expect(page.getByText('56 species', { exact: true })).not.toBeVisible();
+    // Pileated Woodpecker lives in forest
+    await expect(page.getByText('Pileated Woodpecker', { exact: true })).toBeVisible();
+  });
+
+  test('URL param ?form= pre-applies form chip and shows filtered results', async ({ page }) => {
+    await page.goto('/#/?form=butterfly');
+    await page.waitForLoadState('networkidle');
+
+    // Monarch Butterfly should be visible
+    await expect(page.getByText('Monarch Butterfly', { exact: true })).toBeVisible();
+    // Pileated Woodpecker should be hidden
+    await expect(page.getByText('Pileated Woodpecker', { exact: true })).not.toBeVisible();
+  });
+
+  test('URL param ?habitat= pre-applies habitat chip', async ({ page }) => {
+    await page.goto('/#/?habitat=forest');
+    await page.waitForLoadState('networkidle');
+
+    // Species count should be less than 56 (forest filtered)
+    await expect(page.getByText('56 species', { exact: true })).not.toBeVisible();
+    // Pileated Woodpecker lives in forest and should be visible
+    await expect(page.getByText('Pileated Woodpecker', { exact: true })).toBeVisible();
+  });
+});

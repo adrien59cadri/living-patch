@@ -96,3 +96,55 @@ test.describe('Edge cases', () => {
     await expect(page.getByText('Category not found.')).toBeVisible();
   });
 });
+
+test.describe('Clickable tags — navigate to filtered list', () => {
+  test('form tag on detail page is a link', async ({ page }) => {
+    await page.goto(MONARCH_URL);
+    await page.waitForLoadState('networkidle');
+
+    // The form tag "Butterfly" should be wrapped in an <a> link
+    const formLink = page.getByRole('link').filter({ hasText: 'Butterfly' }).first();
+    await expect(formLink).toBeVisible();
+    await expect(formLink).toHaveAttribute('href', /form=butterfly/);
+  });
+
+  test('clicking form tag navigates to filtered list', async ({ page }) => {
+    await page.goto(MONARCH_URL);
+    await page.waitForLoadState('networkidle');
+
+    const formLink = page.getByRole('link').filter({ hasText: 'Butterfly' }).first();
+    await formLink.click();
+    await page.waitForLoadState('networkidle');
+
+    // Should now be on the list page with Monarch visible
+    await expect(page.getByText('Monarch Butterfly', { exact: true })).toBeVisible();
+    // Non-butterfly species should be filtered out
+    await expect(page.getByText('Pileated Woodpecker', { exact: true })).not.toBeVisible();
+  });
+
+  test('clicking habitat tag navigates to filtered list', async ({ page }) => {
+    await page.goto(MONARCH_URL);
+    await page.waitForLoadState('networkidle');
+
+    // Find a habitat tag link in the tags row (first habitat tag)
+    const habitatLinks = page.getByRole('link').filter({ hasText: /Meadow|Field|Garden|Forest/ });
+    const firstHabitatLink = habitatLinks.first();
+    await expect(firstHabitatLink).toBeVisible();
+
+    await firstHabitatLink.click();
+    await page.waitForLoadState('networkidle');
+
+    // Should be on the list page, count reduced from 56
+    await expect(page.getByText('56 species', { exact: true })).not.toBeVisible();
+  });
+
+  test('keystone badge on detail page is a link', async ({ page }) => {
+    await page.goto(MONARCH_URL);
+    await page.waitForLoadState('networkidle');
+
+    // Keystone badge should be wrapped in a link
+    const keystoneLink = page.getByRole('link').filter({ hasText: /Keystone/ }).first();
+    await expect(keystoneLink).toBeVisible();
+    await expect(keystoneLink).toHaveAttribute('href', /keystone_type=/);
+  });
+});

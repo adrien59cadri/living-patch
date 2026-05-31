@@ -1,8 +1,93 @@
+import { useRef, useState } from 'react';
 import { useUserPreferences } from '../hooks/useUserPreferences';
 import { loadedPacks } from '../data';
+import { useLifeListStore } from '../stores/lifeList';
+import type { LifeListEntry, Sighting } from '../types';
+
+interface BackupFile {
+  entries: LifeListEntry[];
+  sightings: Sighting[];
+  exportedAt: string;
+  version: number;
+}
+
+function isValidBackup(data: unknown): data is BackupFile {
+  if (!data || typeof data !== 'object') return false;
+  const d = data as Record<string, unknown>;
+  if (!Array.isArray(d.entries) || !Array.isArray(d.sightings)) return false;
+  for (const e of d.entries) {
+    if (!e || typeof (e as Record<string, unknown>).speciesId !== 'string') return false;
+    if (typeof (e as Record<string, unknown>).tier !== 'string') return false;
+  }
+  for (const s of d.sightings) {
+    if (!s || typeof (s as Record<string, unknown>).id !== 'string') return false;
+    if (typeof (s as Record<string, unknown>).speciesId !== 'string') return false;
+    if (typeof (s as Record<string, unknown>).date !== 'string') return false;
+  }
+  return true;
+}
 
 export default function SettingsPage() {
   const { preferences, setPreferences } = useUserPreferences();
+  const { entries, sightings, restoreFromBackup } = useLifeListStore();
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const [pendingBackup, setPendingBackup] = useState<BackupFile | null>(null);
+  const [importError, setImportError] = useState<string | null>(null);
+  const [importSuccess, setImportSuccess] = useState(false);
+
+  const isEmpty = entries.length === 0 && sightings.length === 0;
+
+  function handleExport() {
+    const backup: BackupFile = {
+      entries,
+      sightings,
+      exportedAt: new Date().toISOString(),
+      version: 1,
+    };
+    const blob = new Blob([JSON.stringify(backup, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `living-patch-life-list-${new Date().toISOString().slice(0, 10)}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+
+  function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
+    setImportError(null);
+    setImportSuccess(false);
+    setPendingBackup(null);
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (ev) => {
+      try {
+        const parsed: unknown = JSON.parse(ev.target?.result as string);
+        if (!isValidBackup(parsed)) {
+          setImportError('Invalid backup file: missing or malformed entries/sightings.');
+          return;
+        }
+        setPendingBackup(parsed);
+      } catch {
+        setImportError('Could not parse the file. Make sure it is a valid JSON backup.');
+      }
+    };
+    reader.readAsText(file);
+    // Reset input so same file can be re-selected
+    e.target.value = '';
+  }
+
+  function handleConfirmImport() {
+    if (!pendingBackup) return;
+    restoreFromBackup(pendingBackup.entries, pendingBackup.sightings);
+    setPendingBackup(null);
+    setImportSuccess(true);
+  }
+
+  function handleCancelImport() {
+    setPendingBackup(null);
+    setImportError(null);
+  }
 
   const handleThumbnailToggle = () => {
     setPreferences({

@@ -73,7 +73,7 @@ export function SpeciesCard({ species, symbiotes, habitatNeighbors, related }: P
       </div>
 
       {/* 3. Tags row */}
-      <TagRow species={species} />
+      <TagRow species={species} linkable />
 
       {/* 4. Functional description */}
       <p className="text-stone-600 text-sm leading-relaxed">

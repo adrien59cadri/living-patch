@@ -9,6 +9,7 @@ interface LifeListState {
   // Actions
   addSighting: (sighting: Omit<Sighting, 'id' | 'createdAt'>) => void;
   setTier: (speciesId: string, tier: FamiliarityTier) => void;
+  restoreFromBackup: (entries: LifeListEntry[], sightings: Sighting[]) => void;
 
   // Selectors
   getTier: (speciesId: string) => FamiliarityTier | null;
@@ -80,6 +81,10 @@ export const useLifeListStore = create<LifeListState>()(
                 ],
           };
         });
+      },
+
+      restoreFromBackup(entries, sightings) {
+        set({ entries, sightings });
       },
 
       getTier(speciesId) {

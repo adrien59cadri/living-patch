@@ -5,6 +5,7 @@ import { filterSpecies, getFilterOptions } from '../lib/filters';
 import type { FilterState } from '../lib/filters';
 import { SearchBar } from '../components/SearchBar';
 import { FilterPanel } from '../components/FilterPanel';
+import { QuickFilterBar } from '../components/QuickFilterBar';
 import { SpeciesList } from '../components/SpeciesList';
 import { LifeListStats } from '../components/LifeListStats';
 
@@ -12,18 +13,21 @@ export default function HomePage() {
   const { species, groups } = useDataset();
   const [searchParams] = useSearchParams();
 
-  const [isAdvancedOpen, setIsAdvancedOpen] = useState(() => !!searchParams.get('form'));
-
-  const [filters, setFilters] = useState<FilterState>(() => {
-    const formParam = searchParams.get('form');
-    return {
-      search: '',
-      forms: formParam ? [formParam] : [],
-      seasons: [],
-      habitats: [],
-      keystone_types: [],
-    };
+  const [isAdvancedOpen, setIsAdvancedOpen] = useState(() => {
+    return (
+      searchParams.getAll('form').length > 0 ||
+      searchParams.getAll('habitat').length > 0 ||
+      searchParams.getAll('keystone_type').length > 0
+    );
   });
+
+  const [filters, setFilters] = useState<FilterState>(() => ({
+    search: '',
+    forms: searchParams.getAll('form'),
+    seasons: searchParams.getAll('season'),
+    habitats: searchParams.getAll('habitat'),
+    keystone_types: searchParams.getAll('keystone_type'),
+  }));
 
   const options = useMemo(() => getFilterOptions(species), [species]);
   const filteredSpecies = useMemo(() => filterSpecies(species, filters), [species, filters]);
@@ -60,6 +64,8 @@ export default function HomePage() {
           <span className="text-[10px]">{isAdvancedOpen ? '▲' : '▼'}</span>
         </button>
       </div>
+
+      <QuickFilterBar options={options} filters={filters} onChange={setFilters} />
 
       {isAdvancedOpen && (
         <FilterPanel options={options} filters={filters} onChange={setFilters} />
