@@ -134,8 +134,8 @@ test.describe('Clickable tags — navigate to filtered list', () => {
     await firstHabitatLink.click();
     await page.waitForLoadState('networkidle');
 
-    // Should be on the list page, count reduced from 56
-    await expect(page.getByText('64 species', { exact: true })).not.toBeVisible();
+    // Should be on the list page, count reduced from 67
+    await expect(page.getByText('67 species', { exact: true })).not.toBeVisible();
   });
 
   test('keystone badge on detail page is a link', async ({ page }) => {
