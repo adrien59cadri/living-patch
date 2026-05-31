@@ -38,7 +38,7 @@ npm run test:e2e   # Run 21 E2E tests (Playwright)
 
 ## What's Included
 
-- **56 species** + 9 taxonomic groups
+- **64 species** + 9 taxonomic groups
 - **66 symbiosis entries** + 3 general relations
 - **Full-text search** across name, description, all tags
 - **Multi-select filters** (form, season, habitat — combinable)

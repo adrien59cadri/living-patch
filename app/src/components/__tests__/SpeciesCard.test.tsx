@@ -85,9 +85,9 @@ describe('SpeciesCard', () => {
     expect(screen.queryByText('LIFE STAGES')).not.toBeInTheDocument();
   });
 
-  test('renders KEY RELATIONSHIPS section when critical entry exists', async () => {
+  test('renders RELATIONSHIPS section when critical entry exists', async () => {
     renderCard(mockMonarch, [mockObligateEntry]);
-    expect(screen.getByText('Key Relationships')).toBeInTheDocument();
+    expect(screen.getByText('Relationships')).toBeInTheDocument();
     expect(screen.getByText('Common Milkweed')).toBeInTheDocument();
     // Critical badge is now visible in collapsed view
     const criticalBadges = screen.getAllByText('Critical');

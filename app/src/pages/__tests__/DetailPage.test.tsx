@@ -61,9 +61,9 @@ describe('DetailPage', () => {
     expect(screen.getByText('Egg')).toBeInTheDocument();
   });
 
-  test('renders key relationships for monarch (has critical symbiosis)', async () => {
+  test('renders relationships section for monarch (has critical symbiosis)', async () => {
     renderDetailPage('insect_monarch-butterfly');
-    expect(screen.getByText('Key Relationships')).toBeInTheDocument();
+    expect(screen.getByText('Relationships')).toBeInTheDocument();
     // Expand one of the relationship sections to see the critical badge
     const expandButtons = screen.getAllByRole('button').filter(btn => 
       btn.textContent?.includes('Parasitism')

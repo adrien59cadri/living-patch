@@ -14,7 +14,7 @@ Phase 1 (Dataset Explorer with D3 Diagram) + Phase 2 (Life List / Sighting Loggi
 ✅ **Quick Filter Chips** - Pill-style Form/Habitat/Keystone chips on list page (QuickFilterBar component)
 ✅ **Clickable Detail Tags** - Form/Habitat/Keystone tags in species detail navigate to filtered list via URL params
 ✅ **URL Filter Params** - List page reads ?form=, ?habitat=, ?keystone_type= params (multi-value)
-✅ **Species List** - 56 species + groups, keystone badges
+✅ **Species List** - 64 species + groups, keystone badges
 ✅ **Species Card** - Full detail view with photo, tags (linkable), relationships
 ✅ **Relationships** - Grouped by symbiosis type, obligate pinned top
 ✅ **Navigation** - List ↔ Detail pages, click-through relationships
