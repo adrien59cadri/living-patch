@@ -436,9 +436,9 @@
         "life_stages": [],
         "region": "northeast_pa",
         "ecological_role": "herbivore",
-        "is_keystone": false,
-        "keystone_type": null,
-        "keystone_description": null,
+        "is_keystone": true,
+        "keystone_type": "ecosystem_engineer",
+        "keystone_description": "At high densities, suppresses oak seedling regeneration, eliminates native wildflowers (Trillium, native orchids), and facilitates invasive plant spread. When regulated by predators (coyote, bear), browsing pressure restores native understory diversity — a trophic cascade driver whose presence or absence reshapes the entire forest floor.",
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/White-tailed_deer.jpg/960px-White-tailed_deer.jpg",
           "author": "USDA photo by Scott Bauer"
@@ -2729,6 +2729,321 @@
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Rauchschwalbe_Hirundo_rustica.jpg/960px-Rauchschwalbe_Hirundo_rustica.jpg",
           "author": "Andreas Trepte"
         }
+      },
+      {
+        "id": "plant_eastern-hemlock",
+        "common_name": "Eastern Hemlock",
+        "latin_name": "Tsuga canadensis",
+        "form": "tree",
+        "habitat": [
+          "forest",
+          "streamside",
+          "north_facing_slope",
+          "ravine"
+        ],
+        "diet": [],
+        "behavior": [
+          "evergreen",
+          "thermal_cover_provider",
+          "stream_shading"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "functional_description": "Dominant conifer of cool ravines and north-facing slopes in NE PA. Dense year-round canopy shades trout streams 10–15°F cooler than open reaches — critical for wild brook and brown trout. Provides thermal refuge for White-tailed Deer and Elk during severe winters. Supports 90+ Lepidoptera species. Now severely threatened by Hemlock Woolly Adelgid (Adelges tsugae), an invasive aphid-like insect spreading northward; PA populations increasingly stressed or dead in southern portions of range. Losing hemlocks from ravines causes stream temperature spikes that extirpate native trout populations.",
+        "life_stages": [
+          "seedling",
+          "sapling",
+          "mature"
+        ],
+        "region": "northeast_pa",
+        "ecological_role": "producer",
+        "is_keystone": true,
+        "keystone_type": "structural",
+        "keystone_description": "Creates unique cool-stream and ravine microhabitats that no other PA tree can replicate. Hemlock groves are thermal refugia for deer and elk in winter, support brook trout via stream cooling, and provide cavity substrate for Pileated Woodpecker. Loss of hemlock causes cascading collapse of cool-stream ecosystems.",
+        "active_months": [
+          "Jan-Dec"
+        ],
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Tsuga_canadensis_2.jpg/960px-Tsuga_canadensis_2.jpg",
+          "author": "Cody Hough"
+        }
+      },
+      {
+        "id": "mammal_elk",
+        "common_name": "Elk",
+        "latin_name": "Cervus canadensis",
+        "form": "mammal",
+        "habitat": [
+          "forest",
+          "meadow",
+          "shrubland",
+          "forest_edge"
+        ],
+        "diet": [
+          "herbivore"
+        ],
+        "behavior": [
+          "browser",
+          "grazer",
+          "migratory_seasonal",
+          "rutting"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "functional_description": "North America's second-largest deer species. Extirpated from PA by 1877; successfully reintroduced in Elk County (north-central PA) starting 1913. Current PA population ~1,500 animals centered on Clearfield, Cameron, Clinton, and Elk counties — edges of NE PA range. Bulls carry massive antlers shed each spring; rut occurs September–October with bugling calls. Elk graze meadows and browse forest edges, heavily cropping grasses, sedges, and forbs. Winter herds congregate in open fields near Benezette. Calves born May–June; vulnerable to coyote and black bear predation for first weeks of life.",
+        "life_stages": [],
+        "region": "northeast_pa",
+        "ecological_role": "herbivore",
+        "is_keystone": false,
+        "keystone_type": null,
+        "keystone_description": null,
+        "active_months": [
+          "Jan-Dec"
+        ],
+        "taxonomic_group": "group_cervids",
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Elk_side_photo.jpg/960px-Elk_side_photo.jpg",
+          "author": "Wikiuser Yathin S Krishnappa"
+        }
+      },
+      {
+        "id": "mammal_black-bear",
+        "common_name": "American Black Bear",
+        "latin_name": "Ursus americanus",
+        "form": "mammal",
+        "habitat": [
+          "forest",
+          "woodland",
+          "wetland",
+          "riparian"
+        ],
+        "diet": [
+          "omnivore"
+        ],
+        "behavior": [
+          "hibernator",
+          "seasonal_forager",
+          "opportunistic_predator",
+          "seed_disperser"
+        ],
+        "season": [
+          "spring",
+          "summer",
+          "fall"
+        ],
+        "functional_description": "Largest land predator in PA. Black bears are omnivores with diet shifting seasonally: spring brings carrion, emerging vegetation, and insects (especially ant colonies and grubs); summer focuses on berries and soft mast; fall hyperphagia drives heavy acorn, beechnut, and wild cherry consumption to build fat for winter. Dens November–March (females with cubs remain dormant longer). Cubs born January–February in den; 1–4 per litter. Sow defends cubs aggressively. Important predator of White-tailed Deer fawns in May–June and Elk calves. PA black bear population ~20,000; one of the highest densities in the eastern US.",
+        "life_stages": [],
+        "region": "northeast_pa",
+        "ecological_role": "omnivore",
+        "is_keystone": false,
+        "keystone_type": null,
+        "keystone_description": null,
+        "active_months": [
+          "Apr-Nov"
+        ],
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Black_bear_large.jpg/960px-Black_bear_large.jpg",
+          "author": "Yathin S Krishnappa"
+        }
+      },
+      {
+        "id": "mammal_raccoon",
+        "common_name": "Raccoon",
+        "latin_name": "Procyon lotor",
+        "form": "mammal",
+        "habitat": [
+          "forest",
+          "riparian",
+          "woodland",
+          "wetland",
+          "suburban"
+        ],
+        "diet": [
+          "omnivore"
+        ],
+        "behavior": [
+          "nocturnal",
+          "scavenger",
+          "opportunistic_predator",
+          "cavity_den_user"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "functional_description": "Medium-sized masked omnivore abundant throughout NE PA. Highly adaptable; thrives in forests, wetlands, and suburban edges. Diet includes crayfish, frogs, turtle eggs, salamander egg masses, bird eggs, invertebrates, fruit, acorns, and carrion. Den in tree cavities (especially Pileated Woodpecker excavations), hollow logs, and groundhog burrows. Litters of 2–5 kits born April–May. Major predator of wetland amphibian eggs (spotted salamander, wood frog) and painted turtle nests. Raccoon density in NE PA has increased substantially with forest fragmentation and suburban expansion.",
+        "life_stages": [],
+        "region": "northeast_pa",
+        "ecological_role": "omnivore",
+        "is_keystone": false,
+        "keystone_type": null,
+        "keystone_description": null,
+        "active_months": [
+          "Jan-Dec"
+        ],
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/North_American_Raccoon.jpg/960px-North_American_Raccoon.jpg",
+          "author": "Michael Cummings"
+        }
+      },
+      {
+        "id": "mammal_eastern-coyote",
+        "common_name": "Eastern Coyote",
+        "latin_name": "Canis latrans × lycaon",
+        "form": "mammal",
+        "habitat": [
+          "forest",
+          "field",
+          "forest_edge",
+          "meadow",
+          "suburban"
+        ],
+        "diet": [
+          "predator"
+        ],
+        "behavior": [
+          "pack_hunter",
+          "territorial",
+          "nocturnal",
+          "opportunistic_predator"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "functional_description": "The Eastern Coyote is a hybrid of western Coyote and Eastern Wolf, larger than its western counterpart (35–55 lbs). Colonized PA by the 1980s following wolf extirpation. Now established throughout NE PA. Primary predators of White-tailed Deer fawns (May–June) and weakened adults in winter, providing a partial top-down check on deer populations in the absence of wolves. Also takes Elk calves, rabbits, groundhogs, raccoons, and carrion. Pair-bonds year-round; pups born April–May in earthen dens. Howling choruses audible year-round. Suppresses Red Fox through direct competition — foxes retreat to more suburban edges where coyote pressure is lower.",
+        "life_stages": [],
+        "region": "northeast_pa",
+        "ecological_role": "carnivore",
+        "is_keystone": false,
+        "keystone_type": null,
+        "keystone_description": null,
+        "active_months": [
+          "Jan-Dec"
+        ],
+        "taxonomic_group": "group_canids",
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Standing_Coyote.jpg/960px-Standing_Coyote.jpg",
+          "author": "Yathin S Krishnappa"
+        }
+      },
+      {
+        "id": "mammal_groundhog",
+        "common_name": "Groundhog (Woodchuck)",
+        "latin_name": "Marmota monax",
+        "form": "mammal",
+        "habitat": [
+          "field",
+          "field_edge",
+          "meadow",
+          "garden",
+          "woodland_edge"
+        ],
+        "diet": [
+          "herbivore"
+        ],
+        "behavior": [
+          "burrower",
+          "hibernator",
+          "grazer"
+        ],
+        "season": [
+          "spring",
+          "summer",
+          "fall"
+        ],
+        "functional_description": "PA's largest ground squirrel. Excavates extensive burrow systems (5+ ft deep, 25+ ft long) with multiple entrances — creating shelter used by Virginia Opossum, Raccoon, Red Fox, Cottontail Rabbit, and numerous snake and invertebrate species long after the groundhog vacates or dies. True hibernator: enters torpor October–November and emerges February–March. Primarily a grazer and browser of grasses, clovers, and garden crops. 2–6 young born April–May underground. Major prey base for Red-tailed Hawk, Eastern Coyote, Red Fox, and Black Bear throughout the active season.",
+        "life_stages": [],
+        "region": "northeast_pa",
+        "ecological_role": "herbivore",
+        "is_keystone": false,
+        "keystone_type": null,
+        "keystone_description": null,
+        "active_months": [
+          "Mar-Oct"
+        ],
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Marmota_monax_UL_04.jpg/960px-Marmota_monax_UL_04.jpg",
+          "author": "Cephas"
+        }
+      },
+      {
+        "id": "mammal_virginia-opossum",
+        "common_name": "Virginia Opossum",
+        "latin_name": "Didelphis virginiana",
+        "form": "mammal",
+        "habitat": [
+          "forest",
+          "woodland",
+          "riparian",
+          "suburban",
+          "field_edge"
+        ],
+        "diet": [
+          "omnivore"
+        ],
+        "behavior": [
+          "nocturnal",
+          "scavenger",
+          "thanatosis"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "functional_description": "North America's only marsupial; young complete development in mother's pouch. Diet is extremely broad: carrion, invertebrates, fruit, bird eggs, ticks (a single opossum consumes 5,000+ ticks per season), frogs, snakes, and garbage. Highly resistant to rabies due to lower body temperature. Immune to pit viper venom. Famously 'plays dead' (thanatosis) when threatened. Den in hollow logs, brush piles, and abandoned groundhog or skunk burrows. Litters of 6–20 joeys born after 13-day gestation; 8–9 survive on average attached to nipples in pouch for 2 months. Expanded northward in PA with warming winters over past 40 years.",
+        "life_stages": [],
+        "region": "northeast_pa",
+        "ecological_role": "omnivore",
+        "is_keystone": false,
+        "keystone_type": null,
+        "keystone_description": null,
+        "active_months": [
+          "Jan-Dec"
+        ],
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Opossum_2.jpg/960px-Opossum_2.jpg",
+          "author": "Specialjake"
+        }
+      },
+      {
+        "id": "mammal_red-fox",
+        "common_name": "Red Fox",
+        "latin_name": "Vulpes vulpes",
+        "form": "mammal",
+        "habitat": [
+          "forest_edge",
+          "field",
+          "meadow",
+          "suburban",
+          "woodland_edge"
+        ],
+        "diet": [
+          "predator"
+        ],
+        "behavior": [
+          "nocturnal",
+          "territorial",
+          "opportunistic_predator",
+          "seed_disperser"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "functional_description": "Rusty-red medium canid with white-tipped tail. Highly adaptable generalist predator of forest edges and open habitats. Diet includes voles, meadow mice, cottontail rabbits, groundhogs, birds, insects, berries, and carrion. Uses a distinctive pouncing 'mousing' technique to catch prey under snow. Monogamous pairs den in earthen burrows February–May; 4–6 kits per litter. Eastern Coyote is a dominant competitor — coyote colonization of NE PA since the 1980s has displaced Red Fox from core forest habitats into suburban fringes where coyote pressure is reduced. Red Fox in turn suppresses populations of smaller predators like weasels.",
+        "life_stages": [],
+        "region": "northeast_pa",
+        "ecological_role": "carnivore",
+        "is_keystone": false,
+        "keystone_type": null,
+        "keystone_description": null,
+        "active_months": [
+          "Jan-Dec"
+        ],
+        "taxonomic_group": "group_canids",
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Red_Fox_Clear.jpg/960px-Red_Fox_Clear.jpg",
+          "author": "Ómar Runólfsson"
+        }
       }
     ],
     "taxonomic_groups": [
@@ -2785,6 +3100,18 @@
         "label": "Songbirds",
         "common_traits": "Perching birds with complex vocalizations; diverse diets; important seed dispersers and insect controllers",
         "notes": "Order Passeriformes; includes Cardinals, Jays, Nuthatches, Flycatchers, and other perching birds"
+      },
+      {
+        "id": "group_cervids",
+        "label": "Deer Family (Cervids)",
+        "common_traits": "Large hoofed mammals; males bear antlers shed annually; browsers and grazers; shape forest understory through herbivory",
+        "notes": "Family Cervidae; includes White-tailed Deer and Elk in NE PA"
+      },
+      {
+        "id": "group_canids",
+        "label": "Canids",
+        "common_traits": "Dog-family predators; territorial; pair-bonded; opportunistic hunters controlling mesopredator and herbivore populations",
+        "notes": "Family Canidae; Eastern Coyote (hybrid wolf-coyote) and Red Fox in NE PA; compete for overlapping territories with coyote dominant"
       }
     ],
     "symbiosis": [
@@ -3559,6 +3886,300 @@
         ],
         "strength": "incidental",
         "notes": "Blue Jay preys on Eastern Tent Caterpillar larvae during mass outbreak years. Silk tent colonies on Black Cherry attract conspicuous predation — Blue Jays tear open tents and take caterpillars directly."
+      },
+      {
+        "type": "commensalism",
+        "source": "mammal_white-tailed-deer",
+        "targets": [
+          "plant_eastern-hemlock"
+        ],
+        "strength": "important",
+        "notes": "White-tailed Deer congregate in hemlock groves during winter storms and extreme cold — the dense evergreen canopy reduces wind chill and snow depth by 50–70%, dramatically cutting energy expenditure. Hemlock yards are critical survival habitat during severe NE PA winters."
+      },
+      {
+        "type": "commensalism",
+        "source": "mammal_elk",
+        "targets": [
+          "plant_eastern-hemlock"
+        ],
+        "strength": "important",
+        "notes": "Elk use hemlock stands as thermal cover during winter. Dense hemlock groves buffer wind and retain heat, reducing caloric costs for elk wintering in NE PA's northern ranges."
+      },
+      {
+        "type": "parasitism",
+        "source": "mammal_elk",
+        "targets": [
+          "plant_white-oak",
+          "plant_northern-red-oak"
+        ],
+        "fulfillment": "any",
+        "strength": "important",
+        "notes": "Elk consume acorns heavily during fall hyperphagia, competing with White-tailed Deer, Black Bear, turkeys, and squirrels for the same mast resource. Bull elk also strip bark from oak saplings during velvet rub in late summer, killing young trees."
+      },
+      {
+        "type": "competition",
+        "source": "mammal_elk",
+        "targets": [
+          "mammal_white-tailed-deer"
+        ],
+        "strength": "incidental",
+        "notes": "Elk and White-tailed Deer compete for browse, grasses, and mast where ranges overlap at the edge of the PA elk range. Elk are dominant due to size; deer shift diet and space use in areas of high elk density."
+      },
+      {
+        "type": "predation",
+        "source": "mammal_eastern-coyote",
+        "targets": [
+          "mammal_elk"
+        ],
+        "strength": "incidental",
+        "notes": "Eastern Coyote targets newborn Elk calves (May–June) when calves are left alone in vegetation by the cow. Coyote predation accounts for significant calf mortality in NE PA during the first weeks of life."
+      },
+      {
+        "type": "predation",
+        "source": "mammal_black-bear",
+        "targets": [
+          "mammal_elk"
+        ],
+        "strength": "incidental",
+        "notes": "Black Bear is an important predator of Elk calves in late May–June. Bears locate and consume calves hidden in vegetation; a primary mortality source for neonatal elk in PA's recovered population."
+      },
+      {
+        "type": "predation",
+        "source": "mammal_black-bear",
+        "targets": [
+          "mammal_white-tailed-deer"
+        ],
+        "strength": "important",
+        "notes": "Black Bear is a significant predator of White-tailed Deer fawns during May–June when spotted fawns are left alone by does. Fawn predation by bears can account for 15–30% of fawn mortality in NE PA's forested landscapes."
+      },
+      {
+        "type": "parasitism",
+        "source": "mammal_black-bear",
+        "targets": [
+          "plant_white-oak",
+          "plant_northern-red-oak"
+        ],
+        "fulfillment": "any",
+        "strength": "important",
+        "notes": "Black Bear consumes massive quantities of acorns during fall hyperphagia (August–November), gaining 1–3 lbs per day in preparation for denning. A single bear may consume 20,000 calories per day from mast alone. White Oak acorns are preferred due to lower tannins."
+      },
+      {
+        "type": "parasitism",
+        "source": "mammal_black-bear",
+        "targets": [
+          "plant_black-cherry"
+        ],
+        "strength": "important",
+        "notes": "Black Bear is a primary consumer and disperser of Black Cherry fruit in late summer. Bears climb trees, break branches, and consume fruit in quantity — dispersing seeds widely through scat."
+      },
+      {
+        "type": "parasitism",
+        "source": "mammal_black-bear",
+        "targets": [
+          "plant_american-beech"
+        ],
+        "strength": "important",
+        "notes": "Beechnuts are a critical high-fat mast for Black Bear in NE PA. Bears climb mature beeches and eat nuts directly, leaving distinctive claw marks. Beechnut failure years drive bears into suburban areas seeking food."
+      },
+      {
+        "type": "competition",
+        "source": "mammal_black-bear",
+        "targets": [
+          "mammal_eastern-coyote"
+        ],
+        "strength": "incidental",
+        "notes": "Black Bear and Eastern Coyote compete for deer and elk fawns as prey, carrion, and berry resources. Bears are dominant — coyotes typically yield to approaching bears at carcass sites."
+      },
+      {
+        "type": "predation",
+        "source": "mammal_raccoon",
+        "targets": [
+          "amphibian_spotted-salamander"
+        ],
+        "strength": "important",
+        "notes": "Raccoon is a primary predator of Spotted Salamander egg masses and migrating adults during the brief February–March breeding window. Raccoons learn vernal pool locations and concentrate there during migration nights, consuming eggs and adults in quantity — a major source of salamander mortality."
+      },
+      {
+        "type": "predation",
+        "source": "mammal_raccoon",
+        "targets": [
+          "amphibian_american-bullfrog",
+          "amphibian_green-frog"
+        ],
+        "fulfillment": "any",
+        "strength": "important",
+        "notes": "Raccoon preys on frogs year-round wherever accessible, especially in shallow beaver ponds and stream edges. Washes prey in water before eating — characteristic foraging behavior at wetland margins."
+      },
+      {
+        "type": "predation",
+        "source": "mammal_raccoon",
+        "targets": [
+          "reptile_painted-turtle"
+        ],
+        "strength": "important",
+        "notes": "Raccoon is the primary predator of Painted Turtle nest sites. Females excavate nests in June–July and raccoons locate and excavate 50–90% of nests within days of laying in many NE PA sites. A leading cause of turtle population decline in human-adjacent wetlands."
+      },
+      {
+        "type": "commensalism",
+        "source": "mammal_raccoon",
+        "targets": [
+          "bird_pileated-woodpecker"
+        ],
+        "strength": "important",
+        "notes": "Raccoon dens in tree cavities excavated by Pileated Woodpecker. Large pileated cavities in older trees are preferred den sites, especially for nursing females in spring."
+      },
+      {
+        "type": "commensalism",
+        "source": "mammal_raccoon",
+        "targets": [
+          "mammal_groundhog"
+        ],
+        "strength": "incidental",
+        "notes": "Raccoon uses abandoned Groundhog burrows as temporary dens, particularly in winter when seeking shelter below the frost line."
+      },
+      {
+        "type": "predation",
+        "source": "mammal_eastern-coyote",
+        "targets": [
+          "mammal_white-tailed-deer"
+        ],
+        "strength": "important",
+        "notes": "Eastern Coyote is the primary large predator of White-tailed Deer in PA in the absence of wolves. Targets fawns (May–June) and weakened/injured adults in winter. Coyote predation provides the strongest remaining top-down check on deer populations in NE PA, helping restore native understory vegetation where coyotes are present."
+      },
+      {
+        "type": "predation",
+        "source": "mammal_eastern-coyote",
+        "targets": [
+          "mammal_groundhog"
+        ],
+        "strength": "important",
+        "notes": "Groundhog is a major prey item for Eastern Coyote in field and edge habitats throughout spring and summer. Coyotes hunt them by stalking through meadows and rushing burrow openings."
+      },
+      {
+        "type": "predation",
+        "source": "mammal_eastern-coyote",
+        "targets": [
+          "mammal_raccoon"
+        ],
+        "strength": "incidental",
+        "notes": "Eastern Coyote occasionally preys on Raccoon, particularly juveniles in summer and adults during winter when food is scarce."
+      },
+      {
+        "type": "competition",
+        "source": "mammal_eastern-coyote",
+        "targets": [
+          "mammal_red-fox"
+        ],
+        "strength": "important",
+        "notes": "Eastern Coyote is the dominant competitor of Red Fox in NE PA. Coyotes actively displace foxes from core forest and meadow territories through direct aggression and territorial exclusion — a process called intraguild predation. Fox populations have retreated to suburban and human-edge habitats where coyote pressure is reduced."
+      },
+      {
+        "type": "predation",
+        "source": "mammal_eastern-coyote",
+        "targets": [
+          "mammal_eastern-gray-squirrel"
+        ],
+        "strength": "incidental",
+        "notes": "Eastern Coyote takes Eastern Gray Squirrels opportunistically, especially juveniles on the ground in late summer when dispersing from nests."
+      },
+      {
+        "type": "predation",
+        "source": "bird_red-tailed-hawk",
+        "targets": [
+          "mammal_groundhog"
+        ],
+        "strength": "important",
+        "notes": "Groundhog is one of the largest prey items regularly taken by Red-tailed Hawk. Adult groundhogs (5–10 lbs) represent high-value prey; hawks hunt them from elevated perches overlooking meadows and field edges, diving onto young or distracted individuals."
+      },
+      {
+        "type": "predation",
+        "source": "mammal_red-fox",
+        "targets": [
+          "mammal_groundhog"
+        ],
+        "strength": "important",
+        "notes": "Red Fox hunts Groundhog in open fields and edge habitats, especially targeting young-of-year in June–July when juvenile groundhogs first emerge and have not yet learned to watch for predators."
+      },
+      {
+        "type": "predation",
+        "source": "mammal_red-fox",
+        "targets": [
+          "mammal_eastern-gray-squirrel"
+        ],
+        "strength": "incidental",
+        "notes": "Red Fox opportunistically preys on Eastern Gray Squirrel, particularly juveniles and ground-foraging adults in fall during acorn season."
+      },
+      {
+        "type": "predation",
+        "source": "mammal_eastern-coyote",
+        "targets": [
+          "mammal_virginia-opossum"
+        ],
+        "strength": "incidental",
+        "notes": "Eastern Coyote occasionally preys on Virginia Opossum, particularly in winter when opossums are sluggish and vulnerable. Opossum's thanatosis response is ineffective against coyote."
+      },
+      {
+        "type": "predation",
+        "source": "mammal_red-fox",
+        "targets": [
+          "mammal_virginia-opossum"
+        ],
+        "strength": "incidental",
+        "notes": "Red Fox takes Virginia Opossum opportunistically, especially juveniles in summer."
+      },
+      {
+        "type": "competition",
+        "source": "mammal_raccoon",
+        "targets": [
+          "mammal_virginia-opossum"
+        ],
+        "strength": "incidental",
+        "notes": "Raccoon and Virginia Opossum share broadly overlapping diets and den sites, resulting in competition for carrion, fruit, invertebrates, and shelter. Raccoon is generally dominant in direct encounters."
+      },
+      {
+        "type": "commensalism",
+        "source": "mammal_virginia-opossum",
+        "targets": [
+          "mammal_groundhog"
+        ],
+        "strength": "incidental",
+        "notes": "Virginia Opossum regularly uses abandoned Groundhog burrows for temporary shelter and overwintering. Groundhog burrow systems provide critical below-frost-line refugia for opossums during winter cold snaps."
+      },
+      {
+        "type": "commensalism",
+        "source": "mammal_red-fox",
+        "targets": [
+          "mammal_groundhog"
+        ],
+        "strength": "incidental",
+        "notes": "Red Fox frequently enlarges and uses abandoned Groundhog burrows as natal dens for raising kits in spring."
+      },
+      {
+        "type": "commensalism",
+        "source": "mammal_black-bear",
+        "targets": [
+          "plant_eastern-hemlock"
+        ],
+        "strength": "incidental",
+        "notes": "Black Bear uses dense hemlock groves for resting and day-bedding sites in summer, taking advantage of the cool shade. Hemlock stands also provide concealment during the sensitive denning search period in late fall."
+      },
+      {
+        "type": "commensalism",
+        "source": "bird_pileated-woodpecker",
+        "targets": [
+          "plant_eastern-hemlock"
+        ],
+        "strength": "incidental",
+        "notes": "Pileated Woodpecker forages on dead and dying hemlock trunks for carpenter ants and bark beetles, particularly in stands affected by Hemlock Woolly Adelgid. Hemlock decline paradoxically provides short-term foraging substrate for the woodpecker."
+      },
+      {
+        "type": "commensalism",
+        "source": "bird_red-tailed-hawk",
+        "targets": [
+          "plant_eastern-hemlock"
+        ],
+        "strength": "incidental",
+        "notes": "Red-tailed Hawk nests in the tall crown forks of mature hemlock trees in NE PA, using the dense evergreen branches for nest concealment and structural support."
       }
     ],
     "relations": [
@@ -3586,6 +4207,26 @@
           "bird_barn-swallow"
         ],
         "notes": "Both members of Hirundinidae (swallow) family. Share similar aerial insectivore ecology, migratory behavior, and insect-dependent diet despite different nesting substrate preferences."
+      },
+      {
+        "type": "ecological_guild",
+        "members": [
+          "mammal_black-bear",
+          "mammal_eastern-coyote",
+          "mammal_white-tailed-deer",
+          "mammal_elk"
+        ],
+        "notes": "PA's large mammal predator-prey system. Black Bear and Eastern Coyote are the primary remaining top predators; both limit Deer and Elk populations through fawn/calf predation. This trophic relationship partially compensates for the extirpation of Gray Wolf and Mountain Lion from PA — though deer populations remain far higher than under the full ancestral predator guild. Elk reintroduction adds a second large herbivore that creates browse competition with deer and additional prey for bears and coyotes."
+      },
+      {
+        "type": "ecological_guild",
+        "members": [
+          "mammal_groundhog",
+          "mammal_raccoon",
+          "mammal_virginia-opossum",
+          "mammal_red-fox"
+        ],
+        "notes": "NE PA mesofauna sharing abandoned burrow infrastructure. Groundhog excavates the burrows; abandoned systems are reused by Red Fox (natal dens), Raccoon (winter shelter), and Virginia Opossum (winter refuge). This secondary use network means Groundhog burrow density has outsized effects on local mesopredator populations beyond its direct role as prey."
       }
     ]
   }
