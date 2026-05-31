@@ -47,19 +47,31 @@ Extend plant species data with human health and reproduction information:
 
 **Impact**: Provides practical information for users with allergies; enhances understanding of plant ecology and life strategies.
 
-### 6. Global Life List System ✅ Planned
-Create a comprehensive system to track species observations:
-- Allow users to maintain a personal life list stored locally in the browser (localStorage)
-- Track sightings with date, location, and notes
-- Familiarity tiers: Noticed → Familiar → Know It Well → Steward
-- Calendar view of sightings, statistics and insights
-- Cross-reference with the living patch dataset
+### 6. Global Life List System ✅ Complete (May 30, 2026)
+Personal observation tracking system, fully implemented:
+- Personal life list stored in browser (localStorage via Zustand persist)
+- Sighting logging with date, location, notes, weather/time conditions
+- Familiarity tiers: Noticed → Familiar → Know It Well → Steward (user-set, not auto-calculated)
+- Calendar view with tier-colored sighting dots, month navigation, day detail popup
+- Stats panel: tier distribution, monthly chart, top-5 species
+- `/life-list` page with All / By Tier / Calendar / Stats tabs
+- Tier badge + sighting count on SpeciesTile; tier selector + recent sightings on SpeciesCard
+- LifeListStats summary bar on HomePage linking to /life-list
 
-**Implementation plan**: See [`LIFE-LIST-PLAN.md`](LIFE-LIST-PLAN.md) for full architecture, component breakdown, data model, and step-by-step implementation sequence.
+**Implementation details**: See [`LIFE-LIST-PLAN.md`](LIFE-LIST-PLAN.md) for full architecture, component breakdown, data model, and implementation history.
 
-**Impact**: Adds engaging tracking features and personal connection to the data.
+**Impact**: Transforms app from read-only explorer to personal naturalist's logbook.
 
-### 7. Multi-Dataset Support
+### 7. Life List Backup & Restore
+Add export/import controls in the Settings page to prevent data loss:
+- **Export**: Download life list data (sightings + tiers) as a JSON file from the Settings page
+- **Import**: Upload a previously exported JSON file to restore data (with confirmation prompt)
+- Useful when switching browsers, devices, or clearing browser storage
+- Exported file format mirrors the existing `living-patch-life-list-v1` localStorage schema for simplicity
+
+**Impact**: Protects users from accidental data loss; enables moving data between devices or browsers.
+
+### 8. Multi-Dataset Support
 Enable the app to load and manage multiple datasets:
 - Support loading multiple datasets simultaneously
 - Implement deduplication logic to handle species/relations appearing in multiple datasets
@@ -68,17 +80,6 @@ Enable the app to load and manage multiple datasets:
 - Allow users to choose dataset combinations for their view
 
 **Impact**: Dramatically increases data coverage and flexibility; enables community dataset contributions.
-
-### 8. One-to-Many Relationship Model ✅ Done
-Redesigned the `Symbiosis` model to support first-class directional and one-to-many relationships:
-- Replaced `members[]` + `impacted_species` hack with explicit `source` + `targets[]` fields
-- Added `fulfillment: 'any' | 'all'` to express whether *any one* or *all* targets satisfy the relationship
-- Removed `grp` slug workaround — multiple targets in a single object replace it
-- Migrated all entries in all packs; collapsed the 3-entry `monarch-milkweed` group into one `fulfillment: 'any'` entry
-- Updated schema (Zod + JSON Schema), data indexing, relationship processing, visualization, and UI components
-- All 121 unit tests and 21 e2e tests passing
-
-**Spec**: [`one-to-many-relationship-model.md`](./one-to-many-relationship-model.md)
 
 ---
 

@@ -1,11 +1,11 @@
 # LivingPatch — Development Memory
 
-## Project Status: ✅ MVP COMPLETE + Code Optimization (May 27, 2026)
-Full Phase 1 (Dataset Explorer with D3 Diagram) implemented, tested, refactored, and optimized.
+## Project Status: ✅ Phase 2 COMPLETE — Life List System (May 30, 2026)
+Phase 1 (Dataset Explorer with D3 Diagram) + Phase 2 (Life List / Sighting Logging) fully implemented, tested, and shipped.
 - **Live**: http://localhost:5174/ (run `npm run dev` in root)
-- **Build**: 160ms, 625 modules
-- **Tests**: 98 passing across 9 test files
-- **Latest**: Label consolidation (designTokens.ts now single source), cleanup complete
+- **Build**: 184ms, 647 modules
+- **Tests**: 121 passing across 10 test files
+- **Latest**: Full Life List system — sighting logging, familiarity tiers, calendar, stats, Zustand store
 
 ## What Works
 ✅ **D3 Radial Bubble Tree** - Interactive species relationship diagram
@@ -18,6 +18,12 @@ Full Phase 1 (Dataset Explorer with D3 Diagram) implemented, tested, refactored,
 ✅ **Diagram Depths** - Detail page (depth-1), full diagram (depth-2)
 ✅ **Mobile Responsive** - Works on tablets, phones, desktops
 ✅ **Offline** - HashRouter, zero external APIs, fully local
+✅ **Life List** - Sighting logging, familiarity tiers, Zustand persist store
+✅ **Calendar View** - Month grid with tier-colored sighting dots, day detail popup
+✅ **Stats Panel** - Tier distribution, monthly sightings chart, top-5 species
+✅ **Tier Selector** - 4-tier buttons (Noticed → Familiar → Know It Well → Steward) on DetailPage
+✅ **Sighting Modal** - Date/location/notes/conditions form; stays open for batch logging
+✅ **Life List Page** - /life-list route with All / By Tier / Calendar / Stats tabs
 
 ## Project
 Personal ecological literacy tool for NE Pennsylvania species dataset.
@@ -28,7 +34,8 @@ Helps nature hobbyists understand ecological relationships in their area.
 - **Styling**: TailwindCSS v4
 - **Visualization**: D3.js v7+ (radial bubble tree)
 - **Routing**: React Router v6 (HashRouter for offline)
-- **Testing**: Vitest + React Testing Library + Playwright (98 unit/component tests passing)
+- **State Management**: Zustand v5 with persist middleware (localStorage)
+- **Testing**: Vitest + React Testing Library + Playwright (121 unit/component tests passing)
 - **Data**: Static JSON indexed into Maps (O(1) lookups)
 - **Design Tokens**: Centralized in designTokens.ts (colors, icons, labels)
 
@@ -124,11 +131,13 @@ RelationshipBubbleTree renders with D3 (SVG)
 
 ## Future Phases (Reference)
 
-### Phase 2: Sighting Logging (2-3 weeks)
-- localStorage for observation logging
-- Life list tracking
-- Familiarity/expertise tiers
-- Calendar view of sightings
+### Phase 2: Sighting Logging ✅ COMPLETE (May 30, 2026)
+- Zustand store with localStorage persist (key: `living-patch-life-list-v1`)
+- Sighting logging via SightingModal (date, location, notes, weather/time)
+- 4 familiarity tiers: noticed → familiar → know-it-well → steward
+- Life List page (/life-list): All / By Tier / Calendar / Stats tabs
+- Tier badges + sighting counts on SpeciesTile; tier selector + recent sightings on SpeciesCard
+- LifeListStats summary bar on HomePage
 
 ### Phase 3: Multiple Locations (3-4 weeks)
 - Area/region selection
