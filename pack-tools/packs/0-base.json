@@ -807,6 +807,7 @@
         "is_keystone": true,
         "keystone_type": "prey",
         "keystone_description": "Second only to oaks in total Lepidoptera support (456 species). Cherries fuel migrant thrushes, waxwings, and many other birds. Primary host for Eastern Tiger Swallowtail in PA. Eastern Tent Caterpillar — conspicuous spring indicator — depends on it.",
+        "taxonomic_group": "group_prunus",
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Amerikaanse_vogelkers_Prunus_serotina_closeup.jpg/500px-Amerikaanse_vogelkers_Prunus_serotina_closeup.jpg",
           "author": "Wikimedia Commons"
@@ -3406,6 +3407,142 @@
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Big_brown_bat_crawl.png/500px-Big_brown_bat_crawl.png",
           "author": "John MacGregor"
         }
+      },
+      {
+        "id": "plant_new-england-aster",
+        "common_name": "New England Aster",
+        "latin_name": "Symphyotrichum novae-angliae",
+        "form": "wildflower",
+        "habitat": [
+          "meadow",
+          "field_edge",
+          "wetland_edge",
+          "forest_edge",
+          "riparian"
+        ],
+        "diet": [],
+        "behavior": [
+          "late_blooming",
+          "colony_forming",
+          "bee_magnet"
+        ],
+        "season": [
+          "fall"
+        ],
+        "active_months": [
+          "Sep-Oct"
+        ],
+        "functional_description": "One of the most ecologically critical native wildflowers in NE PA. Tall (2–6 ft) with deep purple ray flowers and yellow disk centers. Blooms September–October — among the very last native plants to flower before frost, providing an irreplaceable nectar bridge for migrating Monarchs, native bumble bees building winter fat reserves, and dozens of butterfly and beetle species. A single aster plant can produce thousands of florets. Colonizes roadsides, wet meadows, and disturbed edges; thrives in full sun to light shade.",
+        "life_stages": [],
+        "region": "northeast_pa",
+        "ecological_role": "producer",
+        "is_keystone": true,
+        "keystone_type": "mutualist",
+        "keystone_description": "The keystone late-season wildflower of NE PA. Blooms when virtually all other native nectar sources have gone to seed — providing critical late-migration fuel for Monarch Butterfly (fall migration) and the last major pollen and nectar resource for native bumble bee queens before winter dormancy. Loss of roadside and meadow aster patches is linked to bumble bee colony failure rates in fall.",
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Symphyotrichum_novae-angliae3.jpg/500px-Symphyotrichum_novae-angliae3.jpg",
+          "author": "The Cosmonaut"
+        }
+      },
+      {
+        "id": "plant_foxglove-beardtongue",
+        "common_name": "Foxglove Beardtongue",
+        "latin_name": "Penstemon digitalis",
+        "form": "wildflower",
+        "habitat": [
+          "meadow",
+          "field_edge",
+          "forest_edge",
+          "dry_meadow"
+        ],
+        "diet": [],
+        "behavior": [
+          "early_summer_blooming",
+          "clump_forming"
+        ],
+        "season": [
+          "spring",
+          "summer"
+        ],
+        "active_months": [
+          "May-Jul"
+        ],
+        "functional_description": "Tall native wildflower (2–4 ft) with showy white-to-pale-pink tubular flowers that closely resemble true foxglove (Digitalis). One of the most common native Penstemon in eastern North America. Blooms May–July in open meadows, forest edges, and roadsides. Tubular flowers with a hairy lower lip ('beardtongue') are precisely shaped for bumble bee pollination — large bees force entry and contact anthers on their backs. Also visited by Ruby-throated Hummingbirds probing for nectar. Long-lived perennial forming attractive clumps. Critical bridge-season pollinator plant between spring ephemerals and summer wildflowers.",
+        "life_stages": [],
+        "region": "northeast_pa",
+        "ecological_role": "producer",
+        "is_keystone": false,
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Penstemon_digitalis.jpg/500px-Penstemon_digitalis.jpg",
+          "author": "Eric Hunt"
+        }
+      },
+      {
+        "id": "plant_pin-cherry",
+        "common_name": "Pin Cherry",
+        "latin_name": "Prunus pensylvanica",
+        "form": "tree",
+        "habitat": [
+          "forest_edge",
+          "woodland",
+          "shrubland"
+        ],
+        "diet": [],
+        "behavior": [
+          "early_successional",
+          "bird_dispersed",
+          "fruit_producer"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "active_months": [
+          "Apr-Sep"
+        ],
+        "functional_description": "Small fast-growing tree (15–35 ft) that is the first woody plant to colonize clear-cuts, burns, and forest disturbances in NE PA. Named for its tiny bright-red cherries borne in clusters along the branches in July–August. Among the first trees to bloom in spring (April–May), providing critical early nectar when bumble bee queens are newly emerged. Supports a rich caterpillar community on Prunus foliage. Tiny cherries are eagerly eaten by Cedar Waxwings, American Robins, thrushes, and Black Bears — making Pin Cherry one of the most important wildlife food trees in early successional habitat.",
+        "life_stages": [],
+        "region": "northeast_pa",
+        "ecological_role": "producer",
+        "is_keystone": false,
+        "taxonomic_group": "group_prunus",
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Prunus_pensylvanica_Cleaned.jpg/500px-Prunus_pensylvanica_Cleaned.jpg",
+          "author": "M.S. del, J.N.Fitch (Halava, derivative)"
+        }
+      },
+      {
+        "id": "plant_chokecherry",
+        "common_name": "Chokecherry",
+        "latin_name": "Prunus virginiana",
+        "form": "shrub",
+        "habitat": [
+          "forest_edge",
+          "shrubland",
+          "riparian",
+          "woodland_edge"
+        ],
+        "diet": [],
+        "behavior": [
+          "thicket_forming",
+          "bird_dispersed",
+          "fruit_producer"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "active_months": [
+          "May-Sep"
+        ],
+        "functional_description": "Large native shrub or small tree (up to 30 ft) bearing dense clusters of dark red-to-black astringent cherries in late summer. One of the most important wildlife food shrubs in NE PA: the fruits are heavily used by Cedar Waxwings, American Robins, thrushes, Black Bear, and other frugivores from August through September. Blooms in May with showy white cylindrical flower clusters that attract bumble bees and other pollinators. Major larval host for Eastern Tent Caterpillar — silk tents in branch forks are a classic spring sight. The name 'chokecherry' reflects the fruit's intense astringency when raw; the same compounds (cyanogenic glycosides) deter most mammal herbivores but don't stop birds.",
+        "life_stages": [],
+        "region": "northeast_pa",
+        "ecological_role": "producer",
+        "is_keystone": false,
+        "taxonomic_group": "group_prunus",
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Prunus_virginiana_flowers.jpg/500px-Prunus_virginiana_flowers.jpg",
+          "author": "Nadiatalent"
+        }
       }
     ],
     "taxonomic_groups": [
@@ -3480,6 +3617,12 @@
         "label": "Bats",
         "common_traits": "Nocturnal flying mammals; echolocation hunters; primary suppressors of night-flying insects; cave and mine hibernators; severely threatened by White-nose Syndrome",
         "notes": "Order Chiroptera; Little Brown Bat and Big Brown Bat are the most common species in NE PA; 90%+ population decline since White-nose Syndrome arrived in 2007"
+      },
+      {
+        "id": "group_prunus",
+        "label": "Wild Cherries & Chokecherry",
+        "common_traits": "Native Prunus trees and shrubs; prolific fruit producers fueling frugivore migration; primary hosts for Eastern Tent Caterpillar and 456+ Lepidoptera species; early spring bloomers for pollinators",
+        "notes": "Genus Prunus (family Rosaceae); Black Cherry, Pin Cherry, and Chokecherry are the key NE PA representatives"
       }
     ],
     "symbiosis": [
@@ -4678,6 +4821,114 @@
         ],
         "strength": "incidental",
         "notes": "Little Brown Bat and Big Brown Bat compete for the same roost sites (building attics, tree cavities, mine entrances) and overlap in aerial insect prey. Big Brown Bats are dominant at shared roost sites and can displace Little Brown Bat maternity colonies. With White-nose Syndrome decimating Little Brown Bat populations, Big Brown Bats are increasingly filling the nighttime insectivore niche across NE PA."
+      },
+      {
+        "type": "mutualism",
+        "source": "insect_native-bumble-bees",
+        "targets": [
+          "plant_new-england-aster"
+        ],
+        "strength": "critical",
+        "notes": "New England Aster is one of the most critical late-season resources for native bumble bees. Queens foraging in September–October are building fat reserves and carbohydrate stores before founding next year's colony. Aster fields can support dozens of bumble bee species simultaneously. The bee-aster relationship is so synchronized that bumble bee colony survival rates in fall correlate with local aster patch availability."
+      },
+      {
+        "type": "predation-nectar_feeding",
+        "source": "insect_monarch-butterfly",
+        "targets": [
+          "plant_new-england-aster"
+        ],
+        "strength": "important",
+        "notes": "New England Aster is a critical fall migration nectar source for Monarch Butterfly. Monarchs passing through NE PA in September and October nectar heavily on asters alongside goldenrod — building the fat reserves needed for the 3,000-mile journey to Mexico. Asters extend the refueling window beyond goldenrod, which peaks in August–September."
+      },
+      {
+        "type": "mutualism",
+        "source": "insect_eastern-tiger-swallowtail",
+        "targets": [
+          "plant_new-england-aster"
+        ],
+        "strength": "important",
+        "notes": "Eastern Tiger Swallowtail adults nectar on New England Aster in fall while also transferring pollen — an effective mutual pollinator visit. Asters are among the top late-season nectar sources for swallowtails in NE PA."
+      },
+      {
+        "type": "mutualism",
+        "source": "bird_ruby-throated-hummingbird",
+        "targets": [
+          "plant_foxglove-beardtongue"
+        ],
+        "strength": "important",
+        "notes": "Ruby-throated Hummingbird probes the tubular white flowers of Foxglove Beardtongue for nectar in May–June, transferring pollen on bill and forehead. Beardtongue's early summer bloom aligns with peak hummingbird breeding season in NE PA, making it a reliable nectar source during the period of highest hummingbird energy demand."
+      },
+      {
+        "type": "mutualism",
+        "source": "insect_native-bumble-bees",
+        "targets": [
+          "plant_foxglove-beardtongue"
+        ],
+        "strength": "critical",
+        "notes": "Foxglove Beardtongue is a bumble bee specialist: the tubular flower with a hairy lower lip is sized for large bees that must force entry, contacting both anthers and stigma. Bumble bees are the primary and most effective pollinators. The 'buzz pollination' of bees vibrating at specific frequencies releases pollen from anthers — a mutualism the plant depends on for seed set."
+      },
+      {
+        "type": "parasitism",
+        "source": "insect_eastern-tent-caterpillar",
+        "targets": [
+          "plant_pin-cherry"
+        ],
+        "strength": "critical",
+        "notes": "Pin Cherry is among the primary PA hosts for Eastern Tent Caterpillar in early successional habitat. The characteristic silk tents appear in Pin Cherry branch forks in April–May and can defoliate entire trees during peak outbreak years. Because Pin Cherry dominates disturbed patches, tent caterpillar outbreaks are especially conspicuous in recently cleared areas."
+      },
+      {
+        "type": "predation-fruit_eating",
+        "source": "bird_cedar-waxwing",
+        "targets": [
+          "plant_pin-cherry"
+        ],
+        "strength": "important",
+        "notes": "Cedar Waxwing flocks descend on Pin Cherry trees when fruits ripen in July–August and can strip an entire tree in a single visit. Waxwings pass cherry seeds through the gut intact, dispersing them into new disturbance patches — amplifying Pin Cherry's role as the first tree into clear-cuts and burned areas."
+      },
+      {
+        "type": "mutualism",
+        "source": "insect_native-bumble-bees",
+        "targets": [
+          "plant_pin-cherry"
+        ],
+        "strength": "important",
+        "notes": "Pin Cherry is one of the earliest-blooming native trees in NE PA (April–May), providing critical pollen and nectar to newly emerged bumble bee queens before most other plants open. A single Pin Cherry in full bloom can host dozens of foraging queens simultaneously. This early bloom timing makes Pin Cherry disproportionately important to early-season native bee survival."
+      },
+      {
+        "type": "parasitism",
+        "source": "insect_eastern-tent-caterpillar",
+        "targets": [
+          "plant_chokecherry"
+        ],
+        "strength": "important",
+        "notes": "Chokecherry is a major PA host for Eastern Tent Caterpillar alongside Black Cherry and Pin Cherry. Tent caterpillar outbreaks in chokecherry thickets are common in NE PA riparian shrublands, where chokecherry often grows in dense stands that support large caterpillar populations."
+      },
+      {
+        "type": "predation-fruit_eating",
+        "source": "bird_cedar-waxwing",
+        "targets": [
+          "plant_chokecherry"
+        ],
+        "strength": "important",
+        "notes": "Chokecherry is a top-tier Cedar Waxwing food source — the dense, abundant fruit clusters are efficiently harvested by flocks. Waxwings disperse chokecherry seeds widely. Astringency from cyanogenic compounds that deter mammals actually attracts birds, which tolerate the compounds better."
+      },
+      {
+        "type": "predation-fruit_eating",
+        "source": "mammal_black-bear",
+        "targets": [
+          "plant_chokecherry"
+        ],
+        "strength": "important",
+        "notes": "Black Bear is a major consumer of Chokecherry fruit in August–September. Bears break branches and strip clusters, tolerating the astringent compounds. Chokecherry provides high-carbohydrate fuel during fall hyperphagia when bears are building fat for winter denning."
+      },
+      {
+        "type": "mutualism",
+        "source": "insect_native-bumble-bees",
+        "targets": [
+          "plant_chokecherry"
+        ],
+        "strength": "important",
+        "notes": "Chokecherry blooms in May with dense white flower racemes that are heavily visited by bumble bees for nectar and pollen. Bumble bees are primary pollinators. The abundant early-season bloom makes chokecherry thickets important foraging habitat for native bees."
       }
     ],
     "relations": [
@@ -4741,6 +4992,15 @@
           "mammal_big-brown-bat"
         ],
         "notes": "Both members of Order Chiroptera (bats), the only mammals capable of powered flight. Share echolocation, nocturnal insectivory, colonial maternity roosting, and cave/mine hibernation. Differ in size, prey specialization (moths vs. beetles), and White-nose Syndrome susceptibility — Big Brown Bat's greater WNS resistance is reshaping the relative abundance of the two species across NE PA."
+      },
+      {
+        "type": "taxonomic_group",
+        "members": [
+          "plant_black-cherry",
+          "plant_pin-cherry",
+          "plant_chokecherry"
+        ],
+        "notes": "Three native NE PA members of genus Prunus (family Rosaceae). Collectively support 456+ Lepidoptera species, are the primary Eastern Tent Caterpillar hosts, and produce fruit that fuels Cedar Waxwing, American Robin, thrush, and Black Bear fattening cycles. Black Cherry is the large forest tree; Pin Cherry is the disturbance pioneer; Chokecherry is the riparian-edge shrub. Together they provide Prunus resources across every successional stage."
       }
     ]
   }
