@@ -73,7 +73,7 @@ test.describe('Neighbor drill-down', () => {
 
   test('back link returns to species card', async ({ page }) => {
     await page.goto(MONARCH_PLANTS_URL);
-    await page.getByRole('link', { name: /monarch butterfly/i }).click();
+    await page.getByRole('link', { name: /← monarch butterfly/i }).click();
     await expect(
       page.getByRole('heading', { name: 'Monarch Butterfly' })
     ).toBeVisible();
@@ -134,8 +134,8 @@ test.describe('Clickable tags — navigate to filtered list', () => {
     await firstHabitatLink.click();
     await page.waitForLoadState('networkidle');
 
-    // Should be on the list page, count reduced from 56
-    await expect(page.getByText('64 species', { exact: true })).not.toBeVisible();
+    // Should be on the list page, count reduced from 67
+    await expect(page.getByText('80 species', { exact: true })).not.toBeVisible();
   });
 
   test('keystone badge on detail page is a link', async ({ page }) => {

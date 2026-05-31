@@ -807,6 +807,7 @@
         "is_keystone": true,
         "keystone_type": "prey",
         "keystone_description": "Second only to oaks in total Lepidoptera support (456 species). Cherries fuel migrant thrushes, waxwings, and many other birds. Primary host for Eastern Tiger Swallowtail in PA. Eastern Tent Caterpillar — conspicuous spring indicator — depends on it.",
+        "taxonomic_group": "group_prunus",
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Amerikaanse_vogelkers_Prunus_serotina_closeup.jpg/500px-Amerikaanse_vogelkers_Prunus_serotina_closeup.jpg",
           "author": "Wikimedia Commons"
@@ -1917,9 +1918,74 @@
         "active_months": [
           "May-Sep"
         ],
+        "taxonomic_group": "group_dragonflies",
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Eastern_Pondhawk%2C_male%2C_Florida.jpg/960px-Eastern_Pondhawk%2C_male%2C_Florida.jpg",
           "author": "D. Gordon E. Robertson"
+        }
+      },
+      {
+        "id": "insect_common-whitetail",
+        "common_name": "Common Whitetail",
+        "latin_name": "Plathemis lydia",
+        "form": "dragonfly",
+        "habitat": [
+          "pond",
+          "wetland",
+          "marsh",
+          "stream_edge",
+          "open_field"
+        ],
+        "diet": [
+          "predator"
+        ],
+        "behavior": [
+          "aerial_hunter",
+          "territorial",
+          "perch_hunter"
+        ],
+        "season": [
+          "spring",
+          "summer",
+          "fall"
+        ],
+        "active_months": [
+          "May-Sep"
+        ],
+        "functional_description": "One of the most recognizable dragonflies in NE PA. Adult males have a distinctive chalk-white abdomen with dark wing patches at the base and tips; females and immature males are brown with lateral yellow spots. Among the most abundant dragonflies at ponds, beaver ponds, slow streams, and even open fields far from water. Males fiercely territorial — perching on rocks, logs, or bare ground and repeatedly returning to the same spot after each aerial sortie. Adults catch mosquitoes, small flies, gnats, and other small flying insects in agile aerial pursuit. Aquatic nymphs spend 1–2 years in pond substrate hunting invertebrates and small tadpoles. Both life stages provide meaningful mosquito and pest insect control.",
+        "life_stages": [
+          {
+            "icon": "🥚",
+            "name": "Egg",
+            "description": "Female dips abdomen to water surface to release eggs in flight",
+            "months": [
+              "May-Aug"
+            ]
+          },
+          {
+            "icon": "🐛",
+            "name": "Nymph",
+            "description": "Aquatic; buries in sediment; predatory on invertebrates and small tadpoles; 1–2 year development",
+            "months": [
+              "Jan-Dec"
+            ]
+          },
+          {
+            "icon": "🦟",
+            "name": "Adult",
+            "description": "Male chalk-white abdomen; female brown with yellow spots; territorial perching at pond edge and field openings",
+            "months": [
+              "May-Sep"
+            ]
+          }
+        ],
+        "region": "northeast_pa",
+        "ecological_role": "predator",
+        "is_keystone": false,
+        "taxonomic_group": "group_dragonflies",
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Common_whitetail.jpg/500px-Common_whitetail.jpg",
+          "author": "Bruce Marlin"
         }
       },
       {
@@ -2731,6 +2797,176 @@
         }
       },
       {
+        "id": "bird_baltimore-oriole",
+        "common_name": "Baltimore Oriole",
+        "latin_name": "Icterus galbula",
+        "form": "songbird",
+        "habitat": [
+          "forest_edge",
+          "woodland",
+          "riparian",
+          "garden"
+        ],
+        "diet": [
+          "insect_eater",
+          "nectivore",
+          "frugivore"
+        ],
+        "behavior": [
+          "migratory",
+          "nest_weaver",
+          "territorial",
+          "vocal"
+        ],
+        "season": [
+          "spring",
+          "summer",
+          "fall"
+        ],
+        "active_months": [
+          "May-Sep"
+        ],
+        "functional_description": "Brilliant orange-and-black male; olive-yellow female. Builds a distinctive woven pendant nest 4–7 inches deep hanging from branch tips over open areas or water — often in black willow, sycamore, or elm. One of few songbirds that eats hairy caterpillars (tent caterpillars, fall webworm) that other birds avoid due to chemical defenses; a key natural check on spring caterpillar outbreaks. Pollinates tubular flowers when nectaring. Eats ripe cherries, elderberries, and mulberries in mid-summer. Arrives early May; departs by early September for neotropical wintering grounds in Central America.",
+        "life_stages": [
+          {
+            "icon": "🏠",
+            "name": "Territory Establishment",
+            "description": "Males arrive and begin defending territory with song from canopy perches",
+            "months": [
+              "May"
+            ]
+          },
+          {
+            "icon": "🏗️",
+            "name": "Nest Building",
+            "description": "Female weaves intricate pendant nest hanging from branch tips, often over water",
+            "months": [
+              "May-Jun"
+            ]
+          },
+          {
+            "icon": "🥚",
+            "name": "Egg",
+            "description": "Clutch of 3-6 pale gray eggs with dark irregular markings",
+            "months": [
+              "Jun"
+            ]
+          },
+          {
+            "icon": "🐦",
+            "name": "Chick",
+            "description": "Nestlings raised in pendant nest; parents deliver caterpillars and insects",
+            "months": [
+              "Jun-Jul"
+            ]
+          },
+          {
+            "icon": "🪶",
+            "name": "Fledgling",
+            "description": "Young orioles follow parents while learning to forage; diet shifts to fruit and nectar",
+            "months": [
+              "Jul-Aug"
+            ]
+          },
+          {
+            "icon": "✈️",
+            "name": "Pre-migration",
+            "description": "Building fat reserves on fruit and insects before southbound migration to Central America",
+            "months": [
+              "Aug-Sep"
+            ]
+          }
+        ],
+        "region": "northeast_pa",
+        "ecological_role": "omnivore",
+        "is_keystone": false,
+        "taxonomic_group": "group_songbirds",
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Baltimore_Oriole-_dorsum.jpg/500px-Baltimore_Oriole-_dorsum.jpg",
+          "author": "TonyCastro"
+        }
+      },
+      {
+        "id": "bird_orchard-oriole",
+        "common_name": "Orchard Oriole",
+        "latin_name": "Icterus spurius",
+        "form": "songbird",
+        "habitat": [
+          "forest_edge",
+          "shrubland",
+          "garden",
+          "meadow"
+        ],
+        "diet": [
+          "insect_eater",
+          "nectivore",
+          "frugivore"
+        ],
+        "behavior": [
+          "migratory",
+          "nest_weaver",
+          "territorial"
+        ],
+        "season": [
+          "spring",
+          "summer"
+        ],
+        "active_months": [
+          "May-Aug"
+        ],
+        "functional_description": "Smallest North American oriole. Adult males have rich chestnut body with black hood and back; first-year males are olive-yellow with a black bib; females olive-yellow throughout. More nectarivorous than Baltimore Oriole — probes a wider variety of flowers and is a consistent pollinator in open habitats. Arrives late May (1–2 weeks after Baltimore), but departs by early August — the shortest summer residency of any NE PA breeder. Nests in orchards, shrubby riparian edges, and open forest margins. Caterpillars and other insects dominate spring diet; shifts to nectar and soft fruit through summer.",
+        "life_stages": [
+          {
+            "icon": "🏠",
+            "name": "Arrival",
+            "description": "Males arrive and quickly establish territories in open woodland edges and orchards",
+            "months": [
+              "May"
+            ]
+          },
+          {
+            "icon": "🏗️",
+            "name": "Nest Building",
+            "description": "Female builds compact woven cup nest, shallower than Baltimore Oriole's deep pendant",
+            "months": [
+              "May-Jun"
+            ]
+          },
+          {
+            "icon": "🥚",
+            "name": "Egg",
+            "description": "Clutch of 3-5 pale blue eggs with brown markings",
+            "months": [
+              "Jun"
+            ]
+          },
+          {
+            "icon": "🐦",
+            "name": "Chick",
+            "description": "Nestlings fed insects and caterpillars; rapid growth and early fledging",
+            "months": [
+              "Jun-Jul"
+            ]
+          },
+          {
+            "icon": "✈️",
+            "name": "Early Departure",
+            "description": "Adults and fledglings begin southbound migration — earliest of NE PA's summer residents",
+            "months": [
+              "Jul-Aug"
+            ]
+          }
+        ],
+        "region": "northeast_pa",
+        "ecological_role": "omnivore",
+        "is_keystone": false,
+        "taxonomic_group": "group_songbirds",
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Orchard_Oriole_by_Dan_Pancamo_1.jpg/500px-Orchard_Oriole_by_Dan_Pancamo_1.jpg",
+          "author": "Dan Pancamo"
+        }
+      },
+      {
         "id": "plant_eastern-hemlock",
         "common_name": "Eastern Hemlock",
         "latin_name": "Tsuga canadensis",
@@ -3006,6 +3242,37 @@
         }
       },
       {
+        "id": "plant_bear-corn",
+        "common_name": "Bear Corn (Squawroot)",
+        "latin_name": "Conopholis americana",
+        "form": "wildflower",
+        "habitat": [
+          "forest",
+          "woodland"
+        ],
+        "diet": [],
+        "behavior": [
+          "holoparasitic",
+          "spring_ephemeral"
+        ],
+        "season": [
+          "spring",
+          "summer"
+        ],
+        "active_months": [
+          "Apr-Jun"
+        ],
+        "functional_description": "A holoparasitic plant with no chlorophyll — steals carbohydrates entirely from the roots of oaks (Quercus spp.). Emerges as pale yellow-brown, corn-cob-like clusters from the forest floor in April–June. Cannot photosynthesize; its entire carbon budget comes from host root connections that develop as a dense underground tuber-like mass. One of the most important early-spring food sources for American Black Bear: bears emerge from dens in late March–April when calorie-rich foods are scarce and actively seek bear corn patches, which recur in the same locations year to year. The plant's common name derives directly from this relationship.",
+        "life_stages": [],
+        "region": "northeast_pa",
+        "ecological_role": "parasite",
+        "is_keystone": false,
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Conopholis_americana_-_Bear_Corn.jpg/500px-Conopholis_americana_-_Bear_Corn.jpg",
+          "author": "Fritzflohrreynolds"
+        }
+      },
+      {
         "id": "mammal_red-fox",
         "common_name": "Red Fox",
         "latin_name": "Vulpes vulpes",
@@ -3043,6 +3310,528 @@
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Red_Fox_Clear.jpg/960px-Red_Fox_Clear.jpg",
           "author": "Ómar Runólfsson"
+        }
+      },
+      {
+        "id": "mammal_little-brown-bat",
+        "common_name": "Little Brown Bat",
+        "latin_name": "Myotis lucifugus",
+        "form": "bat",
+        "habitat": [
+          "forest",
+          "woodland",
+          "riparian",
+          "suburban"
+        ],
+        "diet": [
+          "insect_eater"
+        ],
+        "behavior": [
+          "nocturnal",
+          "echolocator",
+          "colonial_rooster",
+          "hibernator"
+        ],
+        "season": [
+          "spring",
+          "summer",
+          "fall"
+        ],
+        "active_months": [
+          "Apr-Oct"
+        ],
+        "functional_description": "Most common bat in PA and historically the most abundant in NE PA. Tiny (7–14 g) with copper-brown fur and black ears. Can eat 600–1,000 insects per hour using echolocation, consuming mosquitoes, midges, moths, and beetles in continuous feeding flights over water and forest edges. Severely impacted by White-nose Syndrome (Pseudogymnoascus destructans), a fungal pathogen that disrupts hibernation torpor — NE PA populations have declined 90%+ since the syndrome arrived in 2007. Summer maternity colonies of 20–300 females roost in warm buildings, hollow trees, and under bark; males roost solitarily. Hibernates October–April in caves and mines. Gives birth to a single pup in June.",
+        "life_stages": [
+          {
+            "icon": "🏠",
+            "name": "Maternity Colony",
+            "description": "Females form warm roost colonies in buildings or hollow trees to give birth",
+            "months": [
+              "May-Jun"
+            ]
+          },
+          {
+            "icon": "🐾",
+            "name": "Pup Birth",
+            "description": "Single pup born; carried by mother initially, then left at roost while she forages",
+            "months": [
+              "Jun"
+            ]
+          },
+          {
+            "icon": "🦇",
+            "name": "Pup Fledging",
+            "description": "Young bats learn to fly and echolocate; begin independent foraging",
+            "months": [
+              "Jul"
+            ]
+          },
+          {
+            "icon": "🍂",
+            "name": "Pre-hibernation Fattening",
+            "description": "Intensive foraging to build fat reserves before hibernation; weight nearly doubles",
+            "months": [
+              "Aug-Sep"
+            ]
+          },
+          {
+            "icon": "❄️",
+            "name": "Hibernation",
+            "description": "Overwinters in caves and mines in dense clusters; vulnerable to White-nose Syndrome during this period",
+            "months": [
+              "Oct-Apr"
+            ]
+          }
+        ],
+        "region": "northeast_pa",
+        "ecological_role": "insectivore",
+        "is_keystone": true,
+        "keystone_type": "predator",
+        "keystone_description": "Critical nighttime insect suppressor. A single bat consumes 600–1,000 insects per hour; a maternity colony of 150 bats can eat 1.3 million insects per night. White-nose Syndrome has eliminated 90%+ of PA's Little Brown Bat populations since 2007 — the resulting insect release is measurable in agricultural pest damage data. Their loss represents one of the most severe ecological disruptions in recent PA natural history.",
+        "taxonomic_group": "group_bats",
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Little_Brown_Myotis_%28cropped%29.JPG/500px-Little_Brown_Myotis_%28cropped%29.JPG",
+          "author": "SMBishop"
+        }
+      },
+      {
+        "id": "mammal_big-brown-bat",
+        "common_name": "Big Brown Bat",
+        "latin_name": "Eptesicus fuscus",
+        "form": "bat",
+        "habitat": [
+          "forest",
+          "woodland",
+          "forest_edge",
+          "suburban",
+          "farmland"
+        ],
+        "diet": [
+          "insect_eater"
+        ],
+        "behavior": [
+          "nocturnal",
+          "echolocator",
+          "colonial_rooster",
+          "hibernator"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "active_months": [
+          "Apr-Oct"
+        ],
+        "functional_description": "Larger and more robust than Little Brown Bat (14–23 g). More resistant to White-nose Syndrome than most Myotis bats — PA populations have declined less severely, and Big Brown Bats are increasingly the dominant bat species in NE PA as WNS continues to devastate Little Brown Bat colonies. Ecologically distinct from Little Brown Bat: Big Browns specialize in hard-bodied beetles (including agricultural pest species like cucumber beetles and June bugs) rather than mosquitoes. A single colony can consume 33 million rootworm beetles per summer season. Frequently roosts in building attics and wall voids year-round; also uses tree cavities and rock crevices.",
+        "life_stages": [
+          {
+            "icon": "🏠",
+            "name": "Maternity Colony",
+            "description": "Females roost in buildings or tree cavities; smaller colonies than Little Brown Bat",
+            "months": [
+              "May-Jun"
+            ]
+          },
+          {
+            "icon": "🐾",
+            "name": "Pup Birth",
+            "description": "1–2 pups born; among the few bat species regularly having twins",
+            "months": [
+              "Jun"
+            ]
+          },
+          {
+            "icon": "🦇",
+            "name": "Pup Fledging",
+            "description": "Young bats begin foraging; diet immediately focuses on beetles",
+            "months": [
+              "Jul"
+            ]
+          },
+          {
+            "icon": "🍂",
+            "name": "Pre-hibernation Fattening",
+            "description": "Intensive beetle hunting to build fat before overwintering",
+            "months": [
+              "Aug-Oct"
+            ]
+          },
+          {
+            "icon": "❄️",
+            "name": "Hibernation",
+            "description": "Overwinters in caves, mines, and building voids; greater WNS survival than most PA bats",
+            "months": [
+              "Nov-Mar"
+            ]
+          }
+        ],
+        "region": "northeast_pa",
+        "ecological_role": "insectivore",
+        "is_keystone": false,
+        "taxonomic_group": "group_bats",
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Big_brown_bat_crawl.png/500px-Big_brown_bat_crawl.png",
+          "author": "John MacGregor"
+        }
+      },
+      {
+        "id": "plant_new-england-aster",
+        "common_name": "New England Aster",
+        "latin_name": "Symphyotrichum novae-angliae",
+        "form": "wildflower",
+        "habitat": [
+          "meadow",
+          "field_edge",
+          "wetland_edge",
+          "forest_edge",
+          "riparian"
+        ],
+        "diet": [],
+        "behavior": [
+          "late_blooming",
+          "colony_forming",
+          "bee_magnet"
+        ],
+        "season": [
+          "fall"
+        ],
+        "active_months": [
+          "Sep-Oct"
+        ],
+        "functional_description": "One of the most ecologically critical native wildflowers in NE PA. Tall (2–6 ft) with deep purple ray flowers and yellow disk centers. Blooms September–October — among the very last native plants to flower before frost, providing an irreplaceable nectar bridge for migrating Monarchs, native bumble bees building winter fat reserves, and dozens of butterfly and beetle species. A single aster plant can produce thousands of florets. Colonizes roadsides, wet meadows, and disturbed edges; thrives in full sun to light shade.",
+        "life_stages": [],
+        "region": "northeast_pa",
+        "ecological_role": "producer",
+        "is_keystone": true,
+        "keystone_type": "mutualist",
+        "keystone_description": "The keystone late-season wildflower of NE PA. Blooms when virtually all other native nectar sources have gone to seed — providing critical late-migration fuel for Monarch Butterfly (fall migration) and the last major pollen and nectar resource for native bumble bee queens before winter dormancy. Loss of roadside and meadow aster patches is linked to bumble bee colony failure rates in fall.",
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Symphyotrichum_novae-angliae3.jpg/500px-Symphyotrichum_novae-angliae3.jpg",
+          "author": "The Cosmonaut"
+        }
+      },
+      {
+        "id": "plant_foxglove-beardtongue",
+        "common_name": "Foxglove Beardtongue",
+        "latin_name": "Penstemon digitalis",
+        "form": "wildflower",
+        "habitat": [
+          "meadow",
+          "field_edge",
+          "forest_edge",
+          "dry_meadow"
+        ],
+        "diet": [],
+        "behavior": [
+          "early_summer_blooming",
+          "clump_forming"
+        ],
+        "season": [
+          "spring",
+          "summer"
+        ],
+        "active_months": [
+          "May-Jul"
+        ],
+        "functional_description": "Tall native wildflower (2–4 ft) with showy white-to-pale-pink tubular flowers that closely resemble true foxglove (Digitalis). One of the most common native Penstemon in eastern North America. Blooms May–July in open meadows, forest edges, and roadsides. Tubular flowers with a hairy lower lip ('beardtongue') are precisely shaped for bumble bee pollination — large bees force entry and contact anthers on their backs. Also visited by Ruby-throated Hummingbirds probing for nectar. Long-lived perennial forming attractive clumps. Critical bridge-season pollinator plant between spring ephemerals and summer wildflowers.",
+        "life_stages": [],
+        "region": "northeast_pa",
+        "ecological_role": "producer",
+        "is_keystone": false,
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Penstemon_digitalis.jpg/500px-Penstemon_digitalis.jpg",
+          "author": "Eric Hunt"
+        }
+      },
+      {
+        "id": "plant_pin-cherry",
+        "common_name": "Pin Cherry",
+        "latin_name": "Prunus pensylvanica",
+        "form": "tree",
+        "habitat": [
+          "forest_edge",
+          "woodland",
+          "shrubland"
+        ],
+        "diet": [],
+        "behavior": [
+          "early_successional",
+          "bird_dispersed",
+          "fruit_producer"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "active_months": [
+          "Apr-Sep"
+        ],
+        "functional_description": "Small fast-growing tree (15–35 ft) that is the first woody plant to colonize clear-cuts, burns, and forest disturbances in NE PA. Named for its tiny bright-red cherries borne in clusters along the branches in July–August. Among the first trees to bloom in spring (April–May), providing critical early nectar when bumble bee queens are newly emerged. Supports a rich caterpillar community on Prunus foliage. Tiny cherries are eagerly eaten by Cedar Waxwings, American Robins, thrushes, and Black Bears — making Pin Cherry one of the most important wildlife food trees in early successional habitat.",
+        "life_stages": [],
+        "region": "northeast_pa",
+        "ecological_role": "producer",
+        "is_keystone": false,
+        "taxonomic_group": "group_prunus",
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Prunus_pensylvanica_Cleaned.jpg/500px-Prunus_pensylvanica_Cleaned.jpg",
+          "author": "M.S. del, J.N.Fitch (Halava, derivative)"
+        }
+      },
+      {
+        "id": "plant_chokecherry",
+        "common_name": "Chokecherry",
+        "latin_name": "Prunus virginiana",
+        "form": "shrub",
+        "habitat": [
+          "forest_edge",
+          "shrubland",
+          "riparian",
+          "woodland_edge"
+        ],
+        "diet": [],
+        "behavior": [
+          "thicket_forming",
+          "bird_dispersed",
+          "fruit_producer"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "active_months": [
+          "May-Sep"
+        ],
+        "functional_description": "Large native shrub or small tree (up to 30 ft) bearing dense clusters of dark red-to-black astringent cherries in late summer. One of the most important wildlife food shrubs in NE PA: the fruits are heavily used by Cedar Waxwings, American Robins, thrushes, Black Bear, and other frugivores from August through September. Blooms in May with showy white cylindrical flower clusters that attract bumble bees and other pollinators. Major larval host for Eastern Tent Caterpillar — silk tents in branch forks are a classic spring sight. The name 'chokecherry' reflects the fruit's intense astringency when raw; the same compounds (cyanogenic glycosides) deter most mammal herbivores but don't stop birds.",
+        "life_stages": [],
+        "region": "northeast_pa",
+        "ecological_role": "producer",
+        "is_keystone": false,
+        "taxonomic_group": "group_prunus",
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Prunus_virginiana_flowers.jpg/500px-Prunus_virginiana_flowers.jpg",
+          "author": "Nadiatalent"
+        }
+      },
+      {
+        "id": "plant_american-basswood",
+        "common_name": "American Basswood",
+        "latin_name": "Tilia americana",
+        "form": "tree",
+        "habitat": [
+          "forest",
+          "woodland",
+          "forest_edge",
+          "riparian"
+        ],
+        "diet": [],
+        "behavior": [
+          "mast_host",
+          "cavity_provider",
+          "bird_dispersed"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "active_months": [
+          "Jan-Dec"
+        ],
+        "functional_description": "Large forest tree (60–120 ft) known throughout NE PA as the 'bee tree.' Produces dense clusters of pale yellow, intensely fragrant flowers in late June–early July — among the most productive nectar sources of any eastern North American tree. A single basswood in full bloom can be heard buzzing from 50 feet away as hundreds of bees work it simultaneously. The bloom is brief (7–10 days) but immense: a single mature tree can produce more nectar during its bloom than an acre of clover. Soft, light wood decays relatively quickly, creating hollow trunks and cavity-rich snags. Hosts 130+ Lepidoptera species including Eastern Tiger Swallowtail. Inner bark (bast) was used by Indigenous peoples for rope, cordage, and baskets — the source of the name 'basswood.'",
+        "life_stages": [],
+        "region": "northeast_pa",
+        "ecological_role": "producer",
+        "is_keystone": true,
+        "keystone_type": "mutualist",
+        "keystone_description": "Premier midsummer pollinator tree of NE PA forests. When spring wildflowers are gone and summer has few blooming species, basswood delivers an enormous single-species nectar pulse in late June–July that sustains bumble bee colonies through peak queen production. Soft decaying wood creates cavity habitat for woodpeckers, Wood Ducks, and small mammals. A landscape-level resource that many species time their activity around.",
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Tilia_americana_%28American_Linden%29_%2828268263222%29.jpg/500px-Tilia_americana_%28American_Linden%29_%2828268263222%29.jpg",
+          "author": "Plant Image Library"
+        }
+      },
+      {
+        "id": "mammal_meadow-vole",
+        "common_name": "Meadow Vole",
+        "latin_name": "Microtus pennsylvanicus",
+        "form": "mammal",
+        "habitat": [
+          "field",
+          "meadow",
+          "wet_meadow",
+          "field_edge"
+        ],
+        "diet": [
+          "herbivore"
+        ],
+        "behavior": [
+          "colonial",
+          "fossorial",
+          "year_round_active"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "active_months": [
+          "Jan-Dec"
+        ],
+        "functional_description": "Small, stout, short-tailed vole abundant in grassy fields, meadows, and wet meadow edges throughout NE PA. Creates dense surface runway networks through grass and under snow. Herbivore eating grasses, sedges, roots, and bulbs — capable of significant vegetation impacts at high densities. Population undergoes boom-bust cycles every 2–4 years, with peak years reaching 1,000+ individuals per acre. These cycles drive corresponding fluctuations in predator populations across open habitats: Red-tailed Hawk, American Kestrel, Red Fox, and American Mink all increase when voles peak. Active year-round including under snow, where subnivean runway systems provide winter foraging. Among the most important prey species in NE PA food webs.",
+        "life_stages": [],
+        "region": "northeast_pa",
+        "ecological_role": "consumer",
+        "is_keystone": true,
+        "keystone_type": "prey",
+        "keystone_description": "One of NE PA's most abundant small mammals and the foundational prey species of open habitats. Population cycles drive corresponding booms and crashes in Red-tailed Hawk, American Kestrel, Red Fox, Eastern Coyote, and American Mink abundance. A landscape-level driver of predator population dynamics across meadows and fields.",
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Meadow_vole_microtus_pennsylvanicus.jpg/500px-Meadow_vole_microtus_pennsylvanicus.jpg",
+          "author": "Gilles Gonthier"
+        }
+      },
+      {
+        "id": "mammal_white-footed-mouse",
+        "common_name": "White-footed Mouse",
+        "latin_name": "Peromyscus leucopus",
+        "form": "mammal",
+        "habitat": [
+          "forest",
+          "woodland",
+          "forest_edge",
+          "field_edge",
+          "garden"
+        ],
+        "diet": [
+          "insect_eater",
+          "fruit_eater"
+        ],
+        "behavior": [
+          "nocturnal",
+          "scatter_hoarder",
+          "solitary"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "active_months": [
+          "Jan-Dec"
+        ],
+        "functional_description": "Perhaps Pennsylvania's most abundant wild mammal, found in virtually every woodland, forest edge, and brushy habitat in NE PA. Eats insects, acorns, berries, mushrooms, and seeds — an omnivore linking plant and animal food webs. Scatter-hoards thousands of acorns per fall, caching more than it retrieves and acting as a secondary oak disperser. Active year-round with population peaks in late fall following mast years. Primary reservoir host for the Lyme disease bacterium (Borrelia burgdorferi): larval deer ticks feed on white-footed mice in July, pick up the spirochete, and molt into infectious nymphs the following spring. Prey for Great Horned Owl, Barred Owl, Red Fox, and Weasels.",
+        "life_stages": [],
+        "region": "northeast_pa",
+        "ecological_role": "consumer",
+        "is_keystone": false,
+        "keystone_type": null,
+        "keystone_description": null,
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/White-footed_mouse_Peromyscus_leucopus.jpg/500px-White-footed_mouse_Peromyscus_leucopus.jpg",
+          "author": "CDC / James Gathany"
+        }
+      },
+      {
+        "id": "mammal_river-otter",
+        "common_name": "North American River Otter",
+        "latin_name": "Lontra canadensis",
+        "form": "mammal",
+        "habitat": [
+          "riparian",
+          "wetland",
+          "pond",
+          "streamside",
+          "beaver_pond"
+        ],
+        "diet": [
+          "predator"
+        ],
+        "behavior": [
+          "semi-aquatic",
+          "social",
+          "diurnal"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "active_months": [
+          "Jan-Dec"
+        ],
+        "functional_description": "Largest member of the weasel family (mustelidae) in NE PA. Superbly adapted swimmer — dense waterproof fur, webbed feet, and muscular tail enable pursuit of fish at up to 6 mph underwater. Primarily eats fish, crayfish, and frogs; opportunistically takes muskrat and water birds. Lives in family groups; highly playful and social compared to other mustelids. The Pocono Mountains historically harbored one of Pennsylvania's last non-extirpated otter populations during the 19th-20th century pollution era; wild Pocono otters served as founder stock for statewide reintroduction efforts beginning in 1982. Now reestablished throughout the Delaware River watershed and major NE PA streams. Presence indicates high water quality and abundant fish prey.",
+        "life_stages": [],
+        "region": "northeast_pa",
+        "ecological_role": "carnivore",
+        "is_keystone": true,
+        "keystone_type": "predator",
+        "keystone_description": "Apex aquatic predator that structures fish communities through selective predation on slow or stressed individuals, improving average fish health. Otter haul-out sites concentrate nutrients from aquatic to terrestrial systems. As a top predator sensitive to water quality, otter presence or absence is a reliable indicator of watershed health. Pocono populations never went fully extinct, making NE PA central to the species' statewide recovery.",
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/River_otter_in_Texas.jpg/500px-River_otter_in_Texas.jpg",
+          "author": "USFWS"
+        }
+      },
+      {
+        "id": "bird_indigo-bunting",
+        "common_name": "Indigo Bunting",
+        "latin_name": "Passerina cyanea",
+        "form": "songbird",
+        "habitat": [
+          "field",
+          "field_edge",
+          "meadow",
+          "forest_edge"
+        ],
+        "diet": [
+          "insect_eater",
+          "fruit_eater"
+        ],
+        "behavior": [
+          "migratory",
+          "territorial",
+          "perch_singer"
+        ],
+        "season": [
+          "spring",
+          "summer",
+          "fall_migrant"
+        ],
+        "active_months": [
+          "May-Sep"
+        ],
+        "functional_description": "Electric-blue songbird of brushy fields and forest edges — one of the most visually striking summer residents of NE PA. Males are unmistakably iridescent cobalt blue in breeding plumage (actually structural color; the feathers contain no blue pigment). Breeds in early-successional habitats: brushy roadsides, powerline corridors, forest clearcuts, and old field edges with shrubby structure. Diet shifts seasonally: insects dominate in summer (protein for nestlings), seeds and small berries in migration. Males sing persistently from exposed perches throughout June and July, navigating by the stars during nocturnal migration to Central America. One of the most abundant breeding songbirds in disturbed and edge habitats in NE PA.",
+        "life_stages": [],
+        "region": "northeast_pa",
+        "ecological_role": "consumer",
+        "is_keystone": false,
+        "keystone_type": null,
+        "keystone_description": null,
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Indigo_Bunting_-_male_-_4%2B_yr_old_%28mdf%29.jpg/500px-Indigo_Bunting_-_male_-_4%2B_yr_old_%28mdf%29.jpg",
+          "author": "Mdf"
+        }
+      },
+      {
+        "id": "plant_wild-indigo",
+        "common_name": "Yellow Wild Indigo",
+        "latin_name": "Baptisia tinctoria",
+        "form": "wildflower",
+        "habitat": [
+          "dry_meadow",
+          "field",
+          "open_woodland",
+          "rocky_slope"
+        ],
+        "diet": [],
+        "behavior": [
+          "nitrogen_fixer",
+          "drought_tolerant",
+          "deer_resistant"
+        ],
+        "season": [
+          "spring",
+          "summer"
+        ],
+        "active_months": [
+          "May-Aug"
+        ],
+        "functional_description": "Clump-forming native wildflower of dry, acidic, open ground — tolerant of poor sandy or rocky soils where few other wildflowers establish. Yellow pea-like flowers bloom in June–July, followed by inflated black seed pods that rattle in fall. Fixes atmospheric nitrogen via root bacteria, enriching thin soils. The foliage turns charcoal black upon frost. Leaves are bluish-green and slightly waxy, giving the plant a distinctive cool tone in the landscape. Deer resistant due to alkaloids. Larval host for Wild Indigo Duskywing skipper and Frosted Elfin butterfly — both specialists that cannot complete their life cycles without Baptisia. Provides nectar for bumble bees, which are its primary pollinators. Long-lived once established; plants may persist 20+ years from a single root crown.",
+        "life_stages": [],
+        "region": "northeast_pa",
+        "ecological_role": "producer",
+        "is_keystone": false,
+        "keystone_type": null,
+        "keystone_description": null,
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Baptisia_tinctoria_NRCS-1.jpg/500px-Baptisia_tinctoria_NRCS-1.jpg",
+          "author": "USDA NRCS"
         }
       }
     ],
@@ -3112,6 +3901,24 @@
         "label": "Canids",
         "common_traits": "Dog-family predators; territorial; pair-bonded; opportunistic hunters controlling mesopredator and herbivore populations",
         "notes": "Family Canidae; Eastern Coyote (hybrid wolf-coyote) and Red Fox in NE PA; compete for overlapping territories with coyote dominant"
+      },
+      {
+        "id": "group_bats",
+        "label": "Bats",
+        "common_traits": "Nocturnal flying mammals; echolocation hunters; primary suppressors of night-flying insects; cave and mine hibernators; severely threatened by White-nose Syndrome",
+        "notes": "Order Chiroptera; Little Brown Bat and Big Brown Bat are the most common species in NE PA; 90%+ population decline since White-nose Syndrome arrived in 2007"
+      },
+      {
+        "id": "group_prunus",
+        "label": "Wild Cherries & Chokecherry",
+        "common_traits": "Native Prunus trees and shrubs; prolific fruit producers fueling frugivore migration; primary hosts for Eastern Tent Caterpillar and 456+ Lepidoptera species; early spring bloomers for pollinators",
+        "notes": "Genus Prunus (family Rosaceae); Black Cherry, Pin Cherry, and Chokecherry are the key NE PA representatives"
+      },
+      {
+        "id": "group_dragonflies",
+        "label": "Dragonflies",
+        "common_traits": "Aerial and aquatic predators; nymphs spend 1–3 years as top invertebrate predators in ponds and streams; adults control flying insect populations including mosquitoes",
+        "notes": "Order Odonata, suborder Anisoptera; Eastern Pondhawk and Common Whitetail are the most visible NE PA representatives"
       }
     ],
     "symbiosis": [
@@ -4180,6 +4987,444 @@
         ],
         "strength": "incidental",
         "notes": "Red-tailed Hawk nests in the tall crown forks of mature hemlock trees in NE PA, using the dense evergreen branches for nest concealment and structural support."
+      },
+      {
+        "type": "predation",
+        "source": "bird_baltimore-oriole",
+        "targets": [
+          "insect_eastern-tent-caterpillar"
+        ],
+        "strength": "important",
+        "notes": "Baltimore Oriole is one of the few songbirds that consistently eats hairy caterpillars — including Eastern Tent Caterpillar — that most birds avoid due to defensive hairs and chemical secretions. Orioles beat caterpillars against branches to remove the hairs before swallowing. During spring tent caterpillar outbreaks, orioles can significantly reduce colony size."
+      },
+      {
+        "type": "predation",
+        "source": "bird_orchard-oriole",
+        "targets": [
+          "insect_eastern-tent-caterpillar"
+        ],
+        "strength": "incidental",
+        "notes": "Orchard Oriole also takes tent caterpillars opportunistically during spring outbreaks, using the same dehusking technique as Baltimore Oriole. Less frequent than Baltimore Oriole due to later arrival timing."
+      },
+      {
+        "type": "mutualism",
+        "source": "bird_baltimore-oriole",
+        "targets": [
+          "plant_eastern-columbine"
+        ],
+        "strength": "important",
+        "notes": "Baltimore Oriole is a secondary pollinator of Eastern Columbine — probes the elongated nectar spurs and transfers pollen on its forehead and bill. Orioles supplement Ruby-throated Hummingbird as columbine pollinators in forest edge habitat."
+      },
+      {
+        "type": "mutualism",
+        "source": "bird_orchard-oriole",
+        "targets": [
+          "plant_eastern-columbine"
+        ],
+        "strength": "important",
+        "notes": "Orchard Oriole is a frequent nectarivore at Eastern Columbine, probing tubular flowers and transferring pollen. More consistently nectarivorous than Baltimore Oriole, making it an important secondary pollinator of columbine and other native tubular-flowered plants."
+      },
+      {
+        "type": "commensalism",
+        "source": "bird_baltimore-oriole",
+        "targets": [
+          "plant_black-willow"
+        ],
+        "strength": "important",
+        "notes": "Baltimore Oriole preferentially hangs its distinctive pendant nest from the flexible branch tips of Black Willow overhanging water — the pendulous branches provide structural support for the woven nest pouch while the water below deters mammalian predators. Willows along NE PA riparian corridors are among the most-used nesting trees for this species."
+      },
+      {
+        "type": "predation-fruit_eating",
+        "source": "bird_baltimore-oriole",
+        "targets": [
+          "plant_black-cherry"
+        ],
+        "strength": "important",
+        "notes": "Baltimore Oriole eats ripe Black Cherry fruits heavily in July and August, coinciding with peak fruit ripening before southbound migration. Orioles are among the most efficient cherry consumers in NE PA's forest edge, consuming whole cherries and dispersing seeds via defecation across the landscape."
+      },
+      {
+        "type": "parasitism",
+        "source": "plant_bear-corn",
+        "targets": [
+          "plant_white-oak",
+          "plant_northern-red-oak"
+        ],
+        "fulfillment": "any",
+        "strength": "critical",
+        "notes": "Bear Corn (Conopholis americana) is an obligate holoparasite of oak roots — it cannot survive without a host Quercus. The underground tuber-like attachment mass penetrates oak lateral roots and extracts water and carbohydrates entirely. White Oak is the preferred host in NE PA; Northern Red Oak is frequently used where White Oak is less abundant. A single host oak may support multiple bear corn clusters for decades."
+      },
+      {
+        "type": "predation",
+        "source": "mammal_black-bear",
+        "targets": [
+          "plant_bear-corn"
+        ],
+        "strength": "important",
+        "notes": "American Black Bear is the primary consumer of Bear Corn in NE PA. Bears emerging from dens in late March–April actively seek out bear corn patches, eating entire above-ground clusters before spring berries and mast become available. Bear corn is calorie-dense relative to other early spring foods and its predictable, year-to-year emergence at fixed locations makes it a reliable post-denning resource. The plant's common name reflects this dependence."
+      },
+      {
+        "type": "predation-fruit_eating",
+        "source": "mammal_virginia-opossum",
+        "targets": [
+          "plant_black-cherry"
+        ],
+        "strength": "important",
+        "notes": "Virginia Opossum is a significant consumer and seed disperser of Black Cherry fruit in late summer, eating fallen and low-hanging fruit and defecating seeds across home range. Opossums' broad foraging range and tolerance of secondary habitats (forest edge, suburban woodland) makes them effective dispersers of cherry seeds into fragmented landscapes."
+      },
+      {
+        "type": "competition",
+        "source": "mammal_virginia-opossum",
+        "targets": [
+          "mammal_raccoon"
+        ],
+        "strength": "incidental",
+        "notes": "Virginia Opossum and Raccoon extensively overlap in habitat use, nocturnal activity timing, diet (fruit, carrion, invertebrates, bird eggs), and den site selection (tree cavities, groundhog burrows). Where both are abundant, they compete for the same fallen fruit patches, carrion resources, and cavity dens. Raccoon is dominant in direct interactions; opossum avoids confrontation using thanatosis (playing dead) rather than aggression."
+      },
+      {
+        "type": "predation",
+        "source": "mammal_little-brown-bat",
+        "targets": [
+          "insect_catalpa-sphinx-moth",
+          "insect_waved-sphinx-moth"
+        ],
+        "fulfillment": "any",
+        "strength": "important",
+        "notes": "Little Brown Bat is a major predator of large night-flying moths including sphinx moths (Sphingidae). Sphinx moths fly at dusk and night, making them prime targets during the bat's peak foraging window. Bats detect moths by echolocation and pursue them in agile aerial pursuit — sphinx moths often perform evasive dives in response to ultrasonic pulses."
+      },
+      {
+        "type": "predation",
+        "source": "mammal_big-brown-bat",
+        "targets": [
+          "insect_bark-beetle"
+        ],
+        "strength": "important",
+        "notes": "Big Brown Bat specializes in hard-bodied beetles more than any other NE PA bat species. Bark beetles emerging from trees at dusk are detected by echolocation and captured in aerial pursuit. A single Big Brown Bat colony can consume millions of beetles per season, providing meaningful suppression of bark beetle populations in stressed or declining forest stands."
+      },
+      {
+        "type": "commensalism",
+        "source": "mammal_little-brown-bat",
+        "targets": [
+          "bird_pileated-woodpecker"
+        ],
+        "strength": "important",
+        "notes": "Little Brown Bat uses large tree cavities excavated by Pileated Woodpecker as summer day roosts and maternity colony sites. Pileated cavities in large-diameter snags and live trees provide the warm, sheltered void geometry that bats require — particularly for maternity colonies where females need stable warm microclimate to rear pups. This commensalism makes Pileated Woodpecker indirectly important to bat population persistence."
+      },
+      {
+        "type": "competition",
+        "source": "mammal_little-brown-bat",
+        "targets": [
+          "mammal_big-brown-bat"
+        ],
+        "strength": "incidental",
+        "notes": "Little Brown Bat and Big Brown Bat compete for the same roost sites (building attics, tree cavities, mine entrances) and overlap in aerial insect prey. Big Brown Bats are dominant at shared roost sites and can displace Little Brown Bat maternity colonies. With White-nose Syndrome decimating Little Brown Bat populations, Big Brown Bats are increasingly filling the nighttime insectivore niche across NE PA."
+      },
+      {
+        "type": "mutualism",
+        "source": "insect_native-bumble-bees",
+        "targets": [
+          "plant_new-england-aster"
+        ],
+        "strength": "critical",
+        "notes": "New England Aster is one of the most critical late-season resources for native bumble bees. Queens foraging in September–October are building fat reserves and carbohydrate stores before founding next year's colony. Aster fields can support dozens of bumble bee species simultaneously. The bee-aster relationship is so synchronized that bumble bee colony survival rates in fall correlate with local aster patch availability."
+      },
+      {
+        "type": "predation-nectar_feeding",
+        "source": "insect_monarch-butterfly",
+        "targets": [
+          "plant_new-england-aster"
+        ],
+        "strength": "important",
+        "notes": "New England Aster is a critical fall migration nectar source for Monarch Butterfly. Monarchs passing through NE PA in September and October nectar heavily on asters alongside goldenrod — building the fat reserves needed for the 3,000-mile journey to Mexico. Asters extend the refueling window beyond goldenrod, which peaks in August–September."
+      },
+      {
+        "type": "mutualism",
+        "source": "insect_eastern-tiger-swallowtail",
+        "targets": [
+          "plant_new-england-aster"
+        ],
+        "strength": "important",
+        "notes": "Eastern Tiger Swallowtail adults nectar on New England Aster in fall while also transferring pollen — an effective mutual pollinator visit. Asters are among the top late-season nectar sources for swallowtails in NE PA."
+      },
+      {
+        "type": "mutualism",
+        "source": "bird_ruby-throated-hummingbird",
+        "targets": [
+          "plant_foxglove-beardtongue"
+        ],
+        "strength": "important",
+        "notes": "Ruby-throated Hummingbird probes the tubular white flowers of Foxglove Beardtongue for nectar in May–June, transferring pollen on bill and forehead. Beardtongue's early summer bloom aligns with peak hummingbird breeding season in NE PA, making it a reliable nectar source during the period of highest hummingbird energy demand."
+      },
+      {
+        "type": "mutualism",
+        "source": "insect_native-bumble-bees",
+        "targets": [
+          "plant_foxglove-beardtongue"
+        ],
+        "strength": "critical",
+        "notes": "Foxglove Beardtongue is a bumble bee specialist: the tubular flower with a hairy lower lip is sized for large bees that must force entry, contacting both anthers and stigma. Bumble bees are the primary and most effective pollinators. The 'buzz pollination' of bees vibrating at specific frequencies releases pollen from anthers — a mutualism the plant depends on for seed set."
+      },
+      {
+        "type": "parasitism",
+        "source": "insect_eastern-tent-caterpillar",
+        "targets": [
+          "plant_pin-cherry"
+        ],
+        "strength": "critical",
+        "notes": "Pin Cherry is among the primary PA hosts for Eastern Tent Caterpillar in early successional habitat. The characteristic silk tents appear in Pin Cherry branch forks in April–May and can defoliate entire trees during peak outbreak years. Because Pin Cherry dominates disturbed patches, tent caterpillar outbreaks are especially conspicuous in recently cleared areas."
+      },
+      {
+        "type": "predation-fruit_eating",
+        "source": "bird_cedar-waxwing",
+        "targets": [
+          "plant_pin-cherry"
+        ],
+        "strength": "important",
+        "notes": "Cedar Waxwing flocks descend on Pin Cherry trees when fruits ripen in July–August and can strip an entire tree in a single visit. Waxwings pass cherry seeds through the gut intact, dispersing them into new disturbance patches — amplifying Pin Cherry's role as the first tree into clear-cuts and burned areas."
+      },
+      {
+        "type": "mutualism",
+        "source": "insect_native-bumble-bees",
+        "targets": [
+          "plant_pin-cherry"
+        ],
+        "strength": "important",
+        "notes": "Pin Cherry is one of the earliest-blooming native trees in NE PA (April–May), providing critical pollen and nectar to newly emerged bumble bee queens before most other plants open. A single Pin Cherry in full bloom can host dozens of foraging queens simultaneously. This early bloom timing makes Pin Cherry disproportionately important to early-season native bee survival."
+      },
+      {
+        "type": "parasitism",
+        "source": "insect_eastern-tent-caterpillar",
+        "targets": [
+          "plant_chokecherry"
+        ],
+        "strength": "important",
+        "notes": "Chokecherry is a major PA host for Eastern Tent Caterpillar alongside Black Cherry and Pin Cherry. Tent caterpillar outbreaks in chokecherry thickets are common in NE PA riparian shrublands, where chokecherry often grows in dense stands that support large caterpillar populations."
+      },
+      {
+        "type": "predation-fruit_eating",
+        "source": "bird_cedar-waxwing",
+        "targets": [
+          "plant_chokecherry"
+        ],
+        "strength": "important",
+        "notes": "Chokecherry is a top-tier Cedar Waxwing food source — the dense, abundant fruit clusters are efficiently harvested by flocks. Waxwings disperse chokecherry seeds widely. Astringency from cyanogenic compounds that deter mammals actually attracts birds, which tolerate the compounds better."
+      },
+      {
+        "type": "predation-fruit_eating",
+        "source": "mammal_black-bear",
+        "targets": [
+          "plant_chokecherry"
+        ],
+        "strength": "important",
+        "notes": "Black Bear is a major consumer of Chokecherry fruit in August–September. Bears break branches and strip clusters, tolerating the astringent compounds. Chokecherry provides high-carbohydrate fuel during fall hyperphagia when bears are building fat for winter denning."
+      },
+      {
+        "type": "mutualism",
+        "source": "insect_native-bumble-bees",
+        "targets": [
+          "plant_chokecherry"
+        ],
+        "strength": "important",
+        "notes": "Chokecherry blooms in May with dense white flower racemes that are heavily visited by bumble bees for nectar and pollen. Bumble bees are primary pollinators. The abundant early-season bloom makes chokecherry thickets important foraging habitat for native bees."
+      },
+      {
+        "type": "mutualism",
+        "source": "insect_native-bumble-bees",
+        "targets": [
+          "plant_american-basswood"
+        ],
+        "strength": "critical",
+        "notes": "American Basswood is one of the most important midsummer nectar sources in NE PA. Bumble bees are among the most frequent and effective pollinators; basswood nectar is so abundant that the bloom period (late June–July) sustains colony growth peaks. Bumble bees transfer pollen between flowers, enabling seed set in this wind-and-insect pollinated species."
+      },
+      {
+        "type": "commensalism",
+        "source": "bird_pileated-woodpecker",
+        "targets": [
+          "plant_american-basswood"
+        ],
+        "strength": "important",
+        "notes": "Mature and dying American Basswood develop heart rot cavities that Pileated Woodpeckers excavate for carpenter ants and beetle larvae. Large Pileated foraging excavations in soft basswood wood create the rectangular cavities characteristic of this species. Old basswood snags are priority foraging and cavity-nesting sites."
+      },
+      {
+        "type": "parasitism",
+        "source": "insect_eastern-tiger-swallowtail",
+        "targets": [
+          "plant_american-basswood"
+        ],
+        "strength": "incidental",
+        "notes": "Eastern Tiger Swallowtail caterpillars feed on American Basswood leaves, one of several preferred larval host trees. Adults also nectar on basswood flowers in midsummer, making basswood important at multiple life stages."
+      },
+      {
+        "type": "predation",
+        "source": "bird_eastern-kingbird",
+        "targets": [
+          "insect_common-whitetail"
+        ],
+        "strength": "incidental",
+        "notes": "Eastern Kingbirds are aggressive aerial insectivores that regularly capture large dragonflies including Common Whitetail. Kingbirds hunt from exposed perches near water and fields, sallying after dragonflies in open airspace."
+      },
+      {
+        "type": "predation",
+        "source": "bird_great-blue-heron",
+        "targets": [
+          "insect_eastern-pondhawk"
+        ],
+        "strength": "incidental",
+        "notes": "Great Blue Herons occasionally capture large dragonflies including Eastern Pondhawk at the water surface or in emergent vegetation. Dragonflies are minor prey items compared to fish and frogs but are taken opportunistically during perching near pond edges."
+      },
+      {
+        "type": "commensalism",
+        "source": "insect_eastern-pondhawk",
+        "targets": [
+          "plant_common-cattail"
+        ],
+        "strength": "important",
+        "notes": "Eastern Pondhawk uses Common Cattail stems as perching and thermoregulation sites, and emergent cattail vegetation provides structure for nymphs to climb during adult emergence. Cattail beds are preferred perch territories for male pondhawks guarding mating sites."
+      },
+      {
+        "type": "commensalism",
+        "source": "insect_common-whitetail",
+        "targets": [
+          "plant_common-cattail"
+        ],
+        "strength": "important",
+        "notes": "Common Whitetail males perch on cattail stalks and emergent vegetation to defend territories and ambush prey. The tall vertical structure of cattail beds is used heavily during warm midday hours. Nymphs also use submerged cattail stems as habitat and emergence substrate."
+      },
+      {
+        "type": "predation",
+        "source": "bird_red-tailed-hawk",
+        "targets": [
+          "mammal_meadow-vole"
+        ],
+        "strength": "critical",
+        "notes": "Meadow Vole is the Red-tailed Hawk's primary prey in NE PA open habitats. Hawks hunt voles by hovering over fields or perching on utility poles and fence posts, dropping onto runways in the grass. Vole population cycles directly drive Red-tailed Hawk breeding success and local density — hawk numbers increase 2–3-fold in vole peak years."
+      },
+      {
+        "type": "predation",
+        "source": "bird_american-kestrel",
+        "targets": [
+          "mammal_meadow-vole"
+        ],
+        "strength": "important",
+        "notes": "American Kestrel is a major vole predator during fall and winter when grasshoppers are absent. Kestrels hover over fields using UV vision to detect vole urine trails in runways. Vole abundance strongly predicts kestrel density in open habitats."
+      },
+      {
+        "type": "predation",
+        "source": "bird_great-horned-owl",
+        "targets": [
+          "mammal_meadow-vole"
+        ],
+        "strength": "critical",
+        "notes": "Great Horned Owl is the primary nocturnal vole predator. Using directional hearing and night vision, owls hunt field runways from low silent glides. Vole is the most important small mammal prey item for Great Horned Owl in NE PA winter and early spring."
+      },
+      {
+        "type": "predation",
+        "source": "mammal_red-fox",
+        "targets": [
+          "mammal_meadow-vole"
+        ],
+        "strength": "critical",
+        "notes": "Meadow Vole is the primary prey of Red Fox in NE PA fields. Foxes use auditory cues to locate voles under snow, performing a characteristic high-arcing pounce ('mousing') to break through the snow crust. During vole peak years, a single fox may consume 10+ voles per day."
+      },
+      {
+        "type": "predation",
+        "source": "mammal_eastern-coyote",
+        "targets": [
+          "mammal_meadow-vole"
+        ],
+        "strength": "important",
+        "notes": "Meadow Vole is a significant dietary component for Eastern Coyote across NE PA fields and meadows, particularly in winter when deer carrion is unavailable and prey is limited. Coyotes use both auditory hunting and scent to locate voles in runway systems."
+      },
+      {
+        "type": "predation",
+        "source": "mammal_mink",
+        "targets": [
+          "mammal_meadow-vole"
+        ],
+        "strength": "important",
+        "notes": "American Mink pursues Meadow Voles actively in wet meadow and riparian margins where vole and mink habitats overlap. Mink enters vole runway tunnels to extract prey — their slender mustelid body shape is adapted for pursuing small rodents in burrows and runways."
+      },
+      {
+        "type": "predation",
+        "source": "bird_red-tailed-hawk",
+        "targets": [
+          "mammal_white-footed-mouse"
+        ],
+        "strength": "incidental",
+        "notes": "White-footed Mouse is taken opportunistically by Red-tailed Hawk at forest edges and in open woodland — secondary to Meadow Vole in open habitat hunting but important in woodland edge contexts."
+      },
+      {
+        "type": "predation",
+        "source": "bird_great-horned-owl",
+        "targets": [
+          "mammal_white-footed-mouse"
+        ],
+        "strength": "important",
+        "notes": "White-footed Mouse is among the most common prey items for Great Horned Owl in forested and forest-edge habitats. Owls hunt mouse-sized prey throughout the night, with White-footed Mouse often the most abundant nocturnal mammal in woodland habitats."
+      },
+      {
+        "type": "predation",
+        "source": "mammal_red-fox",
+        "targets": [
+          "mammal_white-footed-mouse"
+        ],
+        "strength": "important",
+        "notes": "White-footed Mouse is taken regularly by Red Fox in woodland and forest edge habitats. Fox uses acute hearing to detect mice moving in leaf litter, and in winter uses similar mousing behavior to capture mice beneath light snow cover."
+      },
+      {
+        "type": "predation-seed_eating",
+        "source": "mammal_white-footed-mouse",
+        "targets": [
+          "plant_white-oak",
+          "plant_northern-red-oak"
+        ],
+        "fulfillment": "any",
+        "strength": "important",
+        "notes": "White-footed Mouse is a major acorn consumer and scatter-hoarder. In mast years, mice cache thousands of acorns per individual, storing them in shallow soil caches for winter. Uncached or forgotten caches germinate — White-footed Mouse is an important secondary oak disperser after Blue Jay. High mouse densities during mast years are followed by Lyme disease nymph pulses the following spring as larval ticks fed on that fall's abundant mice."
+      },
+      {
+        "type": "predation",
+        "source": "mammal_river-otter",
+        "targets": [
+          "amphibian_green-frog"
+        ],
+        "strength": "important",
+        "notes": "Green Frog is a common prey item for River Otter along pond edges and slow streams. Otters hunt frogs through ambush and pursuit in shallow water, and frogs are especially important in early spring before fish become more active."
+      },
+      {
+        "type": "competition",
+        "source": "mammal_river-otter",
+        "targets": [
+          "mammal_mink"
+        ],
+        "strength": "important",
+        "notes": "River Otter and American Mink share overlapping aquatic territories and prey (fish, frogs, crayfish). Otter is substantially larger and dominant at shared sites; mink typically cede prime fishing spots to otters when both are present. Mink compensate by exploiting shallower, smaller water bodies less accessible to otters. Where otters have recovered, mink may shift to smaller tributaries and upland habitat."
+      },
+      {
+        "type": "predation-seed_eating",
+        "source": "bird_indigo-bunting",
+        "targets": [
+          "plant_goldenrod"
+        ],
+        "strength": "important",
+        "notes": "Indigo Bunting feeds heavily on Goldenrod seeds during late summer and fall migration staging. Migrating flocks of buntings descend on goldenrod fields in August–September, consuming seeds and building fat reserves for trans-Gulf migration. Goldenrod seed heads are a critical pre-migration energy source."
+      },
+      {
+        "type": "predation-seed_eating",
+        "source": "bird_indigo-bunting",
+        "targets": [
+          "plant_new-england-aster"
+        ],
+        "strength": "incidental",
+        "notes": "Indigo Bunting takes New England Aster seeds during fall migration staging, foraging with mixed flocks in late-blooming aster fields. Aster seeds provide late-season fuel for southward migration."
+      },
+      {
+        "type": "mutualism",
+        "source": "insect_native-bumble-bees",
+        "targets": [
+          "plant_wild-indigo"
+        ],
+        "strength": "important",
+        "notes": "Wild Indigo flowers have a 'trip mechanism' — bee weight triggers pollen release onto the bee's body as it enters the flower. Bumble bees are the primary pollinators because they are heavy enough to trigger this mechanism. The June–July bloom period is critical: it provides a significant nectar and pollen pulse during the gap between spring wildflowers and summer composites. Bumble bees are essential for seed set."
       }
     ],
     "relations": [
@@ -4227,6 +5472,39 @@
           "mammal_red-fox"
         ],
         "notes": "NE PA mesofauna sharing abandoned burrow infrastructure. Groundhog excavates the burrows; abandoned systems are reused by Red Fox (natal dens), Raccoon (winter shelter), and Virginia Opossum (winter refuge). This secondary use network means Groundhog burrow density has outsized effects on local mesopredator populations beyond its direct role as prey."
+      },
+      {
+        "type": "taxonomic_group",
+        "members": [
+          "bird_baltimore-oriole",
+          "bird_orchard-oriole"
+        ],
+        "notes": "Both members of Icteridae (blackbird) family, genus Icterus. Share pendulous woven nest construction, neotropical migration, and diet spanning insects, nectar, and fruit. Baltimore Oriole is the larger and more common of the two in NE PA; Orchard Oriole has the briefest summer residency of any NE PA breeder, departing in late July."
+      },
+      {
+        "type": "taxonomic_group",
+        "members": [
+          "mammal_little-brown-bat",
+          "mammal_big-brown-bat"
+        ],
+        "notes": "Both members of Order Chiroptera (bats), the only mammals capable of powered flight. Share echolocation, nocturnal insectivory, colonial maternity roosting, and cave/mine hibernation. Differ in size, prey specialization (moths vs. beetles), and White-nose Syndrome susceptibility — Big Brown Bat's greater WNS resistance is reshaping the relative abundance of the two species across NE PA."
+      },
+      {
+        "type": "taxonomic_group",
+        "members": [
+          "plant_black-cherry",
+          "plant_pin-cherry",
+          "plant_chokecherry"
+        ],
+        "notes": "Three native NE PA members of genus Prunus (family Rosaceae). Collectively support 456+ Lepidoptera species, are the primary Eastern Tent Caterpillar hosts, and produce fruit that fuels Cedar Waxwing, American Robin, thrush, and Black Bear fattening cycles. Black Cherry is the large forest tree; Pin Cherry is the disturbance pioneer; Chokecherry is the riparian-edge shrub. Together they provide Prunus resources across every successional stage."
+      },
+      {
+        "type": "taxonomic_group",
+        "members": [
+          "insect_eastern-pondhawk",
+          "insect_common-whitetail"
+        ],
+        "notes": "Two of the most abundant and visible dragonflies of NE PA ponds and slow streams. Both are perch-and-pursue hunters with strong sexual dimorphism — males brilliantly colored (blue in Pondhawk, chalky white in Whitetail), females cryptic green/brown. Nymphs are top invertebrate predators in lentic systems; adults control aerial insect populations including mosquitoes. Both species can be seen patrolling the same pond simultaneously."
       }
     ]
   }

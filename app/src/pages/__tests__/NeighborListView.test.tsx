@@ -46,7 +46,7 @@ describe('NeighborListView', () => {
 
   test('renders back link to parent species page', () => {
     renderNeighborList('insect_monarch-butterfly', 'plants');
-    const back = screen.getByRole('link', { name: /monarch butterfly/i });
+    const back = screen.getByRole('link', { name: /← monarch butterfly/i });
     expect(back).toHaveAttribute('href', '/species/insect_monarch-butterfly');
   });
 
