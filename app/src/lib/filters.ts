@@ -10,7 +10,7 @@ export interface FilterState {
 
 export function filterSpecies(species: Species[], filters: FilterState): Species[] {
   const { search, forms, seasons, habitats, keystone_types } = filters;
-  const q = search.toLowerCase().trim();
+  const q = search.toLowerCase().trim().replace(/-/g, ' ');
 
   return species.filter(s => {
     if (q) {
@@ -25,7 +25,8 @@ export function filterSpecies(species: Species[], filters: FilterState): Species
         ...(s.season ?? []),
       ]
         .join(' ')
-        .toLowerCase();
+        .toLowerCase()
+        .replace(/-/g, ' ');
       if (!haystack.includes(q)) return false;
     }
 

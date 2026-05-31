@@ -140,6 +140,48 @@ test.describe('Search bar', () => {
     expect(errors, `Console/page errors after search: ${errors.join(', ')}`).toHaveLength(0);
   });
 
+  test('single-char "o" finds Common Orb-weaver Spider without crashing', async ({ page }) => {
+    const errors: string[] = [];
+    page.on('pageerror', err => errors.push(err.message));
+    page.on('console', msg => { if (msg.type() === 'error') errors.push(msg.text()); });
+
+    await page.goto('/');
+    await page.waitForLoadState('networkidle');
+
+    const searchBar = page.getByRole('searchbox');
+    await searchBar.fill('o');
+    await page.waitForTimeout(400);
+
+    // App should still be rendering (no crash)
+    await expect(page.locator('#root > *')).toBeVisible();
+    expect(errors, `Console/page errors after search: ${errors.join(', ')}`).toHaveLength(0);
+
+    // "o" matches "Common Orb-weaver Spider" via common_name
+    await expect(page.getByText('Common Orb-weaver Spider', { exact: true })).toBeVisible();
+  });
+
+  test('"orb" finds Common Orb-weaver Spider', async ({ page }) => {
+    await page.goto('/');
+    await page.waitForLoadState('networkidle');
+
+    const searchBar = page.getByRole('searchbox');
+    await searchBar.fill('orb');
+    await page.waitForTimeout(400);
+
+    await expect(page.getByText('Common Orb-weaver Spider', { exact: true })).toBeVisible();
+  });
+
+  test('"ORB WEAVER" (uppercase) finds Common Orb-weaver Spider', async ({ page }) => {
+    await page.goto('/');
+    await page.waitForLoadState('networkidle');
+
+    const searchBar = page.getByRole('searchbox');
+    await searchBar.fill('ORB WEAVER');
+    await page.waitForTimeout(400);
+
+    await expect(page.getByText('Common Orb-weaver Spider', { exact: true })).toBeVisible();
+  });
+
   test('search filters species list correctly', async ({ page }) => {
     await page.goto('/');
     await page.waitForLoadState('networkidle');
