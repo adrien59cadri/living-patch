@@ -1608,7 +1608,11 @@
             ],
             "region": "northeast_pa",
             "ecological_role": "herbivore",
-            "is_keystone": false
+            "is_keystone": false,
+            "image": {
+              "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Red-legged_grasshopper_%2872625%29.jpg/960px-Red-legged_grasshopper_%2872625%29.jpg",
+              "author": "Rhododendrites"
+            }
           },
           {
             "id": "insect_bark-beetle",
@@ -1722,7 +1726,11 @@
             ],
             "region": "northeast_pa",
             "ecological_role": "predator",
-            "is_keystone": false
+            "is_keystone": false,
+            "image": {
+              "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Araneus_diadematus_MHNT_Femelle_Fronton.jpg/960px-Araneus_diadematus_MHNT_Femelle_Fronton.jpg",
+              "author": "Photographer"
+            }
           },
           {
             "id": "amphibian_green-frog",
@@ -2194,7 +2202,11 @@
             ],
             "region": "northeast_pa",
             "ecological_role": "herbivore",
-            "is_keystone": false
+            "is_keystone": false,
+            "image": {
+              "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Aphididae_-_Phyllaphis_fagi_%28Winged_Aphid%29.JPG/960px-Aphididae_-_Phyllaphis_fagi_%28Winged_Aphid%29.JPG",
+              "author": "Hectonichus"
+            }
           },
           {
             "id": "insect_harvester-butterfly",
