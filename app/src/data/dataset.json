@@ -3247,6 +3247,167 @@
               "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Red_Fox_Clear.jpg/960px-Red_Fox_Clear.jpg",
               "author": "Ómar Runólfsson"
             }
+          },
+          {
+            "id": "mammal_little-brown-bat",
+            "common_name": "Little Brown Bat",
+            "latin_name": "Myotis lucifugus",
+            "form": "bat",
+            "habitat": [
+              "forest",
+              "woodland",
+              "riparian",
+              "suburban"
+            ],
+            "diet": [
+              "insect_eater"
+            ],
+            "behavior": [
+              "nocturnal",
+              "echolocator",
+              "colonial_rooster",
+              "hibernator"
+            ],
+            "season": [
+              "spring",
+              "summer",
+              "fall"
+            ],
+            "active_months": [
+              "Apr-Oct"
+            ],
+            "functional_description": "Most common bat in PA and historically the most abundant in NE PA. Tiny (7–14 g) with copper-brown fur and black ears. Can eat 600–1,000 insects per hour using echolocation, consuming mosquitoes, midges, moths, and beetles in continuous feeding flights over water and forest edges. Severely impacted by White-nose Syndrome (Pseudogymnoascus destructans), a fungal pathogen that disrupts hibernation torpor — NE PA populations have declined 90%+ since the syndrome arrived in 2007. Summer maternity colonies of 20–300 females roost in warm buildings, hollow trees, and under bark; males roost solitarily. Hibernates October–April in caves and mines. Gives birth to a single pup in June.",
+            "life_stages": [
+              {
+                "icon": "🏠",
+                "name": "Maternity Colony",
+                "description": "Females form warm roost colonies in buildings or hollow trees to give birth",
+                "months": [
+                  "May-Jun"
+                ]
+              },
+              {
+                "icon": "🐾",
+                "name": "Pup Birth",
+                "description": "Single pup born; carried by mother initially, then left at roost while she forages",
+                "months": [
+                  "Jun"
+                ]
+              },
+              {
+                "icon": "🦇",
+                "name": "Pup Fledging",
+                "description": "Young bats learn to fly and echolocate; begin independent foraging",
+                "months": [
+                  "Jul"
+                ]
+              },
+              {
+                "icon": "🍂",
+                "name": "Pre-hibernation Fattening",
+                "description": "Intensive foraging to build fat reserves before hibernation; weight nearly doubles",
+                "months": [
+                  "Aug-Sep"
+                ]
+              },
+              {
+                "icon": "❄️",
+                "name": "Hibernation",
+                "description": "Overwinters in caves and mines in dense clusters; vulnerable to White-nose Syndrome during this period",
+                "months": [
+                  "Oct-Apr"
+                ]
+              }
+            ],
+            "region": "northeast_pa",
+            "ecological_role": "insectivore",
+            "is_keystone": true,
+            "keystone_type": "predator",
+            "keystone_description": "Critical nighttime insect suppressor. A single bat consumes 600–1,000 insects per hour; a maternity colony of 150 bats can eat 1.3 million insects per night. White-nose Syndrome has eliminated 90%+ of PA's Little Brown Bat populations since 2007 — the resulting insect release is measurable in agricultural pest damage data. Their loss represents one of the most severe ecological disruptions in recent PA natural history.",
+            "taxonomic_group": "group_bats",
+            "image": {
+              "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Little_Brown_Myotis_%28cropped%29.JPG/500px-Little_Brown_Myotis_%28cropped%29.JPG",
+              "author": "SMBishop"
+            }
+          },
+          {
+            "id": "mammal_big-brown-bat",
+            "common_name": "Big Brown Bat",
+            "latin_name": "Eptesicus fuscus",
+            "form": "bat",
+            "habitat": [
+              "forest",
+              "woodland",
+              "forest_edge",
+              "suburban",
+              "farmland"
+            ],
+            "diet": [
+              "insect_eater"
+            ],
+            "behavior": [
+              "nocturnal",
+              "echolocator",
+              "colonial_rooster",
+              "hibernator"
+            ],
+            "season": [
+              "year_round"
+            ],
+            "active_months": [
+              "Apr-Oct"
+            ],
+            "functional_description": "Larger and more robust than Little Brown Bat (14–23 g). More resistant to White-nose Syndrome than most Myotis bats — PA populations have declined less severely, and Big Brown Bats are increasingly the dominant bat species in NE PA as WNS continues to devastate Little Brown Bat colonies. Ecologically distinct from Little Brown Bat: Big Browns specialize in hard-bodied beetles (including agricultural pest species like cucumber beetles and June bugs) rather than mosquitoes. A single colony can consume 33 million rootworm beetles per summer season. Frequently roosts in building attics and wall voids year-round; also uses tree cavities and rock crevices.",
+            "life_stages": [
+              {
+                "icon": "🏠",
+                "name": "Maternity Colony",
+                "description": "Females roost in buildings or tree cavities; smaller colonies than Little Brown Bat",
+                "months": [
+                  "May-Jun"
+                ]
+              },
+              {
+                "icon": "🐾",
+                "name": "Pup Birth",
+                "description": "1–2 pups born; among the few bat species regularly having twins",
+                "months": [
+                  "Jun"
+                ]
+              },
+              {
+                "icon": "🦇",
+                "name": "Pup Fledging",
+                "description": "Young bats begin foraging; diet immediately focuses on beetles",
+                "months": [
+                  "Jul"
+                ]
+              },
+              {
+                "icon": "🍂",
+                "name": "Pre-hibernation Fattening",
+                "description": "Intensive beetle hunting to build fat before overwintering",
+                "months": [
+                  "Aug-Oct"
+                ]
+              },
+              {
+                "icon": "❄️",
+                "name": "Hibernation",
+                "description": "Overwinters in caves, mines, and building voids; greater WNS survival than most PA bats",
+                "months": [
+                  "Nov-Mar"
+                ]
+              }
+            ],
+            "region": "northeast_pa",
+            "ecological_role": "insectivore",
+            "is_keystone": false,
+            "taxonomic_group": "group_bats",
+            "image": {
+              "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Big_brown_bat_crawl.png/500px-Big_brown_bat_crawl.png",
+              "author": "John MacGregor"
+            }
           }
         ],
         "taxonomic_groups": [
@@ -3315,6 +3476,12 @@
             "label": "Canids",
             "common_traits": "Dog-family predators; territorial; pair-bonded; opportunistic hunters controlling mesopredator and herbivore populations",
             "notes": "Family Canidae; Eastern Coyote (hybrid wolf-coyote) and Red Fox in NE PA; compete for overlapping territories with coyote dominant"
+          },
+          {
+            "id": "group_bats",
+            "label": "Bats",
+            "common_traits": "Nocturnal flying mammals; echolocation hunters; primary suppressors of night-flying insects; cave and mine hibernators; severely threatened by White-nose Syndrome",
+            "notes": "Order Chiroptera; Little Brown Bat and Big Brown Bat are the most common species in NE PA; 90%+ population decline since White-nose Syndrome arrived in 2007"
           }
         ],
         "symbiosis": [
@@ -4475,6 +4642,44 @@
             ],
             "strength": "incidental",
             "notes": "Virginia Opossum and Raccoon extensively overlap in habitat use, nocturnal activity timing, diet (fruit, carrion, invertebrates, bird eggs), and den site selection (tree cavities, groundhog burrows). Where both are abundant, they compete for the same fallen fruit patches, carrion resources, and cavity dens. Raccoon is dominant in direct interactions; opossum avoids confrontation using thanatosis (playing dead) rather than aggression."
+          },
+          {
+            "type": "predation",
+            "source": "mammal_little-brown-bat",
+            "targets": [
+              "insect_catalpa-sphinx-moth",
+              "insect_waved-sphinx-moth"
+            ],
+            "fulfillment": "any",
+            "strength": "important",
+            "notes": "Little Brown Bat is a major predator of large night-flying moths including sphinx moths (Sphingidae). Sphinx moths fly at dusk and night, making them prime targets during the bat's peak foraging window. Bats detect moths by echolocation and pursue them in agile aerial pursuit — sphinx moths often perform evasive dives in response to ultrasonic pulses."
+          },
+          {
+            "type": "predation",
+            "source": "mammal_big-brown-bat",
+            "targets": [
+              "insect_bark-beetle"
+            ],
+            "strength": "important",
+            "notes": "Big Brown Bat specializes in hard-bodied beetles more than any other NE PA bat species. Bark beetles emerging from trees at dusk are detected by echolocation and captured in aerial pursuit. A single Big Brown Bat colony can consume millions of beetles per season, providing meaningful suppression of bark beetle populations in stressed or declining forest stands."
+          },
+          {
+            "type": "commensalism",
+            "source": "mammal_little-brown-bat",
+            "targets": [
+              "bird_pileated-woodpecker"
+            ],
+            "strength": "important",
+            "notes": "Little Brown Bat uses large tree cavities excavated by Pileated Woodpecker as summer day roosts and maternity colony sites. Pileated cavities in large-diameter snags and live trees provide the warm, sheltered void geometry that bats require — particularly for maternity colonies where females need stable warm microclimate to rear pups. This commensalism makes Pileated Woodpecker indirectly important to bat population persistence."
+          },
+          {
+            "type": "competition",
+            "source": "mammal_little-brown-bat",
+            "targets": [
+              "mammal_big-brown-bat"
+            ],
+            "strength": "incidental",
+            "notes": "Little Brown Bat and Big Brown Bat compete for the same roost sites (building attics, tree cavities, mine entrances) and overlap in aerial insect prey. Big Brown Bats are dominant at shared roost sites and can displace Little Brown Bat maternity colonies. With White-nose Syndrome decimating Little Brown Bat populations, Big Brown Bats are increasingly filling the nighttime insectivore niche across NE PA."
           }
         ],
         "relations": [
@@ -4530,6 +4735,14 @@
               "bird_orchard-oriole"
             ],
             "notes": "Both members of Icteridae (blackbird) family, genus Icterus. Share pendulous woven nest construction, neotropical migration, and diet spanning insects, nectar, and fruit. Baltimore Oriole is the larger and more common of the two in NE PA; Orchard Oriole has the briefest summer residency of any NE PA breeder, departing in late July."
+          },
+          {
+            "type": "taxonomic_group",
+            "members": [
+              "mammal_little-brown-bat",
+              "mammal_big-brown-bat"
+            ],
+            "notes": "Both members of Order Chiroptera (bats), the only mammals capable of powered flight. Share echolocation, nocturnal insectivory, colonial maternity roosting, and cave/mine hibernation. Differ in size, prey specialization (moths vs. beetles), and White-nose Syndrome susceptibility — Big Brown Bat's greater WNS resistance is reshaping the relative abundance of the two species across NE PA."
           }
         ]
       }

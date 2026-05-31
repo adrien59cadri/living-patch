@@ -62,6 +62,7 @@ export const FORM_ICONS: Record<string, string> = {
   hummingbird: '🐦',
   wading_bird: '🦢',
   mammal: '🦫',
+  bat: '🦇',
   plant: '🌱',
   tree: '🌳',
   wildflower: '🌸',
@@ -136,7 +137,7 @@ export const PLANT_FORMS = new Set(['tree', 'wildflower', 'shrub', 'plant']);
 
 export const INSECT_FORMS = new Set(['butterfly', 'beetle', 'bug', 'bee', 'insect']);
 
-export const WILDLIFE_FORMS = new Set(['frog', 'amphibian', 'mammal', 'reptile']);
+export const WILDLIFE_FORMS = new Set(['frog', 'amphibian', 'mammal', 'reptile', 'bat']);
 
 // ============================================================================
 // LABEL MAPS - Human-readable labels for all categorical data
@@ -150,6 +151,7 @@ export const FORM_LABELS: Record<string, string> = {
   warbler: 'Warbler',
   hummingbird: 'Hummingbird',
   wading_bird: 'Wading Bird',
+  bat: 'Bat',
   mammal: 'Mammal',
   tree: 'Tree',
   wildflower: 'Wildflower',
@@ -227,7 +229,11 @@ export function getFormBase(form: string): string {
   if (BIRD_FORMS.has(form)) return 'bird';
   if (PLANT_FORMS.has(form)) return 'plant';
   if (INSECT_FORMS.has(form)) return 'insect';
-  if (WILDLIFE_FORMS.has(form)) return form === 'frog' || form === 'amphibian' ? 'amphibian' : form;
+  if (WILDLIFE_FORMS.has(form)) {
+    if (form === 'frog' || form === 'amphibian') return 'amphibian';
+    if (form === 'bat') return 'mammal';
+    return form;
+  }
   return form;
 }
 
