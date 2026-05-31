@@ -130,6 +130,100 @@ export default function SettingsPage() {
         </div>
       </section>
 
+      {/* Life List Backup & Restore */}
+      <section className="bg-white rounded-lg border border-stone-200 p-6">
+        <h2 className="text-xl font-semibold text-emerald-900 mb-1">Life List Backup</h2>
+        <p className="text-sm text-stone-600 mb-6">
+          Export your sightings and familiarity tiers to a JSON file, or restore from a previous backup.
+        </p>
+
+        <div className="space-y-4">
+          {/* Export */}
+          <div className="flex items-center justify-between">
+            <div className="flex-1">
+              <p className="font-medium text-stone-800">Export</p>
+              <p className="text-sm text-stone-600 mt-1">
+                Download your life list as a JSON file
+                {!isEmpty && ` (${entries.length} species, ${sightings.length} sighting${sightings.length !== 1 ? 's' : ''})`}
+              </p>
+            </div>
+            <button
+              onClick={handleExport}
+              disabled={isEmpty}
+              className="px-4 py-2 rounded-lg font-medium text-sm transition-colors bg-emerald-600 text-white hover:bg-emerald-700 disabled:bg-stone-200 disabled:text-stone-400 disabled:cursor-not-allowed"
+            >
+              Export
+            </button>
+          </div>
+
+          {/* Import */}
+          <div className="flex items-start justify-between">
+            <div className="flex-1">
+              <p className="font-medium text-stone-800">Import</p>
+              <p className="text-sm text-stone-600 mt-1">
+                Restore from a previously exported backup file
+              </p>
+            </div>
+            <input
+              ref={fileInputRef}
+              type="file"
+              accept=".json"
+              className="hidden"
+              onChange={handleFileChange}
+            />
+            <button
+              onClick={() => {
+                setImportError(null);
+                setImportSuccess(false);
+                fileInputRef.current?.click();
+              }}
+              className="px-4 py-2 rounded-lg font-medium text-sm transition-colors bg-stone-200 text-stone-700 hover:bg-stone-300 ml-4 shrink-0"
+            >
+              Import from file
+            </button>
+          </div>
+
+          {/* Pending confirmation */}
+          {pendingBackup && (
+            <div className="rounded-lg bg-amber-50 border border-amber-200 p-4 space-y-3">
+              <p className="text-sm text-amber-900 font-medium">
+                Ready to restore: {pendingBackup.entries.length} species entr{pendingBackup.entries.length !== 1 ? 'ies' : 'y'},{' '}
+                {pendingBackup.sightings.length} sighting{pendingBackup.sightings.length !== 1 ? 's' : ''}.
+              </p>
+              <p className="text-xs text-amber-700">
+                This will replace your current life list. This action cannot be undone.
+              </p>
+              <div className="flex gap-3">
+                <button
+                  onClick={handleConfirmImport}
+                  className="px-4 py-2 rounded-lg font-medium text-sm bg-amber-600 text-white hover:bg-amber-700 transition-colors"
+                >
+                  Confirm restore
+                </button>
+                <button
+                  onClick={handleCancelImport}
+                  className="px-4 py-2 rounded-lg font-medium text-sm bg-stone-200 text-stone-700 hover:bg-stone-300 transition-colors"
+                >
+                  Cancel
+                </button>
+              </div>
+            </div>
+          )}
+
+          {/* Success */}
+          {importSuccess && (
+            <p className="text-sm text-emerald-700 font-medium">
+              Life list restored successfully.
+            </p>
+          )}
+
+          {/* Error */}
+          {importError && (
+            <p className="text-sm text-red-600">{importError}</p>
+          )}
+        </div>
+      </section>
+
       {/* Data Packs Section */}
       <section className="bg-white rounded-lg border border-stone-200 p-6">
         <h2 className="text-xl font-semibold text-emerald-900 mb-4">Data Packs</h2>

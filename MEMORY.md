@@ -1,18 +1,21 @@
 # LivingPatch — Development Memory
 
-## Project Status: ✅ Phase 2 COMPLETE — Life List System (May 30, 2026)
-Phase 1 (Dataset Explorer with D3 Diagram) + Phase 2 (Life List / Sighting Logging) fully implemented, tested, and shipped.
+## Project Status: ✅ Phase 2 COMPLETE + Quick Filters (May 31, 2026)
+Phase 1 (Dataset Explorer with D3 Diagram) + Phase 2 (Life List / Sighting Logging) + Quick Filter UX fully implemented, tested, and shipped.
 - **Live**: http://localhost:5174/ (run `npm run dev` in root)
-- **Build**: 184ms, 647 modules
-- **Tests**: 121 passing across 10 test files
-- **Latest**: Full Life List system — sighting logging, familiarity tiers, calendar, stats, Zustand store
+- **Build**: 184ms, 648 modules
+- **Tests**: 121 unit tests + 61 E2E tests passing
+- **Latest**: Quick filter chips on list page + clickable tags in detail page
 
 ## What Works
 ✅ **D3 Radial Bubble Tree** - Interactive species relationship diagram
 ✅ **Search** - Full-text across common_name, latin_name, description
-✅ **Filters** - Form, season, habitat (multi-select, combinable)
-✅ **Species List** - 30+ species + 8 groups, keystone badges
-✅ **Species Card** - Full detail view with photo, tags, relationships
+✅ **Filters** - Form, season, habitat (multi-select, combinable); advanced FilterPanel + QuickFilterBar chips
+✅ **Quick Filter Chips** - Pill-style Form/Habitat/Keystone chips on list page (QuickFilterBar component)
+✅ **Clickable Detail Tags** - Form/Habitat/Keystone tags in species detail navigate to filtered list via URL params
+✅ **URL Filter Params** - List page reads ?form=, ?habitat=, ?keystone_type= params (multi-value)
+✅ **Species List** - 56 species + groups, keystone badges
+✅ **Species Card** - Full detail view with photo, tags (linkable), relationships
 ✅ **Relationships** - Grouped by symbiosis type, obligate pinned top
 ✅ **Navigation** - List ↔ Detail pages, click-through relationships
 ✅ **Diagram Depths** - Detail page (depth-1), full diagram (depth-2)
