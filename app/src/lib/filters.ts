@@ -15,11 +15,11 @@ export function filterSpecies(species: Species[], filters: FilterState): Species
   return species.filter(s => {
     if (q) {
       const haystack = [
-        s.common_name,
+        s.common_name ?? '',
         s.latin_name ?? '',
-        s.functional_description,
-        s.form,
-        ...s.habitat,
+        s.functional_description ?? '',
+        s.form ?? '',
+        ...(s.habitat ?? []),
         ...(s.diet ?? []),
         ...(s.behavior ?? []),
         ...(s.season ?? []),

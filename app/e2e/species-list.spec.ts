@@ -119,3 +119,78 @@ test.describe('Species list page basic functionality', () => {
     await expect(groupsHeading).toBeVisible();
   });
 });
+
+test.describe('Search bar', () => {
+  test('typing in search box does not crash the app', async ({ page }) => {
+    const errors: string[] = [];
+    page.on('pageerror', err => errors.push(err.message));
+    page.on('console', msg => { if (msg.type() === 'error') errors.push(msg.text()); });
+
+    await page.goto('/');
+    await page.waitForLoadState('networkidle');
+
+    const searchBar = page.getByRole('searchbox');
+    await searchBar.fill('oak');
+
+    // Wait for debounce + re-render
+    await page.waitForTimeout(400);
+
+    // App should still be rendering (no crash)
+    await expect(page.locator('#root > *')).toBeVisible();
+    expect(errors, `Console/page errors after search: ${errors.join(', ')}`).toHaveLength(0);
+  });
+
+  test('search filters species list correctly', async ({ page }) => {
+    await page.goto('/');
+    await page.waitForLoadState('networkidle');
+
+    const searchBar = page.getByRole('searchbox');
+    await searchBar.fill('oak');
+    await page.waitForTimeout(400);
+
+    // White Oak and Northern Red Oak should appear
+    await expect(page.getByText('White Oak', { exact: true })).toBeVisible();
+    await expect(page.getByText('Northern Red Oak', { exact: true })).toBeVisible();
+
+    // Unrelated species should not appear
+    await expect(page.getByText('Monarch Butterfly', { exact: true })).not.toBeVisible();
+  });
+
+  test('search with no matches shows empty state', async ({ page }) => {
+    await page.goto('/');
+    await page.waitForLoadState('networkidle');
+
+    const searchBar = page.getByRole('searchbox');
+    await searchBar.fill('zzznomatchxxx');
+    await page.waitForTimeout(400);
+
+    await expect(page.getByText(/No species found/)).toBeVisible();
+  });
+
+  test('clearing search restores full species list', async ({ page }) => {
+    await page.goto('/');
+    await page.waitForLoadState('networkidle');
+
+    const searchBar = page.getByRole('searchbox');
+    await searchBar.fill('oak');
+    await page.waitForTimeout(400);
+    // When filtered, count shows "N of 56 species" — "56 species" exact is not present
+    await expect(page.getByText('56 species', { exact: true })).not.toBeVisible();
+
+    await searchBar.clear();
+    await page.waitForTimeout(400);
+    await expect(page.getByText('56 species', { exact: true })).toBeVisible();
+  });
+
+  test('search works across latin names', async ({ page }) => {
+    await page.goto('/');
+    await page.waitForLoadState('networkidle');
+
+    const searchBar = page.getByRole('searchbox');
+    // "plexippus" is part of Monarch Butterfly's latin name
+    await searchBar.fill('plexippus');
+    await page.waitForTimeout(400);
+
+    await expect(page.getByText('Monarch Butterfly', { exact: true })).toBeVisible();
+  });
+});
