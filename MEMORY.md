@@ -1,11 +1,11 @@
 # LivingPatch — Development Memory
 
-## Project Status: ✅ Phase 2 COMPLETE + Quick Filters (May 31, 2026)
-Phase 1 (Dataset Explorer with D3 Diagram) + Phase 2 (Life List / Sighting Logging) + Quick Filter UX fully implemented, tested, and shipped.
+## Project Status: ✅ Phase 2 COMPLETE + Quick Filters + 0-base Dataset Enrichment (May 31, 2026)
+Phase 1 (Dataset Explorer with D3 Diagram) + Phase 2 (Life List / Sighting Logging) + Quick Filter UX + 0-base improvement plan (Phases 1–3) fully implemented, tested, and shipped.
 - **Live**: http://localhost:5174/ (run `npm run dev` in root)
-- **Build**: 184ms, 648 modules
-- **Tests**: 121 unit tests + 61 E2E tests passing
-- **Latest**: Quick filter chips on list page + clickable tags in detail page
+- **Build**: ~195ms, 648 modules
+- **Tests**: 121 unit tests + 74 E2E tests passing
+- **Latest**: 0-base dataset enrichment — 64 species, 117 symbiosis relationships
 
 ## What Works
 ✅ **D3 Radial Bubble Tree** - Interactive species relationship diagram
@@ -14,7 +14,7 @@ Phase 1 (Dataset Explorer with D3 Diagram) + Phase 2 (Life List / Sighting Loggi
 ✅ **Quick Filter Chips** - Pill-style Form/Habitat/Keystone chips on list page (QuickFilterBar component)
 ✅ **Clickable Detail Tags** - Form/Habitat/Keystone tags in species detail navigate to filtered list via URL params
 ✅ **URL Filter Params** - List page reads ?form=, ?habitat=, ?keystone_type= params (multi-value)
-✅ **Species List** - 64 species + groups, keystone badges
+✅ **Species List** - 64 species + 11 taxonomic groups, keystone badges
 ✅ **Species Card** - Full detail view with photo, tags (linkable), relationships
 ✅ **Relationships** - Grouped by symbiosis type, obligate pinned top
 ✅ **Navigation** - List ↔ Detail pages, click-through relationships
@@ -43,10 +43,11 @@ Helps nature hobbyists understand ecological relationships in their area.
 - **Design Tokens**: Centralized in designTokens.ts (colors, icons, labels)
 
 ## Dataset Facts
-- File: app/src/data/dataset.json (62KB, 1923 lines)
-- ~30 individual species + ~8 group entries
-- ~50 symbiosis entries (mutualism, parasitism, predation, competition, commensalism)
-- ~8 taxonomic relations
+- File: app/src/data/dataset.json
+- 64 individual species + 11 taxonomic group entries
+- 117 symbiosis entries (mutualism, parasitism, predation, competition, commensalism)
+- 5 general relations
+- Source pack: pack-tools/packs/0-base.json
 - Species ID format: type_common-name-slug (e.g., bird_pileated-woodpecker)
 - Obligate relationships marked and pinned in detail view
 
