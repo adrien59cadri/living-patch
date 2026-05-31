@@ -73,7 +73,7 @@ test.describe('Neighbor drill-down', () => {
 
   test('back link returns to species card', async ({ page }) => {
     await page.goto(MONARCH_PLANTS_URL);
-    await page.getByRole('link', { name: /monarch butterfly/i }).click();
+    await page.getByRole('link', { name: /← monarch butterfly/i }).click();
     await expect(
       page.getByRole('heading', { name: 'Monarch Butterfly' })
     ).toBeVisible();
