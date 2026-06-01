@@ -57,131 +57,43 @@ Enrich sighting data to capture where and when observations happen, not just how
 
 **Impact**: Transforms sighting counts into a richer picture of a species' presence across seasons, years, and habitats — rewarding long-term, multi-site observation.
 
-### 7. Sighting-Based Familiarity Score — Full Overhaul
+### 7. Familiarity Badges
 
-Replace the manual four-tier system with a **computed familiarity score** derived purely from observation history. The score encodes two independent ideas: *how often* you've seen a species and *how richly* you've encountered it — across time and space.
+Replace the manual tier system with a small set of **observation badges** earned automatically from sighting history. Badges are independent — a species can hold any combination — and are displayed together on the species card.
 
----
+#### Badges
 
-#### 7.1 Score Design
-
-The score is a single decimal number in **[0, 100]**, computed as the product of three independent sub-scores, each capped at its maximum weight:
-
-```
-familiarity = sightingScore × timeScore × habitatScore
-```
-
-| Sub-score | Weight | What it measures |
+| Badge | Condition | Icon |
 |---|---|---|
-| `sightingScore` | 40 pts | Raw observation frequency (deduplicated per day) |
-| `timeScore` | 35 pts | Temporal spread across years and seasons |
-| `habitatScore` | 25 pts | Diversity of habitat types where observed |
+| **Seen** | At least 1 sighting logged | 👁 |
+| **Recurring** | Sighted in 2 or more different months (any year) | 📅 |
+| **Long-term** | Sighted in 2 or more different calendar years | 🗓 |
+| **Wide-ranging** | Sighted in 2 or more distinct habitat types | 🗺 |
 
-**Why multiplicative?** A species seen 50 times in a single afternoon in one habitat should not score as high as one seen 10 times across 3 years in 4 habitats. Each dimension must contribute meaningfully for the score to be high.
+#### Derived familiarity tier
 
----
+The existing four tiers (`noticed`, `familiar`, `know-it-well`, `steward`) are kept as display labels but derived from badge count, not set manually:
 
-#### 7.2 Sub-score Formulas
-
-**`sightingScore` (0–40)**
-
-Uses a logarithmic curve so early sightings are highly rewarding and later ones taper off:
-
-```
-sightingScore = 40 × log(n + 1) / log(threshold + 1)
-```
-
-Where `n` = deduplicated daily sighting count and `threshold` = 30 (saturates at ~30 days of observation). Capped at 40.
-
-**`timeScore` (0–35)**
-
-Rewards both *years* of observation and *seasonal* coverage:
-
-```
-yearPoints  = min(years, 4) / 4   × 0.6   // up to 4 years → 60% of time score
-seasonPoints = seasons / 4         × 0.4   // 4 seasons → 40% of time score
-
-timeScore = 35 × (yearPoints + seasonPoints)
-```
-
-- `years` = count of distinct calendar years with at least one sighting
-- `seasons` = count of distinct seasons (spring/summer/autumn/winter) with at least one sighting
-
-**`habitatScore` (0–25)**
-
-```
-habitatScore = 25 × min(habitatTypes, 4) / 4
-```
-
-- `habitatTypes` = count of distinct habitat type values recorded across all sightings (e.g. forest edge, pond, meadow, garden)
-- Saturates at 4 distinct habitats
-
----
-
-#### 7.3 Tier Mapping
-
-The four existing tiers are **derived** from the score and kept as display labels only. No manual tier setting.
-
-| Score range | Tier | Label |
-|---|---|---|
-| 0–19 | `noticed` | Noticed |
-| 20–44 | `familiar` | Familiar |
-| 45–74 | `know-it-well` | Know It Well |
-| 75–100 | `steward` | Steward |
-
-Thresholds are constants in `lifeListUtils.ts` so they can be tuned independently of the formula.
-
----
-
-#### 7.4 Data Requirements (depends on Feature 6)
-
-This feature depends on **Feature 6 (Sighting Depth)** for the `habitatType` field on sightings and the deduplicated daily count logic. Feature 7 should be implemented after Feature 6 is complete.
-
-New fields used from the enriched sighting record:
-- `sighting.habitatType: string` — habitat type at the time of the sighting
-- `sighting.date` — already present; used for year/season bucketing
-
-No schema migration needed for old sightings — missing `habitatType` values simply don't contribute to `habitatScore` (treated as 0 distinct habitats until one is logged).
-
----
-
-#### 7.5 Implementation Plan
-
-1. **`computeFamiliarityScore(sightings: Sighting[]): FamiliarityResult`** — pure function in `lifeListUtils.ts`
-   - Returns `{ score, tier, breakdown: { sightingScore, timeScore, habitatScore } }`
-   - No side effects; fully testable
-
-2. **Remove `setTier()` from the store** — replace with `computedTier` selector that calls the function above
-
-3. **`LifeListEntry`** — remove the manual `tier` field; the tier is always derived at read time from sightings
-
-4. **`TierSelector` component** — remove or repurpose as a read-only score display widget
-
-5. **Score breakdown UI** — add a small progress breakdown on the species card:
-   - Three bars: Sightings / Time / Habitats, each filled proportionally
-   - Tooltip or expandable: "Seen 8 times · 2 seasons · 1 habitat type"
-
-6. **Insight string** — generate a short human-readable sentence:
-   - `"Seen on 8 days across 2 seasons — try logging in a new habitat to progress."`
-   - `"Observed every year for 3 years across 3 habitat types — you know this species well."`
-
-7. **Manual override** (optional, v2) — a settings toggle that allows pinning a tier manually; override is stored separately and shown with an indicator. Not in v1.
-
----
-
-#### 7.6 Test Cases
-
-| Scenario | Expected tier |
+| Badges earned | Tier |
 |---|---|
-| 1 sighting, today, 1 habitat | noticed (~8 pts) |
-| 15 sightings, same day, same habitat | noticed (sighting score inflated but time/habitat near 0) |
-| 5 sightings across 2 years, 2 seasons, 2 habitats | familiar (~38 pts) |
-| 12 sightings across 3 years, 4 seasons, 3 habitats | know-it-well (~62 pts) |
-| 25+ sightings across 4+ years, all 4 seasons, 4 habitats | steward (90+ pts) |
+| Seen only | Noticed |
+| Seen + 1 other | Familiar |
+| Seen + 2 others | Know It Well |
+| All 4 badges | Steward |
 
----
+#### Data requirements
 
-**Impact**: Familiarity becomes a meaningful signal earned through sustained, diverse observation — not a checkbox. The score rewards exactly the naturalist behavior the app wants to encourage: returning to the same species across seasons, years, and different places.
+- `sighting.date` — already present; used for month and year bucketing
+- `sighting.habitatType` — added in Feature 6; missing values simply don't contribute to Wide-ranging
+
+#### Implementation
+
+1. **`computeFamiliarityBadges(sightings: Sighting[]): Badge[]`** — pure function in `lifeListUtils.ts`, returns the list of earned badge ids
+2. **`deriveTier(badges: Badge[]): FamiliarityTier`** — maps badge count to tier label
+3. Remove `setTier()` from the store; tier is always derived at read time
+4. Replace `TierSelector` with a read-only badge row on the species card
+
+**Impact**: Familiarity is earned through real, diverse observation. Badges are immediately legible — a user can see at a glance whether they've seen a species across time and place, not just once.
 
 ### 8. Automated Multilingual Name Fetcher
 Implement a CLI tool to auto-populate multilingual common names from Wikipedia:
