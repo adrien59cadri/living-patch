@@ -14,14 +14,7 @@ export default function HomePage() {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
 
-  const [isAdvancedOpen, setIsAdvancedOpen] = useState(() => {
-    return (
-      searchParams.getAll('form').length > 0 ||
-      searchParams.getAll('habitat').length > 0 ||
-      searchParams.getAll('keystone_type').length > 0 ||
-      searchParams.getAll('area').length > 0
-    );
-  });
+  const [isAdvancedOpen, setIsAdvancedOpen] = useState(false);
 
   const [filters, setFilters] = useState<FilterState>(() => ({
     search: '',
