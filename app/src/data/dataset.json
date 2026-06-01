@@ -5548,7 +5548,11 @@
             ],
             "functional_description": "Small passerine instantly recognisable by its orange breast, common in gardens and forests across France. Feeds mainly on earthworms, insects, and berries. Often follows gardeners and wild boar that turn over the soil.",
             "life_stages": [],
-            "region": "france"
+            "region": "france",
+            "image": {
+              "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Erithacus_rubecula_with_cocked_head.jpg/960px-Erithacus_rubecula_with_cocked_head.jpg",
+              "author": "Francis C. Franklin"
+            }
           },
           {
             "id": "bird_mesange-charbonniere",
@@ -5576,7 +5580,11 @@
             ],
             "functional_description": "Common passerine of forests and gardens. Nests in tree cavities, particularly in old beeches. Regulates insect populations in summer and switches to seeds in winter.",
             "life_stages": [],
-            "region": "france"
+            "region": "france",
+            "image": {
+              "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Great_tit_%28Parus_major%29%2C_Parc_du_Rouge-Cloitre%2C_For%C3%AAt_de_Soignes%2C_Brussels_%2826194636951%29.jpg/960px-Great_tit_%28Parus_major%29%2C_Parc_du_Rouge-Cloitre%2C_For%C3%AAt_de_Soignes%2C_Brussels_%2826194636951%29.jpg",
+              "author": "Frank Vassen from Brussels, Belgium"
+            }
           },
           {
             "id": "bird_pic-vert",
@@ -5606,7 +5614,11 @@
             "region": "france",
             "is_keystone": true,
             "keystone_type": "ecosystem_engineer",
-            "keystone_description": "Forest ecosystem engineer. Abandoned cavities shelter great tits, owls, bats, and kingfishers."
+            "keystone_description": "Forest ecosystem engineer. Abandoned cavities shelter great tits, owls, bats, and kingfishers.",
+            "image": {
+              "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/European_green_woodpecker_%28Picus_viridis%29_female_Barnes.jpg/500px-European_green_woodpecker_%28Picus_viridis%29_female_Barnes.jpg",
+              "author": "Wikimedia Commons"
+            }
           },
           {
             "id": "bird_geai-des-chenes",
@@ -5634,7 +5646,11 @@
             "region": "france",
             "is_keystone": true,
             "keystone_type": "seed_disperser",
-            "keystone_description": "Key seed disperser of oak forests. Transports acorns hundreds of metres, enabling colonisation of new areas and forest recovery after disturbance."
+            "keystone_description": "Key seed disperser of oak forests. Transports acorns hundreds of metres, enabling colonisation of new areas and forest recovery after disturbance.",
+            "image": {
+              "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Garrulus_glandarius_1_Luc_Viatour.jpg/960px-Garrulus_glandarius_1_Luc_Viatour.jpg",
+              "author": "Luc Viatour"
+            }
           },
           {
             "id": "bird_coucou-gris",
@@ -5661,7 +5677,11 @@
             ],
             "functional_description": "Famous brood parasite that lays its eggs in the nests of other birds. One of the few species that consumes hairy caterpillars such as the pine processionary moth, playing a role in regulating some forest pests.",
             "life_stages": [],
-            "region": "france"
+            "region": "france",
+            "image": {
+              "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Cuckoo_%2851169010335%29.jpg/960px-Cuckoo_%2851169010335%29.jpg",
+              "author": "Andy  Morffew from Itchen Abbas, Hampshire, UK"
+            }
           },
           {
             "id": "bird_faucon-crecerelle",
@@ -5691,7 +5711,11 @@
             "region": "france",
             "is_keystone": true,
             "keystone_type": "predator",
-            "keystone_description": "Apex predator of open habitats. Controls vole and rodent populations, protecting crops and maintaining grassland balance."
+            "keystone_description": "Apex predator of open habitats. Controls vole and rodent populations, protecting crops and maintaining grassland balance.",
+            "image": {
+              "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Common_kestrel_falco_tinnunculus.jpg/500px-Common_kestrel_falco_tinnunculus.jpg",
+              "author": "Andreas Trepte"
+            }
           },
           {
             "id": "mammal_renard-roux",
@@ -5720,7 +5744,11 @@
             ],
             "functional_description": "Highly adaptable omnivorous mesopredator. Regulates rodent and rabbit populations; also takes birds, invertebrates, and fruit. Present from forests to peri-urban environments.",
             "life_stages": [],
-            "region": "france"
+            "region": "france",
+            "image": {
+              "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Portrait_of_a_red_fox_in_Rautas_fj%C3%A4llurskog_%28cropped%29.jpg/960px-Portrait_of_a_red_fox_in_Rautas_fj%C3%A4llurskog_%28cropped%29.jpg",
+              "author": "ClaudiaTen"
+            }
           },
           {
             "id": "mammal_sanglier",
@@ -5749,7 +5777,11 @@
             "region": "france",
             "is_keystone": true,
             "keystone_type": "ecosystem_engineer",
-            "keystone_description": "Forest soil engineer. Rooting creates germination microsites, disperses fungal spores, and maintains a mosaic of ground vegetation."
+            "keystone_description": "Forest soil engineer. Rooting creates germination microsites, disperses fungal spores, and maintains a mosaic of ground vegetation.",
+            "image": {
+              "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Wildschwein%2C_N%C3%A4he_Pulverstampftor_%28cropped%29.jpg/960px-Wildschwein%2C_N%C3%A4he_Pulverstampftor_%28cropped%29.jpg",
+              "author": "Valentin Panzirsch"
+            }
           },
           {
             "id": "mammal_chevreuil",
@@ -5776,7 +5808,11 @@
             ],
             "functional_description": "Smallest native deer in France. Browses shoots, buds, and herbs, shaping the understorey vegetation. An important prey species for lynx and wolf where those predators are present.",
             "life_stages": [],
-            "region": "france"
+            "region": "france",
+            "image": {
+              "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Roe_deer_%28Capreolus_capreolus%29_young_male_Cumnor.jpg/960px-Roe_deer_%28Capreolus_capreolus%29_young_male_Cumnor.jpg",
+              "author": "Wikimedia Commons"
+            }
           },
           {
             "id": "mammal_herisson",
@@ -5806,7 +5842,11 @@
             ],
             "functional_description": "Nocturnal insectivore of gardens, hedgerows, and woodland edges. Feeds on slugs, beetles, earthworms, and caterpillars — a valuable garden ally. Hibernates from October to March.",
             "life_stages": [],
-            "region": "france"
+            "region": "france",
+            "image": {
+              "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Erinaceus_europaeus_LC0119.jpg/960px-Erinaceus_europaeus_LC0119.jpg",
+              "author": "Jörg Hempel"
+            }
           },
           {
             "id": "mammal_blaireau",
@@ -5835,7 +5875,11 @@
             "region": "france",
             "is_keystone": true,
             "keystone_type": "ecosystem_engineer",
-            "keystone_description": "Architect of the forest subsoil. The sett networks it creates aerate the soil, improve water infiltration, and provide shelter for many species."
+            "keystone_description": "Architect of the forest subsoil. The sett networks it creates aerate the soil, improve water infiltration, and provide shelter for many species.",
+            "image": {
+              "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/M%C3%A4yr%C3%A4_%C3%84ht%C3%A4ri_4.jpg/960px-M%C3%A4yr%C3%A4_%C3%84ht%C3%A4ri_4.jpg",
+              "author": "kallerna"
+            }
           },
           {
             "id": "mammal_ecureuil-roux",
@@ -5861,7 +5905,11 @@
             ],
             "functional_description": "Native squirrel of European forests. Caches seeds and nuts, a portion of which germinate and contribute to the dispersal of hazelnuts, acorns, and pine seeds. Depends on mature forest canopy.",
             "life_stages": [],
-            "region": "france"
+            "region": "france",
+            "image": {
+              "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Squirrel_posing.jpg/960px-Squirrel_posing.jpg",
+              "author": "Peter Trimming"
+            }
           },
           {
             "id": "tree_chene-pedoncule",
@@ -5885,7 +5933,11 @@
             "region": "france",
             "is_keystone": true,
             "keystone_type": "foundation_species",
-            "keystone_description": "Foundation species of lowland forests. Structures the entire forest community by providing food, cavities, and habitat for hundreds of species."
+            "keystone_description": "Foundation species of lowland forests. Structures the entire forest community by providing food, cavities, and habitat for hundreds of species.",
+            "image": {
+              "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Quercus_robur.jpg/500px-Quercus_robur.jpg",
+              "author": "Wikimedia Commons"
+            }
           },
           {
             "id": "tree_hetre-commun",
@@ -5909,7 +5961,11 @@
             "region": "france",
             "is_keystone": true,
             "keystone_type": "foundation_species",
-            "keystone_description": "Foundation species of the beech forest. Old beech cavities are a rare and essential resource for cavity-nesting species such as tits, treecreepers, and bats."
+            "keystone_description": "Foundation species of the beech forest. Old beech cavities are a rare and essential resource for cavity-nesting species such as tits, treecreepers, and bats.",
+            "image": {
+              "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Fagus-sylvatica-cansiglio-forest-italy.jpg/500px-Fagus-sylvatica-cansiglio-forest-italy.jpg",
+              "author": "GooseCanada"
+            }
           },
           {
             "id": "tree_chataignier",
@@ -5930,7 +5986,11 @@
             ],
             "functional_description": "Long cultivated and now naturalised across many French forests. Chestnuts provide an abundant autumn food resource for wild boar, deer, jays, and dormice.",
             "life_stages": [],
-            "region": "france"
+            "region": "france",
+            "image": {
+              "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Chestnuts.jpg/960px-Chestnuts.jpg",
+              "author": "Fir0002"
+            }
           },
           {
             "id": "plant_sureau-noir",
@@ -5954,7 +6014,11 @@
             ],
             "functional_description": "Fast-growing shrub of forest edges and disturbed ground. Flowers attract pollinators; black berries feed blackbirds, thrushes, and small mammals in late summer.",
             "life_stages": [],
-            "region": "france"
+            "region": "france",
+            "image": {
+              "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Sambucus_nigra_004.jpg/960px-Sambucus_nigra_004.jpg",
+              "author": "Willow"
+            }
           },
           {
             "id": "plant_lierre-grimpant",
@@ -5976,7 +6040,11 @@
             ],
             "functional_description": "Evergreen climber that flowers in autumn when few other plants are in bloom, offering late-season nectar to bees, hoverflies, and wasps. Winter berries feed pigeons and thrushes.",
             "life_stages": [],
-            "region": "france"
+            "region": "france",
+            "image": {
+              "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Hedera_helix_Dover.jpg/960px-Hedera_helix_Dover.jpg",
+              "author": "kallerna"
+            }
           },
           {
             "id": "plant_ortie",
@@ -5999,7 +6067,11 @@
             ],
             "functional_description": "Larval host plant for several butterfly species including the European Peacock, Red Admiral, and Small Tortoiseshell. Indicates nitrogen-rich soil. A pioneer plant that boosts edge biodiversity.",
             "life_stages": [],
-            "region": "france"
+            "region": "france",
+            "image": {
+              "url": "https://upload.wikimedia.org/wikipedia/commons/6/6f/Fen_nettle_%28Urtica_dioica_ssp._galeopsifolia%29_-_geograph.org.uk_-_5423125.jpg",
+              "author": "Evelyn Simak"
+            }
           },
           {
             "id": "butterfly_paon-du-jour",
@@ -6027,7 +6099,11 @@
             ],
             "functional_description": "Butterfly with distinctive eye-spot wings. Caterpillars feed exclusively on stinging nettles. Adults are important pollinators of wild and cultivated flowering plants.",
             "life_stages": [],
-            "region": "france"
+            "region": "france",
+            "image": {
+              "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Peacock_butterfly_%28Aglais_io%29_2.jpg/960px-Peacock_butterfly_%28Aglais_io%29_2.jpg",
+              "author": "Wikimedia Commons"
+            }
           },
           {
             "id": "butterfly_vulcain",
@@ -6055,7 +6131,11 @@
             ],
             "functional_description": "Migratory butterfly that breeds on stinging nettles. Adults visit flowers and fermenting fruit. A regular garden visitor and generalist pollinator.",
             "life_stages": [],
-            "region": "france"
+            "region": "france",
+            "image": {
+              "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/VanessaAtalanta_Closeup.jpg/960px-VanessaAtalanta_Closeup.jpg",
+              "author": "Christian Fischer"
+            }
           },
           {
             "id": "butterfly_citron",
@@ -6083,7 +6163,11 @@
             ],
             "functional_description": "Long-lived butterfly that overwinters as an adult. One of the first to appear in spring. Caterpillars feed on buckthorn and alder buckthorn; adults pollinate from the first spring flowers.",
             "life_stages": [],
-            "region": "france"
+            "region": "france",
+            "image": {
+              "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Common_brimstone_butterfly_%28Gonepteryx_rhamni%29_male_in_flight.jpg/960px-Common_brimstone_butterfly_%28Gonepteryx_rhamni%29_male_in_flight.jpg",
+              "author": "Wikimedia Commons"
+            }
           },
           {
             "id": "butterfly_machaon",
@@ -6109,7 +6193,11 @@
             ],
             "functional_description": "France's largest butterfly, with yellow wings marked with black. Caterpillars feed on plants in the carrot family (Apiaceae), especially wild carrot. An important pollinator of flower-rich meadows.",
             "life_stages": [],
-            "region": "france"
+            "region": "france",
+            "image": {
+              "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/PapilioMachaon2016_001.JPG/960px-PapilioMachaon2016_001.JPG",
+              "author": "Entomolo"
+            }
           },
           {
             "id": "invertebrate_lombric",
@@ -6139,7 +6227,11 @@
             "region": "france",
             "is_keystone": true,
             "keystone_type": "ecosystem_engineer",
-            "keystone_description": "Essential soil engineer. Burrows improve soil structure, water infiltration, and nutrient availability for plants."
+            "keystone_description": "Essential soil engineer. Burrows improve soil structure, water infiltration, and nutrient availability for plants.",
+            "image": {
+              "url": "https://upload.wikimedia.org/wikipedia/commons/3/30/Regenwurm1.jpg",
+              "author": "Michael Linnenbach"
+            }
           },
           {
             "id": "plant_carotte-sauvage",
@@ -6161,7 +6253,11 @@
             ],
             "functional_description": "Common wildflower of meadows and roadsides. Larval host plant of the Old World Swallowtail. The white umbel flowers attract a wide diversity of pollinators and hoverflies.",
             "life_stages": [],
-            "region": "france"
+            "region": "france",
+            "image": {
+              "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Daucus_carota_May_2008-1_edit.jpg/960px-Daucus_carota_May_2008-1_edit.jpg",
+              "author": "Alvesgaspar"
+            }
           }
         ],
         "taxonomic_groups": [],
