@@ -319,8 +319,8 @@ test.describe('Pack management (Item 9)', () => {
     const frenchSpecies = page.getByText('Rougegorge familier');
     await expect(frenchSpecies).toBeVisible();
 
-    // Species count should be 104
-    const speciesCountText = page.getByText('104 species');
+    // Species count should be 103
+    const speciesCountText = page.getByText('103 species');
     await expect(speciesCountText).toBeVisible();
   });
 
@@ -397,8 +397,8 @@ test.describe('Pack management (Item 9)', () => {
     const frenchSpecies = page.getByText('Rougegorge familier');
     await expect(frenchSpecies).toBeVisible();
 
-    // Species count should be 24 (just France)
-    const speciesCountText = page.getByText('24 species');
+    // Species count should be 23 (just France)
+    const speciesCountText = page.getByText('23 species');
     await expect(speciesCountText).toBeVisible();
   });
 
@@ -411,9 +411,9 @@ test.describe('Pack management (Item 9)', () => {
     const baseSpeciesCount = basePackCard.getByText('80 species');
     await expect(baseSpeciesCount).toBeVisible();
 
-    // France pack should show 24 species
+    // France pack should show 23 species
     const francePackCard = page.getByText('france-base').locator('..');
-    const franceSpeciesCount = francePackCard.getByText('24 species');
+    const franceSpeciesCount = francePackCard.getByText('23 species');
     await expect(franceSpeciesCount).toBeVisible();
   });
 });
