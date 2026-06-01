@@ -153,6 +153,16 @@ export const FORM_DEFINITIONS: Record<string, FormDefinition> = {
     description:
       'Reptiles with hard shells that live in water or on land. Play important roles in aquatic and terrestrial ecosystems. Long-lived and slow to reproduce.',
   },
+  amphibian: {
+    label: 'Amphibian',
+    description:
+      'Cold-blooded vertebrates that live both in water and on land. Include frogs, toads, and salamanders. Highly sensitive to environmental change; key indicators of ecosystem health.',
+  },
+  reptile: {
+    label: 'Reptile',
+    description:
+      'Cold-blooded vertebrates with scales. Include turtles, snakes, and lizards. Important predators and prey in aquatic and terrestrial ecosystems.',
+  },
 };
 
 export const KEYSTONE_DEFINITIONS: Record<string, KeystoneDefinition> = {
@@ -315,9 +325,19 @@ export const FORM_HIERARCHY: FormHierarchyNode[] = [
       { key: 'spider' },
     ],
   },
-  { key: 'frog' },
-  { key: 'salamander' },
-  { key: 'turtle' },
+  {
+    key: 'amphibian',
+    children: [
+      { key: 'frog' },
+      { key: 'salamander' },
+    ],
+  },
+  {
+    key: 'reptile',
+    children: [
+      { key: 'turtle' },
+    ],
+  },
 ];
 
 // Utility functions for working with form hierarchy

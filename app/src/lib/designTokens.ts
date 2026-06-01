@@ -163,6 +163,10 @@ export const FORM_LABELS: Record<string, string> = {
   bee: 'Bee',
   dragonfly: 'Dragonfly',
   frog: 'Frog',
+  salamander: 'Salamander',
+  turtle: 'Turtle',
+  amphibian: 'Amphibian',
+  reptile: 'Reptile',
 };
 
 export const SEASON_LABELS: Record<string, string> = {
