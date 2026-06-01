@@ -152,7 +152,7 @@ export default function HabitatHierarchySection({ speciesById }: Props) {
           Habitats grouped by broad environment type. Click to expand and explore.
         </p>
       </div>
-      <div className="bg-white border border-stone-200 rounded-xl divide-y divide-stone-100">
+      <div>
         {HABITAT_HIERARCHY.map(node => (
           <div key={node.key} className="px-2 py-1">
             <HabitatNodeItem
