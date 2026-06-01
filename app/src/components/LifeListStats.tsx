@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
 import { useLifeList } from '../hooks/useLifeList';
-import { TIER_LABELS, TIER_ICONS } from '../lib/lifeListUtils';
+import { TIER_LABELS, TIER_ICONS, computeFamiliarityBadges, deriveTier } from '../lib/lifeListUtils';
 import type { FamiliarityTier } from '../types';
 
 export function LifeListStats() {
-  const { entries } = useLifeList();
+  const { entries, sightings } = useLifeList();
 
   if (entries.length === 0) return null;
 
@@ -14,7 +14,11 @@ export function LifeListStats() {
     'know-it-well': 0,
     steward: 0,
   };
-  for (const e of entries) tierCounts[e.tier]++;
+  for (const e of entries) {
+    const s = sightings.filter(sg => sg.speciesId === e.speciesId);
+    if (s.length === 0) continue;
+    tierCounts[deriveTier(computeFamiliarityBadges(s))]++;
+  }
 
   const topTier = (
     ['steward', 'know-it-well', 'familiar', 'noticed'] as FamiliarityTier[]

@@ -2,15 +2,24 @@ import { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { useLifeList } from '../../hooks/useLifeList';
 import { useDataset } from '../../hooks/useDataset';
-import { TIER_ORDER, TIER_LABELS, TIER_ICONS, TIER_COLORS } from '../../lib/lifeListUtils';
+import { TIER_ORDER, TIER_LABELS, TIER_ICONS, TIER_COLORS, computeFamiliarityBadges, deriveTier } from '../../lib/lifeListUtils';
 import { getCommonName } from '../../lib/labels';
 import type { FamiliarityTier } from '../../types';
 
 export function ByTierTab() {
-  const { entries } = useLifeList();
+  const { entries, sightings } = useLifeList();
   const { species } = useDataset();
 
   const speciesById = useMemo(() => new Map(species.map(s => [s.id, s])), [species]);
+
+  const tierMap = useMemo(() => {
+    const map = new Map<string, FamiliarityTier>();
+    for (const entry of entries) {
+      const s = sightings.filter(sg => sg.speciesId === entry.speciesId);
+      if (s.length > 0) map.set(entry.speciesId, deriveTier(computeFamiliarityBadges(s)));
+    }
+    return map;
+  }, [entries, sightings]);
 
   if (entries.length === 0) {
     return (
@@ -24,7 +33,7 @@ export function ByTierTab() {
   return (
     <div className="space-y-6">
       {TIER_ORDER.slice().reverse().map(tier => {
-        const tierEntries = entries.filter(e => e.tier === tier);
+        const tierEntries = entries.filter(e => tierMap.get(e.speciesId) === tier);
         if (tierEntries.length === 0) return null;
         const colors = TIER_COLORS[tier as FamiliarityTier];
         return (

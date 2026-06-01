@@ -89,47 +89,46 @@ describe('lifeList store', () => {
     });
   });
 
-  describe('setTier', () => {
-    test('creates a new entry when setting tier for unknown species', () => {
-      const { setTier } = useLifeListStore.getState();
-      setTier('bird_test', 'familiar');
-      const { entries } = useLifeListStore.getState();
-      expect(entries).toHaveLength(1);
-      expect(entries[0].speciesId).toBe('bird_test');
-      expect(entries[0].tier).toBe('familiar');
-      expect(entries[0].sightingCount).toBe(0);
-    });
-
-    test('updates tier for existing species entry', () => {
-      const { addSighting, setTier } = useLifeListStore.getState();
-      addSighting({ speciesId: 'bird_test', date: '2026-05-01' });
-      setTier('bird_test', 'steward');
-      const { entries } = useLifeListStore.getState();
-      expect(entries[0].tier).toBe('steward');
-      expect(entries[0].sightingCount).toBe(1); // count unchanged
-    });
-
-    test('does not reset sightingCount when tier is changed', () => {
-      const { addSighting, setTier } = useLifeListStore.getState();
-      addSighting({ speciesId: 'bird_test', date: '2026-05-01' });
-      addSighting({ speciesId: 'bird_test', date: '2026-05-15' });
-      setTier('bird_test', 'know-it-well');
-      const { entries } = useLifeListStore.getState();
-      expect(entries[0].sightingCount).toBe(2);
-      expect(entries[0].tier).toBe('know-it-well');
-    });
-  });
-
   describe('getTier', () => {
     test('returns null for unknown species', () => {
       const { getTier } = useLifeListStore.getState();
       expect(getTier('unknown')).toBeNull();
     });
 
-    test('returns the correct tier after setTier', () => {
-      const { setTier, getTier } = useLifeListStore.getState();
-      setTier('bird_test', 'familiar');
+    test('returns null for a species with an entry but no sightings', () => {
+      // Simulate an old-style entry created without sightings (backward compat check)
+      useLifeListStore.setState({
+        entries: [{ speciesId: 'bird_test', tier: 'familiar', sightingCount: 0, lastUpdated: Date.now() }],
+        sightings: [],
+      });
+      expect(useLifeListStore.getState().getTier('bird_test')).toBeNull();
+    });
+
+    test('returns noticed after a single sighting', () => {
+      const { addSighting, getTier } = useLifeListStore.getState();
+      addSighting({ speciesId: 'bird_test', date: '2026-05-01' });
+      expect(getTier('bird_test')).toBe('noticed');
+    });
+
+    test('returns familiar after sightings in 2 different months', () => {
+      const { addSighting, getTier } = useLifeListStore.getState();
+      addSighting({ speciesId: 'bird_test', date: '2026-05-01' });
+      addSighting({ speciesId: 'bird_test', date: '2026-06-01' });
       expect(getTier('bird_test')).toBe('familiar');
+    });
+
+    test('returns know-it-well after sightings in 2 months and 2 years', () => {
+      const { addSighting, getTier } = useLifeListStore.getState();
+      addSighting({ speciesId: 'bird_test', date: '2025-05-01' });
+      addSighting({ speciesId: 'bird_test', date: '2026-06-01' });
+      expect(getTier('bird_test')).toBe('know-it-well');
+    });
+
+    test('returns steward when all 4 badges are earned', () => {
+      const { addSighting, getTier } = useLifeListStore.getState();
+      addSighting({ speciesId: 'bird_test', date: '2025-05-01', habitatType: 'forest' });
+      addSighting({ speciesId: 'bird_test', date: '2026-06-01', habitatType: 'meadow' });
+      expect(getTier('bird_test')).toBe('steward');
     });
   });
 
@@ -170,13 +169,16 @@ describe('lifeList store', () => {
     });
 
     test('returns only entries matching the requested tier', () => {
-      const { addSighting, setTier, getEntriesForTier } = useLifeListStore.getState();
-      addSighting({ speciesId: 'bird_test', date: '2026-05-01' }); // noticed (default)
-      addSighting({ speciesId: 'plant_oak', date: '2026-05-15' }); // noticed
-      setTier('plant_oak', 'steward');
+      const { addSighting, getEntriesForTier } = useLifeListStore.getState();
+      // bird_test: 1 sighting → noticed
+      addSighting({ speciesId: 'bird_test', date: '2026-05-01' });
+      // plant_oak: 2 sightings in different months → familiar
+      addSighting({ speciesId: 'plant_oak', date: '2026-05-15' });
+      addSighting({ speciesId: 'plant_oak', date: '2026-06-10' });
       expect(getEntriesForTier('noticed')).toHaveLength(1);
-      expect(getEntriesForTier('steward')).toHaveLength(1);
-      expect(getEntriesForTier('familiar')).toHaveLength(0);
+      expect(getEntriesForTier('noticed')[0].speciesId).toBe('bird_test');
+      expect(getEntriesForTier('familiar')).toHaveLength(1);
+      expect(getEntriesForTier('steward')).toHaveLength(0);
     });
   });
 
@@ -191,17 +193,22 @@ describe('lifeList store', () => {
     });
 
     test('returns correct counts per tier', () => {
-      const { addSighting, setTier, getTierProgress } = useLifeListStore.getState();
-      addSighting({ speciesId: 'a', date: '2026-05-01' }); // noticed
-      addSighting({ speciesId: 'b', date: '2026-05-01' }); // noticed
-      addSighting({ speciesId: 'c', date: '2026-05-01' }); // noticed → familiar
-      setTier('c', 'familiar');
-      addSighting({ speciesId: 'd', date: '2026-05-01' }); // noticed → steward
-      setTier('d', 'steward');
+      const { addSighting, getTierProgress } = useLifeListStore.getState();
+      // a: 1 sighting → noticed
+      addSighting({ speciesId: 'a', date: '2026-05-01' });
+      // b: 1 sighting → noticed
+      addSighting({ speciesId: 'b', date: '2026-05-01' });
+      // c: 2 sightings in different months → familiar
+      addSighting({ speciesId: 'c', date: '2026-05-01' });
+      addSighting({ speciesId: 'c', date: '2026-06-01' });
+      // d: 2 sightings in different months AND years → know-it-well
+      addSighting({ speciesId: 'd', date: '2025-05-01' });
+      addSighting({ speciesId: 'd', date: '2026-06-01' });
       const progress = getTierProgress();
       expect(progress.noticed).toBe(2);
       expect(progress.familiar).toBe(1);
-      expect(progress.steward).toBe(1);
+      expect(progress['know-it-well']).toBe(1);
+      expect(progress.steward).toBe(0);
     });
   });
 });

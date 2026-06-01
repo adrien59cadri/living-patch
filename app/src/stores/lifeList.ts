@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import type { FamiliarityTier, Sighting, LifeListEntry } from '../types';
+import { computeFamiliarityBadges, deriveTier } from '../lib/lifeListUtils';
 
 interface LifeListState {
   entries: LifeListEntry[];
@@ -8,7 +9,6 @@ interface LifeListState {
 
   // Actions
   addSighting: (sighting: Omit<Sighting, 'id' | 'createdAt'>) => void;
-  setTier: (speciesId: string, tier: FamiliarityTier) => void;
   restoreFromBackup: (entries: LifeListEntry[], sightings: Sighting[]) => void;
 
   // Selectors
@@ -61,34 +61,14 @@ export const useLifeListStore = create<LifeListState>()(
         });
       },
 
-      setTier(speciesId, tier) {
-        const now = Date.now();
-        set(state => {
-          const exists = state.entries.some(e => e.speciesId === speciesId);
-          return {
-            entries: exists
-              ? state.entries.map(e =>
-                  e.speciesId === speciesId ? { ...e, tier, lastUpdated: now } : e
-                )
-              : [
-                  ...state.entries,
-                  {
-                    speciesId,
-                    tier,
-                    sightingCount: 0,
-                    lastUpdated: now,
-                  },
-                ],
-          };
-        });
-      },
-
       restoreFromBackup(entries, sightings) {
         set({ entries, sightings });
       },
 
       getTier(speciesId) {
-        return get().entries.find(e => e.speciesId === speciesId)?.tier ?? null;
+        const sightings = get().sightings.filter(s => s.speciesId === speciesId);
+        if (sightings.length === 0) return null;
+        return deriveTier(computeFamiliarityBadges(sightings));
       },
 
       getSightings(speciesId) {
@@ -100,7 +80,12 @@ export const useLifeListStore = create<LifeListState>()(
       },
 
       getEntriesForTier(tier) {
-        return get().entries.filter(e => e.tier === tier);
+        const { entries, sightings } = get();
+        return entries.filter(e => {
+          const s = sightings.filter(sg => sg.speciesId === e.speciesId);
+          if (s.length === 0) return false;
+          return deriveTier(computeFamiliarityBadges(s)) === tier;
+        });
       },
 
       getTierProgress() {
@@ -110,8 +95,11 @@ export const useLifeListStore = create<LifeListState>()(
           'know-it-well': 0,
           steward: 0,
         };
-        for (const entry of get().entries) {
-          counts[entry.tier]++;
+        const { entries, sightings } = get();
+        for (const entry of entries) {
+          const s = sightings.filter(sg => sg.speciesId === entry.speciesId);
+          if (s.length === 0) continue;
+          counts[deriveTier(computeFamiliarityBadges(s))]++;
         }
         return counts;
       },

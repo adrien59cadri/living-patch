@@ -9,7 +9,6 @@ import { UserPreferencesProvider } from '../../stores/userPreferences';
 vi.mock('../../hooks/useLifeList', () => ({
   useLifeList: () => ({
     addSighting: vi.fn(),
-    setTier: vi.fn(),
     getTier: () => null,
     entries: [],
     sightings: [],

@@ -1,4 +1,4 @@
-import type { FamiliarityTier, Sighting } from '../types';
+import type { FamiliarityBadge, FamiliarityTier, Sighting } from '../types';
 
 export const TIER_ORDER: FamiliarityTier[] = ['noticed', 'familiar', 'know-it-well', 'steward'];
 
@@ -62,4 +62,46 @@ export function sightingsByMonth(sightings: Sighting[]): Record<string, number> 
 /** Most recent N sightings across all species, sorted newest-first */
 export function recentSightings(sightings: Sighting[], limit = 5): Sighting[] {
   return [...sightings].sort((a, b) => b.createdAt - a.createdAt).slice(0, limit);
+}
+
+// ── Familiarity Badges ────────────────────────────────────────────────────────
+
+export const BADGE_LABELS: Record<FamiliarityBadge, string> = {
+  seen: 'Seen',
+  recurring: 'Recurring',
+  'long-term': 'Long-term',
+  'wide-ranging': 'Wide-ranging',
+};
+
+export const BADGE_ICONS: Record<FamiliarityBadge, string> = {
+  seen: '👁',
+  recurring: '📅',
+  'long-term': '🗓',
+  'wide-ranging': '🗺',
+};
+
+/** Returns the list of familiarity badges earned from a sighting history. */
+export function computeFamiliarityBadges(sightings: Sighting[]): FamiliarityBadge[] {
+  if (sightings.length === 0) return [];
+  const badges: FamiliarityBadge[] = ['seen'];
+  const months = new Set(sightings.map(s => s.date.slice(5, 7)));
+  if (months.size >= 2) badges.push('recurring');
+  const years = new Set(sightings.map(s => s.date.slice(0, 4)));
+  if (years.size >= 2) badges.push('long-term');
+  const habitats = new Set(
+    sightings.map(s => s.habitatType).filter((h): h is string => h !== undefined)
+  );
+  if (habitats.size >= 2) badges.push('wide-ranging');
+  return badges;
+}
+
+/**
+ * Maps badge count to familiarity tier.
+ * Assumes badges.length >= 1 (i.e. 'seen' is always the first badge).
+ */
+export function deriveTier(badges: FamiliarityBadge[]): FamiliarityTier {
+  if (badges.length >= 4) return 'steward';
+  if (badges.length === 3) return 'know-it-well';
+  if (badges.length === 2) return 'familiar';
+  return 'noticed';
 }

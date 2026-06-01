@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { useLifeList } from '../hooks/useLifeList';
 import { useDataset } from '../hooks/useDataset';
-import { TIER_ORDER, TIER_LABELS, TIER_ICONS, TIER_COLORS, sightingsByMonth } from '../lib/lifeListUtils';
+import { TIER_ORDER, TIER_LABELS, TIER_ICONS, TIER_COLORS, sightingsByMonth, computeFamiliarityBadges, deriveTier } from '../lib/lifeListUtils';
 import { getCommonName } from '../lib/labels';
 import type { FamiliarityTier } from '../types';
 
@@ -15,9 +15,13 @@ export function StatsPanel() {
     const counts: Record<FamiliarityTier, number> = {
       noticed: 0, familiar: 0, 'know-it-well': 0, steward: 0,
     };
-    for (const e of entries) counts[e.tier]++;
+    for (const e of entries) {
+      const s = sightings.filter(sg => sg.speciesId === e.speciesId);
+      if (s.length === 0) continue;
+      counts[deriveTier(computeFamiliarityBadges(s))]++;
+    }
     return counts;
-  }, [entries]);
+  }, [entries, sightings]);
 
   const maxTierCount = Math.max(...Object.values(tierCounts), 1);
 

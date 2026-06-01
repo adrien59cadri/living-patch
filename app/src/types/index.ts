@@ -101,11 +101,14 @@ export interface HierarchyInput {
 
 export type FamiliarityTier = 'noticed' | 'familiar' | 'know-it-well' | 'steward';
 
+export type FamiliarityBadge = 'seen' | 'recurring' | 'long-term' | 'wide-ranging';
+
 export interface Sighting {
   id: string;
   speciesId: string;
   date: string; // ISO 8601: YYYY-MM-DD
   location?: string;
+  habitatType?: string; // habitat context for Wide-ranging badge (Feature 7)
   notes?: string;
   conditions?: {
     weather?: 'sunny' | 'cloudy' | 'rainy' | 'snowy';

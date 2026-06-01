@@ -2,7 +2,7 @@ import { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { useLifeList } from '../../hooks/useLifeList';
 import { useDataset } from '../../hooks/useDataset';
-import { TIER_ORDER, TIER_LABELS, TIER_COLORS, formatDate } from '../../lib/lifeListUtils';
+import { TIER_ORDER, TIER_LABELS, TIER_COLORS, formatDate, computeFamiliarityBadges, deriveTier } from '../../lib/lifeListUtils';
 import { getCommonName } from '../../lib/labels';
 import { SpeciesTierBadge } from '../SpeciesTierBadge';
 import type { FamiliarityTier } from '../../types';
@@ -10,15 +10,24 @@ import type { FamiliarityTier } from '../../types';
 type SortKey = 'name' | 'date' | 'count';
 
 export function AllSpeciesTab() {
-  const { entries } = useLifeList();
+  const { entries, sightings } = useLifeList();
   const { species } = useDataset();
   const [tierFilter, setTierFilter] = useState<FamiliarityTier | 'all'>('all');
   const [sort, setSort] = useState<SortKey>('date');
 
   const speciesById = useMemo(() => new Map(species.map(s => [s.id, s])), [species]);
 
+  const tierMap = useMemo(() => {
+    const map = new Map<string, FamiliarityTier>();
+    for (const entry of entries) {
+      const s = sightings.filter(sg => sg.speciesId === entry.speciesId);
+      if (s.length > 0) map.set(entry.speciesId, deriveTier(computeFamiliarityBadges(s)));
+    }
+    return map;
+  }, [entries, sightings]);
+
   const filtered = useMemo(() => {
-    const list = tierFilter === 'all' ? entries : entries.filter(e => e.tier === tierFilter);
+    const list = tierFilter === 'all' ? entries : entries.filter(e => tierMap.get(e.speciesId) === tierFilter);
     return [...list].sort((a, b) => {
       if (sort === 'name') {
         const an = getCommonName(speciesById.get(a.speciesId)?.common_name ?? '');
@@ -29,7 +38,7 @@ export function AllSpeciesTab() {
       // date: most recent first
       return b.lastUpdated - a.lastUpdated;
     });
-  }, [entries, tierFilter, sort, speciesById]);
+}, [entries, sightings, tierFilter, sort, speciesById, tierMap]);
 
   if (entries.length === 0) {
     return (
@@ -59,7 +68,7 @@ export function AllSpeciesTab() {
             All ({entries.length})
           </button>
           {TIER_ORDER.map(tier => {
-            const count = entries.filter(e => e.tier === tier).length;
+            const count = entries.filter(e => tierMap.get(e.speciesId) === tier).length;
             if (count === 0) return null;
             const colors = TIER_COLORS[tier];
             const active = tierFilter === tier;
@@ -119,7 +128,9 @@ export function AllSpeciesTab() {
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 flex-wrap">
                     <span className="font-medium text-stone-800 text-sm">{getCommonName(sp.common_name)}</span>
-                    <SpeciesTierBadge tier={entry.tier} />
+                    {tierMap.get(entry.speciesId) && (
+                      <SpeciesTierBadge tier={tierMap.get(entry.speciesId)!} />
+                    )}
                     {entry.sightingCount > 0 && (
                       <span className="text-xs text-stone-400">{entry.sightingCount}× seen</span>
                     )}

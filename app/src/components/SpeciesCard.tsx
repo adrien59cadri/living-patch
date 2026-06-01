@@ -9,7 +9,7 @@ import { TaxonomyRelatedGrid } from './TaxonomyRelatedGrid';
 import { HabitatNeighborsSection } from './HabitatNeighborsSection';
 import { LogSightingButton } from './LogSightingButton';
 import { TagRow } from './TagRow';
-import { TierSelector } from './TierSelector';
+import { FamiliarityBadgesRow } from './FamiliarityBadgesRow';
 import { RecentSightings } from './RecentSightings';
 import { SightingModal } from './SightingModal';
 
@@ -110,9 +110,9 @@ export function SpeciesCard({ species, symbiotes, habitatNeighbors, related }: P
       {/* 8. Related by taxonomy */}
       <TaxonomyRelatedGrid related={related} speciesId={species.id} />
 
-      {/* 9. Life list: tier + recent sightings */}
+      {/* 9. Life list: familiarity badges + recent sightings */}
       <div className="space-y-4 pt-2 border-t border-stone-100">
-        <TierSelector speciesId={species.id} />
+        <FamiliarityBadgesRow speciesId={species.id} />
         <RecentSightings speciesId={species.id} />
         <LogSightingButton onClick={() => setSightingModalOpen(true)} />
       </div>
