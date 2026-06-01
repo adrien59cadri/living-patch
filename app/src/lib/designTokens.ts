@@ -180,23 +180,62 @@ export const SEASON_LABELS: Record<string, string> = {
 };
 
 export const HABITAT_LABELS: Record<string, string> = {
+  // Parent / group keys
+  wooded: 'Forest & Woodland',
+  aquatic: 'Wetland & Water',
+  open: 'Open Land',
+  scrub: 'Scrub & Rocky',
+  urban: 'Garden & Urban',
+  // Forest & Woodland
   forest: 'Forest',
+  deciduous_forest: 'Deciduous forest',
+  mixed_forest: 'Mixed forest',
   woodland: 'Woodland',
+  open_woodland: 'Open woodland',
   forest_edge: 'Forest edge',
-  field: 'Field',
-  field_edge: 'Field edge',
-  meadow: 'Meadow',
-  garden: 'Garden',
+  woodland_edge: 'Woodland edge',
+  forest_understory: 'Forest understory',
+  // Wetland & Water
   wetland: 'Wetland',
+  wetland_edge: 'Wetland edge',
   marsh: 'Marsh',
   pond: 'Pond',
-  riparian: 'Riparian',
-  streamside: 'Streamside',
-  dry_meadow: 'Dry meadow',
   beaver_pond: 'Beaver pond',
-  rocky_slope: 'Rocky slope',
-  open_woodland: 'Open woodland',
+  vernal_pool: 'Vernal pool',
+  stream: 'Stream',
+  streamside: 'Streamside',
+  stream_edge: 'Stream edge',
+  riparian: 'Riparian',
+  water: 'Water',
+  // Open Land
+  field: 'Field',
+  open_field: 'Open field',
+  field_edge: 'Field edge',
+  meadow: 'Meadow',
+  dry_meadow: 'Dry meadow',
   wet_meadow: 'Wet meadow',
+  grassland: 'Grassland',
+  farmland: 'Farmland',
+  // Scrub & Rocky
+  shrubland: 'Shrubland',
+  rocky_slope: 'Rocky slope',
+  north_facing_slope: 'North-facing slope',
+  ravine: 'Ravine',
+  dead_trees: 'Dead trees',
+  disturbed_site: 'Disturbed site',
+  roadside: 'Roadside',
+  // Garden & Urban
+  garden: 'Garden',
+  park: 'Park',
+  suburban: 'Suburban',
+};
+
+export const HABITAT_ICONS: Record<string, string> = {
+  wooded: '🌲',
+  aquatic: '💧',
+  open: '🌾',
+  scrub: '🪨',
+  urban: '🌻',
 };
 
 export const DIET_LABELS: Record<string, string> = {

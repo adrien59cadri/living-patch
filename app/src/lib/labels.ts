@@ -4,6 +4,7 @@ import {
   FORM_LABELS,
   SEASON_LABELS,
   HABITAT_LABELS,
+  HABITAT_ICONS,
   DIET_LABELS,
   SYMBIOSIS_LABELS,
   KEYSTONE_TYPE_LABELS,
@@ -64,6 +65,10 @@ export function symbiosisLabel(type: string): string {
 
 export function formIcon(form: string): string {
   return getFormIcon(form);
+}
+
+export function habitatIcon(habitat: string): string {
+  return HABITAT_ICONS[habitat] ?? '📍';
 }
 
 export function keystoneTypeLabel(type: string): string {

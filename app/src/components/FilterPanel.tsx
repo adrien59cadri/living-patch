@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import type { FilterState } from '../lib/filters';
 import { formLabel, habitatLabel, keystoneTypeLabel, areaLabel } from '../lib/labels';
-import { getTopLevelForms, getChildForms } from '../lib/learnContent';
+import { getTopLevelForms, getChildForms, getTopLevelHabitats, getChildHabitats } from '../lib/learnContent';
 
 interface FilterOptions {
   forms: string[];
@@ -44,15 +44,30 @@ function CheckboxItem({
 }
 
 export function FilterPanel({ options, filters, onChange }: Props) {
-  const [selectedTopLevel, setSelectedTopLevel] = useState<string | null>(null);
+  const [selectedFormTopLevel, setSelectedFormTopLevel] = useState<string | null>(null);
+  const [selectedHabitatTopLevel, setSelectedHabitatTopLevel] = useState<string | null>(null);
+
   const topLevelForms = getTopLevelForms();
-  
+  const topLevelHabitats = getTopLevelHabitats();
+
   // Find which top-level form contains any of the selected forms
-  const activeTopLevel = selectedTopLevel || 
+  const activeFormTopLevel = selectedFormTopLevel ||
     topLevelForms.find(tl => {
       const children = getChildForms(tl);
       return children.length > 0 && filters.forms.some(f => [tl, ...children].includes(f));
     });
+
+  // Find which top-level habitat contains any of the selected habitats
+  const activeHabitatTopLevel = selectedHabitatTopLevel ||
+    topLevelHabitats.find(tl => {
+      const children = getChildHabitats(tl);
+      return children.some(h => filters.habitats.includes(h));
+    });
+
+  // Only show habitat top-level groups that have children present in dataset
+  const visibleHabitatTopLevels = topLevelHabitats.filter(tl =>
+    getChildHabitats(tl).some(child => options.habitats.includes(child)),
+  );
 
   const hasActive =
     filters.forms.length > 0 ||
@@ -70,12 +85,11 @@ export function FilterPanel({ options, filters, onChange }: Props) {
           Form
         </label>
         <select
-          value={activeTopLevel ?? ''}
+          value={activeFormTopLevel ?? ''}
           onChange={e => {
             const newTopLevel = e.target.value;
-            setSelectedTopLevel(newTopLevel || null);
-            // Clear form filters when changing top-level
-            if (newTopLevel !== activeTopLevel) {
+            setSelectedFormTopLevel(newTopLevel || null);
+            if (newTopLevel !== activeFormTopLevel) {
               onChange({ ...filters, forms: [] });
             }
           }}
@@ -90,9 +104,9 @@ export function FilterPanel({ options, filters, onChange }: Props) {
         </select>
 
         {/* Sub-category checkboxes */}
-        {activeTopLevel && (
+        {activeFormTopLevel && (
           <div className="space-y-1.5 pt-2 pl-2 border-l-2 border-stone-200">
-            {getChildForms(activeTopLevel).map(form => (
+            {getChildForms(activeFormTopLevel).map(form => (
               <CheckboxItem
                 key={form}
                 label={`└─ ${formLabel(form)}`}
@@ -106,22 +120,50 @@ export function FilterPanel({ options, filters, onChange }: Props) {
         )}
       </div>
 
-      {/* Habitat */}
-      <div className="space-y-1.5">
-        <span className="block text-xs font-medium text-stone-500 uppercase tracking-wide">
-          Habitat
-        </span>
-        <div className="grid grid-cols-2 gap-x-6 gap-y-1.5">
-          {options.habitats.map(h => (
-            <CheckboxItem
-              key={h}
-              label={habitatLabel(h)}
-              checked={filters.habitats.includes(h)}
-              onChange={() => onChange({ ...filters, habitats: toggle(filters.habitats, h) })}
-            />
-          ))}
+      {/* Habitat - Hierarchical Selector */}
+      {visibleHabitatTopLevels.length > 0 && (
+        <div className="space-y-1.5">
+          <label className="block text-xs font-medium text-stone-500 uppercase tracking-wide">
+            Habitat
+          </label>
+          <select
+            value={activeHabitatTopLevel ?? ''}
+            onChange={e => {
+              const newTopLevel = e.target.value;
+              setSelectedHabitatTopLevel(newTopLevel || null);
+              if (newTopLevel !== activeHabitatTopLevel) {
+                onChange({ ...filters, habitats: [] });
+              }
+            }}
+            className="w-full text-sm border border-stone-200 rounded-lg px-3 py-1.5 bg-white text-stone-700 focus:outline-none focus:ring-2 focus:ring-emerald-400"
+          >
+            <option value="">All habitats</option>
+            {visibleHabitatTopLevels.map(habitat => (
+              <option key={habitat} value={habitat}>
+                {habitatLabel(habitat)}
+              </option>
+            ))}
+          </select>
+
+          {/* Sub-category checkboxes */}
+          {activeHabitatTopLevel && (
+            <div className="space-y-1.5 pt-2 pl-2 border-l-2 border-stone-200">
+              {getChildHabitats(activeHabitatTopLevel)
+                .filter(child => options.habitats.includes(child))
+                .map(habitat => (
+                  <CheckboxItem
+                    key={habitat}
+                    label={`└─ ${habitatLabel(habitat)}`}
+                    checked={filters.habitats.includes(habitat)}
+                    onChange={() =>
+                      onChange({ ...filters, habitats: toggle(filters.habitats, habitat) })
+                    }
+                  />
+                ))}
+            </div>
+          )}
         </div>
-      </div>
+      )}
 
       {/* Area */}
       {options.areas.length > 1 && (

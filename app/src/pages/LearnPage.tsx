@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useDataset } from '../hooks/useDataset';
 import FormHierarchySection from '../components/FormHierarchySection';
+import HabitatHierarchySection from '../components/HabitatHierarchySection';
 import KeystoneTypesSection from '../components/KeystoneTypesSection';
 import SymbiosisSection from '../components/SymbiosisSection';
 
@@ -21,6 +22,8 @@ export default function LearnPage() {
 
         <div className="space-y-8">
           <FormHierarchySection speciesById={speciesById} />
+
+          <HabitatHierarchySection speciesById={speciesById} />
 
           <KeystoneTypesSection
             expanded={expandedKeystoneType}
