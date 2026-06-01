@@ -159,7 +159,7 @@ export default function FormHierarchySection({
         </p>
       </div>
 
-      <div>
+      <div className="bg-white border border-stone-200 rounded-xl divide-y divide-stone-100">
         {FORM_HIERARCHY.map((node) => (
           <FormNodeItem
             key={node.key}
