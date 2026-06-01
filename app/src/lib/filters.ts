@@ -6,10 +6,11 @@ export interface FilterState {
   seasons: string[];
   habitats: string[];
   keystone_types: string[];
+  areas: string[];
 }
 
 export function filterSpecies(species: Species[], filters: FilterState): Species[] {
-  const { search, forms, seasons, habitats, keystone_types } = filters;
+  const { search, forms, seasons, habitats, keystone_types, areas } = filters;
   const q = search.toLowerCase().trim().replace(/-/g, ' ');
 
   return species.filter(s => {
@@ -36,6 +37,7 @@ export function filterSpecies(species: Species[], filters: FilterState): Species
     if (keystone_types.length > 0) {
       if (!s.is_keystone || !s.keystone_type || !keystone_types.includes(s.keystone_type)) return false;
     }
+    if (areas.length > 0 && !areas.includes(s.region)) return false;
 
     return true;
   });
@@ -52,5 +54,6 @@ export function getFilterOptions(species: Species[]) {
         .map(s => s.keystone_type as string),
     ),
   ].sort();
-  return { forms, seasons, habitats, keystone_types };
+  const areas = [...new Set(species.map(s => s.region).filter(Boolean))].sort();
+  return { forms, seasons, habitats, keystone_types, areas };
 }
