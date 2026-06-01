@@ -1,5 +1,11 @@
 import type { Species } from '../types';
 import { getCommonName } from './labels';
+import {
+  getTopLevelForms,
+  getAllDescendantForms,
+  getTopLevelHabitats,
+  getAllDescendantHabitats,
+} from './learnContent';
 
 export interface FilterState {
   search: string;
@@ -32,9 +38,15 @@ export function filterSpecies(species: Species[], filters: FilterState): Species
       if (!haystack.includes(q)) return false;
     }
 
-    if (forms.length > 0 && !forms.includes(s.form)) return false;
+    if (forms.length > 0) {
+      const expandedForms = expandKeys(forms, getTopLevelForms(), k => getAllDescendantForms(k));
+      if (!expandedForms.includes(s.form)) return false;
+    }
     if (seasons.length > 0 && !seasons.some(f => s.season?.includes(f))) return false;
-    if (habitats.length > 0 && !habitats.some(h => s.habitat?.includes(h))) return false;
+    if (habitats.length > 0) {
+      const expandedHabitats = expandKeys(habitats, getTopLevelHabitats(), k => getAllDescendantHabitats(k));
+      if (!expandedHabitats.some(h => s.habitat?.includes(h))) return false;
+    }
     if (keystone_types.length > 0) {
       if (!s.is_keystone || !s.keystone_type || !keystone_types.includes(s.keystone_type)) return false;
     }
@@ -42,6 +54,16 @@ export function filterSpecies(species: Species[], filters: FilterState): Species
 
     return true;
   });
+}
+
+/** Expand any top-level category keys to their leaf descendants. */
+function expandKeys(
+  keys: string[],
+  topLevelSet: string[],
+  getDescendants: (k: string) => string[],
+): string[] {
+  const tl = new Set(topLevelSet);
+  return keys.flatMap(k => (tl.has(k) ? [k, ...getDescendants(k)] : [k]));
 }
 
 export function getFilterOptions(species: Species[]) {

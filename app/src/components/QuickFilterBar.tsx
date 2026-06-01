@@ -72,11 +72,10 @@ export function QuickFilterBar({ options, filters, onChange }: Props) {
                   onClick={() => {
                     if (isExpanded) {
                       setExpandedFormTopLevel(null);
+                      onChange({ ...filters, forms: [] });
                     } else {
                       setExpandedFormTopLevel(form);
-                      if (activeFormTopLevel !== form) {
-                        onChange({ ...filters, forms: [] });
-                      }
+                      onChange({ ...filters, forms: [form] });
                     }
                   }}
                   className={[
@@ -100,7 +99,10 @@ export function QuickFilterBar({ options, filters, onChange }: Props) {
                 return (
                   <button
                     key={form}
-                    onClick={() => onChange({ ...filters, forms: toggle(filters.forms, form) })}
+                    onClick={() => {
+                      const withoutParent = filters.forms.filter(f => f !== activeFormTopLevel);
+                      onChange({ ...filters, forms: toggle(withoutParent, form) });
+                    }}
                     className={[
                       'text-xs px-2 py-0.5 rounded-full transition-colors',
                       active
@@ -133,11 +135,10 @@ export function QuickFilterBar({ options, filters, onChange }: Props) {
                   onClick={() => {
                     if (isExpanded) {
                       setExpandedHabitatTopLevel(null);
+                      onChange({ ...filters, habitats: [] });
                     } else {
                       setExpandedHabitatTopLevel(habitat);
-                      if (activeHabitatTopLevel !== habitat) {
-                        onChange({ ...filters, habitats: [] });
-                      }
+                      onChange({ ...filters, habitats: [habitat] });
                     }
                   }}
                   className={[
@@ -163,9 +164,10 @@ export function QuickFilterBar({ options, filters, onChange }: Props) {
                   return (
                     <button
                       key={habitat}
-                      onClick={() =>
-                        onChange({ ...filters, habitats: toggle(filters.habitats, habitat) })
-                      }
+                      onClick={() => {
+                        const withoutParent = filters.habitats.filter(h => h !== activeHabitatTopLevel);
+                        onChange({ ...filters, habitats: toggle(withoutParent, habitat) });
+                      }}
                       className={[
                         'text-xs px-2 py-0.5 rounded-full transition-colors',
                         active

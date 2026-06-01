@@ -89,9 +89,7 @@ export function FilterPanel({ options, filters, onChange }: Props) {
           onChange={e => {
             const newTopLevel = e.target.value;
             setSelectedFormTopLevel(newTopLevel || null);
-            if (newTopLevel !== activeFormTopLevel) {
-              onChange({ ...filters, forms: [] });
-            }
+            onChange({ ...filters, forms: newTopLevel ? [newTopLevel] : [] });
           }}
           className="w-full text-sm border border-stone-200 rounded-lg px-3 py-1.5 bg-white text-stone-700 focus:outline-none focus:ring-2 focus:ring-emerald-400"
         >
@@ -111,9 +109,10 @@ export function FilterPanel({ options, filters, onChange }: Props) {
                 key={form}
                 label={`└─ ${formLabel(form)}`}
                 checked={filters.forms.includes(form)}
-                onChange={() =>
-                  onChange({ ...filters, forms: toggle(filters.forms, form) })
-                }
+                onChange={() => {
+                  const withoutParent = filters.forms.filter(f => f !== activeFormTopLevel);
+                  onChange({ ...filters, forms: toggle(withoutParent, form) });
+                }}
               />
             ))}
           </div>
@@ -131,9 +130,7 @@ export function FilterPanel({ options, filters, onChange }: Props) {
             onChange={e => {
               const newTopLevel = e.target.value;
               setSelectedHabitatTopLevel(newTopLevel || null);
-              if (newTopLevel !== activeHabitatTopLevel) {
-                onChange({ ...filters, habitats: [] });
-              }
+              onChange({ ...filters, habitats: newTopLevel ? [newTopLevel] : [] });
             }}
             className="w-full text-sm border border-stone-200 rounded-lg px-3 py-1.5 bg-white text-stone-700 focus:outline-none focus:ring-2 focus:ring-emerald-400"
           >
@@ -155,9 +152,10 @@ export function FilterPanel({ options, filters, onChange }: Props) {
                     key={habitat}
                     label={`└─ ${habitatLabel(habitat)}`}
                     checked={filters.habitats.includes(habitat)}
-                    onChange={() =>
-                      onChange({ ...filters, habitats: toggle(filters.habitats, habitat) })
-                    }
+                    onChange={() => {
+                      const withoutParent = filters.habitats.filter(h => h !== activeHabitatTopLevel);
+                      onChange({ ...filters, habitats: toggle(withoutParent, habitat) });
+                    }}
                   />
                 ))}
             </div>
