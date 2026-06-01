@@ -1,10 +1,11 @@
 import type { FilterState } from '../lib/filters';
-import { formLabel, habitatLabel, keystoneTypeLabel } from '../lib/labels';
+import { formLabel, habitatLabel, keystoneTypeLabel, areaLabel } from '../lib/labels';
 
 interface FilterOptions {
   forms: string[];
   habitats: string[];
   keystone_types: string[];
+  areas: string[];
 }
 
 interface Props {
@@ -21,8 +22,9 @@ export function QuickFilterBar({ options, filters, onChange }: Props) {
   const hasForm = options.forms.length > 0;
   const hasHabitat = options.habitats.length > 0;
   const hasKeystone = options.keystone_types.length > 0;
+  const hasArea = options.areas.length > 1;
 
-  if (!hasForm && !hasHabitat && !hasKeystone) return null;
+  if (!hasForm && !hasHabitat && !hasKeystone && !hasArea) return null;
 
   return (
     <div className="space-y-2">
@@ -96,6 +98,29 @@ export function QuickFilterBar({ options, filters, onChange }: Props) {
                 ].join(' ')}
               >
                 {keystoneTypeLabel(kt)}
+              </button>
+            );
+          })}
+        </div>
+      )}
+
+      {/* Area chips – multi-select */}
+      {hasArea && (
+        <div className="flex flex-wrap gap-1.5">
+          {options.areas.map(area => {
+            const active = filters.areas.includes(area);
+            return (
+              <button
+                key={area}
+                onClick={() => onChange({ ...filters, areas: toggle(filters.areas, area) })}
+                className={[
+                  'text-xs px-2 py-0.5 rounded-full transition-colors',
+                  active
+                    ? 'bg-sky-600 text-white'
+                    : 'bg-sky-100 text-sky-800 hover:bg-sky-200',
+                ].join(' ')}
+              >
+                {areaLabel(area)}
               </button>
             );
           })}

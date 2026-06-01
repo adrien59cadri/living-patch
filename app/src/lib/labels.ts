@@ -80,3 +80,11 @@ export function activeMonthsLabel(active_months?: string[] | null): string | nul
   const first = active_months[0];
   return first === 'Jan-Dec' ? 'Year-round' : first;
 }
+
+export function areaLabel(region: string): string {
+  const map: Record<string, string> = {
+    northeast_pa: 'Northeast PA',
+    france: 'France',
+  };
+  return map[region] ?? region;
+}
