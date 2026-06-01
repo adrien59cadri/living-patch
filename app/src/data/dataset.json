@@ -562,8 +562,7 @@
             "habitat": [
               "field",
               "field_edge",
-              "garden",
-              "roadside"
+              "garden"
             ],
             "diet": [],
             "behavior": [
@@ -1258,8 +1257,7 @@
             "habitat": [
               "pond",
               "wetland",
-              "marsh",
-              "beaver_pond"
+              "marsh"
             ],
             "diet": [
               "predator"
@@ -1330,7 +1328,7 @@
             "habitat": [
               "wetland",
               "riparian",
-              "beaver_pond"
+              "pond"
             ],
             "diet": [
               "herbivore"
@@ -1564,7 +1562,6 @@
             "habitat": [
               "field",
               "meadow",
-              "grassland",
               "field_edge"
             ],
             "diet": [
@@ -1622,8 +1619,7 @@
             "form": "beetle",
             "habitat": [
               "forest",
-              "woodland",
-              "dead_trees"
+              "woodland"
             ],
             "diet": [
               "wood_eater"
@@ -1741,7 +1737,7 @@
             "habitat": [
               "pond",
               "wetland",
-              "stream",
+              "streamside",
               "marsh"
             ],
             "diet": [
@@ -1806,7 +1802,6 @@
             "habitat": [
               "pond",
               "wetland",
-              "beaver_pond",
               "marsh"
             ],
             "diet": [
@@ -1936,7 +1931,7 @@
               "wetland",
               "marsh",
               "stream_edge",
-              "open_field"
+              "field"
             ],
             "diet": [
               "predator"
@@ -2037,7 +2032,6 @@
             "form": "salamander",
             "habitat": [
               "wetland",
-              "vernal_pool",
               "forest",
               "woodland"
             ],
@@ -2135,9 +2129,7 @@
             "latin_name": "Fagus grandifolia",
             "form": "tree",
             "habitat": [
-              "deciduous_forest",
-              "mixed_forest",
-              "forest_understory"
+              "forest"
             ],
             "diet": [],
             "behavior": [
@@ -2213,8 +2205,7 @@
             "latin_name": "Phyllaphis fagi (and related species)",
             "form": "insect_group",
             "habitat": [
-              "deciduous_forest",
-              "mixed_forest"
+              "forest"
             ],
             "diet": [
               "plant_sap_feeder"
@@ -2280,8 +2271,7 @@
             "latin_name": "Feniseca tarquinius",
             "form": "butterfly",
             "habitat": [
-              "deciduous_forest",
-              "mixed_forest",
+              "forest",
               "forest_edge",
               "woodland"
             ],
@@ -2352,7 +2342,7 @@
             "form": "tree",
             "habitat": [
               "riparian",
-              "disturbed_site",
+              "shrubland",
               "garden",
               "woodland_edge"
             ],
@@ -2564,7 +2554,7 @@
             "latin_name": "Tyrannus tyrannus",
             "form": "songbird",
             "habitat": [
-              "open_field",
+              "field",
               "woodland_edge",
               "riparian",
               "wetland_edge",
@@ -2653,9 +2643,9 @@
             "latin_name": "Tachycineta bicolor",
             "form": "songbird",
             "habitat": [
-              "open_field",
+              "field",
               "wetland_edge",
-              "water"
+              "pond"
             ],
             "diet": [
               "insect_eater"
@@ -2733,9 +2723,9 @@
             "latin_name": "Hirundo rustica",
             "form": "songbird",
             "habitat": [
-              "open_field",
+              "field",
               "wetland_edge",
-              "water",
+              "pond",
               "farmland"
             ],
             "diet": [
@@ -2976,8 +2966,7 @@
             "habitat": [
               "forest",
               "streamside",
-              "north_facing_slope",
-              "ravine"
+              "rocky_slope"
             ],
             "diet": [],
             "behavior": [
@@ -3731,8 +3720,7 @@
               "riparian",
               "wetland",
               "pond",
-              "streamside",
-              "beaver_pond"
+              "streamside"
             ],
             "diet": [
               "predator"
