@@ -1,5 +1,30 @@
 # Living Patch Roadmap
 
+## ✅ Completed (June 1, 2026)
+
+### 9. Multi-Dataset Runtime Pack Control ✅
+Enable toggling of data packs at runtime:
+- **Store**: Zustand store for pack enable/disable state, persisted to localStorage
+- **UI**: Pack management page (`/packs`) with toggle switches per pack
+- **Data**: Dynamic dataset indexing based on enabled packs
+- **Status**: Ships with 2 packs (0-base: 80 NE PA species, 1-france: 24 French species)
+
+### 10. French Species Pack ✅
+Add European species dataset as a second geographic pack:
+- **Pack file**: `pack-tools/packs/1-france.json` with 24 French species
+- **Content**: Birds (rouge-gorge, mésange, etc.), mammals (renard, sanglier, etc.), trees, plants, butterflies
+- **Symbiosis**: 11 relationships reflecting French temperate ecosystem
+- **Status**: Published (loads by default)
+
+### 11. Area-Based List Filtering ✅
+Expose the `region` field as a filter dimension:
+- **FilterState**: Added `areas: string[]` with multi-select support
+- **UI**: Area chips in quick filter bar (sky-blue, active when filtered) + checkboxes in advanced panel
+- **Display**: Only shown when >1 region in dataset
+- **URLs**: Supports `?area=france` and `?area=northeast_pa` URL params for deep-linking
+
+---
+
 ## Future Ideas & Enhancements
 
 ### 1. Keystone Keyword & Value Shorthands
@@ -75,36 +100,6 @@ Add export/import controls in the Settings page to prevent data loss:
 - Exported file format mirrors the existing `living-patch-life-list-v1` localStorage schema for simplicity
 
 **Impact**: Protects users from accidental data loss; enables moving data between devices or browsers.
-
-### 9. Multi-Dataset Support
-Enable the app to load and manage multiple datasets:
-- Support loading multiple datasets simultaneously
-- Implement deduplication logic to handle species/relations appearing in multiple datasets
-- Create conflict resolution system for conflicting data across datasets
-- Perform validation and minification at app load time (datasets in packs are pre-validated)
-- Allow users to choose dataset combinations for their view
-
-**Impact**: Dramatically increases data coverage and flexibility; enables community dataset contributions.
-
-### 10. French Species Pack
-Add a French/European species dataset as a second geographic pack alongside the existing Northeast PA pack:
-- Create `pack-tools/packs/1-france.json` with species common in France (birds, mammals, plants, trees, butterflies)
-- Establish symbiosis relationships for French temperate/Mediterranean ecosystems
-- Use the existing pack format and ID conventions (`bird_rouge-gorge`, `mammal_chevreuil`, etc.)
-- Start as `status: "draft"`, validate with `pack:validate`, test-merge against `0-base.json`, then publish
-- Regenerate `dataset.json` via `build:dataset` to include both packs
-
-**Impact**: Extends the app beyond NE Pennsylvania, enabling use by naturalists in France; validates the multi-region pack architecture.
-
-### 11. Area-Based List Filtering
-Expose the existing `region` field on species as a filter dimension so users can narrow the list to a specific geographic area:
-- Add `areas: string[]` to `FilterState` in `lib/filters.ts` and update `filterSpecies()` and `getFilterOptions()`
-- Add area display names to `designTokens.ts` (`"northeast_pa"` → "Northeast PA", `"france"` → "France")
-- Surface the filter in `FilterPanel.tsx` (multi-select, hidden when only one area exists in the loaded dataset)
-- Add area pills to `QuickFilterBar.tsx` alongside existing form/habitat/keystone chips
-- Support `?area=` URL param in `HomePage.tsx` for deep-linking to an area-filtered view
-
-**Impact**: Makes multi-region datasets navigable; lets NE PA users hide French species and vice versa — a prerequisite for the French pack being useful in practice.
 
 ---
 

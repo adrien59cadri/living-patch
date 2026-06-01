@@ -75,6 +75,14 @@ export function keystoneLabel(type: string): string {
   return getKeystoneLabel(type);
 }
 
+export function areaLabel(region: string): string {
+  const map: Record<string, string> = {
+    northeast_pa: 'Northeast PA',
+    france: 'France',
+  };
+  return map[region] ?? region;
+}
+
 export function activeMonthsLabel(active_months?: string[] | null): string | null {
   if (!active_months || active_months.length === 0) return null;
   const first = active_months[0];

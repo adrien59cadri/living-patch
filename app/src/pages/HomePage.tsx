@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, useNavigate } from 'react-router-dom';
 import { useDataset } from '../hooks/useDataset';
 import { filterSpecies, getFilterOptions } from '../lib/filters';
 import type { FilterState } from '../lib/filters';
@@ -12,12 +12,14 @@ import { LifeListStats } from '../components/LifeListStats';
 export default function HomePage() {
   const { species, groups } = useDataset();
   const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
 
   const [isAdvancedOpen, setIsAdvancedOpen] = useState(() => {
     return (
       searchParams.getAll('form').length > 0 ||
       searchParams.getAll('habitat').length > 0 ||
-      searchParams.getAll('keystone_type').length > 0
+      searchParams.getAll('keystone_type').length > 0 ||
+      searchParams.getAll('area').length > 0
     );
   });
 
@@ -27,14 +29,30 @@ export default function HomePage() {
     seasons: searchParams.getAll('season'),
     habitats: searchParams.getAll('habitat'),
     keystone_types: searchParams.getAll('keystone_type'),
+    areas: searchParams.getAll('area'),
   }));
+
+  // Sync filters to URL when they change (but not on mount)
+  const handleFilterChange = (newFilters: FilterState) => {
+    setFilters(newFilters);
+    
+    // Build URL params from new filters
+    const params = new URLSearchParams();
+    newFilters.forms.forEach(f => params.append('form', f));
+    newFilters.habitats.forEach(h => params.append('habitat', h));
+    newFilters.keystone_types.forEach(kt => params.append('keystone_type', kt));
+    newFilters.areas.forEach(a => params.append('area', a));
+    
+    const queryString = params.toString();
+    navigate(queryString ? `?${queryString}` : '/');
+  };
 
   const options = useMemo(() => getFilterOptions(species), [species]);
   const filteredSpecies = useMemo(() => filterSpecies(species, filters), [species, filters]);
   const filteredGroups = useMemo(() => filterSpecies(groups, filters), [groups, filters]);
 
   const activeFilterCount =
-    filters.forms.length + filters.habitats.length + filters.keystone_types.length;
+    filters.forms.length + filters.habitats.length + filters.keystone_types.length + filters.areas.length;
 
   return (
     <div className="space-y-4">
@@ -65,10 +83,10 @@ export default function HomePage() {
         </button>
       </div>
 
-      <QuickFilterBar options={options} filters={filters} onChange={setFilters} />
+      <QuickFilterBar options={options} filters={filters} onChange={handleFilterChange} />
 
       {isAdvancedOpen && (
-        <FilterPanel options={options} filters={filters} onChange={setFilters} />
+        <FilterPanel options={options} filters={filters} onChange={handleFilterChange} />
       )}
 
       <p className="text-xs text-stone-400">

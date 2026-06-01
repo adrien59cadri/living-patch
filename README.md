@@ -1,6 +1,6 @@
-# 🌿 LivingPatch MVP — Dataset Explorer
+# 🌿 LivingPatch MVP — Multi-Region Dataset Explorer
 
-A personal ecological literacy tool for exploring NE Pennsylvania species and their relationships. **Phase 1 (MVP)**: read-only local webapp — no server, no accounts, fully offline.
+A personal ecological literacy tool for exploring species and their relationships across multiple regions. **Phase 1 (MVP)**: read-only local webapp — no server, no accounts, fully offline. **Phase 2 (Extended)**: Life List system, Life experience tracking, multi-region data packs.
 
 **🚀 Live Demo**: https://adrien59cadri.github.io/living-patch/
 
@@ -28,28 +28,31 @@ npm run test:e2e   # Run 21 E2E tests (Playwright)
 ## Features
 
 ✨ **Search**: Full-text across species name, description, and tags  
-🔍 **Filter**: Form, season, habitat (multi-select, combinable)  
+🔍 **Filter**: Form, season, habitat, **area/region** (all multi-select, combinable)  
 🦅 **Species Cards**: Detail view with functional description, life stages, keystone roles  
 🔗 **Key Relationships**: Pinned obligate symbiosis (e.g., Monarch ↔ Milkweed)  
 🌍 **Neighbors Grid**: Category-based drill-down (Birds, Plants, Insects, Wildlife, Related)  
+📦 **Data Packs**: Toggle between NE Pennsylvania (80 sp) and French temperate (24 sp) ecosystems  
 📱 **Responsive**: Mobile-first design  
 ⚡ **Offline**: Zero network requests, fully local  
-✅ **Tested**: 121 unit tests + 21 E2E tests, GitHub Actions CI/CD  
+✅ **Tested**: 121 unit tests + 97 E2E tests, GitHub Actions CI/CD  
+📝 **Life List**: Log sightings, track familiarity tiers, calendar & stats  
 
 ## What's Included
 
-- **64 species** + 9 taxonomic groups
-- **66 symbiosis entries** + 3 general relations
-- **Full-text search** across name, description, all tags
-- **Multi-select filters** (form, season, habitat — combinable)
+- **104 species** across 2 regions (NE Pennsylvania + France) + 14 taxonomic groups
+- **176 symbiosis entries** + 12 general relations
+- **Full-text search** across name, description, all tags (hyphen-normalized)
+- **Multi-select filters** (form, season, habitat, **area** — all combinable, URL params)
 - **Species detail page** with 8 sections:
   - Hero photo, name, tags, description, keystone callout, life stages
   - **Key Relationship** tile (pinned obligate symbiosis)
   - **Neighbors Grid** (category-based drill-down by type)
   - Log Sighting button (opens the Life List sighting workflow)
 - **121 unit tests** (Vitest + React Testing Library)
-- **21 E2E tests** (Playwright, full user workflows)
+- **97 E2E tests** (Playwright, full user workflows including area filtering, pack management, life list)
 - **GitHub Actions CI/CD** (lint → type-check → test → build → E2E → deploy to Pages)
+- **Life List system**: Sighting logging, familiarity tiers, calendar, stats (22 tests)
 
 ## Data Packs System
 
@@ -63,7 +66,8 @@ Each pack has a `status` field:
 
 ### Available Packs
 
-- **`0-base.json`** (published): Core LivingPatch dataset with NE Pennsylvania species, taxonomic groups, symbiosis relationships, and relations
+- **`0-base.json`** (published): NE Pennsylvania ecosystem — 80 species, 9 taxonomic groups, keystone species
+- **`1-france.json`** (published): French temperate ecosystem — 24 species (birds, mammals, trees, plants, butterflies), regional symbiosis
 
 ### Creating and Contributing a Pack
 
@@ -130,15 +134,24 @@ VITE_INCLUDE_DRAFT_PACKS=true npm run dev
 VITE_INCLUDE_DRAFT_PACKS=true npm run build
 ```
 
-(App integration for loading packs from pack-tools directory is planned for Phase 2)
+### Pack Management UI
+
+Visit the **Packs** page (`/packs` in header navigation) to:
+- View metadata for each loaded pack
+- Toggle packs on/off with switches
+- See disabled packs grayed out (50% opacity)
+- Watch the species list update in real-time as packs are toggled
+- Pack toggles persist across page reloads (stored in localStorage)
 
 ## Try These
 
-1. **Search**: Type "milkweed" or "monarch"  
-2. **Filter**: Click "butterfly" + "summer"  
-3. **Species detail**: Click a species → see keystone badge, life stages, key relationship, neighbors grid
-4. **Drill-down**: Click "Plants" in neighbors grid → see all plant species connected to this one
-5. **Offline**: DevTools → Network → offline mode → app still works!
+1. **Search**: Type "milkweed" or "rougegorge" (French robin)  
+2. **Multi-region filter**: Click "Filters" → select "France" to see only French species  
+3. **Area chips**: See "Northeast PA" + "France" chips appear at the top; click to filter  
+4. **Pack management**: Visit "Packs" in header → toggle "france-base" pack off to remove French species  
+5. **Species detail**: Click a species → see keystone badge, life stages, key relationship, neighbors grid
+6. **Life List**: Click "Log Sighting" on any species → log date/location, set tier, track in calendar
+7. **Offline**: DevTools → Network → offline mode → app still works!
 
 ## Project Structure
 
@@ -190,14 +203,17 @@ npm run test
 - `src/components/__tests__/` — SpeciesCard, all UI sections
 - `src/pages/__tests__/` — DetailPage, NeighborListView, navigation
 
-**E2E tests (21 passing):**
+**E2E tests (97 passing):**
 ```bash
 npm run test:e2e
 ```
 - Species page render, keystone badge, latin name toggle
 - Life stages, key relationship, neighbors grid display
 - Neighbor drill-down navigation and back link
-- Edge cases (invalid species/category)
+- **Area filtering**: Chips visible, region-based filtering, URL params (?area=france)
+- **Pack management**: Pack cards, toggle switches, disable/enable, persistence
+- **Life List**: Sighting modal, tier selector, calendar, stats tab, Recent Sightings
+- Edge cases (invalid species/category, hyphen-normalized search)
 
 ## CI/CD
 
@@ -230,11 +246,10 @@ npm run e2e:local   # Run E2E tests
 - **[PLAN.md](PLAN.md)** — Implementation architecture
 - **[TODO.md](TODO.md)** — Task checklist (MVP complete ✅)
 
-## What's NOT Included (Phase 1)
+## What's NOT Included (Beyond Phase 2)
 
-- Sighting logging (Phase 2)
-- Life lists / personal tracking (Phase 2)
-- Multiple locations / areas (Phase 3)
+- Advanced sighting analytics (depth, familiarity auto-calculation from history) — Phase 3
+- Backup & restore (export/import) — Phase 3
 - Photo or sound identification (out of scope)
 - Social features (never)
 - Accounts or server (until explicitly needed)

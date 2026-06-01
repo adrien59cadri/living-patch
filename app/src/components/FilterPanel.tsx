@@ -1,11 +1,12 @@
 import type { FilterState } from '../lib/filters';
-import { formLabel, habitatLabel, keystoneTypeLabel } from '../lib/labels';
+import { formLabel, habitatLabel, keystoneTypeLabel, areaLabel } from '../lib/labels';
 
 interface FilterOptions {
   forms: string[];
   seasons: string[];
   habitats: string[];
   keystone_types: string[];
+  areas: string[];
 }
 
 interface Props {
@@ -45,7 +46,8 @@ export function FilterPanel({ options, filters, onChange }: Props) {
     filters.forms.length > 0 ||
     filters.seasons.length > 0 ||
     filters.habitats.length > 0 ||
-    filters.keystone_types.length > 0;
+    filters.keystone_types.length > 0 ||
+    filters.areas.length > 0;
 
   return (
     <div className="bg-stone-50 border border-stone-200 rounded-xl p-4 space-y-4">
@@ -88,6 +90,25 @@ export function FilterPanel({ options, filters, onChange }: Props) {
         </div>
       </div>
 
+      {/* Area */}
+      {options.areas.length > 1 && (
+        <div className="space-y-1.5">
+          <span className="block text-xs font-medium text-stone-500 uppercase tracking-wide">
+            Area
+          </span>
+          <div className="flex flex-col gap-1.5">
+            {options.areas.map(a => (
+              <CheckboxItem
+                key={a}
+                label={areaLabel(a)}
+                checked={filters.areas.includes(a)}
+                onChange={() => onChange({ ...filters, areas: toggle(filters.areas, a) })}
+              />
+            ))}
+          </div>
+        </div>
+      )}
+
       {/* Keystone type */}
       {options.keystone_types.length > 0 && (
         <div className="space-y-1.5">
@@ -121,6 +142,7 @@ export function FilterPanel({ options, filters, onChange }: Props) {
               seasons: [],
               habitats: [],
               keystone_types: [],
+              areas: [],
             })
           }
           className="text-xs text-stone-400 hover:text-stone-700 underline"
