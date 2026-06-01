@@ -57,15 +57,43 @@ Enrich sighting data to capture where and when observations happen, not just how
 
 **Impact**: Transforms sighting counts into a richer picture of a species' presence across seasons, years, and habitats — rewarding long-term, multi-site observation.
 
-### 7. Sighting-Based Familiarity Progression
-Replace the manual tier system with familiarity derived from observation data:
-- Auto-calculate a familiarity level from sighting count, seasonal diversity, habitat diversity, and years observed
-- Factor in related species sightings — observing a predator and its prey, or a plant and its pollinator, signals deeper ecosystem understanding
-- Show progression indicators on the species card — what dimensions of observation would advance familiarity
-- Allow users to override the calculated level if desired
-- Surface insights: "Seen in 3 seasons across 2 years — you may know this species well"
+### 7. Familiarity Badges
 
-**Impact**: Makes familiarity feel earned through real observation rather than arbitrary manual selection; rewards consistent, multi-context naturalism.
+Replace the manual tier system with a small set of **observation badges** earned automatically from sighting history. Badges are independent — a species can hold any combination — and are displayed together on the species card.
+
+#### Badges
+
+| Badge | Condition | Icon |
+|---|---|---|
+| **Seen** | At least 1 sighting logged | 👁 |
+| **Recurring** | Sighted in 2 or more different months (any year) | 📅 |
+| **Long-term** | Sighted in 2 or more different calendar years | 🗓 |
+| **Wide-ranging** | Sighted in 2 or more distinct habitat types | 🗺 |
+
+#### Derived familiarity tier
+
+The existing four tiers (`noticed`, `familiar`, `know-it-well`, `steward`) are kept as display labels but derived from badge count, not set manually:
+
+| Badges earned | Tier |
+|---|---|
+| Seen only | Noticed |
+| Seen + 1 other | Familiar |
+| Seen + 2 others | Know It Well |
+| All 4 badges | Steward |
+
+#### Data requirements
+
+- `sighting.date` — already present; used for month and year bucketing
+- `sighting.habitatType` — added in Feature 6; missing values simply don't contribute to Wide-ranging
+
+#### Implementation
+
+1. **`computeFamiliarityBadges(sightings: Sighting[]): Badge[]`** — pure function in `lifeListUtils.ts`, returns the list of earned badge ids
+2. **`deriveTier(badges: Badge[]): FamiliarityTier`** — maps badge count to tier label
+3. Remove `setTier()` from the store; tier is always derived at read time
+4. Replace `TierSelector` with a read-only badge row on the species card
+
+**Impact**: Familiarity is earned through real, diverse observation. Badges are immediately legible — a user can see at a glance whether they've seen a species across time and place, not just once.
 
 ### 8. Automated Multilingual Name Fetcher
 Implement a CLI tool to auto-populate multilingual common names from Wikipedia:
