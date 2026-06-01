@@ -1,10 +1,10 @@
 {
   "metadata": {
     "id": "france-base",
-    "author": "Living Patch",
+    "author": "Living Patch Contributors",
     "version": "1.0.0",
     "schemaVersion": "1.0.0",
-    "description": "French temperate species — birds, mammals, plants, trees, butterflies",
+    "description": "French temperate species — birds, mammals, plants, trees, butterflies common in France",
     "createdDate": "2026-06-01T00:00:00Z",
     "status": "published"
   },
@@ -14,159 +14,212 @@
         "id": "bird_rouge-gorge",
         "common_name": "Rougegorge familier",
         "latin_name": "Erithacus rubecula",
-        "form": "songbird",
-        "habitat": ["forest", "woodland", "garden"],
-        "diet": ["insect_eater", "omnivore"],
-        "behavior": ["ground_forager"],
+        "form": "bird",
+        "habitat": ["forest", "woodland", "garden", "forest_edge"],
+        "diet": ["insect_eater"],
+        "behavior": ["territorial", "perch_hunter"],
         "season": ["year_round"],
-        "functional_description": "Petit passereau au buste orange emblématique des jardins et forêts de France. Se nourrit principalement de vers de terre, d'insectes et de baies. Suit souvent les jardiniers et les sangliers qui retournent le sol.",
-        "life_stages": [],
-        "region": "france"
+        "functional_description": "European robin; iconic garden bird with red breast and orange-brown plumage. Highly territorial and vocal. Forages on ground for invertebrates.",
+        "life_stages": [
+          {"icon": "🥚", "name": "Egg", "description": "Pale blue eggs in cup nest", "months": ["Apr", "May", "Jun"]},
+          {"icon": "🐤", "name": "Nestling", "description": "Fledges in 2 weeks", "months": ["May", "Jun", "Jul"]},
+          {"icon": "🐦", "name": "Adult", "description": "Singing and foraging year-round", "months": ["Jan-Dec"]}
+        ],
+        "region": "france",
+        "is_keystone": false,
+        "taxonomic_group": "Passeriformes"
       },
       {
         "id": "bird_mesange-charbonniere",
         "common_name": "Mésange charbonnière",
-        "latin_name": "Parus major",
-        "form": "songbird",
+        "latin_name": "Lophophanes cristatus",
+        "form": "bird",
         "habitat": ["forest", "woodland", "garden"],
         "diet": ["insect_eater", "seed_eater"],
-        "behavior": ["cavity_nester", "gleaner"],
+        "behavior": ["cavity_nester", "flock_forming"],
         "season": ["year_round"],
-        "functional_description": "Passereau commun des forêts et jardins. Niche dans les cavités arboricoles, notamment les vieux hêtres. Régule les populations d'insectes en été et se nourrit de graines en hiver.",
-        "life_stages": [],
-        "region": "france"
+        "functional_description": "Crested tit; small songbird with distinctive black-and-white head crest. Forms mixed flocks in winter. Nested in cavities in dead wood.",
+        "life_stages": [
+          {"icon": "🥚", "name": "Egg", "description": "Small clutch in cavity", "months": ["May", "Jun"]},
+          {"icon": "🐤", "name": "Fledgling", "description": "Leaves nest after 3 weeks", "months": ["Jun", "Jul"]},
+          {"icon": "🐦", "name": "Adult", "description": "Year-round resident", "months": ["Jan-Dec"]}
+        ],
+        "region": "france",
+        "is_keystone": false,
+        "taxonomic_group": "Passeriformes"
       },
       {
         "id": "bird_pic-vert",
         "common_name": "Pic vert",
         "latin_name": "Picus viridis",
-        "form": "woodpecker",
-        "habitat": ["forest", "woodland", "meadow"],
+        "form": "bird",
+        "habitat": ["forest", "woodland"],
         "diet": ["insect_eater"],
-        "behavior": ["cavity_excavator", "ground_forager"],
+        "behavior": ["cavity_excavator"],
         "season": ["year_round"],
-        "functional_description": "Le plus reconnaissable des pics européens par son cri riant. Se nourrit principalement de fourmis, sondant les pelouses et les fourmilières. Creuse des cavités arboricoles utilisées ensuite par d'autres espèces.",
-        "life_stages": [],
+        "functional_description": "European green woodpecker; large woodpecker with green back and red undertail. Drums on dead wood. Excavates cavities used by other species.",
+        "life_stages": [
+          {"icon": "🪵", "name": "Cavity creation", "description": "Excavates nest cavity in spring", "months": ["Mar", "Apr", "May"]},
+          {"icon": "🐤", "name": "Nesting", "description": "Incubation and fledging", "months": ["May", "Jun", "Jul"]},
+          {"icon": "🐦", "name": "Adult", "description": "Foraging year-round", "months": ["Jan-Dec"]}
+        ],
         "region": "france",
         "is_keystone": true,
         "keystone_type": "ecosystem_engineer",
-        "keystone_description": "Ingénieur de l'écosystème forestier. Les cavités abandonnées servent d'abri à de nombreuses espèces : mésanges, chouettes, chauve-souris et martins-pêcheurs."
+        "keystone_description": "Cavity excavation creates homes for dozens of other species"
       },
       {
         "id": "bird_geai-des-chenes",
         "common_name": "Geai des chênes",
         "latin_name": "Garrulus glandarius",
-        "form": "songbird",
+        "form": "bird",
         "habitat": ["forest", "woodland"],
-        "diet": ["omnivore"],
-        "behavior": ["seed_cacher"],
+        "diet": ["seed_eater", "insect_eater", "fruit_eater"],
+        "behavior": ["territorial", "flock_forming"],
         "season": ["year_round"],
-        "functional_description": "Corvidé réputé pour son cache de glands : un individu enterre plusieurs milliers de glands chaque automne et en oublie une partie, plantant ainsi efficacement des chênes. Vecteur essentiel de la régénération forestière.",
-        "life_stages": [],
+        "functional_description": "Eurasian jay; colorful corvid with blue wing patches. Caches acorns and nuts, dispersing oak and hazel seeds. Loud alarm calls warn of predators.",
+        "life_stages": [
+          {"icon": "🌰", "name": "Seed caching", "description": "Hides thousands of seeds in fall", "months": ["Sep", "Oct", "Nov"]},
+          {"icon": "🥚", "name": "Breeding", "description": "Nests in trees", "months": ["Apr", "May", "Jun"]},
+          {"icon": "🐦", "name": "Adult", "description": "Foraging and territorial displays", "months": ["Jan-Dec"]}
+        ],
         "region": "france",
         "is_keystone": true,
-        "keystone_type": "seed_disperser",
-        "keystone_description": "Disperseur de graines clé des forêts de chênes. Transporte les glands sur des centaines de mètres, permettant la colonisation de nouvelles zones et la régénération après perturbation."
-      },
-      {
-        "id": "bird_coucou-gris",
-        "common_name": "Coucou gris",
-        "latin_name": "Cuculus canorus",
-        "form": "songbird",
-        "habitat": ["forest", "woodland", "meadow"],
-        "diet": ["insect_eater"],
-        "behavior": ["brood_parasite"],
-        "season": ["spring", "summer"],
-        "functional_description": "Parasite de couvée célèbre qui pond ses œufs dans les nids d'autres oiseaux. L'une des rares espèces à consommer les chenilles velues (processionnaire du pin), jouant un rôle dans la régulation de certains ravageurs forestiers.",
-        "life_stages": [],
-        "region": "france"
+        "keystone_type": "ecosystem_engineer",
+        "keystone_description": "Acorn caching drives oak regeneration across forests",
+        "common_traits": "Loud, colorful, intelligent"
       },
       {
         "id": "bird_faucon-crecerelle",
         "common_name": "Faucon crécerelle",
         "latin_name": "Falco tinnunculus",
-        "form": "raptor",
+        "form": "bird",
         "habitat": ["field", "meadow", "forest_edge"],
         "diet": ["predator"],
-        "behavior": ["hovering", "perch_hunter"],
+        "behavior": ["predator", "territorial", "soaring"],
         "season": ["year_round"],
-        "functional_description": "Petit faucon célèbre pour son vol stationnaire caractéristique. Se nourrit principalement de campagnols et de petits mammifères, assurant une régulation naturelle des populations de rongeurs sur les terres agricoles.",
-        "life_stages": [],
+        "functional_description": "Common kestrel; small falcon. Hovers while hunting small mammals, insects, and birds. Nests in cavities in cliffs or trees.",
+        "life_stages": [
+          {"icon": "🪶", "name": "Hunting", "description": "Hovers above open ground", "months": ["Jan-Dec"]},
+          {"icon": "🥚", "name": "Breeding", "description": "Incubation 26-28 days", "months": ["Apr", "May", "Jun"]},
+          {"icon": "🐦", "name": "Fledging", "description": "Young leave nest at 25-27 days", "months": ["Jun", "Jul"]}
+        ],
         "region": "france",
-        "is_keystone": true,
-        "keystone_type": "predator",
-        "keystone_description": "Prédateur apex des milieux ouverts. Contrôle les populations de campagnols et autres rongeurs, protégeant les cultures et maintenant l'équilibre des prairies."
+        "is_keystone": false
+      },
+      {
+        "id": "bird_coucou-gris",
+        "common_name": "Coucou gris",
+        "latin_name": "Cuculus canorus",
+        "form": "bird",
+        "habitat": ["forest", "woodland", "meadow"],
+        "diet": ["insect_eater"],
+        "behavior": ["migratory"],
+        "season": ["spring", "summer"],
+        "functional_description": "Eurasian cuckoo; brood parasite. Females lay eggs in nests of smaller birds (dunnocks, warblers). Males have distinctive 'cuckoo' call.",
+        "life_stages": [
+          {"icon": "✈️", "name": "Migration", "description": "Arrives in May", "months": ["May"]},
+          {"icon": "🥚", "name": "Parasitism", "description": "Lays egg in host nest", "months": ["May", "Jun"]},
+          {"icon": "✈️", "name": "Migration", "description": "Departs in July-August", "months": ["Jul", "Aug"]}
+        ],
+        "region": "france",
+        "is_keystone": false
       },
       {
         "id": "mammal_renard-roux",
         "common_name": "Renard roux",
         "latin_name": "Vulpes vulpes",
         "form": "mammal",
-        "habitat": ["forest", "field", "forest_edge", "woodland"],
-        "diet": ["predator", "omnivore"],
-        "behavior": ["nocturnal", "burrowing"],
+        "habitat": ["forest", "woodland", "meadow", "field", "garden", "forest_edge"],
+        "diet": ["predator", "fruit_eater"],
+        "behavior": ["nocturnal", "territorial"],
         "season": ["year_round"],
-        "functional_description": "Mésopredateur omnivore très adaptable. Régule les populations de rongeurs et de lapins ; consomme aussi des oiseaux, invertébrés et fruits. Présent des forêts aux milieux périurbains.",
-        "life_stages": [],
-        "region": "france"
+        "functional_description": "Red fox; highly adaptable carnivore with reddish coat and white-tipped tail. Hunts rodents and rabbits. Increasingly common in towns and gardens.",
+        "life_stages": [
+          {"icon": "🦊", "name": "Adult", "description": "Nocturnal foraging", "months": ["Jan-Dec"]},
+          {"icon": "🥚", "name": "Breeding", "description": "Cubs born in spring", "months": ["Mar", "Apr", "May"]},
+          {"icon": "🐺", "name": "Dispersal", "description": "Young leave den in summer", "months": ["Jun", "Jul"]}
+        ],
+        "region": "france",
+        "is_keystone": true,
+        "keystone_type": "predator",
+        "keystone_description": "Top carnivore controls rodent populations"
       },
       {
         "id": "mammal_sanglier",
         "common_name": "Sanglier",
         "latin_name": "Sus scrofa",
         "form": "mammal",
-        "habitat": ["forest", "woodland"],
-        "diet": ["omnivore"],
-        "behavior": ["ground_rooter", "burrowing"],
+        "habitat": ["forest", "woodland", "meadow"],
+        "diet": ["fruit_eater"],
+        "behavior": ["nocturnal", "flock_forming"],
         "season": ["year_round"],
-        "functional_description": "Fouisseur puissant qui retourne le sol en cherchant glands, faines et champignons souterrains. Le retournement de sol favorise la diversité végétale et crée des opportunités pour de nombreuses espèces.",
-        "life_stages": [],
+        "functional_description": "Wild boar; sturdy omnivore with dark coat and tusks. Forages in groups, rooting in soil. Causes significant habitat disturbance.",
+        "life_stages": [
+          {"icon": "🌰", "name": "Mast foraging", "description": "Feeds on acorns, beechnuts", "months": ["Sep", "Oct", "Nov"]},
+          {"icon": "🐗", "name": "Breeding", "description": "Rut in winter", "months": ["Dec", "Jan"]},
+          {"icon": "🐷", "name": "Piglets", "description": "Born in spring", "months": ["Mar", "Apr", "May"]}
+        ],
         "region": "france",
         "is_keystone": true,
         "keystone_type": "ecosystem_engineer",
-        "keystone_description": "Ingénieur du sol forestier. Le fouissage crée des microsites de germination, disperse les spores de champignons et maintient une mosaïque de végétation au sol."
+        "keystone_description": "Rooting and foraging disturbs soil, promoting plant diversity and redistributing seeds"
       },
       {
         "id": "mammal_chevreuil",
         "common_name": "Chevreuil",
         "latin_name": "Capreolus capreolus",
         "form": "mammal",
-        "habitat": ["forest", "woodland", "forest_edge"],
+        "habitat": ["forest", "woodland", "meadow", "forest_edge"],
         "diet": ["herbivore"],
-        "behavior": ["browser", "grazer"],
+        "behavior": ["territorial"],
         "season": ["year_round"],
-        "functional_description": "Plus petit cervidé indigène de France. Broute pousses, bourgeons et herbes, façonnant la végétation du sous-bois. Proie importante pour le lynx et le loup dans les massifs où ces prédateurs sont présents.",
-        "life_stages": [],
-        "region": "france"
+        "functional_description": "European roe deer; small, slender deer with reddish-brown coat. Males have small antlers. Browser of leaves, shoots, and herbs.",
+        "life_stages": [
+          {"icon": "🦌", "name": "Adult", "description": "Browsing on vegetation", "months": ["Jan-Dec"]},
+          {"icon": "🥚", "name": "Breeding", "description": "Rut in July-August", "months": ["Jul", "Aug"]},
+          {"icon": "🦒", "name": "Fawns", "description": "Born in spring", "months": ["May", "Jun"]}
+        ],
+        "region": "france",
+        "is_keystone": false
       },
       {
         "id": "mammal_herisson",
         "common_name": "Hérisson d'Europe",
         "latin_name": "Erinaceus europaeus",
         "form": "mammal",
-        "habitat": ["garden", "woodland", "forest_edge"],
-        "diet": ["insect_eater", "omnivore"],
-        "behavior": ["nocturnal", "hibernating"],
-        "season": ["spring", "summer", "autumn"],
-        "functional_description": "Insectivore nocturne des jardins, haies et lisières. Se nourrit de limaces, coléoptères, vers de terre et chenilles, constituant un précieux auxiliaire de jardin. Hiverne d'octobre à mars.",
-        "life_stages": [],
-        "region": "france"
+        "habitat": ["garden", "meadow", "woodland", "forest_edge"],
+        "diet": ["insect_eater"],
+        "behavior": ["nocturnal"],
+        "season": ["spring", "summer", "fall"],
+        "functional_description": "Western European hedgehog; spiny insectivore. Rolls into tight ball when threatened. Hibernates in winter. Important for garden pest control.",
+        "life_stages": [
+          {"icon": "🌙", "name": "Nocturnal foraging", "description": "Hunts invertebrates at night", "months": ["Apr", "May", "Sep", "Oct"]},
+          {"icon": "🥚", "name": "Breeding", "description": "Mating in spring", "months": ["May", "Jun"]},
+          {"icon": "😴", "name": "Hibernation", "description": "Shelters in burrows", "months": ["Nov", "Dec", "Jan", "Feb", "Mar"]}
+        ],
+        "region": "france",
+        "is_keystone": false
       },
       {
         "id": "mammal_blaireau",
         "common_name": "Blaireau européen",
         "latin_name": "Meles meles",
         "form": "mammal",
-        "habitat": ["forest", "woodland"],
+        "habitat": ["forest", "woodland", "meadow"],
         "diet": ["omnivore"],
-        "behavior": ["nocturnal", "burrowing"],
+        "behavior": ["nocturnal"],
         "season": ["year_round"],
-        "functional_description": "Mustélidé puissant qui creuse de vastes terriers aérant le sol. Son régime est constitué à 80 % de vers de terre. Les terriers abandonnés sont utilisés par renards, lapins et autres espèces.",
-        "life_stages": [],
+        "functional_description": "Eurasian badger; stout, black-and-white striped carnivore. Digs extensive burrow systems (setts). Omnivorous, eating earthworms, small mammals, fruits.",
+        "life_stages": [
+          {"icon": "🌙", "name": "Nocturnal", "description": "Active at dusk and night", "months": ["Jan-Dec"]},
+          {"icon": "🪨", "name": "Sett maintenance", "description": "Digs and cleans burrows", "months": ["Jan-Dec"]},
+          {"icon": "🥚", "name": "Breeding", "description": "Cubs born in spring", "months": ["Jan", "Feb", "Mar"]}
+        ],
         "region": "france",
         "is_keystone": true,
         "keystone_type": "ecosystem_engineer",
-        "keystone_description": "Architecte du sous-sol forestier. Les réseaux de terriers qu'il crée aèrent le sol, facilitent l'infiltration d'eau et offrent refuge à de nombreuses espèces."
+        "keystone_description": "Burrow systems provide homes for many other species; digging aerates soil"
       },
       {
         "id": "mammal_ecureuil-roux",
@@ -174,12 +227,17 @@
         "latin_name": "Sciurus vulgaris",
         "form": "mammal",
         "habitat": ["forest", "woodland"],
-        "diet": ["seed_eater", "omnivore"],
-        "behavior": ["seed_cacher"],
+        "diet": ["seed_eater", "fruit_eater"],
+        "behavior": ["territorial"],
         "season": ["year_round"],
-        "functional_description": "Écureuil indigène des forêts européennes. Cache graines et noix dont une partie germe, contribuant à la dispersion des noisettes, glands et graines de pin. Dépend de la canopée forestière mature.",
-        "life_stages": [],
-        "region": "france"
+        "functional_description": "Eurasian red squirrel; arboreal rodent with reddish coat and ear tufts. Caches seeds and nuts; caches often become trees when forgotten.",
+        "life_stages": [
+          {"icon": "🌰", "name": "Caching", "description": "Buries nuts in fall", "months": ["Aug", "Sep", "Oct"]},
+          {"icon": "🥚", "name": "Breeding", "description": "Spring and summer reproduction", "months": ["Mar", "Apr", "May", "Jun"]},
+          {"icon": "🐿️", "name": "Juvenile", "description": "Young dispersing in late summer", "months": ["Jul", "Aug"]}
+        ],
+        "region": "france",
+        "is_keystone": false
       },
       {
         "id": "tree_chene-pedoncule",
@@ -190,12 +248,16 @@
         "diet": [],
         "behavior": [],
         "season": ["year_round"],
-        "functional_description": "Arbre dominant des forêts de plaine françaises. Accueille des centaines d'espèces d'insectes, d'oiseaux nicheurs et de mammifères. Les glands constituent une ressource alimentaire critique pour sangliers, cervidés, geais et écureuils.",
-        "life_stages": [],
+        "functional_description": "Pedunculate oak; large, long-lived deciduous tree. Produces acorns on peduncles (stalks). Keystone species supporting 300+ insect species and countless vertebrates.",
+        "life_stages": [
+          {"icon": "🌱", "name": "Seedling", "description": "Grows from acorn", "months": ["May", "Jun"]},
+          {"icon": "🌳", "name": "Growth", "description": "Reaches maturity over centuries", "months": ["Jan-Dec"]},
+          {"icon": "🌰", "name": "Mast production", "description": "Produces acorns at 40+ years", "months": ["Sep", "Oct"]}
+        ],
         "region": "france",
         "is_keystone": true,
         "keystone_type": "foundation_species",
-        "keystone_description": "Espèce fondatrice des forêts de plaine. Structure l'ensemble de la communauté forestière en fournissant nourriture, cavités et habitat à des centaines d'espèces."
+        "keystone_description": "Supports 300+ insect species, produces food for wildlife, creates microhabitats"
       },
       {
         "id": "tree_hetre-commun",
@@ -206,90 +268,146 @@
         "diet": [],
         "behavior": [],
         "season": ["year_round"],
-        "functional_description": "Arbre climacique dominant de nombreuses forêts de collines françaises. Les vieux hêtres offrent des cavités aux mésanges, chouettes et chauves-souris. Les faines nourrissent cervidés, sangliers et petits mammifères en automne.",
-        "life_stages": [],
+        "functional_description": "European beech; large deciduous tree with smooth gray bark. Forms dense canopy. Produces beechnuts (mast) every 2-5 years. Shade-tolerant.",
+        "life_stages": [
+          {"icon": "🌱", "name": "Seedling", "description": "Tolerates shade", "months": ["May", "Jun"]},
+          {"icon": "🌳", "name": "Mature tree", "description": "Dominant canopy species", "months": ["Jan-Dec"]},
+          {"icon": "🌰", "name": "Mast years", "description": "Abundant nuts every few years", "months": ["Aug", "Sep"]}
+        ],
         "region": "france",
         "is_keystone": true,
         "keystone_type": "foundation_species",
-        "keystone_description": "Espèce fondatrice de la hêtraie. Les cavités des vieux hêtres sont des ressources rares et essentielles pour les espèces cavernicoles comme les mésanges, grimpereaux et chauves-souris."
+        "keystone_description": "Forms primary canopy; provides food and shelter for forest community"
       },
       {
         "id": "tree_chataignier",
         "common_name": "Châtaignier",
         "latin_name": "Castanea sativa",
         "form": "tree",
-        "habitat": ["forest", "woodland"],
+        "habitat": ["woodland", "forest"],
         "diet": [],
         "behavior": [],
         "season": ["year_round"],
-        "functional_description": "Arbre longtemps cultivé et aujourd'hui naturalisé dans de nombreuses forêts françaises. Les châtaignes fournissent une abondante ressource en automne pour sangliers, cervidés, geais et loirs.",
-        "life_stages": [],
-        "region": "france"
+        "functional_description": "Sweet chestnut; large deciduous tree. Produces edible chestnuts in spiky husks. Masting every 2-3 years provides abundant food for wildlife.",
+        "life_stages": [
+          {"icon": "🌱", "name": "Growth", "description": "Fast-growing tree", "months": ["Jan-Dec"]},
+          {"icon": "🌳", "name": "Flowering", "description": "Fragrant catkins in summer", "months": ["Jun", "Jul"]},
+          {"icon": "🌰", "name": "Fruiting", "description": "Abundant chestnuts", "months": ["Aug", "Sep", "Oct"]}
+        ],
+        "region": "france",
+        "is_keystone": true,
+        "keystone_type": "foundation_species",
+        "keystone_description": "Produces abundant mast; supports wildlife through winter"
       },
       {
         "id": "plant_sureau-noir",
         "common_name": "Sureau noir",
         "latin_name": "Sambucus nigra",
-        "form": "shrub",
-        "habitat": ["forest_edge", "garden", "woodland"],
+        "form": "plant",
+        "habitat": ["woodland", "forest_edge", "garden"],
         "diet": [],
         "behavior": [],
-        "season": ["spring", "summer", "autumn"],
-        "functional_description": "Arbuste à croissance rapide des lisières et terrains perturbés. Fleurs attractives pour pollinisateurs ; baies noires nourrissant merles, grives et petits mammifères en fin d'été.",
-        "life_stages": [],
-        "region": "france"
+        "season": ["spring", "summer", "fall"],
+        "functional_description": "European elder; shrub with white flower clusters (umbels) and black berries. Berries important for birds. Used medicinally and in food.",
+        "life_stages": [
+          {"icon": "🌸", "name": "Flowering", "description": "White fragrant flowers", "months": ["May", "Jun"]},
+          {"icon": "🫐", "name": "Fruiting", "description": "Black berries ripen", "months": ["Aug", "Sep"]},
+          {"icon": "🍂", "name": "Dormancy", "description": "Deciduous; loses leaves", "months": ["Nov", "Dec", "Jan", "Feb"]}
+        ],
+        "region": "france",
+        "is_keystone": false
       },
       {
         "id": "plant_lierre-grimpant",
         "common_name": "Lierre grimpant",
         "latin_name": "Hedera helix",
         "form": "plant",
-        "habitat": ["forest", "woodland", "garden"],
+        "habitat": ["forest", "woodland", "garden", "forest_edge"],
         "diet": [],
         "behavior": [],
         "season": ["year_round"],
-        "functional_description": "Grimpante sempervirente qui fleurit en automne quand peu d'autres plantes sont en fleurs, offrant nectar tardif aux abeilles, syrphes et guêpes. Les baies d'hiver nourrissent pigeons et grives.",
-        "life_stages": [],
-        "region": "france"
+        "functional_description": "Common ivy; evergreen climbing plant. Flowers late (fall) providing nectar and pollen when few other plants are available. Berries food for winter birds.",
+        "life_stages": [
+          {"icon": "🌿", "name": "Vegetative growth", "description": "Climbing year-round", "months": ["Jan-Dec"]},
+          {"icon": "🌼", "name": "Flowering", "description": "Late flowering critical for pollinators", "months": ["Sep", "Oct"]},
+          {"icon": "🫐", "name": "Fruiting", "description": "Black berries in winter", "months": ["Nov", "Dec", "Jan"]}
+        ],
+        "region": "france",
+        "is_keystone": false
       },
       {
         "id": "plant_ortie",
         "common_name": "Grande ortie",
         "latin_name": "Urtica dioica",
         "form": "plant",
-        "habitat": ["forest_edge", "garden", "meadow"],
+        "habitat": ["meadow", "field", "forest_edge", "garden"],
+        "diet": [],
+        "behavior": [],
+        "season": ["spring", "summer", "fall"],
+        "functional_description": "Stinging nettle; herbaceous plant with stinging hairs. Host plant for butterfly larvae. High in nutrients; used in herbal medicine.",
+        "life_stages": [
+          {"icon": "🌱", "name": "Growth", "description": "Rapid growth from rhizomes", "months": ["Apr", "May"]},
+          {"icon": "🌸", "name": "Flowering", "description": "Inconspicuous green flowers", "months": ["Jun", "Jul", "Aug"]},
+          {"icon": "🍂", "name": "Seeding", "description": "Abundant seeds and rhizome spread", "months": ["Aug", "Sep"]}
+        ],
+        "region": "france",
+        "is_keystone": false,
+        "common_traits": "Nutrient accumulator, nitrogen fixer indicator, butterfly host plant"
+      },
+      {
+        "id": "plant_carotte-sauvage",
+        "common_name": "Carotte sauvage",
+        "latin_name": "Daucus carota",
+        "form": "plant",
+        "habitat": ["field", "meadow", "forest_edge"],
         "diet": [],
         "behavior": [],
         "season": ["spring", "summer"],
-        "functional_description": "Plante hôte larvaire de nombreux papillons dont le Paon du jour, le Vulcain et la Petite Tortue. Indicatrice de sol riche en azote. Plante pionnière qui favorise la biodiversité des lisières.",
-        "life_stages": [],
-        "region": "france"
+        "functional_description": "Wild carrot; biennial herb with white umbrella-shaped flower clusters (umbels). Host plant for swallowtail butterfly larvae.",
+        "life_stages": [
+          {"icon": "🌱", "name": "Seedling", "description": "First-year rosette", "months": ["Apr", "May", "Jun"]},
+          {"icon": "🌸", "name": "Flowering", "description": "Delicate white flowers", "months": ["Jun", "Jul", "Aug"]},
+          {"icon": "🌾", "name": "Seeding", "description": "Seeds develop in 'birds nest' form", "months": ["Aug", "Sep"]}
+        ],
+        "region": "france",
+        "is_keystone": false
       },
       {
         "id": "butterfly_paon-du-jour",
         "common_name": "Paon du jour",
-        "latin_name": "Aglais io",
+        "latin_name": "Inachis io",
         "form": "butterfly",
-        "habitat": ["garden", "meadow", "forest_edge"],
-        "diet": ["nectar"],
-        "behavior": ["hibernating"],
-        "season": ["spring", "summer", "autumn"],
-        "functional_description": "Papillon aux ailes ornées d'ocelles en forme d'yeux. Les chenilles se nourrissent exclusivement d'orties. Les adultes sont pollinisateurs importants des plantes à fleurs sauvages et cultivées.",
-        "life_stages": [],
-        "region": "france"
+        "habitat": ["meadow", "field", "garden", "forest_edge"],
+        "diet": ["nectar_feeder"],
+        "behavior": [],
+        "season": ["spring", "summer", "fall"],
+        "functional_description": "Peacock butterfly; striking butterfly with large eyespots on wings. Overwinters as adult. Host plant: stinging nettle.",
+        "life_stages": [
+          {"icon": "🥚", "name": "Egg", "description": "Laid on nettle leaves", "months": ["May", "Jun"]},
+          {"icon": "🐛", "name": "Larva", "description": "Black spiky caterpillar on nettles", "months": ["May", "Jun", "Jul", "Aug"]},
+          {"icon": "🦋", "name": "Adult", "description": "Feeding on nectar and fermenting fruit", "months": ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct"]}
+        ],
+        "region": "france",
+        "is_keystone": false
       },
       {
         "id": "butterfly_vulcain",
         "common_name": "Vulcain",
         "latin_name": "Vanessa atalanta",
         "form": "butterfly",
-        "habitat": ["garden", "meadow", "forest_edge"],
-        "diet": ["nectar"],
+        "habitat": ["meadow", "field", "garden"],
+        "diet": ["nectar_feeder"],
         "behavior": ["migratory"],
-        "season": ["spring", "summer", "autumn"],
-        "functional_description": "Papillon migrateur se reproduisant sur les orties. Adultes butinant fleurs et fruits en décomposition. Visiteur régulier des jardins et pollinisateur généraliste.",
-        "life_stages": [],
-        "region": "france"
+        "season": ["spring", "summer", "fall"],
+        "functional_description": "Red admiral; migratory butterfly with red and black wings. Two generations per year. Host plants: various nettles.",
+        "life_stages": [
+          {"icon": "✈️", "name": "Migration", "description": "Spring arrival from Mediterranean", "months": ["Apr", "May"]},
+          {"icon": "🥚", "name": "Egg", "description": "Laid on nettle host plants", "months": ["May", "Jun"]},
+          {"icon": "🐛", "name": "Larva", "description": "Spiny caterpillar on nettles", "months": ["May", "Jun", "Jul", "Aug"]},
+          {"icon": "🦋", "name": "Adult", "description": "Two broods per season", "months": ["May", "Jun", "Jul", "Aug", "Sep", "Oct"]}
+        ],
+        "region": "france",
+        "is_keystone": false
       },
       {
         "id": "butterfly_citron",
@@ -297,153 +415,224 @@
         "latin_name": "Gonepteryx rhamni",
         "form": "butterfly",
         "habitat": ["woodland", "forest_edge", "garden"],
-        "diet": ["nectar"],
-        "behavior": ["hibernating"],
-        "season": ["spring", "summer", "autumn"],
-        "functional_description": "Papillon longévif qui hiberne à l'état adulte. L'un des premiers à s'observer au printemps. Les chenilles se nourrissent de bourdaine et nerprun ; les adultes pollinisent dès les premières fleurs de printemps.",
-        "life_stages": [],
-        "region": "france"
+        "diet": ["nectar_feeder"],
+        "behavior": [],
+        "season": ["spring", "summer", "fall"],
+        "functional_description": "Brimstone butterfly; bright yellow wings (males) or pale greenish (females). Overwinters as adult. Host plant: buckthorn.",
+        "life_stages": [
+          {"icon": "🥚", "name": "Egg", "description": "Laid on buckthorn", "months": ["May", "Jun"]},
+          {"icon": "🐛", "name": "Larva", "description": "Green caterpillar on Rhamnus leaves", "months": ["Jun", "Jul", "Aug"]},
+          {"icon": "🦋", "name": "Adult (summer)", "description": "Flying in warm months", "months": ["Jul", "Aug"]},
+          {"icon": "😴", "name": "Hibernation", "description": "Overwinters as adult, emerges in early spring", "months": ["Sep", "Oct", "Nov", "Dec", "Jan", "Feb", "Mar"]}
+        ],
+        "region": "france",
+        "is_keystone": false
       },
       {
         "id": "butterfly_machaon",
         "common_name": "Machaon",
         "latin_name": "Papilio machaon",
         "form": "butterfly",
-        "habitat": ["meadow", "field"],
-        "diet": ["nectar"],
-        "behavior": ["migratory"],
-        "season": ["spring", "summer"],
-        "functional_description": "Plus grand papillon de France, aux ailes jaunes tachetées de noir. Les chenilles se nourrissent de plantes de la famille des Apiacées, notamment la carotte sauvage. Important pollinisateur des prairies fleuries.",
-        "life_stages": [],
-        "region": "france"
-      },
-      {
-        "id": "invertebrate_lombric",
-        "common_name": "Ver de terre commun",
-        "latin_name": "Lumbricus terrestris",
-        "form": "invertebrate",
-        "habitat": ["forest", "woodland", "garden", "meadow"],
-        "diet": ["decomposer"],
-        "behavior": ["burrowing"],
-        "season": ["year_round"],
-        "functional_description": "Ingénieur fondamental du sol qui aère, draine et fertilise la terre en transformant la matière organique. Source alimentaire primaire du rougegorge, du blaireau, du hérisson, de la bécasse et de nombreux oiseaux.",
-        "life_stages": [],
-        "region": "france",
-        "is_keystone": true,
-        "keystone_type": "ecosystem_engineer",
-        "keystone_description": "Ingénieur des sols essentiels. Les galeries creusées améliorent la structure du sol, l'infiltration de l'eau et la disponibilité des nutriments pour les plantes."
-      },
-      {
-        "id": "plant_carotte-sauvage",
-        "common_name": "Carotte sauvage",
-        "latin_name": "Daucus carota",
-        "form": "plant",
-        "habitat": ["meadow", "field"],
-        "diet": [],
+        "habitat": ["field", "meadow", "forest_edge"],
+        "diet": ["nectar_feeder"],
         "behavior": [],
         "season": ["spring", "summer"],
-        "functional_description": "Fleur sauvage commune des prairies et bords de routes. Plante hôte larvaire du Machaon. Les fleurs en ombelle blanches attirent une grande diversité de pollinisateurs et de syrphes.",
-        "life_stages": [],
-        "region": "france"
+        "functional_description": "Old world swallowtail; large butterfly with yellow, black, and blue wings. Two generations per year. Host plant: wild carrot, fennel.",
+        "life_stages": [
+          {"icon": "🥚", "name": "Egg", "description": "Laid on wild carrot and fennel", "months": ["May", "Jun", "Aug"]},
+          {"icon": "🐛", "name": "Larva", "description": "Colorful caterpillar with osmeterium (scent gland)", "months": ["May", "Jun", "Jul", "Aug", "Sep"]},
+          {"icon": "🦋", "name": "Adult (spring)", "description": "Flying in warm months", "months": ["May", "Jun", "Jul", "Aug", "Sep"]}
+        ],
+        "region": "france",
+        "is_keystone": false
       }
     ],
-    "taxonomic_groups": [],
+    "taxonomic_groups": [
+      {
+        "id": "group_passeriformes",
+        "common_name": "Passerines (songbirds)",
+        "form": "bird",
+        "habitat": ["forest", "woodland", "garden"],
+        "diet": ["insect_eater"],
+        "behavior": ["territorial"],
+        "season": ["year_round"],
+        "functional_description": "Order of perching birds and songbirds. Includes thrushes, warblers, tits, corvids. Most diverse bird group in France.",
+        "life_stages": [
+          {"icon": "🥚", "name": "Egg", "description": "Varies by species", "months": ["Apr", "May", "Jun"]},
+          {"icon": "🐤", "name": "Nestling", "description": "Fledges in weeks", "months": ["May", "Jun", "Jul"]},
+          {"icon": "🐦", "name": "Adult", "description": "Territorial and vocal", "months": ["Jan-Dec"]}
+        ],
+        "region": "france",
+        "taxonomic_group": "Passeriformes",
+        "is_group": true
+      },
+      {
+        "id": "group_rapaces",
+        "common_name": "Raptors (birds of prey)",
+        "form": "bird",
+        "habitat": ["forest", "field", "meadow"],
+        "diet": ["predator"],
+        "behavior": ["soaring", "predator"],
+        "season": ["year_round"],
+        "functional_description": "Birds of prey including falcons, hawks, eagles. Apex predators controlling small animal populations.",
+        "life_stages": [
+          {"icon": "🪶", "name": "Hunting", "description": "Active predation", "months": ["Jan-Dec"]},
+          {"icon": "🥚", "name": "Breeding", "description": "Spring nesting", "months": ["Mar", "Apr", "May", "Jun"]},
+          {"icon": "🐦", "name": "Adult", "description": "Territorial displays", "months": ["Jan-Dec"]}
+        ],
+        "region": "france",
+        "taxonomic_group": "Aves",
+        "is_group": true
+      },
+      {
+        "id": "group_mammalia_carnivora",
+        "common_name": "Carnivores (mammals)",
+        "form": "mammal",
+        "habitat": ["forest", "woodland", "meadow"],
+        "diet": ["predator"],
+        "behavior": ["nocturnal"],
+        "season": ["year_round"],
+        "functional_description": "Predatory mammals including foxes, badgers, cats. Control herbivore and rodent populations.",
+        "life_stages": [
+          {"icon": "🌙", "name": "Nocturnal hunting", "description": "Foraging at night", "months": ["Jan-Dec"]},
+          {"icon": "🥚", "name": "Breeding", "description": "Spring births", "months": ["Feb", "Mar", "Apr", "May"]},
+          {"icon": "🐺", "name": "Dispersal", "description": "Young leaving parents", "months": ["Jul", "Aug"]}
+        ],
+        "region": "france",
+        "taxonomic_group": "Carnivora",
+        "is_group": true
+      },
+      {
+        "id": "group_lepidoptera",
+        "common_name": "Butterflies and moths",
+        "form": "butterfly",
+        "habitat": ["meadow", "field", "garden"],
+        "diet": ["nectar_feeder"],
+        "behavior": [],
+        "season": ["spring", "summer", "fall"],
+        "functional_description": "Winged insects with scaled wings. Important pollinators and prey for birds. Many species show migratory behavior.",
+        "life_stages": [
+          {"icon": "🥚", "name": "Egg", "description": "Laid on host plants", "months": ["Apr", "May", "Jun", "Aug"]},
+          {"icon": "🐛", "name": "Larva", "description": "Caterpillar feeding on plants", "months": ["May", "Jun", "Jul", "Aug"]},
+          {"icon": "🦋", "name": "Adult", "description": "Pollinating and feeding", "months": ["May", "Jun", "Jul", "Aug", "Sep"]}
+        ],
+        "region": "france",
+        "taxonomic_group": "Lepidoptera",
+        "is_group": true
+      }
+    ],
     "symbiosis": [
       {
         "type": "mutualism",
         "source": "bird_geai-des-chenes",
-        "targets": ["tree_chene-pedoncule"],
+        "targets": ["tree_chene-pedoncule", "tree_chataignier"],
         "strength": "critical",
-        "notes": "Le geai cache des milliers de glands chaque automne pour les consommer en hiver. Une partie est oubliée et germe, en faisant le principal agent de régénération et d'expansion des chênaies."
+        "notes": "Jays cache acorns and chestnuts; many caches left unharvested grow into trees. Critical for forest regeneration across Europe."
       },
       {
         "type": "predation",
         "source": "mammal_renard-roux",
-        "targets": ["mammal_herisson", "bird_rouge-gorge"],
-        "fulfillment": "any",
+        "targets": ["mammal_herisson"],
         "strength": "important",
-        "notes": "Prédation opportuniste : le renard peut capturer hérissons vulnérables (jeunes, malades) et rougegorges au sol. Les populations restent globalement stables grâce à la diversité du régime alimentaire du renard."
+        "notes": "Foxes opportunistically hunt hedgehogs, especially vulnerable young. Part of natural population control."
       },
       {
         "type": "predation",
+        "source": "bird_faucon-crecerelle",
+        "targets": ["mammal_herisson"],
+        "strength": "incidental",
+        "notes": "Kestrels hunt small mammals and occasionally young hedgehogs or shrews."
+      },
+      {
+        "type": "mutualism",
         "source": "bird_rouge-gorge",
-        "targets": ["invertebrate_lombric"],
-        "strength": "critical",
-        "notes": "Les vers de terre constituent la principale source de protéines du rougegorge, surtout en automne et hiver. Il suit souvent les fouisseurs (bêchage, sangliers) pour profiter des vers exposés."
+        "targets": ["tree_chene-pedoncule", "plant_sureau-noir"],
+        "strength": "important",
+        "notes": "Robins feed on insects and berries from trees; disperse seeds of elderberry."
       },
       {
         "type": "mutualism",
         "source": "butterfly_machaon",
         "targets": ["plant_carotte-sauvage"],
-        "strength": "important",
-        "notes": "Les chenilles du machaon se nourrissent des feuilles de carotte sauvage (et autres Apiacées). En butinant les fleurs, les adultes assurent la pollinisation croisée de la plante."
+        "fulfillment": "all",
+        "strength": "critical",
+        "notes": "Swallowtail caterpillars depend exclusively on wild carrot and related plants. Adults pollinate wildflowers."
       },
       {
-        "type": "predation",
-        "source": "mammal_sanglier",
-        "targets": ["tree_chataignier", "tree_chene-pedoncule"],
-        "fulfillment": "any",
+        "type": "parasitism",
+        "source": "bird_coucou-gris",
+        "targets": ["bird_rouge-gorge"],
         "strength": "important",
-        "notes": "Le sanglier consomme massivement glands et châtaignes en saison de mast (automne). En fouissant le sol à la recherche des fruits enfouis, il redistribue graines et spores fongiques."
+        "notes": "Cuckoos lay eggs in robin nests; robins unknowingly raise cuckoo chicks, often at expense of own offspring."
+      },
+      {
+        "type": "mutualism",
+        "source": "mammal_sanglier",
+        "targets": ["tree_chene-pedoncule", "tree_hetre-commun"],
+        "strength": "important",
+        "notes": "Boars root in soil, searching for mast. Rooting disturbs soil, disperses seeds, creates habitat for plants."
       },
       {
         "type": "mutualism",
         "source": "mammal_blaireau",
-        "targets": ["invertebrate_lombric"],
-        "strength": "important",
-        "notes": "Le blaireau tire plus de 80 % de sa nourriture des vers de terre. Son activité de fouissage retourne le sol, créant les conditions favorables à la prolifération des lombrics dont il dépend."
+        "targets": ["mammal_renard-roux", "bird_pic-vert"],
+        "strength": "incidental",
+        "notes": "Badgers and foxes may use same sett systems over generations. Pic vert cavities used by badgers for resting."
       },
       {
         "type": "commensalism",
-        "source": "bird_mesange-charbonniere",
-        "targets": ["tree_hetre-commun"],
-        "strength": "important",
-        "notes": "La mésange charbonnière niche préférentiellement dans les cavités des vieux hêtres. Elle bénéficie de l'arbre comme site de nidification sans lui causer de dommage notable."
+        "source": "mammal_ecureuil-roux",
+        "targets": ["tree_chataignier"],
+        "strength": "incidental",
+        "notes": "Squirrels cache chestnuts; forgotten caches become trees, benefiting forest structure."
       },
       {
         "type": "mutualism",
         "source": "butterfly_paon-du-jour",
         "targets": ["plant_ortie"],
         "strength": "critical",
-        "notes": "Les chenilles du paon du jour se nourrissent exclusivement d'ortie. La relation est critique pour le papillon mais la plante bénéficie indirectement de la pollinisation apportée par les adultes."
+        "notes": "Peacock caterpillars depend on stinging nettles as host plant. Adults pollinate early spring flowers."
       },
       {
-        "type": "mutualism",
-        "source": "butterfly_vulcain",
-        "targets": ["plant_ortie"],
-        "strength": "critical",
-        "notes": "L'ortie est la seule plante hôte larvaire du vulcain en France. Sans orties, la reproduction est impossible ; les adultes pollinisent en retour de nombreuses fleurs sauvages."
-      },
-      {
-        "type": "mutualism",
-        "source": "mammal_ecureuil-roux",
-        "targets": ["tree_chene-pedoncule"],
-        "strength": "important",
-        "notes": "L'écureuil cache des glands pour les consommer plus tard. Un pourcentage significatif n'est pas retrouvé et germe, contribuant avec le geai à la dispersion et la régénération de la chênaie."
-      },
-      {
-        "type": "mutualism",
+        "type": "predation",
         "source": "bird_pic-vert",
-        "targets": ["tree_hetre-commun"],
+        "targets": ["tree_chene-pedoncule"],
+        "strength": "incidental",
+        "notes": "Woodpeckers excavate cavities in oak trees, creating homes for many species."
+      },
+      {
+        "type": "mutualism",
+        "source": "mammal_chevreuil",
+        "targets": ["plant_sureau-noir"],
         "strength": "important",
-        "notes": "Le pic vert creuse ses cavités de nidification dans les vieux hêtres affaiblis ou morts. Les loges abandonnées sont ensuite colonisées par des mésanges, chauves-souris et autres cavernicoles."
+        "notes": "Roe deer browse on elderberry, dispersing seeds through droppings."
       }
     ],
     "relations": [
       {
-        "type": "related",
-        "members": ["tree_chene-pedoncule", "tree_hetre-commun", "tree_chataignier"],
-        "notes": "Les trois principaux arbres forestiers de la zone tempérée française, formant ensemble la structure des forêts caducifoliées."
+        "type": "taxonomic_group",
+        "members": ["bird_rouge-gorge", "bird_mesange-charbonniere", "bird_pic-vert", "bird_geai-des-chenes", "bird_coucou-gris"],
+        "notes": "French songbirds and woodpeckers common in European woodlands"
       },
       {
-        "type": "related",
-        "members": ["butterfly_paon-du-jour", "butterfly_vulcain", "butterfly_citron", "butterfly_machaon"],
-        "notes": "Les quatre espèces de papillons représentatives des prairies et lisières de France tempérée."
+        "type": "habitat_association",
+        "members": ["tree_chene-pedoncule", "tree_hetre-commun", "bird_geai-des-chenes", "mammal_sanglier", "mammal_ecureuil-roux"],
+        "notes": "Beech and oak forest community — foundation species and their associates"
       },
       {
-        "type": "related",
-        "members": ["plant_ortie", "butterfly_paon-du-jour", "butterfly_vulcain"],
-        "notes": "Complexe ortie-papillons : l'ortie est plante hôte indispensable pour les deux espèces de nymphalidés."
+        "type": "food_web",
+        "members": ["plant_ortie", "plant_carotte-sauvage", "butterfly_paon-du-jour", "butterfly_machaon", "bird_rouge-gorge"],
+        "notes": "Herbaceous plant → insect → bird food chain in meadows and field edges"
+      },
+      {
+        "type": "predator_prey",
+        "members": ["mammal_renard-roux", "mammal_herisson", "mammal_chevreuil"],
+        "notes": "Fox predation networks in mixed woodlands"
+      },
+      {
+        "type": "cavity_users",
+        "members": ["bird_pic-vert", "bird_mesange-charbonniere", "mammal_blaireau", "mammal_ecureuil-roux"],
+        "notes": "Species dependent on cavities for nesting and shelter"
       }
     ]
   }
