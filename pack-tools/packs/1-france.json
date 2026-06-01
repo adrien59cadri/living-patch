@@ -11,7 +11,7 @@
   "data": {
     "species": [
       {
-        "id": "bird_rouge-gorge",
+        "id": "bird_european-robin",
         "common_name": {
           "en": "European Robin",
           "fr": "Rougegorge familier"
@@ -42,7 +42,7 @@
         }
       },
       {
-        "id": "bird_mesange-charbonniere",
+        "id": "bird_great-tit",
         "common_name": {
           "en": "Great Tit",
           "fr": "Mésange charbonnière"
@@ -74,7 +74,7 @@
         }
       },
       {
-        "id": "bird_pic-vert",
+        "id": "bird_european-green-woodpecker",
         "common_name": {
           "en": "European Green Woodpecker",
           "fr": "Pic vert"
@@ -108,7 +108,7 @@
         }
       },
       {
-        "id": "bird_geai-des-chenes",
+        "id": "bird_eurasian-jay",
         "common_name": {
           "en": "Eurasian Jay",
           "fr": "Geai des chênes"
@@ -140,7 +140,7 @@
         }
       },
       {
-        "id": "bird_coucou-gris",
+        "id": "bird_common-cuckoo",
         "common_name": {
           "en": "Common Cuckoo",
           "fr": "Coucou gris"
@@ -171,7 +171,7 @@
         }
       },
       {
-        "id": "bird_faucon-crecerelle",
+        "id": "bird_common-kestrel",
         "common_name": {
           "en": "Common Kestrel",
           "fr": "Faucon crécerelle"
@@ -205,40 +205,7 @@
         }
       },
       {
-        "id": "mammal_renard-roux",
-        "common_name": {
-          "en": "Red Fox",
-          "fr": "Renard roux"
-        },
-        "latin_name": "Vulpes vulpes",
-        "form": "mammal",
-        "habitat": [
-          "forest",
-          "field",
-          "forest_edge",
-          "woodland"
-        ],
-        "diet": [
-          "predator",
-          "omnivore"
-        ],
-        "behavior": [
-          "nocturnal",
-          "burrowing"
-        ],
-        "season": [
-          "year_round"
-        ],
-        "functional_description": "Highly adaptable omnivorous mesopredator. Regulates rodent and rabbit populations; also takes birds, invertebrates, and fruit. Present from forests to peri-urban environments.",
-        "life_stages": [],
-        "region": "france",
-        "image": {
-          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Portrait_of_a_red_fox_in_Rautas_fj%C3%A4llurskog_%28cropped%29.jpg/960px-Portrait_of_a_red_fox_in_Rautas_fj%C3%A4llurskog_%28cropped%29.jpg",
-          "author": "ClaudiaTen"
-        }
-      },
-      {
-        "id": "mammal_sanglier",
+        "id": "mammal_wild-boar",
         "common_name": {
           "en": "Wild Boar",
           "fr": "Sanglier"
@@ -271,7 +238,7 @@
         }
       },
       {
-        "id": "mammal_chevreuil",
+        "id": "mammal_roe-deer",
         "common_name": {
           "en": "Roe Deer",
           "fr": "Chevreuil"
@@ -302,7 +269,7 @@
         }
       },
       {
-        "id": "mammal_herisson",
+        "id": "mammal_european-hedgehog",
         "common_name": {
           "en": "European Hedgehog",
           "fr": "Hérisson d'Europe"
@@ -336,7 +303,7 @@
         }
       },
       {
-        "id": "mammal_blaireau",
+        "id": "mammal_european-badger",
         "common_name": {
           "en": "European Badger",
           "fr": "Blaireau européen"
@@ -369,7 +336,7 @@
         }
       },
       {
-        "id": "mammal_ecureuil-roux",
+        "id": "mammal_eurasian-red-squirrel",
         "common_name": {
           "en": "Eurasian Red Squirrel",
           "fr": "Écureuil roux"
@@ -399,7 +366,7 @@
         }
       },
       {
-        "id": "tree_chene-pedoncule",
+        "id": "tree_pedunculate-oak",
         "common_name": {
           "en": "Pedunculate Oak",
           "fr": "Chêne pédonculé"
@@ -427,7 +394,7 @@
         }
       },
       {
-        "id": "tree_hetre-commun",
+        "id": "tree_european-beech",
         "common_name": {
           "en": "European Beech",
           "fr": "Hêtre commun"
@@ -455,7 +422,7 @@
         }
       },
       {
-        "id": "tree_chataignier",
+        "id": "tree_sweet-chestnut",
         "common_name": {
           "en": "Sweet Chestnut",
           "fr": "Châtaignier"
@@ -480,7 +447,7 @@
         }
       },
       {
-        "id": "plant_sureau-noir",
+        "id": "plant_elderberry",
         "common_name": {
           "en": "Elderberry",
           "fr": "Sureau noir"
@@ -508,7 +475,7 @@
         }
       },
       {
-        "id": "plant_lierre-grimpant",
+        "id": "plant_common-ivy",
         "common_name": {
           "en": "Common Ivy",
           "fr": "Lierre grimpant"
@@ -534,7 +501,7 @@
         }
       },
       {
-        "id": "plant_ortie",
+        "id": "plant_stinging-nettle",
         "common_name": {
           "en": "Stinging Nettle",
           "fr": "Grande ortie"
@@ -561,7 +528,7 @@
         }
       },
       {
-        "id": "butterfly_paon-du-jour",
+        "id": "butterfly_european-peacock",
         "common_name": {
           "en": "European Peacock",
           "fr": "Paon du jour"
@@ -593,7 +560,7 @@
         }
       },
       {
-        "id": "butterfly_vulcain",
+        "id": "butterfly_red-admiral",
         "common_name": {
           "en": "Red Admiral",
           "fr": "Vulcain"
@@ -625,7 +592,7 @@
         }
       },
       {
-        "id": "butterfly_citron",
+        "id": "butterfly_brimstone",
         "common_name": {
           "en": "Brimstone",
           "fr": "Citron"
@@ -657,7 +624,7 @@
         }
       },
       {
-        "id": "butterfly_machaon",
+        "id": "butterfly_old-world-swallowtail",
         "common_name": {
           "en": "Old World Swallowtail",
           "fr": "Machaon"
@@ -687,7 +654,7 @@
         }
       },
       {
-        "id": "invertebrate_lombric",
+        "id": "invertebrate_common-earthworm",
         "common_name": {
           "en": "Common Earthworm",
           "fr": "Ver de terre commun"
@@ -721,7 +688,7 @@
         }
       },
       {
-        "id": "plant_carotte-sauvage",
+        "id": "plant_wild-carrot",
         "common_name": {
           "en": "Wild Carrot",
           "fr": "Carotte sauvage"
@@ -751,48 +718,37 @@
     "symbiosis": [
       {
         "type": "mutualism",
-        "source": "bird_geai-des-chenes",
+        "source": "bird_eurasian-jay",
         "targets": [
-          "tree_chene-pedoncule"
+          "tree_pedunculate-oak"
         ],
         "strength": "critical",
         "notes": "The jay caches thousands of acorns each autumn to consume over winter. A portion is forgotten and germinates, making it the primary agent of oak forest regeneration and range expansion."
       },
       {
         "type": "predation",
-        "source": "mammal_renard-roux",
+        "source": "bird_european-robin",
         "targets": [
-          "mammal_herisson",
-          "bird_rouge-gorge"
-        ],
-        "fulfillment": "any",
-        "strength": "important",
-        "notes": "Opportunistic predation: the fox can take vulnerable hedgehogs (young, sick) and ground-foraging robins. Overall populations remain stable thanks to the fox's diverse diet."
-      },
-      {
-        "type": "predation",
-        "source": "bird_rouge-gorge",
-        "targets": [
-          "invertebrate_lombric"
+          "invertebrate_common-earthworm"
         ],
         "strength": "critical",
         "notes": "Earthworms are the robin's primary protein source, especially in autumn and winter. It regularly follows diggers — gardeners and wild boar — to pick up exposed worms."
       },
       {
         "type": "mutualism",
-        "source": "butterfly_machaon",
+        "source": "butterfly_old-world-swallowtail",
         "targets": [
-          "plant_carotte-sauvage"
+          "plant_wild-carrot"
         ],
         "strength": "important",
         "notes": "Old World Swallowtail caterpillars feed on wild carrot leaves (and other Apiaceae). Adults pollinate the flowers when nectaring, providing cross-pollination for the plant."
       },
       {
         "type": "predation",
-        "source": "mammal_sanglier",
+        "source": "mammal_wild-boar",
         "targets": [
-          "tree_chataignier",
-          "tree_chene-pedoncule"
+          "tree_sweet-chestnut",
+          "tree_pedunculate-oak"
         ],
         "fulfillment": "any",
         "strength": "important",
@@ -800,54 +756,54 @@
       },
       {
         "type": "mutualism",
-        "source": "mammal_blaireau",
+        "source": "mammal_european-badger",
         "targets": [
-          "invertebrate_lombric"
+          "invertebrate_common-earthworm"
         ],
         "strength": "important",
         "notes": "The badger derives more than 80% of its food from earthworms. Its digging activity turns over the soil, creating favourable conditions for earthworm proliferation."
       },
       {
         "type": "commensalism",
-        "source": "bird_mesange-charbonniere",
+        "source": "bird_great-tit",
         "targets": [
-          "tree_hetre-commun"
+          "tree_european-beech"
         ],
         "strength": "important",
         "notes": "The great tit preferentially nests in old beech cavities. It benefits from the tree as a nesting site without causing any notable damage."
       },
       {
         "type": "mutualism",
-        "source": "butterfly_paon-du-jour",
+        "source": "butterfly_european-peacock",
         "targets": [
-          "plant_ortie"
+          "plant_stinging-nettle"
         ],
         "strength": "critical",
         "notes": "European Peacock caterpillars feed exclusively on stinging nettle. The relationship is critical for the butterfly; the plant benefits indirectly through pollination by the adults."
       },
       {
         "type": "mutualism",
-        "source": "butterfly_vulcain",
+        "source": "butterfly_red-admiral",
         "targets": [
-          "plant_ortie"
+          "plant_stinging-nettle"
         ],
         "strength": "critical",
         "notes": "Stinging nettle is the Red Admiral's only larval host plant in France. Without nettles reproduction is impossible; adults in turn pollinate many wildflowers."
       },
       {
         "type": "mutualism",
-        "source": "mammal_ecureuil-roux",
+        "source": "mammal_eurasian-red-squirrel",
         "targets": [
-          "tree_chene-pedoncule"
+          "tree_pedunculate-oak"
         ],
         "strength": "important",
         "notes": "The squirrel caches acorns for later consumption. A significant percentage is never retrieved and germinates, contributing alongside the jay to oak dispersal and forest regeneration."
       },
       {
         "type": "mutualism",
-        "source": "bird_pic-vert",
+        "source": "bird_european-green-woodpecker",
         "targets": [
-          "tree_hetre-commun"
+          "tree_european-beech"
         ],
         "strength": "important",
         "notes": "The green woodpecker excavates its nesting cavities in weakened or dead old beeches. Abandoned holes are subsequently colonised by tits, bats, and other cavity-nesting species."
@@ -857,28 +813,28 @@
       {
         "type": "related",
         "members": [
-          "tree_chene-pedoncule",
-          "tree_hetre-commun",
-          "tree_chataignier"
+          "tree_pedunculate-oak",
+          "tree_european-beech",
+          "tree_sweet-chestnut"
         ],
         "notes": "The three principal forest trees of the French temperate zone, together forming the structure of deciduous woodland."
       },
       {
         "type": "related",
         "members": [
-          "butterfly_paon-du-jour",
-          "butterfly_vulcain",
-          "butterfly_citron",
-          "butterfly_machaon"
+          "butterfly_european-peacock",
+          "butterfly_red-admiral",
+          "butterfly_brimstone",
+          "butterfly_old-world-swallowtail"
         ],
         "notes": "Four butterfly species representative of temperate French meadows and woodland edges."
       },
       {
         "type": "related",
         "members": [
-          "plant_ortie",
-          "butterfly_paon-du-jour",
-          "butterfly_vulcain"
+          "plant_stinging-nettle",
+          "butterfly_european-peacock",
+          "butterfly_red-admiral"
         ],
         "notes": "Nettle-butterfly complex: stinging nettle is the essential larval host plant for both nymphalid species."
       }
