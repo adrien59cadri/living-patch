@@ -35,8 +35,8 @@ test.describe('Area filtering (Item 11)', () => {
     await franceChip.click();
     await page.waitForTimeout(400);
 
-    // French species should be visible (e.g., Rougegorge familier)
-    await expect(page.getByText('Rougegorge familier', { exact: true })).toBeVisible();
+    // French species should be visible (e.g., European Robin)
+    await expect(page.getByText('European Robin', { exact: true })).toBeVisible();
 
     // US species should not be visible (e.g., Pileated Woodpecker)
     await expect(page.getByText('Pileated Woodpecker', { exact: true })).not.toBeVisible();
@@ -52,7 +52,7 @@ test.describe('Area filtering (Item 11)', () => {
     expect(chipClass).toContain('bg-sky-600', 'Active chip should have sky-600 background');
 
     // French species should be visible
-    await expect(page.getByText('Rougegorge familier', { exact: true })).toBeVisible();
+    await expect(page.getByText('European Robin', { exact: true })).toBeVisible();
 
     // US species should not be visible
     await expect(page.getByText('Pileated Woodpecker', { exact: true })).not.toBeVisible();
@@ -71,7 +71,7 @@ test.describe('Area filtering (Item 11)', () => {
     await expect(page.getByText('Pileated Woodpecker', { exact: true })).toBeVisible();
 
     // French species should not be visible
-    await expect(page.getByText('Rougegorge familier', { exact: true })).not.toBeVisible();
+    await expect(page.getByText('European Robin', { exact: true })).not.toBeVisible();
   });
 
   test('clicking area chip updates URL param', async ({ page }) => {
@@ -134,7 +134,7 @@ test.describe('Area filtering (Item 11)', () => {
     await franceCheckbox.click();
     await page.waitForTimeout(400);
 
-    await expect(page.getByText('Rougegorge familier', { exact: true })).toBeVisible();
+    await expect(page.getByText('European Robin', { exact: true })).toBeVisible();
   });
 
   test('clear filters button clears area selection', async ({ page }) => {
@@ -163,14 +163,15 @@ test.describe('French species (Item 10)', () => {
     await page.waitForLoadState('networkidle');
 
     const frenchBirds = [
-      'Rougegorge familier',
-      'Mésange charbonnière',
-      'Pic vert',
-      'Geai des chênes',
+      'European Robin',
+      'Great Tit',
+      'European Green Woodpecker',
+      'Eurasian Jay',
     ];
 
     for (const bird of frenchBirds) {
-      await expect(page.getByText(bird, { exact: true })).toBeVisible({ timeout: 5000 });
+      // Use first() to handle cases where species might appear multiple times
+      await expect(page.getByText(bird, { exact: true }).first()).toBeVisible({ timeout: 5000 });
     }
   });
 
@@ -178,10 +179,11 @@ test.describe('French species (Item 10)', () => {
     await page.goto('/');
     await page.waitForLoadState('networkidle');
 
-    const frenchMammals = ['Renard roux', 'Sanglier', 'Chevreuil', "Hérisson d'Europe"];
+    const frenchMammals = ['Red Fox', 'Wild Boar', 'Roe Deer', 'European Hedgehog'];
 
     for (const mammal of frenchMammals) {
-      await expect(page.getByText(mammal, { exact: true })).toBeVisible({ timeout: 5000 });
+      // Use first() to handle cases where species exists in multiple regions
+      await expect(page.getByText(mammal, { exact: true }).first()).toBeVisible({ timeout: 5000 });
     }
   });
 
@@ -189,10 +191,11 @@ test.describe('French species (Item 10)', () => {
     await page.goto('/');
     await page.waitForLoadState('networkidle');
 
-    const frenchTrees = ['Chêne pédonculé', 'Hêtre commun', 'Châtaignier'];
+    const frenchTrees = ['Pedunculate Oak', 'European Beech', 'Sweet Chestnut'];
 
     for (const tree of frenchTrees) {
-      await expect(page.getByText(tree, { exact: true })).toBeVisible({ timeout: 5000 });
+      // Use first() to handle cases where species might appear multiple times
+      await expect(page.getByText(tree, { exact: true }).first()).toBeVisible({ timeout: 5000 });
     }
   });
 
@@ -200,10 +203,11 @@ test.describe('French species (Item 10)', () => {
     await page.goto('/');
     await page.waitForLoadState('networkidle');
 
-    const frenchButterflies = ['Paon du jour', 'Vulcain', 'Citron', 'Machaon'];
+    const frenchButterflies = ['European Peacock', 'Red Admiral', 'Brimstone', 'Old World Swallowtail'];
 
     for (const butterfly of frenchButterflies) {
-      await expect(page.getByText(butterfly, { exact: true })).toBeVisible({ timeout: 5000 });
+      // Use first() to handle cases where species might appear multiple times
+      await expect(page.getByText(butterfly, { exact: true }).first()).toBeVisible({ timeout: 5000 });
     }
   });
 });
@@ -254,7 +258,7 @@ test.describe('Pack management (Item 9)', () => {
     await page.goto('/');
     await page.waitForLoadState('networkidle');
 
-    await expect(page.getByText('Rougegorge familier', { exact: true })).toBeVisible();
+    await expect(page.getByText('European Robin', { exact: true })).toBeVisible();
     await expect(page.getByText('104 species')).toBeVisible();
   });
 
@@ -298,7 +302,7 @@ test.describe('Pack management (Item 9)', () => {
     await page.waitForLoadState('networkidle');
 
     await expect(page.getByText('Pileated Woodpecker', { exact: true })).not.toBeVisible();
-    await expect(page.getByText('Rougegorge familier', { exact: true })).toBeVisible();
+    await expect(page.getByText('European Robin', { exact: true })).toBeVisible();
     await expect(page.getByText('24 species')).toBeVisible();
   });
 
