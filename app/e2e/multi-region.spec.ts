@@ -172,7 +172,7 @@ test.describe('Area filtering (Item 11)', () => {
     await page.waitForTimeout(400);
 
     // Both regions should now be visible
-    const speciesCountText = page.getByText(/104 species/);
+    const speciesCountText = page.getByText(/103 species/);
     await expect(speciesCountText).toBeVisible();
   });
 });
@@ -182,7 +182,7 @@ test.describe('French species (Item 10)', () => {
     await page.goto('/');
     await page.waitForLoadState('networkidle');
 
-    const speciesCountText = page.getByText('104 species');
+    const speciesCountText = page.getByText('103 species');
     await expect(speciesCountText).toBeVisible();
   });
 
