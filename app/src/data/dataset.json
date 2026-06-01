@@ -473,7 +473,7 @@
             "region": "northeast_pa",
             "ecological_role": "producer",
             "is_keystone": true,
-            "keystone_type": "structural",
+            "keystone_type": "foundation_species",
             "keystone_description": "Hosts more wildlife than almost any other native tree. Acorns feed squirrels, deer, turkey, jays, woodpeckers, black bear. Leaves support 557 Lepidoptera caterpillar species. Long-lived — a single mature white oak feeds dozens of species.",
             "taxonomic_group": "group_oaks",
             "image": {
@@ -507,7 +507,7 @@
             "region": "northeast_pa",
             "ecological_role": "producer",
             "is_keystone": true,
-            "keystone_type": "structural",
+            "keystone_type": "foundation_species",
             "keystone_description": "Co-dominant with White Oak in NE PA upland forests. Acorns high-tannin — cached by squirrels longer than white oak acorns. Same broad wildlife support as Q. alba.",
             "taxonomic_group": "group_oaks",
             "image": {
@@ -692,7 +692,7 @@
             "region": "northeast_pa",
             "ecological_role": "producer",
             "is_keystone": true,
-            "keystone_type": "structural",
+            "keystone_type": "foundation_species",
             "keystone_description": "Dominant late-season nectar source for migrating Monarchs, 43 specialist native bee species, bumble bee gynes (fall queens building fat reserves), and dozens of generalist pollinators. Eurosta gall larvae are critical winter food for Downy Woodpeckers and Black-capped Chickadees.",
             "active_months": [
               "Jul-Oct"
@@ -807,7 +807,7 @@
             "region": "northeast_pa",
             "ecological_role": "producer",
             "is_keystone": true,
-            "keystone_type": "prey",
+            "keystone_type": "prey_base",
             "keystone_description": "Second only to oaks in total Lepidoptera support (456 species). Cherries fuel migrant thrushes, waxwings, and many other birds. Primary host for Eastern Tiger Swallowtail in PA. Eastern Tent Caterpillar — conspicuous spring indicator — depends on it.",
             "taxonomic_group": "group_prunus",
             "image": {
@@ -2020,7 +2020,7 @@
             "region": "northeast_pa",
             "ecological_role": "producer",
             "is_keystone": true,
-            "keystone_type": "structural",
+            "keystone_type": "foundation_species",
             "keystone_description": "Foundation species of NE PA freshwater marshes. Dense stands are obligate nesting habitat for marsh-breeding birds (Red-winged Blackbird, Marsh Wren, Common Yellowthroat). Root rhizomes are primary winter food for Muskrat. Beaver pond creation and cattail expansion are tightly linked — each amplifying the other.",
             "active_months": [
               "Apr-Nov"
@@ -2997,7 +2997,7 @@
             "region": "northeast_pa",
             "ecological_role": "producer",
             "is_keystone": true,
-            "keystone_type": "structural",
+            "keystone_type": "foundation_species",
             "keystone_description": "Creates unique cool-stream and ravine microhabitats that no other PA tree can replicate. Hemlock groves are thermal refugia for deer and elk in winter, support brook trout via stream cooling, and provide cavity substrate for Pileated Woodpecker. Loss of hemlock causes cascading collapse of cool-stream ecosystems.",
             "active_months": [
               "Jan-Dec"
@@ -3676,7 +3676,7 @@
             "region": "northeast_pa",
             "ecological_role": "consumer",
             "is_keystone": true,
-            "keystone_type": "prey",
+            "keystone_type": "prey_base",
             "keystone_description": "One of NE PA's most abundant small mammals and the foundational prey species of open habitats. Population cycles drive corresponding booms and crashes in Red-tailed Hawk, American Kestrel, Red Fox, Eastern Coyote, and American Mink abundance. A landscape-level driver of predator population dynamics across meadows and fields.",
             "image": {
               "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Meadow_vole_microtus_pennsylvanicus.jpg/500px-Meadow_vole_microtus_pennsylvanicus.jpg",

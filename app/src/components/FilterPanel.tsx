@@ -1,7 +1,11 @@
 import { useState } from 'react';
 import type { FilterState } from '../lib/filters';
 import { formLabel, habitatLabel, keystoneTypeLabel, areaLabel } from '../lib/labels';
-import { getTopLevelForms, getChildForms, getTopLevelHabitats, getChildHabitats } from '../lib/learnContent';
+import {
+  getTopLevelForms, getChildForms,
+  getTopLevelHabitats, getChildHabitats,
+  getTopLevelKeystoneTypes, getChildKeystoneTypes,
+} from '../lib/learnContent';
 
 interface FilterOptions {
   forms: string[];
@@ -46,9 +50,11 @@ function CheckboxItem({
 export function FilterPanel({ options, filters, onChange }: Props) {
   const [selectedFormTopLevel, setSelectedFormTopLevel] = useState<string | null>(null);
   const [selectedHabitatTopLevel, setSelectedHabitatTopLevel] = useState<string | null>(null);
+  const [selectedKeystoneTopLevel, setSelectedKeystoneTopLevel] = useState<string | null>(null);
 
   const topLevelForms = getTopLevelForms();
   const topLevelHabitats = getTopLevelHabitats();
+  const topLevelKeystoneTypes = getTopLevelKeystoneTypes();
 
   // Find which top-level form contains any of the selected forms
   const activeFormTopLevel = selectedFormTopLevel ||
@@ -64,10 +70,24 @@ export function FilterPanel({ options, filters, onChange }: Props) {
       return children.some(h => filters.habitats.includes(h));
     });
 
+  // Find which top-level keystone contains any of the selected keystone types
+  const activeKeystoneTopLevel = selectedKeystoneTopLevel ||
+    topLevelKeystoneTypes.find(tl => {
+      const children = getChildKeystoneTypes(tl);
+      return [tl, ...children].some(k => filters.keystone_types.includes(k));
+    });
+
   // Only show habitat top-level groups that have children present in dataset
   const visibleHabitatTopLevels = topLevelHabitats.filter(tl =>
     getChildHabitats(tl).some(child => options.habitats.includes(child)),
   );
+
+  // Only show keystone top-level groups that have subtypes present in dataset
+  const visibleKeystoneTopLevels = topLevelKeystoneTypes.filter(tl => {
+    const children = getChildKeystoneTypes(tl);
+    return children.some(child => options.keystone_types.includes(child))
+      || options.keystone_types.includes(tl);
+  });
 
   const hasActive =
     filters.forms.length > 0 ||
@@ -182,27 +202,47 @@ export function FilterPanel({ options, filters, onChange }: Props) {
         </div>
       )}
 
-      {/* Keystone type */}
-      {options.keystone_types.length > 0 && (
+      {/* Keystone type - Hierarchical Selector */}
+      {visibleKeystoneTopLevels.length > 0 && (
         <div className="space-y-1.5">
-          <span className="block text-xs font-medium text-stone-500 uppercase tracking-wide">
+          <label className="block text-xs font-medium text-stone-500 uppercase tracking-wide">
             Keystone type
-          </span>
-          <div className="flex flex-col gap-1.5">
-            {options.keystone_types.map(kt => (
-              <CheckboxItem
-                key={kt}
-                label={keystoneTypeLabel(kt)}
-                checked={filters.keystone_types.includes(kt)}
-                onChange={() =>
-                  onChange({
-                    ...filters,
-                    keystone_types: toggle(filters.keystone_types, kt),
-                  })
-                }
-              />
+          </label>
+          <select
+            value={activeKeystoneTopLevel ?? ''}
+            onChange={e => {
+              const newTopLevel = e.target.value;
+              setSelectedKeystoneTopLevel(newTopLevel || null);
+              onChange({ ...filters, keystone_types: newTopLevel ? [newTopLevel] : [] });
+            }}
+            className="w-full text-sm border border-stone-200 rounded-lg px-3 py-1.5 bg-white text-stone-700 focus:outline-none focus:ring-2 focus:ring-emerald-400"
+          >
+            <option value="">All keystone types</option>
+            {visibleKeystoneTopLevels.map(kt => (
+              <option key={kt} value={kt}>
+                {keystoneTypeLabel(kt)}
+              </option>
             ))}
-          </div>
+          </select>
+
+          {/* Sub-category checkboxes */}
+          {activeKeystoneTopLevel && (
+            <div className="space-y-1.5 pt-2 pl-2 border-l-2 border-stone-200">
+              {getChildKeystoneTypes(activeKeystoneTopLevel)
+                .filter(child => options.keystone_types.includes(child))
+                .map(kt => (
+                  <CheckboxItem
+                    key={kt}
+                    label={`└─ ${keystoneTypeLabel(kt)}`}
+                    checked={filters.keystone_types.includes(kt)}
+                    onChange={() => {
+                      const withoutParent = filters.keystone_types.filter(k => k !== activeKeystoneTopLevel);
+                      onChange({ ...filters, keystone_types: toggle(withoutParent, kt) });
+                    }}
+                  />
+                ))}
+            </div>
+          )}
         </div>
       )}
 

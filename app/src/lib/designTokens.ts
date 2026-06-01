@@ -97,13 +97,22 @@ export const SYMBIOSIS_ICONS: Record<string, string> = {
 // ============================================================================
 
 export const KEYSTONE_ICONS: Record<string, string> = {
+  // Top-level categories
   ecosystem_engineer: '⚙️',
   predator: '🦅',
   mutualist: '🤝',
+  resource_provider: '🌰',
+  // Subtypes: ecosystem_engineer
+  foundation_species: '🌳',
+  // Subtypes: predator
+  aerial_insect_suppression: '🪶',
+  // Subtypes: mutualist
   pollinator: '🐝',
+  seed_disperser: '🐿️',
+  // Subtypes: resource_provider
   host_plant: '🌿',
-  prey: '🐭',
-  structural: '🌳',
+  mast_producer: '🍂',
+  prey_base: '🐭',
 };
 
 // ============================================================================
@@ -111,13 +120,22 @@ export const KEYSTONE_ICONS: Record<string, string> = {
 // ============================================================================
 
 export const KEYSTONE_LABELS: Record<string, string> = {
+  // Top-level categories
   ecosystem_engineer: '⚙️ Ecosystem Engineer',
   predator: '🦅 Keystone Predator',
-  structural: '🌳 Structural Keystone',
-  host_plant: '🌿 Host Plant',
-  pollinator: '🐝 Keystone Pollinator',
   mutualist: '🤝 Keystone Mutualist',
-  prey: '🍒 Keystone Prey',
+  resource_provider: '🌰 Resource Provider',
+  // Subtypes: ecosystem_engineer
+  foundation_species: '🌳 Foundation Species',
+  // Subtypes: predator
+  aerial_insect_suppression: '🪶 Aerial Insect Suppression',
+  // Subtypes: mutualist
+  pollinator: '🐝 Keystone Pollinator',
+  seed_disperser: '🐿️ Seed Disperser',
+  // Subtypes: resource_provider
+  host_plant: '🌿 Host Plant',
+  mast_producer: '🍂 Mast Producer',
+  prey_base: '🐭 Prey Base',
 };
 
 // ============================================================================
@@ -257,9 +275,22 @@ export const SYMBIOSIS_LABELS: Record<string, string> = {
 };
 
 export const KEYSTONE_TYPE_LABELS: Record<string, string> = {
+  // Top-level categories
   ecosystem_engineer: 'Ecosystem Engineer',
   predator: 'Predator',
   mutualist: 'Mutualist',
+  resource_provider: 'Resource Provider',
+  // Subtypes: ecosystem_engineer
+  foundation_species: 'Foundation Species',
+  // Subtypes: predator
+  aerial_insect_suppression: 'Aerial Insect Suppression',
+  // Subtypes: mutualist
+  pollinator: 'Pollinator',
+  seed_disperser: 'Seed Disperser',
+  // Subtypes: resource_provider
+  host_plant: 'Host Plant',
+  mast_producer: 'Mast Producer',
+  prey_base: 'Prey Base',
 };
 
 // ============================================================================

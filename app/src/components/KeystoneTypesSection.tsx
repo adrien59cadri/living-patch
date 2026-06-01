@@ -1,5 +1,5 @@
 import type { Species } from '../types';
-import { KEYSTONE_DEFINITIONS, getKeystonesByType } from '../lib/learnContent';
+import { KEYSTONE_DEFINITIONS, KEYSTONE_HIERARCHY, getKeystonesByType } from '../lib/learnContent';
 import { getKeystoneIcon } from '../lib/designTokens';
 import ExampleSpeciesLink from './ExampleSpeciesLink';
 
@@ -14,8 +14,6 @@ export default function KeystoneTypesSection({
   onToggle,
   speciesById,
 }: KeystoneTypesSectionProps) {
-  const keystoneTypes = Object.entries(KEYSTONE_DEFINITIONS);
-
   return (
     <div className="space-y-3">
       <div>
@@ -27,24 +25,25 @@ export default function KeystoneTypesSection({
       </div>
 
       <div>
-        {keystoneTypes.map(([typeKey, definition]) => {
-          const keystoneSpecies = getKeystonesByType(typeKey, speciesById);
-          const isExpanded = expanded === typeKey;
-          const icon = getKeystoneIcon(typeKey);
+        {KEYSTONE_HIERARCHY.map(parentNode => {
+          const parentDef = KEYSTONE_DEFINITIONS[parentNode.key];
+          const isExpanded = expanded === parentNode.key;
+          const icon = getKeystoneIcon(parentNode.key);
+          const allSpecies = getKeystonesByType(parentNode.key, speciesById);
 
           return (
-            <div key={typeKey}>
+            <div key={parentNode.key}>
               <button
-                onClick={() => onToggle(isExpanded ? null : typeKey)}
+                onClick={() => onToggle(isExpanded ? null : parentNode.key)}
                 className="w-full flex items-center gap-2 py-1.5 px-2 hover:bg-stone-100/70 rounded-md transition-colors text-left"
               >
                 <span className="text-base flex-shrink-0">{icon}</span>
                 <span className="flex-1 min-w-0 text-sm font-medium text-stone-800">
-                  {definition.label}
+                  {parentDef?.label ?? parentNode.key}
                 </span>
-                {keystoneSpecies.length > 0 && (
+                {allSpecies.length > 0 && (
                   <span className="text-xs text-stone-400 flex-shrink-0">
-                    {keystoneSpecies.length}
+                    {allSpecies.length}
                   </span>
                 )}
                 <span className="text-xs text-stone-300 flex-shrink-0">
@@ -53,22 +52,52 @@ export default function KeystoneTypesSection({
               </button>
 
               {isExpanded && (
-                <div className="pl-9 pr-3 pb-1.5">
-                  <p className="text-xs text-stone-500 leading-relaxed">
-                    {definition.description}
+                <div className="pl-4 pb-1.5">
+                  <p className="text-xs text-stone-500 leading-relaxed px-2 pb-2">
+                    {parentDef?.description}
                   </p>
-                  {keystoneSpecies.length > 0 && (
-                    <p className="text-xs text-stone-500 mt-1">
-                      {keystoneSpecies.map((species, idx) => (
-                        <span key={species.id}>
-                          <ExampleSpeciesLink species={species} />
-                          {idx < keystoneSpecies.length - 1 && (
-                            <span className="text-stone-400">, </span>
+
+                  {/* Subtypes */}
+                  {parentNode.children?.map(childNode => {
+                    const childDef = KEYSTONE_DEFINITIONS[childNode.key];
+                    const childSpecies = speciesById
+                      ? Array.from(speciesById.values()).filter(
+                          s => s.keystone_type === childNode.key && s.is_keystone,
+                        )
+                      : [];
+                    const childIcon = getKeystoneIcon(childNode.key);
+
+                    return (
+                      <div key={childNode.key} className="pl-3 border-l-2 border-stone-100 ml-2 mb-1">
+                        <div className="flex items-center gap-1.5 py-1 px-2">
+                          <span className="text-sm flex-shrink-0">{childIcon}</span>
+                          <span className="text-xs font-medium text-stone-700">
+                            {childDef?.label ?? childNode.key}
+                          </span>
+                          {childSpecies.length > 0 && (
+                            <span className="text-xs text-stone-400 ml-auto">{childSpecies.length}</span>
                           )}
-                        </span>
-                      ))}
-                    </p>
-                  )}
+                        </div>
+                        {childDef?.description && (
+                          <p className="text-xs text-stone-500 leading-relaxed px-2 pb-1">
+                            {childDef.description}
+                          </p>
+                        )}
+                        {childSpecies.length > 0 && (
+                          <p className="text-xs text-stone-500 px-2 pb-1.5">
+                            {childSpecies.map((species, idx) => (
+                              <span key={species.id}>
+                                <ExampleSpeciesLink species={species} />
+                                {idx < childSpecies.length - 1 && (
+                                  <span className="text-stone-400">, </span>
+                                )}
+                              </span>
+                            ))}
+                          </p>
+                        )}
+                      </div>
+                    );
+                  })}
                 </div>
               )}
             </div>
@@ -78,3 +107,4 @@ export default function KeystoneTypesSection({
     </div>
   );
 }
+
