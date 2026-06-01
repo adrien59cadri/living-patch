@@ -25,6 +25,19 @@ Expose the `region` field as a filter dimension:
 
 ---
 
+## Planned Features (Next Priority)
+
+### 12. Hierarchical Form Filters in Species List
+Redesign the species list form filter to show only top-level categories initially:
+- **UI**: Primary selector shows top-level forms (bird, mammal, plant, insect, frog)
+- **Progressive disclosure**: When user selects a top-level form, sub-categories appear with visual prefix (e.g., "└─ Woodpecker")
+- **Consistency**: Mirrors the hierarchical structure already defined in FormHierarchySection on /learn page
+- **Benefits**: Reduces visual clutter, improves discoverability, maintains all existing filter functionality
+- **Files**: `app/src/components/FilterPanel.tsx`, `app/src/lib/learnContent.ts`
+- **Documentation**: See `FEATURE_HIERARCHICAL_FORM_FILTERS.md`
+
+---
+
 ## Future Ideas & Enhancements
 
 ### 1. Keystone Keyword & Value Shorthands
