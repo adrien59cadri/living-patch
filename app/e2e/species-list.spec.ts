@@ -81,8 +81,8 @@ test.describe('Species list page basic functionality', () => {
     await page.goto('/');
     await page.waitForLoadState('networkidle');
 
-    // Check for species count text - should show "80 species"
-    const speciesCountText = page.getByText('80 species');
+    // Check for species count text - should show "103 species" (80 NE PA + 20 France + 3 taxonomic groups)
+    const speciesCountText = page.getByText('103 species');
     await expect(speciesCountText).toBeVisible();
   });
 
