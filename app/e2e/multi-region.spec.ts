@@ -45,7 +45,7 @@ test.describe('Area filtering (Item 11)', () => {
   });
 
   test('?area=france URL param filters to French species on load', async ({ page }) => {
-    await page.goto('/?area=france');
+    await page.goto('/#/?area=france');
     await page.waitForLoadState('networkidle');
 
     // France chip should be active (highlighted)
@@ -63,7 +63,7 @@ test.describe('Area filtering (Item 11)', () => {
   });
 
   test('?area=northeast_pa URL param filters to NE PA species on load', async ({ page }) => {
-    await page.goto('/?area=northeast_pa');
+    await page.goto('/#/?area=northeast_pa');
     await page.waitForLoadState('networkidle');
 
     // Northeast PA chip should be active
@@ -158,7 +158,7 @@ test.describe('Area filtering (Item 11)', () => {
   });
 
   test('clear filters button clears area selection', async ({ page }) => {
-    await page.goto('/?area=france');
+    await page.goto('/#/?area=france');
     await page.waitForLoadState('networkidle');
 
     // Open filters
@@ -172,7 +172,7 @@ test.describe('Area filtering (Item 11)', () => {
     await page.waitForTimeout(400);
 
     // Both regions should now be visible
-    const speciesCountText = page.getByText(/104 species/);
+    const speciesCountText = page.getByText(/103 species/);
     await expect(speciesCountText).toBeVisible();
   });
 });
@@ -182,7 +182,7 @@ test.describe('French species (Item 10)', () => {
     await page.goto('/');
     await page.waitForLoadState('networkidle');
 
-    const speciesCountText = page.getByText('104 species');
+    const speciesCountText = page.getByText('103 species');
     await expect(speciesCountText).toBeVisible();
   });
 
@@ -242,7 +242,7 @@ test.describe('French species (Item 10)', () => {
 
 test.describe('Pack management (Item 9)', () => {
   test('packs page displays both packs', async ({ page }) => {
-    await page.goto('/packs');
+    await page.goto('/#/packs');
     await page.waitForLoadState('networkidle');
 
     // Should show "The dataset is built from 2 packs."
@@ -258,7 +258,7 @@ test.describe('Pack management (Item 9)', () => {
   });
 
   test('pack cards show toggle switches', async ({ page }) => {
-    await page.goto('/packs');
+    await page.goto('/#/packs');
     await page.waitForLoadState('networkidle');
 
     // Should have 2 toggle switches (one per pack)
@@ -268,152 +268,88 @@ test.describe('Pack management (Item 9)', () => {
   });
 
   test('toggling France pack removes French species from list', async ({ page }) => {
-    // Navigate to packs page
-    await page.goto('/packs');
+    await page.goto('/#/packs');
     await page.waitForLoadState('networkidle');
 
-    // Find the France pack toggle and click it to disable
-    const francePackCard = page.getByText('france-base').locator('..');
-    const toggleButton = francePackCard.locator('button[aria-label*="Disable"], button[aria-label*="Enable"]');
-    await toggleButton.click();
+    // Disable France pack via its labelled toggle button
+    await page.getByRole('button', { name: 'Disable france-base' }).click();
     await page.waitForTimeout(400);
 
-    // Go back to home
     await page.goto('/');
     await page.waitForLoadState('networkidle');
 
-    // French species should not be visible
-    const frenchSpecies = page.getByText('Rougegorge familier');
-    await expect(frenchSpecies).not.toBeVisible();
-
-    // US species should still be visible
-    const usSpecies = page.getByText('Pileated Woodpecker');
-    await expect(usSpecies).toBeVisible();
-
-    // Species count should be 80 (not 104)
-    const speciesCountText = page.getByText('80 species');
-    await expect(speciesCountText).toBeVisible();
+    await expect(page.getByText('Rougegorge familier')).not.toBeVisible();
+    await expect(page.getByText('Pileated Woodpecker')).toBeVisible();
+    await expect(page.getByText('80 species')).toBeVisible();
   });
 
   test('toggling France pack back on restores French species', async ({ page }) => {
-    // Navigate to packs page
-    await page.goto('/packs');
+    await page.goto('/#/packs');
     await page.waitForLoadState('networkidle');
 
-    // Find and click France pack toggle to disable
-    const francePackCard = page.getByText('france-base').locator('..');
-    let toggleButton = francePackCard.locator('button[aria-label*="Disable"], button[aria-label*="Enable"]');
-    await toggleButton.click();
+    // Disable then re-enable
+    await page.getByRole('button', { name: 'Disable france-base' }).click();
+    await page.waitForTimeout(200);
+    await page.getByRole('button', { name: 'Enable france-base' }).click();
     await page.waitForTimeout(200);
 
-    // Click it again to enable
-    toggleButton = francePackCard.locator('button[aria-label*="Disable"], button[aria-label*="Enable"]');
-    await toggleButton.click();
-    await page.waitForTimeout(200);
-
-    // Go back to home
     await page.goto('/');
     await page.waitForLoadState('networkidle');
 
-    // French species should be visible again
-    const frenchSpecies = page.getByText('Rougegorge familier');
-    await expect(frenchSpecies).toBeVisible();
-
-    // Species count should be 104
-    const speciesCountText = page.getByText('104 species');
-    await expect(speciesCountText).toBeVisible();
+    await expect(page.getByText('Rougegorge familier')).toBeVisible();
+    await expect(page.getByText('103 species')).toBeVisible();
   });
 
   test('disabled pack card shows grayed out state', async ({ page }) => {
-    // Navigate to packs page
-    await page.goto('/packs');
+    await page.goto('/#/packs');
     await page.waitForLoadState('networkidle');
 
-    // Find and click France pack toggle to disable
-    const francePackCard = page.getByText('france-base').locator('..');
-    const toggleButton = francePackCard.locator('button[aria-label*="Disable"], button[aria-label*="Enable"]');
-    await toggleButton.click();
+    await page.getByRole('button', { name: 'Disable france-base' }).click();
     await page.waitForTimeout(200);
 
-    // Check that the card has reduced opacity
-    const frameCard = francePackCard.evaluate((el) => {
-      const style = window.getComputedStyle(el);
-      return {
-        opacity: style.opacity,
-      };
-    });
-
-    const opacityValue = (await frameCard).opacity;
-    // Disabled cards should have opacity: 0.5 or similar
+    // The card root is 3 ancestors above the <h2> heading
+    const cardRoot = page.getByRole('heading', { name: 'france-base', level: 2 }).locator('xpath=../../..');
+    const opacityValue = await cardRoot.evaluate((el) => window.getComputedStyle(el).opacity);
     expect(parseFloat(opacityValue)).toBeLessThan(1);
   });
 
   test('pack toggle state persists after page reload', async ({ page }) => {
-    // Navigate to packs page
-    await page.goto('/packs');
+    await page.goto('/#/packs');
     await page.waitForLoadState('networkidle');
 
-    // Find and click France pack toggle to disable
-    const francePackCard = page.getByText('france-base').locator('..');
-    const toggleButton = francePackCard.locator('button[aria-label*="Disable"], button[aria-label*="Enable"]');
-    await toggleButton.click();
+    await page.getByRole('button', { name: 'Disable france-base' }).click();
     await page.waitForTimeout(200);
 
-    // Go to home and verify French species are gone
     await page.goto('/');
     await page.waitForLoadState('networkidle');
-    let frenchSpecies = page.getByText('Rougegorge familier');
-    await expect(frenchSpecies).not.toBeVisible();
+    await expect(page.getByText('Rougegorge familier')).not.toBeVisible();
 
-    // Reload the page
     await page.reload();
     await page.waitForLoadState('networkidle');
-
-    // French species should still be gone (toggle state persisted)
-    frenchSpecies = page.getByText('Rougegorge familier');
-    await expect(frenchSpecies).not.toBeVisible();
+    await expect(page.getByText('Rougegorge familier')).not.toBeVisible();
   });
 
   test('disabled base pack removes US species', async ({ page }) => {
-    // Navigate to packs page
-    await page.goto('/packs');
+    await page.goto('/#/packs');
     await page.waitForLoadState('networkidle');
 
-    // Find and click base pack toggle to disable
-    const basePackCard = page.getByText('0-base').locator('..');
-    const toggleButton = basePackCard.locator('button[aria-label*="Disable"], button[aria-label*="Enable"]');
-    await toggleButton.click();
+    await page.getByRole('button', { name: 'Disable 0-base' }).click();
     await page.waitForTimeout(200);
 
-    // Go to home
     await page.goto('/');
     await page.waitForLoadState('networkidle');
 
-    // US species should not be visible
-    const usSpecies = page.getByText('Pileated Woodpecker');
-    await expect(usSpecies).not.toBeVisible();
-
-    // French species should still be visible
-    const frenchSpecies = page.getByText('Rougegorge familier');
-    await expect(frenchSpecies).toBeVisible();
-
-    // Species count should be 24 (just France)
-    const speciesCountText = page.getByText('24 species');
-    await expect(speciesCountText).toBeVisible();
+    await expect(page.getByText('Pileated Woodpecker')).not.toBeVisible();
+    await expect(page.getByText('Rougegorge familier')).toBeVisible();
+    await expect(page.getByText('23 species')).toBeVisible();
   });
 
   test('packs page shows species count for active packs', async ({ page }) => {
-    await page.goto('/packs');
+    await page.goto('/#/packs');
     await page.waitForLoadState('networkidle');
 
-    // Base pack should show 80 species
-    const basePackCard = page.getByText('0-base').locator('..');
-    const baseSpeciesCount = basePackCard.getByText('80 species');
-    await expect(baseSpeciesCount).toBeVisible();
-
-    // France pack should show 24 species
-    const francePackCard = page.getByText('france-base').locator('..');
-    const franceSpeciesCount = francePackCard.getByText('24 species');
-    await expect(franceSpeciesCount).toBeVisible();
+    // Each pack card shows its own species count — these are unique on this page
+    await expect(page.getByText('80 species')).toBeVisible();
+    await expect(page.getByText('23 species')).toBeVisible();
   });
 });

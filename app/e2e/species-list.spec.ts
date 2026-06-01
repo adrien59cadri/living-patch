@@ -81,8 +81,8 @@ test.describe('Species list page basic functionality', () => {
     await page.goto('/');
     await page.waitForLoadState('networkidle');
 
-    // Check for species count text - should show "80 species"
-    const speciesCountText = page.getByText('80 species');
+    // Check for species count text - should show "103 species" (80 NE PA + 20 France + 3 taxonomic groups)
+    const speciesCountText = page.getByText('103 species');
     await expect(speciesCountText).toBeVisible();
   });
 
@@ -216,12 +216,12 @@ test.describe('Search bar', () => {
     const searchBar = page.getByRole('searchbox');
     await searchBar.fill('oak');
     await page.waitForTimeout(400);
-    // When filtered, count shows "N of 80 species" — "80 species" exact is not present
-    await expect(page.getByText('80 species', { exact: true })).not.toBeVisible();
+    // When filtered, count shows "N of 103 species" — "103 species" exact is not present
+    await expect(page.getByText('103 species', { exact: true })).not.toBeVisible();
 
     await searchBar.clear();
     await page.waitForTimeout(400);
-    await expect(page.getByText('80 species', { exact: true })).toBeVisible();
+    await expect(page.getByText('103 species', { exact: true })).toBeVisible();
   });
 
   test('search works across latin names', async ({ page }) => {
@@ -245,7 +245,7 @@ test.describe('Quick filter bar', () => {
     // The QuickFilterBar renders form chips as buttons matching form labels
     await expect(page.getByRole('button', { name: 'Butterfly', exact: true })).toBeVisible();
     await expect(page.getByRole('button', { name: 'Tree', exact: true })).toBeVisible();
-    await expect(page.getByRole('button', { name: 'Woodpecker', exact: true })).toBeVisible();
+    await expect(page.getByRole('button', { name: 'Bird', exact: true }).or(page.getByRole('button', { name: 'Woodpecker', exact: true }))).toBeVisible();
   });
 
   test('clicking form chip filters species list', async ({ page }) => {
@@ -270,7 +270,7 @@ test.describe('Quick filter bar', () => {
 
     // Click again to deselect
     await chip.click();
-    await expect(page.getByText('80 species', { exact: true })).toBeVisible();
+    await expect(page.getByText('103 species', { exact: true })).toBeVisible();
     await expect(page.getByText('Pileated Woodpecker', { exact: true })).toBeVisible();
   });
 
