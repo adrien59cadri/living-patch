@@ -267,3 +267,33 @@ export const FORM_HIERARCHY: FormHierarchyNode[] = [
   },
   { key: 'frog' },
 ];
+
+// Utility functions for working with form hierarchy
+export function getTopLevelForms(): string[] {
+  return FORM_HIERARCHY.map(node => node.key);
+}
+
+export function getChildForms(parentKey: string): string[] {
+  const node = FORM_HIERARCHY.find(n => n.key === parentKey);
+  return node?.children?.map(child => child.key) ?? [];
+}
+
+export function getAllDescendantForms(parentKey: string): string[] {
+  const descendants: string[] = [];
+  const node = FORM_HIERARCHY.find(n => n.key === parentKey);
+  
+  function collectDescendants(node: FormHierarchyNode) {
+    if (node.children) {
+      for (const child of node.children) {
+        descendants.push(child.key);
+        collectDescendants(child);
+      }
+    }
+  }
+  
+  if (node) {
+    collectDescendants(node);
+  }
+  
+  return descendants;
+}

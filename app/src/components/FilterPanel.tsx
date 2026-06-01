@@ -1,5 +1,7 @@
+import { useState } from 'react';
 import type { FilterState } from '../lib/filters';
 import { formLabel, habitatLabel, keystoneTypeLabel, areaLabel } from '../lib/labels';
+import { getTopLevelForms, getChildForms } from '../lib/learnContent';
 
 interface FilterOptions {
   forms: string[];
@@ -42,6 +44,16 @@ function CheckboxItem({
 }
 
 export function FilterPanel({ options, filters, onChange }: Props) {
+  const [selectedTopLevel, setSelectedTopLevel] = useState<string | null>(null);
+  const topLevelForms = getTopLevelForms();
+  
+  // Find which top-level form contains any of the selected forms
+  const activeTopLevel = selectedTopLevel || 
+    topLevelForms.find(tl => {
+      const children = getChildForms(tl);
+      return children.length > 0 && filters.forms.some(f => [tl, ...children].includes(f));
+    });
+
   const hasActive =
     filters.forms.length > 0 ||
     filters.seasons.length > 0 ||
@@ -52,25 +64,46 @@ export function FilterPanel({ options, filters, onChange }: Props) {
   return (
     <div className="bg-stone-50 border border-stone-200 rounded-xl p-4 space-y-4">
 
-      {/* Form */}
+      {/* Form - Hierarchical Selector */}
       <div className="space-y-1.5">
         <label className="block text-xs font-medium text-stone-500 uppercase tracking-wide">
           Form
         </label>
         <select
-          value={filters.forms[0] ?? ''}
-          onChange={e =>
-            onChange({ ...filters, forms: e.target.value ? [e.target.value] : [] })
-          }
+          value={activeTopLevel ?? ''}
+          onChange={e => {
+            const newTopLevel = e.target.value;
+            setSelectedTopLevel(newTopLevel || null);
+            // Clear form filters when changing top-level
+            if (newTopLevel !== activeTopLevel) {
+              onChange({ ...filters, forms: [] });
+            }
+          }}
           className="w-full text-sm border border-stone-200 rounded-lg px-3 py-1.5 bg-white text-stone-700 focus:outline-none focus:ring-2 focus:ring-emerald-400"
         >
           <option value="">All forms</option>
-          {options.forms.map(form => (
+          {topLevelForms.map(form => (
             <option key={form} value={form}>
               {formLabel(form)}
             </option>
           ))}
         </select>
+
+        {/* Sub-category checkboxes */}
+        {activeTopLevel && (
+          <div className="space-y-1.5 pt-2 pl-2 border-l-2 border-stone-200">
+            {getChildForms(activeTopLevel).map(form => (
+              <CheckboxItem
+                key={form}
+                label={`└─ ${formLabel(form)}`}
+                checked={filters.forms.includes(form)}
+                onChange={() =>
+                  onChange({ ...filters, forms: toggle(filters.forms, form) })
+                }
+              />
+            ))}
+          </div>
+        )}
       </div>
 
       {/* Habitat */}
