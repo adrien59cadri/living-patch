@@ -1,5 +1,7 @@
+import { useState } from 'react';
 import type { FilterState } from '../lib/filters';
 import { formLabel, habitatLabel, keystoneTypeLabel, areaLabel } from '../lib/labels';
+import { getTopLevelForms, getChildForms } from '../lib/learnContent';
 
 interface FilterOptions {
   forms: string[];
@@ -19,7 +21,16 @@ function toggle(arr: string[], val: string): string[] {
 }
 
 export function QuickFilterBar({ options, filters, onChange }: Props) {
-  const hasForm = options.forms.length > 0;
+  const [expandedTopLevel, setExpandedTopLevel] = useState<string | null>(null);
+  const topLevelForms = getTopLevelForms();
+  
+  // Determine which top-level form should be expanded
+  const activeTopLevel = expandedTopLevel || 
+    topLevelForms.find(tl => {
+      const children = getChildForms(tl);
+      return filters.forms.some(f => [tl, ...children].includes(f));
+    });
+  const hasForm = topLevelForms.length > 0;
   const hasHabitat = options.habitats.length > 0;
   const hasKeystone = options.keystone_types.length > 0;
   const hasArea = options.areas.length > 1;
@@ -28,26 +39,65 @@ export function QuickFilterBar({ options, filters, onChange }: Props) {
 
   return (
     <div className="space-y-2">
-      {/* Form chips – single-select */}
+      {/* Form chips – hierarchical */}
       {hasForm && (
-        <div className="flex flex-wrap gap-1.5">
-          {options.forms.map(form => {
-            const active = filters.forms.includes(form);
-            return (
-              <button
-                key={form}
-                onClick={() => onChange({ ...filters, forms: active ? [] : [form] })}
-                className={[
-                  'text-xs px-2 py-0.5 rounded-full transition-colors',
-                  active
-                    ? 'bg-amber-600 text-white'
-                    : 'bg-amber-100 text-amber-800 hover:bg-amber-200',
-                ].join(' ')}
-              >
-                {formLabel(form)}
-              </button>
-            );
-          })}
+        <div className="space-y-2">
+          {/* Top-level form chips */}
+          <div className="flex flex-wrap gap-1.5">
+            {topLevelForms.map(form => {
+              const isExpanded = activeTopLevel === form;
+              const isActive = filters.forms.length > 0 && 
+                (filters.forms.includes(form) || 
+                 getChildForms(form).some(child => filters.forms.includes(child)));
+              return (
+                <button
+                  key={form}
+                  onClick={() => {
+                    if (isExpanded) {
+                      setExpandedTopLevel(null);
+                    } else {
+                      setExpandedTopLevel(form);
+                      // Clear selection when switching top-level
+                      if (activeTopLevel !== form) {
+                        onChange({ ...filters, forms: [] });
+                      }
+                    }
+                  }}
+                  className={[
+                    'text-xs px-2 py-0.5 rounded-full transition-colors',
+                    isActive
+                      ? 'bg-amber-600 text-white'
+                      : 'bg-amber-100 text-amber-800 hover:bg-amber-200',
+                  ].join(' ')}
+                >
+                  {formLabel(form)}
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Sub-category chips for expanded form */}
+          {activeTopLevel && (
+            <div className="flex flex-wrap gap-1.5 pl-2 border-l-2 border-amber-300">
+              {getChildForms(activeTopLevel).map(form => {
+                const active = filters.forms.includes(form);
+                return (
+                  <button
+                    key={form}
+                    onClick={() => onChange({ ...filters, forms: toggle(filters.forms, form) })}
+                    className={[
+                      'text-xs px-2 py-0.5 rounded-full transition-colors',
+                      active
+                        ? 'bg-amber-500 text-white'
+                        : 'bg-amber-50 text-amber-700 hover:bg-amber-100 border border-amber-200',
+                    ].join(' ')}
+                  >
+                    {`└─ ${formLabel(form)}`}
+                  </button>
+                );
+              })}
+            </div>
+          )}
         </div>
       )}
 

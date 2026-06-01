@@ -23,18 +23,24 @@ Expose the `region` field as a filter dimension:
 - **Display**: Only shown when >1 region in dataset
 - **URLs**: Supports `?area=france` and `?area=northeast_pa` URL params for deep-linking
 
----
-
-## Planned Features (Next Priority)
-
-### 12. Hierarchical Form Filters in Species List
+### 12. Hierarchical Form Filters in Species List ✅
 Redesign the species list form filter to show only top-level categories initially:
 - **UI**: Primary selector shows top-level forms (bird, mammal, plant, insect, frog)
 - **Progressive disclosure**: When user selects a top-level form, sub-categories appear with visual prefix (e.g., "└─ Woodpecker")
 - **Consistency**: Mirrors the hierarchical structure already defined in FormHierarchySection on /learn page
-- **Benefits**: Reduces visual clutter, improves discoverability, maintains all existing filter functionality
-- **Files**: `app/src/components/FilterPanel.tsx`, `app/src/lib/learnContent.ts`
-- **Documentation**: See `FEATURE_HIERARCHICAL_FORM_FILTERS.md`
+- **Files**: `app/src/components/FilterPanel.tsx`, `app/src/lib/learnContent.ts` (utilities: `getTopLevelForms()`, `getChildForms()`, `getAllDescendantForms()`)
+- **Status**: Published, 22 E2E tests passing
+
+### 13. Life List Backup & Restore ✅
+Add export/import controls in the Settings page to prevent data loss:
+- **Export**: Download life list data (sightings + tiers) as a JSON file from the Settings page
+- **Import**: Upload a previously exported JSON file to restore data (with confirmation prompt)
+- Useful when switching browsers, devices, or clearing browser storage
+- **Status**: Implemented in SettingsPage.tsx with `restoreFromBackup()` store action
+
+---
+
+## Planned Features (Next Priority)
 
 ---
 
@@ -95,7 +101,7 @@ Enrich sighting data to capture where and when observations happen, not just how
 
 **Impact**: Transforms sighting counts into a richer picture of a species' presence across seasons, years, and habitats — rewarding long-term, multi-site observation.
 
-### 7. Sighting-Based Familiarity Progression
+### 8. Sighting-Based Familiarity Progression
 Replace the manual tier system with familiarity derived from observation data:
 - Auto-calculate a familiarity level from sighting count, seasonal diversity, habitat diversity, and years observed
 - Factor in related species sightings — observing a predator and its prey, or a plant and its pollinator, signals deeper ecosystem understanding
@@ -105,14 +111,16 @@ Replace the manual tier system with familiarity derived from observation data:
 
 **Impact**: Makes familiarity feel earned through real observation rather than arbitrary manual selection; rewards consistent, multi-context naturalism.
 
-### 8. Life List Backup & Restore
-Add export/import controls in the Settings page to prevent data loss:
-- **Export**: Download life list data (sightings + tiers) as a JSON file from the Settings page
-- **Import**: Upload a previously exported JSON file to restore data (with confirmation prompt)
-- Useful when switching browsers, devices, or clearing browser storage
-- Exported file format mirrors the existing `living-patch-life-list-v1` localStorage schema for simplicity
+### 9. Automated Multilingual Name Fetcher
+Implement a CLI tool to auto-populate multilingual common names from Wikipedia:
+- **Tool**: `fetch-names` CLI (mirrors `fetch-images` pattern)
+- **Source**: Wikipedia language-links API to find vernacular names in other languages
+- **Usage**: `npm run fetch-names packs/1-france.json --lang fr`
+- **Features**: Support `--only-missing`, `--delay`, `--max` options for flexible runs
+- **Implementation**: See `plan-fetch-names.md` for full specification
+- **Impact**: Enables easy expansion to new languages without manual data entry
 
-**Impact**: Protects users from accidental data loss; enables moving data between devices or browsers.
+**Status**: Specification complete in `plan-fetch-names.md`; ready for implementation
 
 ---
 

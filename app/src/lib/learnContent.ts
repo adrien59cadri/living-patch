@@ -113,6 +113,46 @@ export const FORM_DEFINITIONS: Record<string, FormDefinition> = {
     description:
       'Amphibians that live partly in water, partly on land. Tadpoles eat algae; adults eat insects. Indicators of water quality; vulnerable to habitat loss.',
   },
+  bat: {
+    label: 'Bat',
+    description:
+      'Flying mammals that hunt insects at night using echolocation. Essential pest controllers; eat thousands of insects per night. Important pollinators for some plants.',
+  },
+  duck: {
+    label: 'Duck',
+    description:
+      'Waterfowl that dabble or dive for food in wetlands. Play important roles in aquatic food webs and nutrient cycling. Migrate seasonally.',
+  },
+  dragonfly: {
+    label: 'Dragonfly',
+    description:
+      'Large predatory insects with two pairs of wings. Hunt flying insects over water and wetlands. Aquatic nymphs are indicators of water quality.',
+  },
+  grasshopper: {
+    label: 'Grasshopper',
+    description:
+      'Jumping insects found in grasslands and meadows. Important herbivores; food for birds, spiders, and small mammals.',
+  },
+  moth: {
+    label: 'Moth',
+    description:
+      'Winged insects closely related to butterflies. Many are nocturnal pollinators. Caterpillars are important food source for birds.',
+  },
+  salamander: {
+    label: 'Salamander',
+    description:
+      'Small amphibians that live in moist habitats. Predators of insects and other invertebrates. Indicators of forest health and water quality.',
+  },
+  spider: {
+    label: 'Spider',
+    description:
+      'Eight-legged arachnids that hunt insects. Essential predators that control insect populations. Build webs or actively hunt.',
+  },
+  turtle: {
+    label: 'Turtle',
+    description:
+      'Reptiles with hard shells that live in water or on land. Play important roles in aquatic and terrestrial ecosystems. Long-lived and slow to reproduce.',
+  },
 };
 
 export const KEYSTONE_DEFINITIONS: Record<string, KeystoneDefinition> = {
@@ -237,6 +277,7 @@ export const FORM_HIERARCHY: FormHierarchyNode[] = [
       { key: 'woodpecker' },
       { key: 'raptor' },
       { key: 'owl' },
+      { key: 'duck' },
       {
         key: 'songbird',
         children: [
@@ -247,7 +288,12 @@ export const FORM_HIERARCHY: FormHierarchyNode[] = [
       { key: 'wading_bird' },
     ],
   },
-  { key: 'mammal' },
+  {
+    key: 'mammal',
+    children: [
+      { key: 'bat' },
+    ],
+  },
   {
     key: 'plant',
     children: [
@@ -263,9 +309,15 @@ export const FORM_HIERARCHY: FormHierarchyNode[] = [
       { key: 'beetle' },
       { key: 'bug' },
       { key: 'bee' },
+      { key: 'dragonfly' },
+      { key: 'grasshopper' },
+      { key: 'moth' },
+      { key: 'spider' },
     ],
   },
   { key: 'frog' },
+  { key: 'salamander' },
+  { key: 'turtle' },
 ];
 
 // Utility functions for working with form hierarchy
