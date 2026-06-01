@@ -17,7 +17,8 @@ export default function HomePage() {
     return (
       searchParams.getAll('form').length > 0 ||
       searchParams.getAll('habitat').length > 0 ||
-      searchParams.getAll('keystone_type').length > 0
+      searchParams.getAll('keystone_type').length > 0 ||
+      searchParams.getAll('area').length > 0
     );
   });
 
@@ -27,6 +28,7 @@ export default function HomePage() {
     seasons: searchParams.getAll('season'),
     habitats: searchParams.getAll('habitat'),
     keystone_types: searchParams.getAll('keystone_type'),
+    areas: searchParams.getAll('area'),
   }));
 
   const options = useMemo(() => getFilterOptions(species), [species]);
@@ -34,7 +36,7 @@ export default function HomePage() {
   const filteredGroups = useMemo(() => filterSpecies(groups, filters), [groups, filters]);
 
   const activeFilterCount =
-    filters.forms.length + filters.habitats.length + filters.keystone_types.length;
+    filters.forms.length + filters.habitats.length + filters.keystone_types.length + filters.areas.length;
 
   return (
     <div className="space-y-4">
