@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import { useLifeList } from '../hooks/useLifeList';
 import { useDataset } from '../hooks/useDataset';
 import { TIER_ORDER, TIER_LABELS, TIER_ICONS, TIER_COLORS, sightingsByMonth } from '../lib/lifeListUtils';
+import { getCommonName } from '../lib/labels';
 import type { FamiliarityTier } from '../types';
 
 export function StatsPanel() {
@@ -119,7 +120,7 @@ export function StatsPanel() {
             {topSpecies.map(({ entry, sp }, idx) => (
               <li key={entry.speciesId} className="flex items-center gap-3 text-sm">
                 <span className="text-stone-400 w-4 shrink-0 text-xs">{idx + 1}.</span>
-                <span className="flex-1 text-stone-800 font-medium">{sp!.common_name}</span>
+                <span className="flex-1 text-stone-800 font-medium">{getCommonName(sp!.common_name)}</span>
                 <span className="text-stone-500 text-xs">{entry.sightingCount}×</span>
               </li>
             ))}

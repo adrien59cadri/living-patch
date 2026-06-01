@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { getCommonName } from '../lib/labels';
 import type { Species } from '../types';
 import type { SymbiosisStrength } from '../types';
 
@@ -23,7 +24,7 @@ export function RelationshipTile({ species, strength, notes, isGroup = false }: 
     >
       <div className="flex items-start gap-1.5 flex-wrap">
         <span className="text-sm font-medium text-stone-800 leading-tight">
-          {species.common_name}
+          {getCommonName(species.common_name)}
         </span>
         {strength === 'critical' && (
           <span className="text-xs bg-amber-100 text-amber-700 px-1.5 py-0.5 rounded font-medium leading-tight">

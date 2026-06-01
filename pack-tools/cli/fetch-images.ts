@@ -17,7 +17,12 @@ import chalk from 'chalk';
 import { validatePackSafe } from '../lib/schema.js';
 import { scrapeSpeciesImage } from '../lib/wikipedia-scraper.js';
 import { RateLimiter } from '../lib/rate-limiter.js';
-import type { DataPack, Pack } from '../types.js';
+import type { CommonName, DataPack, Pack } from '../types.js';
+
+function resolveCommonName(name: CommonName | undefined, fallback: string): string {
+  if (!name) return fallback;
+  return typeof name === 'string' ? name : name.en;
+}
 
 const args = process.argv.slice(2);
 
@@ -151,14 +156,14 @@ async function main() {
 
     // Skip taxonomic groups (only fetch images for individual species)
     if (species.taxonomic_group && !species.latin_name) {
-      console.log(`${chalk.yellow(progress)} ${chalk.gray('⊘')} Skipped: ${species.common_name} (taxonomic group)`);
+      console.log(`${chalk.yellow(progress)} ${chalk.gray('⊘')} Skipped: ${resolveCommonName(species.common_name, species.id)} (taxonomic group)`);
       skippedSpecies.push(species.id);
       continue;
     }
 
     // Skip if --only-missing is set and species already has an image
     if (onlyMissing && species.image?.url) {
-      console.log(`${chalk.gray(progress)} ${chalk.gray('✓')} Already has image: ${species.common_name}`);
+      console.log(`${chalk.gray(progress)} ${chalk.gray('✓')} Already has image: ${resolveCommonName(species.common_name, species.id)}`);
       alreadyHadImages++;
       continue;
     }
@@ -171,10 +176,10 @@ async function main() {
     }
 
     try {
-      process.stdout.write(`${chalk.cyan(progress)} Searching for ${species.common_name}... `);
+      process.stdout.write(`${chalk.cyan(progress)} Searching for ${resolveCommonName(species.common_name, species.id)}... `);
 
       const imageData = await rateLimiter.execute(() =>
-        scrapeSpeciesImage(species.latin_name, species.common_name)
+        scrapeSpeciesImage(species.latin_name, resolveCommonName(species.common_name, species.id))
       );
 
       if (imageData) {

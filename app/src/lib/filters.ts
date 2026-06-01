@@ -1,4 +1,5 @@
 import type { Species } from '../types';
+import { getCommonName } from './labels';
 
 export interface FilterState {
   search: string;
@@ -16,7 +17,7 @@ export function filterSpecies(species: Species[], filters: FilterState): Species
   return species.filter(s => {
     if (q) {
       const haystack = [
-        s.common_name ?? '',
+        getCommonName(s.common_name),
         s.latin_name ?? '',
         s.functional_description ?? '',
         s.form ?? '',

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { getCommonName } from '../lib/labels';
 import type { RelationGroupEntry } from '../lib/relationships';
 import { SpeciesTile } from './SpeciesTile';
 
@@ -15,7 +16,7 @@ export function RelationGroupTile({ groupEntry }: Props) {
 
   const displayNames = entries
     .slice(0, 2)
-    .map(e => e.species.common_name)
+    .map(e => getCommonName(e.species.common_name))
     .join(', ');
   const overflow = entries.length > 2 ? ` (+${entries.length - 2})` : '';
 

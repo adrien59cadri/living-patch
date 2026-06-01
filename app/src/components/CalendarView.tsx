@@ -2,7 +2,8 @@ import { useState, useMemo } from 'react';
 import { useLifeList } from '../hooks/useLifeList';
 import { useDataset } from '../hooks/useDataset';
 import { groupSightingsByDate, TIER_COLORS } from '../lib/lifeListUtils';
-import type { FamiliarityTier, Sighting } from '../types';
+import { getCommonName } from '../lib/labels';
+import type { CommonName, FamiliarityTier, Sighting } from '../types';
 
 const MONTH_NAMES = [
   'January', 'February', 'March', 'April', 'May', 'June',
@@ -13,7 +14,7 @@ const DAY_LABELS = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
 interface DayDetailProps {
   date: string;
   sightings: Sighting[];
-  speciesById: Map<string, { common_name: string }>;
+  speciesById: Map<string, { common_name: CommonName }>;
   entries: { speciesId: string; tier: FamiliarityTier }[];
   onClose: () => void;
 }
@@ -41,7 +42,7 @@ function DayDetail({ date, sightings, speciesById, entries, onClose }: DayDetail
                 <span className={`mt-0.5 w-2 h-2 rounded-full shrink-0 ${colors.bg} border ${colors.border}`} />
               )}
               <div>
-                <span className="font-medium text-stone-800">{sp?.common_name ?? s.speciesId}</span>
+                <span className="font-medium text-stone-800">{getCommonName(sp?.common_name ?? s.speciesId)}</span>
                 {s.location && <span className="text-stone-500"> · {s.location}</span>}
                 {s.notes && <p className="text-xs text-stone-400 mt-0.5">{s.notes}</p>}
               </div>

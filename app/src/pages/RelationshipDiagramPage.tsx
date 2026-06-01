@@ -2,6 +2,7 @@ import { useEffect, useCallback } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import SpeciesBubbleTree from '../components/SpeciesBubbleTree';
 import { useDataset } from '../hooks/useDataset';
+import { getCommonName } from '../lib/labels';
 
 export function RelationshipDiagramPage() {
   const navigate = useNavigate();
@@ -38,7 +39,7 @@ export function RelationshipDiagramPage() {
           </button>
           {focalSpecies && (
             <div>
-              <h1 className="text-xl font-bold text-stone-800">{focalSpecies.common_name}</h1>
+              <h1 className="text-xl font-bold text-stone-800">{getCommonName(focalSpecies.common_name)}</h1>
               <p className="text-xs text-stone-500">Depth: 1–2 relationships (scroll/pinch to zoom/pan)</p>
             </div>
           )}

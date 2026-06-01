@@ -2,6 +2,7 @@ import { useState, Suspense, lazy } from 'react';
 import type { Species, LifeStage } from '../types';
 import type { RelatedEntry } from '../lib/relationships';
 import { getHabitatNeighborsByCategory } from '../lib/relationships';
+import { getCommonName, getAltNames } from '../lib/labels';
 import { LifeStageRow } from './LifeStageRow';
 import { KeyRelationshipsSection } from './KeyRelationshipsSection';
 import { TaxonomyRelatedGrid } from './TaxonomyRelatedGrid';
@@ -41,7 +42,7 @@ export function SpeciesCard({ species, symbiotes, habitatNeighbors, related }: P
         {species.image?.url ? (
           <img
             src={species.image.url}
-            alt={species.common_name}
+            alt={getCommonName(species.common_name)}
             loading="lazy"
             className="max-w-full max-h-full object-contain"
           />
@@ -54,7 +55,7 @@ export function SpeciesCard({ species, symbiotes, habitatNeighbors, related }: P
       <div>
         <div>
           <h1 className="text-2xl font-bold text-stone-800 leading-tight">
-            {species.common_name}
+            {getCommonName(species.common_name)}
           </h1>
           {showScientificName && species.latin_name && (
             <p className="text-sm text-stone-600 mt-1 italic">
@@ -70,6 +71,11 @@ export function SpeciesCard({ species, symbiotes, habitatNeighbors, related }: P
             {showScientificName ? '− Scientific name' : '+ Scientific name'}
           </button>
         )}
+        {getAltNames(species.common_name).map(({ lang, name }) => (
+          <p key={lang} className="text-sm text-stone-400 italic mt-1">
+            {lang.toUpperCase()}: {name}
+          </p>
+        ))}
       </div>
 
       {/* 3. Tags row */}
@@ -115,7 +121,7 @@ export function SpeciesCard({ species, symbiotes, habitatNeighbors, related }: P
       {sightingModalOpen && (
         <SightingModal
           speciesId={species.id}
-          speciesName={species.common_name}
+          speciesName={getCommonName(species.common_name)}
           onClose={() => setSightingModalOpen(false)}
         />
       )}

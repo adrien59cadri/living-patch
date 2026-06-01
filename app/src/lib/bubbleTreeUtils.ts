@@ -1,4 +1,5 @@
 import type { Species, Symbiosis, SymbiosisStrength } from '../types';
+import { getCommonName } from './labels';
 import {
   getFormColor as designGetFormColor,
   getRelationshipColor as designGetRelationshipColor,
@@ -155,7 +156,7 @@ export function transformToNodesEdges(
   nodesByDepth.set(0, [
     {
       id: focalSpeciesId,
-      name: focalSpecies.common_name,
+      name: getCommonName(focalSpecies.common_name),
       form: focalSpecies.form,
       depth: 0,
     },
@@ -204,7 +205,7 @@ export function transformToNodesEdges(
               }
               nodesByDepth.get(nextDepth)!.push({
                 id: otherId,
-                name: otherSpecies.common_name,
+                name: getCommonName(otherSpecies.common_name),
                 form: otherSpecies.form,
                 depth: nextDepth,
               });

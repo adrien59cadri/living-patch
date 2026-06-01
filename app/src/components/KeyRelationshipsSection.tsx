@@ -4,7 +4,7 @@ import type { RelatedEntry, SymbiosisRole } from '../lib/relationships';
 import { groupByRole, resolveRelationGroups } from '../lib/relationships';
 import { SpeciesTile } from './SpeciesTile';
 import { RelationGroupTile } from './RelationGroupTile';
-import { symbiosisLabel } from '../lib/labels';
+import { symbiosisLabel, getCommonName } from '../lib/labels';
 
 interface Props {
   related: RelatedEntry[];
@@ -65,9 +65,9 @@ export function KeyRelationshipsSection({ related }: Props) {
             <div className="text-sm text-stone-700 mt-1">
               {firstTwo.map((item, idx) => {
                 const name = 'isRelationGroup' in item
-                  ? item.entries.slice(0, 2).map(e => e.species.common_name).join(', ') +
+                  ? item.entries.slice(0, 2).map(e => getCommonName(e.species.common_name)).join(', ') +
                     (item.entries.length > 2 ? ` (+${item.entries.length - 2})` : '')
-                  : item.species.common_name;
+                  : getCommonName(item.species.common_name);
                 const linkTo = 'isRelationGroup' in item ? null : `/species/${item.species.id}`;
                 return (
                   <span key={idx}>

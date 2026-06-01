@@ -1,11 +1,11 @@
 # LivingPatch — Development Memory
 
-## Project Status: ✅ Phase 2 COMPLETE + Quick Filters + 0-base Dataset Enrichment (May 31, 2026)
-Phase 1 (Dataset Explorer with D3 Diagram) + Phase 2 (Life List / Sighting Logging) + Quick Filter UX + 0-base improvement plan (Phases 1–3) fully implemented, tested, and shipped.
+## Project Status: ✅ Phase 2 COMPLETE + Multi-Region + French Pack + Multilingual Names (June 1, 2026)
+Phase 1 (Dataset Explorer with D3 Diagram) + Phase 2 (Life List) + Multi-Region Pack System + French species + CommonName multilingual type — all implemented, tested, and shipped.
 - **Live**: http://localhost:5174/ (run `npm run dev` in root)
-- **Build**: ~195ms, 648 modules
+- **Build**: ~195ms, ~650 modules
 - **Tests**: 121 unit tests + 74 E2E tests passing
-- **Latest**: 0-base dataset enrichment — 64 species, 117 symbiosis relationships
+- **Dataset**: 104 species (80 NE PA + 24 French) + 14 taxonomic groups, 2 packs
 
 ## What Works
 ✅ **D3 Radial Bubble Tree** - Interactive species relationship diagram
@@ -14,7 +14,11 @@ Phase 1 (Dataset Explorer with D3 Diagram) + Phase 2 (Life List / Sighting Loggi
 ✅ **Quick Filter Chips** - Pill-style Form/Habitat/Keystone chips on list page (QuickFilterBar component)
 ✅ **Clickable Detail Tags** - Form/Habitat/Keystone tags in species detail navigate to filtered list via URL params
 ✅ **URL Filter Params** - List page reads ?form=, ?habitat=, ?keystone_type= params (multi-value)
-✅ **Species List** - 64 species + 11 taxonomic groups, keystone badges
+✅ **Multi-Region Packs** - Pack management page (/packs), toggle packs at runtime, 2 packs (NE PA + France)
+✅ **Area Filtering** - Sky-blue area chips + checkboxes; ?area= URL params; only shown when >1 region
+✅ **French Species Pack** - 24 French species (birds, mammals, trees, plants, butterflies), English text, {en, fr} names
+✅ **Multilingual CommonName** - `common_name: string | {en, fr?, ...}` polymorphic type; getCommonName() + getAltNames() helpers; FR: name displayed below scientific name in SpeciesCard
+✅ **Species List** - 104 species + 14 taxonomic groups, keystone badges
 ✅ **Species Card** - Full detail view with photo, tags (linkable), relationships
 ✅ **Relationships** - Grouped by symbiosis type, obligate pinned top
 ✅ **Navigation** - List ↔ Detail pages, click-through relationships
@@ -43,11 +47,12 @@ Helps nature hobbyists understand ecological relationships in their area.
 - **Design Tokens**: Centralized in designTokens.ts (colors, icons, labels)
 
 ## Dataset Facts
-- File: app/src/data/dataset.json
-- 64 individual species + 11 taxonomic group entries
-- 117 symbiosis entries (mutualism, parasitism, predation, competition, commensalism)
-- 5 general relations
-- Source pack: pack-tools/packs/0-base.json
+- File: app/src/data/dataset.json (merged from packs at build time)
+- **Pack 0**: pack-tools/packs/0-base.json — 80 NE PA species + 11 taxonomic groups, 176 symbiosis, 5 relations
+- **Pack 1**: pack-tools/packs/1-france.json — 24 French species + 3 taxonomic groups, 11 symbiosis
+- **Total**: 104 individual species + 14 taxonomic groups, 187 symbiosis entries
+- Build: `npm run build:dataset` merges packs → dataset.json; status:published packs only (draft skipped)
+- Species ID format: type_common-name-slug (e.g., bird_pileated-woodpecker, bird_european-robin)
 - Species ID format: type_common-name-slug (e.g., bird_pileated-woodpecker)
 - Obligate relationships marked and pinned in detail view
 
@@ -143,10 +148,16 @@ RelationshipBubbleTree renders with D3 (SVG)
 - Tier badges + sighting counts on SpeciesTile; tier selector + recent sightings on SpeciesCard
 - LifeListStats summary bar on HomePage
 
-### Phase 3: Multiple Locations (3-4 weeks)
-- Area/region selection
-- Area-specific species filtering
-- Comparison between locations
+### Phase 3: Multi-Region ✅ COMPLETE (June 1, 2026)
+- Pack management, runtime toggling, /packs page
+- French species pack (1-france.json)
+- Area-based list filtering (?area= URL params)
+- Multilingual CommonName type ({en, fr} objects)
+- Alt-name display (FR: ...) in SpeciesCard
+- `getCommonName()` / `getAltNames()` helpers in labels.ts — defensive against undefined (taxonomic groups)
+
+### Future Plans
+- fetch-names CLI tool (plan-fetch-names.md): Wikipedia langlinks API to auto-populate language keys in common_name objects
 
 ### Phase 4: Advanced Visualization (4-6 weeks)
 - Alternative views (grid, timeline, network)

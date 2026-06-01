@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useLifeList } from '../../hooks/useLifeList';
 import { useDataset } from '../../hooks/useDataset';
 import { TIER_ORDER, TIER_LABELS, TIER_COLORS, formatDate } from '../../lib/lifeListUtils';
+import { getCommonName } from '../../lib/labels';
 import { SpeciesTierBadge } from '../SpeciesTierBadge';
 import type { FamiliarityTier } from '../../types';
 
@@ -20,8 +21,8 @@ export function AllSpeciesTab() {
     const list = tierFilter === 'all' ? entries : entries.filter(e => e.tier === tierFilter);
     return [...list].sort((a, b) => {
       if (sort === 'name') {
-        const an = speciesById.get(a.speciesId)?.common_name ?? '';
-        const bn = speciesById.get(b.speciesId)?.common_name ?? '';
+        const an = getCommonName(speciesById.get(a.speciesId)?.common_name ?? '');
+        const bn = getCommonName(speciesById.get(b.speciesId)?.common_name ?? '');
         return an.localeCompare(bn);
       }
       if (sort === 'count') return b.sightingCount - a.sightingCount;
@@ -112,12 +113,12 @@ export function AllSpeciesTab() {
               >
                 {sp.image?.url && (
                   <div className="shrink-0 w-10 h-10 rounded-md overflow-hidden bg-stone-100">
-                    <img src={sp.image.url} alt={sp.common_name} className="w-full h-full object-cover" />
+                    <img src={sp.image.url} alt={getCommonName(sp.common_name)} className="w-full h-full object-cover" />
                   </div>
                 )}
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 flex-wrap">
-                    <span className="font-medium text-stone-800 text-sm">{sp.common_name}</span>
+                    <span className="font-medium text-stone-800 text-sm">{getCommonName(sp.common_name)}</span>
                     <SpeciesTierBadge tier={entry.tier} />
                     {entry.sightingCount > 0 && (
                       <span className="text-xs text-stone-400">{entry.sightingCount}× seen</span>

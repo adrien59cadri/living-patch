@@ -5,7 +5,7 @@ import {
   getCategoryGroups,
 } from '../lib/relationships';
 import type { RelatedEntry } from '../lib/relationships';
-import { symbiosisLabel } from '../lib/labels';
+import { symbiosisLabel, getCommonName } from '../lib/labels';
 
 export default function NeighborListView() {
   const { id, category } = useParams<{ id: string; category: string }>();
@@ -33,7 +33,7 @@ export default function NeighborListView() {
       <div className="text-center py-12 space-y-3">
         <p className="text-stone-400">Category not found.</p>
         <Link to={`/species/${id}`} className="text-emerald-600 hover:underline text-sm">
-          ← Back to {species.common_name}
+          ← Back to {getCommonName(species.common_name)}
         </Link>
       </div>
     );
@@ -45,12 +45,12 @@ export default function NeighborListView() {
         to={`/species/${id}`}
         className="inline-flex items-center gap-1 text-sm text-stone-500 hover:text-stone-700 no-underline"
       >
-        ← {species.common_name}
+        ← {getCommonName(species.common_name)}
       </Link>
 
       <div>
         <h1 className="text-lg font-bold text-stone-800">
-          {currentCategory.label} connected to {species.common_name}
+          {currentCategory.label} connected to {getCommonName(species.common_name)}
         </h1>
         <p className="text-sm text-stone-500 mt-0.5">
           {currentCategory.entries.length} species
@@ -94,7 +94,7 @@ function SpeciesTile({ entry }: { entry: RelatedEntry }) {
             isGroup ? 'italic' : ''
           }`}
         >
-          {entry.species.common_name}
+          {getCommonName(entry.species.common_name)}
         </div>
         <div className="text-xs text-stone-500 mt-0.5 leading-snug line-clamp-2">
           {entry.notes}

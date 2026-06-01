@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useLifeList } from '../../hooks/useLifeList';
 import { useDataset } from '../../hooks/useDataset';
 import { TIER_ORDER, TIER_LABELS, TIER_ICONS, TIER_COLORS } from '../../lib/lifeListUtils';
+import { getCommonName } from '../../lib/labels';
 import type { FamiliarityTier } from '../../types';
 
 export function ByTierTab() {
@@ -52,11 +53,11 @@ export function ByTierTab() {
                     >
                       {sp.image?.url && (
                         <div className="shrink-0 w-8 h-8 rounded overflow-hidden bg-stone-100">
-                          <img src={sp.image.url} alt={sp.common_name} className="w-full h-full object-cover" />
+                          <img src={sp.image.url} alt={getCommonName(sp.common_name)} className="w-full h-full object-cover" />
                         </div>
                       )}
                       <span className="flex-1 text-sm text-stone-800 font-medium truncate">
-                        {sp.common_name}
+                        {getCommonName(sp.common_name)}
                       </span>
                       {entry.sightingCount > 0 && (
                         <span className="text-xs text-stone-400 shrink-0">{entry.sightingCount}×</span>

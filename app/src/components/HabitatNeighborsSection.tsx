@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { getCommonName } from '../lib/labels';
 import type { HabitatNeighborCategory } from '../lib/relationships';
 import { useExpandedState } from '../hooks/useExpandedState';
 
@@ -43,7 +44,7 @@ export function HabitatNeighborsSection({ categories, speciesId }: Props) {
                       to={`/species/${species.id}`}
                       className="text-emerald-600 hover:text-emerald-700 underline"
                     >
-                      {species.common_name}
+                      {getCommonName(species.common_name)}
                     </Link>
                     {idx < displayedSpecies.length - 1 && <span>, </span>}
                   </span>

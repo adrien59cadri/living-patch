@@ -75,6 +75,29 @@ export function keystoneLabel(type: string): string {
   return getKeystoneLabel(type);
 }
 
+import type { CommonName } from '../types';
+
+/**
+ * Returns the English display name for a species common_name field.
+ * Returns empty string for undefined/null (e.g. taxonomic groups).
+ */
+export function getCommonName(name: CommonName | undefined | null): string {
+  if (name == null) return '';
+  if (typeof name === 'string') return name;
+  return name.en;
+}
+
+/**
+ * Returns alternative language names for display in the species detail.
+ * Returns an empty array for plain-string common_name values.
+ */
+export function getAltNames(name: CommonName | undefined | null): { lang: string; name: string }[] {
+  if (name == null || typeof name === 'string') return [];
+  return Object.entries(name)
+    .filter(([lang, val]) => lang !== 'en' && typeof val === 'string' && val.length > 0)
+    .map(([lang, val]) => ({ lang, name: val as string }));
+}
+
 export function areaLabel(region: string): string {
   const map: Record<string, string> = {
     northeast_pa: 'Northeast PA',

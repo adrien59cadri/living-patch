@@ -8,6 +8,12 @@
  */
 
 import type { DataPack } from './schema.js';
+import type { CommonName } from '../types.js';
+
+function resolveCommonName(name: CommonName | undefined, fallback: string): string {
+  if (!name) return fallback;
+  return typeof name === 'string' ? name : name.en;
+}
 
 export interface Conflict {
   type: 'duplicate_species_id' | 'duplicate_group_id' | 'orphaned_reference' | 'id_format_violation' | 'invalid_date_format';
@@ -220,7 +226,7 @@ export function checkMissingImages(pack: DataPack): ConflictReport {
       conflicts.push({
         type: 'id_format_violation', // Reuse existing type for warnings
         severity: 'warning',
-        message: `Species "${species.common_name}" (${species.id}) is missing an image`,
+        message: `Species "${resolveCommonName(species.common_name, species.id)}" (${species.id}) is missing an image`,
         packId: pack.metadata.id,
         affectedIds: [species.id],
       });

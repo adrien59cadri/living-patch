@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import type { Species } from '../types';
 import type { RelatedEntry } from '../lib/relationships';
 import { KeystoneBadge } from './KeystoneBadge';
-import { formLabel } from '../lib/labels';
+import { formLabel, getCommonName } from '../lib/labels';
 import { useUserPreferences } from '../hooks/useUserPreferences';
 import { SpeciesTierBadge } from './SpeciesTierBadge';
 import { useSpeciesTier, useSpeciesSightingCount } from '../hooks/useLifeList';
@@ -38,7 +38,7 @@ export function SpeciesTile({ species, related, isGroup }: Props) {
           {species.image?.url ? (
             <img
               src={species.image.url}
-              alt={species.common_name}
+              alt={getCommonName(species.common_name)}
               className="w-full h-full object-cover"
             />
           ) : (
@@ -54,7 +54,7 @@ export function SpeciesTile({ species, related, isGroup }: Props) {
               actualIsGroup ? 'text-stone-500' : 'text-stone-800',
             ].join(' ')}
           >
-            {species.common_name}
+            {getCommonName(species.common_name)}
           </span>
           {!actualIsGroup && species.form && (
             <span className="text-xs bg-stone-100 text-stone-500 px-2 py-0.5 rounded-full">

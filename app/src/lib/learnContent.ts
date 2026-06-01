@@ -1,4 +1,5 @@
 import type { Species, Symbiosis } from '../types';
+import { getCommonName } from './labels';
 
 export interface FormDefinition {
   label: string;
@@ -206,7 +207,7 @@ export function getKeystonesByType(
       keystones.push(species);
     }
   });
-  return keystones.sort((a, b) => a.common_name.localeCompare(b.common_name));
+  return keystones.sort((a, b) => getCommonName(a.common_name).localeCompare(getCommonName(b.common_name)));
 }
 
 export function getSymbiosisByType(

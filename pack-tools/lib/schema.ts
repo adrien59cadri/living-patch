@@ -36,7 +36,10 @@ export const SpeciesSchema = z.object({
     .string()
     .min(1)
     .regex(SPECIES_ID_PATTERN, 'Species ID must match pattern: category_slug (e.g., bird_pileated-woodpecker)'),
-  common_name: z.string().optional(),
+  common_name: z.union([
+    z.string().min(1),
+    z.object({ en: z.string().min(1) }).catchall(z.string()),
+  ]).optional(),
   latin_name: z.string().optional().nullable(),
   form: z.string().optional(),
   habitat: z.array(z.string()).optional(),

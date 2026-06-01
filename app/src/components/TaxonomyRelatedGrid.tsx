@@ -1,5 +1,6 @@
 import type { RelatedEntry } from '../lib/relationships';
 import { getCategoryGroups } from '../lib/relationships';
+import { getCommonName } from '../lib/labels';
 
 interface Props {
   related: RelatedEntry[];
@@ -16,7 +17,7 @@ export function TaxonomyRelatedGrid({ related }: Props) {
 
   const speciesNames = related
     .filter(e => e.role === 'related')
-    .map(e => e.species.common_name);
+    .map(e => getCommonName(e.species.common_name));
 
   return (
     <div>

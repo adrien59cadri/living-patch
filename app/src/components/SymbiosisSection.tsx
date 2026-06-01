@@ -1,6 +1,7 @@
 import type { Species, Symbiosis } from '../types';
 import { SYMBIOSIS_DEFINITIONS, getSymbiosisByType, getSymbiosisExample } from '../lib/learnContent';
 import { getSymbiosisIcon } from '../lib/designTokens';
+import { getCommonName } from '../lib/labels';
 import ExampleSpeciesLink from './ExampleSpeciesLink';
 
 interface SymbiosisSectionProps {
@@ -99,7 +100,7 @@ export default function SymbiosisSection({
                       <div className="mt-1 space-y-0.5 ml-2 pl-2 border-l border-stone-200">
                         {relationships.map((rel, idx) => (
                           <div key={idx} className="text-xs text-stone-500">
-                            {[rel.source, ...rel.targets].map((m) => speciesById.get(m)?.common_name).join(' ↔ ')}
+                            {[rel.source, ...rel.targets].map((m) => getCommonName(speciesById.get(m)?.common_name ?? m)).join(' ↔ ')}
                             {rel.strength !== 'incidental' ? ` (${rel.strength})` : ''}
                           </div>
                         ))}

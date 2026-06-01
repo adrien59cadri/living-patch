@@ -5,9 +5,15 @@ export interface LifeStage {
   months: string[];
 }
 
+/**
+ * A species common name. Either a plain English string, or an object
+ * with a required `en` key and optional additional language keys (e.g. `fr`).
+ */
+export type CommonName = string | { en: string; [lang: string]: string | undefined };
+
 export interface Species {
   id: string;
-  common_name: string;
+  common_name: CommonName;
   latin_name?: string | null;
   form: string;
   habitat: string[];
