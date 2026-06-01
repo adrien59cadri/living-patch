@@ -242,19 +242,27 @@ test.describe('Quick filter bar', () => {
     await page.goto('/');
     await page.waitForLoadState('networkidle');
 
-    // The QuickFilterBar renders form chips as buttons matching form labels
-    await expect(page.getByRole('button', { name: 'Butterfly', exact: true })).toBeVisible();
-    await expect(page.getByRole('button', { name: 'Tree', exact: true })).toBeVisible();
-    const woodpeckerOrBirdChip = page.getByRole('button', { name: 'Woodpecker', exact: true })
-      .or(page.getByRole('button', { name: 'Bird', exact: true }));
-    await expect(woodpeckerOrBirdChip.first()).toBeVisible();
+    // Top-level form chips should be visible
+    await expect(page.getByRole('button', { name: 'Bird', exact: true })).toBeVisible();
+    await expect(page.getByRole('button', { name: 'Insect', exact: true })).toBeVisible();
+    await expect(page.getByRole('button', { name: 'Plant', exact: true })).toBeVisible();
+
+    // Expand Insect to see Butterfly subcategory
+    await page.getByRole('button', { name: 'Insect', exact: true }).click();
+    await expect(page.locator('button:has-text("Butterfly")')).toBeVisible();
+
+    // Expand Plant to see Tree subcategory (use contains match to avoid ambiguity with "Dead Trees" habitat)
+    await page.getByRole('button', { name: 'Plant', exact: true }).click();
+    await expect(page.locator('button:has-text("└─ Tree")')).toBeVisible();
   });
 
   test('clicking form chip filters species list', async ({ page }) => {
     await page.goto('/');
     await page.waitForLoadState('networkidle');
 
-    await page.getByRole('button', { name: 'Butterfly', exact: true }).click();
+    // Expand Insect to access Butterfly
+    await page.getByRole('button', { name: 'Insect', exact: true }).click();
+    await page.getByRole('button', { name: 'Butterfly' }).click();
 
     // Monarch Butterfly (a butterfly) should remain visible
     await expect(page.getByText('Monarch Butterfly', { exact: true })).toBeVisible();
@@ -266,7 +274,9 @@ test.describe('Quick filter bar', () => {
     await page.goto('/');
     await page.waitForLoadState('networkidle');
 
-    const chip = page.getByRole('button', { name: 'Butterfly', exact: true });
+    // Expand Insect and click Butterfly
+    await page.getByRole('button', { name: 'Insect', exact: true }).click();
+    const chip = page.getByRole('button', { name: 'Butterfly' });
     await chip.click();
     await expect(page.getByText('Pileated Woodpecker', { exact: true })).not.toBeVisible();
 

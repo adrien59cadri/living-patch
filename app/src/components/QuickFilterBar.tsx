@@ -46,9 +46,10 @@ export function QuickFilterBar({ options, filters, onChange }: Props) {
           <div className="flex flex-wrap gap-1.5">
             {topLevelForms.map(form => {
               const isExpanded = activeTopLevel === form;
-              const isActive = filters.forms.length > 0 && 
-                (filters.forms.includes(form) || 
-                 getChildForms(form).some(child => filters.forms.includes(child)));
+              const isActive = isExpanded ||
+                (filters.forms.length > 0 && 
+                 (filters.forms.includes(form) || 
+                  getChildForms(form).some(child => filters.forms.includes(child))));
               return (
                 <button
                   key={form}
