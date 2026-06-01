@@ -81,8 +81,8 @@ test.describe('Species list page basic functionality', () => {
     await page.goto('/');
     await page.waitForLoadState('networkidle');
 
-    // Check for species count text - should show "103 species"
-    const speciesCountText = page.getByText('103 species');
+    // Check for species count text - should show "104 species"
+    const speciesCountText = page.getByText('104 species');
     await expect(speciesCountText).toBeVisible();
   });
 
@@ -216,12 +216,12 @@ test.describe('Search bar', () => {
     const searchBar = page.getByRole('searchbox');
     await searchBar.fill('oak');
     await page.waitForTimeout(400);
-    // When filtered, count shows "N of 103 species" — "103 species" exact is not present
-    await expect(page.getByText('103 species', { exact: true })).not.toBeVisible();
+    // When filtered, count shows "N of 104 species" — "104 species" exact is not present
+    await expect(page.getByText('104 species', { exact: true })).not.toBeVisible();
 
     await searchBar.clear();
     await page.waitForTimeout(400);
-    await expect(page.getByText('103 species', { exact: true })).toBeVisible();
+    await expect(page.getByText('104 species', { exact: true })).toBeVisible();
   });
 
   test('search works across latin names', async ({ page }) => {
@@ -272,7 +272,7 @@ test.describe('Quick filter bar', () => {
 
     // Click again to deselect
     await chip.click();
-    await expect(page.getByText('103 species', { exact: true })).toBeVisible();
+    await expect(page.getByText('104 species', { exact: true })).toBeVisible();
     await expect(page.getByText('Pileated Woodpecker', { exact: true })).toBeVisible();
   });
 
@@ -284,8 +284,8 @@ test.describe('Quick filter bar', () => {
     await expect(forestChip).toBeVisible();
     await forestChip.click();
 
-    // Count should no longer be "103 species" (some species filtered out)
-    await expect(page.getByText('103 species', { exact: true })).not.toBeVisible();
+    // Count should no longer be "104 species" (some species filtered out)
+    await expect(page.getByText('104 species', { exact: true })).not.toBeVisible();
     // Pileated Woodpecker lives in forest
     await expect(page.getByText('Pileated Woodpecker', { exact: true })).toBeVisible();
   });
@@ -305,7 +305,7 @@ test.describe('Quick filter bar', () => {
     await page.waitForLoadState('networkidle');
 
     // Species count should be less than total (forest filtered)
-    await expect(page.getByText('103 species', { exact: true })).not.toBeVisible();
+    await expect(page.getByText('104 species', { exact: true })).not.toBeVisible();
     // Pileated Woodpecker lives in forest and should be visible
     await expect(page.getByText('Pileated Woodpecker', { exact: true })).toBeVisible();
   });
