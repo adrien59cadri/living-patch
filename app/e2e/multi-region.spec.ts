@@ -242,7 +242,7 @@ test.describe('French species (Item 10)', () => {
 
 test.describe('Pack management (Item 9)', () => {
   test('packs page displays both packs', async ({ page }) => {
-    await page.goto('/packs');
+    await page.goto('/#/packs');
     await page.waitForLoadState('networkidle');
 
     // Should show "The dataset is built from 2 packs."
@@ -258,7 +258,7 @@ test.describe('Pack management (Item 9)', () => {
   });
 
   test('pack cards show toggle switches', async ({ page }) => {
-    await page.goto('/packs');
+    await page.goto('/#/packs');
     await page.waitForLoadState('networkidle');
 
     // Should have 2 toggle switches (one per pack)
@@ -268,7 +268,7 @@ test.describe('Pack management (Item 9)', () => {
   });
 
   test('toggling France pack removes French species from list', async ({ page }) => {
-    await page.goto('/packs');
+    await page.goto('/#/packs');
     await page.waitForLoadState('networkidle');
 
     // Disable France pack via its labelled toggle button
@@ -284,7 +284,7 @@ test.describe('Pack management (Item 9)', () => {
   });
 
   test('toggling France pack back on restores French species', async ({ page }) => {
-    await page.goto('/packs');
+    await page.goto('/#/packs');
     await page.waitForLoadState('networkidle');
 
     // Disable then re-enable
@@ -301,7 +301,7 @@ test.describe('Pack management (Item 9)', () => {
   });
 
   test('disabled pack card shows grayed out state', async ({ page }) => {
-    await page.goto('/packs');
+    await page.goto('/#/packs');
     await page.waitForLoadState('networkidle');
 
     await page.getByRole('button', { name: 'Disable france-base' }).click();
@@ -314,7 +314,7 @@ test.describe('Pack management (Item 9)', () => {
   });
 
   test('pack toggle state persists after page reload', async ({ page }) => {
-    await page.goto('/packs');
+    await page.goto('/#/packs');
     await page.waitForLoadState('networkidle');
 
     await page.getByRole('button', { name: 'Disable france-base' }).click();
@@ -330,7 +330,7 @@ test.describe('Pack management (Item 9)', () => {
   });
 
   test('disabled base pack removes US species', async ({ page }) => {
-    await page.goto('/packs');
+    await page.goto('/#/packs');
     await page.waitForLoadState('networkidle');
 
     await page.getByRole('button', { name: 'Disable 0-base' }).click();
@@ -345,7 +345,7 @@ test.describe('Pack management (Item 9)', () => {
   });
 
   test('packs page shows species count for active packs', async ({ page }) => {
-    await page.goto('/packs');
+    await page.goto('/#/packs');
     await page.waitForLoadState('networkidle');
 
     // Each pack card shows its own species count — these are unique on this page
