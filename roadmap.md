@@ -1,50 +1,6 @@
 # Living Patch Roadmap
 
-## ✅ Completed (June 1, 2026)
-
-### 9. Multi-Dataset Runtime Pack Control ✅
-Enable toggling of data packs at runtime:
-- **Store**: Zustand store for pack enable/disable state, persisted to localStorage
-- **UI**: Pack management page (`/packs`) with toggle switches per pack
-- **Data**: Dynamic dataset indexing based on enabled packs
-- **Status**: Ships with 2 packs (0-base: 80 NE PA species, 1-france: 24 French species)
-
-### 10. French Species Pack ✅
-Add European species dataset as a second geographic pack:
-- **Pack file**: `pack-tools/packs/1-france.json` with 24 French species
-- **Content**: Birds (rouge-gorge, mésange, etc.), mammals (renard, sanglier, etc.), trees, plants, butterflies
-- **Symbiosis**: 11 relationships reflecting French temperate ecosystem
-- **Status**: Published (loads by default)
-
-### 11. Area-Based List Filtering ✅
-Expose the `region` field as a filter dimension:
-- **FilterState**: Added `areas: string[]` with multi-select support
-- **UI**: Area chips in quick filter bar (sky-blue, active when filtered) + checkboxes in advanced panel
-- **Display**: Only shown when >1 region in dataset
-- **URLs**: Supports `?area=france` and `?area=northeast_pa` URL params for deep-linking
-
-### 12. Hierarchical Form Filters in Species List ✅
-Redesign the species list form filter to show only top-level categories initially:
-- **UI**: Primary selector shows top-level forms (bird, mammal, plant, insect, frog)
-- **Progressive disclosure**: When user selects a top-level form, sub-categories appear with visual prefix (e.g., "└─ Woodpecker")
-- **Consistency**: Mirrors the hierarchical structure already defined in FormHierarchySection on /learn page
-- **Files**: `app/src/components/FilterPanel.tsx`, `app/src/lib/learnContent.ts` (utilities: `getTopLevelForms()`, `getChildForms()`, `getAllDescendantForms()`)
-- **Status**: Published, 22 E2E tests passing
-
-### 13. Life List Backup & Restore ✅
-Add export/import controls in the Settings page to prevent data loss:
-- **Export**: Download life list data (sightings + tiers) as a JSON file from the Settings page
-- **Import**: Upload a previously exported JSON file to restore data (with confirmation prompt)
-- Useful when switching browsers, devices, or clearing browser storage
-- **Status**: Implemented in SettingsPage.tsx with `restoreFromBackup()` store action
-
----
-
 ## Planned Features (Next Priority)
-
----
-
-## Future Ideas & Enhancements
 
 ### 1. Keystone Keyword & Value Shorthands
 Implement a shorthand system for changing keystone keywords and values in datasets:
@@ -101,7 +57,7 @@ Enrich sighting data to capture where and when observations happen, not just how
 
 **Impact**: Transforms sighting counts into a richer picture of a species' presence across seasons, years, and habitats — rewarding long-term, multi-site observation.
 
-### 8. Sighting-Based Familiarity Progression
+### 7. Sighting-Based Familiarity Progression
 Replace the manual tier system with familiarity derived from observation data:
 - Auto-calculate a familiarity level from sighting count, seasonal diversity, habitat diversity, and years observed
 - Factor in related species sightings — observing a predator and its prey, or a plant and its pollinator, signals deeper ecosystem understanding
@@ -111,7 +67,7 @@ Replace the manual tier system with familiarity derived from observation data:
 
 **Impact**: Makes familiarity feel earned through real observation rather than arbitrary manual selection; rewards consistent, multi-context naturalism.
 
-### 9. Automated Multilingual Name Fetcher
+### 8. Automated Multilingual Name Fetcher
 Implement a CLI tool to auto-populate multilingual common names from Wikipedia:
 - **Tool**: `fetch-names` CLI (mirrors `fetch-images` pattern)
 - **Source**: Wikipedia language-links API to find vernacular names in other languages
