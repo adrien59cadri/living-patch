@@ -126,6 +126,29 @@ export function QuickFilterBar({ options, filters, onChange }: Props) {
           })}
         </div>
       )}
+
+      {/* Area chips – multi-select */}
+      {hasArea && (
+        <div className="flex flex-wrap gap-1.5">
+          {options.areas.map(area => {
+            const active = filters.areas.includes(area);
+            return (
+              <button
+                key={area}
+                onClick={() => onChange({ ...filters, areas: toggle(filters.areas, area) })}
+                className={[
+                  'text-xs px-2 py-0.5 rounded-full transition-colors',
+                  active
+                    ? 'bg-sky-600 text-white'
+                    : 'bg-sky-100 text-sky-800 hover:bg-sky-200',
+                ].join(' ')}
+              >
+                {areaLabel(area)}
+              </button>
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 }
