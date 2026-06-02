@@ -81,9 +81,13 @@ test.describe('Area filtering (Item 11)', () => {
       await page.waitForLoadState('networkidle');
     }
 
-    // NOW navigate to URL with area param - pack is already enabled in localStorage
-    await page.goto('/#/?area=france');
+    // NOW navigate with URL param using correct format: /?area=france (not /#/?area=france)
+    await page.goto('/?area=france');
     await page.waitForLoadState('networkidle');
+    
+    // Wait for area chips to be present - need to wait for both region options
+    await expect(page.getByRole('button', { name: 'Northeast PA' })).toBeVisible({ timeout: 10000 });
+    await expect(page.getByRole('button', { name: 'France' })).toBeVisible({ timeout: 10000 });
 
     // France chip should be active (highlighted)
     const franceChip = page.getByRole('button', { name: 'France' });
@@ -111,9 +115,13 @@ test.describe('Area filtering (Item 11)', () => {
       await page.waitForLoadState('networkidle');
     }
 
-    // NOW navigate to URL with area param - pack is already enabled
-    await page.goto('/#/?area=northeast_pa');
+    // NOW navigate with URL param using correct format: /?area=northeast_pa
+    await page.goto('/?area=northeast_pa');
     await page.waitForLoadState('networkidle');
+    
+    // Wait for area chips to be present
+    await expect(page.getByRole('button', { name: 'Northeast PA' })).toBeVisible({ timeout: 10000 });
+    await expect(page.getByRole('button', { name: 'France' })).toBeVisible({ timeout: 10000 });
 
     // Northeast PA chip should be active
     const nepaChip = page.getByRole('button', { name: 'Northeast PA' });
@@ -218,8 +226,8 @@ test.describe('Area filtering (Item 11)', () => {
       await page.waitForLoadState('networkidle');
     }
 
-    // NOW navigate to URL with area param - pack is already enabled
-    await page.goto('/#/?area=france');
+    // NOW navigate to URL with area param using correct format: /?area=france
+    await page.goto('/?area=france');
     await page.waitForLoadState('networkidle');
 
     // Ensure the advanced filter panel is open (URL param should auto-open it,
