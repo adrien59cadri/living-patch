@@ -9,16 +9,24 @@ interface Props {
 
 export function RelationGroupTile({ groupEntry }: Props) {
   const [expanded, setExpanded] = useState(false);
-  const { entries, strength, fulfillment, symbiosis } = groupEntry;
+  const { entries, strength, fulfillment, symbiosis, groupSpecies } = groupEntry;
   const groupKey = symbiosis.source;
 
   const fulfillmentLabel = fulfillment === 'any' ? 'any of:' : fulfillment === 'all' ? 'all of:' : null;
 
-  const displayNames = entries
-    .slice(0, 2)
-    .map(e => getCommonName(e.species.common_name))
-    .join(', ');
-  const overflow = entries.length > 2 ? ` (+${entries.length - 2})` : '';
+  // When merged from a group proxy, show the group label; otherwise list member names
+  const groupLabel = groupSpecies
+    ? (groupSpecies as { label?: string }).label ?? getCommonName(groupSpecies.common_name)
+    : null;
+
+  const displayNames = groupLabel ?? (
+    entries
+      .slice(0, 2)
+      .map(e => getCommonName(e.species.common_name))
+      .join(', ')
+  );
+  const overflow = !groupLabel && entries.length > 2 ? ` (+${entries.length - 2})` : '';
+  const memberCount = groupLabel ? ` · ${entries.length} in dataset` : '';
 
   return (
     <div
@@ -40,6 +48,7 @@ export function RelationGroupTile({ groupEntry }: Props) {
           )}
           {displayNames}
           {overflow && <span className="text-stone-500 font-normal">{overflow}</span>}
+          {memberCount && <span className="text-stone-400 font-normal text-xs">{memberCount}</span>}
         </span>
         {strength === 'critical' && (
           <span className="text-xs bg-amber-100 text-amber-700 px-1.5 py-0.5 rounded font-medium leading-tight shrink-0">

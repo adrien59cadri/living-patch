@@ -5,15 +5,18 @@ import { groupByRole, resolveRelationGroups } from '../lib/relationships';
 import { SpeciesTile } from './SpeciesTile';
 import { RelationGroupTile } from './RelationGroupTile';
 import { symbiosisLabel, getCommonName } from '../lib/labels';
+import type { Species } from '../types';
 
 interface Props {
   related: RelatedEntry[];
+  speciesById?: Map<string, Species>;
+  taxonomicGroupIds?: Set<string>;
 }
 
 const PRIMARY_ROLES: SymbiosisRole[] = ['mutualism', 'predation', 'parasitism'];
 const SECONDARY_ROLES: SymbiosisRole[] = ['commensalism', 'competition'];
 
-export function KeyRelationshipsSection({ related }: Props) {
+export function KeyRelationshipsSection({ related, speciesById, taxonomicGroupIds }: Props) {
   const groups = groupByRole(related);
   const [expandedRole, setExpandedRole] = useState<SymbiosisRole | null>(PRIMARY_ROLES[0] ?? null);
   const [showSecondary, setShowSecondary] = useState(false);
@@ -34,7 +37,7 @@ export function KeyRelationshipsSection({ related }: Props) {
 
   const renderRoleRow = (role: SymbiosisRole, entries: RelatedEntry[]) => {
     const isExpanded = expandedRole === role;
-    const resolved = resolveRelationGroups(entries);
+    const resolved = resolveRelationGroups(entries, speciesById, taxonomicGroupIds);
     const firstTwo = resolved.slice(0, 2);
     const remainingCount = Math.max(0, resolved.length - 2);
     const criticalCount = entries.filter(e => e.strength === 'critical').length;
