@@ -1,18 +1,19 @@
 #!/usr/bin/env node
 
 /**
- * Build script: Merge data packs and generate dataset.json for the app
- * 
+ * Build script: Process data packs and emit per-pack JSON files + manifest
+ *
  * This script:
  * 1. Loads all published packs from pack-tools/packs/
  * 2. Optionally includes draft packs if INCLUDE_DRAFTS=true
- * 3. Merges them into a single dataset
- * 4. Outputs to app/src/data/dataset.json
- * 
+ * 3. Validates, attaches images, checks for duplicate IDs
+ * 4. Writes app/public/packs/{id}.json for each pack
+ * 5. Writes app/public/packs/manifest.json (metadata + counts, no species data)
+ *
  * Run before building the app:
  *   node build-dataset.js
  *   npm run build
- * 
+ *
  * Or with draft packs:
  *   INCLUDE_DRAFTS=true node build-dataset.js
  */
@@ -25,13 +26,13 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const PACKS_DIR = path.join(__dirname, 'pack-tools', 'packs');
-const OUTPUT_PATH = path.join(__dirname, 'app', 'src', 'data', 'dataset.json');
+const OUTPUT_DIR = path.join(__dirname, 'app', 'public', 'packs');
 const INCLUDE_DRAFTS = process.env.INCLUDE_DRAFTS === 'true';
 
 console.log(`🔄 Building dataset from packs...`);
 console.log(`   Packs dir: ${PACKS_DIR}`);
-console.log(`   Output: ${OUTPUT_PATH}`);
-console.log(`   Include drafts: ${INCLUDE_DRAFTS ? 'YES' : 'NO'}`);
+console.log(`   Output dir: ${OUTPUT_DIR}`);
+console.log(`   Include drafts: ${INCLUDE_DRAFTS ? 'YES' : 'NO'}`)
 console.log('');
 
 try {
@@ -137,8 +138,7 @@ try {
     }
   }
 
-  // Output: array of packs (preserving pack identity)
-  // Remove redundant images array since images are already attached to species
+  // Build clean pack objects (strip image pack entries, keep images attached to species)
   const packsForOutput = dataPacks.map(pack => ({
     metadata: pack.metadata,
     data: {
@@ -149,20 +149,34 @@ try {
     },
   }));
 
-  const output = {
-    packs: packsForOutput,
-  };
-
-  // Write output
-  const outputDir = path.dirname(OUTPUT_PATH);
-  if (!fs.existsSync(outputDir)) {
-    fs.mkdirSync(outputDir, { recursive: true });
+  // Ensure output directory exists
+  if (!fs.existsSync(OUTPUT_DIR)) {
+    fs.mkdirSync(OUTPUT_DIR, { recursive: true });
   }
 
-  fs.writeFileSync(OUTPUT_PATH, JSON.stringify(output, null, 2));
+  // Write individual pack files
+  for (const pack of packsForOutput) {
+    const packPath = path.join(OUTPUT_DIR, `${pack.metadata.id}.json`);
+    fs.writeFileSync(packPath, JSON.stringify(pack, null, 2));
+  }
+
+  // Write manifest (metadata + counts only, no species data)
+  const manifest = packsForOutput.map(pack => ({
+    ...pack.metadata,
+    speciesCount: pack.data.species?.length ?? 0,
+    groupCount: pack.data.taxonomic_groups?.length ?? 0,
+    symbiosisCount: pack.data.symbiosis?.length ?? 0,
+    relationsCount: pack.data.relations?.length ?? 0,
+  }));
+  const manifestPath = path.join(OUTPUT_DIR, 'manifest.json');
+  fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 2));
 
   console.log('');
   console.log(`✓ Dataset built successfully with ${dataPacks.length} pack(s)`);
+  console.log(`   → ${OUTPUT_DIR}/manifest.json`);
+  for (const pack of packsForOutput) {
+    console.log(`   → ${OUTPUT_DIR}/${pack.metadata.id}.json`);
+  }
 
   let totalSpecies = 0;
   let totalGroups = 0;

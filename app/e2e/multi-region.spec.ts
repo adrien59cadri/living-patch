@@ -247,12 +247,12 @@ test.describe('Pack management (Item 9)', () => {
     await page.waitForLoadState('networkidle');
 
     await page.getByRole('button', { name: 'Disable france-base' }).click();
-    await page.waitForTimeout(400);
+    await page.waitForLoadState('networkidle');
 
     await page.goto('/');
     await page.waitForLoadState('networkidle');
 
-    await expect(page.getByText('Rougegorge familier', { exact: true })).not.toBeVisible();
+    await expect(page.getByText('European Robin', { exact: true })).not.toBeVisible();
     await expect(page.getByText('Pileated Woodpecker', { exact: true })).toBeVisible();
     // 0-base pack has 80 species
     await expect(page.getByText('80 species')).toBeVisible();
@@ -263,9 +263,9 @@ test.describe('Pack management (Item 9)', () => {
     await page.waitForLoadState('networkidle');
 
     await page.getByRole('button', { name: 'Disable france-base' }).click();
-    await page.waitForTimeout(200);
+    await page.waitForLoadState('networkidle');
     await page.getByRole('button', { name: 'Enable france-base' }).click();
-    await page.waitForTimeout(200);
+    await page.waitForLoadState('networkidle');
 
     await page.goto('/');
     await page.waitForLoadState('networkidle');
@@ -280,7 +280,7 @@ test.describe('Pack management (Item 9)', () => {
     await page.waitForLoadState('networkidle');
 
     await page.getByRole('button', { name: 'Disable france-base' }).click();
-    await page.waitForTimeout(200);
+    await page.waitForLoadState('networkidle');
 
     // Card root is 3 levels above the <h2> heading
     const cardRoot = page.getByRole('heading', { name: 'france-base', level: 2 }).locator('xpath=../../..');
@@ -293,15 +293,15 @@ test.describe('Pack management (Item 9)', () => {
     await page.waitForLoadState('networkidle');
 
     await page.getByRole('button', { name: 'Disable france-base' }).click();
-    await page.waitForTimeout(200);
+    await page.waitForLoadState('networkidle');
 
     await page.goto('/');
     await page.waitForLoadState('networkidle');
-    await expect(page.getByText('Rougegorge familier', { exact: true })).not.toBeVisible();
+    await expect(page.getByText('European Robin', { exact: true })).not.toBeVisible();
 
     await page.reload();
     await page.waitForLoadState('networkidle');
-    await expect(page.getByText('Rougegorge familier', { exact: true })).not.toBeVisible();
+    await expect(page.getByText('European Robin', { exact: true })).not.toBeVisible();
   });
 
   test('disabled base pack removes US species', async ({ page }) => {
@@ -309,7 +309,7 @@ test.describe('Pack management (Item 9)', () => {
     await page.waitForLoadState('networkidle');
 
     await page.getByRole('button', { name: 'Disable 0-base' }).click();
-    await page.waitForTimeout(200);
+    await page.waitForLoadState('networkidle');
 
     await page.goto('/');
     await page.waitForLoadState('networkidle');

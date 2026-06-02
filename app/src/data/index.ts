@@ -1,4 +1,3 @@
-import rawDataset from './dataset.json';
 import type { Species, Symbiosis, Relation } from '../types';
 
 interface PackMetadata {
@@ -11,6 +10,14 @@ interface PackMetadata {
   description?: string;
 }
 
+/** Entry in manifest.json — metadata + counts, no species data. */
+export interface PackManifestEntry extends PackMetadata {
+  speciesCount: number;
+  groupCount: number;
+  symbiosisCount: number;
+  relationsCount: number;
+}
+
 export interface LoadedPack {
   metadata: PackMetadata;
   data: {
@@ -20,14 +27,6 @@ export interface LoadedPack {
     relations?: Relation[];
   };
 }
-
-interface DatasetWithPacks {
-  packs: LoadedPack[];
-}
-
-const datasetWithPacks = rawDataset as unknown as DatasetWithPacks;
-
-export const loadedPacks = datasetWithPacks.packs;
 
 export interface DatasetIndexes {
   species: Species[];
@@ -101,9 +100,3 @@ export function buildIndexes(packs: LoadedPack[]): DatasetIndexes {
 
   return { species, taxonomicGroups, symbiosis, taxonomicGroupIds, speciesById, symbiosisBySpeciesId, relationsBySpeciesId };
 }
-
-// Default indexes built from all packs (used as fallback / initial state)
-const defaultIndexes = buildIndexes(loadedPacks);
-
-export const { species, taxonomicGroups, symbiosis } = defaultIndexes;
-export const { taxonomicGroupIds, speciesById, symbiosisBySpeciesId, relationsBySpeciesId } = defaultIndexes;

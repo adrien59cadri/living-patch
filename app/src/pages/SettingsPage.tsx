@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import { useUserPreferences } from '../hooks/useUserPreferences';
-import { loadedPacks } from '../data';
+import { usePacksStore } from '../stores/packs';
 import { useLifeListStore } from '../stores/lifeList';
 import type { LifeListEntry, Sighting } from '../types';
 
@@ -30,6 +30,7 @@ function isValidBackup(data: unknown): data is BackupFile {
 export default function SettingsPage() {
   const { preferences, setPreferences } = useUserPreferences();
   const { entries, sightings, restoreFromBackup } = useLifeListStore();
+  const manifest = usePacksStore(s => s.manifest);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [pendingBackup, setPendingBackup] = useState<BackupFile | null>(null);
   const [importError, setImportError] = useState<string | null>(null);
@@ -229,75 +230,68 @@ export default function SettingsPage() {
         <h2 className="text-xl font-semibold text-emerald-900 mb-4">Data Packs</h2>
 
         <p className="text-stone-600 mb-6">
-          The dataset is built from {loadedPacks.length} pack{loadedPacks.length !== 1 ? 's' : ''}.
+          {manifest.length} pack{manifest.length !== 1 ? 's' : ''} available.
         </p>
 
         <div className="grid gap-4">
-          {loadedPacks.map((pack) => {
-            const speciesCount = pack.data.species?.length || 0;
-            const groupCount = pack.data.taxonomic_groups?.length || 0;
-            const symbiosisCount = pack.data.symbiosis?.length || 0;
-            const relationsCount = pack.data.relations?.length || 0;
-
-            return (
-              <div
-                key={pack.metadata.id}
-                className="bg-stone-50 rounded-lg border border-stone-100 p-4 hover:shadow-sm transition-shadow"
-              >
-                <div className="flex items-start justify-between mb-3">
-                  <div>
-                    <h3 className="font-semibold text-emerald-900">
-                      {pack.metadata.id}
-                    </h3>
-                    <p className="text-xs text-stone-500 mt-1">
-                      v{pack.metadata.version}
-                    </p>
-                  </div>
-                  <span className={`text-xs font-medium px-2 py-1 rounded ${
-                    pack.metadata.status === 'published'
-                      ? 'bg-emerald-100 text-emerald-700'
-                      : 'bg-amber-100 text-amber-700'
-                  }`}>
-                    {pack.metadata.status || 'published'}
-                  </span>
-                </div>
-
-                {pack.metadata.description && (
-                  <p className="text-sm text-stone-600 mb-3">
-                    {pack.metadata.description}
+          {manifest.map((entry) => (
+            <div
+              key={entry.id}
+              className="bg-stone-50 rounded-lg border border-stone-100 p-4 hover:shadow-sm transition-shadow"
+            >
+              <div className="flex items-start justify-between mb-3">
+                <div>
+                  <h3 className="font-semibold text-emerald-900">
+                    {entry.id}
+                  </h3>
+                  <p className="text-xs text-stone-500 mt-1">
+                    v{entry.version}
                   </p>
-                )}
-
-                <div className="flex flex-wrap gap-3 text-xs text-stone-600">
-                  {speciesCount > 0 && (
-                    <div>
-                      <span className="font-medium text-emerald-700">{speciesCount}</span> species
-                    </div>
-                  )}
-                  {groupCount > 0 && (
-                    <div>
-                      <span className="font-medium text-emerald-700">{groupCount}</span> taxonomic group{groupCount !== 1 ? 's' : ''}
-                    </div>
-                  )}
-                  {symbiosisCount > 0 && (
-                    <div>
-                      <span className="font-medium text-emerald-700">{symbiosisCount}</span> symbiosis relation{symbiosisCount !== 1 ? 's' : ''}
-                    </div>
-                  )}
-                  {relationsCount > 0 && (
-                    <div>
-                      <span className="font-medium text-emerald-700">{relationsCount}</span> relation{relationsCount !== 1 ? 's' : ''}
-                    </div>
-                  )}
                 </div>
-
-                <div className="mt-3 pt-3 border-t border-stone-200 text-xs text-stone-500">
-                  <p>Author: {pack.metadata.author}</p>
-                  <p>Created: {new Date(pack.metadata.createdDate).toLocaleDateString()}</p>
-                </div>
+                <span className={`text-xs font-medium px-2 py-1 rounded ${
+                  entry.status === 'published'
+                    ? 'bg-emerald-100 text-emerald-700'
+                    : 'bg-amber-100 text-amber-700'
+                }`}>
+                  {entry.status || 'published'}
+                </span>
               </div>
-            );
-          })}
+
+              {entry.description && (
+                <p className="text-sm text-stone-600 mb-3">
+                  {entry.description}
+                </p>
+              )}
+
+              <div className="flex flex-wrap gap-3 text-xs text-stone-600">
+                {entry.speciesCount > 0 && (
+                  <div>
+                    <span className="font-medium text-emerald-700">{entry.speciesCount}</span> species
+                  </div>
+                )}
+                {entry.groupCount > 0 && (
+                  <div>
+                    <span className="font-medium text-emerald-700">{entry.groupCount}</span> taxonomic group{entry.groupCount !== 1 ? 's' : ''}
+                  </div>
+                )}
+                {entry.symbiosisCount > 0 && (
+                  <div>
+                    <span className="font-medium text-emerald-700">{entry.symbiosisCount}</span> symbiosis relation{entry.symbiosisCount !== 1 ? 's' : ''}
+                  </div>
+                )}
+                {entry.relationsCount > 0 && (
+                  <div>
+                    <span className="font-medium text-emerald-700">{entry.relationsCount}</span> relation{entry.relationsCount !== 1 ? 's' : ''}
+                  </div>
+                )}
+              </div>
+
+              <div className="mt-3 pt-3 border-t border-stone-200 text-xs text-stone-500">
+                <p>Author: {entry.author}</p>
+                <p>Created: {new Date(entry.createdDate).toLocaleDateString()}</p>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
     </div>
