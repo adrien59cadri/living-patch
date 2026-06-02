@@ -1,0 +1,1073 @@
+{
+  "metadata": {
+    "id": "4-florida-fungi-invertebrates-complete",
+    "createdDate": "2026-06-02T00:00:00.000Z",
+    "author": "LivingPatch Contributors",
+    "version": "1.0.0",
+    "schemaVersion": "1.0.0",
+    "description": "Florida fungi, additional invertebrates, and complete plant listings",
+    "status": "draft"
+  },
+  "data": {
+    "species": [
+      {
+        "id": "invertebrate_ant-lion",
+        "common_name": "Ant Lion",
+        "latin_name": "Myrmeleon species",
+        "form": "insect",
+        "habitat": [
+          "sandy_areas",
+          "soil"
+        ],
+        "diet": [
+          "insectivore"
+        ],
+        "behavior": [
+          "pit_trap_predator"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "functional_description": "Larva creates cone trap in sand to catch ants.",
+        "life_stages": [],
+        "region": "florida",
+        "ecological_role": "carnivore",
+        "taxonomic_group": "group_insects"
+      },
+      {
+        "id": "invertebrate_mole-cricket",
+        "common_name": "Mole Cricket",
+        "latin_name": "Gryllotalpa species",
+        "form": "insect",
+        "habitat": [
+          "soil",
+          "grassland"
+        ],
+        "diet": [
+          "omnivore"
+        ],
+        "behavior": [
+          "fossorial"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "functional_description": "Burrowing cricket that hunts soil invertebrates.",
+        "life_stages": [],
+        "region": "florida",
+        "ecological_role": "omnivore",
+        "taxonomic_group": "group_insects"
+      },
+      {
+        "id": "invertebrate_velvet-ant",
+        "common_name": "Velvet Ant",
+        "latin_name": "Mutillidae family",
+        "form": "insect",
+        "habitat": [
+          "grassland",
+          "scrubland"
+        ],
+        "diet": [
+          "parasitic"
+        ],
+        "behavior": [
+          "solitary_wasp"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "functional_description": "Parasitic wasp that hunts ground-nesting insects.",
+        "life_stages": [],
+        "region": "florida",
+        "ecological_role": "carnivore",
+        "taxonomic_group": "group_insects"
+      },
+      {
+        "id": "invertebrate_grasshopper",
+        "common_name": "Grasshopper",
+        "latin_name": "Acrididae family",
+        "form": "insect",
+        "habitat": [
+          "grassland",
+          "field"
+        ],
+        "diet": [
+          "herbivore"
+        ],
+        "behavior": [
+          "jumping"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "functional_description": "Herbivorous jumping insect. Food for many predators.",
+        "life_stages": [],
+        "region": "florida",
+        "ecological_role": "herbivore",
+        "taxonomic_group": "group_insects"
+      },
+      {
+        "id": "invertebrate_cricket",
+        "common_name": "Cricket",
+        "latin_name": "Gryllidae family",
+        "form": "insect",
+        "habitat": [
+          "grassland",
+          "forest"
+        ],
+        "diet": [
+          "omnivore"
+        ],
+        "behavior": [
+          "singing_males"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "functional_description": "Nocturnal singing insect. Important food for wildlife.",
+        "life_stages": [],
+        "region": "florida",
+        "ecological_role": "omnivore",
+        "taxonomic_group": "group_insects"
+      },
+      {
+        "id": "invertebrate_katydid",
+        "common_name": "Katydid",
+        "latin_name": "Tettigoniidae family",
+        "form": "insect",
+        "habitat": [
+          "vegetation",
+          "forest"
+        ],
+        "diet": [
+          "herbivore"
+        ],
+        "behavior": [
+          "singing",
+          "nocturnal"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "functional_description": "Leaf-like insect that sings at night.",
+        "life_stages": [],
+        "region": "florida",
+        "ecological_role": "herbivore",
+        "taxonomic_group": "group_insects"
+      },
+      {
+        "id": "invertebrate_cicada",
+        "common_name": "Cicada",
+        "latin_name": "Cicadidae family",
+        "form": "insect",
+        "habitat": [
+          "forest",
+          "tree"
+        ],
+        "diet": [
+          "phloem_feeder"
+        ],
+        "behavior": [
+          "loud_calling"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "functional_description": "Large insect with loud buzzing call. Emerges from soil after years.",
+        "life_stages": [],
+        "region": "florida",
+        "ecological_role": "herbivore",
+        "taxonomic_group": "group_insects"
+      },
+      {
+        "id": "invertebrate_dragonfly",
+        "common_name": "Dragonfly",
+        "latin_name": "Odonata order",
+        "form": "insect",
+        "habitat": [
+          "wetland",
+          "pond",
+          "stream"
+        ],
+        "diet": [
+          "insectivore"
+        ],
+        "behavior": [
+          "aerial_predator"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "functional_description": "Aquatic nymph and aerial adult predator of mosquitoes and small insects.",
+        "life_stages": [],
+        "region": "florida",
+        "ecological_role": "carnivore",
+        "is_keystone": true,
+        "keystone_type": "predator",
+        "keystone_description": "Aquatic nymphs are apex invertebrate predators; adults control flying insect populations",
+        "taxonomic_group": "group_insects"
+      },
+      {
+        "id": "invertebrate_butterfly",
+        "common_name": "Butterfly (various species)",
+        "latin_name": "Lepidoptera order",
+        "form": "insect",
+        "habitat": [
+          "vegetation",
+          "flower"
+        ],
+        "diet": [
+          "herbivore",
+          "nectarivore"
+        ],
+        "behavior": [
+          "pollinator"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "functional_description": "Diverse butterfly species. Important pollinators and herbivores.",
+        "life_stages": [],
+        "region": "florida",
+        "ecological_role": "herbivore",
+        "taxonomic_group": "group_insects"
+      },
+      {
+        "id": "invertebrate_moth",
+        "common_name": "Moth (various species)",
+        "latin_name": "Lepidoptera order",
+        "form": "insect",
+        "habitat": [
+          "vegetation",
+          "forest"
+        ],
+        "diet": [
+          "herbivore",
+          "nectarivore"
+        ],
+        "behavior": [
+          "nocturnal",
+          "pollinator"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "functional_description": "Nocturnal pollinators and herbivores. Important food for birds and bats.",
+        "life_stages": [],
+        "region": "florida",
+        "ecological_role": "herbivore",
+        "taxonomic_group": "group_insects"
+      },
+      {
+        "id": "invertebrate_bee",
+        "common_name": "Bee (various species)",
+        "latin_name": "Apidae family",
+        "form": "insect",
+        "habitat": [
+          "flower",
+          "nesting_site"
+        ],
+        "diet": [
+          "nectarivore"
+        ],
+        "behavior": [
+          "pollinator",
+          "colony"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "functional_description": "Essential pollinators. Diverse native species and honeybees.",
+        "life_stages": [],
+        "region": "florida",
+        "ecological_role": "omnivore",
+        "is_keystone": true,
+        "keystone_type": "pollinator",
+        "keystone_description": "Critical pollinators for plants; essential ecosystem service provider",
+        "taxonomic_group": "group_insects"
+      },
+      {
+        "id": "invertebrate_wasp",
+        "common_name": "Wasp (various species)",
+        "latin_name": "Vespidae family",
+        "form": "insect",
+        "habitat": [
+          "varied"
+        ],
+        "diet": [
+          "predator",
+          "parasitic"
+        ],
+        "behavior": [
+          "hunting",
+          "parasitism"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "functional_description": "Predatory and parasitic wasps. Control pest populations.",
+        "life_stages": [],
+        "region": "florida",
+        "ecological_role": "carnivore",
+        "taxonomic_group": "group_insects"
+      },
+      {
+        "id": "invertebrate_termite",
+        "common_name": "Termite",
+        "latin_name": "Isoptera order",
+        "form": "insect",
+        "habitat": [
+          "wood",
+          "soil"
+        ],
+        "diet": [
+          "wood_eater"
+        ],
+        "behavior": [
+          "colony"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "functional_description": "Wood decomposer. Creates colonies in trees and soil.",
+        "life_stages": [],
+        "region": "florida",
+        "ecological_role": "herbivore",
+        "taxonomic_group": "group_insects"
+      },
+      {
+        "id": "invertebrate_dung-beetle",
+        "common_name": "Dung Beetle",
+        "latin_name": "Scarabaeidae family",
+        "form": "insect",
+        "habitat": [
+          "varied"
+        ],
+        "diet": [
+          "dung_feeder"
+        ],
+        "behavior": [
+          "nutrient_cycling"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "functional_description": "Processes dung and cycles nutrients.",
+        "life_stages": [],
+        "region": "florida",
+        "ecological_role": "omnivore",
+        "taxonomic_group": "group_insects"
+      },
+      {
+        "id": "invertebrate_ground-beetle",
+        "common_name": "Ground Beetle",
+        "latin_name": "Carabidae family",
+        "form": "insect",
+        "habitat": [
+          "soil",
+          "vegetation"
+        ],
+        "diet": [
+          "insectivore"
+        ],
+        "behavior": [
+          "nocturnal_predator"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "functional_description": "Predatory ground beetle that hunts other insects.",
+        "life_stages": [],
+        "region": "florida",
+        "ecological_role": "carnivore",
+        "taxonomic_group": "group_insects"
+      },
+      {
+        "id": "invertebrate_lynx-spider",
+        "common_name": "Lynx Spider",
+        "latin_name": "Oxyopidae family",
+        "form": "spider",
+        "habitat": [
+          "vegetation",
+          "flower"
+        ],
+        "diet": [
+          "insectivore"
+        ],
+        "behavior": [
+          "active_hunter"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "functional_description": "Active hunter on plants. Controls pest insects.",
+        "life_stages": [],
+        "region": "florida",
+        "ecological_role": "carnivore",
+        "taxonomic_group": "group_spiders_arachnids"
+      },
+      {
+        "id": "invertebrate_crab-spider",
+        "common_name": "Crab Spider",
+        "latin_name": "Thomisidae family",
+        "form": "spider",
+        "habitat": [
+          "flower",
+          "vegetation"
+        ],
+        "diet": [
+          "insectivore"
+        ],
+        "behavior": [
+          "ambush_predator"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "functional_description": "Camouflaged flower spider that ambushes pollinators.",
+        "life_stages": [],
+        "region": "florida",
+        "ecological_role": "carnivore",
+        "taxonomic_group": "group_spiders_arachnids"
+      },
+      {
+        "id": "invertebrate_fishing-spider",
+        "common_name": "Fishing Spider",
+        "latin_name": "Dolomedes species",
+        "form": "spider",
+        "habitat": [
+          "water",
+          "vegetation"
+        ],
+        "diet": [
+          "insectivore",
+          "small_fish"
+        ],
+        "behavior": [
+          "aquatic",
+          "hunt_on_water"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "functional_description": "Spider that hunts on water surface and underwater.",
+        "life_stages": [],
+        "region": "florida",
+        "ecological_role": "carnivore",
+        "taxonomic_group": "group_spiders_arachnids"
+      },
+      {
+        "id": "invertebrate_huntsman-spider",
+        "common_name": "Huntsman Spider",
+        "latin_name": "Sparassidae family",
+        "form": "spider",
+        "habitat": [
+          "structure",
+          "forest"
+        ],
+        "diet": [
+          "insectivore"
+        ],
+        "behavior": [
+          "active_hunter"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "functional_description": "Fast hunter on walls and vegetation. Beneficial insectivore.",
+        "life_stages": [],
+        "region": "florida",
+        "ecological_role": "carnivore",
+        "taxonomic_group": "group_spiders_arachnids"
+      },
+      {
+        "id": "invertebrate_daddy-longlegs",
+        "common_name": "Daddy Longlegs",
+        "latin_name": "Opiliones order",
+        "form": "arachnid",
+        "habitat": [
+          "varied"
+        ],
+        "diet": [
+          "omnivore"
+        ],
+        "behavior": [
+          "scavenging"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "functional_description": "Long-legged arachnid. Scavenger and detritivore.",
+        "life_stages": [],
+        "region": "florida",
+        "ecological_role": "omnivore",
+        "taxonomic_group": "group_spiders_arachnids"
+      },
+      {
+        "id": "invertebrate_pseudoscorpion",
+        "common_name": "Pseudoscorpion",
+        "latin_name": "Pseudoscorpiones order",
+        "form": "arachnid",
+        "habitat": [
+          "soil",
+          "leaf_litter"
+        ],
+        "diet": [
+          "insectivore"
+        ],
+        "behavior": [
+          "tiny_predator"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "functional_description": "Tiny scorpion-like arachnid that hunts mites and small insects.",
+        "life_stages": [],
+        "region": "florida",
+        "ecological_role": "carnivore",
+        "taxonomic_group": "group_spiders_arachnids"
+      },
+      {
+        "id": "invertebrate_centipede",
+        "common_name": "Centipede",
+        "latin_name": "Chilopoda class",
+        "form": "arthropod",
+        "habitat": [
+          "soil",
+          "leaf_litter"
+        ],
+        "diet": [
+          "insectivore"
+        ],
+        "behavior": [
+          "predator"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "functional_description": "Many-legged predator of soil invertebrates.",
+        "life_stages": [],
+        "region": "florida",
+        "ecological_role": "carnivore",
+        "taxonomic_group": "group_other_invertebrates"
+      },
+      {
+        "id": "invertebrate_millipede",
+        "common_name": "Millipede",
+        "latin_name": "Diplopoda class",
+        "form": "arthropod",
+        "habitat": [
+          "soil",
+          "leaf_litter"
+        ],
+        "diet": [
+          "detritivore"
+        ],
+        "behavior": [
+          "decomposition"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "functional_description": "Many-legged decomposer. Processes leaf litter and detritus.",
+        "life_stages": [],
+        "region": "florida",
+        "ecological_role": "omnivore",
+        "taxonomic_group": "group_other_invertebrates"
+      },
+      {
+        "id": "invertebrate_earthworm",
+        "common_name": "Earthworm",
+        "latin_name": "Lumbricidae family",
+        "form": "worm",
+        "habitat": [
+          "soil"
+        ],
+        "diet": [
+          "detritivore"
+        ],
+        "behavior": [
+          "decomposition",
+          "soil_aeration"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "functional_description": "Soil-dwelling decomposer. Aerates soil and processes detritus.",
+        "life_stages": [],
+        "region": "florida",
+        "ecological_role": "omnivore",
+        "is_keystone": true,
+        "keystone_type": "ecosystem_engineer",
+        "keystone_description": "Essential soil processors; aerate soil and cycle nutrients",
+        "taxonomic_group": "group_other_invertebrates"
+      },
+      {
+        "id": "invertebrate_snail",
+        "common_name": "Snail",
+        "latin_name": "Gastropoda class",
+        "form": "mollusk",
+        "habitat": [
+          "varied"
+        ],
+        "diet": [
+          "herbivore"
+        ],
+        "behavior": [
+          "grazing"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "functional_description": "Shelled mollusk. Herbivore and detritivore.",
+        "life_stages": [],
+        "region": "florida",
+        "ecological_role": "herbivore",
+        "taxonomic_group": "group_other_invertebrates"
+      },
+      {
+        "id": "invertebrate_slug",
+        "common_name": "Slug",
+        "latin_name": "Gastropoda class",
+        "form": "mollusk",
+        "habitat": [
+          "leaf_litter",
+          "vegetation"
+        ],
+        "diet": [
+          "herbivore"
+        ],
+        "behavior": [
+          "nocturnal_grazer"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "functional_description": "Shell-less mollusk. Plant herbivore.",
+        "life_stages": [],
+        "region": "florida",
+        "ecological_role": "herbivore",
+        "taxonomic_group": "group_other_invertebrates"
+      },
+      {
+        "id": "invertebrate_sowbug",
+        "common_name": "Sowbug",
+        "latin_name": "Oniscus asellus",
+        "form": "crustacean",
+        "habitat": [
+          "soil",
+          "leaf_litter"
+        ],
+        "diet": [
+          "detritivore"
+        ],
+        "behavior": [
+          "decomposition"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "functional_description": "Terrestrial crustacean. Processes decaying material.",
+        "life_stages": [],
+        "region": "florida",
+        "ecological_role": "omnivore",
+        "taxonomic_group": "group_other_invertebrates"
+      },
+      {
+        "id": "invertebrate_pillbug",
+        "common_name": "Pillbug",
+        "latin_name": "Armadillidium vulgare",
+        "form": "crustacean",
+        "habitat": [
+          "soil",
+          "leaf_litter"
+        ],
+        "diet": [
+          "detritivore"
+        ],
+        "behavior": [
+          "decomposition",
+          "rolling"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "functional_description": "Armored terrestrial crustacean. Decomposes organic matter.",
+        "life_stages": [],
+        "region": "florida",
+        "ecological_role": "omnivore",
+        "taxonomic_group": "group_other_invertebrates"
+      },
+      {
+        "id": "invertebrate_earwig",
+        "common_name": "Earwig",
+        "latin_name": "Forficulidae family",
+        "form": "insect",
+        "habitat": [
+          "soil",
+          "vegetation"
+        ],
+        "diet": [
+          "omnivore"
+        ],
+        "behavior": [
+          "nocturnal"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "functional_description": "Pincered insect. Omnivorous scavenger.",
+        "life_stages": [],
+        "region": "florida",
+        "ecological_role": "omnivore",
+        "taxonomic_group": "group_insects"
+      },
+      {
+        "id": "invertebrate_springtail",
+        "common_name": "Springtail",
+        "latin_name": "Collembola class",
+        "form": "arthropod",
+        "habitat": [
+          "soil",
+          "leaf_litter"
+        ],
+        "diet": [
+          "detritivore"
+        ],
+        "behavior": [
+          "jumping"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "functional_description": "Tiny jumping arthropod of soil. Important decomposer.",
+        "life_stages": [],
+        "region": "florida",
+        "ecological_role": "omnivore",
+        "taxonomic_group": "group_other_invertebrates"
+      },
+      {
+        "id": "plant_blueberry",
+        "common_name": "Blueberry",
+        "latin_name": "Vaccinium species",
+        "form": "shrub",
+        "habitat": [
+          "scrubland",
+          "flatwoods"
+        ],
+        "diet": [],
+        "behavior": [
+          "mast_producer"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "functional_description": "Berry-producing shrub. Food for birds and mammals.",
+        "life_stages": [],
+        "region": "florida",
+        "ecological_role": "primary_producer",
+        "taxonomic_group": "group_shrubs"
+      },
+      {
+        "id": "plant_beautyberry",
+        "common_name": "Beautyberry",
+        "latin_name": "Callicarpa americana",
+        "form": "shrub",
+        "habitat": [
+          "scrubland",
+          "forest"
+        ],
+        "diet": [],
+        "behavior": [
+          "mast_producer"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "functional_description": "Shrub with brilliant purple berries. Wildlife food.",
+        "life_stages": [],
+        "region": "florida",
+        "ecological_role": "primary_producer",
+        "taxonomic_group": "group_shrubs"
+      },
+      {
+        "id": "plant_gallberry",
+        "common_name": "Gallberry",
+        "latin_name": "Ilex glabra",
+        "form": "shrub",
+        "habitat": [
+          "wetland",
+          "flatwoods"
+        ],
+        "diet": [],
+        "behavior": [
+          "mast_producer"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "functional_description": "Holly shrub with black berries.",
+        "life_stages": [],
+        "region": "florida",
+        "ecological_role": "primary_producer",
+        "taxonomic_group": "group_shrubs"
+      },
+      {
+        "id": "plant_wax-myrtle",
+        "common_name": "Wax Myrtle",
+        "latin_name": "Myrica cerifera",
+        "form": "shrub",
+        "habitat": [
+          "scrubland",
+          "wetland"
+        ],
+        "diet": [],
+        "behavior": [
+          "mast_producer"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "functional_description": "Aromatic shrub with waxy berries.",
+        "life_stages": [],
+        "region": "florida",
+        "ecological_role": "primary_producer",
+        "taxonomic_group": "group_shrubs"
+      },
+      {
+        "id": "plant_florida-rosemary",
+        "common_name": "Florida Rosemary",
+        "latin_name": "Ceratiola ericoides",
+        "form": "shrub",
+        "habitat": [
+          "scrub",
+          "sandy_areas"
+        ],
+        "diet": [],
+        "behavior": [
+          "fire_adapted"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "functional_description": "Endemic scrub specialist. Fire-adapted.",
+        "life_stages": [],
+        "region": "florida",
+        "ecological_role": "primary_producer",
+        "taxonomic_group": "group_shrubs"
+      },
+      {
+        "id": "fungus_truffle",
+        "common_name": "Truffle",
+        "latin_name": "Tuber species",
+        "form": "fungus",
+        "habitat": [
+          "soil",
+          "forest"
+        ],
+        "diet": [],
+        "behavior": [
+          "mycorrhizal",
+          "decomposition"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "functional_description": "Underground fungus forming symbiotic relationships with tree roots.",
+        "life_stages": [],
+        "region": "florida",
+        "ecological_role": "decomposer",
+        "taxonomic_group": "group_fungi"
+      },
+      {
+        "id": "fungus_bolete",
+        "common_name": "Bolete",
+        "latin_name": "Boletaceae family",
+        "form": "fungus",
+        "habitat": [
+          "forest",
+          "under_trees"
+        ],
+        "diet": [],
+        "behavior": [
+          "mycorrhizal",
+          "spore_dispersal"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "functional_description": "Fungus with pores instead of gills. Forms mycorrhizal relationships.",
+        "life_stages": [],
+        "region": "florida",
+        "ecological_role": "decomposer",
+        "taxonomic_group": "group_fungi"
+      },
+      {
+        "id": "fungus_chanterelle",
+        "common_name": "Chanterelle",
+        "latin_name": "Cantharellus species",
+        "form": "fungus",
+        "habitat": [
+          "forest",
+          "woodland"
+        ],
+        "diet": [],
+        "behavior": [
+          "mycorrhizal"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "functional_description": "Funnel-shaped fungus that forms symbiotic relationships with trees.",
+        "life_stages": [],
+        "region": "florida",
+        "ecological_role": "decomposer",
+        "taxonomic_group": "group_fungi"
+      },
+      {
+        "id": "fungus_amanita",
+        "common_name": "Amanita",
+        "latin_name": "Amanita species",
+        "form": "fungus",
+        "habitat": [
+          "forest"
+        ],
+        "diet": [],
+        "behavior": [
+          "mycorrhizal",
+          "toxic"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "functional_description": "Mycorrhizal fungus. Some species highly toxic.",
+        "life_stages": [],
+        "region": "florida",
+        "ecological_role": "decomposer",
+        "taxonomic_group": "group_fungi"
+      },
+      {
+        "id": "fungus_russula",
+        "common_name": "Russula",
+        "latin_name": "Russula species",
+        "form": "fungus",
+        "habitat": [
+          "forest"
+        ],
+        "diet": [],
+        "behavior": [
+          "mycorrhizal"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "functional_description": "Brittle fungus forming mycorrhizal relationships with trees.",
+        "life_stages": [],
+        "region": "florida",
+        "ecological_role": "decomposer",
+        "taxonomic_group": "group_fungi"
+      },
+      {
+        "id": "fungus_milkcap",
+        "common_name": "Milkcap",
+        "latin_name": "Lactarius species",
+        "form": "fungus",
+        "habitat": [
+          "forest"
+        ],
+        "diet": [],
+        "behavior": [
+          "mycorrhizal"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "functional_description": "Fungus that exudes milky latex. Mycorrhizal partner with trees.",
+        "life_stages": [],
+        "region": "florida",
+        "ecological_role": "decomposer",
+        "taxonomic_group": "group_fungi"
+      },
+      {
+        "id": "fungus_puffball",
+        "common_name": "Puffball",
+        "latin_name": "Lycoperdon species",
+        "form": "fungus",
+        "habitat": [
+          "grassland",
+          "forest"
+        ],
+        "diet": [],
+        "behavior": [
+          "spore_dispersal"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "functional_description": "Fungus that releases spores in clouds when squeezed.",
+        "life_stages": [],
+        "region": "florida",
+        "ecological_role": "decomposer",
+        "taxonomic_group": "group_fungi"
+      },
+      {
+        "id": "fungus_morel",
+        "common_name": "Morel",
+        "latin_name": "Morchella species",
+        "form": "fungus",
+        "habitat": [
+          "forest",
+          "burn_areas"
+        ],
+        "diet": [],
+        "behavior": [
+          "saprophytic"
+        ],
+        "season": [
+          "spring"
+        ],
+        "functional_description": "Honeycomb-patterned fungus. Spring fruiter.",
+        "life_stages": [],
+        "region": "florida",
+        "ecological_role": "decomposer",
+        "taxonomic_group": "group_fungi"
+      },
+      {
+        "id": "fungus_polypore",
+        "common_name": "Polypore",
+        "latin_name": "Polyporaceae family",
+        "form": "fungus",
+        "habitat": [
+          "wood",
+          "dead_trees"
+        ],
+        "diet": [],
+        "behavior": [
+          "wood_decomposer"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "functional_description": "Bracket fungus decomposing dead wood.",
+        "life_stages": [],
+        "region": "florida",
+        "ecological_role": "decomposer",
+        "taxonomic_group": "group_fungi"
+      }
+    ],
+    "taxonomic_groups": [
+      {
+        "id": "group_other_invertebrates",
+        "label": "Other Invertebrates",
+        "common_traits": "Diverse arthropods, mollusks, and worms; essential decomposers and food web members; soil and detritus processors",
+        "notes": "Includes centipedes, millipedes, earthworms, snails, slugs, crustaceans, springtails"
+      },
+      {
+        "id": "group_fungi",
+        "label": "Fungi",
+        "common_traits": "Decomposers and mycorrhizal partners; form symbiotic relationships with plant roots; essential nutrient cyclers; diverse morphology",
+        "notes": "Kingdom Fungi; includes mushrooms, truffles, polypores, and other fungal fruiting bodies"
+      }
+    ]
+  }
+}
