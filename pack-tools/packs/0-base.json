@@ -3833,6 +3833,113 @@
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Baptisia_tinctoria_NRCS-1.jpg/500px-Baptisia_tinctoria_NRCS-1.jpg",
           "author": "USDA NRCS"
         }
+      },
+      {
+        "id": "plant_pawpaw",
+        "common_name": "Pawpaw",
+        "latin_name": "Asimina triloba",
+        "form": "tree",
+        "habitat": [
+          "forest",
+          "woodland",
+          "riparian",
+          "forest_edge"
+        ],
+        "diet": [],
+        "behavior": [
+          "fruit_producer",
+          "early_bloomer"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "functional_description": "Small understory tree forming clonal thickets along stream bottoms and rich woodland slopes. Leaves are the largest of any native North American tree. Maroon flowers bloom April–May before leaves emerge, pollinated by sap beetles attracted to their fetid, yeasty scent. Fruits ripen August–October — largest native fruit in North America, with banana-custard flavor eaten by foxes, raccoons, opossums, and bears. Foliage and bark contain acetogenins making Pawpaw virtually deer-proof — increasingly dominant in over-browsed PA forests. Sole larval host plant for the Zebra Swallowtail butterfly; that butterfly cannot complete its life cycle without Asimina.",
+        "life_stages": [
+          "seedling",
+          "mature",
+          "flowering",
+          "fruiting"
+        ],
+        "region": "northeast_pa",
+        "ecological_role": "producer",
+        "is_keystone": false,
+        "keystone_type": null,
+        "keystone_description": null,
+        "active_months": [
+          "Apr-May",
+          "Aug-Oct"
+        ],
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/3/34/Asimina_triloba_red_fern_farm.jpg",
+          "author": "Clarknova"
+        }
+      },
+      {
+        "id": "insect_zebra-swallowtail",
+        "common_name": "Zebra Swallowtail",
+        "latin_name": "Eurytides marcellus",
+        "form": "butterfly",
+        "habitat": [
+          "riparian",
+          "forest_edge",
+          "woodland"
+        ],
+        "diet": [
+          "nectar_feeder"
+        ],
+        "behavior": [
+          "pollinator",
+          "puddling"
+        ],
+        "season": [
+          "spring",
+          "summer"
+        ],
+        "functional_description": "Striking black-and-white striped butterfly with long hindwing tails — the only US butterfly obligate on Pawpaw (genus Asimina). Caterpillars sequester acetogenins from Pawpaw foliage, conferring predator protection through adulthood. Two seasonal forms: spring brood is smaller and paler; summer brood is larger with broader black stripes and longer tails. Eggs laid singly (caterpillars are cannibalistic). Males puddle at moist soil for salts. Range is entirely determined by Pawpaw distribution; populations extirpated from urban PA are returning as native Pawpaw restoration expands.",
+        "life_stages": [
+          {
+            "icon": "🥚",
+            "name": "Egg",
+            "description": "Single round egg laid singly on young Pawpaw leaves or trunk",
+            "months": [
+              "Apr-Aug"
+            ]
+          },
+          {
+            "icon": "🐛",
+            "name": "Caterpillar",
+            "description": "Green with yellow and black bands; yellow osmeterium defense gland; cannibalistic",
+            "months": [
+              "May-Sep"
+            ]
+          },
+          {
+            "icon": "🫘",
+            "name": "Chrysalis",
+            "description": "Green or brown, compact with three head horns; overwinters in last brood",
+            "months": [
+              "Jan-Apr",
+              "Jul-Dec"
+            ]
+          },
+          {
+            "icon": "🦋",
+            "name": "Adult",
+            "description": "Zebra-striped with sword-like tails; spring form paler and smaller; summer form larger",
+            "months": [
+              "Apr-Sep"
+            ]
+          }
+        ],
+        "region": "northeast_pa",
+        "ecological_role": "herbivore",
+        "is_keystone": false,
+        "keystone_type": null,
+        "keystone_description": null,
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Zebra_Swallowtail_Megan_McCarty10.jpg/500px-Zebra_Swallowtail_Megan_McCarty10.jpg",
+          "author": "Meganmccarty"
+        }
       }
     ],
     "taxonomic_groups": [
@@ -5425,6 +5532,15 @@
         ],
         "strength": "important",
         "notes": "Wild Indigo flowers have a 'trip mechanism' — bee weight triggers pollen release onto the bee's body as it enters the flower. Bumble bees are the primary pollinators because they are heavy enough to trigger this mechanism. The June–July bloom period is critical: it provides a significant nectar and pollen pulse during the gap between spring wildflowers and summer composites. Bumble bees are essential for seed set."
+      },
+      {
+        "type": "parasitism",
+        "source": "insect_zebra-swallowtail",
+        "targets": [
+          "plant_pawpaw"
+        ],
+        "strength": "critical",
+        "notes": "Zebra Swallowtail is the only US butterfly obligate on genus Asimina (Pawpaw). Caterpillars sequester acetogenins from Pawpaw foliage, conferring predator protection throughout the butterfly's life. The butterfly's entire North American range is determined by Pawpaw distribution."
       }
     ],
     "relations": [
