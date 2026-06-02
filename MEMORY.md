@@ -1,11 +1,11 @@
 # LivingPatch — Development Memory
 
-## Project Status: ✅ Phase 2 COMPLETE + Multi-Region + French Pack + Multilingual Names (June 1, 2026)
-Phase 1 (Dataset Explorer with D3 Diagram) + Phase 2 (Life List) + Multi-Region Pack System + French species + CommonName multilingual type — all implemented, tested, and shipped.
+## Project Status: ✅ Phase 2 COMPLETE + Multi-Region + French Pack + Ecoregion 5 Expansion (June 2, 2026)
+Phase 1 (Dataset Explorer with D3 Diagram) + Phase 2 (Life List) + Multi-Region Pack System + French species + Ecoregion 5 Northern Forests keystone plants — all implemented, tested, and shipped.
 - **Live**: http://localhost:5174/ (run `npm run dev` in root)
 - **Build**: ~195ms, ~650 modules
-- **Tests**: 121 unit tests + 74 E2E tests passing
-- **Dataset**: 104 species (80 NE PA + 24 French) + 14 taxonomic groups, 2 packs
+- **Tests**: 121 unit tests + 95 E2E tests passing
+- **Dataset**: 167 species (144 NE PA Ecoregion 5 + 23 French) + 50+ taxonomic groups, 2 packs
 
 ## What Works
 ✅ **D3 Radial Bubble Tree** - Interactive species relationship diagram
@@ -18,7 +18,7 @@ Phase 1 (Dataset Explorer with D3 Diagram) + Phase 2 (Life List) + Multi-Region 
 ✅ **Area Filtering** - Sky-blue area chips + checkboxes; ?area= URL params; only shown when >1 region
 ✅ **French Species Pack** - 24 French species (birds, mammals, trees, plants, butterflies), English text, {en, fr} names
 ✅ **Multilingual CommonName** - `common_name: string | {en, fr?, ...}` polymorphic type; getCommonName() + getAltNames() helpers; FR: name displayed below scientific name in SpeciesCard
-✅ **Species List** - 104 species + 14 taxonomic groups, keystone badges
+✅ **Species List** - 167 species + 50+ taxonomic groups, keystone badges + Ecoregion 5 expansion
 ✅ **Species Card** - Full detail view with photo, tags (linkable), relationships
 ✅ **Relationships** - Grouped by symbiosis type, obligate pinned top
 ✅ **Navigation** - List ↔ Detail pages, click-through relationships
@@ -48,12 +48,16 @@ Helps nature hobbyists understand ecological relationships in their area.
 
 ## Dataset Facts
 - File: app/src/data/dataset.json (merged from packs at build time)
-- **Pack 0**: pack-tools/packs/0-base.json — 80 NE PA species + 11 taxonomic groups, 176 symbiosis, 5 relations
-- **Pack 1**: pack-tools/packs/1-france.json — 24 French species + 3 taxonomic groups, 11 symbiosis
-- **Total**: 104 individual species + 14 taxonomic groups, 187 symbiosis entries
+- **Pack 0**: pack-tools/packs/0-base.json — 144 NE PA species (Ecoregion 5 Northern Forests) + 50+ taxonomic groups
+  - Original: 80 species (birds, mammals, insects, plants)
+  - Added June 2: 64 keystone plants from Dr. Doug Tallamy's research (trees, wildflowers, shrubs)
+  - Trees: Quercus, Prunus, Betula, Populus, Acer, Malus, Pinus, etc. (445+ caterpillar species support)
+  - Wildflowers: Goldenrod, Sunflower, Rudbeckia, Aster species (specialist bee plants)
+  - Dual keystones: Supporting both Lepidoptera caterpillars AND specialist bees
+- **Pack 1**: pack-tools/packs/1-france.json — 23 French species + 3 taxonomic groups
+- **Total**: 167 individual species + 50+ taxonomic groups
 - Build: `npm run build:dataset` merges packs → dataset.json; status:published packs only (draft skipped)
-- Species ID format: type_common-name-slug (e.g., bird_pileated-woodpecker, bird_european-robin)
-- Species ID format: type_common-name-slug (e.g., bird_pileated-woodpecker)
+- Species ID format: type_common-name-slug (e.g., bird_pileated-woodpecker, tree_black-oak)
 - Obligate relationships marked and pinned in detail view
 
 ## Architecture
@@ -156,8 +160,22 @@ RelationshipBubbleTree renders with D3 (SVG)
 - Alt-name display (FR: ...) in SpeciesCard
 - `getCommonName()` / `getAltNames()` helpers in labels.ts — defensive against undefined (taxonomic groups)
 
+### Phase 3.5: Ecoregion 5 Keystone Plants Expansion ✅ COMPLETE (June 2, 2026)
+- **Source**: NW-FGF Keystone Plant List - Ecoregion 5 Northern Forests (Dr. Doug Tallamy, University of Delaware)
+- **Added 64 species** across 35+ genera (trees, shrubs, wildflowers)
+- **Phase 1 - Trees & Shrubs (26 species)**: Quercus velutina, Prunus americana, Betula spp., Populus spp., etc.
+  - Focus: Maximum caterpillar support (445+ species for oaks, 409+ for plums, 385+ for birches)
+- **Phase 2 - High-Value Wildflowers (16 species)**: Goldenrod, Helianthus, Rudbeckia, Coreopsis, etc.
+  - Focus: Specialist bee plants + caterpillar host plants (dual keystones)
+- **Phase 3 - Additional Plants (22 species)**: Vaccinium, Salix, Viburnum, Echinacea, Ironweed, etc.
+  - Focus: Completing Top-30 genera coverage + specialist bee forage plants
+- **Keystone Types**: host_plant_lepidoptera (34 species) + specialist_bee_forage (17) + dual_keystone (13)
+- **Document**: ECOREGION5_ANALYSIS.md (gap assessment + implementation roadmap)
+- **Tests Updated**: E2E species count assertions (104 → 167 total with both packs)
+
 ### Future Plans
 - fetch-names CLI tool (plan-fetch-names.md): Wikipedia langlinks API to auto-populate language keys in common_name objects
+- Ecoregion 6-9 expansions (when keystone plant lists available)
 
 ### Phase 4: Advanced Visualization (4-6 weeks)
 - Alternative views (grid, timeline, network)

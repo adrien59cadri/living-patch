@@ -81,8 +81,9 @@ test.describe('Species list page basic functionality', () => {
     await page.goto('/');
     await page.waitForLoadState('networkidle');
 
-    // Check for species count text - should show "103 species"
-    const speciesCountText = page.getByText('103 species');
+    // Check for species count text - should show "167 species"
+    // (144 from 0-base pack + 23 from france-base pack)
+    const speciesCountText = page.getByText('167 species');
     await expect(speciesCountText).toBeVisible();
   });
 
@@ -216,12 +217,12 @@ test.describe('Search bar', () => {
     const searchBar = page.getByRole('searchbox');
     await searchBar.fill('oak');
     await page.waitForTimeout(400);
-    // When filtered, count shows "N of 103 species" — "103 species" exact is not present
-    await expect(page.getByText('103 species', { exact: true })).not.toBeVisible();
+    // When filtered, count shows "N of 167 species" — "167 species" exact is not present
+    await expect(page.getByText('167 species', { exact: true })).not.toBeVisible();
 
     await searchBar.clear();
     await page.waitForTimeout(400);
-    await expect(page.getByText('103 species', { exact: true })).toBeVisible();
+    await expect(page.getByText('167 species', { exact: true })).toBeVisible();
   });
 
   test('search works across latin names', async ({ page }) => {
@@ -282,7 +283,7 @@ test.describe('Quick filter bar', () => {
 
     // Click again to deselect
     await chip.click();
-    await expect(page.getByText('103 species', { exact: true })).toBeVisible();
+    await expect(page.getByText('167 species', { exact: true })).toBeVisible();
     await expect(page.getByText('Pileated Woodpecker', { exact: true })).toBeVisible();
   });
 
@@ -294,13 +295,13 @@ test.describe('Quick filter bar', () => {
     const filterToggle = page.getByRole('button', { name: /filter/i }).first();
     await filterToggle.click();
     await page.waitForLoadState('networkidle');
-    
+
     // Look for a habitat checkbox (not chip) since QuickFilterBar shows form/area, habitat via FilterPanel
     const forestCheckbox = page.getByRole('checkbox', { name: /forest/i });
     if (await forestCheckbox.isVisible()) {
       await forestCheckbox.click();
       // Count should change after filtering
-      await expect(page.getByText('103 species', { exact: true })).not.toBeVisible();
+      await expect(page.getByText('167 species', { exact: true })).not.toBeVisible();
       // Pileated Woodpecker lives in forest
       await expect(page.getByText('Pileated Woodpecker', { exact: true })).toBeVisible();
     }

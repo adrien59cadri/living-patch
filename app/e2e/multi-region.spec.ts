@@ -157,7 +157,7 @@ test.describe('Area filtering (Item 11)', () => {
     await clearButton.click();
     await page.waitForTimeout(400);
 
-    await expect(page.getByText(/103 species/)).toBeVisible();
+    await expect(page.getByText(/167 species/)).toBeVisible();
   });
 });
 
@@ -166,7 +166,7 @@ test.describe('French species (Item 10)', () => {
     await page.goto('/');
     await page.waitForLoadState('networkidle');
 
-    await expect(page.getByText('103 species')).toBeVisible();
+    await expect(page.getByText('167 species')).toBeVisible();
   });
 
   test('French bird species are visible when all areas selected', async ({ page }) => {
@@ -254,7 +254,8 @@ test.describe('Pack management (Item 9)', () => {
 
     await expect(page.getByText('Rougegorge familier', { exact: true })).not.toBeVisible();
     await expect(page.getByText('Pileated Woodpecker', { exact: true })).toBeVisible();
-    await expect(page.getByText('80 species')).toBeVisible();
+    // 0-base pack now has 144 species (80 original + 64 Ecoregion 5 plants)
+    await expect(page.getByText('144 species')).toBeVisible();
   });
 
   test('toggling France pack back on restores French species', async ({ page }) => {
@@ -270,7 +271,7 @@ test.describe('Pack management (Item 9)', () => {
     await page.waitForLoadState('networkidle');
 
     await expect(page.getByText('European Robin', { exact: true })).toBeVisible();
-    await expect(page.getByText('103 species')).toBeVisible();
+    await expect(page.getByText('167 species')).toBeVisible();
   });
 
   test('disabled pack card shows grayed out state', async ({ page }) => {
@@ -322,7 +323,9 @@ test.describe('Pack management (Item 9)', () => {
     await page.waitForLoadState('networkidle');
 
     // Each pack card shows its own species count — unique on this page
-    await expect(page.getByText('80 species')).toBeVisible();
+    // 0-base: 144 species (80 original + 64 Ecoregion 5 plants)
+    // france-base: 23 species
+    await expect(page.getByText('144 species')).toBeVisible();
     await expect(page.getByText('23 species')).toBeVisible();
   });
 });
