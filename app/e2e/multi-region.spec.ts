@@ -303,7 +303,7 @@ test.describe('Pack management (Item 9)', () => {
 
     await expect(page.getByText('Pileated Woodpecker', { exact: true })).not.toBeVisible();
     await expect(page.getByText('European Robin', { exact: true })).toBeVisible();
-    await expect(page.getByText('24 species')).toBeVisible();
+    await expect(page.getByText('23 species')).toBeVisible();
   });
 
   test('packs page shows species count for active packs', async ({ page }) => {
@@ -312,6 +312,6 @@ test.describe('Pack management (Item 9)', () => {
 
     // Each pack card shows its own species count — unique on this page
     await expect(page.getByText('80 species')).toBeVisible();
-    await expect(page.getByText('24 species')).toBeVisible();
+    await expect(page.getByText('23 species')).toBeVisible();
   });
 });
