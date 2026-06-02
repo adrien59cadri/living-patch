@@ -143,6 +143,7 @@ test.describe('Area filtering (Item 11)', () => {
     await page.waitForLoadState('networkidle');
 
     const clearButton = page.getByRole('button', { name: /Clear filters/ });
+    await expect(clearButton).toBeVisible({ timeout: 10000 });
     await clearButton.click();
     await page.waitForTimeout(400);
 
