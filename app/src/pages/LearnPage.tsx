@@ -4,10 +4,9 @@ import FormHierarchySection from '../components/FormHierarchySection';
 import HabitatHierarchySection from '../components/HabitatHierarchySection';
 import KeystoneTypesSection from '../components/KeystoneTypesSection';
 import SymbiosisSection from '../components/SymbiosisSection';
-import { FormTaxonomyBrowser } from '../components/FungiBrowseSection';
 
 export default function LearnPage() {
-  const { speciesById, symbiosis, groups } = useDataset();
+  const { speciesById, symbiosis } = useDataset();
   const [expandedKeystoneType, setExpandedKeystoneType] = useState<string | null>(null);
   const [expandedSymbiosisType, setExpandedSymbiosisType] = useState<string | null>(null);
 
@@ -23,15 +22,6 @@ export default function LearnPage() {
 
         <div className="space-y-8">
           <FormHierarchySection speciesById={speciesById} />
-
-          {['fungus'].map(form => (
-            <FormTaxonomyBrowser
-              key={form}
-              form={form}
-              speciesById={speciesById}
-              taxonomicGroups={groups}
-            />
-          ))}
 
           <HabitatHierarchySection speciesById={speciesById} />
 
