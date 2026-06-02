@@ -1,25 +1,26 @@
 import { test, expect } from '@playwright/test';
 
-// Helper to enable the France pack via the UI toggle
+// Helper to enable the France pack via the UI toggle (reliable: uses togglePack in-memory, no hydration race)
 async function enableFrancePack(page: any) {
-  // Navigate to packs page
   await page.goto('/#/packs');
   await page.waitForLoadState('networkidle');
-  
-  // Check if france-base is already enabled by looking for "Disable france-base" button
+
+  // Wait for packs page to fully render
+  await page.getByRole('heading', { name: 'france-base', level: 2 }).waitFor({ timeout: 10000 });
+
   const disableButton = page.getByRole('button', { name: 'Disable france-base' });
-  const enableButton = page.getByRole('button', { name: 'Enable france-base' });
-  
   const isEnabled = await disableButton.isVisible().catch(() => false);
-  
+
   if (!isEnabled) {
-    // Click enable button
+    const enableButton = page.getByRole('button', { name: 'Enable france-base' });
     await enableButton.click();
-    await page.waitForLoadState('networkidle');
+    // Wait for the button state to change to Disable — confirms togglePack completed
+    await disableButton.waitFor({ timeout: 10000 });
   }
-  
-  // Navigate back to home to test the data
-  await page.goto('/');
+
+  // Use /#/ (explicit home hash) so this is a guaranteed hash-change navigation
+  // (no page reload), preserving the Zustand store with france-base already loaded.
+  await page.goto('/#/');
   await page.waitForLoadState('networkidle');
 }
 
@@ -68,31 +69,26 @@ test.describe('Area filtering (Item 11)', () => {
   });
 
   test('?area=france URL param filters to French species on load', async ({ page }) => {
-    // First enable France pack
-    await page.goto('/#/packs');
-    await page.waitForLoadState('networkidle');
-    
-    const disableButton = page.getByRole('button', { name: 'Disable france-base' });
-    const isEnabled = await disableButton.isVisible().catch(() => false);
-    
-    if (!isEnabled) {
-      const enableButton = page.getByRole('button', { name: 'Enable france-base' });
-      await enableButton.click();
-      await page.waitForLoadState('networkidle');
-    }
+    // Set localStorage before page load so france-base is enabled from the start
+    await page.context().addInitScript(() => {
+      window.localStorage.setItem('living-patch-packs-v2', JSON.stringify({
+        state: { enabledPackIds: ['0-base', 'france-base'] },
+        version: 0,
+      }));
+    });
 
-    // NOW navigate with URL param using correct format: /?area=france (not /#/?area=france)
-    await page.goto('/?area=france');
+    // Navigate directly with URL param in correct HashRouter format (fresh page load)
+    await page.goto('/#/?area=france');
     await page.waitForLoadState('networkidle');
-    
-    // Wait for area chips to be present - need to wait for both region options
+
+    // Wait for area chips to be present
     await expect(page.getByRole('button', { name: 'Northeast PA' })).toBeVisible({ timeout: 10000 });
     await expect(page.getByRole('button', { name: 'France' })).toBeVisible({ timeout: 10000 });
 
     // France chip should be active (highlighted)
     const franceChip = page.getByRole('button', { name: 'France' });
     const chipClass = await franceChip.getAttribute('class');
-    expect(chipClass).toContain('bg-sky-600', 'Active chip should have sky-600 background');
+    expect(chipClass).toContain('bg-sky-600');
 
     // French species should be visible
     await expect(page.getByText('European Robin', { exact: true })).toBeVisible();
@@ -102,23 +98,18 @@ test.describe('Area filtering (Item 11)', () => {
   });
 
   test('?area=northeast_pa URL param filters to NE PA species on load', async ({ page }) => {
-    // First enable France pack
-    await page.goto('/#/packs');
-    await page.waitForLoadState('networkidle');
-    
-    const disableButton = page.getByRole('button', { name: 'Disable france-base' });
-    const isEnabled = await disableButton.isVisible().catch(() => false);
-    
-    if (!isEnabled) {
-      const enableButton = page.getByRole('button', { name: 'Enable france-base' });
-      await enableButton.click();
-      await page.waitForLoadState('networkidle');
-    }
+    // Set localStorage before page load so france-base is enabled from the start
+    await page.context().addInitScript(() => {
+      window.localStorage.setItem('living-patch-packs-v2', JSON.stringify({
+        state: { enabledPackIds: ['0-base', 'france-base'] },
+        version: 0,
+      }));
+    });
 
-    // NOW navigate with URL param using correct format: /?area=northeast_pa
-    await page.goto('/?area=northeast_pa');
+    // Navigate directly with URL param in correct HashRouter format (fresh page load)
+    await page.goto('/#/?area=northeast_pa');
     await page.waitForLoadState('networkidle');
-    
+
     // Wait for area chips to be present
     await expect(page.getByRole('button', { name: 'Northeast PA' })).toBeVisible({ timeout: 10000 });
     await expect(page.getByRole('button', { name: 'France' })).toBeVisible({ timeout: 10000 });
@@ -126,7 +117,7 @@ test.describe('Area filtering (Item 11)', () => {
     // Northeast PA chip should be active
     const nepaChip = page.getByRole('button', { name: 'Northeast PA' });
     const chipClass = await nepaChip.getAttribute('class');
-    expect(chipClass).toContain('bg-sky-600', 'Active chip should have sky-600 background');
+    expect(chipClass).toContain('bg-sky-600');
 
     // US species should be visible
     await expect(page.getByText('Pileated Woodpecker', { exact: true })).toBeVisible();
@@ -184,9 +175,10 @@ test.describe('Area filtering (Item 11)', () => {
   });
 
   test('area filter works from advanced filter panel', async ({ page }) => {
-    // First enable France pack
+    // First enable France pack (using same logic as enableFrancePack helper)
     await page.goto('/#/packs');
     await page.waitForLoadState('networkidle');
+    await page.getByRole('heading', { name: 'france-base', level: 2 }).waitFor({ timeout: 10000 });
     
     const disableButton = page.getByRole('button', { name: 'Disable france-base' });
     const isEnabled = await disableButton.isVisible().catch(() => false);
@@ -194,11 +186,11 @@ test.describe('Area filtering (Item 11)', () => {
     if (!isEnabled) {
       const enableButton = page.getByRole('button', { name: 'Enable france-base' });
       await enableButton.click();
-      await page.waitForLoadState('networkidle');
+      await disableButton.waitFor({ timeout: 10000 });
     }
 
-    // Go to home - france pack is already enabled in localStorage
-    await page.goto('/');
+    // Go to home via hash navigation to preserve in-memory store state
+    await page.goto('/#/');
     await page.waitForLoadState('networkidle');
 
     const filtersButton = page.getByRole('button', { name: /Filters/ });
@@ -213,25 +205,19 @@ test.describe('Area filtering (Item 11)', () => {
   });
 
   test('clear filters button clears area selection', async ({ page }) => {
-    // First enable France pack
-    await page.goto('/#/packs');
-    await page.waitForLoadState('networkidle');
-    
-    const disableButton = page.getByRole('button', { name: 'Disable france-base' });
-    const isEnabled = await disableButton.isVisible().catch(() => false);
-    
-    if (!isEnabled) {
-      const enableButton = page.getByRole('button', { name: 'Enable france-base' });
-      await enableButton.click();
-      await page.waitForLoadState('networkidle');
-    }
+    // Set localStorage before page load so france-base is enabled from the start
+    await page.context().addInitScript(() => {
+      window.localStorage.setItem('living-patch-packs-v2', JSON.stringify({
+        state: { enabledPackIds: ['0-base', 'france-base'] },
+        version: 0,
+      }));
+    });
 
-    // NOW navigate to URL with area param using correct format: /?area=france
-    await page.goto('/?area=france');
+    // Navigate directly with area param in correct HashRouter format (fresh page load)
+    await page.goto('/#/?area=france');
     await page.waitForLoadState('networkidle');
 
-    // Ensure the advanced filter panel is open (URL param should auto-open it,
-    // but click the Filters button to guarantee it regardless)
+    // Ensure the advanced filter panel is open
     const filtersButton = page.getByRole('button', { name: /Filters/ });
     await expect(filtersButton).toBeVisible({ timeout: 10000 });
     // If panel isn't already open, open it
@@ -333,13 +319,15 @@ test.describe('Pack management (Item 9)', () => {
   });
 
   test('toggling France pack removes French species from list', async ({ page }) => {
+    await enableFrancePack(page);
+
     await page.goto('/#/packs');
     await page.waitForLoadState('networkidle');
 
     await page.getByRole('button', { name: 'Disable france-base' }).click();
     await page.waitForLoadState('networkidle');
 
-    await page.goto('/');
+    await page.goto('/#/');
     await page.waitForLoadState('networkidle');
 
     await expect(page.getByText('European Robin', { exact: true })).not.toBeVisible();
@@ -350,6 +338,8 @@ test.describe('Pack management (Item 9)', () => {
   });
 
   test('toggling France pack back on restores French species', async ({ page }) => {
+    await enableFrancePack(page);
+
     await page.goto('/#/packs');
     await page.waitForLoadState('networkidle');
 
@@ -358,7 +348,7 @@ test.describe('Pack management (Item 9)', () => {
     await page.getByRole('button', { name: 'Enable france-base' }).click();
     await page.waitForLoadState('networkidle');
 
-    await page.goto('/');
+    await page.goto('/#/');
     await page.waitForLoadState('networkidle');
 
     await expect(page.getByText('European Robin', { exact: true })).toBeVisible();
@@ -368,6 +358,8 @@ test.describe('Pack management (Item 9)', () => {
   });
 
   test('disabled pack card shows grayed out state', async ({ page }) => {
+    await enableFrancePack(page);
+
     await page.goto('/#/packs');
     await page.waitForLoadState('networkidle');
 
@@ -376,18 +368,20 @@ test.describe('Pack management (Item 9)', () => {
 
     // Card root is 3 levels above the <h2> heading
     const cardRoot = page.getByRole('heading', { name: 'france-base', level: 2 }).locator('xpath=../../..');
-    const opacityValue = await cardRoot.evaluate((el) => window.getComputedStyle(el).opacity);
-    expect(parseFloat(opacityValue)).toBeLessThan(1);
+    // Check the card has the disabled opacity class (Tailwind v4 uses class-based opacity)
+    await expect(cardRoot).toHaveClass(/opacity-60/);
   });
 
   test('pack toggle state persists after page reload', async ({ page }) => {
+    await enableFrancePack(page);
+
     await page.goto('/#/packs');
     await page.waitForLoadState('networkidle');
 
     await page.getByRole('button', { name: 'Disable france-base' }).click();
     await page.waitForLoadState('networkidle');
 
-    await page.goto('/');
+    await page.goto('/#/');
     await page.waitForLoadState('networkidle');
     await expect(page.getByText('European Robin', { exact: true })).not.toBeVisible();
 
@@ -397,13 +391,15 @@ test.describe('Pack management (Item 9)', () => {
   });
 
   test('disabled base pack removes US species', async ({ page }) => {
+    await enableFrancePack(page);
+
     await page.goto('/#/packs');
     await page.waitForLoadState('networkidle');
 
     await page.getByRole('button', { name: 'Disable 0-base' }).click();
     await page.waitForLoadState('networkidle');
 
-    await page.goto('/');
+    await page.goto('/#/');
     await page.waitForLoadState('networkidle');
 
     await expect(page.getByText('Pileated Woodpecker', { exact: true })).not.toBeVisible();
