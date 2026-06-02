@@ -1,32 +1,23 @@
 import { test, expect } from '@playwright/test';
 
-// Helper to enable the France pack by navigating to PacksPage and toggling
+// Helper to enable the France pack
 async function enableFrancePack(page: any) {
-  // First, go to the packs page
+  // Navigate to packs page
   await page.goto('/#/packs');
-  await page.waitForLoadState('load');
-
-  // Check if france-base is already enabled by looking for the disable button
-  const disableButton = page.getByRole('button', { name: 'Disable france-base' });
-  if (await disableButton.count() > 0) {
-    // Already enabled, just go home
-    await page.goto('/');
-    await page.waitForLoadState('load');
-    return;
-  }
-
-  // Find and click the Enable button
-  const enableButton = page.getByRole('button', { name: 'Enable france-base' });
+  await page.waitForTimeout(1000);
   
-  if (await enableButton.count() > 0) {
+  // Click Enable button if france-base is not yet enabled
+  const enableButton = page.getByRole('button', { name: 'Enable france-base' });
+  const isEnabled = await enableButton.count() === 0; // If button doesn't exist, already enabled
+  
+  if (!isEnabled) {
     await enableButton.click();
-    // Wait for the pack to be fetched and loaded into state
     await page.waitForTimeout(3000);
   }
-
-  // Return to home
+  
+  // Go back to home
   await page.goto('/');
-  await page.waitForLoadState('load');
+  await page.waitForTimeout(1000);
 }
 
 test.describe('Area filtering (Item 11)', () => {
@@ -270,8 +261,8 @@ test.describe('Pack management (Item 9)', () => {
     await page.waitForLoadState('networkidle');
 
     await expect(page.getByText(/2 pack/)).toBeVisible();
-    await expect(page.getByText('0-base')).toBeVisible();
-    await expect(page.getByText('france-base')).toBeVisible();
+    await expect(page.getByRole('heading', { name: '0-base' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'france-base' })).toBeVisible();
   });
 
   test('pack cards show toggle switches', async ({ page }) => {
