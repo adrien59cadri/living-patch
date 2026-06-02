@@ -68,9 +68,20 @@ test.describe('Area filtering (Item 11)', () => {
   });
 
   test('?area=france URL param filters to French species on load', async ({ page }) => {
-    // Enable France pack first
-    await enableFrancePack(page);
+    // First enable France pack
+    await page.goto('/#/packs');
+    await page.waitForLoadState('networkidle');
+    
+    const disableButton = page.getByRole('button', { name: 'Disable france-base' });
+    const isEnabled = await disableButton.isVisible().catch(() => false);
+    
+    if (!isEnabled) {
+      const enableButton = page.getByRole('button', { name: 'Enable france-base' });
+      await enableButton.click();
+      await page.waitForLoadState('networkidle');
+    }
 
+    // NOW navigate to URL with area param - pack is already enabled in localStorage
     await page.goto('/#/?area=france');
     await page.waitForLoadState('networkidle');
 
@@ -87,9 +98,20 @@ test.describe('Area filtering (Item 11)', () => {
   });
 
   test('?area=northeast_pa URL param filters to NE PA species on load', async ({ page }) => {
-    // Enable France pack first
-    await enableFrancePack(page);
+    // First enable France pack
+    await page.goto('/#/packs');
+    await page.waitForLoadState('networkidle');
+    
+    const disableButton = page.getByRole('button', { name: 'Disable france-base' });
+    const isEnabled = await disableButton.isVisible().catch(() => false);
+    
+    if (!isEnabled) {
+      const enableButton = page.getByRole('button', { name: 'Enable france-base' });
+      await enableButton.click();
+      await page.waitForLoadState('networkidle');
+    }
 
+    // NOW navigate to URL with area param - pack is already enabled
     await page.goto('/#/?area=northeast_pa');
     await page.waitForLoadState('networkidle');
 
@@ -154,8 +176,22 @@ test.describe('Area filtering (Item 11)', () => {
   });
 
   test('area filter works from advanced filter panel', async ({ page }) => {
-    // Enable France pack first
-    await enableFrancePack(page);
+    // First enable France pack
+    await page.goto('/#/packs');
+    await page.waitForLoadState('networkidle');
+    
+    const disableButton = page.getByRole('button', { name: 'Disable france-base' });
+    const isEnabled = await disableButton.isVisible().catch(() => false);
+    
+    if (!isEnabled) {
+      const enableButton = page.getByRole('button', { name: 'Enable france-base' });
+      await enableButton.click();
+      await page.waitForLoadState('networkidle');
+    }
+
+    // Go to home - france pack is already enabled in localStorage
+    await page.goto('/');
+    await page.waitForLoadState('networkidle');
 
     const filtersButton = page.getByRole('button', { name: /Filters/ });
     await filtersButton.click();
@@ -169,9 +205,20 @@ test.describe('Area filtering (Item 11)', () => {
   });
 
   test('clear filters button clears area selection', async ({ page }) => {
-    // Enable France pack first
-    await enableFrancePack(page);
+    // First enable France pack
+    await page.goto('/#/packs');
+    await page.waitForLoadState('networkidle');
+    
+    const disableButton = page.getByRole('button', { name: 'Disable france-base' });
+    const isEnabled = await disableButton.isVisible().catch(() => false);
+    
+    if (!isEnabled) {
+      const enableButton = page.getByRole('button', { name: 'Enable france-base' });
+      await enableButton.click();
+      await page.waitForLoadState('networkidle');
+    }
 
+    // NOW navigate to URL with area param - pack is already enabled
     await page.goto('/#/?area=france');
     await page.waitForLoadState('networkidle');
 
