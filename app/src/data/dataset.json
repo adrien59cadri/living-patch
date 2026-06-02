@@ -35,7 +35,7 @@
             "region": "northeast_pa",
             "ecological_role": "carnivore",
             "is_keystone": true,
-            "keystone_type": "ecosystem_engineer",
+            "keystone_type": "cavity_creator",
             "keystone_description": "Primary cavity excavator. Abandoned cavities used by Great Horned Owl, American Kestrel, Wood Duck, and flying squirrels. Creates snags that structure the entire forest bird community.",
             "taxonomic_group": "group_woodpeckers",
             "image": {
@@ -68,7 +68,7 @@
             "region": "northeast_pa",
             "ecological_role": "carnivore",
             "is_keystone": true,
-            "keystone_type": "predator",
+            "keystone_type": "apex_predator",
             "keystone_description": "Apex daytime predator of open habitats. Controls gray squirrel, vole, and cottontail populations. Major fall migration corridor at Kittatinny Ridge (Hawk Mountain).",
             "image": {
               "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Red-tailed_Hawk_%2845812546121%29.jpg/960px-Red-tailed_Hawk_%2845812546121%29.jpg",
@@ -100,7 +100,7 @@
             "region": "northeast_pa",
             "ecological_role": "carnivore",
             "is_keystone": true,
-            "keystone_type": "predator",
+            "keystone_type": "apex_predator",
             "keystone_description": "Apex nocturnal predator. Controls rabbits, squirrels, skunks, and even other raptors. Depends on Pileated Woodpecker cavities and abandoned Red-tailed Hawk nests.",
             "active_months": [
               "Jan-Dec"
@@ -375,7 +375,7 @@
             "region": "northeast_pa",
             "ecological_role": "herbivore",
             "is_keystone": true,
-            "keystone_type": "ecosystem_engineer",
+            "keystone_type": "habitat_modifier",
             "keystone_description": "Single most powerful landscape engineer in NE PA. Beaver ponds create habitat for Great Blue Heron, Wood Duck, Hooded Merganser, American Bullfrog, Spotted Salamander, painted turtles, and muskrat. Beaver-killed snags multiply cavity supply for Pileated Woodpecker.",
             "image": {
               "url": "https://upload.wikimedia.org/wikipedia/commons/6/6b/American_Beaver.jpg",
@@ -439,7 +439,7 @@
             "region": "northeast_pa",
             "ecological_role": "herbivore",
             "is_keystone": true,
-            "keystone_type": "ecosystem_engineer",
+            "keystone_type": "habitat_modifier",
             "keystone_description": "At high densities, suppresses oak seedling regeneration, eliminates native wildflowers (Trillium, native orchids), and facilitates invasive plant spread. When regulated by predators (coyote, bear), browsing pressure restores native understory diversity — a trophic cascade driver whose presence or absence reshapes the entire forest floor.",
             "image": {
               "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/White-tailed_deer.jpg/960px-White-tailed_deer.jpg",
@@ -807,7 +807,7 @@
             "region": "northeast_pa",
             "ecological_role": "producer",
             "is_keystone": true,
-            "keystone_type": "prey_base",
+            "keystone_type": "forage_species",
             "keystone_description": "Second only to oaks in total Lepidoptera support (456 species). Cherries fuel migrant thrushes, waxwings, and many other birds. Primary host for Eastern Tiger Swallowtail in PA. Eastern Tent Caterpillar — conspicuous spring indicator — depends on it.",
             "taxonomic_group": "group_prunus",
             "image": {
@@ -1480,7 +1480,7 @@
             "region": "northeast_pa",
             "ecological_role": "omnivore",
             "is_keystone": true,
-            "keystone_type": "ecosystem_engineer",
+            "keystone_type": "seed_disperser",
             "keystone_description": "The keystone acorn disperser of eastern North America. Each Blue Jay caches 3,000–5,000 acorns per fall, carrying up to 5 in its expandable throat pouch and transporting them up to 1 mile — far beyond squirrel dispersal range. Responsible for rapid post-glacial oak reforestation. In today’s fragmented landscape, blue jays are the primary species moving oak seeds across farm fields, roads, and development gaps to establish new forest patches (Pesendorfer et al. 2016, Cornell Lab).",
             "taxonomic_group": "group_songbirds",
             "image": {
@@ -2720,7 +2720,7 @@
             "region": "northeast_pa",
             "ecological_role": "insectivore",
             "is_keystone": true,
-            "keystone_type": "aerial_insect_suppression",
+            "keystone_type": "insectivore",
             "keystone_description": "Critical aerial insectivore in open habitats and water margins. Single pair can consume thousands of mosquitoes and flies per season. Population health reflects water quality and insect abundance. Requires cavity nesting sites (dead trees or boxes) and open foraging habitat in proximity.",
             "image": {
               "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Tree_swallow_in_JBWR_%2825579%29.jpg/960px-Tree_swallow_in_JBWR_%2825579%29.jpg",
@@ -3388,7 +3388,7 @@
             "region": "northeast_pa",
             "ecological_role": "insectivore",
             "is_keystone": true,
-            "keystone_type": "predator",
+            "keystone_type": "insectivore",
             "keystone_description": "Critical nighttime insect suppressor. A single bat consumes 600–1,000 insects per hour; a maternity colony of 150 bats can eat 1.3 million insects per night. White-nose Syndrome has eliminated 90%+ of PA's Little Brown Bat populations since 2007 — the resulting insect release is measurable in agricultural pest damage data. Their loss represents one of the most severe ecological disruptions in recent PA natural history.",
             "taxonomic_group": "group_bats",
             "image": {
@@ -3676,7 +3676,7 @@
             "region": "northeast_pa",
             "ecological_role": "consumer",
             "is_keystone": true,
-            "keystone_type": "prey_base",
+            "keystone_type": "forage_species",
             "keystone_description": "One of NE PA's most abundant small mammals and the foundational prey species of open habitats. Population cycles drive corresponding booms and crashes in Red-tailed Hawk, American Kestrel, Red Fox, Eastern Coyote, and American Mink abundance. A landscape-level driver of predator population dynamics across meadows and fields.",
             "image": {
               "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Meadow_vole_microtus_pennsylvanicus.jpg/500px-Meadow_vole_microtus_pennsylvanicus.jpg",
@@ -3753,7 +3753,7 @@
             "region": "northeast_pa",
             "ecological_role": "carnivore",
             "is_keystone": true,
-            "keystone_type": "predator",
+            "keystone_type": "apex_predator",
             "keystone_description": "Apex aquatic predator that structures fish communities through selective predation on slow or stressed individuals, improving average fish health. Otter haul-out sites concentrate nutrients from aquatic to terrestrial systems. As a top predator sensitive to water quality, otter presence or absence is a reliable indicator of watershed health. Pocono populations never went fully extinct, making NE PA central to the species' statewide recovery.",
             "image": {
               "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/River_otter_in_Texas.jpg/500px-River_otter_in_Texas.jpg",
@@ -5613,7 +5613,7 @@
             "life_stages": [],
             "region": "france",
             "is_keystone": true,
-            "keystone_type": "ecosystem_engineer",
+            "keystone_type": "cavity_creator",
             "keystone_description": "Forest ecosystem engineer. Abandoned cavities shelter great tits, owls, bats, and kingfishers.",
             "image": {
               "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/European_green_woodpecker_%28Picus_viridis%29_female_Barnes.jpg/500px-European_green_woodpecker_%28Picus_viridis%29_female_Barnes.jpg",
@@ -5710,7 +5710,7 @@
             "life_stages": [],
             "region": "france",
             "is_keystone": true,
-            "keystone_type": "predator",
+            "keystone_type": "apex_predator",
             "keystone_description": "Apex predator of open habitats. Controls vole and rodent populations, protecting crops and maintaining grassland balance.",
             "image": {
               "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Common_kestrel_falco_tinnunculus.jpg/500px-Common_kestrel_falco_tinnunculus.jpg",
@@ -5743,7 +5743,7 @@
             "life_stages": [],
             "region": "france",
             "is_keystone": true,
-            "keystone_type": "ecosystem_engineer",
+            "keystone_type": "habitat_modifier",
             "keystone_description": "Forest soil engineer. Rooting creates germination microsites, disperses fungal spores, and maintains a mosaic of ground vegetation.",
             "image": {
               "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Wildschwein%2C_N%C3%A4he_Pulverstampftor_%28cropped%29.jpg/960px-Wildschwein%2C_N%C3%A4he_Pulverstampftor_%28cropped%29.jpg",
@@ -5841,7 +5841,7 @@
             "life_stages": [],
             "region": "france",
             "is_keystone": true,
-            "keystone_type": "ecosystem_engineer",
+            "keystone_type": "habitat_modifier",
             "keystone_description": "Architect of the forest subsoil. The sett networks it creates aerate the soil, improve water infiltration, and provide shelter for many species.",
             "image": {
               "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/M%C3%A4yr%C3%A4_%C3%84ht%C3%A4ri_4.jpg/960px-M%C3%A4yr%C3%A4_%C3%84ht%C3%A4ri_4.jpg",
@@ -6193,7 +6193,7 @@
             "life_stages": [],
             "region": "france",
             "is_keystone": true,
-            "keystone_type": "ecosystem_engineer",
+            "keystone_type": "habitat_modifier",
             "keystone_description": "Essential soil engineer. Burrows improve soil structure, water infiltration, and nutrient availability for plants.",
             "image": {
               "url": "https://upload.wikimedia.org/wikipedia/commons/3/30/Regenwurm1.jpg",
