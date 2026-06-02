@@ -15,10 +15,19 @@
         "common_name": "Gopher Frog",
         "latin_name": "Rana capito",
         "form": "frog",
-        "habitat": ["longleaf_pine", "burrows"],
-        "diet": ["insectivore"],
-        "behavior": ["fossorial"],
-        "season": ["breeding"],
+        "habitat": [
+          "longleaf_pine",
+          "burrows"
+        ],
+        "diet": [
+          "insectivore"
+        ],
+        "behavior": [
+          "fossorial"
+        ],
+        "season": [
+          "breeding"
+        ],
         "functional_description": "Frog specialist of gopher tortoise burrows. Threatened by habitat loss.",
         "life_stages": [],
         "region": "florida",
@@ -30,10 +39,20 @@
         "common_name": "Southern Toad",
         "latin_name": "Rhinella marina",
         "form": "toad",
-        "habitat": ["grassland", "scrubland", "sandy_areas"],
-        "diet": ["insectivore"],
-        "behavior": ["nocturnal"],
-        "season": ["year_round"],
+        "habitat": [
+          "grassland",
+          "scrubland",
+          "sandy_areas"
+        ],
+        "diet": [
+          "insectivore"
+        ],
+        "behavior": [
+          "nocturnal"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Common toad that hunts insects at night.",
         "life_stages": [],
         "region": "florida",
@@ -45,10 +64,19 @@
         "common_name": "Eastern Narrow-mouthed Toad",
         "latin_name": "Gastrophryne carolinensis",
         "form": "toad",
-        "habitat": ["wetland", "grassland"],
-        "diet": ["insectivore"],
-        "behavior": ["nocturnal"],
-        "season": ["year_round"],
+        "habitat": [
+          "wetland",
+          "grassland"
+        ],
+        "diet": [
+          "insectivore"
+        ],
+        "behavior": [
+          "nocturnal"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Tiny toad that hunts ants and small insects.",
         "life_stages": [],
         "region": "florida",
@@ -60,10 +88,19 @@
         "common_name": "Oak Toad",
         "latin_name": "Bufo quercicus",
         "form": "toad",
-        "habitat": ["scrubland", "oak_forest"],
-        "diet": ["insectivore"],
-        "behavior": ["nocturnal"],
-        "season": ["year_round"],
+        "habitat": [
+          "scrubland",
+          "oak_forest"
+        ],
+        "diet": [
+          "insectivore"
+        ],
+        "behavior": [
+          "nocturnal"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Tiny toad of oak scrublands.",
         "life_stages": [],
         "region": "florida",
@@ -75,10 +112,21 @@
         "common_name": "Green Tree Frog",
         "latin_name": "Hyla cinerea",
         "form": "treefrog",
-        "habitat": ["vegetation", "trees", "wetland"],
-        "diet": ["insectivore"],
-        "behavior": ["arboreal", "nocturnal"],
-        "season": ["year_round"],
+        "habitat": [
+          "vegetation",
+          "trees",
+          "wetland"
+        ],
+        "diet": [
+          "insectivore"
+        ],
+        "behavior": [
+          "arboreal",
+          "nocturnal"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Bright green frog that climbs vegetation near water.",
         "life_stages": [],
         "region": "florida",
@@ -90,10 +138,19 @@
         "common_name": "Squirrel Tree Frog",
         "latin_name": "Hyla squirella",
         "form": "treefrog",
-        "habitat": ["vegetation", "trees"],
-        "diet": ["insectivore"],
-        "behavior": ["arboreal"],
-        "season": ["year_round"],
+        "habitat": [
+          "vegetation",
+          "trees"
+        ],
+        "diet": [
+          "insectivore"
+        ],
+        "behavior": [
+          "arboreal"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Tiny brown tree frog.",
         "life_stages": [],
         "region": "florida",
@@ -105,10 +162,20 @@
         "common_name": "Barking Tree Frog",
         "latin_name": "Hyla gratiosa",
         "form": "treefrog",
-        "habitat": ["pine_forest", "oak_forest"],
-        "diet": ["insectivore"],
-        "behavior": ["arboreal", "vocal"],
-        "season": ["year_round"],
+        "habitat": [
+          "pine_forest",
+          "oak_forest"
+        ],
+        "diet": [
+          "insectivore"
+        ],
+        "behavior": [
+          "arboreal",
+          "vocal"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Large tree frog with loud barking call.",
         "life_stages": [],
         "region": "florida",
@@ -120,10 +187,18 @@
         "common_name": "Pine Woods Tree Frog",
         "latin_name": "Hyla femoralis",
         "form": "treefrog",
-        "habitat": ["pine_forest"],
-        "diet": ["insectivore"],
-        "behavior": ["arboreal"],
-        "season": ["year_round"],
+        "habitat": [
+          "pine_forest"
+        ],
+        "diet": [
+          "insectivore"
+        ],
+        "behavior": [
+          "arboreal"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Small tree frog of longleaf pine forests.",
         "life_stages": [],
         "region": "florida",
@@ -135,10 +210,19 @@
         "common_name": "Little Grass Frog",
         "latin_name": "Pseudacris ocularis",
         "form": "treefrog",
-        "habitat": ["grassland", "marsh"],
-        "diet": ["insectivore"],
-        "behavior": ["ground_dwelling"],
-        "season": ["year_round"],
+        "habitat": [
+          "grassland",
+          "marsh"
+        ],
+        "diet": [
+          "insectivore"
+        ],
+        "behavior": [
+          "ground_dwelling"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Tiny frog of grasslands and marshes.",
         "life_stages": [],
         "region": "florida",
@@ -150,10 +234,19 @@
         "common_name": "Florida Cricket Frog",
         "latin_name": "Acris gryllus dorsalis",
         "form": "frog",
-        "habitat": ["wetland", "pond"],
-        "diet": ["insectivore"],
-        "behavior": ["ground_dwelling"],
-        "season": ["year_round"],
+        "habitat": [
+          "wetland",
+          "pond"
+        ],
+        "diet": [
+          "insectivore"
+        ],
+        "behavior": [
+          "ground_dwelling"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Tiny frog with cricket-like calls.",
         "life_stages": [],
         "region": "florida",
@@ -165,26 +258,21 @@
         "common_name": "Southern Cricket Frog",
         "latin_name": "Acris gryllus",
         "form": "frog",
-        "habitat": ["wetland", "pond", "marsh"],
-        "diet": ["insectivore"],
-        "behavior": ["ground_dwelling"],
-        "season": ["year_round"],
+        "habitat": [
+          "wetland",
+          "pond",
+          "marsh"
+        ],
+        "diet": [
+          "insectivore"
+        ],
+        "behavior": [
+          "ground_dwelling"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Small frog with cricket calls.",
-        "life_stages": [],
-        "region": "florida",
-        "ecological_role": "carnivore",
-        "taxonomic_group": "group_frogs_toads"
-      },
-      {
-        "id": "amphibian_american-bullfrog",
-        "common_name": "American Bullfrog",
-        "latin_name": "Lithobates catesbeianus",
-        "form": "frog",
-        "habitat": ["wetland", "pond", "lake"],
-        "diet": ["insectivore", "vertebrate_predator"],
-        "behavior": ["aquatic"],
-        "season": ["year_round"],
-        "functional_description": "Large frog with deep call. Opportunistic predator.",
         "life_stages": [],
         "region": "florida",
         "ecological_role": "carnivore",
@@ -195,10 +283,19 @@
         "common_name": "Pig Frog",
         "latin_name": "Pseudophryne hammondi",
         "form": "frog",
-        "habitat": ["wetland", "marsh"],
-        "diet": ["insectivore"],
-        "behavior": ["aquatic"],
-        "season": ["year_round"],
+        "habitat": [
+          "wetland",
+          "marsh"
+        ],
+        "diet": [
+          "insectivore"
+        ],
+        "behavior": [
+          "aquatic"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Aquatic frog with pig-like grunts.",
         "life_stages": [],
         "region": "florida",
@@ -210,10 +307,19 @@
         "common_name": "Leopard Frog",
         "latin_name": "Lithobates sphenocephalus",
         "form": "frog",
-        "habitat": ["wetland", "grassland"],
-        "diet": ["insectivore"],
-        "behavior": ["aquatic"],
-        "season": ["year_round"],
+        "habitat": [
+          "wetland",
+          "grassland"
+        ],
+        "diet": [
+          "insectivore"
+        ],
+        "behavior": [
+          "aquatic"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Spotted frog of wetlands.",
         "life_stages": [],
         "region": "florida",
@@ -225,10 +331,19 @@
         "common_name": "Wood Frog",
         "latin_name": "Lithobates sylvaticus",
         "form": "frog",
-        "habitat": ["forest", "woodland"],
-        "diet": ["insectivore"],
-        "behavior": ["terrestrial"],
-        "season": ["breeding"],
+        "habitat": [
+          "forest",
+          "woodland"
+        ],
+        "diet": [
+          "insectivore"
+        ],
+        "behavior": [
+          "terrestrial"
+        ],
+        "season": [
+          "breeding"
+        ],
         "functional_description": "Forest frog that breeds in temporary ponds.",
         "life_stages": [],
         "region": "florida",
@@ -240,10 +355,19 @@
         "common_name": "Carpenter Frog",
         "latin_name": "Lithobates virgatipes",
         "form": "frog",
-        "habitat": ["wetland", "swamp"],
-        "diet": ["insectivore"],
-        "behavior": ["aquatic"],
-        "season": ["year_round"],
+        "habitat": [
+          "wetland",
+          "swamp"
+        ],
+        "diet": [
+          "insectivore"
+        ],
+        "behavior": [
+          "aquatic"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Aquatic frog with distinctive carpenter-like calls.",
         "life_stages": [],
         "region": "florida",
@@ -255,26 +379,21 @@
         "common_name": "Eastern Tiger Salamander",
         "latin_name": "Ambystoma tigrinum",
         "form": "salamander",
-        "habitat": ["wetland", "burrows"],
-        "diet": ["insectivore", "vertebrate_predator"],
-        "behavior": ["fossorial"],
-        "season": ["breeding"],
+        "habitat": [
+          "wetland",
+          "burrows"
+        ],
+        "diet": [
+          "insectivore",
+          "vertebrate_predator"
+        ],
+        "behavior": [
+          "fossorial"
+        ],
+        "season": [
+          "breeding"
+        ],
         "functional_description": "Large salamander with yellow spots. Carnivorous.",
-        "life_stages": [],
-        "region": "florida",
-        "ecological_role": "carnivore",
-        "taxonomic_group": "group_salamanders"
-      },
-      {
-        "id": "amphibian_spotted-salamander",
-        "common_name": "Spotted Salamander",
-        "latin_name": "Ambystoma maculatum",
-        "form": "salamander",
-        "habitat": ["forest", "wetland"],
-        "diet": ["insectivore"],
-        "behavior": ["fossorial"],
-        "season": ["breeding"],
-        "functional_description": "Black salamander with yellow spots.",
         "life_stages": [],
         "region": "florida",
         "ecological_role": "carnivore",
@@ -285,10 +404,19 @@
         "common_name": "Marbled Salamander",
         "latin_name": "Ambystoma opacum",
         "form": "salamander",
-        "habitat": ["forest", "wetland"],
-        "diet": ["insectivore"],
-        "behavior": ["fossorial"],
-        "season": ["breeding"],
+        "habitat": [
+          "forest",
+          "wetland"
+        ],
+        "diet": [
+          "insectivore"
+        ],
+        "behavior": [
+          "fossorial"
+        ],
+        "season": [
+          "breeding"
+        ],
         "functional_description": "Marbled-patterned salamander.",
         "life_stages": [],
         "region": "florida",
@@ -300,10 +428,19 @@
         "common_name": "Mole Salamander",
         "latin_name": "Ambystoma talpoideum",
         "form": "salamander",
-        "habitat": ["forest", "wetland"],
-        "diet": ["insectivore"],
-        "behavior": ["fossorial"],
-        "season": ["breeding"],
+        "habitat": [
+          "forest",
+          "wetland"
+        ],
+        "diet": [
+          "insectivore"
+        ],
+        "behavior": [
+          "fossorial"
+        ],
+        "season": [
+          "breeding"
+        ],
         "functional_description": "Small burrowing salamander.",
         "life_stages": [],
         "region": "florida",
@@ -315,10 +452,19 @@
         "common_name": "Slimy Salamander",
         "latin_name": "Plethodon glutinosus",
         "form": "salamander",
-        "habitat": ["forest", "woodland"],
-        "diet": ["insectivore"],
-        "behavior": ["terrestrial"],
-        "season": ["year_round"],
+        "habitat": [
+          "forest",
+          "woodland"
+        ],
+        "diet": [
+          "insectivore"
+        ],
+        "behavior": [
+          "terrestrial"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Lungless salamander of forests.",
         "life_stages": [],
         "region": "florida",
@@ -330,10 +476,19 @@
         "common_name": "Red Salamander",
         "latin_name": "Pseudotriton ruber",
         "form": "salamander",
-        "habitat": ["stream", "forest"],
-        "diet": ["insectivore"],
-        "behavior": ["aquatic_terrestrial"],
-        "season": ["year_round"],
+        "habitat": [
+          "stream",
+          "forest"
+        ],
+        "diet": [
+          "insectivore"
+        ],
+        "behavior": [
+          "aquatic_terrestrial"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Bright red aquatic salamander.",
         "life_stages": [],
         "region": "florida",
@@ -345,10 +500,19 @@
         "common_name": "Mud Salamander",
         "latin_name": "Pseudotriton montanus",
         "form": "salamander",
-        "habitat": ["stream", "wetland"],
-        "diet": ["insectivore"],
-        "behavior": ["semi_aquatic"],
-        "season": ["year_round"],
+        "habitat": [
+          "stream",
+          "wetland"
+        ],
+        "diet": [
+          "insectivore"
+        ],
+        "behavior": [
+          "semi_aquatic"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Reddish semi-aquatic salamander.",
         "life_stages": [],
         "region": "florida",
@@ -360,10 +524,19 @@
         "common_name": "Two-lined Salamander",
         "latin_name": "Eurycea bislineata",
         "form": "salamander",
-        "habitat": ["stream", "forest"],
-        "diet": ["insectivore"],
-        "behavior": ["aquatic_terrestrial"],
-        "season": ["year_round"],
+        "habitat": [
+          "stream",
+          "forest"
+        ],
+        "diet": [
+          "insectivore"
+        ],
+        "behavior": [
+          "aquatic_terrestrial"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Lungless salamander of streams.",
         "life_stages": [],
         "region": "florida",
@@ -375,10 +548,19 @@
         "common_name": "Three-lined Salamander",
         "latin_name": "Eurycea trilineata",
         "form": "salamander",
-        "habitat": ["stream", "forest"],
-        "diet": ["insectivore"],
-        "behavior": ["aquatic_terrestrial"],
-        "season": ["year_round"],
+        "habitat": [
+          "stream",
+          "forest"
+        ],
+        "diet": [
+          "insectivore"
+        ],
+        "behavior": [
+          "aquatic_terrestrial"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Three-striped lungless salamander.",
         "life_stages": [],
         "region": "florida",
@@ -390,10 +572,19 @@
         "common_name": "Four-toed Salamander",
         "latin_name": "Hemidactylium scutatum",
         "form": "salamander",
-        "habitat": ["forest", "wetland"],
-        "diet": ["insectivore"],
-        "behavior": ["terrestrial"],
-        "season": ["year_round"],
+        "habitat": [
+          "forest",
+          "wetland"
+        ],
+        "diet": [
+          "insectivore"
+        ],
+        "behavior": [
+          "terrestrial"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Tiny salamander with four toes on hind feet.",
         "life_stages": [],
         "region": "florida",
@@ -405,10 +596,19 @@
         "common_name": "Dwarf Salamander",
         "latin_name": "Eurycea quadridigitata",
         "form": "salamander",
-        "habitat": ["forest", "wetland"],
-        "diet": ["insectivore"],
-        "behavior": ["terrestrial"],
-        "season": ["year_round"],
+        "habitat": [
+          "forest",
+          "wetland"
+        ],
+        "diet": [
+          "insectivore"
+        ],
+        "behavior": [
+          "terrestrial"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Tiny lungless salamander.",
         "life_stages": [],
         "region": "florida",
@@ -420,10 +620,19 @@
         "common_name": "Southern Dusky Salamander",
         "latin_name": "Desmognathus auriculatus",
         "form": "salamander",
-        "habitat": ["stream", "forest"],
-        "diet": ["insectivore"],
-        "behavior": ["semi_aquatic"],
-        "season": ["year_round"],
+        "habitat": [
+          "stream",
+          "forest"
+        ],
+        "diet": [
+          "insectivore"
+        ],
+        "behavior": [
+          "semi_aquatic"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Dusky semi-aquatic salamander of streams.",
         "life_stages": [],
         "region": "florida",
@@ -435,10 +644,19 @@
         "common_name": "Eastern Newt",
         "latin_name": "Notophthalmus viridescens",
         "form": "newt",
-        "habitat": ["pond", "wetland"],
-        "diet": ["insectivore"],
-        "behavior": ["aquatic"],
-        "season": ["year_round"],
+        "habitat": [
+          "pond",
+          "wetland"
+        ],
+        "diet": [
+          "insectivore"
+        ],
+        "behavior": [
+          "aquatic"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Aquatic newt with toxic skin.",
         "life_stages": [],
         "region": "florida",
@@ -450,10 +668,19 @@
         "common_name": "Striped Newt",
         "latin_name": "Notophthalmus perstriatus",
         "form": "newt",
-        "habitat": ["pond", "wetland"],
-        "diet": ["insectivore"],
-        "behavior": ["aquatic"],
-        "season": ["year_round"],
+        "habitat": [
+          "pond",
+          "wetland"
+        ],
+        "diet": [
+          "insectivore"
+        ],
+        "behavior": [
+          "aquatic"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Striped aquatic newt.",
         "life_stages": [],
         "region": "florida",
@@ -465,10 +692,19 @@
         "common_name": "Flatwoods Salamander",
         "latin_name": "Ambystoma cingulatum",
         "form": "salamander",
-        "habitat": ["longleaf_pine", "wetland"],
-        "diet": ["insectivore"],
-        "behavior": ["fossorial"],
-        "season": ["breeding"],
+        "habitat": [
+          "longleaf_pine",
+          "wetland"
+        ],
+        "diet": [
+          "insectivore"
+        ],
+        "behavior": [
+          "fossorial"
+        ],
+        "season": [
+          "breeding"
+        ],
         "functional_description": "Endangered longleaf pine specialist.",
         "life_stages": [],
         "region": "florida",
@@ -480,10 +716,20 @@
         "common_name": "Hellbender",
         "latin_name": "Cryptobranchus alleganiensis",
         "form": "salamander",
-        "habitat": ["stream", "river"],
-        "diet": ["carnivore"],
-        "behavior": ["aquatic", "crayfish_predator"],
-        "season": ["year_round"],
+        "habitat": [
+          "stream",
+          "river"
+        ],
+        "diet": [
+          "carnivore"
+        ],
+        "behavior": [
+          "aquatic",
+          "crayfish_predator"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Large aquatic salamander that hunts crayfish.",
         "life_stages": [],
         "region": "florida",
@@ -495,10 +741,19 @@
         "common_name": "Gopher Tortoise Skipper",
         "latin_name": "Onesiphorus mitchellii",
         "form": "butterfly",
-        "habitat": ["longleaf_pine", "gopher_burrows"],
-        "diet": ["herbivore"],
-        "behavior": ["ground_specialist"],
-        "season": ["year_round"],
+        "habitat": [
+          "longleaf_pine",
+          "gopher_burrows"
+        ],
+        "diet": [
+          "herbivore"
+        ],
+        "behavior": [
+          "ground_specialist"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Rare butterfly specialist of gopher tortoise habitat.",
         "life_stages": [],
         "region": "florida",
@@ -510,10 +765,20 @@
         "common_name": "Florida Harvester Ant",
         "latin_name": "Pogonomyrmex badius",
         "form": "ant",
-        "habitat": ["grassland", "longleaf_pine"],
-        "diet": ["omnivore"],
-        "behavior": ["colonial", "seed_harvester"],
-        "season": ["year_round"],
+        "habitat": [
+          "grassland",
+          "longleaf_pine"
+        ],
+        "diet": [
+          "omnivore"
+        ],
+        "behavior": [
+          "colonial",
+          "seed_harvester"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Harvester ant that collects seeds. Food source for many species.",
         "life_stages": [],
         "region": "florida",
@@ -525,10 +790,19 @@
         "common_name": "Southern House Spider",
         "latin_name": "Kukulcania hibernalis",
         "form": "spider",
-        "habitat": ["structure", "forest"],
-        "diet": ["insectivore"],
-        "behavior": ["web_builder"],
-        "season": ["year_round"],
+        "habitat": [
+          "structure",
+          "forest"
+        ],
+        "diet": [
+          "insectivore"
+        ],
+        "behavior": [
+          "web_builder"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Common beneficial spider that eats insects.",
         "life_stages": [],
         "region": "florida",
@@ -540,10 +814,19 @@
         "common_name": "Hentz Striped Scorpion",
         "latin_name": "Centruroides hentzi",
         "form": "scorpion",
-        "habitat": ["scrubland", "forest"],
-        "diet": ["insectivore"],
-        "behavior": ["nocturnal"],
-        "season": ["year_round"],
+        "habitat": [
+          "scrubland",
+          "forest"
+        ],
+        "diet": [
+          "insectivore"
+        ],
+        "behavior": [
+          "nocturnal"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Small scorpion that hunts insects.",
         "life_stages": [],
         "region": "florida",
@@ -555,10 +838,19 @@
         "common_name": "Trapdoor Spider",
         "latin_name": "Ummidia species",
         "form": "spider",
-        "habitat": ["soil", "forest"],
-        "diet": ["insectivore"],
-        "behavior": ["burrow_hunter"],
-        "season": ["year_round"],
+        "habitat": [
+          "soil",
+          "forest"
+        ],
+        "diet": [
+          "insectivore"
+        ],
+        "behavior": [
+          "burrow_hunter"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Ambush hunter in burrows with trapdoor.",
         "life_stages": [],
         "region": "florida",
@@ -570,10 +862,19 @@
         "common_name": "Wolf Spider",
         "latin_name": "Lycosa species",
         "form": "spider",
-        "habitat": ["grassland", "forest"],
-        "diet": ["insectivore"],
-        "behavior": ["ground_hunter"],
-        "season": ["year_round"],
+        "habitat": [
+          "grassland",
+          "forest"
+        ],
+        "diet": [
+          "insectivore"
+        ],
+        "behavior": [
+          "ground_hunter"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Ground-hunting spider without web.",
         "life_stages": [],
         "region": "florida",
@@ -585,10 +886,20 @@
         "common_name": "Black Widow Spider",
         "latin_name": "Latrodectus mactans",
         "form": "spider",
-        "habitat": ["structure", "scrubland"],
-        "diet": ["insectivore"],
-        "behavior": ["web_builder", "venomous"],
-        "season": ["year_round"],
+        "habitat": [
+          "structure",
+          "scrubland"
+        ],
+        "diet": [
+          "insectivore"
+        ],
+        "behavior": [
+          "web_builder",
+          "venomous"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Venomous spider but shy and rarely bites.",
         "life_stages": [],
         "region": "florida",
@@ -600,10 +911,19 @@
         "common_name": "Brown Recluse Spider",
         "latin_name": "Loxosceles reclusa",
         "form": "spider",
-        "habitat": ["structure", "forest"],
-        "diet": ["insectivore"],
-        "behavior": ["nocturnal"],
-        "season": ["year_round"],
+        "habitat": [
+          "structure",
+          "forest"
+        ],
+        "diet": [
+          "insectivore"
+        ],
+        "behavior": [
+          "nocturnal"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Venomous reclusive spider.",
         "life_stages": [],
         "region": "florida",
@@ -615,10 +935,19 @@
         "common_name": "Jumping Spider",
         "latin_name": "Phidippus species",
         "form": "spider",
-        "habitat": ["vegetation", "structure"],
-        "diet": ["insectivore"],
-        "behavior": ["visual_hunter"],
-        "season": ["year_round"],
+        "habitat": [
+          "vegetation",
+          "structure"
+        ],
+        "diet": [
+          "insectivore"
+        ],
+        "behavior": [
+          "visual_hunter"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Intelligent spider that hunts with vision.",
         "life_stages": [],
         "region": "florida",
@@ -630,10 +959,19 @@
         "common_name": "Orb-weaver Spider",
         "latin_name": "Araneidae family",
         "form": "spider",
-        "habitat": ["vegetation", "forest"],
-        "diet": ["insectivore"],
-        "behavior": ["web_builder"],
-        "season": ["year_round"],
+        "habitat": [
+          "vegetation",
+          "forest"
+        ],
+        "diet": [
+          "insectivore"
+        ],
+        "behavior": [
+          "web_builder"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Web-building spider with geometric web.",
         "life_stages": [],
         "region": "florida",
@@ -645,10 +983,19 @@
         "common_name": "Funnel Web Spider",
         "latin_name": "Agelenopsis species",
         "form": "spider",
-        "habitat": ["grassland", "forest"],
-        "diet": ["insectivore"],
-        "behavior": ["web_builder"],
-        "season": ["year_round"],
+        "habitat": [
+          "grassland",
+          "forest"
+        ],
+        "diet": [
+          "insectivore"
+        ],
+        "behavior": [
+          "web_builder"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Spider with funnel web in grass.",
         "life_stages": [],
         "region": "florida",
@@ -660,10 +1007,17 @@
         "common_name": "Longleaf Pine",
         "latin_name": "Pinus palustris",
         "form": "tree",
-        "habitat": ["upland", "sandy_soil"],
+        "habitat": [
+          "upland",
+          "sandy_soil"
+        ],
         "diet": [],
-        "behavior": ["fire_adapted"],
-        "season": ["year_round"],
+        "behavior": [
+          "fire_adapted"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Keystone ecosystem tree adapted to fire. Supports 300+ species.",
         "life_stages": [],
         "region": "florida",
@@ -678,10 +1032,17 @@
         "common_name": "Turkey Oak",
         "latin_name": "Quercus laevis",
         "form": "tree",
-        "habitat": ["upland", "sandy_soil"],
+        "habitat": [
+          "upland",
+          "sandy_soil"
+        ],
         "diet": [],
-        "behavior": ["mast_producer"],
-        "season": ["year_round"],
+        "behavior": [
+          "mast_producer"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Oak tree of longleaf pine ecosystem. Produces acorns for wildlife.",
         "life_stages": [],
         "region": "florida",
@@ -693,10 +1054,17 @@
         "common_name": "Sand Live Oak",
         "latin_name": "Quercus geminata",
         "form": "tree",
-        "habitat": ["sand_ridge", "coastal"],
+        "habitat": [
+          "sand_ridge",
+          "coastal"
+        ],
         "diet": [],
-        "behavior": ["mast_producer"],
-        "season": ["year_round"],
+        "behavior": [
+          "mast_producer"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Oak of sandy areas. Mast producer for wildlife.",
         "life_stages": [],
         "region": "florida",
@@ -708,10 +1076,17 @@
         "common_name": "Bluejack Oak",
         "latin_name": "Quercus incana",
         "form": "tree",
-        "habitat": ["upland", "sandy_soil"],
+        "habitat": [
+          "upland",
+          "sandy_soil"
+        ],
         "diet": [],
-        "behavior": ["mast_producer"],
-        "season": ["year_round"],
+        "behavior": [
+          "mast_producer"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Small oak of upland sandy areas.",
         "life_stages": [],
         "region": "florida",
@@ -723,10 +1098,17 @@
         "common_name": "Sand Pine",
         "latin_name": "Pinus clausa",
         "form": "tree",
-        "habitat": ["sand_ridge", "sandy_soil"],
+        "habitat": [
+          "sand_ridge",
+          "sandy_soil"
+        ],
         "diet": [],
-        "behavior": ["fire_adapted"],
-        "season": ["year_round"],
+        "behavior": [
+          "fire_adapted"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Pine of sandy soils adapted to fire.",
         "life_stages": [],
         "region": "florida",
@@ -738,10 +1120,17 @@
         "common_name": "Slash Pine",
         "latin_name": "Pinus elliottii",
         "form": "tree",
-        "habitat": ["flatwoods", "wetland"],
+        "habitat": [
+          "flatwoods",
+          "wetland"
+        ],
         "diet": [],
-        "behavior": ["fire_adapted"],
-        "season": ["year_round"],
+        "behavior": [
+          "fire_adapted"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Pine of flatwoods and wetlands.",
         "life_stages": [],
         "region": "florida",
@@ -753,10 +1142,15 @@
         "common_name": "Loblolly Pine",
         "latin_name": "Pinus taeda",
         "form": "tree",
-        "habitat": ["forest", "flatwoods"],
+        "habitat": [
+          "forest",
+          "flatwoods"
+        ],
         "diet": [],
         "behavior": [],
-        "season": ["year_round"],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Fast-growing pine used in forestry.",
         "life_stages": [],
         "region": "florida",
@@ -768,10 +1162,17 @@
         "common_name": "Southern Magnolia",
         "latin_name": "Magnolia grandiflora",
         "form": "tree",
-        "habitat": ["forest", "woodland"],
+        "habitat": [
+          "forest",
+          "woodland"
+        ],
         "diet": [],
-        "behavior": ["evergreen"],
-        "season": ["year_round"],
+        "behavior": [
+          "evergreen"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Large evergreen tree with fragrant flowers.",
         "life_stages": [],
         "region": "florida",
@@ -783,10 +1184,17 @@
         "common_name": "Sweetgum",
         "latin_name": "Liquidambar styraciflua",
         "form": "tree",
-        "habitat": ["wetland", "forest"],
+        "habitat": [
+          "wetland",
+          "forest"
+        ],
         "diet": [],
-        "behavior": ["deciduous"],
-        "season": ["year_round"],
+        "behavior": [
+          "deciduous"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Hardwood tree of wet areas.",
         "life_stages": [],
         "region": "florida",
@@ -798,10 +1206,17 @@
         "common_name": "Red Maple",
         "latin_name": "Acer rubrum",
         "form": "tree",
-        "habitat": ["wetland", "forest"],
+        "habitat": [
+          "wetland",
+          "forest"
+        ],
         "diet": [],
-        "behavior": ["deciduous"],
-        "season": ["year_round"],
+        "behavior": [
+          "deciduous"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Adaptable hardwood of wet and dry areas.",
         "life_stages": [],
         "region": "florida",
@@ -813,10 +1228,17 @@
         "common_name": "Eastern Red Cedar",
         "latin_name": "Juniperus virginiana",
         "form": "tree",
-        "habitat": ["woodland", "rocky_areas"],
+        "habitat": [
+          "woodland",
+          "rocky_areas"
+        ],
         "diet": [],
-        "behavior": ["evergreen"],
-        "season": ["year_round"],
+        "behavior": [
+          "evergreen"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Evergreen conifer of dry uplands.",
         "life_stages": [],
         "region": "florida",
@@ -828,10 +1250,18 @@
         "common_name": "Bald Cypress",
         "latin_name": "Taxodium distichum",
         "form": "tree",
-        "habitat": ["swamp", "wetland"],
+        "habitat": [
+          "swamp",
+          "wetland"
+        ],
         "diet": [],
-        "behavior": ["deciduous", "wetland_specialist"],
-        "season": ["year_round"],
+        "behavior": [
+          "deciduous",
+          "wetland_specialist"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Conifer of swamps and wetlands. Deciduous in winter.",
         "life_stages": [],
         "region": "florida",
@@ -843,10 +1273,16 @@
         "common_name": "Southern Red Oak",
         "latin_name": "Quercus falcata",
         "form": "tree",
-        "habitat": ["forest"],
+        "habitat": [
+          "forest"
+        ],
         "diet": [],
-        "behavior": ["mast_producer"],
-        "season": ["year_round"],
+        "behavior": [
+          "mast_producer"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Large red oak with acorns.",
         "life_stages": [],
         "region": "florida",
@@ -858,10 +1294,17 @@
         "common_name": "Blackjack Oak",
         "latin_name": "Quercus marilandica",
         "form": "tree",
-        "habitat": ["upland", "sandy_soil"],
+        "habitat": [
+          "upland",
+          "sandy_soil"
+        ],
         "diet": [],
-        "behavior": ["mast_producer"],
-        "season": ["year_round"],
+        "behavior": [
+          "mast_producer"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Small oak of upland areas.",
         "life_stages": [],
         "region": "florida",
@@ -873,10 +1316,16 @@
         "common_name": "Laurel Oak",
         "latin_name": "Quercus laurifolia",
         "form": "tree",
-        "habitat": ["forest"],
+        "habitat": [
+          "forest"
+        ],
         "diet": [],
-        "behavior": ["semi_evergreen"],
-        "season": ["year_round"],
+        "behavior": [
+          "semi_evergreen"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Oak with narrow leaves. Mast producer.",
         "life_stages": [],
         "region": "florida",
@@ -888,10 +1337,17 @@
         "common_name": "Water Oak",
         "latin_name": "Quercus nigra",
         "form": "tree",
-        "habitat": ["wetland", "forest"],
+        "habitat": [
+          "wetland",
+          "forest"
+        ],
         "diet": [],
-        "behavior": ["mast_producer"],
-        "season": ["year_round"],
+        "behavior": [
+          "mast_producer"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Oak of wetter areas.",
         "life_stages": [],
         "region": "florida",
@@ -903,10 +1359,17 @@
         "common_name": "Wiregrass",
         "latin_name": "Aristida beyrichiana",
         "form": "grass",
-        "habitat": ["longleaf_pine", "grassland"],
+        "habitat": [
+          "longleaf_pine",
+          "grassland"
+        ],
         "diet": [],
-        "behavior": ["fire_adapted"],
-        "season": ["year_round"],
+        "behavior": [
+          "fire_adapted"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Foundational grass of longleaf pine ecosystem.",
         "life_stages": [],
         "region": "florida",
@@ -918,10 +1381,17 @@
         "common_name": "Saw Palmetto",
         "latin_name": "Serenoa repens",
         "form": "shrub",
-        "habitat": ["flatwoods", "scrubland"],
+        "habitat": [
+          "flatwoods",
+          "scrubland"
+        ],
         "diet": [],
-        "behavior": ["mast_producer"],
-        "season": ["year_round"],
+        "behavior": [
+          "mast_producer"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Shrub with blue berries. Food for wildlife.",
         "life_stages": [],
         "region": "florida",
@@ -959,12 +1429,6 @@
         "label": "Pine Trees",
         "common_traits": "Coniferous trees; fire-adapted in longleaf pine ecosystem; provide habitat structure; needle-bearing evergreens",
         "notes": "Genus Pinus; includes Longleaf, Slash, Loblolly, and Sand Pine"
-      },
-      {
-        "id": "group_oaks",
-        "label": "Oak Trees",
-        "common_traits": "Mast-producing hardwoods; acorn producers feeding wildlife; diverse species in different habitats",
-        "notes": "Genus Quercus; family Fagaceae; foundational trees in Florida ecosystems"
       },
       {
         "id": "group_hardwoods",

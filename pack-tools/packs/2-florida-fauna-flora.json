@@ -15,10 +15,20 @@
         "common_name": "Eastern Cottontail",
         "latin_name": "Sylvilagus floridanus",
         "form": "rabbit",
-        "habitat": ["grassland", "field", "scrubland"],
-        "diet": ["herbivore"],
-        "behavior": ["crepuscular"],
-        "season": ["year_round"],
+        "habitat": [
+          "grassland",
+          "field",
+          "scrubland"
+        ],
+        "diet": [
+          "herbivore"
+        ],
+        "behavior": [
+          "crepuscular"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Small rabbit found in open fields and brushy areas. Important prey for raptors and carnivorous mammals.",
         "life_stages": [],
         "region": "florida",
@@ -30,10 +40,20 @@
         "common_name": "Hispid Cotton Rat",
         "latin_name": "Sigmodon hispidus",
         "form": "rodent",
-        "habitat": ["grassland", "marsh", "field"],
-        "diet": ["herbivore"],
-        "behavior": ["nocturnal"],
-        "season": ["year_round"],
+        "habitat": [
+          "grassland",
+          "marsh",
+          "field"
+        ],
+        "diet": [
+          "herbivore"
+        ],
+        "behavior": [
+          "nocturnal"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Medium-sized rodent of grasslands and marshes. Prolific breeder providing food for snakes and raptors.",
         "life_stages": [],
         "region": "florida",
@@ -45,10 +65,20 @@
         "common_name": "Marsh Rabbit",
         "latin_name": "Sylvilagus palustris",
         "form": "rabbit",
-        "habitat": ["marsh", "wetland", "swamp"],
-        "diet": ["herbivore"],
-        "behavior": ["crepuscular"],
-        "season": ["year_round"],
+        "habitat": [
+          "marsh",
+          "wetland",
+          "swamp"
+        ],
+        "diet": [
+          "herbivore"
+        ],
+        "behavior": [
+          "crepuscular"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Small rabbit specialized for wetland habitats. Excellent swimmer adapted to Florida marshes.",
         "life_stages": [],
         "region": "florida",
@@ -60,10 +90,20 @@
         "common_name": "Cotton Mouse",
         "latin_name": "Peromyscus gossypinus",
         "form": "mouse",
-        "habitat": ["forest", "scrubland", "marsh"],
-        "diet": ["omnivore"],
-        "behavior": ["nocturnal"],
-        "season": ["year_round"],
+        "habitat": [
+          "forest",
+          "scrubland",
+          "marsh"
+        ],
+        "diet": [
+          "omnivore"
+        ],
+        "behavior": [
+          "nocturnal"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Small arboreal mouse found in various habitats from pine forests to swamps.",
         "life_stages": [],
         "region": "florida",
@@ -75,10 +115,20 @@
         "common_name": "Eastern Woodrat",
         "latin_name": "Neotoma floridana",
         "form": "rodent",
-        "habitat": ["forest", "rocky_areas", "woodland"],
-        "diet": ["herbivore"],
-        "behavior": ["nocturnal"],
-        "season": ["year_round"],
+        "habitat": [
+          "forest",
+          "rocky_areas",
+          "woodland"
+        ],
+        "diet": [
+          "herbivore"
+        ],
+        "behavior": [
+          "nocturnal"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Rat-sized rodent that builds elaborate stick nests. Found in forests and rocky outcrops.",
         "life_stages": [],
         "region": "florida",
@@ -90,10 +140,20 @@
         "common_name": "Southeastern Pocket Gopher",
         "latin_name": "Geomys pinetis",
         "form": "rodent",
-        "habitat": ["grassland", "sandy_soil", "field"],
-        "diet": ["herbivore"],
-        "behavior": ["fossorial"],
-        "season": ["year_round"],
+        "habitat": [
+          "grassland",
+          "sandy_soil",
+          "field"
+        ],
+        "diet": [
+          "herbivore"
+        ],
+        "behavior": [
+          "fossorial"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Burrowing rodent creating extensive tunnel systems in sandy soils. Creates habitat structure for other species.",
         "life_stages": [],
         "region": "florida",
@@ -108,10 +168,20 @@
         "common_name": "Florida Mouse",
         "latin_name": "Podomys floridanus",
         "form": "mouse",
-        "habitat": ["scrubland", "longleaf_pine", "sandy_areas"],
-        "diet": ["omnivore"],
-        "behavior": ["nocturnal"],
-        "season": ["year_round"],
+        "habitat": [
+          "scrubland",
+          "longleaf_pine",
+          "sandy_areas"
+        ],
+        "diet": [
+          "omnivore"
+        ],
+        "behavior": [
+          "nocturnal"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Endemic to Florida. Specialized for scrubby pine forests and palmetto flatwoods.",
         "life_stages": [],
         "region": "florida",
@@ -123,10 +193,20 @@
         "common_name": "Least Shrew",
         "latin_name": "Cryptotis parva",
         "form": "shrew",
-        "habitat": ["grassland", "field", "marsh"],
-        "diet": ["insectivore"],
-        "behavior": ["diurnal_nocturnal"],
-        "season": ["year_round"],
+        "habitat": [
+          "grassland",
+          "field",
+          "marsh"
+        ],
+        "diet": [
+          "insectivore"
+        ],
+        "behavior": [
+          "diurnal_nocturnal"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Tiny shrew hunting insects and small invertebrates in grasslands.",
         "life_stages": [],
         "region": "florida",
@@ -138,10 +218,20 @@
         "common_name": "Southern Short-tailed Shrew",
         "latin_name": "Blarina carolinensis",
         "form": "shrew",
-        "habitat": ["forest", "woodland", "grassland"],
-        "diet": ["insectivore"],
-        "behavior": ["diurnal_nocturnal"],
-        "season": ["year_round"],
+        "habitat": [
+          "forest",
+          "woodland",
+          "grassland"
+        ],
+        "diet": [
+          "insectivore"
+        ],
+        "behavior": [
+          "diurnal_nocturnal"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Venomous shrew hunting small vertebrates and invertebrates.",
         "life_stages": [],
         "region": "florida",
@@ -153,10 +243,21 @@
         "common_name": "Nine-banded Armadillo",
         "latin_name": "Dasypus novemcinctus",
         "form": "armadillo",
-        "habitat": ["forest", "grassland", "scrubland"],
-        "diet": ["insectivore"],
-        "behavior": ["fossorial", "solitary"],
-        "season": ["year_round"],
+        "habitat": [
+          "forest",
+          "grassland",
+          "scrubland"
+        ],
+        "diet": [
+          "insectivore"
+        ],
+        "behavior": [
+          "fossorial",
+          "solitary"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Armored mammal that digs for insects and invertebrates. Creates burrows and disturbs soil.",
         "life_stages": [],
         "region": "florida",
@@ -168,10 +269,21 @@
         "common_name": "Golden Mouse",
         "latin_name": "Ochrotomys nuttalli",
         "form": "mouse",
-        "habitat": ["forest", "woodland", "scrubland"],
-        "diet": ["omnivore"],
-        "behavior": ["nocturnal", "arboreal"],
-        "season": ["year_round"],
+        "habitat": [
+          "forest",
+          "woodland",
+          "scrubland"
+        ],
+        "diet": [
+          "omnivore"
+        ],
+        "behavior": [
+          "nocturnal",
+          "arboreal"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Beautiful golden-colored mouse that forages in trees and shrubs.",
         "life_stages": [],
         "region": "florida",
@@ -183,10 +295,21 @@
         "common_name": "Round-tailed Muskrat",
         "latin_name": "Neofiber alleni",
         "form": "rodent",
-        "habitat": ["marsh", "wetland", "swamp"],
-        "diet": ["herbivore"],
-        "behavior": ["semiaquatic", "nocturnal"],
-        "season": ["year_round"],
+        "habitat": [
+          "marsh",
+          "wetland",
+          "swamp"
+        ],
+        "diet": [
+          "herbivore"
+        ],
+        "behavior": [
+          "semiaquatic",
+          "nocturnal"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Semi-aquatic rodent of Florida marshes and wetlands.",
         "life_stages": [],
         "region": "florida",
@@ -198,10 +321,21 @@
         "common_name": "Woodland Vole",
         "latin_name": "Microtus pinetorum",
         "form": "rodent",
-        "habitat": ["forest", "woodland", "grassland"],
-        "diet": ["herbivore"],
-        "behavior": ["fossorial", "nocturnal"],
-        "season": ["year_round"],
+        "habitat": [
+          "forest",
+          "woodland",
+          "grassland"
+        ],
+        "diet": [
+          "herbivore"
+        ],
+        "behavior": [
+          "fossorial",
+          "nocturnal"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Small vole that creates underground burrows and tunnels.",
         "life_stages": [],
         "region": "florida",
@@ -213,10 +347,20 @@
         "common_name": "Oldfield Mouse",
         "latin_name": "Peromyscus polionotus",
         "form": "mouse",
-        "habitat": ["grassland", "scrubland", "field"],
-        "diet": ["omnivore"],
-        "behavior": ["nocturnal"],
-        "season": ["year_round"],
+        "habitat": [
+          "grassland",
+          "scrubland",
+          "field"
+        ],
+        "diet": [
+          "omnivore"
+        ],
+        "behavior": [
+          "nocturnal"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Pale-colored mouse of open fields and scrublands.",
         "life_stages": [],
         "region": "florida",
@@ -228,10 +372,20 @@
         "common_name": "Eastern Mole",
         "latin_name": "Scalopus aquaticus",
         "form": "mole",
-        "habitat": ["grassland", "forest", "sandy_soil"],
-        "diet": ["insectivore"],
-        "behavior": ["fossorial"],
-        "season": ["year_round"],
+        "habitat": [
+          "grassland",
+          "forest",
+          "sandy_soil"
+        ],
+        "diet": [
+          "insectivore"
+        ],
+        "behavior": [
+          "fossorial"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Burrowing mole hunting earthworms and soil invertebrates.",
         "life_stages": [],
         "region": "florida",
@@ -243,10 +397,21 @@
         "common_name": "Rice Rat",
         "latin_name": "Oryzomys palustris",
         "form": "rodent",
-        "habitat": ["marsh", "wetland", "grassland"],
-        "diet": ["omnivore"],
-        "behavior": ["nocturnal", "semiaquatic"],
-        "season": ["year_round"],
+        "habitat": [
+          "marsh",
+          "wetland",
+          "grassland"
+        ],
+        "diet": [
+          "omnivore"
+        ],
+        "behavior": [
+          "nocturnal",
+          "semiaquatic"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Semi-aquatic rodent of marshes and grasslands.",
         "life_stages": [],
         "region": "florida",
@@ -258,10 +423,20 @@
         "common_name": "Striped Skunk",
         "latin_name": "Mephitis mephitis",
         "form": "mustelid",
-        "habitat": ["grassland", "forest", "scrubland"],
-        "diet": ["omnivore"],
-        "behavior": ["nocturnal"],
-        "season": ["year_round"],
+        "habitat": [
+          "grassland",
+          "forest",
+          "scrubland"
+        ],
+        "diet": [
+          "omnivore"
+        ],
+        "behavior": [
+          "nocturnal"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Black and white mustelid with potent defensive spray. Omnivorous predator of small animals and grubs.",
         "life_stages": [],
         "region": "florida",
@@ -269,32 +444,25 @@
         "taxonomic_group": "group_predatory_mammals"
       },
       {
-        "id": "mammal_raccoon",
-        "common_name": "Raccoon",
-        "latin_name": "Procyon lotor",
-        "form": "mustelid",
-        "habitat": ["forest", "wetland", "urban"],
-        "diet": ["omnivore"],
-        "behavior": ["nocturnal", "dexterous"],
-        "season": ["year_round"],
-        "functional_description": "Intelligent masked mammal. Omnivorous predator of crayfish, frogs, small mammals, and invertebrates.",
-        "life_stages": [],
-        "region": "florida",
-        "ecological_role": "carnivore",
-        "is_keystone": true,
-        "keystone_type": "predator",
-        "keystone_description": "Controls populations of crayfish, frogs, and small mammals; impacts water quality through disturbance.",
-        "taxonomic_group": "group_predatory_mammals"
-      },
-      {
         "id": "mammal_gray-fox",
         "common_name": "Gray Fox",
         "latin_name": "Urocyon cinereoargenteus",
         "form": "canid",
-        "habitat": ["forest", "woodland", "scrubland"],
-        "diet": ["carnivore"],
-        "behavior": ["crepuscular", "solitary"],
-        "season": ["year_round"],
+        "habitat": [
+          "forest",
+          "woodland",
+          "scrubland"
+        ],
+        "diet": [
+          "carnivore"
+        ],
+        "behavior": [
+          "crepuscular",
+          "solitary"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Small canid that can climb trees. Hunts small mammals and birds.",
         "life_stages": [],
         "region": "florida",
@@ -306,10 +474,21 @@
         "common_name": "Long-tailed Weasel",
         "latin_name": "Neogale frenata",
         "form": "mustelid",
-        "habitat": ["forest", "grassland", "wetland"],
-        "diet": ["carnivore"],
-        "behavior": ["diurnal_nocturnal", "solitary"],
-        "season": ["year_round"],
+        "habitat": [
+          "forest",
+          "grassland",
+          "wetland"
+        ],
+        "diet": [
+          "carnivore"
+        ],
+        "behavior": [
+          "diurnal_nocturnal",
+          "solitary"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Slender mustelid predator hunting small mammals and birds.",
         "life_stages": [],
         "region": "florida",
@@ -321,10 +500,21 @@
         "common_name": "Bobcat",
         "latin_name": "Lynx rufus",
         "form": "felid",
-        "habitat": ["forest", "scrubland", "swamp"],
-        "diet": ["carnivore"],
-        "behavior": ["nocturnal", "solitary"],
-        "season": ["year_round"],
+        "habitat": [
+          "forest",
+          "scrubland",
+          "swamp"
+        ],
+        "diet": [
+          "carnivore"
+        ],
+        "behavior": [
+          "nocturnal",
+          "solitary"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Medium-sized wild cat. Apex predator of rabbits, rodents, and small mammals.",
         "life_stages": [],
         "region": "florida",
@@ -335,44 +525,24 @@
         "taxonomic_group": "group_predatory_mammals"
       },
       {
-        "id": "mammal_red-fox",
-        "common_name": "Red Fox",
-        "latin_name": "Vulpes vulpes",
-        "form": "canid",
-        "habitat": ["grassland", "forest_edge", "scrubland"],
-        "diet": ["carnivore"],
-        "behavior": ["crepuscular"],
-        "season": ["year_round"],
-        "functional_description": "Red canid predator hunting small mammals, rabbits, and invertebrates.",
-        "life_stages": [],
-        "region": "florida",
-        "ecological_role": "carnivore",
-        "taxonomic_group": "group_predatory_mammals"
-      },
-      {
-        "id": "mammal_virginia-opossum",
-        "common_name": "Virginia Opossum",
-        "latin_name": "Didelphis virginiana",
-        "form": "marsupial",
-        "habitat": ["forest", "grassland", "urban"],
-        "diet": ["omnivore"],
-        "behavior": ["nocturnal", "opportunistic"],
-        "season": ["year_round"],
-        "functional_description": "Only marsupial in North America. Adaptable omnivore that plays dead when threatened.",
-        "life_stages": [],
-        "region": "florida",
-        "ecological_role": "omnivore",
-        "taxonomic_group": "group_predatory_mammals"
-      },
-      {
         "id": "mammal_eastern-spotted-skunk",
         "common_name": "Eastern Spotted Skunk",
         "latin_name": "Spilogale putorius",
         "form": "mustelid",
-        "habitat": ["forest", "grassland", "scrubland"],
-        "diet": ["omnivore"],
-        "behavior": ["nocturnal"],
-        "season": ["year_round"],
+        "habitat": [
+          "forest",
+          "grassland",
+          "scrubland"
+        ],
+        "diet": [
+          "omnivore"
+        ],
+        "behavior": [
+          "nocturnal"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Smaller spotted skunk with potent defense. Hunts insects and small invertebrates.",
         "life_stages": [],
         "region": "florida",
@@ -384,10 +554,21 @@
         "common_name": "American Mink",
         "latin_name": "Neogale vison",
         "form": "mustelid",
-        "habitat": ["wetland", "marsh", "stream"],
-        "diet": ["carnivore"],
-        "behavior": ["nocturnal", "semiaquatic"],
-        "season": ["year_round"],
+        "habitat": [
+          "wetland",
+          "marsh",
+          "stream"
+        ],
+        "diet": [
+          "carnivore"
+        ],
+        "behavior": [
+          "nocturnal",
+          "semiaquatic"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Semi-aquatic mustelid predator of fish, frogs, and small mammals.",
         "life_stages": [],
         "region": "florida",
@@ -395,32 +576,25 @@
         "taxonomic_group": "group_predatory_mammals"
       },
       {
-        "id": "mammal_river-otter",
-        "common_name": "River Otter",
-        "latin_name": "Lontra canadensis",
-        "form": "mustelid",
-        "habitat": ["wetland", "marsh", "river"],
-        "diet": ["carnivore"],
-        "behavior": ["diurnal_nocturnal", "aquatic"],
-        "season": ["year_round"],
-        "functional_description": "Playful aquatic mustelid predator of fish and crayfish.",
-        "life_stages": [],
-        "region": "florida",
-        "ecological_role": "carnivore",
-        "is_keystone": true,
-        "keystone_type": "predator",
-        "keystone_description": "Aquatic apex predator; controls fish and crayfish populations.",
-        "taxonomic_group": "group_predatory_mammals"
-      },
-      {
         "id": "mammal_coyote",
         "common_name": "Coyote",
         "latin_name": "Canis latrans",
         "form": "canid",
-        "habitat": ["grassland", "forest", "scrubland"],
-        "diet": ["carnivore"],
-        "behavior": ["crepuscular", "pack_hunter"],
-        "season": ["year_round"],
+        "habitat": [
+          "grassland",
+          "forest",
+          "scrubland"
+        ],
+        "diet": [
+          "carnivore"
+        ],
+        "behavior": [
+          "crepuscular",
+          "pack_hunter"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Adaptable canid predator hunting small to medium mammals.",
         "life_stages": [],
         "region": "florida",
@@ -432,10 +606,20 @@
         "common_name": "Fisher",
         "latin_name": "Pekania pennanti",
         "form": "mustelid",
-        "habitat": ["forest", "woodland"],
-        "diet": ["carnivore"],
-        "behavior": ["nocturnal", "arboreal"],
-        "season": ["year_round"],
+        "habitat": [
+          "forest",
+          "woodland"
+        ],
+        "diet": [
+          "carnivore"
+        ],
+        "behavior": [
+          "nocturnal",
+          "arboreal"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Tree-climbing mustelid that hunts porcupines and other small mammals.",
         "life_stages": [],
         "region": "florida",
@@ -447,10 +631,20 @@
         "common_name": "Domestic Cat (feral)",
         "latin_name": "Felis catus",
         "form": "felid",
-        "habitat": ["urban", "forest", "grassland"],
-        "diet": ["carnivore"],
-        "behavior": ["nocturnal_diurnal"],
-        "season": ["year_round"],
+        "habitat": [
+          "urban",
+          "forest",
+          "grassland"
+        ],
+        "diet": [
+          "carnivore"
+        ],
+        "behavior": [
+          "nocturnal_diurnal"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Invasive feral cat. Significant predator of birds and small mammals.",
         "life_stages": [],
         "region": "florida",
@@ -462,10 +656,20 @@
         "common_name": "Domestic Dog (feral)",
         "latin_name": "Canis familiaris",
         "form": "canid",
-        "habitat": ["urban", "grassland", "forest"],
-        "diet": ["carnivore"],
-        "behavior": ["pack_hunter"],
-        "season": ["year_round"],
+        "habitat": [
+          "urban",
+          "grassland",
+          "forest"
+        ],
+        "diet": [
+          "carnivore"
+        ],
+        "behavior": [
+          "pack_hunter"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Invasive feral dog. Pack hunters that prey on various wildlife.",
         "life_stages": [],
         "region": "florida",
@@ -473,32 +677,25 @@
         "taxonomic_group": "group_predatory_mammals"
       },
       {
-        "id": "mammal_black-bear",
-        "common_name": "Black Bear",
-        "latin_name": "Ursus americanus",
-        "form": "bear",
-        "habitat": ["forest", "woodland", "swamp"],
-        "diet": ["omnivore"],
-        "behavior": ["solitary", "foraging"],
-        "season": ["year_round"],
-        "functional_description": "Large omnivorous bear. Opportunistic feeder on plants, insects, and small animals.",
-        "life_stages": [],
-        "region": "florida",
-        "ecological_role": "omnivore",
-        "is_keystone": true,
-        "keystone_type": "ecosystem_engineer",
-        "keystone_description": "Distributes seeds and shapes plant communities through foraging.",
-        "taxonomic_group": "group_predatory_mammals"
-      },
-      {
         "id": "mammal_florida-panther",
         "common_name": "Florida Panther",
         "latin_name": "Puma concolor cougar",
         "form": "felid",
-        "habitat": ["forest", "swamp", "scrubland"],
-        "diet": ["carnivore"],
-        "behavior": ["nocturnal", "solitary"],
-        "season": ["year_round"],
+        "habitat": [
+          "forest",
+          "swamp",
+          "scrubland"
+        ],
+        "diet": [
+          "carnivore"
+        ],
+        "behavior": [
+          "nocturnal",
+          "solitary"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Critically endangered large felid. Apex predator of deer and wild boar.",
         "life_stages": [],
         "region": "florida",
@@ -513,10 +710,21 @@
         "common_name": "Northern Bobwhite Quail",
         "latin_name": "Colinus virginianus",
         "form": "quail",
-        "habitat": ["grassland", "scrubland", "field"],
-        "diet": ["omnivore"],
-        "behavior": ["ground_nesting", "covey_formation"],
-        "season": ["year_round"],
+        "habitat": [
+          "grassland",
+          "scrubland",
+          "field"
+        ],
+        "diet": [
+          "omnivore"
+        ],
+        "behavior": [
+          "ground_nesting",
+          "covey_formation"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Ground-nesting quail of grasslands and scrublands. Depends on longleaf pine understory.",
         "life_stages": [],
         "region": "florida",
@@ -528,10 +736,20 @@
         "common_name": "Eastern Meadowlark",
         "latin_name": "Sturnella magna",
         "form": "songbird",
-        "habitat": ["grassland", "meadow", "prairie"],
-        "diet": ["omnivore"],
-        "behavior": ["ground_nesting"],
-        "season": ["year_round"],
+        "habitat": [
+          "grassland",
+          "meadow",
+          "prairie"
+        ],
+        "diet": [
+          "omnivore"
+        ],
+        "behavior": [
+          "ground_nesting"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Yellow-breasted songbird of open grasslands. Iconic grassland specialist.",
         "life_stages": [],
         "region": "florida",
@@ -543,10 +761,20 @@
         "common_name": "Brown Thrasher",
         "latin_name": "Toxostoma rufum",
         "form": "songbird",
-        "habitat": ["scrubland", "grassland", "field"],
-        "diet": ["omnivore"],
-        "behavior": ["ground_nesting"],
-        "season": ["year_round"],
+        "habitat": [
+          "scrubland",
+          "grassland",
+          "field"
+        ],
+        "diet": [
+          "omnivore"
+        ],
+        "behavior": [
+          "ground_nesting"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Rufous songbird that forages in dense vegetation. Excellent mimic.",
         "life_stages": [],
         "region": "florida",
@@ -558,10 +786,20 @@
         "common_name": "Bachman's Sparrow",
         "latin_name": "Aimophila aestivalis",
         "form": "sparrow",
-        "habitat": ["longleaf_pine", "grassland", "scrubland"],
-        "diet": ["omnivore"],
-        "behavior": ["ground_nesting"],
-        "season": ["breeding"],
+        "habitat": [
+          "longleaf_pine",
+          "grassland",
+          "scrubland"
+        ],
+        "diet": [
+          "omnivore"
+        ],
+        "behavior": [
+          "ground_nesting"
+        ],
+        "season": [
+          "breeding"
+        ],
         "functional_description": "Rare grassland sparrow dependent on longleaf pine ecosystems.",
         "life_stages": [],
         "region": "florida",
@@ -573,10 +811,21 @@
         "common_name": "Common Nighthawk",
         "latin_name": "Chordeiles minor",
         "form": "nightjar",
-        "habitat": ["open_areas", "urban", "field"],
-        "diet": ["insectivore"],
-        "behavior": ["aerial_insectivore", "crepuscular"],
-        "season": ["breeding"],
+        "habitat": [
+          "open_areas",
+          "urban",
+          "field"
+        ],
+        "diet": [
+          "insectivore"
+        ],
+        "behavior": [
+          "aerial_insectivore",
+          "crepuscular"
+        ],
+        "season": [
+          "breeding"
+        ],
         "functional_description": "Aerial insectivore hunting insects at dusk. Ground nester.",
         "life_stages": [],
         "region": "florida",
@@ -588,10 +837,21 @@
         "common_name": "Wild Turkey",
         "latin_name": "Meleagris gallopavo",
         "form": "galliforme",
-        "habitat": ["forest", "woodland", "scrubland"],
-        "diet": ["omnivore"],
-        "behavior": ["ground_nesting", "foraging"],
-        "season": ["year_round"],
+        "habitat": [
+          "forest",
+          "woodland",
+          "scrubland"
+        ],
+        "diet": [
+          "omnivore"
+        ],
+        "behavior": [
+          "ground_nesting",
+          "foraging"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Large game bird that forages on forest floor. Roosts in trees.",
         "life_stages": [],
         "region": "florida",
@@ -603,26 +863,22 @@
         "common_name": "Killdeer",
         "latin_name": "Charadrius vociferus",
         "form": "plover",
-        "habitat": ["grassland", "wetland", "open_areas"],
-        "diet": ["insectivore"],
-        "behavior": ["ground_nesting", "distraction_display"],
-        "season": ["year_round"],
+        "habitat": [
+          "grassland",
+          "wetland",
+          "open_areas"
+        ],
+        "diet": [
+          "insectivore"
+        ],
+        "behavior": [
+          "ground_nesting",
+          "distraction_display"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Small plover with distinctive broken-wing display. Ground nester of open areas.",
-        "life_stages": [],
-        "region": "florida",
-        "ecological_role": "carnivore",
-        "taxonomic_group": "group_ground_nesting_birds"
-      },
-      {
-        "id": "bird_northern-flicker",
-        "common_name": "Northern Flicker",
-        "latin_name": "Colaptes auratus",
-        "form": "woodpecker",
-        "habitat": ["forest", "woodland", "grassland"],
-        "diet": ["insectivore"],
-        "behavior": ["ground_foraging", "cavity_nester"],
-        "season": ["year_round"],
-        "functional_description": "Ground-foraging woodpecker that hunts ants. Excavates cavities in soft wood.",
         "life_stages": [],
         "region": "florida",
         "ecological_role": "carnivore",
@@ -633,10 +889,20 @@
         "common_name": "Field Sparrow",
         "latin_name": "Spizella pusilla",
         "form": "sparrow",
-        "habitat": ["grassland", "field", "scrubland"],
-        "diet": ["omnivore"],
-        "behavior": ["ground_nesting"],
-        "season": ["year_round"],
+        "habitat": [
+          "grassland",
+          "field",
+          "scrubland"
+        ],
+        "diet": [
+          "omnivore"
+        ],
+        "behavior": [
+          "ground_nesting"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Small sparrow of open grasslands. Distinctive pink bill.",
         "life_stages": [],
         "region": "florida",
@@ -648,10 +914,20 @@
         "common_name": "Grasshopper Sparrow",
         "latin_name": "Ammodramus savannarum",
         "form": "sparrow",
-        "habitat": ["grassland", "prairie", "meadow"],
-        "diet": ["insectivore"],
-        "behavior": ["ground_nesting"],
-        "season": ["breeding"],
+        "habitat": [
+          "grassland",
+          "prairie",
+          "meadow"
+        ],
+        "diet": [
+          "insectivore"
+        ],
+        "behavior": [
+          "ground_nesting"
+        ],
+        "season": [
+          "breeding"
+        ],
         "functional_description": "Tiny grassland sparrow. Ground nester that forages for insects.",
         "life_stages": [],
         "region": "florida",
@@ -663,10 +939,20 @@
         "common_name": "Savannah Sparrow",
         "latin_name": "Passerculus sandwichensis",
         "form": "sparrow",
-        "habitat": ["grassland", "marsh", "field"],
-        "diet": ["omnivore"],
-        "behavior": ["ground_nesting"],
-        "season": ["year_round"],
+        "habitat": [
+          "grassland",
+          "marsh",
+          "field"
+        ],
+        "diet": [
+          "omnivore"
+        ],
+        "behavior": [
+          "ground_nesting"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Small sparrow of grasslands and marshes.",
         "life_stages": [],
         "region": "florida",
@@ -678,71 +964,20 @@
         "common_name": "Pine Warbler",
         "latin_name": "Setophaga pinus",
         "form": "warbler",
-        "habitat": ["longleaf_pine", "pine_forest"],
-        "diet": ["insectivore"],
-        "behavior": ["canopy_foraging"],
-        "season": ["year_round"],
+        "habitat": [
+          "longleaf_pine",
+          "pine_forest"
+        ],
+        "diet": [
+          "insectivore"
+        ],
+        "behavior": [
+          "canopy_foraging"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Yellow warbler of pine forests. Year-round resident in southeastern pines.",
-        "life_stages": [],
-        "region": "florida",
-        "ecological_role": "carnivore",
-        "taxonomic_group": "group_ground_nesting_birds"
-      },
-      {
-        "id": "bird_eastern-kingbird",
-        "common_name": "Eastern Kingbird",
-        "latin_name": "Tyrannus tyrannus",
-        "form": "flycatcher",
-        "habitat": ["grassland", "forest_edge", "wetland"],
-        "diet": ["insectivore"],
-        "behavior": ["aerial_insectivore"],
-        "season": ["breeding"],
-        "functional_description": "Aggressive flycatcher that hunts insects in flight. Nests near water.",
-        "life_stages": [],
-        "region": "florida",
-        "ecological_role": "carnivore",
-        "taxonomic_group": "group_ground_nesting_birds"
-      },
-      {
-        "id": "bird_northern-cardinal",
-        "common_name": "Northern Cardinal",
-        "latin_name": "Cardinalis cardinalis",
-        "form": "cardinal",
-        "habitat": ["scrubland", "grassland", "forest_edge"],
-        "diet": ["omnivore"],
-        "behavior": ["year_round_resident"],
-        "season": ["year_round"],
-        "functional_description": "Bright red cardinal. Common year-round resident of scrubby areas.",
-        "life_stages": [],
-        "region": "florida",
-        "ecological_role": "omnivore",
-        "taxonomic_group": "group_ground_nesting_birds"
-      },
-      {
-        "id": "bird_indigo-bunting",
-        "common_name": "Indigo Bunting",
-        "latin_name": "Passerina cyanea",
-        "form": "bunting",
-        "habitat": ["scrubland", "grassland", "field"],
-        "diet": ["omnivore"],
-        "behavior": ["ground_nesting"],
-        "season": ["breeding"],
-        "functional_description": "Brilliant blue bunting. Males sing from exposed perches in scrubland.",
-        "life_stages": [],
-        "region": "florida",
-        "ecological_role": "omnivore",
-        "taxonomic_group": "group_ground_nesting_birds"
-      },
-      {
-        "id": "bird_eastern-bluebird",
-        "common_name": "Eastern Bluebird",
-        "latin_name": "Sialia sialis",
-        "form": "thrush",
-        "habitat": ["grassland", "field", "forest_edge"],
-        "diet": ["insectivore"],
-        "behavior": ["cavity_nester"],
-        "season": ["year_round"],
-        "functional_description": "Bright blue thrush. Cavity nester that forages for insects on open ground.",
         "life_stages": [],
         "region": "florida",
         "ecological_role": "carnivore",
@@ -753,10 +988,21 @@
         "common_name": "Red-shouldered Hawk",
         "latin_name": "Buteo lineatus",
         "form": "raptor",
-        "habitat": ["forest", "woodland", "wetland"],
-        "diet": ["carnivore"],
-        "behavior": ["soaring", "perch_hunter"],
-        "season": ["year_round"],
+        "habitat": [
+          "forest",
+          "woodland",
+          "wetland"
+        ],
+        "diet": [
+          "carnivore"
+        ],
+        "behavior": [
+          "soaring",
+          "perch_hunter"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Forest hawk with red shoulder patch. Hunts small mammals and reptiles.",
         "life_stages": [],
         "region": "florida",
@@ -767,47 +1013,25 @@
         "taxonomic_group": "group_raptors"
       },
       {
-        "id": "bird_american-kestrel",
-        "common_name": "American Kestrel",
-        "latin_name": "Falco sparverius",
-        "form": "falcon",
-        "habitat": ["grassland", "field", "open_areas"],
-        "diet": ["carnivore"],
-        "behavior": ["hovering", "cavity_nester"],
-        "season": ["year_round"],
-        "functional_description": "Smallest falcon. Hunts insects, small birds, and rodents from open perches.",
-        "life_stages": [],
-        "region": "florida",
-        "ecological_role": "carnivore",
-        "taxonomic_group": "group_raptors"
-      },
-      {
-        "id": "bird_great-horned-owl",
-        "common_name": "Great Horned Owl",
-        "latin_name": "Bubo virginianus",
-        "form": "owl",
-        "habitat": ["forest", "woodland", "scrubland"],
-        "diet": ["carnivore"],
-        "behavior": ["nocturnal", "cavity_user"],
-        "season": ["year_round"],
-        "functional_description": "Largest owl. Night hunter of small mammals. Year-round resident.",
-        "life_stages": [],
-        "region": "florida",
-        "ecological_role": "carnivore",
-        "is_keystone": true,
-        "keystone_type": "predator",
-        "keystone_description": "Apex nocturnal predator controlling small mammal populations.",
-        "taxonomic_group": "group_raptors"
-      },
-      {
         "id": "bird_eastern-screech-owl",
         "common_name": "Eastern Screech-Owl",
         "latin_name": "Megascops asio",
         "form": "owl",
-        "habitat": ["forest", "woodland", "urban"],
-        "diet": ["carnivore"],
-        "behavior": ["nocturnal", "cavity_nester"],
-        "season": ["year_round"],
+        "habitat": [
+          "forest",
+          "woodland",
+          "urban"
+        ],
+        "diet": [
+          "carnivore"
+        ],
+        "behavior": [
+          "nocturnal",
+          "cavity_nester"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Small owl with distinctive whinny call. Nocturnal hunter of small animals.",
         "life_stages": [],
         "region": "florida",
@@ -819,10 +1043,21 @@
         "common_name": "Barred Owl",
         "latin_name": "Strix varia",
         "form": "owl",
-        "habitat": ["forest", "wetland", "woodland"],
-        "diet": ["carnivore"],
-        "behavior": ["nocturnal", "cavity_user"],
-        "season": ["year_round"],
+        "habitat": [
+          "forest",
+          "wetland",
+          "woodland"
+        ],
+        "diet": [
+          "carnivore"
+        ],
+        "behavior": [
+          "nocturnal",
+          "cavity_user"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Large forest owl with distinctive 'who cooks for you' call. Hunts small mammals.",
         "life_stages": [],
         "region": "florida",
@@ -830,32 +1065,25 @@
         "taxonomic_group": "group_raptors"
       },
       {
-        "id": "bird_red-tailed-hawk",
-        "common_name": "Red-tailed Hawk",
-        "latin_name": "Buteo jamaicensis",
-        "form": "raptor",
-        "habitat": ["open_areas", "grassland", "forest_edge"],
-        "diet": ["carnivore"],
-        "behavior": ["soaring", "perch_hunter"],
-        "season": ["year_round"],
-        "functional_description": "Large hawk with red tail. Open-area hunter of small mammals.",
-        "life_stages": [],
-        "region": "florida",
-        "ecological_role": "carnivore",
-        "is_keystone": true,
-        "keystone_type": "predator",
-        "keystone_description": "Apex daytime predator controlling rodent and rabbit populations.",
-        "taxonomic_group": "group_raptors"
-      },
-      {
         "id": "bird_bald-eagle",
         "common_name": "Bald Eagle",
         "latin_name": "Haliaeetus leucocephalus",
         "form": "eagle",
-        "habitat": ["wetland", "river", "lake"],
-        "diet": ["carnivore"],
-        "behavior": ["soaring", "fish_hunter"],
-        "season": ["year_round"],
+        "habitat": [
+          "wetland",
+          "river",
+          "lake"
+        ],
+        "diet": [
+          "carnivore"
+        ],
+        "behavior": [
+          "soaring",
+          "fish_hunter"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Large eagle with white head. Fish hunter near water bodies.",
         "life_stages": [],
         "region": "florida",
@@ -870,10 +1098,20 @@
         "common_name": "Cooper's Hawk",
         "latin_name": "Accipiter cooperii",
         "form": "accipiter",
-        "habitat": ["forest", "woodland"],
-        "diet": ["carnivore"],
-        "behavior": ["agile_flyer", "bird_hunter"],
-        "season": ["year_round"],
+        "habitat": [
+          "forest",
+          "woodland"
+        ],
+        "diet": [
+          "carnivore"
+        ],
+        "behavior": [
+          "agile_flyer",
+          "bird_hunter"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Agile woodland hawk that hunts small birds.",
         "life_stages": [],
         "region": "florida",
@@ -885,10 +1123,20 @@
         "common_name": "Broad-winged Hawk",
         "latin_name": "Buteo platypterus",
         "form": "raptor",
-        "habitat": ["forest", "woodland"],
-        "diet": ["carnivore"],
-        "behavior": ["soaring", "small_game_hunter"],
-        "season": ["breeding"],
+        "habitat": [
+          "forest",
+          "woodland"
+        ],
+        "diet": [
+          "carnivore"
+        ],
+        "behavior": [
+          "soaring",
+          "small_game_hunter"
+        ],
+        "season": [
+          "breeding"
+        ],
         "functional_description": "Forest hawk that hunts small mammals and reptiles.",
         "life_stages": [],
         "region": "florida",
@@ -900,10 +1148,20 @@
         "common_name": "Swallow-tailed Kite",
         "latin_name": "Elanoides forficatus",
         "form": "kite",
-        "habitat": ["forest", "wetland"],
-        "diet": ["insectivore"],
-        "behavior": ["aerial_insectivore", "gregarious"],
-        "season": ["breeding"],
+        "habitat": [
+          "forest",
+          "wetland"
+        ],
+        "diet": [
+          "insectivore"
+        ],
+        "behavior": [
+          "aerial_insectivore",
+          "gregarious"
+        ],
+        "season": [
+          "breeding"
+        ],
         "functional_description": "Graceful aerial insectivore with forked tail. Hunts insects while soaring.",
         "life_stages": [],
         "region": "florida",
@@ -915,10 +1173,19 @@
         "common_name": "Sharp-shinned Hawk",
         "latin_name": "Accipiter striatus",
         "form": "accipiter",
-        "habitat": ["forest", "woodland"],
-        "diet": ["carnivore"],
-        "behavior": ["small_bird_hunter"],
-        "season": ["year_round"],
+        "habitat": [
+          "forest",
+          "woodland"
+        ],
+        "diet": [
+          "carnivore"
+        ],
+        "behavior": [
+          "small_bird_hunter"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Smallest hawk. Hunts small songbirds in dense vegetation.",
         "life_stages": [],
         "region": "florida",
@@ -930,10 +1197,21 @@
         "common_name": "Osprey",
         "latin_name": "Pandion haliaetus",
         "form": "raptor",
-        "habitat": ["wetland", "river", "lake"],
-        "diet": ["fish_eater"],
-        "behavior": ["hovering", "fish_hunter"],
-        "season": ["year_round"],
+        "habitat": [
+          "wetland",
+          "river",
+          "lake"
+        ],
+        "diet": [
+          "fish_eater"
+        ],
+        "behavior": [
+          "hovering",
+          "fish_hunter"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Fish-hunting raptor that plunges into water. Near-global distribution.",
         "life_stages": [],
         "region": "florida",
@@ -945,10 +1223,20 @@
         "common_name": "Northern Harrier",
         "latin_name": "Circus cyaneus",
         "form": "harrier",
-        "habitat": ["grassland", "marsh", "open_areas"],
-        "diet": ["carnivore"],
-        "behavior": ["low_flight_hunter"],
-        "season": ["year_round"],
+        "habitat": [
+          "grassland",
+          "marsh",
+          "open_areas"
+        ],
+        "diet": [
+          "carnivore"
+        ],
+        "behavior": [
+          "low_flight_hunter"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Grassland hawk that hunts low over open areas for small mammals.",
         "life_stages": [],
         "region": "florida",
@@ -960,10 +1248,21 @@
         "common_name": "Turkey Vulture",
         "latin_name": "Cathartes aura",
         "form": "vulture",
-        "habitat": ["open_areas", "forest", "urban"],
-        "diet": ["carrion"],
-        "behavior": ["soaring", "scavenging"],
-        "season": ["year_round"],
+        "habitat": [
+          "open_areas",
+          "forest",
+          "urban"
+        ],
+        "diet": [
+          "carrion"
+        ],
+        "behavior": [
+          "soaring",
+          "scavenging"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Dark soaring vulture that feeds on carrion. Highly olfactory.",
         "life_stages": [],
         "region": "florida",
@@ -975,10 +1274,20 @@
         "common_name": "Black Vulture",
         "latin_name": "Coragyps atratus",
         "form": "vulture",
-        "habitat": ["open_areas", "forest"],
-        "diet": ["carrion"],
-        "behavior": ["soaring", "scavenging"],
-        "season": ["year_round"],
+        "habitat": [
+          "open_areas",
+          "forest"
+        ],
+        "diet": [
+          "carrion"
+        ],
+        "behavior": [
+          "soaring",
+          "scavenging"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "All-black vulture. Carrion feeder that soars in thermals.",
         "life_stages": [],
         "region": "florida",
@@ -990,10 +1299,20 @@
         "common_name": "Peregrine Falcon",
         "latin_name": "Falco peregrinus",
         "form": "falcon",
-        "habitat": ["open_areas", "coastal", "urban"],
-        "diet": ["carnivore"],
-        "behavior": ["high_speed_hunter"],
-        "season": ["year_round"],
+        "habitat": [
+          "open_areas",
+          "coastal",
+          "urban"
+        ],
+        "diet": [
+          "carnivore"
+        ],
+        "behavior": [
+          "high_speed_hunter"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Fastest bird alive. Hunts other birds in high-speed pursuits.",
         "life_stages": [],
         "region": "florida",
@@ -1008,10 +1327,20 @@
         "common_name": "Loggerhead Shrike",
         "latin_name": "Lanius ludovicianus",
         "form": "songbird",
-        "habitat": ["grassland", "scrubland", "field"],
-        "diet": ["carnivore"],
-        "behavior": ["predatory_songbird"],
-        "season": ["year_round"],
+        "habitat": [
+          "grassland",
+          "scrubland",
+          "field"
+        ],
+        "diet": [
+          "carnivore"
+        ],
+        "behavior": [
+          "predatory_songbird"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Predatory songbird that hunts insects and small vertebrates.",
         "life_stages": [],
         "region": "florida",
@@ -1023,10 +1352,20 @@
         "common_name": "Eastern Towhee",
         "latin_name": "Pipilo erythrophthalmus",
         "form": "towhee",
-        "habitat": ["scrubland", "grassland", "forest_edge"],
-        "diet": ["omnivore"],
-        "behavior": ["ground_foraging"],
-        "season": ["year_round"],
+        "habitat": [
+          "scrubland",
+          "grassland",
+          "forest_edge"
+        ],
+        "diet": [
+          "omnivore"
+        ],
+        "behavior": [
+          "ground_foraging"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Red-eyed towhee that forages on the ground.",
         "life_stages": [],
         "region": "florida",
@@ -1038,10 +1377,20 @@
         "common_name": "Carolina Wren",
         "latin_name": "Thryothorus ludovicianus",
         "form": "wren",
-        "habitat": ["scrubland", "forest", "urban"],
-        "diet": ["insectivore"],
-        "behavior": ["cavity_nester"],
-        "season": ["year_round"],
+        "habitat": [
+          "scrubland",
+          "forest",
+          "urban"
+        ],
+        "diet": [
+          "insectivore"
+        ],
+        "behavior": [
+          "cavity_nester"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Large wren with loud song. Cavity nester of scrubby areas.",
         "life_stages": [],
         "region": "florida",
@@ -1053,10 +1402,20 @@
         "common_name": "Red-headed Woodpecker",
         "latin_name": "Melanerpes erythrocephalus",
         "form": "woodpecker",
-        "habitat": ["forest", "woodland", "grassland"],
-        "diet": ["omnivore"],
-        "behavior": ["cavity_excavator"],
-        "season": ["year_round"],
+        "habitat": [
+          "forest",
+          "woodland",
+          "grassland"
+        ],
+        "diet": [
+          "omnivore"
+        ],
+        "behavior": [
+          "cavity_excavator"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Beautiful woodpecker with all-red head. Cavity excavator.",
         "life_stages": [],
         "region": "florida",
@@ -1068,10 +1427,20 @@
         "common_name": "Northern Mockingbird",
         "latin_name": "Mimus polyglottos",
         "form": "songbird",
-        "habitat": ["scrubland", "grassland", "urban"],
-        "diet": ["omnivore"],
-        "behavior": ["mimicry"],
-        "season": ["year_round"],
+        "habitat": [
+          "scrubland",
+          "grassland",
+          "urban"
+        ],
+        "diet": [
+          "omnivore"
+        ],
+        "behavior": [
+          "mimicry"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Excellent mimic with diverse song. Year-round resident.",
         "life_stages": [],
         "region": "florida",
@@ -1083,10 +1452,20 @@
         "common_name": "Mourning Dove",
         "latin_name": "Zenaida macroura",
         "form": "dove",
-        "habitat": ["open_areas", "grassland", "urban"],
-        "diet": ["granivore"],
-        "behavior": ["ground_feeder"],
-        "season": ["year_round"],
+        "habitat": [
+          "open_areas",
+          "grassland",
+          "urban"
+        ],
+        "diet": [
+          "granivore"
+        ],
+        "behavior": [
+          "ground_feeder"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Gray dove with mournful cooing call. Ground feeder.",
         "life_stages": [],
         "region": "florida",
@@ -1098,10 +1477,21 @@
         "common_name": "Belted Kingfisher",
         "latin_name": "Megaceryle alcyon",
         "form": "kingfisher",
-        "habitat": ["river", "lake", "coastal"],
-        "diet": ["fish_eater"],
-        "behavior": ["fish_hunter", "cavity_nester"],
-        "season": ["year_round"],
+        "habitat": [
+          "river",
+          "lake",
+          "coastal"
+        ],
+        "diet": [
+          "fish_eater"
+        ],
+        "behavior": [
+          "fish_hunter",
+          "cavity_nester"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Blue-gray kingfisher that hunts fish from perches. Cavity nester.",
         "life_stages": [],
         "region": "florida",
@@ -1109,29 +1499,25 @@
         "taxonomic_group": "group_other_birds"
       },
       {
-        "id": "bird_blue-jay",
-        "common_name": "Blue Jay",
-        "latin_name": "Cyanocitta cristata",
-        "form": "corvid",
-        "habitat": ["forest", "woodland", "urban"],
-        "diet": ["omnivore"],
-        "behavior": ["corvid_intelligence", "mimicry"],
-        "season": ["year_round"],
-        "functional_description": "Intelligent blue jay. Seed disperser and vocal communicator.",
-        "life_stages": [],
-        "region": "florida",
-        "ecological_role": "omnivore",
-        "taxonomic_group": "group_other_birds"
-      },
-      {
         "id": "bird_american-crow",
         "common_name": "American Crow",
         "latin_name": "Corvus brachyrhynchos",
         "form": "corvid",
-        "habitat": ["forest", "grassland", "urban"],
-        "diet": ["omnivore"],
-        "behavior": ["corvid_intelligence", "social"],
-        "season": ["year_round"],
+        "habitat": [
+          "forest",
+          "grassland",
+          "urban"
+        ],
+        "diet": [
+          "omnivore"
+        ],
+        "behavior": [
+          "corvid_intelligence",
+          "social"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Black corvid with high intelligence. Omnivorous opportunist.",
         "life_stages": [],
         "region": "florida",
@@ -1143,10 +1529,21 @@
         "common_name": "Fish Crow",
         "latin_name": "Corvus ossifragus",
         "form": "corvid",
-        "habitat": ["wetland", "river", "coastal"],
-        "diet": ["omnivore"],
-        "behavior": ["corvid_intelligence", "water_specialist"],
-        "season": ["year_round"],
+        "habitat": [
+          "wetland",
+          "river",
+          "coastal"
+        ],
+        "diet": [
+          "omnivore"
+        ],
+        "behavior": [
+          "corvid_intelligence",
+          "water_specialist"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Smaller corvid specialized for aquatic areas.",
         "life_stages": [],
         "region": "florida",
@@ -1158,10 +1555,20 @@
         "common_name": "White-eyed Vireo",
         "latin_name": "Vireo griseus",
         "form": "vireo",
-        "habitat": ["scrubland", "grassland", "woodland"],
-        "diet": ["insectivore"],
-        "behavior": ["gleaning"],
-        "season": ["year_round"],
+        "habitat": [
+          "scrubland",
+          "grassland",
+          "woodland"
+        ],
+        "diet": [
+          "insectivore"
+        ],
+        "behavior": [
+          "gleaning"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Small vireo that gleans insects from foliage.",
         "life_stages": [],
         "region": "florida",
@@ -1173,26 +1580,21 @@
         "common_name": "Brown-headed Nuthatch",
         "latin_name": "Sitta pusilla",
         "form": "nuthatch",
-        "habitat": ["pine_forest", "longleaf_pine"],
-        "diet": ["insectivore"],
-        "behavior": ["bark_foraging", "cooperative_breeder"],
-        "season": ["year_round"],
+        "habitat": [
+          "pine_forest",
+          "longleaf_pine"
+        ],
+        "diet": [
+          "insectivore"
+        ],
+        "behavior": [
+          "bark_foraging",
+          "cooperative_breeder"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Pine specialist that forages on bark. Cooperative breeder.",
-        "life_stages": [],
-        "region": "florida",
-        "ecological_role": "carnivore",
-        "taxonomic_group": "group_other_birds"
-      },
-      {
-        "id": "bird_downy-woodpecker",
-        "common_name": "Downy Woodpecker",
-        "latin_name": "Dryobates pubescens",
-        "form": "woodpecker",
-        "habitat": ["forest", "woodland"],
-        "diet": ["insectivore"],
-        "behavior": ["bark_foraging", "cavity_nester"],
-        "season": ["year_round"],
-        "functional_description": "Smallest woodpecker. Bark forager and cavity nester.",
         "life_stages": [],
         "region": "florida",
         "ecological_role": "carnivore",
@@ -1203,10 +1605,20 @@
         "common_name": "Hairy Woodpecker",
         "latin_name": "Dryobates villosus",
         "form": "woodpecker",
-        "habitat": ["forest", "woodland"],
-        "diet": ["insectivore"],
-        "behavior": ["bark_foraging", "cavity_nester"],
-        "season": ["year_round"],
+        "habitat": [
+          "forest",
+          "woodland"
+        ],
+        "diet": [
+          "insectivore"
+        ],
+        "behavior": [
+          "bark_foraging",
+          "cavity_nester"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Larger woodpecker. Bark forager and cavity excavator.",
         "life_stages": [],
         "region": "florida",
@@ -1214,32 +1626,25 @@
         "taxonomic_group": "group_other_birds"
       },
       {
-        "id": "bird_pileated-woodpecker",
-        "common_name": "Pileated Woodpecker",
-        "latin_name": "Dryocopus pileatus",
-        "form": "woodpecker",
-        "habitat": ["forest", "woodland"],
-        "diet": ["insectivore"],
-        "behavior": ["cavity_excavator"],
-        "season": ["year_round"],
-        "functional_description": "Largest woodpecker. Creates large rectangular cavities.",
-        "life_stages": [],
-        "region": "florida",
-        "ecological_role": "carnivore",
-        "is_keystone": true,
-        "keystone_type": "ecosystem_engineer",
-        "keystone_description": "Creates large cavities used by owls, kestrels, and other species.",
-        "taxonomic_group": "group_other_birds"
-      },
-      {
         "id": "reptile_eastern-fence-lizard",
         "common_name": "Eastern Fence Lizard",
         "latin_name": "Sceloporus undulatus",
         "form": "lizard",
-        "habitat": ["scrubland", "forest_edge", "rocky_areas"],
-        "diet": ["insectivore"],
-        "behavior": ["diurnal", "basking"],
-        "season": ["year_round"],
+        "habitat": [
+          "scrubland",
+          "forest_edge",
+          "rocky_areas"
+        ],
+        "diet": [
+          "insectivore"
+        ],
+        "behavior": [
+          "diurnal",
+          "basking"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Common fence-climbing lizard. Insect hunter.",
         "life_stages": [],
         "region": "florida",
@@ -1251,10 +1656,21 @@
         "common_name": "Six-lined Racerunner",
         "latin_name": "Aspidoscelis sexlineata",
         "form": "lizard",
-        "habitat": ["grassland", "sandy_areas", "field"],
-        "diet": ["insectivore"],
-        "behavior": ["diurnal", "fast_runner"],
-        "season": ["active_season"],
+        "habitat": [
+          "grassland",
+          "sandy_areas",
+          "field"
+        ],
+        "diet": [
+          "insectivore"
+        ],
+        "behavior": [
+          "diurnal",
+          "fast_runner"
+        ],
+        "season": [
+          "active_season"
+        ],
         "functional_description": "Fast lizard with six light stripes. Ground dweller.",
         "life_stages": [],
         "region": "florida",
@@ -1266,10 +1682,20 @@
         "common_name": "Southeastern Five-lined Skink",
         "latin_name": "Plestiodon inexpectatus",
         "form": "skink",
-        "habitat": ["forest", "woodland", "scrubland"],
-        "diet": ["insectivore"],
-        "behavior": ["diurnal"],
-        "season": ["year_round"],
+        "habitat": [
+          "forest",
+          "woodland",
+          "scrubland"
+        ],
+        "diet": [
+          "insectivore"
+        ],
+        "behavior": [
+          "diurnal"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Common skink with five light lines. Fast and agile.",
         "life_stages": [],
         "region": "florida",
@@ -1281,10 +1707,20 @@
         "common_name": "Florida Scrub Lizard",
         "latin_name": "Sceloporus woodi",
         "form": "lizard",
-        "habitat": ["scrubland", "sandy_areas"],
-        "diet": ["insectivore"],
-        "behavior": ["diurnal", "scrub_specialist"],
-        "season": ["year_round"],
+        "habitat": [
+          "scrubland",
+          "sandy_areas"
+        ],
+        "diet": [
+          "insectivore"
+        ],
+        "behavior": [
+          "diurnal",
+          "scrub_specialist"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Scrub habitat specialist. Threatened by habitat loss.",
         "life_stages": [],
         "region": "florida",
@@ -1296,10 +1732,21 @@
         "common_name": "Green Anole",
         "latin_name": "Anolis carolinensis",
         "form": "anole",
-        "habitat": ["scrubland", "forest", "urban"],
-        "diet": ["insectivore"],
-        "behavior": ["diurnal", "arboreal"],
-        "season": ["year_round"],
+        "habitat": [
+          "scrubland",
+          "forest",
+          "urban"
+        ],
+        "diet": [
+          "insectivore"
+        ],
+        "behavior": [
+          "diurnal",
+          "arboreal"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Green lizard that changes color. Tree-climber.",
         "life_stages": [],
         "region": "florida",
@@ -1311,10 +1758,21 @@
         "common_name": "Brown Anole",
         "latin_name": "Anolis sagrei",
         "form": "anole",
-        "habitat": ["urban", "scrubland", "forest"],
-        "diet": ["insectivore"],
-        "behavior": ["diurnal", "invasive"],
-        "season": ["year_round"],
+        "habitat": [
+          "urban",
+          "scrubland",
+          "forest"
+        ],
+        "diet": [
+          "insectivore"
+        ],
+        "behavior": [
+          "diurnal",
+          "invasive"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Invasive lizard from Caribbean. Outcompetes native anole.",
         "life_stages": [],
         "region": "florida",
@@ -1326,10 +1784,20 @@
         "common_name": "Broad-headed Skink",
         "latin_name": "Plestiodon laticeps",
         "form": "skink",
-        "habitat": ["forest", "woodland"],
-        "diet": ["omnivore"],
-        "behavior": ["diurnal", "arboreal"],
-        "season": ["year_round"],
+        "habitat": [
+          "forest",
+          "woodland"
+        ],
+        "diet": [
+          "omnivore"
+        ],
+        "behavior": [
+          "diurnal",
+          "arboreal"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Large skink. Males have reddish heads. Tree climber.",
         "life_stages": [],
         "region": "florida",
@@ -1341,10 +1809,21 @@
         "common_name": "Ground Skink",
         "latin_name": "Scincella lateralis",
         "form": "skink",
-        "habitat": ["forest", "woodland", "grassland"],
-        "diet": ["insectivore"],
-        "behavior": ["diurnal", "leaf_litter_dweller"],
-        "season": ["year_round"],
+        "habitat": [
+          "forest",
+          "woodland",
+          "grassland"
+        ],
+        "diet": [
+          "insectivore"
+        ],
+        "behavior": [
+          "diurnal",
+          "leaf_litter_dweller"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Tiny skink of leaf litter.",
         "life_stages": [],
         "region": "florida",
@@ -1356,10 +1835,19 @@
         "common_name": "Little Brown Skink",
         "latin_name": "Scincella lateralis",
         "form": "skink",
-        "habitat": ["leaf_litter", "grassland"],
-        "diet": ["insectivore"],
-        "behavior": ["cryptic"],
-        "season": ["year_round"],
+        "habitat": [
+          "leaf_litter",
+          "grassland"
+        ],
+        "diet": [
+          "insectivore"
+        ],
+        "behavior": [
+          "cryptic"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Small brown skink of moist areas.",
         "life_stages": [],
         "region": "florida",
@@ -1371,10 +1859,19 @@
         "common_name": "Mole Skink",
         "latin_name": "Plestiodon egregius",
         "form": "skink",
-        "habitat": ["sandy_areas", "grassland"],
-        "diet": ["insectivore"],
-        "behavior": ["fossorial"],
-        "season": ["year_round"],
+        "habitat": [
+          "sandy_areas",
+          "grassland"
+        ],
+        "diet": [
+          "insectivore"
+        ],
+        "behavior": [
+          "fossorial"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Sandy soil specialist. Secretive burrower.",
         "life_stages": [],
         "region": "florida",
@@ -1386,10 +1883,21 @@
         "common_name": "Eastern Glass Lizard",
         "latin_name": "Ophisaurus ventralis",
         "form": "glass_lizard",
-        "habitat": ["grassland", "forest", "marsh"],
-        "diet": ["carnivore"],
-        "behavior": ["legless", "reptile_predator"],
-        "season": ["year_round"],
+        "habitat": [
+          "grassland",
+          "forest",
+          "marsh"
+        ],
+        "diet": [
+          "carnivore"
+        ],
+        "behavior": [
+          "legless",
+          "reptile_predator"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Legless lizard. Preys on snakes and other reptiles.",
         "life_stages": [],
         "region": "florida",
@@ -1401,10 +1909,20 @@
         "common_name": "Slender Glass Lizard",
         "latin_name": "Ophisaurus attenuatus",
         "form": "glass_lizard",
-        "habitat": ["grassland", "field"],
-        "diet": ["carnivore"],
-        "behavior": ["legless", "reptile_predator"],
-        "season": ["year_round"],
+        "habitat": [
+          "grassland",
+          "field"
+        ],
+        "diet": [
+          "carnivore"
+        ],
+        "behavior": [
+          "legless",
+          "reptile_predator"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Slender legless lizard. Preys on small reptiles.",
         "life_stages": [],
         "region": "florida",
@@ -1416,10 +1934,21 @@
         "common_name": "Eastern Collared Lizard",
         "latin_name": "Crotaphytus collaris",
         "form": "lizard",
-        "habitat": ["rocky_areas", "scrubland"],
-        "diet": ["insectivore", "reptile_predator"],
-        "behavior": ["diurnal", "aggressive"],
-        "season": ["active_season"],
+        "habitat": [
+          "rocky_areas",
+          "scrubland"
+        ],
+        "diet": [
+          "insectivore",
+          "reptile_predator"
+        ],
+        "behavior": [
+          "diurnal",
+          "aggressive"
+        ],
+        "season": [
+          "active_season"
+        ],
         "functional_description": "Large aggressive lizard with collar marking. Eats other lizards.",
         "life_stages": [],
         "region": "florida",
@@ -1431,10 +1960,20 @@
         "common_name": "Eastern Earless Lizard",
         "latin_name": "Holbrookia maculata",
         "form": "lizard",
-        "habitat": ["sandy_areas", "scrubland"],
-        "diet": ["insectivore"],
-        "behavior": ["diurnal", "ground_dweller"],
-        "season": ["active_season"],
+        "habitat": [
+          "sandy_areas",
+          "scrubland"
+        ],
+        "diet": [
+          "insectivore"
+        ],
+        "behavior": [
+          "diurnal",
+          "ground_dweller"
+        ],
+        "season": [
+          "active_season"
+        ],
         "functional_description": "Small sandy-area lizard without external ears.",
         "life_stages": [],
         "region": "florida",
@@ -1446,10 +1985,20 @@
         "common_name": "Spiny Lizard",
         "latin_name": "Sceloporus spinosus",
         "form": "lizard",
-        "habitat": ["scrubland", "rocky_areas"],
-        "diet": ["insectivore"],
-        "behavior": ["diurnal", "basking"],
-        "season": ["active_season"],
+        "habitat": [
+          "scrubland",
+          "rocky_areas"
+        ],
+        "diet": [
+          "insectivore"
+        ],
+        "behavior": [
+          "diurnal",
+          "basking"
+        ],
+        "season": [
+          "active_season"
+        ],
         "functional_description": "Spiny-backed lizard of rocky habitats.",
         "life_stages": [],
         "region": "florida",
@@ -1461,10 +2010,19 @@
         "common_name": "Florida Sand Skink",
         "latin_name": "Neoseps reynoldsi",
         "form": "skink",
-        "habitat": ["sandy_areas"],
-        "diet": ["insectivore"],
-        "behavior": ["fossorial", "endemic"],
-        "season": ["year_round"],
+        "habitat": [
+          "sandy_areas"
+        ],
+        "diet": [
+          "insectivore"
+        ],
+        "behavior": [
+          "fossorial",
+          "endemic"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Endemic to Florida. Sandy soil specialist with reduced limbs.",
         "life_stages": [],
         "region": "florida",
@@ -1476,10 +2034,20 @@
         "common_name": "Eastern Indigo Snake",
         "latin_name": "Drymarchon couperi",
         "form": "snake",
-        "habitat": ["forest", "scrubland", "flatwoods"],
-        "diet": ["carnivore"],
-        "behavior": ["ophiophagous"],
-        "season": ["year_round"],
+        "habitat": [
+          "forest",
+          "scrubland",
+          "flatwoods"
+        ],
+        "diet": [
+          "carnivore"
+        ],
+        "behavior": [
+          "ophiophagous"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Large glossy snake. Eats other snakes including venomous ones.",
         "life_stages": [],
         "region": "florida",
@@ -1494,10 +2062,21 @@
         "common_name": "Eastern Diamondback Rattlesnake",
         "latin_name": "Crotalus adamanteus",
         "form": "snake",
-        "habitat": ["scrubland", "forest", "flatwoods"],
-        "diet": ["carnivore"],
-        "behavior": ["ambush_predator", "venomous"],
-        "season": ["year_round"],
+        "habitat": [
+          "scrubland",
+          "forest",
+          "flatwoods"
+        ],
+        "diet": [
+          "carnivore"
+        ],
+        "behavior": [
+          "ambush_predator",
+          "venomous"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Large venomous rattlesnake. Threatened by habitat loss.",
         "life_stages": [],
         "region": "florida",
@@ -1512,10 +2091,20 @@
         "common_name": "Florida Pine Snake",
         "latin_name": "Pituophis melanoleucus mugitus",
         "form": "snake",
-        "habitat": ["longleaf_pine", "sandy_areas"],
-        "diet": ["carnivore"],
-        "behavior": ["fossorial", "mammal_hunter"],
-        "season": ["active_season"],
+        "habitat": [
+          "longleaf_pine",
+          "sandy_areas"
+        ],
+        "diet": [
+          "carnivore"
+        ],
+        "behavior": [
+          "fossorial",
+          "mammal_hunter"
+        ],
+        "season": [
+          "active_season"
+        ],
         "functional_description": "Burrowing snake of pine habitats. Hunts small mammals.",
         "life_stages": [],
         "region": "florida",
@@ -1527,10 +2116,20 @@
         "common_name": "Eastern Coachwhip",
         "latin_name": "Masticophis flagellum",
         "form": "snake",
-        "habitat": ["grassland", "forest_edge", "scrubland"],
-        "diet": ["carnivore"],
-        "behavior": ["active_hunter"],
-        "season": ["active_season"],
+        "habitat": [
+          "grassland",
+          "forest_edge",
+          "scrubland"
+        ],
+        "diet": [
+          "carnivore"
+        ],
+        "behavior": [
+          "active_hunter"
+        ],
+        "season": [
+          "active_season"
+        ],
         "functional_description": "Fast active snake. Hunts lizards and small snakes.",
         "life_stages": [],
         "region": "florida",
@@ -1542,10 +2141,21 @@
         "common_name": "Garter Snake",
         "latin_name": "Thamnophis sirtalis",
         "form": "snake",
-        "habitat": ["wetland", "grassland", "forest"],
-        "diet": ["carnivore"],
-        "behavior": ["semi_aquatic", "active_forager"],
-        "season": ["year_round"],
+        "habitat": [
+          "wetland",
+          "grassland",
+          "forest"
+        ],
+        "diet": [
+          "carnivore"
+        ],
+        "behavior": [
+          "semi_aquatic",
+          "active_forager"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Common striped snake. Hunts small animals near water.",
         "life_stages": [],
         "region": "florida",
@@ -1557,10 +2167,21 @@
         "common_name": "Corn Snake",
         "latin_name": "Pantherophis guttatus",
         "form": "snake",
-        "habitat": ["forest", "woodland", "scrubland"],
-        "diet": ["carnivore"],
-        "behavior": ["active_hunter", "nocturnal"],
-        "season": ["year_round"],
+        "habitat": [
+          "forest",
+          "woodland",
+          "scrubland"
+        ],
+        "diet": [
+          "carnivore"
+        ],
+        "behavior": [
+          "active_hunter",
+          "nocturnal"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Beautiful patterned snake. Small mammal hunter.",
         "life_stages": [],
         "region": "florida",
@@ -1572,10 +2193,20 @@
         "common_name": "Black Racer",
         "latin_name": "Coluber constrictor",
         "form": "snake",
-        "habitat": ["grassland", "forest", "scrubland"],
-        "diet": ["carnivore"],
-        "behavior": ["active_hunter"],
-        "season": ["year_round"],
+        "habitat": [
+          "grassland",
+          "forest",
+          "scrubland"
+        ],
+        "diet": [
+          "carnivore"
+        ],
+        "behavior": [
+          "active_hunter"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Fast black snake. Hunts small reptiles and mammals.",
         "life_stages": [],
         "region": "florida",
@@ -1587,10 +2218,21 @@
         "common_name": "Eastern Kingsnake",
         "latin_name": "Lampropeltis getula",
         "form": "snake",
-        "habitat": ["grassland", "forest", "wetland"],
-        "diet": ["carnivore"],
-        "behavior": ["ophiophagous", "immune_to_venom"],
-        "season": ["year_round"],
+        "habitat": [
+          "grassland",
+          "forest",
+          "wetland"
+        ],
+        "diet": [
+          "carnivore"
+        ],
+        "behavior": [
+          "ophiophagous",
+          "immune_to_venom"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Banded snake that eats other snakes including venomous ones.",
         "life_stages": [],
         "region": "florida",
@@ -1602,10 +2244,21 @@
         "common_name": "Rough Green Snake",
         "latin_name": "Opheodrys aestivus",
         "form": "snake",
-        "habitat": ["vegetation", "forest", "scrubland"],
-        "diet": ["insectivore"],
-        "behavior": ["arboreal", "diurnal"],
-        "season": ["active_season"],
+        "habitat": [
+          "vegetation",
+          "forest",
+          "scrubland"
+        ],
+        "diet": [
+          "insectivore"
+        ],
+        "behavior": [
+          "arboreal",
+          "diurnal"
+        ],
+        "season": [
+          "active_season"
+        ],
         "functional_description": "Green snake that hunts insects in vegetation.",
         "life_stages": [],
         "region": "florida",
@@ -1617,10 +2270,19 @@
         "common_name": "Scarlet Kingsnake",
         "latin_name": "Lampropeltis elapsoides",
         "form": "snake",
-        "habitat": ["forest", "woodland"],
-        "diet": ["carnivore"],
-        "behavior": ["secretive"],
-        "season": ["year_round"],
+        "habitat": [
+          "forest",
+          "woodland"
+        ],
+        "diet": [
+          "carnivore"
+        ],
+        "behavior": [
+          "secretive"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Beautiful banded snake. Mimics coral snake. Eats other snakes.",
         "life_stages": [],
         "region": "florida",
@@ -1632,10 +2294,21 @@
         "common_name": "Cottonmouth",
         "latin_name": "Agkistrodon piscivorus",
         "form": "snake",
-        "habitat": ["wetland", "marsh", "swamp"],
-        "diet": ["carnivore"],
-        "behavior": ["semi_aquatic", "venomous"],
-        "season": ["year_round"],
+        "habitat": [
+          "wetland",
+          "marsh",
+          "swamp"
+        ],
+        "diet": [
+          "carnivore"
+        ],
+        "behavior": [
+          "semi_aquatic",
+          "venomous"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Venomous water snake. Hunts fish and small animals.",
         "life_stages": [],
         "region": "florida",
@@ -1647,10 +2320,21 @@
         "common_name": "Copperhead",
         "latin_name": "Agkistrodon contortrix",
         "form": "snake",
-        "habitat": ["forest", "woodland", "rocky_areas"],
-        "diet": ["carnivore"],
-        "behavior": ["venomous", "ambush_predator"],
-        "season": ["active_season"],
+        "habitat": [
+          "forest",
+          "woodland",
+          "rocky_areas"
+        ],
+        "diet": [
+          "carnivore"
+        ],
+        "behavior": [
+          "venomous",
+          "ambush_predator"
+        ],
+        "season": [
+          "active_season"
+        ],
         "functional_description": "Venomous pit viper. Hunts small mammals.",
         "life_stages": [],
         "region": "florida",
@@ -1662,10 +2346,20 @@
         "common_name": "Timber Rattlesnake",
         "latin_name": "Crotalus horridus",
         "form": "snake",
-        "habitat": ["forest", "rocky_areas"],
-        "diet": ["carnivore"],
-        "behavior": ["venomous", "ambush_predator"],
-        "season": ["active_season"],
+        "habitat": [
+          "forest",
+          "rocky_areas"
+        ],
+        "diet": [
+          "carnivore"
+        ],
+        "behavior": [
+          "venomous",
+          "ambush_predator"
+        ],
+        "season": [
+          "active_season"
+        ],
         "functional_description": "Venomous pit viper of forested areas.",
         "life_stages": [],
         "region": "florida",
@@ -1677,10 +2371,21 @@
         "common_name": "Eastern Coral Snake",
         "latin_name": "Micrurus fulvius",
         "form": "snake",
-        "habitat": ["scrubland", "forest", "flatwoods"],
-        "diet": ["carnivore"],
-        "behavior": ["venomous", "secretive"],
-        "season": ["year_round"],
+        "habitat": [
+          "scrubland",
+          "forest",
+          "flatwoods"
+        ],
+        "diet": [
+          "carnivore"
+        ],
+        "behavior": [
+          "venomous",
+          "secretive"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Highly venomous but reclusive snake. Red, yellow, black banding.",
         "life_stages": [],
         "region": "florida",
@@ -1692,10 +2397,20 @@
         "common_name": "Ringneck Snake",
         "latin_name": "Diadophis punctatus",
         "form": "snake",
-        "habitat": ["forest", "woodland"],
-        "diet": ["carnivore"],
-        "behavior": ["secretive", "small_prey"],
-        "season": ["year_round"],
+        "habitat": [
+          "forest",
+          "woodland"
+        ],
+        "diet": [
+          "carnivore"
+        ],
+        "behavior": [
+          "secretive",
+          "small_prey"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Small secretive snake with neck ring.",
         "life_stages": [],
         "region": "florida",
@@ -1707,10 +2422,21 @@
         "common_name": "Rat Snake",
         "latin_name": "Pantherophis alleghaniensis",
         "form": "snake",
-        "habitat": ["forest", "woodland", "urban"],
-        "diet": ["carnivore"],
-        "behavior": ["climb_climber", "rodent_hunter"],
-        "season": ["year_round"],
+        "habitat": [
+          "forest",
+          "woodland",
+          "urban"
+        ],
+        "diet": [
+          "carnivore"
+        ],
+        "behavior": [
+          "climb_climber",
+          "rodent_hunter"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Tree-climbing snake that hunts rodents. Beneficial.",
         "life_stages": [],
         "region": "florida",
@@ -1722,10 +2448,21 @@
         "common_name": "Florida Box Turtle",
         "latin_name": "Terrapene carolina bauri",
         "form": "turtle",
-        "habitat": ["forest", "scrubland", "grassland"],
-        "diet": ["omnivore"],
-        "behavior": ["terrestrial", "slow_moving"],
-        "season": ["active_season"],
+        "habitat": [
+          "forest",
+          "scrubland",
+          "grassland"
+        ],
+        "diet": [
+          "omnivore"
+        ],
+        "behavior": [
+          "terrestrial",
+          "slow_moving"
+        ],
+        "season": [
+          "active_season"
+        ],
         "functional_description": "Domed turtle of upland habitats. Eats plants and invertebrates.",
         "life_stages": [],
         "region": "florida",
@@ -1737,10 +2474,21 @@
         "common_name": "Gopher Tortoise",
         "latin_name": "Gopherus polyphemus",
         "form": "tortoise",
-        "habitat": ["scrubland", "longleaf_pine", "sandy_areas"],
-        "diet": ["herbivore"],
-        "behavior": ["fossorial", "keystone_burrow"],
-        "season": ["year_round"],
+        "habitat": [
+          "scrubland",
+          "longleaf_pine",
+          "sandy_areas"
+        ],
+        "diet": [
+          "herbivore"
+        ],
+        "behavior": [
+          "fossorial",
+          "keystone_burrow"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Burrowing tortoise of sandy areas. Creates burrows used by 300+ species.",
         "life_stages": [],
         "region": "florida",
@@ -1755,10 +2503,21 @@
         "common_name": "Eastern Mud Turtle",
         "latin_name": "Kinosternon subrubrum",
         "form": "turtle",
-        "habitat": ["wetland", "marsh", "pond"],
-        "diet": ["omnivore"],
-        "behavior": ["aquatic", "bottom_feeder"],
-        "season": ["year_round"],
+        "habitat": [
+          "wetland",
+          "marsh",
+          "pond"
+        ],
+        "diet": [
+          "omnivore"
+        ],
+        "behavior": [
+          "aquatic",
+          "bottom_feeder"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Small aquatic turtle of freshwater habitats.",
         "life_stages": [],
         "region": "florida",
@@ -1770,10 +2529,20 @@
         "common_name": "Striped Mud Turtle",
         "latin_name": "Kinosternon baurii",
         "form": "turtle",
-        "habitat": ["wetland", "marsh", "pond"],
-        "diet": ["omnivore"],
-        "behavior": ["aquatic"],
-        "season": ["year_round"],
+        "habitat": [
+          "wetland",
+          "marsh",
+          "pond"
+        ],
+        "diet": [
+          "omnivore"
+        ],
+        "behavior": [
+          "aquatic"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Striped aquatic turtle of freshwater wetlands.",
         "life_stages": [],
         "region": "florida",
@@ -1785,10 +2554,21 @@
         "common_name": "Florida Softshell Turtle",
         "latin_name": "Apalone ferox",
         "form": "turtle",
-        "habitat": ["river", "lake", "wetland"],
-        "diet": ["carnivore"],
-        "behavior": ["aquatic", "aggressive"],
-        "season": ["year_round"],
+        "habitat": [
+          "river",
+          "lake",
+          "wetland"
+        ],
+        "diet": [
+          "carnivore"
+        ],
+        "behavior": [
+          "aquatic",
+          "aggressive"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Aggressive aquatic turtle with soft shell.",
         "life_stages": [],
         "region": "florida",
@@ -1800,10 +2580,19 @@
         "common_name": "Diamondback Terrapin",
         "latin_name": "Malaclemys terrapin",
         "form": "turtle",
-        "habitat": ["salt_marsh", "coastal"],
-        "diet": ["omnivore"],
-        "behavior": ["brackish_specialist"],
-        "season": ["year_round"],
+        "habitat": [
+          "salt_marsh",
+          "coastal"
+        ],
+        "diet": [
+          "omnivore"
+        ],
+        "behavior": [
+          "brackish_specialist"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Salt marsh specialist. Threatened by crab trap drowning.",
         "life_stages": [],
         "region": "florida",
@@ -1815,10 +2604,20 @@
         "common_name": "Spotted Turtle",
         "latin_name": "Clemmys guttata",
         "form": "turtle",
-        "habitat": ["wetland", "marsh", "pond"],
-        "diet": ["omnivore"],
-        "behavior": ["aquatic"],
-        "season": ["active_season"],
+        "habitat": [
+          "wetland",
+          "marsh",
+          "pond"
+        ],
+        "diet": [
+          "omnivore"
+        ],
+        "behavior": [
+          "aquatic"
+        ],
+        "season": [
+          "active_season"
+        ],
         "functional_description": "Small spotted turtle of freshwater wetlands.",
         "life_stages": [],
         "region": "florida",
@@ -1830,10 +2629,21 @@
         "common_name": "Common Snapping Turtle",
         "latin_name": "Chelydra serpentina",
         "form": "turtle",
-        "habitat": ["wetland", "river", "lake"],
-        "diet": ["omnivore"],
-        "behavior": ["aquatic", "aggressive"],
-        "season": ["year_round"],
+        "habitat": [
+          "wetland",
+          "river",
+          "lake"
+        ],
+        "diet": [
+          "omnivore"
+        ],
+        "behavior": [
+          "aquatic",
+          "aggressive"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Large aggressive turtle with powerful jaws.",
         "life_stages": [],
         "region": "florida",
@@ -1845,10 +2655,20 @@
         "common_name": "Alligator Snapping Turtle",
         "latin_name": "Macrochelys temminckii",
         "form": "turtle",
-        "habitat": ["river", "lake", "wetland"],
-        "diet": ["carnivore"],
-        "behavior": ["aquatic_ambush_predator"],
-        "season": ["year_round"],
+        "habitat": [
+          "river",
+          "lake",
+          "wetland"
+        ],
+        "diet": [
+          "carnivore"
+        ],
+        "behavior": [
+          "aquatic_ambush_predator"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Large aquatic turtle with powerful jaws and lure.",
         "life_stages": [],
         "region": "florida",
@@ -1860,10 +2680,21 @@
         "common_name": "Florida Red-bellied Cooter",
         "latin_name": "Pseudemys nelsoni",
         "form": "turtle",
-        "habitat": ["river", "lake", "wetland"],
-        "diet": ["herbivore"],
-        "behavior": ["aquatic", "basking"],
-        "season": ["year_round"],
+        "habitat": [
+          "river",
+          "lake",
+          "wetland"
+        ],
+        "diet": [
+          "herbivore"
+        ],
+        "behavior": [
+          "aquatic",
+          "basking"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Colorful basking turtle of freshwater habitats.",
         "life_stages": [],
         "region": "florida",
@@ -1875,10 +2706,21 @@
         "common_name": "Peninsula Cooter",
         "latin_name": "Pseudemys peninsularis",
         "form": "turtle",
-        "habitat": ["river", "lake", "wetland"],
-        "diet": ["herbivore"],
-        "behavior": ["aquatic", "endemic"],
-        "season": ["year_round"],
+        "habitat": [
+          "river",
+          "lake",
+          "wetland"
+        ],
+        "diet": [
+          "herbivore"
+        ],
+        "behavior": [
+          "aquatic",
+          "endemic"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Florida endemic basking turtle.",
         "life_stages": [],
         "region": "florida",
@@ -1890,10 +2732,19 @@
         "common_name": "Florida Chicken Turtle",
         "latin_name": "Deirochelys reticularia chrysea",
         "form": "turtle",
-        "habitat": ["wetland", "shallow_water"],
-        "diet": ["carnivore"],
-        "behavior": ["aquatic"],
-        "season": ["year_round"],
+        "habitat": [
+          "wetland",
+          "shallow_water"
+        ],
+        "diet": [
+          "carnivore"
+        ],
+        "behavior": [
+          "aquatic"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Aquatic turtle of shallow wetlands.",
         "life_stages": [],
         "region": "florida",
@@ -1905,10 +2756,20 @@
         "common_name": "Loggerhead Musk Turtle",
         "latin_name": "Sternotherus minor",
         "form": "turtle",
-        "habitat": ["wetland", "stream", "river"],
-        "diet": ["omnivore"],
-        "behavior": ["bottom_dweller"],
-        "season": ["year_round"],
+        "habitat": [
+          "wetland",
+          "stream",
+          "river"
+        ],
+        "diet": [
+          "omnivore"
+        ],
+        "behavior": [
+          "bottom_dweller"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Small aquatic turtle with musky odor defense.",
         "life_stages": [],
         "region": "florida",
@@ -1920,10 +2781,21 @@
         "common_name": "Common Musk Turtle",
         "latin_name": "Sternotherus odoratus",
         "form": "turtle",
-        "habitat": ["wetland", "stream", "pond"],
-        "diet": ["omnivore"],
-        "behavior": ["aquatic", "musk_defense"],
-        "season": ["year_round"],
+        "habitat": [
+          "wetland",
+          "stream",
+          "pond"
+        ],
+        "diet": [
+          "omnivore"
+        ],
+        "behavior": [
+          "aquatic",
+          "musk_defense"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Small aquatic turtle with musk gland defense.",
         "life_stages": [],
         "region": "florida",
@@ -1935,10 +2807,20 @@
         "common_name": "Eastern Spiny Softshell",
         "latin_name": "Apalone spinifera",
         "form": "turtle",
-        "habitat": ["river", "lake"],
-        "diet": ["carnivore"],
-        "behavior": ["aquatic", "fast_swimmer"],
-        "season": ["year_round"],
+        "habitat": [
+          "river",
+          "lake"
+        ],
+        "diet": [
+          "carnivore"
+        ],
+        "behavior": [
+          "aquatic",
+          "fast_swimmer"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Aquatic softshell turtle with spiny shell.",
         "life_stages": [],
         "region": "florida",
@@ -1950,10 +2832,19 @@
         "common_name": "Suwannee Cooter",
         "latin_name": "Pseudemys suwanniensis",
         "form": "turtle",
-        "habitat": ["river", "spring"],
-        "diet": ["herbivore"],
-        "behavior": ["aquatic"],
-        "season": ["year_round"],
+        "habitat": [
+          "river",
+          "spring"
+        ],
+        "diet": [
+          "herbivore"
+        ],
+        "behavior": [
+          "aquatic"
+        ],
+        "season": [
+          "year_round"
+        ],
         "functional_description": "Florida endemic basking turtle.",
         "life_stages": [],
         "region": "florida",
