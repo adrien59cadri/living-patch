@@ -54,6 +54,8 @@ export default function DetailPage() {
         symbiotes={symbiotes}
         habitatNeighbors={habitatNeighbors}
         related={related}
+        speciesById={speciesById}
+        taxonomicGroupIds={taxonomicGroupIds}
       />
     </div>
   );

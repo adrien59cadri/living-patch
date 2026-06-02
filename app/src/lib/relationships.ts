@@ -398,6 +398,8 @@ export interface RelationGroupEntry {
   strength: SymbiosisStrength;
   role: SymbiosisRole;
   fulfillment?: 'any' | 'all';
+  /** Set when this group was formed by merging a taxonomic-group proxy with direct species entries. */
+  groupSpecies?: Species;
 }
 
 export type RenderableEntry = RelatedEntry | RelationGroupEntry;
@@ -406,8 +408,60 @@ export type RenderableEntry = RelatedEntry | RelationGroupEntry;
  * Resolves a list of RelatedEntry (within a single role/type section) into
  * RenderableEntry[]: entries sharing the same multi-target Symbiosis object
  * are collapsed into one RelationGroupEntry tile; ungrouped entries pass through as-is.
+ *
+ * When speciesById and taxonomicGroupIds are supplied, group-proxy entries (isGroup === true)
+ * are merged with same-role direct-species entries into a single expandable tile.
  */
-export function resolveRelationGroups(entries: RelatedEntry[]): RenderableEntry[] {
+export function resolveRelationGroups(
+  entries: RelatedEntry[],
+  speciesById?: Map<string, Species>,
+  taxonomicGroupIds?: Set<string>,
+): RenderableEntry[] {
+  let workingEntries = entries;
+
+  // ── Merge group-proxy entries with matching direct-species entries ──────────
+  if (speciesById && taxonomicGroupIds) {
+    const groupProxies = workingEntries.filter(e => e.isGroup && !e.isImpacted);
+    const absorb = new Set<RelatedEntry>();
+
+    const merged: RelationGroupEntry[] = [];
+
+    for (const proxy of groupProxies) {
+      const directMatches = workingEntries.filter(
+        e => !e.isGroup && !e.isImpacted && e.role === proxy.role && e !== proxy,
+      );
+
+      if (directMatches.length > 0) {
+        absorb.add(proxy);
+        directMatches.forEach(e => absorb.add(e));
+
+        const proxySymbiosis = proxy.symbiosis!;
+        merged.push({
+          isRelationGroup: true,
+          symbiosis: proxySymbiosis,
+          entries: directMatches,
+          strength: proxy.strength,
+          role: proxy.role,
+          fulfillment: proxySymbiosis.fulfillment,
+          groupSpecies: speciesById.get(proxy.species.id),
+        });
+      }
+    }
+
+    if (absorb.size > 0) {
+      workingEntries = workingEntries.filter(e => !absorb.has(e));
+      // merged entries will be added after the multi-target collapsing below
+      const result = resolveMultiTargetGroups(workingEntries);
+      result.push(...merged);
+      result.sort((a, b) => STRENGTH_ORDER[a.strength] - STRENGTH_ORDER[b.strength]);
+      return result;
+    }
+  }
+
+  return resolveMultiTargetGroups(workingEntries);
+}
+
+function resolveMultiTargetGroups(entries: RelatedEntry[]): RenderableEntry[] {
   // Group by Symbiosis object reference (only when the entry comes from a multi-target sym
   // and we are the source — i.e. multiple entries share the same sym and isImpacted === false)
   const grouped = new Map<Symbiosis, RelatedEntry[]>();
@@ -437,12 +491,7 @@ export function resolveRelationGroups(entries: RelatedEntry[]): RenderableEntry[
     });
   }
 
-  // Re-sort by strength
-  result.sort((a, b) => {
-    const aStrength = 'isRelationGroup' in a ? a.strength : a.strength;
-    const bStrength = 'isRelationGroup' in b ? b.strength : b.strength;
-    return STRENGTH_ORDER[aStrength] - STRENGTH_ORDER[bStrength];
-  });
+  result.sort((a, b) => STRENGTH_ORDER[a.strength] - STRENGTH_ORDER[b.strength]);
 
   return result;
 }

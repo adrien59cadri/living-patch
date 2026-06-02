@@ -24,9 +24,11 @@ interface Props {
   symbiotes: RelatedEntry[];
   habitatNeighbors: Species[];
   related: RelatedEntry[];
+  speciesById?: Map<string, Species>;
+  taxonomicGroupIds?: Set<string>;
 }
 
-export function SpeciesCard({ species, symbiotes, habitatNeighbors, related }: Props) {
+export function SpeciesCard({ species, symbiotes, habitatNeighbors, related, speciesById, taxonomicGroupIds }: Props) {
   const [showScientificName, setShowScientificName] = useState(false);
   const [sightingModalOpen, setSightingModalOpen] = useState(false);
   const stages = (species.life_stages as LifeStage[]).filter(
@@ -97,7 +99,7 @@ export function SpeciesCard({ species, symbiotes, habitatNeighbors, related }: P
       )}
 
       {/* 6. Symbiotes */}
-      <KeyRelationshipsSection related={symbiotes} />
+      <KeyRelationshipsSection related={symbiotes} speciesById={speciesById} taxonomicGroupIds={taxonomicGroupIds} />
 
       {/* 6.5. Relationship Diagram */}
       <Suspense fallback={<div className="text-center text-stone-500 py-4">Loading diagram...</div>}>
