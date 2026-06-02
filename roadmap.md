@@ -108,7 +108,20 @@ Add comprehensive UI support for fungi species and display hierarchical taxonomi
 
 **Includes**: 8 Florida fungi species already in dataset; plan covers UI/UX to make them discoverable and actionable
 
-### 9. Automated Multilingual Name Fetcher
+### 9. Organism Type Preferences & Settings Page
+Allow users to customize which organism types to track and display:
+- **Settings Page**: Add organism type toggles (Mammals, Birds, Reptiles, Amphibians, Insects, Plants, Fungi)
+- **Quick Presets**: Provide preset configurations ("Birds Only", "Botanist", "Zoologist", "All Except Fungi", etc.)
+- **Dynamic Filtering**: Filter species lists, forms, learn page, and life list based on enabled types
+- **Smart Defaults**: Remember preferences across sessions; default to all types enabled
+- **Data Preservation**: Keep sightings for disabled types; reappear when re-enabled
+- **UX Guidance**: Show count of hidden sightings and helpful messages when type disabled
+
+**Status**: Full implementation plan in `docs/plan-organism-type-preferences.md`; ready for development (5.5d estimated effort)
+
+**Use Cases**: Bird watchers (birds only), botanists (plants + fungi + insects), zoologists (all animals), pollinators (plants + insects + birds)
+
+### 10. Automated Multilingual Name Fetcher
 Implement a CLI tool to auto-populate multilingual common names from Wikipedia:
 - **Tool**: `fetch-names` CLI (mirrors `fetch-images` pattern)
 - **Source**: Wikipedia language-links API to find vernacular names in other languages
