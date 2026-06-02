@@ -146,7 +146,7 @@ test.describe('Area filtering (Item 11)', () => {
     await clearButton.click();
     await page.waitForTimeout(400);
 
-    await expect(page.getByText(/104 species/)).toBeVisible();
+    await expect(page.getByText(/144 species/)).toBeVisible();
   });
 });
 
@@ -155,7 +155,7 @@ test.describe('French species (Item 10)', () => {
     await page.goto('/');
     await page.waitForLoadState('networkidle');
 
-    await expect(page.getByText('104 species')).toBeVisible();
+    await expect(page.getByText('144 species')).toBeVisible();
   });
 
   test('French bird species are visible when all areas selected', async ({ page }) => {
@@ -259,7 +259,7 @@ test.describe('Pack management (Item 9)', () => {
     await page.waitForLoadState('networkidle');
 
     await expect(page.getByText('European Robin', { exact: true })).toBeVisible();
-    await expect(page.getByText('104 species')).toBeVisible();
+    await expect(page.getByText('144 species')).toBeVisible();
   });
 
   test('disabled pack card shows grayed out state', async ({ page }) => {
