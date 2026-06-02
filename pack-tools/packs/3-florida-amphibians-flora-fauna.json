@@ -6,7 +6,7 @@
     "version": "1.0.0",
     "schemaVersion": "1.0.0",
     "description": "Florida amphibians, invertebrates, plants, and fungi with hierarchical taxonomic grouping",
-    "status": "published"
+    "status": "draft"
   },
   "data": {
     "species": [
