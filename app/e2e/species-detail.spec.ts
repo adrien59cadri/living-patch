@@ -7,7 +7,7 @@ test.describe('Species detail page — Monarch Butterfly', () => {
   test('renders name block and keystone badge', async ({ page }) => {
     await page.goto(MONARCH_URL);
     await expect(page.getByRole('heading', { name: 'Monarch Butterfly' })).toBeVisible();
-    await expect(page.getByText('🤝 Keystone Mutualist')).toBeVisible();
+    await expect(page.getByText('🤝 Mutualist')).toBeVisible();
   });
 
   test('latin name hidden by default, revealed on toggle', async ({ page }) => {
@@ -143,7 +143,7 @@ test.describe('Clickable tags — navigate to filtered list', () => {
     await page.waitForLoadState('networkidle');
 
     // Keystone badge should be wrapped in a link
-    const keystoneLink = page.getByRole('link').filter({ hasText: /Keystone/ }).first();
+    const keystoneLink = page.getByRole('link').filter({ hasText: /Mutualist/ }).first();
     await expect(keystoneLink).toBeVisible();
     await expect(keystoneLink).toHaveAttribute('href', /keystone_type=/);
   });

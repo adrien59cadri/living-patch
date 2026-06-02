@@ -51,7 +51,7 @@ describe('DetailPage', () => {
 
   test('renders keystone badge for monarch', () => {
     renderDetailPage('insect_monarch-butterfly');
-    expect(screen.getByText(/Keystone Mutualist/i)).toBeInTheDocument();
+    expect(screen.getByText(/🤝 Mutualist/i)).toBeInTheDocument();
   });
 
   test('renders life stages for monarch', () => {

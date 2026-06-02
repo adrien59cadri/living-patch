@@ -13,37 +13,52 @@ export interface KeystoneHierarchyNode {
 
 export const KEYSTONE_DEFINITIONS: Record<string, KeystoneDefinition> = {
   // Top-level categories
-  ecosystem_engineer: {
-    label: 'Ecosystem Engineer',
-    description:
-      'Species that create, modify, or maintain habitat structure. Woodpeckers excavate cavities; beavers build dams; trees provide framework for entire communities.',
-  },
   predator: {
     label: 'Predator',
     description:
-      'Hunters that control prey populations and prevent any one species from dominating. Hawks and owls control rodents; spiders control insects.',
+      'Hunters that exert top-down control on prey populations, preventing any one species from dominating. Removing a keystone predator triggers trophic cascades that reshape entire ecosystems.',
+  },
+  ecosystem_engineer: {
+    label: 'Ecosystem Engineer',
+    description:
+      'Species that physically create, modify, or maintain habitat structure through their behavior. Beavers build dams; boars root the soil; badgers and earthworms reshape the ground layer.',
+  },
+  foundation_species: {
+    label: 'Foundation Species',
+    description:
+      'Dominant plants whose abundance and physical structure define the habitat. Oaks, beeches, and hemlocks create the canopy, understory shade, and root networks that entire communities depend on.',
   },
   mutualist: {
     label: 'Mutualist',
     description:
-      'Species that exchange resources with partners, both benefiting from the relationship. Bees and flowers pollinate each other; some plants fix nitrogen for soil.',
+      'Species locked in partnerships where both parties benefit. Pollinators and the plants they service, and seed dispersers and the trees they regenerate, are classic keystone mutualisms.',
   },
-  resource_provider: {
-    label: 'Resource Provider',
+  trophic_anchor: {
+    label: 'Trophic Anchor',
     description:
-      'Species whose primary keystone role is producing food, shelter, or other resources consumed by many other species. Mast crops, host plants, and abundant prey species anchor food webs.',
-  },
-  // Subtypes: ecosystem_engineer
-  foundation_species: {
-    label: 'Foundation Species',
-    description:
-      'Trees and plants whose physical structure defines habitat. Pines, hemlocks, and oaks create the canopy, understory, and root networks that entire communities depend on.',
+      'Species whose productivity or abundance provides the energetic foundation of food webs. Host plants for specialists, mast-producing trees, and abundant prey species all anchor trophic networks.',
   },
   // Subtypes: predator
-  aerial_insect_suppression: {
-    label: 'Aerial Insect Suppression',
+  apex_predator: {
+    label: 'Apex Predator',
     description:
-      'Species that catch flying insects in mid-air, providing natural control of mosquitoes, gnats, and other pest insects. Swallows, bats, and dragonflies fill this role.',
+      'Top-of-food-chain hunters with no natural predators. Hawks, owls, otters, and falcons regulate populations of rodents, fish, and other prey, keeping ecosystems in balance.',
+  },
+  insectivore: {
+    label: 'Insectivore',
+    description:
+      'Specialist predators of insects that provide natural regulation of pest populations. Swallows, bats, and dragonflies intercept flying insects; others glean prey from bark and foliage.',
+  },
+  // Subtypes: ecosystem_engineer
+  cavity_creator: {
+    label: 'Cavity Creator',
+    description:
+      'Woodpeckers and other species that excavate holes in dead or living wood. Their abandoned cavities become nest sites for owls, ducks, small mammals, and dozens of other species.',
+  },
+  habitat_modifier: {
+    label: 'Habitat Modifier',
+    description:
+      'Species that reshape the physical landscape through digging, rooting, or burrowing. Beavers flood meadows into wetlands; boars till the forest floor; badgers and earthworms rework the soil.',
   },
   // Subtypes: mutualist
   pollinator: {
@@ -56,7 +71,7 @@ export const KEYSTONE_DEFINITIONS: Record<string, KeystoneDefinition> = {
     description:
       'Species that move seeds away from parent plants by caching, eating, or carrying them. Jays, squirrels, and bears are major dispersers of tree seeds across landscapes.',
   },
-  // Subtypes: resource_provider
+  // Subtypes: trophic_anchor
   host_plant: {
     label: 'Host Plant',
     description:
@@ -67,25 +82,30 @@ export const KEYSTONE_DEFINITIONS: Record<string, KeystoneDefinition> = {
     description:
       'Trees that produce massive periodic seed crops (mast years) triggering population booms in squirrels, deer, turkeys, bears, and the predators that follow them.',
   },
-  prey_base: {
-    label: 'Prey Base',
+  forage_species: {
+    label: 'Forage Species',
     description:
-      'Abundant prey species that support entire predator guilds. Cottontails, voles, and similar species are consumed by hawks, owls, foxes, and snakes — their population cycles ripple up the food web.',
+      'Abundant prey animals that support entire predator guilds. Voles and similar small mammals are consumed by hawks, owls, foxes, and snakes — their population cycles ripple up the food web.',
   },
 };
 
 export const KEYSTONE_HIERARCHY: KeystoneHierarchyNode[] = [
   {
-    key: 'ecosystem_engineer',
+    key: 'predator',
     children: [
-      { key: 'foundation_species' },
+      { key: 'apex_predator' },
+      { key: 'insectivore' },
     ],
   },
   {
-    key: 'predator',
+    key: 'ecosystem_engineer',
     children: [
-      { key: 'aerial_insect_suppression' },
+      { key: 'cavity_creator' },
+      { key: 'habitat_modifier' },
     ],
+  },
+  {
+    key: 'foundation_species',
   },
   {
     key: 'mutualist',
@@ -95,11 +115,11 @@ export const KEYSTONE_HIERARCHY: KeystoneHierarchyNode[] = [
     ],
   },
   {
-    key: 'resource_provider',
+    key: 'trophic_anchor',
     children: [
       { key: 'host_plant' },
       { key: 'mast_producer' },
-      { key: 'prey_base' },
+      { key: 'forage_species' },
     ],
   },
 ];

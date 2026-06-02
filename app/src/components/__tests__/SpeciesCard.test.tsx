@@ -48,7 +48,7 @@ describe('SpeciesCard', () => {
 
   test('shows keystone badge when is_keystone is true', () => {
     renderCard();
-    expect(screen.getByText(/Keystone Mutualist/i)).toBeInTheDocument();
+    expect(screen.getByText(/🤝 Mutualist/i)).toBeInTheDocument();
   });
 
   test('does not show keystone badge when is_keystone is false', () => {
