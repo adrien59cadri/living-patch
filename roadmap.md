@@ -95,7 +95,33 @@ The existing four tiers (`noticed`, `familiar`, `know-it-well`, `steward`) are k
 
 **Impact**: Familiarity is earned through real, diverse observation. Badges are immediately legible — a user can see at a glance whether they've seen a species across time and place, not just once.
 
-### 8. Automated Multilingual Name Fetcher
+### 8. Fungi Support & Hierarchical Taxonomy Display
+Add comprehensive UI support for fungi species and display hierarchical taxonomic organization:
+- **Data Integration**: Add fungi filter checkbox and form controls (habitat, substrate type, ecological role)
+- **Learn Page**: Create fungi browsing category with taxonomic tree view (Fungi → Decomposers → Morel, etc.)
+- **Hierarchy Display**: Build taxonomy tree component showing group relationships and species counts
+- **Sighting Support**: Enable fungi sighting logging with substrate-type and fruiting-stage fields
+- **Icons & Badges**: Add fungi-specific visual indicators (🍄 icon, decomposer/mycorrhizal badges)
+- **Stats**: Update life list to include fungi observation counts and seasonal patterns
+
+**Status**: Full implementation plan in `docs/plan-fungi-support.md`; ready for development (6d estimated effort)
+
+**Includes**: 8 Florida fungi species already in dataset; plan covers UI/UX to make them discoverable and actionable
+
+### 9. Organism Type Preferences & Settings Page
+Allow users to customize which organism types to track and display:
+- **Settings Page**: Add organism type toggles (Mammals, Birds, Reptiles, Amphibians, Insects, Plants, Fungi)
+- **Quick Presets**: Provide preset configurations ("Birds Only", "Botanist", "Zoologist", "All Except Fungi", etc.)
+- **Dynamic Filtering**: Filter species lists, forms, learn page, and life list based on enabled types
+- **Smart Defaults**: Remember preferences across sessions; default to all types enabled
+- **Data Preservation**: Keep sightings for disabled types; reappear when re-enabled
+- **UX Guidance**: Show count of hidden sightings and helpful messages when type disabled
+
+**Status**: Full implementation plan in `docs/plan-organism-type-preferences.md`; ready for development (5.5d estimated effort)
+
+**Use Cases**: Bird watchers (birds only), botanists (plants + fungi + insects), zoologists (all animals), pollinators (plants + insects + birds)
+
+### 10. Automated Multilingual Name Fetcher
 Implement a CLI tool to auto-populate multilingual common names from Wikipedia:
 - **Tool**: `fetch-names` CLI (mirrors `fetch-images` pattern)
 - **Source**: Wikipedia language-links API to find vernacular names in other languages
