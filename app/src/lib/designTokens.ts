@@ -100,21 +100,24 @@ export const SYMBIOSIS_ICONS: Record<string, string> = {
 
 export const KEYSTONE_ICONS: Record<string, string> = {
   // Top-level categories
-  ecosystem_engineer: '⚙️',
   predator: '🦅',
-  mutualist: '🤝',
-  resource_provider: '🌰',
-  // Subtypes: ecosystem_engineer
+  ecosystem_engineer: '⚙️',
   foundation_species: '🌳',
+  mutualist: '🤝',
+  trophic_anchor: '🌰',
   // Subtypes: predator
-  aerial_insect_suppression: '🪶',
+  apex_predator: '🦅',
+  insectivore: '🪶',
+  // Subtypes: ecosystem_engineer
+  cavity_creator: '🪵',
+  habitat_modifier: '🦫',
   // Subtypes: mutualist
   pollinator: '🐝',
   seed_disperser: '🐿️',
-  // Subtypes: resource_provider
+  // Subtypes: trophic_anchor
   host_plant: '🌿',
   mast_producer: '🍂',
-  prey_base: '🐭',
+  forage_species: '🐭',
 };
 
 // ============================================================================
@@ -123,21 +126,24 @@ export const KEYSTONE_ICONS: Record<string, string> = {
 
 export const KEYSTONE_LABELS: Record<string, string> = {
   // Top-level categories
+  predator: '🦅 Predator',
   ecosystem_engineer: '⚙️ Ecosystem Engineer',
-  predator: '🦅 Keystone Predator',
-  mutualist: '🤝 Keystone Mutualist',
-  resource_provider: '🌰 Resource Provider',
-  // Subtypes: ecosystem_engineer
   foundation_species: '🌳 Foundation Species',
+  mutualist: '🤝 Mutualist',
+  trophic_anchor: '🌰 Trophic Anchor',
   // Subtypes: predator
-  aerial_insect_suppression: '🪶 Aerial Insect Suppression',
+  apex_predator: '🦅 Apex Predator',
+  insectivore: '🪶 Insectivore',
+  // Subtypes: ecosystem_engineer
+  cavity_creator: '🪵 Cavity Creator',
+  habitat_modifier: '🦫 Habitat Modifier',
   // Subtypes: mutualist
-  pollinator: '🐝 Keystone Pollinator',
+  pollinator: '🐝 Pollinator',
   seed_disperser: '🐿️ Seed Disperser',
-  // Subtypes: resource_provider
+  // Subtypes: trophic_anchor
   host_plant: '🌿 Host Plant',
   mast_producer: '🍂 Mast Producer',
-  prey_base: '🐭 Prey Base',
+  forage_species: '🐭 Forage Species',
 };
 
 // ============================================================================
@@ -274,21 +280,24 @@ export const SYMBIOSIS_LABELS: Record<string, string> = {
 
 export const KEYSTONE_TYPE_LABELS: Record<string, string> = {
   // Top-level categories
-  ecosystem_engineer: 'Ecosystem Engineer',
   predator: 'Predator',
-  mutualist: 'Mutualist',
-  resource_provider: 'Resource Provider',
-  // Subtypes: ecosystem_engineer
+  ecosystem_engineer: 'Ecosystem Engineer',
   foundation_species: 'Foundation Species',
+  mutualist: 'Mutualist',
+  trophic_anchor: 'Trophic Anchor',
   // Subtypes: predator
-  aerial_insect_suppression: 'Aerial Insect Suppression',
+  apex_predator: 'Apex Predator',
+  insectivore: 'Insectivore',
+  // Subtypes: ecosystem_engineer
+  cavity_creator: 'Cavity Creator',
+  habitat_modifier: 'Habitat Modifier',
   // Subtypes: mutualist
   pollinator: 'Pollinator',
   seed_disperser: 'Seed Disperser',
-  // Subtypes: resource_provider
+  // Subtypes: trophic_anchor
   host_plant: 'Host Plant',
   mast_producer: 'Mast Producer',
-  prey_base: 'Prey Base',
+  forage_species: 'Forage Species',
 };
 
 // ============================================================================
