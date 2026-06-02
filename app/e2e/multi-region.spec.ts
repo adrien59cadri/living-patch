@@ -1,7 +1,7 @@
-import { test, expect } from '@playwright/test';
+import { test, expect, Page } from '@playwright/test';
 
 // Helper to enable the France pack via the UI toggle (reliable: uses togglePack in-memory, no hydration race)
-async function enableFrancePack(page: any) {
+async function enableFrancePack(page: Page) {
   await page.goto('/#/packs');
   await page.waitForLoadState('networkidle');
 
