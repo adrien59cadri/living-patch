@@ -1,35 +1,26 @@
 import { test, expect } from '@playwright/test';
 
-// Helper to enable the France pack by directly manipulating the store
+// Helper to enable the France pack via the UI toggle
 async function enableFrancePack(page: any) {
-  // Navigate to home and ensure app is loaded
+  // Navigate to packs page
+  await page.goto('/#/packs');
+  await page.waitForLoadState('networkidle');
+  
+  // Check if france-base is already enabled by looking for "Disable france-base" button
+  const disableButton = page.getByRole('button', { name: 'Disable france-base' });
+  const enableButton = page.getByRole('button', { name: 'Enable france-base' });
+  
+  const isEnabled = await disableButton.isVisible().catch(() => false);
+  
+  if (!isEnabled) {
+    // Click enable button
+    await enableButton.click();
+    await page.waitForLoadState('networkidle');
+  }
+  
+  // Navigate back to home to test the data
   await page.goto('/');
   await page.waitForLoadState('networkidle');
-  
-  // Use page.evaluate to set localStorage
-  await page.evaluate(async () => {
-    const key = 'living-patch-packs-v2';
-    const enabledPacks = ['0-base', 'france-base'];
-    localStorage.setItem(key, JSON.stringify({ enabledPackIds: enabledPacks }));
-  });
-  
-  // Reload page to trigger store initialization
-  await page.reload();
-  await page.waitForLoadState('networkidle');
-  
-  // Wait for French species to be present in the DOM
-  // This ensures the france-base pack data has actually been loaded and merged
-  try {
-    await page.waitForFunction(
-      () => {
-        const text = document.body.innerText;
-        return text.includes('European Robin') || text.includes('France');
-      },
-      { timeout: 10000 }
-    );
-  } catch {
-    // If we timeout, still continue - the pack might be loading
-  }
 }
 
 test.describe('Area filtering (Item 11)', () => {
