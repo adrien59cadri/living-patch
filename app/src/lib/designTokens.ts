@@ -15,6 +15,7 @@ export const FORM_COLORS: Record<string, string> = {
   amphibian: '#A0E7E5',      // pastel turquoise (cyan)
   frog: '#A0E7E5',           // pastel turquoise (cyan)
   reptile: '#D8B8FF',        // pastel purple/lavender
+  fungus: '#D4A574',         // pastel brown (mushroom color)
   default: '#D3D3D3',        // pastel gray
 };
 
@@ -74,6 +75,7 @@ export const FORM_ICONS: Record<string, string> = {
   bee: '🐝',
   dragonfly: '🦟',
   frog: '🐸',
+  fungus: '🍄',
 };
 
 // ============================================================================
@@ -158,11 +160,14 @@ export const INSECT_FORMS = new Set(['butterfly', 'beetle', 'bug', 'bee', 'insec
 
 export const WILDLIFE_FORMS = new Set(['frog', 'amphibian', 'mammal', 'reptile', 'bat']);
 
+export const FUNGI_FORMS = new Set(['fungus']);
+
 // ============================================================================
 // LABEL MAPS - Human-readable labels for all categorical data
 // ============================================================================
 
 export const FORM_LABELS: Record<string, string> = {
+  bird: 'Bird',
   woodpecker: 'Woodpecker',
   raptor: 'Raptor',
   owl: 'Owl',
@@ -170,21 +175,28 @@ export const FORM_LABELS: Record<string, string> = {
   warbler: 'Warbler',
   hummingbird: 'Hummingbird',
   wading_bird: 'Wading Bird',
+  duck: 'Duck',
   bat: 'Bat',
   mammal: 'Mammal',
+  plant: 'Plant',
   tree: 'Tree',
   wildflower: 'Wildflower',
   shrub: 'Shrub',
+  insect: 'Insect',
   butterfly: 'Butterfly',
   beetle: 'Beetle',
   bug: 'Bug',
   bee: 'Bee',
   dragonfly: 'Dragonfly',
+  grasshopper: 'Grasshopper',
+  moth: 'Moth',
+  spider: 'Spider',
   frog: 'Frog',
   salamander: 'Salamander',
   turtle: 'Turtle',
   amphibian: 'Amphibian',
   reptile: 'Reptile',
+  fungus: 'Fungus',
 };
 
 export const SEASON_LABELS: Record<string, string> = {

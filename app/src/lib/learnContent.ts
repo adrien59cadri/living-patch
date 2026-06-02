@@ -163,6 +163,11 @@ export const FORM_DEFINITIONS: Record<string, FormDefinition> = {
     description:
       'Cold-blooded vertebrates with scales. Include turtles, snakes, and lizards. Important predators and prey in aquatic and terrestrial ecosystems.',
   },
+  fungus: {
+    label: 'Fungus',
+    description:
+      'Decomposers and mutualists that play essential roles in ecosystems. Break down dead organic matter, recycle nutrients, and form symbiotic relationships with plants. Include mushrooms, molds, and yeasts.',
+  },
 };
 
 export const KEYSTONE_DEFINITIONS: Record<string, KeystoneDefinition> = {
@@ -413,6 +418,10 @@ export const FORM_HIERARCHY: FormHierarchyNode[] = [
     children: [
       { key: 'turtle' },
     ],
+  },
+  {
+    key: 'fungus',
+    children: [],
   },
 ];
 
