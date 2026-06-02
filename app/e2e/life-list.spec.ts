@@ -10,6 +10,15 @@ test.beforeEach(async ({ page }) => {
 });
 
 test.describe('Sighting logging', () => {
+  test('app loads and monarch species page is accessible (smoke test)', async ({ page }) => {
+    await page.goto(MONARCH_URL, { waitUntil: 'networkidle', timeout: 20000 });
+    // Just verify page has loaded - check for main app container or species detail structure
+    const contentVisible = await page.locator('[class*="species"], [class*="detail"], main, [role="main"]').first().isVisible({ timeout: 5000 }).catch(() => false);
+    if (!contentVisible) {
+      throw new Error('Page loaded (status 200) but no species detail content found. Check if the app UI is rendering.');
+    }
+  });
+
   test('Log Sighting button opens the sighting modal', async ({ page }) => {
     await page.goto(MONARCH_URL);
     await page.getByRole('button', { name: /log sighting/i }).click();
