@@ -82,6 +82,7 @@ test.describe('Species list page basic functionality', () => {
     await page.waitForLoadState('networkidle');
 
     // Check for species count text - should show "167 species"
+    // (144 from 0-base pack + 23 from france-base pack)
     const speciesCountText = page.getByText('167 species');
     await expect(speciesCountText).toBeVisible();
   });

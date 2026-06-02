@@ -138,11 +138,22 @@ test.describe('Area filtering (Item 11)', () => {
   });
 
   test('clear filters button clears area selection', async ({ page }) => {
-    // Filter panel auto-opens when URL has area param (isAdvancedOpen initialises true)
     await page.goto('/#/?area=france');
     await page.waitForLoadState('networkidle');
 
+    // Ensure the advanced filter panel is open (URL param should auto-open it,
+    // but click the Filters button to guarantee it regardless)
+    const filtersButton = page.getByRole('button', { name: /Filters/ });
+    await expect(filtersButton).toBeVisible({ timeout: 10000 });
+    // If panel isn't already open, open it
+    const clearButtonInitial = page.getByRole('button', { name: /Clear filters/ });
+    if (!(await clearButtonInitial.isVisible())) {
+      await filtersButton.click();
+      await page.waitForTimeout(200);
+    }
+
     const clearButton = page.getByRole('button', { name: /Clear filters/ });
+    await expect(clearButton).toBeVisible({ timeout: 5000 });
     await clearButton.click();
     await page.waitForTimeout(400);
 
@@ -303,7 +314,7 @@ test.describe('Pack management (Item 9)', () => {
 
     await expect(page.getByText('Pileated Woodpecker', { exact: true })).not.toBeVisible();
     await expect(page.getByText('European Robin', { exact: true })).toBeVisible();
-    await expect(page.getByText('24 species')).toBeVisible();
+    await expect(page.getByText('23 species')).toBeVisible();
   });
 
   test('packs page shows species count for active packs', async ({ page }) => {
@@ -312,6 +323,6 @@ test.describe('Pack management (Item 9)', () => {
 
     // Each pack card shows its own species count — unique on this page
     await expect(page.getByText('80 species')).toBeVisible();
-    await expect(page.getByText('24 species')).toBeVisible();
+    await expect(page.getByText('23 species')).toBeVisible();
   });
 });

@@ -470,14 +470,6 @@ export const HABITAT_DEFINITIONS: Record<string, HabitatDefinition> = {
     label: 'Forest',
     description: 'Continuous canopy forest dominated by mature trees. High structural diversity with distinct canopy, understory, and ground layers.',
   },
-  deciduous_forest: {
-    label: 'Deciduous forest',
-    description: 'Forest dominated by broad-leaved trees that shed leaves seasonally. Rich in leaf litter, insects, and migratory songbirds.',
-  },
-  mixed_forest: {
-    label: 'Mixed forest',
-    description: 'Combination of deciduous and coniferous trees. High habitat diversity and year-round food sources.',
-  },
   woodland: {
     label: 'Woodland',
     description: 'More open tree-covered habitat with grassy or shrubby understory. Transition zone between forest and open land.',
@@ -493,10 +485,6 @@ export const HABITAT_DEFINITIONS: Record<string, HabitatDefinition> = {
   woodland_edge: {
     label: 'Woodland edge',
     description: 'Margin of woodland meeting open or shrubby habitat. Important for cavity-nesting birds and edge-adapted mammals.',
-  },
-  forest_understory: {
-    label: 'Forest understory',
-    description: 'Lower layer beneath the forest canopy. Dense with shrubs, ferns, and young trees; home to ground-nesting birds and shade-adapted plants.',
   },
   aquatic: {
     label: 'Wetland & Water',
@@ -519,18 +507,6 @@ export const HABITAT_DEFINITIONS: Record<string, HabitatDefinition> = {
     label: 'Pond',
     description: 'Standing water body with littoral vegetation. Key habitat for amphibians, aquatic insects, and waterfowl.',
   },
-  beaver_pond: {
-    label: 'Beaver pond',
-    description: 'Impounded pond created by beavers. Dramatically increases wetland habitat and species diversity in forested landscapes.',
-  },
-  vernal_pool: {
-    label: 'Vernal pool',
-    description: 'Seasonal woodland pool that fills in spring and dries by summer. Critical breeding site for spotted salamanders, wood frogs, and fairy shrimp.',
-  },
-  stream: {
-    label: 'Stream',
-    description: 'Moving freshwater habitat. Supports macroinvertebrates, fish, and riparian species like kingfishers and dippers.',
-  },
   streamside: {
     label: 'Streamside',
     description: 'Immediate bank zone alongside streams. Used for drinking, bathing, and foraging by a wide range of species.',
@@ -543,10 +519,6 @@ export const HABITAT_DEFINITIONS: Record<string, HabitatDefinition> = {
     label: 'Riparian',
     description: 'Corridor along rivers and streams. Disproportionately high biodiversity; used by migrating birds and wide-ranging mammals.',
   },
-  water: {
-    label: 'Water',
-    description: 'Open water surface. Used by diving ducks, herons, and aquatic invertebrates.',
-  },
   open: {
     label: 'Open Land',
     description:
@@ -555,10 +527,6 @@ export const HABITAT_DEFINITIONS: Record<string, HabitatDefinition> = {
   field: {
     label: 'Field',
     description: 'Open agricultural or fallow ground. Used by foraging raptors, seed-eating birds, and small mammals.',
-  },
-  open_field: {
-    label: 'Open field',
-    description: 'Expansive unobstructed grassland or mown field. Preferred by ground-nesting birds and aerial insectivores.',
   },
   field_edge: {
     label: 'Field edge',
@@ -576,10 +544,6 @@ export const HABITAT_DEFINITIONS: Record<string, HabitatDefinition> = {
     label: 'Wet meadow',
     description: 'Low-lying grassy area with seasonally high water table. Hosts sedges, rushes, and wetland-dependent birds.',
   },
-  grassland: {
-    label: 'Grassland',
-    description: 'Extensive open land dominated by grasses. Habitat for bobolinks, meadowlarks, and grassland mammals.',
-  },
   farmland: {
     label: 'Farmland',
     description: 'Agricultural fields and pastures. Important winter foraging habitat for many species adapted to open disturbed land.',
@@ -596,26 +560,6 @@ export const HABITAT_DEFINITIONS: Record<string, HabitatDefinition> = {
   rocky_slope: {
     label: 'Rocky slope',
     description: 'Exposed rock faces and talus. Warm microhabitats used by reptiles, rock-dwelling invertebrates, and cliff-nesting raptors.',
-  },
-  north_facing_slope: {
-    label: 'North-facing slope',
-    description: 'Cool, shaded slope with higher moisture. Supports hemlock, ferns, and species requiring cool microhabitats.',
-  },
-  ravine: {
-    label: 'Ravine',
-    description: 'Steep-sided valley carved by water. Sheltered, humid habitat for shade-tolerant plants and moisture-dependent salamanders.',
-  },
-  dead_trees: {
-    label: 'Dead trees',
-    description: 'Standing snags and fallen logs. Essential for cavity-nesting birds, wood-boring beetles, and fungi-dependent decomposers.',
-  },
-  disturbed_site: {
-    label: 'Disturbed site',
-    description: 'Recently cleared, burned, or otherwise disturbed ground. Pioneer habitat for colonizing plants and generalist insects.',
-  },
-  roadside: {
-    label: 'Roadside',
-    description: 'Verges and embankments alongside roads. Can support pollinators and seed-dispersed plants if unmanaged.',
   },
   urban: {
     label: 'Garden & Urban',
@@ -641,13 +585,10 @@ export const HABITAT_HIERARCHY: HabitatHierarchyNode[] = [
     key: 'wooded',
     children: [
       { key: 'forest' },
-      { key: 'deciduous_forest' },
-      { key: 'mixed_forest' },
       { key: 'woodland' },
       { key: 'open_woodland' },
       { key: 'forest_edge' },
       { key: 'woodland_edge' },
-      { key: 'forest_understory' },
     ],
   },
   {
@@ -657,25 +598,19 @@ export const HABITAT_HIERARCHY: HabitatHierarchyNode[] = [
       { key: 'wetland_edge' },
       { key: 'marsh' },
       { key: 'pond' },
-      { key: 'beaver_pond' },
-      { key: 'vernal_pool' },
-      { key: 'stream' },
       { key: 'streamside' },
       { key: 'stream_edge' },
       { key: 'riparian' },
-      { key: 'water' },
     ],
   },
   {
     key: 'open',
     children: [
       { key: 'field' },
-      { key: 'open_field' },
       { key: 'field_edge' },
       { key: 'meadow' },
       { key: 'dry_meadow' },
       { key: 'wet_meadow' },
-      { key: 'grassland' },
       { key: 'farmland' },
     ],
   },
@@ -684,11 +619,6 @@ export const HABITAT_HIERARCHY: HabitatHierarchyNode[] = [
     children: [
       { key: 'shrubland' },
       { key: 'rocky_slope' },
-      { key: 'north_facing_slope' },
-      { key: 'ravine' },
-      { key: 'dead_trees' },
-      { key: 'disturbed_site' },
-      { key: 'roadside' },
     ],
   },
   {
