@@ -47,3 +47,23 @@ Allow users to customize which organism types to track and display:
 
 **Use Cases**: Bird watchers (birds only), botanists (plants + fungi + insects), zoologists (all animals), pollinators (plants + insects + birds)
 
+### 10. Dynamic Pack Loading (No-Restart)
+
+Replace the current merged-at-build-time `dataset.json` with per-pack JSON files served as static assets. Only `0-base` loads on startup; users can enable or disable additional packs from the Packs page without restarting the app.
+
+- Build step emits `app/public/packs/{id}.json` + a lightweight `manifest.json` (metadata only)
+- App fetches `manifest.json` on startup to discover available packs, then fetches only the enabled ones
+- Enabled pack list persists to localStorage; pack data is fetched fresh on each load (not stored in localStorage)
+- Toggling a pack on fetches its JSON and merges it into the active dataset; toggling off removes it from memory
+- Packs page shows all available packs from the manifest, with per-pack loading spinners and error states
+
+**Status**: Specification complete in `plan-dynamic-pack-loading.md`; ready for implementation
+
+---
+
+## Implementation Notes
+
+- **Dataset Structure**: Datasets remain one per pack but are pre-validated and minified during distribution
+- **Data Processing**: Deduplication and conflict resolution moved to app layer for flexibility
+- **Performance**: Consider caching and indexing strategies for multi-dataset queries
+- **User Experience**: Provide clear controls for toggling features and managing data sources
