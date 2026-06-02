@@ -132,6 +132,18 @@ Implement a CLI tool to auto-populate multilingual common names from Wikipedia:
 
 **Status**: Specification complete in `plan-fetch-names.md`; ready for implementation
 
+### 9. Dynamic Pack Loading (No-Restart)
+
+Replace the current merged-at-build-time `dataset.json` with per-pack JSON files served as static assets. Only `0-base` loads on startup; users can enable or disable additional packs from the Packs page without restarting the app.
+
+- Build step emits `app/public/packs/{id}.json` + a lightweight `manifest.json` (metadata only)
+- App fetches `manifest.json` on startup to discover available packs, then fetches only the enabled ones
+- Enabled pack list persists to localStorage; pack data is fetched fresh on each load (not stored in localStorage)
+- Toggling a pack on fetches its JSON and merges it into the active dataset; toggling off removes it from memory
+- Packs page shows all available packs from the manifest, with per-pack loading spinners and error states
+
+**Status**: Specification complete in `plan-dynamic-pack-loading.md`; ready for implementation
+
 ---
 
 ## Implementation Notes
