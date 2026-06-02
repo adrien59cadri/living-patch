@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import type { FilterState } from '../lib/filters';
 import { formLabel, habitatLabel, keystoneTypeLabel, areaLabel } from '../lib/labels';
-import { getTopLevelForms, getChildForms, getTopLevelHabitats, getChildHabitats } from '../lib/learnContent';
+import { getTopLevelForms, getChildForms, getTopLevelHabitats, getChildHabitats } from '../lib/taxonomies';
 
 interface FilterOptions {
   forms: string[];

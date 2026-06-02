@@ -5,7 +5,7 @@ import {
   getAllDescendantForms,
   getTopLevelHabitats,
   getAllDescendantHabitats,
-} from './learnContent';
+} from './taxonomies';
 
 export interface FilterState {
   search: string;

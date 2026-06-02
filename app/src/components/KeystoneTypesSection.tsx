@@ -1,5 +1,5 @@
 import type { Species } from '../types';
-import { KEYSTONE_DEFINITIONS, KEYSTONE_HIERARCHY, getKeystonesByType } from '../lib/learnContent';
+import { KEYSTONE_DEFINITIONS, KEYSTONE_HIERARCHY, getKeystonesByType } from '../lib/taxonomies';
 import { getKeystoneIcon } from '../lib/designTokens';
 import ExampleSpeciesLink from './ExampleSpeciesLink';
 

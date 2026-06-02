@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import type { Species } from '../types';
-import { FORM_DEFINITIONS, getFormExamples, FORM_HIERARCHY, type FormHierarchyNode } from '../lib/learnContent';
+import { FORM_DEFINITIONS, getFormExamples, FORM_HIERARCHY, type FormHierarchyNode } from '../lib/taxonomies';
 import { formIcon } from '../lib/labels';
 import ExampleSpeciesLink from './ExampleSpeciesLink';
 

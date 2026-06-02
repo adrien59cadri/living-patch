@@ -5,7 +5,7 @@ import {
   getTopLevelForms, getChildForms,
   getTopLevelHabitats, getChildHabitats,
   getTopLevelKeystoneTypes, getChildKeystoneTypes,
-} from '../lib/learnContent';
+} from '../lib/taxonomies';
 
 interface FilterOptions {
   forms: string[];

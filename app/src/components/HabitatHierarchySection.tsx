@@ -6,7 +6,7 @@ import {
   HABITAT_HIERARCHY,
   getHabitatExamples,
   type HabitatHierarchyNode,
-} from '../lib/learnContent';
+} from '../lib/taxonomies';
 import { habitatIcon, habitatLabel } from '../lib/labels';
 import ExampleSpeciesLink from './ExampleSpeciesLink';
 

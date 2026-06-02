@@ -1,5 +1,5 @@
 import type { Species, Symbiosis } from '../types';
-import { SYMBIOSIS_DEFINITIONS, getSymbiosisByType, getSymbiosisExample } from '../lib/learnContent';
+import { SYMBIOSIS_DEFINITIONS, getSymbiosisByType, getSymbiosisExample } from '../lib/taxonomies';
 import { getSymbiosisIcon } from '../lib/designTokens';
 import { getCommonName } from '../lib/labels';
 import ExampleSpeciesLink from './ExampleSpeciesLink';
