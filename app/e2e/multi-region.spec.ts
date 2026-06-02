@@ -1,23 +1,37 @@
 import { test, expect } from '@playwright/test';
 
-// Helper to enable the France pack
+// Helper to enable the France pack by directly manipulating the store
 async function enableFrancePack(page: any) {
-  // Navigate to packs page
-  await page.goto('/#/packs');
-  await page.waitForTimeout(1000);
-  
-  // Click Enable button if france-base is not yet enabled
-  const enableButton = page.getByRole('button', { name: 'Enable france-base' });
-  const isEnabled = await enableButton.count() === 0; // If button doesn't exist, already enabled
-  
-  if (!isEnabled) {
-    await enableButton.click();
-    await page.waitForTimeout(3000);
-  }
-  
-  // Go back to home
+  // Navigate to home and ensure app is loaded
   await page.goto('/');
-  await page.waitForTimeout(1000);
+  
+  // Use page.evaluate to call the Zustand store's togglePack method
+  await page.evaluate(async () => {
+    // Access the Zustand store through window (it's exposed for dev tools)
+    const storeKey = localStorage.getItem('living-patch-packs-v2');
+    let enabledPacks = ['0-base'];
+    
+    if (storeKey) {
+      try {
+        const data = JSON.parse(storeKey);
+        enabledPacks = data.enabledPackIds || ['0-base'];
+      } catch { }
+    }
+    
+    if (!enabledPacks.includes('france-base')) {
+      enabledPacks.push('france-base');
+      localStorage.setItem('living-patch-packs-v2', JSON.stringify({ enabledPackIds: enabledPacks }));
+    }
+  });
+  
+  // Reload page to pick up the new localStorage value
+  await page.reload();
+  
+  // Wait for the species data to load
+  await page.waitForLoadState('networkidle');
+  
+  // Extra safety wait for UI to render
+  await page.waitForTimeout(500);
 }
 
 test.describe('Area filtering (Item 11)', () => {
