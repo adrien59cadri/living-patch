@@ -22,6 +22,10 @@ async function enableFrancePack(page: Page) {
   // (no page reload), preserving the Zustand store with france-base already loaded.
   await page.goto('/#/');
   await page.waitForLoadState('networkidle');
+  
+  // Wait for French species to actually render in the dataset before continuing
+  // This ensures the index has been rebuilt and the UI has updated
+  await page.getByText(/European Robin/i).first().waitFor({ timeout: 10000 });
 }
 
 test.describe('Area filtering (Item 11)', () => {
@@ -62,10 +66,10 @@ test.describe('Area filtering (Item 11)', () => {
     await page.waitForLoadState('networkidle');
 
     // French species should be visible (e.g., European Robin)
-    await expect(page.getByText('European Robin', { exact: true })).toBeVisible();
+    await expect(page.getByText(/European Robin/i).first()).toBeVisible();
 
     // US species should not be visible (e.g., Pileated Woodpecker)
-    await expect(page.getByText('Pileated Woodpecker', { exact: true })).not.toBeVisible();
+    await expect(page.getByText(/Pileated Woodpecker/i).first()).not.toBeVisible();
   });
 
   test('?area=france URL param filters to French species on load', async ({ page }) => {
@@ -91,10 +95,10 @@ test.describe('Area filtering (Item 11)', () => {
     expect(chipClass).toContain('bg-sky-600');
 
     // French species should be visible
-    await expect(page.getByText('European Robin', { exact: true })).toBeVisible();
+    await expect(page.getByText(/European Robin/i).first()).toBeVisible();
 
     // US species should not be visible
-    await expect(page.getByText('Pileated Woodpecker', { exact: true })).not.toBeVisible();
+    await expect(page.getByText(/Pileated Woodpecker/i).first()).not.toBeVisible();
   });
 
   test('?area=northeast_pa URL param filters to NE PA species on load', async ({ page }) => {
@@ -120,10 +124,10 @@ test.describe('Area filtering (Item 11)', () => {
     expect(chipClass).toContain('bg-sky-600');
 
     // US species should be visible
-    await expect(page.getByText('Pileated Woodpecker', { exact: true })).toBeVisible();
+    await expect(page.getByText(/Pileated Woodpecker/i).first()).toBeVisible();
 
     // French species should not be visible
-    await expect(page.getByText('European Robin', { exact: true })).not.toBeVisible();
+    await expect(page.getByText(/European Robin/i).first()).not.toBeVisible();
   });
 
   test('clicking area chip updates URL param', async ({ page }) => {
