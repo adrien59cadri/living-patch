@@ -245,11 +245,7 @@ test.describe('French species (Item 10)', () => {
     // Enable France pack first
     await enableFrancePack(page);
 
-<<<<<<< HEAD
     await expect(page.getByText(/\d+ species/)).toBeVisible();
-=======
-    await expect(page.getByText('105 species')).toBeVisible();
->>>>>>> 3ae6bcf (Update e2e test constants for new species)
   });
 
   test('French bird species are visible when all areas selected', async ({ page }) => {

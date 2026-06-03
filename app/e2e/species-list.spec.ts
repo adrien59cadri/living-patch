@@ -284,13 +284,9 @@ test.describe('Quick filter bar', () => {
 
     // Click again to deselect
     await chip.click();
-<<<<<<< HEAD
     // Full species count should be visible again (flexible on exact number)
     const fullSpeciesCount = page.getByText(/^\d+ species$/);
     await expect(fullSpeciesCount).toBeVisible();
-=======
-    await expect(page.getByText('105 species', { exact: true })).toBeVisible();
->>>>>>> 3ae6bcf (Update e2e test constants for new species)
     await expect(page.getByText('Pileated Woodpecker', { exact: true })).toBeVisible();
   });
 
