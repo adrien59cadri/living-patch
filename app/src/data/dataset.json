@@ -876,7 +876,7 @@
             "region": "northeast_pa",
             "ecological_role": "herbivore",
             "is_keystone": true,
-            "keystone_type": "mutualist",
+            "keystone_type": "pollinator",
             "keystone_description": "Obligate on milkweed — cannot breed without genus Asclepias. Pollinates milkweed and goldenrod. Iconic indicator of agricultural landscape health.",
             "active_months": [
               "May-Oct"
@@ -3504,7 +3504,7 @@
             "region": "northeast_pa",
             "ecological_role": "producer",
             "is_keystone": true,
-            "keystone_type": "mutualist",
+            "keystone_type": "forage_species",
             "keystone_description": "The keystone late-season wildflower of NE PA. Blooms when virtually all other native nectar sources have gone to seed — providing critical late-migration fuel for Monarch Butterfly (fall migration) and the last major pollen and nectar resource for native bumble bee queens before winter dormancy. Loss of roadside and meadow aster patches is linked to bumble bee colony failure rates in fall.",
             "image": {
               "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Symphyotrichum_novae-angliae3.jpg/500px-Symphyotrichum_novae-angliae3.jpg",
@@ -3639,7 +3639,7 @@
             "region": "northeast_pa",
             "ecological_role": "producer",
             "is_keystone": true,
-            "keystone_type": "mutualist",
+            "keystone_type": "habitat_modifier",
             "keystone_description": "Premier midsummer pollinator tree of NE PA forests. When spring wildflowers are gone and summer has few blooming species, basswood delivers an enormous single-species nectar pulse in late June–July that sustains bumble bee colonies through peak queen production. Soft decaying wood creates cavity habitat for woodpeckers, Wood Ducks, and small mammals. A landscape-level resource that many species time their activity around.",
             "image": {
               "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Tilia_americana_%28American_Linden%29_%2828268263222%29.jpg/500px-Tilia_americana_%28American_Linden%29_%2828268263222%29.jpg",
