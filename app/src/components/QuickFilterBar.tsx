@@ -1,7 +1,11 @@
 import { useState } from 'react';
 import type { FilterState } from '../lib/filters';
-import { formLabel, habitatLabel, keystoneTypeLabel, areaLabel } from '../lib/labels';
-import { getTopLevelForms, getChildForms, getTopLevelHabitats, getChildHabitats } from '../lib/taxonomies';
+import { formLabel, habitatLabel, keystoneLabel, areaLabel, formIcon } from '../lib/labels';
+import {
+  getTopLevelForms, getChildForms,
+  getTopLevelHabitats, getChildHabitats,
+  getTopLevelKeystoneTypes, getChildKeystoneTypes,
+} from '../lib/taxonomies';
 
 interface FilterOptions {
   forms: string[];
@@ -20,168 +24,161 @@ function toggle(arr: string[], val: string): string[] {
   return arr.includes(val) ? arr.filter(v => v !== val) : [...arr, val];
 }
 
-export function QuickFilterBar({ options, filters, onChange }: Props) {
-  const [expandedFormTopLevel, setExpandedFormTopLevel] = useState<string | null>(null);
-  const [expandedHabitatTopLevel, setExpandedHabitatTopLevel] = useState<string | null>(null);
+interface HierarchicalFilterChipsProps {
+  items: string[];
+  getLabel: (key: string) => string;
+  getChildren: (parent: string) => string[];
+  availableItems: string[];
+  selectedItems: string[];
+  onSelectedChange: (items: string[]) => void;
+  colors: {
+    active: string;
+    inactive: string;
+    subActive: string;
+    subInactive: string;
+    border: string;
+  };
+}
 
+function HierarchicalFilterChips({
+  items,
+  getLabel,
+  getChildren,
+  availableItems,
+  selectedItems,
+  onSelectedChange,
+  colors,
+}: HierarchicalFilterChipsProps) {
+  const [expandedTopLevel, setExpandedTopLevel] = useState<string | null>(null);
+
+  const activeTopLevel = expandedTopLevel ||
+    items.find(tl => {
+      const children = getChildren(tl);
+      return selectedItems.some(item => [tl, ...children].includes(item));
+    });
+
+  return (
+    <div className="space-y-2">
+      <div className="flex flex-wrap gap-1.5">
+        {items.map(item => {
+          const isExpanded = activeTopLevel === item;
+          const isActive = isExpanded ||
+            (selectedItems.length > 0 &&
+              (selectedItems.includes(item) ||
+                getChildren(item).some(child => selectedItems.includes(child))));
+          return (
+            <button
+              key={item}
+              onClick={() => {
+                if (isExpanded) {
+                  setExpandedTopLevel(null);
+                  onSelectedChange([]);
+                } else {
+                  setExpandedTopLevel(item);
+                  onSelectedChange([item]);
+                }
+              }}
+              className={[
+                'text-xs px-2 py-0.5 rounded-full transition-colors',
+                isActive ? colors.active : colors.inactive,
+              ].join(' ')}
+            >
+              {getLabel(item)}
+            </button>
+          );
+        })}
+      </div>
+
+      {activeTopLevel && getChildren(activeTopLevel).length > 0 && (
+        <div className={`flex flex-wrap gap-1.5 pl-2 border-l-2 ${colors.border}`}>
+          {getChildren(activeTopLevel)
+            .filter(child => availableItems.includes(child))
+            .map(child => {
+              const active = selectedItems.includes(child);
+              return (
+                <button
+                  key={child}
+                  onClick={() => {
+                    const withoutParent = selectedItems.filter(k => k !== activeTopLevel);
+                    onSelectedChange(toggle(withoutParent, child));
+                  }}
+                  className={[
+                    'text-xs px-2 py-0.5 rounded-full transition-colors',
+                    active ? colors.subActive : colors.subInactive,
+                  ].join(' ')}
+                >
+                  {`└─ ${getLabel(child)}`}
+                </button>
+              );
+            })}
+        </div>
+      )}
+    </div>
+  );
+}
+
+export function QuickFilterBar({ options, filters, onChange }: Props) {
   const topLevelForms = getTopLevelForms();
   const topLevelHabitats = getTopLevelHabitats();
 
-  // Determine which top-level form should be expanded
-  const activeFormTopLevel = expandedFormTopLevel ||
-    topLevelForms.find(tl => {
-      const children = getChildForms(tl);
-      return filters.forms.some(f => [tl, ...children].includes(f));
-    });
-
-  // Determine which top-level habitat should be expanded
-  const activeHabitatTopLevel = expandedHabitatTopLevel ||
-    topLevelHabitats.find(tl => {
-      const children = getChildHabitats(tl);
-      return filters.habitats.some(h => children.includes(h));
-    });
-
-  // Only show habitat top-level groups that have children present in dataset
   const visibleHabitatTopLevels = topLevelHabitats.filter(tl =>
     getChildHabitats(tl).some(child => options.habitats.includes(child)),
   );
 
+  const visibleKeystoneTopLevels = getTopLevelKeystoneTypes().filter(tl => {
+    const children = getChildKeystoneTypes(tl);
+    return children.some(child => options.keystone_types.includes(child))
+      || options.keystone_types.includes(tl);
+  });
+
+  // All possible sub-forms (unfiltered by dataset — form taxonomy is always fully browsable)
+  const allSubForms = topLevelForms.flatMap(f => getChildForms(f));
+
   const hasForm = topLevelForms.length > 0;
   const hasHabitat = visibleHabitatTopLevels.length > 0;
-  const hasKeystone = options.keystone_types.length > 0;
+  const hasKeystone = visibleKeystoneTopLevels.length > 0;
   const hasArea = options.areas.length > 1;
 
   if (!hasForm && !hasHabitat && !hasKeystone && !hasArea) return null;
 
   return (
     <div className="space-y-2">
-      {/* Form chips – hierarchical */}
+      {/* Form chips – hierarchical with icons */}
       {hasForm && (
-        <div className="space-y-2">
-          {/* Top-level form chips */}
-          <div className="flex flex-wrap gap-1.5">
-            {topLevelForms.map(form => {
-              const isExpanded = activeFormTopLevel === form;
-              const isActive = isExpanded ||
-                (filters.forms.length > 0 &&
-                 (filters.forms.includes(form) ||
-                  getChildForms(form).some(child => filters.forms.includes(child))));
-              return (
-                <button
-                  key={form}
-                  onClick={() => {
-                    if (isExpanded) {
-                      setExpandedFormTopLevel(null);
-                      onChange({ ...filters, forms: [] });
-                    } else {
-                      setExpandedFormTopLevel(form);
-                      onChange({ ...filters, forms: [form] });
-                    }
-                  }}
-                  className={[
-                    'text-xs px-2 py-0.5 rounded-full transition-colors',
-                    isActive
-                      ? 'bg-amber-600 text-white'
-                      : 'bg-amber-100 text-amber-800 hover:bg-amber-200',
-                  ].join(' ')}
-                >
-                  {formLabel(form)}
-                </button>
-              );
-            })}
-          </div>
-
-          {/* Sub-category chips for expanded form */}
-          {activeFormTopLevel && (
-            <div className="flex flex-wrap gap-1.5 pl-2 border-l-2 border-amber-300">
-              {getChildForms(activeFormTopLevel).map(form => {
-                const active = filters.forms.includes(form);
-                return (
-                  <button
-                    key={form}
-                    onClick={() => {
-                      const withoutParent = filters.forms.filter(f => f !== activeFormTopLevel);
-                      onChange({ ...filters, forms: toggle(withoutParent, form) });
-                    }}
-                    className={[
-                      'text-xs px-2 py-0.5 rounded-full transition-colors',
-                      active
-                        ? 'bg-amber-500 text-white'
-                        : 'bg-amber-50 text-amber-700 hover:bg-amber-100 border border-amber-200',
-                    ].join(' ')}
-                  >
-                    {`└─ ${formLabel(form)}`}
-                  </button>
-                );
-              })}
-            </div>
-          )}
-        </div>
+        <HierarchicalFilterChips
+          items={topLevelForms}
+          getLabel={form => `${formIcon(form)} ${formLabel(form)}`}
+          getChildren={getChildForms}
+          availableItems={allSubForms}
+          selectedItems={filters.forms}
+          onSelectedChange={forms => onChange({ ...filters, forms })}
+          colors={{
+            active: 'bg-amber-600 text-white',
+            inactive: 'bg-amber-100 text-amber-800 hover:bg-amber-200',
+            subActive: 'bg-amber-500 text-white',
+            subInactive: 'bg-amber-50 text-amber-700 hover:bg-amber-100 border border-amber-200',
+            border: 'border-amber-300',
+          }}
+        />
       )}
 
       {/* Habitat chips – hierarchical */}
       {hasHabitat && (
-        <div className="space-y-2">
-          {/* Top-level habitat chips */}
-          <div className="flex flex-wrap gap-1.5">
-            {visibleHabitatTopLevels.map(habitat => {
-              const isExpanded = activeHabitatTopLevel === habitat;
-              const isActive = isExpanded ||
-                (filters.habitats.length > 0 &&
-                  getChildHabitats(habitat).some(child => filters.habitats.includes(child)));
-              return (
-                <button
-                  key={habitat}
-                  onClick={() => {
-                    if (isExpanded) {
-                      setExpandedHabitatTopLevel(null);
-                      onChange({ ...filters, habitats: [] });
-                    } else {
-                      setExpandedHabitatTopLevel(habitat);
-                      onChange({ ...filters, habitats: [habitat] });
-                    }
-                  }}
-                  className={[
-                    'text-xs px-2 py-0.5 rounded-full transition-colors',
-                    isActive
-                      ? 'bg-emerald-600 text-white'
-                      : 'bg-emerald-100 text-emerald-700 hover:bg-emerald-200',
-                  ].join(' ')}
-                >
-                  {habitatLabel(habitat)}
-                </button>
-              );
-            })}
-          </div>
-
-          {/* Sub-category chips for expanded habitat */}
-          {activeHabitatTopLevel && (
-            <div className="flex flex-wrap gap-1.5 pl-2 border-l-2 border-emerald-300">
-              {getChildHabitats(activeHabitatTopLevel)
-                .filter(child => options.habitats.includes(child))
-                .map(habitat => {
-                  const active = filters.habitats.includes(habitat);
-                  return (
-                    <button
-                      key={habitat}
-                      onClick={() => {
-                        const withoutParent = filters.habitats.filter(h => h !== activeHabitatTopLevel);
-                        onChange({ ...filters, habitats: toggle(withoutParent, habitat) });
-                      }}
-                      className={[
-                        'text-xs px-2 py-0.5 rounded-full transition-colors',
-                        active
-                          ? 'bg-emerald-500 text-white'
-                          : 'bg-emerald-50 text-emerald-700 hover:bg-emerald-100 border border-emerald-200',
-                      ].join(' ')}
-                    >
-                      {`└─ ${habitatLabel(habitat)}`}
-                    </button>
-                  );
-                })}
-            </div>
-          )}
-        </div>
+        <HierarchicalFilterChips
+          items={visibleHabitatTopLevels}
+          getLabel={habitatLabel}
+          getChildren={getChildHabitats}
+          availableItems={options.habitats}
+          selectedItems={filters.habitats}
+          onSelectedChange={habitats => onChange({ ...filters, habitats })}
+          colors={{
+            active: 'bg-emerald-600 text-white',
+            inactive: 'bg-emerald-100 text-emerald-700 hover:bg-emerald-200',
+            subActive: 'bg-emerald-500 text-white',
+            subInactive: 'bg-emerald-50 text-emerald-700 hover:bg-emerald-100 border border-emerald-200',
+            border: 'border-emerald-300',
+          }}
+        />
       )}
 
       {/* Area chips – multi-select */}
@@ -207,32 +204,23 @@ export function QuickFilterBar({ options, filters, onChange }: Props) {
         </div>
       )}
 
-      {/* Keystone type chips – multi-select */}
+      {/* Keystone type chips – hierarchical with icons */}
       {hasKeystone && (
-        <div className="flex flex-wrap gap-1.5">
-          {options.keystone_types.map(kt => {
-            const active = filters.keystone_types.includes(kt);
-            return (
-              <button
-                key={kt}
-                onClick={() =>
-                  onChange({
-                    ...filters,
-                    keystone_types: toggle(filters.keystone_types, kt),
-                  })
-                }
-                className={[
-                  'text-xs px-2 py-0.5 rounded-full transition-colors',
-                  active
-                    ? 'bg-stone-600 text-white'
-                    : 'bg-stone-100 text-stone-600 hover:bg-stone-200',
-                ].join(' ')}
-              >
-                {keystoneTypeLabel(kt)}
-              </button>
-            );
-          })}
-        </div>
+        <HierarchicalFilterChips
+          items={visibleKeystoneTopLevels}
+          getLabel={keystoneLabel}
+          getChildren={getChildKeystoneTypes}
+          availableItems={options.keystone_types}
+          selectedItems={filters.keystone_types}
+          onSelectedChange={keystone_types => onChange({ ...filters, keystone_types })}
+          colors={{
+            active: 'bg-stone-600 text-white',
+            inactive: 'bg-stone-100 text-stone-600 hover:bg-stone-200',
+            subActive: 'bg-stone-500 text-white',
+            subInactive: 'bg-stone-50 text-stone-600 hover:bg-stone-100 border border-stone-200',
+            border: 'border-stone-300',
+          }}
+        />
       )}
     </div>
   );

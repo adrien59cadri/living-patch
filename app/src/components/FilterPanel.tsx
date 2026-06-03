@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import type { FilterState } from '../lib/filters';
-import { formLabel, habitatLabel, keystoneTypeLabel, areaLabel } from '../lib/labels';
+import { formLabel, habitatLabel, keystoneLabel, areaLabel, formIcon } from '../lib/labels';
 import {
   getTopLevelForms, getChildForms,
   getTopLevelHabitats, getChildHabitats,
@@ -116,7 +116,7 @@ export function FilterPanel({ options, filters, onChange }: Props) {
           <option value="">All forms</option>
           {topLevelForms.map(form => (
             <option key={form} value={form}>
-              {formLabel(form)}
+              {`${formIcon(form)} ${formLabel(form)}`}
             </option>
           ))}
         </select>
@@ -127,7 +127,7 @@ export function FilterPanel({ options, filters, onChange }: Props) {
             {getChildForms(activeFormTopLevel).map(form => (
               <CheckboxItem
                 key={form}
-                label={`└─ ${formLabel(form)}`}
+                label={`└─ ${formIcon(form)} ${formLabel(form)}`}
                 checked={filters.forms.includes(form)}
                 onChange={() => {
                   const withoutParent = filters.forms.filter(f => f !== activeFormTopLevel);
@@ -220,7 +220,7 @@ export function FilterPanel({ options, filters, onChange }: Props) {
             <option value="">All keystone types</option>
             {visibleKeystoneTopLevels.map(kt => (
               <option key={kt} value={kt}>
-                {keystoneTypeLabel(kt)}
+                {keystoneLabel(kt)}
               </option>
             ))}
           </select>
@@ -233,7 +233,7 @@ export function FilterPanel({ options, filters, onChange }: Props) {
                 .map(kt => (
                   <CheckboxItem
                     key={kt}
-                    label={`└─ ${keystoneTypeLabel(kt)}`}
+                    label={`└─ ${keystoneLabel(kt)}`}
                     checked={filters.keystone_types.includes(kt)}
                     onChange={() => {
                       const withoutParent = filters.keystone_types.filter(k => k !== activeKeystoneTopLevel);
