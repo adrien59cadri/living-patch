@@ -38,7 +38,7 @@ export function AllSpeciesTab() {
       // date: most recent first
       return b.lastUpdated - a.lastUpdated;
     });
-}, [entries, sightings, tierFilter, sort, speciesById, tierMap]);
+  }, [entries, tierFilter, sort, speciesById, tierMap]);
 
   if (entries.length === 0) {
     return (

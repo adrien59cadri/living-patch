@@ -4,6 +4,10 @@ export default defineConfig({
   testDir: './e2e',
   fullyParallel: true,
   retries: process.env.CI ? 2 : 0,
+  timeout: 10000,
+  expect: {
+    timeout: 10000,
+  },
   reporter: process.env.CI ? 'github' : 'html',
   use: {
     baseURL: 'http://localhost:4173',
@@ -19,5 +23,6 @@ export default defineConfig({
     command: 'npm run preview',
     url: 'http://localhost:4173',
     reuseExistingServer: !process.env.CI,
+    timeout: 120000,
   },
 });

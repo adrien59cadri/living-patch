@@ -1,6 +1,6 @@
 import { HashRouter, Routes, Route } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import { Suspense, lazy } from 'react';
+import { Suspense, lazy, useEffect } from 'react';
 import HomePage from './pages/HomePage';
 import DetailPage from './pages/DetailPage';
 import NeighborListView from './pages/NeighborListView';
@@ -9,6 +9,7 @@ import SettingsPage from './pages/SettingsPage';
 import LifeListPage from './pages/LifeListPage';
 import PacksPage from './pages/PacksPage';
 import { UserPreferencesProvider } from './stores/userPreferences';
+import { usePacksStore } from './stores/packs';
 
 // Lazy load RelationshipDiagramPage to avoid loading ForceGraph2D and THREE.js until needed
 const RelationshipDiagramPage = lazy(async () => {
@@ -17,6 +18,20 @@ const RelationshipDiagramPage = lazy(async () => {
 });
 
 export default function App() {
+  const isInitialized = usePacksStore(s => s.isInitialized);
+
+  useEffect(() => {
+    usePacksStore.getState().initializePacks();
+  }, []);
+
+  if (!isInitialized) {
+    return (
+      <div className="flex items-center justify-center min-h-screen text-stone-500 text-sm">
+        🌿 Loading packs...
+      </div>
+    );
+  }
+
   return (
     <UserPreferencesProvider>
       <HashRouter>
