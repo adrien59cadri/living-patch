@@ -81,7 +81,6 @@ test.describe('Species list page basic functionality', () => {
     await page.goto('/');
     await page.waitForLoadState('networkidle');
 
-    // Default: only 0-base pack loads (80 species)
     // Check that a species count is displayed (flexible on exact number)
     const speciesCount = page.getByText(/\d+ species/);
     await expect(speciesCount).toBeVisible();
@@ -305,7 +304,7 @@ test.describe('Quick filter bar', () => {
     if (await forestCheckbox.isVisible()) {
       await forestCheckbox.click();
       // Count should change after filtering
-      await expect(page.getByText('103 species', { exact: true })).not.toBeVisible();
+      await expect(page.getByText('105 species', { exact: true })).not.toBeVisible();
       // Pileated Woodpecker lives in forest
       await expect(page.getByText('Pileated Woodpecker', { exact: true })).toBeVisible();
     }

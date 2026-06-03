@@ -3875,6 +3875,41 @@
         }
       },
       {
+        "id": "bird_black-capped-chickadee",
+        "common_name": "Black-capped Chickadee",
+        "latin_name": "Lophophanes atricapillus",
+        "form": "songbird",
+        "habitat": [
+          "forest",
+          "woodland",
+          "garden"
+        ],
+        "diet": [
+          "insect_eater",
+          "seed_eater"
+        ],
+        "behavior": [
+          "cavity_nester",
+          "flock_former",
+          "acrobatic"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "functional_description": "Small, active songbird with black cap and bib, white cheeks. Year-round PA resident in northeastern white pine and mixed forests. Acrobatic feeder — hangs upside-down to extract insects from bark and twigs. Winter diet switches to seeds; critical goldenrod gall excavator alongside Downy Woodpecker. Joins mixed-species winter flocks. Cavity nester using woodpecker holes and nest boxes. Highly social; chickadees maintain complex dominance hierarchies and share information about food sources and predators through vocalizations (including the distinctive 'chick-a-dee-dee-dee' call).",
+        "life_stages": [],
+        "region": "northeast_pa",
+        "ecological_role": "consumer",
+        "is_keystone": true,
+        "keystone_type": "food_web_connector",
+        "keystone_description": "Winter seed consumer and invertebrate predator. Critical link between woody plants (seeds and galls) and predators through social flocking behavior. Chickadee presence indicates healthy understory structure and predator-tolerant forest edge habitat. Social information transmission about predators enhances flock vigilance and survival.",
+        "taxonomic_group": "group_songbirds",
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Black-capped_Chickadee_2.jpg/500px-Black-capped_Chickadee_2.jpg",
+          "author": "Mdf"
+        }
+      },
+      {
         "id": "insect_zebra-swallowtail",
         "common_name": "Zebra Swallowtail",
         "latin_name": "Eurytides marcellus",
@@ -3939,6 +3974,41 @@
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Zebra_Swallowtail_Megan_McCarty10.jpg/500px-Zebra_Swallowtail_Megan_McCarty10.jpg",
           "author": "Meganmccarty"
+        }
+      },
+      {
+        "id": "fish_brook-trout",
+        "common_name": "Brook Trout",
+        "latin_name": "Salvelinus fontinalis",
+        "form": "fish",
+        "habitat": [
+          "stream",
+          "cold_water_creek",
+          "spring_fed_pond"
+        ],
+        "diet": [
+          "insect_eater",
+          "predator"
+        ],
+        "behavior": [
+          "ambush_hunter",
+          "benthic_feeder",
+          "migratory"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "functional_description": "Small salmonid trout endemic to northeastern North America. Native to NE PA cold-water streams and headwater creeks — requires water below 65°F year-round. Distinctive coloring: dark back with light wavy 'vermiculated' markings; red-orange spots ringed in blue on sides. Top and middle predators in stream food webs — feeds on aquatic insect nymphs (mayflies, caddisflies, stoneflies) as juveniles; larger adults take sculpin, other small fish, and terrestrial insects. Brook Trout presence is an indicator of clean, well-oxygenated, cold water with intact riparian forest providing leaf-litter input and temperature regulation. Once abundant throughout NE PA but now restricted to headwater tributaries due to stream warming and siltation from deforestation and agriculture.",
+        "life_stages": [],
+        "region": "northeast_pa",
+        "ecological_role": "carnivore",
+        "is_keystone": true,
+        "keystone_type": "indicator_species",
+        "keystone_description": "Top predator in cold-water stream food webs; controls aquatic insect populations. Primary indicator of high-quality watershed conditions — brook trout populations reflect stream temperature, dissolved oxygen, substrate quality, and absence of chemical pollution. Presence signals intact riparian forest, groundwater recharge, and minimal human disturbance. Brook Trout populations have contracted to <10% of historical range in PA; restoration efforts focus on riparian forest recovery and dam removal to reconnect headwater habitat.",
+        "taxonomic_group": "group_coldwater-fish",
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Brook_Trout_-_NOAA.jpg/500px-Brook_Trout_-_NOAA.jpg",
+          "author": "NOAA"
         }
       }
     ],
@@ -4026,6 +4096,12 @@
         "label": "Dragonflies",
         "common_traits": "Aerial and aquatic predators; nymphs spend 1–3 years as top invertebrate predators in ponds and streams; adults control flying insect populations including mosquitoes",
         "notes": "Order Odonata, suborder Anisoptera; Eastern Pondhawk and Common Whitetail are the most visible NE PA representatives"
+      },
+      {
+        "id": "group_coldwater-fish",
+        "label": "Cold-water Fish",
+        "common_traits": "Native salmonids and other fish of cold, high-quality streams; require well-oxygenated water below 65°F; indicator species for watershed health; top aquatic predators controlling insect populations",
+        "notes": "Family Salmonidae; Brook Trout is the primary native cold-water fish of NE PA headwater streams and indicates intact riparian forest and minimal pollution"
       }
     ],
     "symbiosis": [
