@@ -11,11 +11,25 @@ test.beforeEach(async ({ page }) => {
 
 test.describe('Sighting logging', () => {
   test('app loads and monarch species page is accessible (smoke test)', async ({ page }) => {
+    // Navigate to species detail page
     await page.goto(MONARCH_URL, { waitUntil: 'networkidle', timeout: 20000 });
-    // Just verify page has loaded - check for main app container or species detail structure
-    const contentVisible = await page.locator('[class*="species"], [class*="detail"], main, [role="main"]').first().isVisible({ timeout: 5000 }).catch(() => false);
-    if (!contentVisible) {
-      throw new Error('Page loaded (status 200) but no species detail content found. Check if the app UI is rendering.');
+    
+    // Wait a bit more for React to hydrate and render content
+    await page.waitForTimeout(2000);
+    
+    // Check if we can find ANY species name or heading (diagnostic)
+    const pageTitle = await page.title();
+    const bodyText = await page.textContent('body');
+    
+    // Try multiple ways to find species content
+    const hasHeading = await page.locator('h1, h2, [role="heading"]').first().isVisible({ timeout: 3000 }).catch(() => false);
+    const hasSpeciesName = bodyText?.includes('Butterfly') || bodyText?.includes('species');
+    
+    if (!hasHeading && !hasSpeciesName) {
+      console.error('Page loaded but no content found');
+      console.error('Page title:', pageTitle);
+      console.error('Body text sample:', bodyText?.substring(0, 200));
+      throw new Error('Species page loaded but content not rendering. App or network issue.');
     }
   });
 
