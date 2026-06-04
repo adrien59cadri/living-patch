@@ -2094,6 +2094,124 @@
         }
       },
       {
+        "id": "amphibian_eastern-red-backed-salamander",
+        "common_name": "Eastern Red-backed Salamander",
+        "latin_name": "Plethodon cinereus",
+        "form": "salamander",
+        "habitat": [
+          "forest",
+          "woodland",
+          "forest_floor"
+        ],
+        "diet": [
+          "predator"
+        ],
+        "behavior": [
+          "fossorial",
+          "nocturnal"
+        ],
+        "season": [
+          "spring",
+          "summer",
+          "fall"
+        ],
+        "functional_description": "One of the most abundant salamanders in northeastern forests. Small (2.5–4 in) with gray or reddish-brown coloration, often with a distinctive red or orange stripe down the back (hence the name). Lungless salamander — breathes entirely through its moist skin. Lives beneath damp logs, leaf litter, and moss year-round. Unique among PA salamanders in lacking an aquatic larval stage; females lay small clutches of eggs in moist microhabitats and guard them until they transform directly into miniature adults. Eats small invertebrates including ants, mites, and springtails. Despite being abundant and widespread, rarely observed due to cryptic behavior and small size. Critical component of forest-floor food webs.",
+        "life_stages": [
+          {
+            "icon": "🥚",
+            "name": "Egg",
+            "description": "Small clutch under logs or leaf litter; female guards eggs; May–Jul",
+            "months": [
+              "May-Jul"
+            ]
+          },
+          {
+            "icon": "🦎",
+            "name": "Adult",
+            "description": "Small with red or gray back; under logs and leaf litter; year-round",
+            "months": [
+              "Jan-Dec"
+            ]
+          }
+        ],
+        "region": "northeast_pa",
+        "ecological_role": "carnivore",
+        "is_keystone": false,
+        "keystone_type": null,
+        "keystone_description": null,
+        "active_months": [
+          "Apr-Oct"
+        ],
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Plethodon_cinereus_-_Red_back_form.JPG/960px-Plethodon_cinereus_-_Red_back_form.JPG",
+          "author": "James Gaston"
+        }
+      },
+      {
+        "id": "amphibian_northern-red-salamander",
+        "common_name": "Northern Red Salamander",
+        "latin_name": "Pseudotriton ruber",
+        "form": "salamander",
+        "habitat": [
+          "stream",
+          "seepage",
+          "wetland",
+          "forest",
+          "riparian"
+        ],
+        "diet": [
+          "predator"
+        ],
+        "behavior": [
+          "aquatic",
+          "nocturnal"
+        ],
+        "season": [
+          "spring",
+          "summer",
+          "fall"
+        ],
+        "functional_description": "Medium-sized salamander (4–7 in) with bright orange-red to red coloration marked with black spots, serving as aposematic (warning) coloration indicating toxicity. Found in cold, clean streams, seeps, and springhead areas throughout northeastern forests. Aquatic and semi-aquatic; adults remain in or near water year-round in cold, oxygen-rich habitats. Primarily nocturnal and active predators of small aquatic invertebrates, small fish, and other salamander larvae. Larvae are entirely aquatic with external gills. Females lay eggs in moist seepage areas and loose gravel near water. Highly dependent on clean, cold water — presence indicates high-quality stream ecosystems. An important prey species for larger aquatic predators including herons and water snakes.",
+        "life_stages": [
+          {
+            "icon": "🫧",
+            "name": "Egg",
+            "description": "Laid in moist gravel and seepage areas; loose clusters",
+            "months": [
+              "May-Jul"
+            ]
+          },
+          {
+            "icon": "🐛",
+            "name": "Larva",
+            "description": "Aquatic with external gills; in cold streams; 1-2 years",
+            "months": [
+              "Apr-Sep"
+            ]
+          },
+          {
+            "icon": "🦎",
+            "name": "Adult",
+            "description": "Bright red-orange with black spots; in cold streams and seeps",
+            "months": [
+              "Jan-Dec"
+            ]
+          }
+        ],
+        "region": "northeast_pa",
+        "ecological_role": "carnivore",
+        "is_keystone": false,
+        "keystone_type": null,
+        "keystone_description": null,
+        "active_months": [
+          "Jan-Dec"
+        ],
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Pseudotriton_ruber_%28Northern_Red_Salamander%29.jpg/960px-Pseudotriton_ruber_%28Northern_Red_Salamander%29.jpg",
+          "author": "Robert Pavlik"
+        }
+      },
+      {
         "id": "mammal_mink",
         "common_name": "American Mink",
         "latin_name": "Neovison vison",
@@ -3119,8 +3237,8 @@
           "Jan-Dec"
         ],
         "image": {
-          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/North_American_Raccoon.jpg/960px-North_American_Raccoon.jpg",
-          "author": "Michael Cummings"
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Procyon_lotor_%28common_raccoon%29_%28male%29.jpg/960px-Procyon_lotor_%28common_raccoon%29_%28male%29.jpg",
+          "author": "Cephas"
         }
       },
       {
