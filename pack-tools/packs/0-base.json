@@ -1984,7 +1984,7 @@
         "is_keystone": false,
         "taxonomic_group": "group_dragonflies",
         "image": {
-          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Common_whitetail.jpg/500px-Common_whitetail.jpg",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/c/c8/Common_whitetail.jpg",
           "author": "Bruce Marlin"
         }
       },
@@ -2091,6 +2091,124 @@
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Spotted_Salamander%2C_Cantley%2C_Quebec.jpg/960px-Spotted_Salamander%2C_Cantley%2C_Quebec.jpg",
           "author": "D. Gordon E. Robertson"
+        }
+      },
+      {
+        "id": "amphibian_eastern-red-backed-salamander",
+        "common_name": "Eastern Red-backed Salamander",
+        "latin_name": "Plethodon cinereus",
+        "form": "salamander",
+        "habitat": [
+          "forest",
+          "woodland",
+          "forest_floor"
+        ],
+        "diet": [
+          "predator"
+        ],
+        "behavior": [
+          "fossorial",
+          "nocturnal"
+        ],
+        "season": [
+          "spring",
+          "summer",
+          "fall"
+        ],
+        "functional_description": "One of the most abundant salamanders in northeastern forests. Small (2.5–4 in) with gray or reddish-brown coloration, often with a distinctive red or orange stripe down the back (hence the name). Lungless salamander — breathes entirely through its moist skin. Lives beneath damp logs, leaf litter, and moss year-round. Unique among PA salamanders in lacking an aquatic larval stage; females lay small clutches of eggs in moist microhabitats and guard them until they transform directly into miniature adults. Eats small invertebrates including ants, mites, and springtails. Despite being abundant and widespread, rarely observed due to cryptic behavior and small size. Critical component of forest-floor food webs.",
+        "life_stages": [
+          {
+            "icon": "🥚",
+            "name": "Egg",
+            "description": "Small clutch under logs or leaf litter; female guards eggs; May–Jul",
+            "months": [
+              "May-Jul"
+            ]
+          },
+          {
+            "icon": "🦎",
+            "name": "Adult",
+            "description": "Small with red or gray back; under logs and leaf litter; year-round",
+            "months": [
+              "Jan-Dec"
+            ]
+          }
+        ],
+        "region": "northeast_pa",
+        "ecological_role": "carnivore",
+        "is_keystone": false,
+        "keystone_type": null,
+        "keystone_description": null,
+        "active_months": [
+          "Apr-Oct"
+        ],
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Adult_Female_Plethodon_cinereus.jpg/960px-Adult_Female_Plethodon_cinereus.jpg",
+          "author": "Alex Karasoulos"
+        }
+      },
+      {
+        "id": "amphibian_northern-red-salamander",
+        "common_name": "Northern Red Salamander",
+        "latin_name": "Pseudotriton ruber",
+        "form": "salamander",
+        "habitat": [
+          "stream",
+          "seepage",
+          "wetland",
+          "forest",
+          "riparian"
+        ],
+        "diet": [
+          "predator"
+        ],
+        "behavior": [
+          "aquatic",
+          "nocturnal"
+        ],
+        "season": [
+          "spring",
+          "summer",
+          "fall"
+        ],
+        "functional_description": "Medium-sized salamander (4–7 in) with bright orange-red to red coloration marked with black spots, serving as aposematic (warning) coloration indicating toxicity. Found in cold, clean streams, seeps, and springhead areas throughout northeastern forests. Aquatic and semi-aquatic; adults remain in or near water year-round in cold, oxygen-rich habitats. Primarily nocturnal and active predators of small aquatic invertebrates, small fish, and other salamander larvae. Larvae are entirely aquatic with external gills. Females lay eggs in moist seepage areas and loose gravel near water. Highly dependent on clean, cold water — presence indicates high-quality stream ecosystems. An important prey species for larger aquatic predators including herons and water snakes.",
+        "life_stages": [
+          {
+            "icon": "🫧",
+            "name": "Egg",
+            "description": "Laid in moist gravel and seepage areas; loose clusters",
+            "months": [
+              "May-Jul"
+            ]
+          },
+          {
+            "icon": "🐛",
+            "name": "Larva",
+            "description": "Aquatic with external gills; in cold streams; 1-2 years",
+            "months": [
+              "Apr-Sep"
+            ]
+          },
+          {
+            "icon": "🦎",
+            "name": "Adult",
+            "description": "Bright red-orange with black spots; in cold streams and seeps",
+            "months": [
+              "Jan-Dec"
+            ]
+          }
+        ],
+        "region": "northeast_pa",
+        "ecological_role": "carnivore",
+        "is_keystone": false,
+        "keystone_type": null,
+        "keystone_description": null,
+        "active_months": [
+          "Jan-Dec"
+        ],
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Northern_red_salamander_%28Pseudotriton_ruber%29.JPG/960px-Northern_red_salamander_%28Pseudotriton_ruber%29.JPG",
+          "author": "Leif Van Laar"
         }
       },
       {
@@ -2882,7 +3000,7 @@
         "is_keystone": false,
         "taxonomic_group": "group_songbirds",
         "image": {
-          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Baltimore_Oriole-_dorsum.jpg/500px-Baltimore_Oriole-_dorsum.jpg",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Baltimore_Oriole-_dorsum.jpg/960px-Baltimore_Oriole-_dorsum.jpg",
           "author": "TonyCastro"
         }
       },
@@ -3001,8 +3119,8 @@
           "Jan-Dec"
         ],
         "image": {
-          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Tsuga_canadensis_2.jpg/960px-Tsuga_canadensis_2.jpg",
-          "author": "Cody Hough"
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Tsuga_canadensis_morton.jpg/330px-Tsuga_canadensis_morton.jpg",
+          "author": "Bruce Marlin"
         }
       },
       {
@@ -3040,8 +3158,8 @@
         ],
         "taxonomic_group": "group_cervids",
         "image": {
-          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Elk_side_photo.jpg/960px-Elk_side_photo.jpg",
-          "author": "Wikiuser Yathin S Krishnappa"
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Jasper.Wapiti-Hirsch.P1033401.jpg/960px-Jasper.Wapiti-Hirsch.P1033401.jpg",
+          "author": "Membeth"
         }
       },
       {
@@ -3080,8 +3198,8 @@
           "Apr-Nov"
         ],
         "image": {
-          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Black_bear_large.jpg/960px-Black_bear_large.jpg",
-          "author": "Yathin S Krishnappa"
+          "url": "https://upload.wikimedia.org/wikipedia/commons/0/08/01_Schwarzb%C3%A4r.jpg",
+          "author": "Diginatur"
         }
       },
       {
@@ -3119,8 +3237,8 @@
           "Jan-Dec"
         ],
         "image": {
-          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/North_American_Raccoon.jpg/960px-North_American_Raccoon.jpg",
-          "author": "Michael Cummings"
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Raccoon_in_Central_Park_%2835264%29.jpg/960px-Raccoon_in_Central_Park_%2835264%29.jpg",
+          "author": "Rhododendrites"
         }
       },
       {
@@ -3237,8 +3355,8 @@
           "Jan-Dec"
         ],
         "image": {
-          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Opossum_2.jpg/960px-Opossum_2.jpg",
-          "author": "Specialjake"
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Opossum_2.jpg/960px-Opossum_2.jpg",
+          "author": "Cody Pope"
         }
       },
       {
@@ -3308,8 +3426,8 @@
         ],
         "taxonomic_group": "group_canids",
         "image": {
-          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Red_Fox_Clear.jpg/960px-Red_Fox_Clear.jpg",
-          "author": "Ómar Runólfsson"
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Portrait_of_a_red_fox_in_Rautas_fj%C3%A4llurskog_%28cropped%29.jpg/960px-Portrait_of_a_red_fox_in_Rautas_fj%C3%A4llurskog_%28cropped%29.jpg",
+          "author": "ClaudiaTen"
         }
       },
       {
@@ -3390,7 +3508,7 @@
         "keystone_description": "Critical nighttime insect suppressor. A single bat consumes 600–1,000 insects per hour; a maternity colony of 150 bats can eat 1.3 million insects per night. White-nose Syndrome has eliminated 90%+ of PA's Little Brown Bat populations since 2007 — the resulting insect release is measurable in agricultural pest damage data. Their loss represents one of the most severe ecological disruptions in recent PA natural history.",
         "taxonomic_group": "group_bats",
         "image": {
-          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Little_Brown_Myotis_%28cropped%29.JPG/500px-Little_Brown_Myotis_%28cropped%29.JPG",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Little_Brown_Myotis_%28cropped%29.JPG/960px-Little_Brown_Myotis_%28cropped%29.JPG",
           "author": "SMBishop"
         }
       },
@@ -3469,8 +3587,8 @@
         "is_keystone": false,
         "taxonomic_group": "group_bats",
         "image": {
-          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Big_brown_bat_crawl.png/500px-Big_brown_bat_crawl.png",
-          "author": "John MacGregor"
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Big_brown_bat_crawl.png/960px-Big_brown_bat_crawl.png",
+          "author": "John MacGregor (Land Between the Lakes KY/TN)"
         }
       },
       {
@@ -3505,7 +3623,7 @@
         "keystone_type": "mutualist",
         "keystone_description": "The keystone late-season wildflower of NE PA. Blooms when virtually all other native nectar sources have gone to seed — providing critical late-migration fuel for Monarch Butterfly (fall migration) and the last major pollen and nectar resource for native bumble bee queens before winter dormancy. Loss of roadside and meadow aster patches is linked to bumble bee colony failure rates in fall.",
         "image": {
-          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Symphyotrichum_novae-angliae3.jpg/500px-Symphyotrichum_novae-angliae3.jpg",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Symphyotrichum_novae-angliae3.jpg/960px-Symphyotrichum_novae-angliae3.jpg",
           "author": "The Cosmonaut"
         }
       },
@@ -3572,7 +3690,7 @@
         "taxonomic_group": "group_prunus",
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Prunus_pensylvanica_Cleaned.jpg/500px-Prunus_pensylvanica_Cleaned.jpg",
-          "author": "M.S. del, J.N.Fitch (Halava, derivative)"
+          "author": "Prunus_pennsylvanica_139-8486.jpg: M.S. del, J.N.Fitch, lith."
         }
       },
       {
@@ -3605,7 +3723,7 @@
         "is_keystone": false,
         "taxonomic_group": "group_prunus",
         "image": {
-          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Prunus_virginiana_flowers.jpg/500px-Prunus_virginiana_flowers.jpg",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Prunus_virginiana_flowers.jpg/960px-Prunus_virginiana_flowers.jpg",
           "author": "Nadiatalent"
         }
       },
@@ -3677,8 +3795,8 @@
         "keystone_type": "prey_base",
         "keystone_description": "One of NE PA's most abundant small mammals and the foundational prey species of open habitats. Population cycles drive corresponding booms and crashes in Red-tailed Hawk, American Kestrel, Red Fox, Eastern Coyote, and American Mink abundance. A landscape-level driver of predator population dynamics across meadows and fields.",
         "image": {
-          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Meadow_vole_microtus_pennsylvanicus.jpg/500px-Meadow_vole_microtus_pennsylvanicus.jpg",
-          "author": "Gilles Gonthier"
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Eastern_meadow_vole_%28Microtus_pennsylvanicus%29_emerging_from_a_runway_in_the_snow_in_Kennebunk%2C_Maine%2C_USA.jpg/960px-Eastern_meadow_vole_%28Microtus_pennsylvanicus%29_emerging_from_a_runway_in_the_snow_in_Kennebunk%2C_Maine%2C_USA.jpg",
+          "author": "Chuck Homler d/b/a Focus On Wildlife"
         }
       },
       {
@@ -3716,8 +3834,8 @@
         "keystone_type": null,
         "keystone_description": null,
         "image": {
-          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/White-footed_mouse_Peromyscus_leucopus.jpg/500px-White-footed_mouse_Peromyscus_leucopus.jpg",
-          "author": "CDC / James Gathany"
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/White-footed_Mouse%2C_Cantley%2C_Quebec.jpg/960px-White-footed_Mouse%2C_Cantley%2C_Quebec.jpg",
+          "author": "D. Gordon E. Robertson"
         }
       },
       {
@@ -3754,8 +3872,8 @@
         "keystone_type": "predator",
         "keystone_description": "Apex aquatic predator that structures fish communities through selective predation on slow or stressed individuals, improving average fish health. Otter haul-out sites concentrate nutrients from aquatic to terrestrial systems. As a top predator sensitive to water quality, otter presence or absence is a reliable indicator of watershed health. Pocono populations never went fully extinct, making NE PA central to the species' statewide recovery.",
         "image": {
-          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/River_otter_in_Texas.jpg/500px-River_otter_in_Texas.jpg",
-          "author": "USFWS"
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Northern_River_Otter_on_Seedskadee_NWR_%2822802102984%29.jpg/960px-Northern_River_Otter_on_Seedskadee_NWR_%2822802102984%29.jpg",
+          "author": "USFWS Mountain-Prairie"
         }
       },
       {
@@ -3794,8 +3912,8 @@
         "keystone_type": null,
         "keystone_description": null,
         "image": {
-          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Indigo_Bunting_-_male_-_4%2B_yr_old_%28mdf%29.jpg/500px-Indigo_Bunting_-_male_-_4%2B_yr_old_%28mdf%29.jpg",
-          "author": "Mdf"
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Indigo_Bunting_by_Dan_Pancamo_4.jpg/960px-Indigo_Bunting_by_Dan_Pancamo_4.jpg",
+          "author": "Dan Pancamo"
         }
       },
       {
@@ -3830,8 +3948,8 @@
         "keystone_type": null,
         "keystone_description": null,
         "image": {
-          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Baptisia_tinctoria_NRCS-1.jpg/500px-Baptisia_tinctoria_NRCS-1.jpg",
-          "author": "USDA NRCS"
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Baptisia_tinctoria.jpg/960px-Baptisia_tinctoria.jpg",
+          "author": "Mason Brock (Masebrock)"
         }
       },
       {
@@ -3870,8 +3988,8 @@
           "Aug-Oct"
         ],
         "image": {
-          "url": "https://upload.wikimedia.org/wikipedia/commons/3/34/Asimina_triloba_red_fern_farm.jpg",
-          "author": "Clarknova"
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Asimina_triloba3.jpg/960px-Asimina_triloba3.jpg",
+          "author": "Scott Bauer, USDA"
         }
       },
       {
@@ -3905,8 +4023,8 @@
         "keystone_description": "Winter seed consumer and invertebrate predator. Critical link between woody plants (seeds and galls) and predators through social flocking behavior. Chickadee presence indicates healthy understory structure and predator-tolerant forest edge habitat. Social information transmission about predators enhances flock vigilance and survival.",
         "taxonomic_group": "group_songbirds",
         "image": {
-          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Black-capped_Chickadee_2.jpg/500px-Black-capped_Chickadee_2.jpg",
-          "author": "Mdf"
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Poecile-atricapilla-001.jpg/960px-Poecile-atricapilla-001.jpg",
+          "author": "No machine-readable author provided. Mdf"
         }
       },
       {
@@ -3972,8 +4090,8 @@
         "keystone_type": null,
         "keystone_description": null,
         "image": {
-          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Zebra_Swallowtail_Megan_McCarty10.jpg/500px-Zebra_Swallowtail_Megan_McCarty10.jpg",
-          "author": "Meganmccarty"
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Zebra_Swallowtail%2C_Megan_McCarty69.jpg/960px-Zebra_Swallowtail%2C_Megan_McCarty69.jpg",
+          "author": "Megan McCarty"
         }
       },
       {
@@ -4007,8 +4125,8 @@
         "keystone_description": "Top predator in cold-water stream food webs; controls aquatic insect populations. Primary indicator of high-quality watershed conditions — brook trout populations reflect stream temperature, dissolved oxygen, substrate quality, and absence of chemical pollution. Presence signals intact riparian forest, groundwater recharge, and minimal human disturbance. Brook Trout populations have contracted to <10% of historical range in PA; restoration efforts focus on riparian forest recovery and dam removal to reconnect headwater habitat.",
         "taxonomic_group": "group_coldwater-fish",
         "image": {
-          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Brook_Trout_-_NOAA.jpg/500px-Brook_Trout_-_NOAA.jpg",
-          "author": "NOAA"
+          "url": "https://upload.wikimedia.org/wikipedia/commons/e/ee/Brook_trout_in_water.jpg",
+          "author": "Jay Fleming (US Nat'l Park Svc)"
         }
       }
     ],

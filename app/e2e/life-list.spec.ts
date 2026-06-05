@@ -164,7 +164,7 @@ test.describe('Life List page', () => {
 test.describe('LifeListStats bar on home page', () => {
   test('stats bar hidden when no sightings or tiers', async ({ page }) => {
     await page.goto('/');
-    await expect(page.getByText('observed')).not.toBeVisible();
+    await expect(page.getByText(/\d+ observed/)).not.toBeVisible();
   });
 
   test('stats bar appears after logging a sighting', async ({ page }) => {
@@ -173,7 +173,7 @@ test.describe('LifeListStats bar on home page', () => {
     await page.getByRole('button', { name: /save sighting/i }).click();
     await page.getByRole('button', { name: /done/i }).click();
     await page.goto('/');
-    await expect(page.getByText(/observed/)).toBeVisible();
+    await expect(page.getByText(/\d+ observed/)).toBeVisible();
   });
 
   test('stats bar links to /life-list', async ({ page }) => {

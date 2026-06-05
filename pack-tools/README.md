@@ -249,15 +249,60 @@ Summary:
 ⊘ Skipped: 0/5
 ```
 
+#### Check Mode: Validate Images Without Modifying Pack
+
+To verify image correctness without modifying the pack file (useful for CI/CD pipelines):
+
+```bash
+npm run fetch-images -- packs/my-pack.json --check
+```
+
+This mode:
+- **Read-only validation** - Does NOT modify the pack file
+- **Skips existing images** - Species with images present are marked as "✓ Has image"
+- **Reports verification status** - Total verified images and any missing ones
+- **Perfect for CI/CD** - Use in automated pipelines to verify image integrity
+
+Example output with `--check`:
+```
+🔍 Checking Wikipedia images...
+Pack: my-pack (v1.0.0)
+Mode: Check mode (read-only, no modifications)
+
+Processing: 5 species
+
+[1/5] ✓ Has image: Great Horned Owl
+[2/5] ✓ Has image: Red-tailed Hawk
+[3/5] ✓ Has image: Pileated Woodpecker
+[4/5] ✓ Has image: American Black Bear
+[5/5] ✓ Has image: White Oak
+
+Summary:
+✓ Newly fetched: 0/0
+→ Already had images: 5/5
+✗ Failed: 0/0
+⊘ Skipped: 0/5
+
+✓ Check complete (no modifications):
+  5 species with images skipped (already complete)
+```
+
 #### Options
 
+- **`--check`**: Read-only validation mode (no pack modifications; perfect for CI/CD)
 - **`--only-missing`**: Skip species that already have images (update mode)
 - **`--delay <ms>`**: Milliseconds to wait between Wikipedia requests (default: 1000). Increase if rate-limited.
 - **`--max <count>`**: Only process first N species (useful for testing).
 
-Example: fetch images with 2-second delay, limit to 10 species:
+Examples:
 ```bash
+# Check mode with reduced delay
+npm run fetch-images -- packs/my-pack.json --check --delay 300
+
+# Update with 2-second delay, limit to 10 species
 npm run fetch-images packs/my-pack.json --delay 2000 --max 10
+
+# Note: Use -- separator before flags when using npm run
 ```
 
 ### Preview Merge
