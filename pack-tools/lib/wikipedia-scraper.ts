@@ -13,6 +13,27 @@ interface ScrapedImage {
   author: string;
 }
 
+type ConservationStatus = 'EX' | 'EW' | 'CR' | 'EN' | 'VU' | 'NT' | 'LC' | 'DD';
+
+const IUCN_TEXT_MAP: Record<string, ConservationStatus> = {
+  'extinct': 'EX',
+  'ex': 'EX',
+  'extinct in the wild': 'EW',
+  'ew': 'EW',
+  'critically endangered': 'CR',
+  'cr': 'CR',
+  'endangered': 'EN',
+  'en': 'EN',
+  'vulnerable': 'VU',
+  'vu': 'VU',
+  'near threatened': 'NT',
+  'nt': 'NT',
+  'least concern': 'LC',
+  'lc': 'LC',
+  'data deficient': 'DD',
+  'dd': 'DD',
+};
+
 /**
  * Converts a species name to a Wikipedia page title
  * Handles URL encoding and spaces
@@ -219,6 +240,91 @@ export async function fetchFilePageAndExtractData(fileLink: string): Promise<Scr
     console.error(`Error fetching file page "${fileLink}":`, error);
     return null;
   }
+}
+
+/**
+ * Extracts IUCN conservation status code from a Wikipedia species page.
+ * Returns the shorthand code (e.g. 'LC', 'CR') or null if not found.
+ * Idempotent: passing an already-valid code returns it unchanged.
+ */
+export function extractConservationStatus(html: string): ConservationStatus | null {
+  try {
+    const $ = load(html);
+
+    // If the input is already a known code (idempotency for re-runs), return it.
+    // (This path isn't normally hit since we parse HTML, not codes, but guards re-runs.)
+    const infobox = $('table.infobox.biota, table.infobox-biota, table.infobox');
+
+    let statusText: string | null = null;
+
+    // Approach 1: cell/td with "iucn" in its class
+    const iucnCell = infobox.find('[class*="iucn"]');
+    if (iucnCell.length > 0) {
+      statusText = iucnCell.first().text().trim();
+    }
+
+    // Approach 2: img alt text is the code itself (e.g. alt="NT")
+    if (!statusText) {
+      const statusImg = infobox.find('img[alt]').filter((_: number, el: any) => {
+        const alt = $(el).attr('alt') ?? '';
+        return /^(EX|EW|CR|EN|VU|NT|LC|DD)$/i.test(alt);
+      });
+      if (statusImg.length > 0) {
+        statusText = statusImg.first().attr('alt') ?? null;
+      }
+    }
+
+    // Approach 3: scan infobox rows for a "Conservation status" header,
+    // then read adjacent cell text
+    if (!statusText) {
+      infobox.find('tr').each((_: number, row: any) => {
+        if (statusText) return false;
+        const headerText = $(row).find('th').first().text().toLowerCase();
+        if (headerText.includes('conservation') || headerText.includes('status')) {
+          const td = $(row).find('td').first().text().trim();
+          if (IUCN_TEXT_MAP[td.toLowerCase()]) {
+            statusText = td;
+          }
+        }
+      });
+    }
+
+    if (!statusText) return null;
+
+    return IUCN_TEXT_MAP[statusText.toLowerCase()] ?? null;
+  } catch (error) {
+    console.error('Error extracting conservation status:', error);
+    return null;
+  }
+}
+
+/**
+ * Fetches and returns the IUCN conservation status for a species.
+ * Tries latin name first, then common name, same as scrapeSpeciesImage.
+ */
+export async function scrapeConservationStatus(
+  latinName: string | null | undefined,
+  commonName: string,
+): Promise<ConservationStatus | null> {
+  const namesToTry: string[] = [];
+  if (latinName?.trim()) {
+    namesToTry.push(latinName);
+    const sppMatch = latinName.match(/^(\w+)\s+spp\.?$/i);
+    if (sppMatch) namesToTry.push(sppMatch[1]);
+  }
+  namesToTry.push(commonName);
+
+  for (const name of namesToTry) {
+    try {
+      const pageHtml = await fetchWikipediaPage(name);
+      if (!pageHtml) continue;
+      const status = extractConservationStatus(pageHtml);
+      if (status) return status;
+    } catch (error) {
+      console.error(`Error scraping conservation status for "${name}":`, error);
+    }
+  }
+  return null;
 }
 
 /**

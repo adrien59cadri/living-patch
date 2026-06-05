@@ -61,6 +61,8 @@ export interface Species {
     url: string;
     author: string;
   };
+  /** IUCN Red List conservation status code */
+  conservation_status?: 'EX' | 'EW' | 'CR' | 'EN' | 'VU' | 'NT' | 'LC' | 'DD' | null;
 }
 
 export type SymbiosisStrength = 'critical' | 'important' | 'incidental';

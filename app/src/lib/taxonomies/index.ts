@@ -41,3 +41,11 @@ export {
   getSymbiosisExample,
   type SymbiosisDefinition,
 } from './symbiosis';
+
+// Conservation status
+export {
+  CONSERVATION_DEFINITIONS,
+  CONSERVATION_ORDERED,
+  type ConservationDefinition,
+  type ConservationStatusCode,
+} from './conservation';

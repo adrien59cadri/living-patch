@@ -8,6 +8,7 @@ import {
   activeMonthsLabel,
 } from '../lib/labels';
 import { KeystoneBadge } from './KeystoneBadge';
+import { ConservationBadge } from './ConservationBadge';
 
 function TagLink({ to, children }: { to?: string; children: React.ReactNode }) {
   if (!to) return <>{children}</>;
@@ -65,6 +66,13 @@ export function TagRow({ species, linkable }: TagRowProps) {
           to={linkable && species.keystone_type ? `/?keystone_type=${species.keystone_type}` : undefined}
         >
           <KeystoneBadge type={species.keystone_type} />
+        </TagLink>
+      )}
+      {species.conservation_status && (
+        <TagLink
+          to={linkable ? `/?conservation_status=${species.conservation_status}` : undefined}
+        >
+          <ConservationBadge status={species.conservation_status} />
         </TagLink>
       )}
       {(species.habitat ?? []).map(h => (
