@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import type { FilterState } from '../lib/filters';
-import { formLabel, habitatLabel, keystoneLabel, areaLabel, formIcon } from '../lib/labels';
+import { formLabel, habitatLabel, keystoneLabel, areaLabel, formIcon, conservationStatusLabel } from '../lib/labels';
 import {
   getTopLevelForms, getChildForms,
   getTopLevelHabitats, getChildHabitats,
@@ -13,6 +13,7 @@ interface FilterOptions {
   habitats: string[];
   keystone_types: string[];
   areas: string[];
+  conservation_statuses: string[];
 }
 
 interface Props {
@@ -94,7 +95,8 @@ export function FilterPanel({ options, filters, onChange }: Props) {
     filters.seasons.length > 0 ||
     filters.habitats.length > 0 ||
     filters.keystone_types.length > 0 ||
-    filters.areas.length > 0;
+    filters.areas.length > 0 ||
+    filters.conservation_statuses.length > 0;
 
   return (
     <div className="bg-stone-50 border border-stone-200 rounded-xl p-4 space-y-4">
@@ -246,6 +248,32 @@ export function FilterPanel({ options, filters, onChange }: Props) {
         </div>
       )}
 
+      {/* Conservation status */}
+      {options.conservation_statuses.length > 0 && (
+        <div className="space-y-1.5">
+          <span className="block text-xs font-medium text-stone-500 uppercase tracking-wide">
+            Conservation status
+          </span>
+          <div className="flex flex-col gap-1.5">
+            {options.conservation_statuses.map(code => (
+              <CheckboxItem
+                key={code}
+                label={conservationStatusLabel(code)}
+                checked={filters.conservation_statuses.includes(code)}
+                onChange={() =>
+                  onChange({
+                    ...filters,
+                    conservation_statuses: filters.conservation_statuses.includes(code)
+                      ? filters.conservation_statuses.filter(c => c !== code)
+                      : [...filters.conservation_statuses, code],
+                  })
+                }
+              />
+            ))}
+          </div>
+        </div>
+      )}
+
       {hasActive && (
         <button
           onClick={() =>
@@ -256,6 +284,7 @@ export function FilterPanel({ options, filters, onChange }: Props) {
               habitats: [],
               keystone_types: [],
               areas: [],
+              conservation_statuses: [],
             })
           }
           className="text-xs text-stone-400 hover:text-stone-700 underline"

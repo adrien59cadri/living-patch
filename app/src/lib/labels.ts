@@ -1,6 +1,7 @@
 import {
   getFormIcon,
   getKeystoneLabel,
+  getConservationStatusLabel,
   FORM_LABELS,
   SEASON_LABELS,
   HABITAT_LABELS,
@@ -78,6 +79,10 @@ export function keystoneTypeLabel(type: string): string {
 // Re-export designTokens for convenience
 export function keystoneLabel(type: string): string {
   return getKeystoneLabel(type);
+}
+
+export function conservationStatusLabel(status: string): string {
+  return getConservationStatusLabel(status);
 }
 
 import type { CommonName } from '../types';

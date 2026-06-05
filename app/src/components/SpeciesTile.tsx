@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import type { Species } from '../types';
 import type { RelatedEntry } from '../lib/relationships';
 import { KeystoneBadge } from './KeystoneBadge';
+import { ConservationBadge } from './ConservationBadge';
 import { formLabel, getCommonName } from '../lib/labels';
 import { useUserPreferences } from '../hooks/useUserPreferences';
 import { SpeciesTierBadge } from './SpeciesTierBadge';
@@ -62,6 +63,9 @@ export function SpeciesTile({ species, related, isGroup }: Props) {
             </span>
           )}
           {species.is_keystone && <KeystoneBadge type={species.keystone_type} />}
+          {!actualIsGroup && ['EX', 'EW', 'CR', 'EN', 'VU', 'DD'].includes(species.conservation_status ?? '') && (
+            <ConservationBadge status={species.conservation_status} />
+          )}
           {related?.strength === 'critical' && (
             <span className="text-xs bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded font-medium">
               Critical

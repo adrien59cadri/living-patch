@@ -5,6 +5,7 @@ import {
   getAllDescendantForms,
   getTopLevelHabitats,
   getAllDescendantHabitats,
+  CONSERVATION_ORDERED,
 } from './taxonomies';
 
 export interface FilterState {
@@ -14,10 +15,11 @@ export interface FilterState {
   habitats: string[];
   keystone_types: string[];
   areas: string[];
+  conservation_statuses: string[];
 }
 
 export function filterSpecies(species: Species[], filters: FilterState): Species[] {
-  const { search, forms, seasons, habitats, keystone_types, areas } = filters;
+  const { search, forms, seasons, habitats, keystone_types, areas, conservation_statuses } = filters;
   const q = search.toLowerCase().trim().replace(/-/g, ' ');
 
   return species.filter(s => {
@@ -51,6 +53,9 @@ export function filterSpecies(species: Species[], filters: FilterState): Species
       if (!s.is_keystone || !s.keystone_type || !keystone_types.includes(s.keystone_type)) return false;
     }
     if (areas.length > 0 && !areas.includes(s.region)) return false;
+    if (conservation_statuses.length > 0) {
+      if (!s.conservation_status || !conservation_statuses.includes(s.conservation_status)) return false;
+    }
 
     return true;
   });
@@ -78,5 +83,9 @@ export function getFilterOptions(species: Species[]) {
     ),
   ].sort();
   const areas = [...new Set(species.map(s => s.region).filter(Boolean))].sort();
-  return { forms, seasons, habitats, keystone_types, areas };
+  const presentStatuses = new Set<string>(
+    species.flatMap(s => s.conservation_status ? [s.conservation_status] : []),
+  );
+  const conservation_statuses = CONSERVATION_ORDERED.filter(code => presentStatuses.has(code));
+  return { forms, seasons, habitats, keystone_types, areas, conservation_statuses };
 }

@@ -147,6 +147,43 @@ export const KEYSTONE_LABELS: Record<string, string> = {
 };
 
 // ============================================================================
+// CONSERVATION STATUS - IUCN Red List tier tokens
+// ============================================================================
+
+export const CONSERVATION_STATUS_COLORS: Record<string, string> = {
+  EX: '#1a1a1a',
+  EW: '#542344',
+  CR: '#CC0000',
+  EN: '#CC6600',
+  VU: '#997700',
+  NT: '#006666',
+  LC: '#006600',
+  DD: '#888888',
+};
+
+export const CONSERVATION_STATUS_ICONS: Record<string, string> = {
+  EX: '💀',
+  EW: '🏚️',
+  CR: '🔴',
+  EN: '🟠',
+  VU: '🟡',
+  NT: '🔵',
+  LC: '🟢',
+  DD: '⬜',
+};
+
+export const CONSERVATION_STATUS_LABELS: Record<string, string> = {
+  EX: '💀 Extinct',
+  EW: '🏚️ Extinct in the Wild',
+  CR: '🔴 Critically Endangered',
+  EN: '🟠 Endangered',
+  VU: '🟡 Vulnerable',
+  NT: '🔵 Near Threatened',
+  LC: '🟢 Least Concern',
+  DD: '⬜ Data Deficient',
+};
+
+// ============================================================================
 // FORM CATEGORIZATION - Group specific forms into base categories
 // ============================================================================
 
@@ -361,4 +398,11 @@ export function getKeystoneIcon(type: string): string {
  */
 export function getKeystoneLabel(type: string): string {
   return KEYSTONE_LABELS[type] ?? '⭐ Keystone';
+}
+
+/**
+ * Get conservation status label (icon + text) for an IUCN status code.
+ */
+export function getConservationStatusLabel(status: string): string {
+  return CONSERVATION_STATUS_LABELS[status] ?? status;
 }

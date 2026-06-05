@@ -11,6 +11,8 @@ export interface LifeStage {
  */
 export type CommonName = string | { en: string; [lang: string]: string | undefined };
 
+export type ConservationStatus = 'EX' | 'EW' | 'CR' | 'EN' | 'VU' | 'NT' | 'LC' | 'DD';
+
 export interface Species {
   id: string;
   common_name: CommonName;
@@ -33,6 +35,8 @@ export interface Species {
     url: string;
     author: string;
   };
+  /** IUCN Red List conservation status code */
+  conservation_status?: ConservationStatus | null;
 }
 
 export type SymbiosisStrength = 'critical' | 'important' | 'incidental';

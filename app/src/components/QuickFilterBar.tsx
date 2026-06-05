@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import type { FilterState } from '../lib/filters';
-import { formLabel, habitatLabel, keystoneLabel, areaLabel, formIcon } from '../lib/labels';
+import { formLabel, habitatLabel, keystoneLabel, areaLabel, formIcon, conservationStatusLabel } from '../lib/labels';
 import {
   getTopLevelForms, getChildForms,
   getTopLevelHabitats, getChildHabitats,
@@ -12,6 +12,7 @@ interface FilterOptions {
   habitats: string[];
   keystone_types: string[];
   areas: string[];
+  conservation_statuses: string[];
 }
 
 interface Props {
@@ -138,8 +139,9 @@ export function QuickFilterBar({ options, filters, onChange }: Props) {
   const hasHabitat = visibleHabitatTopLevels.length > 0;
   const hasKeystone = visibleKeystoneTopLevels.length > 0;
   const hasArea = options.areas.length > 1;
+  const hasConservation = options.conservation_statuses.length > 0;
 
-  if (!hasForm && !hasHabitat && !hasKeystone && !hasArea) return null;
+  if (!hasForm && !hasHabitat && !hasKeystone && !hasArea && !hasConservation) return null;
 
   return (
     <div className="space-y-2">
@@ -221,6 +223,36 @@ export function QuickFilterBar({ options, filters, onChange }: Props) {
             border: 'border-stone-300',
           }}
         />
+      )}
+
+      {/* Conservation status chips – flat multi-select */}
+      {hasConservation && (
+        <div className="flex flex-wrap gap-1.5">
+          {options.conservation_statuses.map(code => {
+            const active = filters.conservation_statuses.includes(code);
+            return (
+              <button
+                key={code}
+                onClick={() =>
+                  onChange({
+                    ...filters,
+                    conservation_statuses: active
+                      ? filters.conservation_statuses.filter(c => c !== code)
+                      : [...filters.conservation_statuses, code],
+                  })
+                }
+                className={[
+                  'text-xs px-2 py-0.5 rounded-full transition-colors',
+                  active
+                    ? 'bg-rose-600 text-white'
+                    : 'bg-rose-100 text-rose-800 hover:bg-rose-200',
+                ].join(' ')}
+              >
+                {conservationStatusLabel(code)}
+              </button>
+            );
+          })}
+        </div>
       )}
     </div>
   );
