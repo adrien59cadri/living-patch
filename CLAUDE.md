@@ -14,6 +14,55 @@
 
 ---
 
+## Feature: Invasive Species Annotations (June 5, 2026)
+
+### What was implemented
+
+Added `invasive?: boolean` field to `Species` to flag ecological invasives by region. Eight invasive species annotated in the `0-base` pack (northeast_pa):
+1. Japanese honeysuckle, porcelainberry, oriental bittersweet (vines)
+2. Canada thistle, garlic mustard, common periwinkle (wildflowers)
+3. Multiflora rose, Japanese wineberry (shrubs)
+
+Each species includes full ecological context in `functional_description` (e.g., "smothers native shrubs", "allelopathic to mycorrhizal fungi").
+
+### Key Files
+
+#### Data Model
+- **`app/src/types/index.ts`** — `invasive?: boolean` field on `Species`
+- **`pack-tools/lib/schema.ts`** — Zod schema with optional `invasive` field
+
+#### Data
+- **`pack-tools/packs/0-base.json`** — 8 invasive species added (total 109 species, 45+ taxonomic groups)
+
+### Data Model Design
+```ts
+interface Species {
+  id: string;
+  common_name: CommonName;
+  latin_name?: string | null;
+  form: string;                      // vine, wildflower, shrub, etc.
+  region: string;                    // northeast_pa, france, etc.
+  invasive?: boolean;                // true = invasive in this region; default false
+  functional_description: string;    // ecological impact narrative
+  // ... other fields
+}
+```
+
+**Key insight**: `invasive` is regional by design. The same species (e.g., porcelainberry) appears with `invasive: true` in the PA pack but not in a hypothetical East Asia pack. No merge conflicts; each pack's truth is its own.
+
+### Planned UI (Roadmap Phase 4)
+- **Invasive Species page** — Top-level nav entry
+- **Region picker** — Collects unique `region` values from all loaded invasive species
+- **List view** — Filtered by selected region, shows invasive entries with full detail links
+- **Zero impact on main browse** — Invasives stay in species list; invasive flag is optional context
+
+### Code Conventions
+- Pack JSON stores `invasive: true` only (omit if false)
+- UI checks `species.invasive === true` (defensive against undefined)
+- Each invasive entry is a full `Species` record (reuses existing schema)
+
+---
+
 ## Feature: IUCN Conservation Status
 
 ### What was implemented
@@ -197,11 +246,19 @@ Follow the pattern of `KeystoneTypesSection.tsx`:
 
 ## Recent Changes
 
-### Conservation Status Implementation (latest)
-- **Commit:** `dbfb35f` — "Implement IUCN conservation status feature"
-- **Branch:** `claude/endangered-species-roadmap-plan-eFtuk`
-- **Status:** ✓ Complete, all linting passes
-- Files: 18 files, 674 insertions
+### Invasive Species Annotations (latest)
+- **Commit:** `e0538e3` — "feat(data): add 8 invasive species to 0-base pack; add invasive field to Species type"
+- **Branch:** `claude/invasive-species-geo-plan-HKeWT`
+- **Status:** ✓ Complete, rebased on main, CI passing (lint + type-check + tests + E2E)
+- **Changes:** 3 files modified
+  - `app/src/types/index.ts` — added `invasive?: boolean` to Species
+  - `pack-tools/lib/schema.ts` — added `invasive` to SpeciesSchema (Zod)
+  - `pack-tools/packs/0-base.json` — added 8 invasive species (109 total)
+- **PR #51:** https://github.com/adrien59cadri/living-patch/pull/51 (mergeable)
+
+### Conservation Status Implementation (previous)
+- **Status:** ✓ Complete
+- **Commits:** Multiple on branch `claude/endangered-species-roadmap-plan-eFtuk`
 
 ---
 
