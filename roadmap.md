@@ -4,62 +4,53 @@
 
 ### 1. Invasive Species Page
 
-A dedicated top-level page where the user picks a region and sees which species in that
-pack are invasive there. Kept separate from the main browse list — invasive status is
-place-specific, not a universal species property.
+A dedicated top-level page where the user picks a region and sees which species are invasive
+there. Kept entirely separate from the main browse list — invasive status is place-specific,
+not a universal species property.
 
-**The core insight**: a species is only invasive relative to a location. Porcelainberry is an
-aggressive invasive in Pennypack PA and a native plant in eastern Asia. The same Latin name
-can appear in two packs with opposite statuses — that is correct, not a conflict. Non-native
-= potentially invasive by definition, so any species without native status in a pack is at
-minimum worth flagging.
+#### Data model
 
-#### Data model changes
-
-**Pack metadata** must declare its region explicitly (currently implied by species `region`
-fields, but needs to be a first-class field so the region picker can enumerate options):
+Add a new first-class collection to packs — `invasives` — following the same pattern as
+`symbiosis` and `relations`. No changes to the existing `Species` type or pack metadata.
 
 ```ts
-// pack-tools/packs/<id>.json → metadata
-region: string;   // e.g. "northeast_pa", "france" — required, mirrors species region values
+interface Invasive {
+  latin_name: string;       // canonical identifier
+  common_name?: CommonName; // display name if not cross-referenced
+  region: string;           // where this species is invasive (e.g. "northeast_pa")
+  notes?: string;           // optional: why/how it spreads, ecological impact
+  species_id?: string;      // optional link to a Species record in the same pack
+}
 ```
 
-**Species record** gets one optional field:
+`Dataset` gains an `invasives?: Invasive[]` field. Pack JSON gains an `invasives` array
+under `data`, sitting alongside `species`, `symbiosis`, and `relations`.
 
-```ts
-invasive?: true;   // present and true = known invasive in this pack's region; absent = not flagged
-```
-
-No `status` vocabulary needed at this stage. The binary `invasive` flag is sufficient and
-honest: a species is either a documented invasive in this region, or it isn't flagged. The
-broader native/introduced/naturalized taxonomy can come later if the data warrants it.
+An invasive entry is independent of the main species list — it can reference an existing
+species record via `species_id`, or stand alone if the species isn't in the pack. This means
+porcelainberry can be in the `0-base` invasives list for NE PA whether or not a full species
+record exists for it, and a French pack can omit it from its invasives entirely.
 
 #### New "Invasive Species" page
 
 - Top-level nav entry (alongside Learn, Life List, Packs)
-- On first visit: region picker showing all loaded packs that declare a `region`
-- After picking: grid/list of species with `invasive: true` in that pack
-- Species tiles link to the normal detail page
-- Brief intro line: "These species are documented invasives in [region]. Any non-native
-  species could also spread — check a local source for the full picture."
-- Region can be changed at any time via a chip/selector at the top
-
-#### What stays the same
-
-- Main browse list: no status badges added, invasive species appear normally
-- Detail page: no status section (invasive context lives on the dedicated page)
-- Species IDs and pack structure: unchanged
+- Region picker: unique `region` values collected from loaded `invasives` entries
+- After picking: list of invasive entries for that region; tiles link to the detail page
+  if a matching `species_id` exists, otherwise show a minimal card
+- Brief intro: "These are documented invasives in [region]. Any non-native species could
+  also spread — check a local source for the full picture."
+- Region selector persists in user preferences
 
 #### Pack authoring
 
-- `pack-tools` schema: add optional `invasive: true` to species; add required `region` to
-  pack metadata (warn on missing, since existing packs already have implicit regions).
-- Annotate known invasives in `0-base` for NE PA: porcelainberry, Japanese barberry,
-  garlic mustard, multiflora rose, tree-of-heaven, mile-a-minute, burning bush, Norway maple.
-- No cross-pack deduplication concern: each pack's invasive list is its own regional answer.
+- `pack-tools` Zod schema: add `invasives` array to pack `data` (optional, validated).
+- Populate `0-base` invasives for NE PA: porcelainberry, Japanese barberry, garlic mustard,
+  multiflora rose, tree-of-heaven, mile-a-minute, burning bush, Norway maple.
+- No deduplication concern: each pack's invasives list is its own regional answer. Same
+  Latin name in two packs with different regions is correct data, not a conflict.
 
 **Impact**: Users walking in Pennypack PA open the page, pick their region, and immediately
-see what to watch out for. Zero complexity added to the main browse experience.
+see what to watch out for. Zero changes to the main browse experience or existing species data.
 
 ### 2. Plant Trait Expansion: Allergen & Reproduction Info
 Extend plant species data with human health and reproduction information:
