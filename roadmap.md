@@ -13,7 +13,7 @@ not a universal species property.
 One field added to `Species`, no new interface:
 
 ```ts
-invasive?: true;   // present = invasive in this pack's region; absent = not flagged (default false)
+invasive?: boolean;   // default false; true = invasive in this pack's region
 ```
 
 Invasive species are just species. The existing `id` is the key, `region` is the geo scope,
