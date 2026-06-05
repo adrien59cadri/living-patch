@@ -39,7 +39,8 @@
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Erithacus_rubecula_with_cocked_head.jpg/960px-Erithacus_rubecula_with_cocked_head.jpg",
           "author": "Francis C. Franklin"
-        }
+        },
+        "conservation_status": "LC"
       },
       {
         "id": "bird_great-tit",
@@ -71,7 +72,8 @@
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Great_tit_%28Parus_major%29%2C_Parc_du_Rouge-Cloitre%2C_For%C3%AAt_de_Soignes%2C_Brussels_%2826194636951%29.jpg/960px-Great_tit_%28Parus_major%29%2C_Parc_du_Rouge-Cloitre%2C_For%C3%AAt_de_Soignes%2C_Brussels_%2826194636951%29.jpg",
           "author": "Frank Vassen from Brussels, Belgium"
-        }
+        },
+        "conservation_status": "LC"
       },
       {
         "id": "bird_european-green-woodpecker",
@@ -105,7 +107,8 @@
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/European_green_woodpecker_%28Picus_viridis%29_female_Barnes.jpg/500px-European_green_woodpecker_%28Picus_viridis%29_female_Barnes.jpg",
           "author": "Wikimedia Commons"
-        }
+        },
+        "conservation_status": "LC"
       },
       {
         "id": "bird_eurasian-jay",
@@ -137,7 +140,8 @@
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Garrulus_glandarius_1_Luc_Viatour.jpg/960px-Garrulus_glandarius_1_Luc_Viatour.jpg",
           "author": "Luc Viatour"
-        }
+        },
+        "conservation_status": "LC"
       },
       {
         "id": "bird_common-cuckoo",
@@ -168,7 +172,8 @@
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Cuckoo_%2851169010335%29.jpg/960px-Cuckoo_%2851169010335%29.jpg",
           "author": "Andy  Morffew from Itchen Abbas, Hampshire, UK"
-        }
+        },
+        "conservation_status": "LC"
       },
       {
         "id": "bird_common-kestrel",
@@ -202,7 +207,8 @@
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Common_kestrel_falco_tinnunculus.jpg/500px-Common_kestrel_falco_tinnunculus.jpg",
           "author": "Andreas Trepte"
-        }
+        },
+        "conservation_status": "LC"
       },
       {
         "id": "mammal_wild-boar",
@@ -235,7 +241,8 @@
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Wildschwein%2C_N%C3%A4he_Pulverstampftor_%28cropped%29.jpg/960px-Wildschwein%2C_N%C3%A4he_Pulverstampftor_%28cropped%29.jpg",
           "author": "Valentin Panzirsch"
-        }
+        },
+        "conservation_status": "LC"
       },
       {
         "id": "mammal_roe-deer",
@@ -266,7 +273,8 @@
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Roe_deer_%28Capreolus_capreolus%29_young_male_Cumnor.jpg/960px-Roe_deer_%28Capreolus_capreolus%29_young_male_Cumnor.jpg",
           "author": "Wikimedia Commons"
-        }
+        },
+        "conservation_status": "LC"
       },
       {
         "id": "mammal_european-hedgehog",
@@ -300,7 +308,8 @@
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Erinaceus_europaeus_LC0119.jpg/960px-Erinaceus_europaeus_LC0119.jpg",
           "author": "Jörg Hempel"
-        }
+        },
+        "conservation_status": "NT"
       },
       {
         "id": "mammal_european-badger",
@@ -333,7 +342,8 @@
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/M%C3%A4yr%C3%A4_%C3%84ht%C3%A4ri_4.jpg/960px-M%C3%A4yr%C3%A4_%C3%84ht%C3%A4ri_4.jpg",
           "author": "kallerna"
-        }
+        },
+        "conservation_status": "LC"
       },
       {
         "id": "mammal_eurasian-red-squirrel",
@@ -363,7 +373,8 @@
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Squirrel_posing.jpg/960px-Squirrel_posing.jpg",
           "author": "Peter Trimming"
-        }
+        },
+        "conservation_status": "LC"
       },
       {
         "id": "tree_pedunculate-oak",
@@ -391,7 +402,8 @@
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Quercus_robur.jpg/500px-Quercus_robur.jpg",
           "author": "Wikimedia Commons"
-        }
+        },
+        "conservation_status": "LC"
       },
       {
         "id": "tree_european-beech",
@@ -419,7 +431,8 @@
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Fagus-sylvatica-cansiglio-forest-italy.jpg/500px-Fagus-sylvatica-cansiglio-forest-italy.jpg",
           "author": "GooseCanada"
-        }
+        },
+        "conservation_status": "LC"
       },
       {
         "id": "tree_sweet-chestnut",
@@ -444,7 +457,8 @@
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Chestnuts.jpg/960px-Chestnuts.jpg",
           "author": "Fir0002"
-        }
+        },
+        "conservation_status": "LC"
       },
       {
         "id": "plant_elderberry",
@@ -498,7 +512,8 @@
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Hedera_helix_Dover.jpg/960px-Hedera_helix_Dover.jpg",
           "author": "kallerna"
-        }
+        },
+        "conservation_status": "LC"
       },
       {
         "id": "plant_stinging-nettle",
@@ -525,7 +540,8 @@
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/6/6f/Fen_nettle_%28Urtica_dioica_ssp._galeopsifolia%29_-_geograph.org.uk_-_5423125.jpg",
           "author": "Evelyn Simak"
-        }
+        },
+        "conservation_status": "LC"
       },
       {
         "id": "butterfly_european-peacock",
@@ -589,7 +605,8 @@
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/VanessaAtalanta_Closeup.jpg/960px-VanessaAtalanta_Closeup.jpg",
           "author": "Christian Fischer"
-        }
+        },
+        "conservation_status": "LC"
       },
       {
         "id": "butterfly_brimstone",
@@ -621,7 +638,8 @@
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Common_brimstone_butterfly_%28Gonepteryx_rhamni%29_male_in_flight.jpg/960px-Common_brimstone_butterfly_%28Gonepteryx_rhamni%29_male_in_flight.jpg",
           "author": "Wikimedia Commons"
-        }
+        },
+        "conservation_status": "LC"
       },
       {
         "id": "butterfly_old-world-swallowtail",
@@ -711,7 +729,8 @@
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Daucus_carota_May_2008-1_edit.jpg/960px-Daucus_carota_May_2008-1_edit.jpg",
           "author": "Alvesgaspar"
-        }
+        },
+        "conservation_status": "LC"
       }
     ],
     "taxonomic_groups": [],

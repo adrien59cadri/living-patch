@@ -250,48 +250,51 @@ export async function fetchFilePageAndExtractData(fileLink: string): Promise<Scr
 export function extractConservationStatus(html: string): ConservationStatus | null {
   try {
     const $ = load(html);
-
-    // If the input is already a known code (idempotency for re-runs), return it.
-    // (This path isn't normally hit since we parse HTML, not codes, but guards re-runs.)
     const infobox = $('table.infobox.biota, table.infobox-biota, table.infobox');
 
-    let statusText: string | null = null;
-
-    // Approach 1: cell/td with "iucn" in its class
-    const iucnCell = infobox.find('[class*="iucn"]');
-    if (iucnCell.length > 0) {
-      statusText = iucnCell.first().text().trim();
+    // Approach 1 (primary): IUCN status SVG badge image in the infobox.
+    // Wikipedia renders status as <img alt="Least Concern" src="...Status_iucn3.1_LC.svg...">
+    // Extract the 2-letter code from the SVG filename — most reliable signal.
+    const iucnImg = infobox.find('img[src*="Status_iucn3.1_"]').first();
+    if (iucnImg.length > 0) {
+      const src = iucnImg.attr('src') ?? '';
+      const srcMatch = src.match(/Status_iucn3\.1_([A-Z]+)\.svg/i);
+      if (srcMatch) {
+        const code = srcMatch[1].toUpperCase();
+        if (code in IUCN_TEXT_MAP) return IUCN_TEXT_MAP[code.toLowerCase()];
+      }
+      // Fallback within approach 1: map full alt text (e.g., "Least Concern" → LC)
+      const alt = iucnImg.attr('alt') ?? '';
+      if (IUCN_TEXT_MAP[alt.toLowerCase()]) return IUCN_TEXT_MAP[alt.toLowerCase()];
     }
 
-    // Approach 2: img alt text is the code itself (e.g. alt="NT")
-    if (!statusText) {
-      const statusImg = infobox.find('img[alt]').filter((_: number, el: any) => {
-        const alt = $(el).attr('alt') ?? '';
-        return /^(EX|EW|CR|EN|VU|NT|LC|DD)$/i.test(alt);
-      });
-      if (statusImg.length > 0) {
-        statusText = statusImg.first().attr('alt') ?? null;
+    // Approach 2: any infobox img whose alt is a full IUCN status label
+    const altImg = infobox.find('img[alt]').filter((_: number, el: any) => {
+      return Boolean(IUCN_TEXT_MAP[($(el).attr('alt') ?? '').toLowerCase()]);
+    });
+    if (altImg.length > 0) {
+      const alt = altImg.first().attr('alt') ?? '';
+      return IUCN_TEXT_MAP[alt.toLowerCase()] ?? null;
+    }
+
+    // Approach 3: find "Conservation status" header row then read the NEXT row's text.
+    // Wikipedia puts the label and the badge in separate <tr> elements.
+    const rows = infobox.find('tr').toArray();
+    for (let i = 0; i < rows.length - 1; i++) {
+      if (!$(rows[i]).text().toLowerCase().includes('conservation status')) continue;
+      // Check the next 1-2 rows for a recognisable status string
+      for (let j = i + 1; j < Math.min(i + 3, rows.length); j++) {
+        const text = $(rows[j]).text().trim();
+        // Exact match first
+        if (IUCN_TEXT_MAP[text.toLowerCase()]) return IUCN_TEXT_MAP[text.toLowerCase()];
+        // Prefix match for "Least Concern (IUCN 3.1)..." style text
+        for (const [key, code] of Object.entries(IUCN_TEXT_MAP)) {
+          if (text.toLowerCase().startsWith(key)) return code;
+        }
       }
     }
 
-    // Approach 3: scan infobox rows for a "Conservation status" header,
-    // then read adjacent cell text
-    if (!statusText) {
-      infobox.find('tr').each((_: number, row: any) => {
-        if (statusText) return false;
-        const headerText = $(row).find('th').first().text().toLowerCase();
-        if (headerText.includes('conservation') || headerText.includes('status')) {
-          const td = $(row).find('td').first().text().trim();
-          if (IUCN_TEXT_MAP[td.toLowerCase()]) {
-            statusText = td;
-          }
-        }
-      });
-    }
-
-    if (!statusText) return null;
-
-    return IUCN_TEXT_MAP[statusText.toLowerCase()] ?? null;
+    return null;
   } catch (error) {
     console.error('Error extracting conservation status:', error);
     return null;
