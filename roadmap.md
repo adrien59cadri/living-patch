@@ -16,20 +16,18 @@ Add a new first-class collection to packs — `invasives` — following the same
 ```ts
 interface Invasive {
   latin_name: string;       // canonical identifier
-  common_name?: CommonName; // display name if not cross-referenced
+  common_name?: CommonName;
   region: string;           // where this species is invasive (e.g. "northeast_pa")
-  notes?: string;           // optional: why/how it spreads, ecological impact
-  species_id?: string;      // optional link to a Species record in the same pack
+  description: string;      // ecological impact narrative — outcompetes, forms monocultures, etc.
 }
 ```
 
 `Dataset` gains an `invasives?: Invasive[]` field. Pack JSON gains an `invasives` array
 under `data`, sitting alongside `species`, `symbiosis`, and `relations`.
 
-An invasive entry is independent of the main species list — it can reference an existing
-species record via `species_id`, or stand alone if the species isn't in the pack. This means
-porcelainberry can be in the `0-base` invasives list for NE PA whether or not a full species
-record exists for it, and a French pack can omit it from its invasives entirely.
+An invasive entry is self-contained — no cross-references to species records, no relationship
+links. The description carries all the relevant context: how it spreads, what it displaces,
+why it matters ecologically.
 
 #### New "Invasive Species" page
 
