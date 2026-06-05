@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-**LivingPatch** is an ecological literacy tool for NE Pennsylvania species. It provides an interactive, filterable database of local wildlife with rich relationships: symbiosis, habitat, keystones, and now conservation status.
+**LivingPatch** is an ecological literacy tool for NE Pennsylvania species. It provides an interactive, filterable database of local wildlife with rich relationships: symbiosis, habitat, keystones, conservation status, and ecological status (native/bully/invasive/non-native).
 
 **Repository:** `adrien59cadri/living-patch`
 
@@ -14,11 +14,17 @@
 
 ---
 
-## Feature: Invasive Species Annotations (June 5, 2026)
+## Feature: Ecological Status Taxonomy (June 5, 2026)
 
 ### What was implemented
 
-Added `invasive?: boolean` field to `Species` to flag ecological invasives by region. Eight invasive species annotated in the `0-base` pack (northeast_pa):
+Refactored `invasive?: boolean` field to `status?: EcologicalStatus` enum capturing the full four-category ecological taxonomy:
+- **N (Native, default)** — undefined status; species evolved in region, no action needed
+- **NB (Native Bully)** — `'nb'`; native species spreading aggressively, outcompeting other natives
+- **NNNA (Non-Native Non-Aggressive)** — `'nnna'`; introduced by humans but not spreading, low ecological threat
+- **I (Invasive)** — `'i'`; non-native AND spreading aggressively/causing ecological damage
+
+Eight invasive species updated from `invasive: true` to `status: 'i'` in the `0-base` pack (northeast_pa):
 1. Japanese honeysuckle, porcelainberry, oriental bittersweet (vines)
 2. Canada thistle, garlic mustard, common periwinkle (wildflowers)
 3. Multiflora rose, Japanese wineberry (shrubs)
@@ -28,38 +34,58 @@ Each species includes full ecological context in `functional_description` (e.g.,
 ### Key Files
 
 #### Data Model
-- **`app/src/types/index.ts`** — `invasive?: boolean` field on `Species`
-- **`pack-tools/lib/schema.ts`** — Zod schema with optional `invasive` field
+- **`app/src/types/index.ts`** — `EcologicalStatus` type alias + `status?: EcologicalStatus` field on `Species`
+- **`pack-tools/lib/schema.ts`** — Zod schema with `status: z.enum(['nb', 'nnna', 'i']).optional()`
+- **`pack-tools/types.ts`** — same `status?: 'nb' | 'nnna' | 'i'` field on Species interface
 
 #### Data
-- **`pack-tools/packs/0-base.json`** — 8 invasive species added (total 109 species, 45+ taxonomic groups)
+- **`pack-tools/packs/0-base.json`** — 8 species updated to `"status": "i"` (total 109 species, 45+ taxonomic groups)
+
+#### Design & Labels
+- **`app/src/lib/designTokens.ts`** — `ECOLOGICAL_STATUS_LABELS`, `ECOLOGICAL_STATUS_COLORS`, `ECOLOGICAL_STATUS_DESCRIPTIONS` mappings
+- **`app/src/lib/labels.ts`** — `ecologicalStatusLabel()` and `ecologicalStatusDescription()` helpers
+
+#### Filters
+- **`app/src/lib/filters.ts`** — `ecological_statuses: string[]` in `FilterState`; filter logic for status matching
+
+#### UI Components
+- **`app/src/components/EcologicalStatusBadge.tsx`** — styled pill badge (red/amber/sky) per status
+- **`app/src/components/EcologicalStatusSection.tsx`** — Learn page section (expandable, I→NB→NNNA, shows species per status)
+- **`app/src/components/TagRow.tsx`** — shows badge on detail page with filter link (`?ecological_status=`)
+- **`app/src/components/FilterPanel.tsx`** — ecological status checkboxes (desktop)
+- **`app/src/components/QuickFilterBar.tsx`** — ecological status chips (mobile-friendly)
+- **`app/src/pages/HomePage.tsx`** — URL sync for `ecological_status` param
+- **`app/src/pages/LearnPage.tsx`** — renders new `EcologicalStatusSection`
 
 ### Data Model Design
 ```ts
+export type EcologicalStatus = 'nb' | 'nnna' | 'i';
+
 interface Species {
   id: string;
   common_name: CommonName;
   latin_name?: string | null;
   form: string;                      // vine, wildflower, shrub, etc.
   region: string;                    // northeast_pa, france, etc.
-  invasive?: boolean;                // true = invasive in this region; default false
+  status?: EcologicalStatus;         // 'nb', 'nnna', or 'i'; default undefined = native
   functional_description: string;    // ecological impact narrative
   // ... other fields
 }
 ```
 
-**Key insight**: `invasive` is regional by design. The same species (e.g., porcelainberry) appears with `invasive: true` in the PA pack but not in a hypothetical East Asia pack. No merge conflicts; each pack's truth is its own.
+**Key insight**: Status is regional by design. The same species (e.g., porcelainberry) appears with `status: 'i'` in the PA pack but not in a hypothetical East Asia pack. No merge conflicts; each pack's truth is its own. Future: add native species with `status: 'nb'` (Salix spp., some Cornus spp.) and non-native localized species with `status: 'nnna'` (e.g., forget-me-not cultivars).
 
-### Planned UI (Roadmap Phase 4)
-- **Invasive Species page** — Top-level nav entry
-- **Region picker** — Collects unique `region` values from all loaded invasive species
-- **List view** — Filtered by selected region, shows invasive entries with full detail links
-- **Zero impact on main browse** — Invasives stay in species list; invasive flag is optional context
+### UI Features
+- **Badges**: Red (invasive), Amber (native bully), Sky blue (non-native non-aggressive); clickable on detail page links to filtered list
+- **Learn Page**: New `EcologicalStatusSection` with expandable rows per status, definitions, and example species
+- **Filters**: Checkboxes + chips in FilterPanel/QuickFilterBar; URL param sync with `ecological_status=i,nb,nnna`
+- **Color Scheme**: Matching conservation status pattern (badge + background colors)
 
 ### Code Conventions
-- Pack JSON stores `invasive: true` only (omit if false)
-- UI checks `species.invasive === true` (defensive against undefined)
-- Each invasive entry is a full `Species` record (reuses existing schema)
+- Pack JSON stores `status: "i"|"nb"|"nnna"` only (omit if undefined = native)
+- UI checks `species.status === 'i'` (or uses defensive `status?.includes()`)
+- Type alias `EcologicalStatus` enforces valid enum values at compile-time
+- Each species is a full `Species` record (reuses existing schema; status is just one more optional field)
 
 ---
 
@@ -246,17 +272,32 @@ Follow the pattern of `KeystoneTypesSection.tsx`:
 
 ## Recent Changes
 
-### Invasive Species Annotations (latest)
-- **Commit:** `e0538e3` — "feat(data): add 8 invasive species to 0-base pack; add invasive field to Species type"
+### Ecological Status Taxonomy (latest)
+- **Commit:** `25111e0` — "feat(ecology): refactor invasive flag to full N/NB/NNNA/I taxonomy"
 - **Branch:** `claude/invasive-species-geo-plan-HKeWT`
-- **Status:** ✓ Complete, rebased on main, CI passing (lint + type-check + tests + E2E)
-- **Changes:** 3 files modified
-  - `app/src/types/index.ts` — added `invasive?: boolean` to Species
-  - `pack-tools/lib/schema.ts` — added `invasive` to SpeciesSchema (Zod)
-  - `pack-tools/packs/0-base.json` — added 8 invasive species (109 total)
-- **PR #51:** https://github.com/adrien59cadri/living-patch/pull/51 (mergeable)
+- **Status:** ✓ Complete, pushed to origin
+- **Changes:** 14 files modified/created
+  - `app/src/types/index.ts` — added `EcologicalStatus` type alias + `status?: EcologicalStatus` field
+  - `pack-tools/lib/schema.ts` — changed to `status: z.enum(['nb', 'nnna', 'i']).optional()`
+  - `pack-tools/types.ts` — added `status?: 'nb' | 'nnna' | 'i'`
+  - `pack-tools/packs/0-base.json` — updated 8 species from `invasive: true` to `status: "i"`
+  - `app/src/lib/designTokens.ts` — added `ECOLOGICAL_STATUS_LABELS`, `COLORS`, `DESCRIPTIONS`
+  - `app/src/lib/labels.ts` — added `ecologicalStatusLabel()` and `ecologicalStatusDescription()`
+  - `app/src/lib/filters.ts` — added `ecological_statuses: string[]` to FilterState + filter logic
+  - `app/src/components/EcologicalStatusBadge.tsx` (NEW) — red/amber/sky badge component
+  - `app/src/components/EcologicalStatusSection.tsx` (NEW) — Learn page section
+  - `app/src/components/TagRow.tsx` — added badge rendering + link
+  - `app/src/components/FilterPanel.tsx` — added ecological status checkboxes
+  - `app/src/components/QuickFilterBar.tsx` — added ecological status chips
+  - `app/src/pages/HomePage.tsx` — added URL param sync for `ecological_status`
+  - `app/src/pages/LearnPage.tsx` — added `EcologicalStatusSection` render
 
-### Conservation Status Implementation (previous)
+### Invasive Species Annotations (preceding)
+- **Commit:** `e0538e3` — "feat(data): add 8 invasive species to 0-base pack; add invasive field to Species type"
+- **Status:** ✓ Complete (superseded by Ecological Status Taxonomy)
+- **Note:** Refactored from `invasive?: boolean` to `status?: EcologicalStatus` enum
+
+### Conservation Status Implementation (earlier)
 - **Status:** ✓ Complete
 - **Commits:** Multiple on branch `claude/endangered-species-roadmap-plan-eFtuk`
 

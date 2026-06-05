@@ -1,12 +1,13 @@
 # LivingPatch — Development Memory
 
-## Project Status: ✅ Phase 3.7 COMPLETE — Invasive Species Annotations (June 5, 2026)
-Phase 1 (Dataset Explorer) + Phase 2 (Life List) + Multi-Region + French Pack + Ecoregion 5 Expansion + Salamanders + **Invasive Species Annotations** — all implemented, tested, and shipped.
+## Project Status: ✅ Phase 3.8 COMPLETE — Ecological Status Taxonomy (June 5, 2026)
+Phase 1 (Dataset Explorer) + Phase 2 (Life List) + Multi-Region + French Pack + Ecoregion 5 Expansion + Salamanders + Invasive Species Annotations + **Ecological Status Taxonomy** — all implemented, tested, and shipped.
 - **Live**: http://localhost:5174/ (run `npm run dev` in root)
 - **Build**: ~200ms, ~700 modules
 - **Tests**: 121 unit tests + 95 E2E tests passing
 - **Dataset**: 177 species (109 NE PA Ecoregion 5 with 8 invasives + 23 French + 45+ taxonomic groups)
 - **Image Validation**: All 86 species in 0-base pack have verified Wikipedia Commons images
+- **Ecological Status**: N (native, default), NB (native bully), NNNA (non-native non-aggressive), I (invasive)
 
 ## What Works
 ✅ **D3 Radial Bubble Tree** - Interactive species relationship diagram
@@ -34,6 +35,8 @@ Phase 1 (Dataset Explorer) + Phase 2 (Life List) + Multi-Region + French Pack + 
 ✅ **Life List Page** - /life-list route with All / By Tier / Calendar / Stats tabs
 ✅ **Salamander Pack Expansion** - Added Eastern Red-backed (Plethodon cinereus) and Northern Red (Pseudotriton ruber) salamanders with full ecological data and verified images
 ✅ **Image Validation** - All 86 species in 0-base pack have verified Wikipedia Commons images; fetch-images tool with --check mode for CI/CD validation
+✅ **Ecological Status Taxonomy** - Four-category classification (N/NB/NNNA/I) with filter chips, Learn page section, and expandable status rows
+✅ **Invasive Species Badges** - Red/amber/sky color-coded badges; clickable tags link to filtered list view
 
 ## Project
 Personal ecological literacy tool for NE Pennsylvania species dataset.
@@ -62,7 +65,7 @@ Helps nature hobbyists understand ecological relationships in their area.
 - **Pack 1**: pack-tools/packs/1-france.json — 23 French species + 3 taxonomic groups
 - **Total**: 132 individual species + 45+ taxonomic groups (note: France pack does not flag invasives)
 - **Image Validation**: All 86 species in 0-base pack have verified Wikipedia Commons images (86/86 = 100%)
-- **Invasive field**: `invasive?: boolean` (default false) on Species; 8 species marked invasive:true in 0-base
+- **Ecological Status field**: `status?: 'nb' | 'nnna' | 'i'` on Species (default undefined = native); 8 species marked status:'i' in 0-base
 - Build: `npm run build:dataset` merges packs → dataset.json; status:published packs only (draft skipped)
 - Species ID format: type_common-name-slug (e.g., bird_pileated-woodpecker, tree_black-oak, plant_garlic-mustard)
 - Obligate relationships marked and pinned in detail view
@@ -202,13 +205,28 @@ RelationshipBubbleTree renders with D3 (SVG)
   7. **Japanese Wineberry** (Rubus phoenicolasius) — shrub, displaces native Rubus
   8. **Garlic Mustard** (Alliaria petiolata) — wildflower, allelopathic to mycorrhizal fungi
 - **Each entry**: Full species record with ecological impact in `functional_description` (e.g., "outcompetes native shrubs", "forms dense monocultures")
-- **Roadmap Updated**: Item #1 "Invasive Species Page" design (region picker, dedicated page, no changes to browse list)
-- **Next**: Build UI page to display invasives by region (currently data only)
+
+### Phase 3.8: Ecological Status Taxonomy ✅ COMPLETE (June 5, 2026)
+- **Data Model Refactor**: Changed `invasive?: boolean` → `status?: 'nb' | 'nnna' | 'i'` enum
+- **Four-Category Taxonomy**:
+  - **N (Native, default)**: undefined status — species evolved in region, no action needed
+  - **NB (Native Bully)**: `status: 'nb'` — native species spreading aggressively, outcompeting other natives (e.g., some willows, dogwoods)
+  - **NNNA (Non-Native Non-Aggressive)**: `status: 'nnna'` — introduced by humans but not spreading, low ecological threat (e.g., forget-me-not, cultivated ornamentals)
+  - **I (Invasive)**: `status: 'i'` — non-native AND spreading aggressively/causing damage (all 8 current invasive species)
+- **UI Integration**: 
+  - New `EcologicalStatusBadge` component with red (invasive), amber (bully), sky (non-native) color scheme
+  - `QuickFilterBar` + `FilterPanel` chips/checkboxes for filtering by status
+  - `TagRow` badges on detail page link to filtered list view with `?ecological_status=` URL param
+  - New `EcologicalStatusSection` on Learn page with expandable rows per status
+- **Data Migration**: All 8 previously-invasive species updated from `invasive: true` to `status: "i"` in 0-base.json
+- **Design Tokens**: Added ECOLOGICAL_STATUS_LABELS, ECOLOGICAL_STATUS_COLORS, ECOLOGICAL_STATUS_DESCRIPTIONS
+- **Zod Schema**: Updated pack-tools validation to accept `status: z.enum(['nb', 'nnna', 'i']).optional()`
 
 ### Future Plans
-- **Invasive Species Page UI** (Phase 4): Top-level page with region picker, list filtered by region
 - **Fetch-names CLI** (plan-fetch-names.md): Wikipedia langlinks API to auto-populate language keys in common_name objects
 - **Ecoregion 6-9 expansions** (when keystone plant lists available)
+- **Add native bully species** (Phase 3.9): Populate `status: 'nb'` with regionally-aggressive natives (e.g., some Salix, Cornus species)
+- **Add non-native non-aggressive species** (Phase 3.10): Populate `status: 'nnna'` with localized non-native species
 
 ### Phase 4: Advanced Visualization (4-6 weeks)
 - Alternative views (grid, timeline, network)
@@ -223,10 +241,11 @@ RelationshipBubbleTree renders with D3 (SVG)
 - Export functionality
 
 ## Next Steps for Developer (Current)
-1. **UI for Invasive Species Page** — Design & implement region-picker + invasive list view (Phase 4)
-2. **Add Allergen/Reproduction Data** — Plant trait expansion (Phase 2 on roadmap)
-3. **Organism Type Preferences** — Toggle display of Mammals/Birds/Plants/etc (Phase 8 on roadmap)
-4. **Dynamic Pack Loading** — Fetch packs on demand without restart (Phase 9 on roadmap)
+1. **Add native bully species** — Identify regionally-aggressive natives (Salix, Cornus spp.) and update with `status: 'nb'` (Phase 3.9)
+2. **Add non-native non-aggressive species** — Find localized non-native species (e.g., forget-me-not cultivars) and mark `status: 'nnna'` (Phase 3.10)
+3. **Add Allergen/Reproduction Data** — Plant trait expansion (Phase 2 on roadmap)
+4. **Organism Type Preferences** — Toggle display of Mammals/Birds/Plants/etc (Phase 8 on roadmap)
+5. **Dynamic Pack Loading** — Fetch packs on demand without restart (Phase 9 on roadmap)
 
 ## Quick Reference
 1. Run `npm run dev` in root → http://localhost:5174/
