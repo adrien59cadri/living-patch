@@ -126,8 +126,17 @@ ID format: `category_slug` (all lowercase, underscore separates category from hy
 
 ## Testing Your Pack
 ```bash
-npm run pack:validate packs/your-pack.json
-npm run pack:merge packs/0-base.json packs/your-pack.json
+# Validate schema and consistency
+npm run validate packs/your-pack.json
+
+# Fetch images for species (writes to pack)
+npm run fetch-images packs/your-pack.json
+
+# Check image validity without modifying pack (CI/CD)
+npm run fetch-images -- packs/your-pack.json --check
+
+# Preview merging with existing packs
+npm run merge packs/0-base.json packs/your-pack.json
 ```
 
 ---

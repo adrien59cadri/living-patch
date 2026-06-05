@@ -1,11 +1,12 @@
 # LivingPatch — Development Memory
 
-## Project Status: ✅ Phase 2 COMPLETE + Multi-Region + French Pack + Ecoregion 5 Expansion (June 2, 2026)
-Phase 1 (Dataset Explorer with D3 Diagram) + Phase 2 (Life List) + Multi-Region Pack System + French species + Ecoregion 5 Northern Forests keystone plants — all implemented, tested, and shipped.
+## Project Status: ✅ Phase 2 COMPLETE + Multi-Region + French Pack + Ecoregion 5 Expansion + Salamander Pack (June 5, 2026)
+Phase 1 (Dataset Explorer with D3 Diagram) + Phase 2 (Life List) + Multi-Region Pack System + French species + Ecoregion 5 Northern Forests keystone plants + Additional salamanders — all implemented, tested, and shipped.
 - **Live**: http://localhost:5174/ (run `npm run dev` in root)
 - **Build**: ~195ms, ~650 modules
 - **Tests**: 121 unit tests + 95 E2E tests passing
-- **Dataset**: 167 species (144 NE PA Ecoregion 5 + 23 French) + 50+ taxonomic groups, 2 packs
+- **Dataset**: 169 species (146 NE PA Ecoregion 5 + 23 French) + 50+ taxonomic groups, 2 packs
+- **Image Validation**: All 86 species in 0-base pack have verified Wikipedia Commons images (via fetch-images tool)
 
 ## What Works
 ✅ **D3 Radial Bubble Tree** - Interactive species relationship diagram
@@ -31,6 +32,8 @@ Phase 1 (Dataset Explorer with D3 Diagram) + Phase 2 (Life List) + Multi-Region 
 ✅ **Tier Selector** - 4-tier buttons (Noticed → Familiar → Know It Well → Steward) on DetailPage
 ✅ **Sighting Modal** - Date/location/notes/conditions form; stays open for batch logging
 ✅ **Life List Page** - /life-list route with All / By Tier / Calendar / Stats tabs
+✅ **Salamander Pack Expansion** - Added Eastern Red-backed (Plethodon cinereus) and Northern Red (Pseudotriton ruber) salamanders with full ecological data and verified images
+✅ **Image Validation** - All 86 species in 0-base pack have verified Wikipedia Commons images; fetch-images tool with --check mode for CI/CD validation
 
 ## Project
 Personal ecological literacy tool for NE Pennsylvania species dataset.
@@ -48,16 +51,18 @@ Helps nature hobbyists understand ecological relationships in their area.
 
 ## Dataset Facts
 - File: app/src/data/dataset.json (merged from packs at build time)
-- **Pack 0**: pack-tools/packs/0-base.json — 144 NE PA species (Ecoregion 5 Northern Forests) + 50+ taxonomic groups
+- **Pack 0**: pack-tools/packs/0-base.json — 146 NE PA species (Ecoregion 5 Northern Forests) + 50+ taxonomic groups
   - Original: 80 species (birds, mammals, insects, plants)
   - Added June 2: 64 keystone plants from Dr. Doug Tallamy's research (trees, wildflowers, shrubs)
   - Trees: Quercus, Prunus, Betula, Populus, Acer, Malus, Pinus, etc. (445+ caterpillar species support)
   - Wildflowers: Goldenrod, Sunflower, Rudbeckia, Aster species (specialist bee plants)
   - Dual keystones: Supporting both Lepidoptera caterpillars AND specialist bees
+  - Added June 5: 2 additional salamanders (Eastern Red-backed, Northern Red) + fixed raccoon image
 - **Pack 1**: pack-tools/packs/1-france.json — 23 French species + 3 taxonomic groups
-- **Total**: 167 individual species + 50+ taxonomic groups
+- **Total**: 169 individual species + 50+ taxonomic groups
+- **Image Validation**: All 86 species in 0-base pack have verified Wikipedia Commons images (86/86 = 100%)
 - Build: `npm run build:dataset` merges packs → dataset.json; status:published packs only (draft skipped)
-- Species ID format: type_common-name-slug (e.g., bird_pileated-woodpecker, tree_black-oak)
+- Species ID format: type_common-name-slug (e.g., bird_pileated-woodpecker, tree_black-oak, amphibian_eastern-red-backed-salamander)
 - Obligate relationships marked and pinned in detail view
 
 ## Architecture
@@ -171,7 +176,17 @@ RelationshipBubbleTree renders with D3 (SVG)
   - Focus: Completing Top-30 genera coverage + specialist bee forage plants
 - **Keystone Types**: host_plant_lepidoptera (34 species) + specialist_bee_forage (17) + dual_keystone (13)
 - **Document**: ECOREGION5_ANALYSIS.md (gap assessment + implementation roadmap)
-- **Tests Updated**: E2E species count assertions (104 → 167 total with both packs)
+- **Tests Updated**: E2E species count assertions (104 → 169 total with both packs)
+
+### Phase 3.6: Salamander Expansion & Image Validation ✅ COMPLETE (June 5, 2026)
+- **Added Salamanders**: Eastern Red-backed (Plethodon cinereus) + Northern Red (Pseudotriton ruber)
+  - Eastern Red-backed: Fossorial, direct development (no aquatic stage), year-round forest floor dweller
+  - Northern Red: Aquatic/semi-aquatic, 1-2 year larval stage, cold stream specialist, aposematic (warning) colors
+- **Image Fixes**: Updated raccoon image from broken Wikimedia URL to verified Central Park photograph
+- **Tool Enhancement**: Added `--check` mode to fetch-images CLI for read-only image validation
+  - `npm run fetch-images -- packs/0-base.json --check` - Validates without modifying pack
+  - Perfect for CI/CD pipelines to verify image integrity
+  - Results: 86/86 species (100%) have verified Wikipedia Commons images
 
 ### Future Plans
 - fetch-names CLI tool (plan-fetch-names.md): Wikipedia langlinks API to auto-populate language keys in common_name objects
