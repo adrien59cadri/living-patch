@@ -83,8 +83,8 @@ export function getFilterOptions(species: Species[]) {
     ),
   ].sort();
   const areas = [...new Set(species.map(s => s.region).filter(Boolean))].sort();
-  const presentStatuses = new Set(
-    species.map(s => s.conservation_status).filter((s): s is string => Boolean(s)),
+  const presentStatuses = new Set<string>(
+    species.flatMap(s => s.conservation_status ? [s.conservation_status] : []),
   );
   const conservation_statuses = CONSERVATION_ORDERED.filter(code => presentStatuses.has(code));
   return { forms, seasons, habitats, keystone_types, areas, conservation_statuses };
