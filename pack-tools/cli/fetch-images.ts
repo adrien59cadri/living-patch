@@ -2,11 +2,12 @@
 
 /**
  * Fetch Wikipedia images for species in a pack
- * 
+ *
  * Usage: npm run fetch-images <pack-file> [options]
  * Example: npm run fetch-images packs/0-base.json
  * Example: npm run fetch-images packs/0-base.json --only-missing
- * 
+ * Example: npm run fetch-images packs/0-base.json --check (verify without modifying)
+ *
  * Scrapes Wikipedia for species images, extracts Wikimedia Commons URLs
  * and author information, and writes directly to species.image properties
  */
@@ -33,8 +34,10 @@ function printUsage() {
   console.error(`${chalk.gray('Usage:')} npm run fetch-images <pack-file> [options]`);
   console.error(`${chalk.gray('Example:')} npm run fetch-images packs/0-base.json`);
   console.error(`${chalk.gray('Example:')} npm run fetch-images packs/0-base.json --only-missing`);
+  console.error(`${chalk.gray('Example:')} npm run fetch-images packs/0-base.json --check`);
   console.error();
   console.error(`${chalk.gray('Options:')}`);
+  console.error(`  --check             Verify images for correctness without modifying pack`);
   console.error(`  --only-missing      Skip species that already have images (update mode)`);
   console.error(`  --delay <ms>        Delay between requests in milliseconds (default: 1000)`);
   console.error(`  --max <count>       Maximum number of species to process (for testing)`);
@@ -48,9 +51,10 @@ function parseArgs(cliArgs: string[]): {
   delay: number;
   maxSpecies?: number;
   onlyMissing: boolean;
+  checkMode: boolean;
 } | null {
   const packFile = cliArgs.find(arg => !arg.startsWith('--'));
-  
+
   if (!packFile) {
     console.error(chalk.red('❌ Error: No pack file specified'));
     printUsage();
@@ -60,6 +64,7 @@ function parseArgs(cliArgs: string[]): {
   let delay = 1000;
   let maxSpecies: number | undefined;
   let onlyMissing = false;
+  let checkMode = false;
 
   for (let i = 0; i < cliArgs.length; i++) {
     if (cliArgs[i] === '--delay' && cliArgs[i + 1]) {
@@ -70,10 +75,12 @@ function parseArgs(cliArgs: string[]): {
       i++;
     } else if (cliArgs[i] === '--only-missing') {
       onlyMissing = true;
+    } else if (cliArgs[i] === '--check') {
+      checkMode = true;
     }
   }
 
-  return { packFile, delay, maxSpecies, onlyMissing };
+  return { packFile, delay, maxSpecies, onlyMissing, checkMode };
 }
 
 /**
@@ -110,23 +117,26 @@ function loadPack(filePath: string): DataPack | null {
  */
 async function main() {
   const parsed = parseArgs(args);
-  
+
   if (!parsed) {
     process.exit(1);
   }
 
-  const { packFile, delay: requestDelay, maxSpecies, onlyMissing } = parsed;
+  const { packFile, delay: requestDelay, maxSpecies, onlyMissing, checkMode } = parsed;
   const pack = loadPack(packFile);
-  
+
   if (!pack) {
     process.exit(1);
   }
 
   const absolutePackPath = path.resolve(packFile);
 
-  console.log(chalk.blue('🔍 Fetching Wikipedia images...'));
+  console.log(chalk.blue('🔍 Checking Wikipedia images...'));
   console.log(`${chalk.gray('Pack:')} ${pack.metadata.id} (v${pack.metadata.version})`);
   console.log(`${chalk.gray('Request delay:')} ${requestDelay}ms`);
+  if (checkMode) {
+    console.log(`${chalk.gray('Mode:')} Check mode (read-only, no modifications)`);
+  }
   if (onlyMissing) {
     console.log(`${chalk.gray('Mode:')} Only missing images (--only-missing)`);
   }
@@ -168,6 +178,13 @@ async function main() {
       continue;
     }
 
+    // In check mode, skip species without images (they're already present)
+    if (checkMode && species.image?.url) {
+      console.log(`${chalk.gray(progress)} ${chalk.gray('✓')} Has image: ${resolveCommonName(species.common_name, species.id)}`);
+      alreadyHadImages++;
+      continue;
+    }
+
     // Skip if no names to search with
     if (!species.latin_name && !species.common_name) {
       console.log(`${chalk.yellow(progress)} ${chalk.gray('⊘')} Skipped: ${species.id} (no names)`);
@@ -176,7 +193,8 @@ async function main() {
     }
 
     try {
-      process.stdout.write(`${chalk.cyan(progress)} Searching for ${resolveCommonName(species.common_name, species.id)}... `);
+      const action = checkMode ? 'Checking' : 'Searching';
+      process.stdout.write(`${chalk.cyan(progress)} ${action} for ${resolveCommonName(species.common_name, species.id)}... `);
 
       const imageData = await rateLimiter.execute(() =>
         scrapeSpeciesImage(species.latin_name, resolveCommonName(species.common_name, species.id))
@@ -184,11 +202,13 @@ async function main() {
 
       if (imageData) {
         console.log(chalk.green('✓ Found'));
-        // Write directly to species object
-        species.image = {
-          url: imageData.url,
-          author: imageData.author,
-        };
+        // Only write to species object if NOT in check mode
+        if (!checkMode) {
+          species.image = {
+            url: imageData.url,
+            author: imageData.author,
+          };
+        }
         successfulImages++;
       } else {
         console.log(chalk.yellow('✗ Not found'));
@@ -214,11 +234,25 @@ async function main() {
   const validationResult = validatePackSafe(pack);
 
   if (!validationResult.success) {
-    console.error(chalk.red('❌ Error: Pack validation failed after image fetch'));
+    console.error(chalk.red('❌ Error: Pack validation failed'));
     validationResult.error.issues.forEach(issue => {
       console.error(`  ${chalk.gray('•')} ${issue.path.join('.')}: ${issue.message}`);
     });
     process.exit(1);
+  }
+
+  // In check mode, don't write back to file
+  if (checkMode) {
+    console.log();
+    console.log(chalk.green('✓ Check complete (no modifications):'));
+    console.log(`  ${chalk.cyan(successfulImages)} images verified`);
+    if (alreadyHadImages > 0) {
+      console.log(`  ${chalk.blue(alreadyHadImages)} species with images skipped (already complete)`);
+    }
+    if (failedSpecies.length > 0) {
+      console.log(`  ${chalk.yellow(failedSpecies.length)} species missing images`);
+    }
+    process.exit(0);
   }
 
   // Write modified pack back to original file
