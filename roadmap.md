@@ -10,25 +10,15 @@ not a universal species property.
 
 #### Data model
 
-Add a new first-class collection to packs — `invasives` — following the same pattern as
-`symbiosis` and `relations`. No changes to the existing `Species` type or pack metadata.
+One field added to `Species`, no new interface:
 
 ```ts
-interface Invasive {
-  latin_name: string;       // canonical identifier
-  common_name?: CommonName;
-  region: string;           // where this species is invasive (e.g. "northeast_pa")
-  description: string;      // ecological impact narrative — outcompetes, forms monocultures, etc.
-  species_id?: string;      // optional: links to a Species record in the same pack for full detail
-}
+invasive?: true;   // present = invasive in this pack's region; absent = not flagged (default false)
 ```
 
-`Dataset` gains an `invasives?: Invasive[]` field. Pack JSON gains an `invasives` array
-under `data`, sitting alongside `species`, `symbiosis`, and `relations`.
-
-An invasive entry is self-contained — no cross-references to species records, no relationship
-links. The description carries all the relevant context: how it spreads, what it displaces,
-why it matters ecologically.
+Invasive species are just species. The existing `id` is the key, `region` is the geo scope,
+and `functional_description` carries the ecological impact narrative (outcompetes, forms
+monocultures, etc.). No separate collection, no cross-references.
 
 #### New "Invasive Species" page
 
@@ -42,11 +32,10 @@ why it matters ecologically.
 
 #### Pack authoring
 
-- `pack-tools` Zod schema: add `invasives` array to pack `data` (optional, validated).
-- Populate `0-base` invasives for NE PA: porcelainberry, Japanese barberry, garlic mustard,
-  multiflora rose, tree-of-heaven, mile-a-minute, burning bush, Norway maple.
-- No deduplication concern: each pack's invasives list is its own regional answer. Same
-  Latin name in two packs with different regions is correct data, not a conflict.
+- `pack-tools` Zod schema: add optional `invasive: true` to the `Species` schema.
+- Add invasive species entries to `0-base` for NE PA: porcelainberry, Japanese barberry,
+  garlic mustard, multiflora rose, tree-of-heaven, mile-a-minute, burning bush, Norway maple.
+- No deduplication concern: each pack's invasive species are scoped to that pack's region.
 
 **Impact**: Users walking in Pennypack PA open the page, pick their region, and immediately
 see what to watch out for. Zero changes to the main browse experience or existing species data.
