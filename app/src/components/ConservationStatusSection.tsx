@@ -22,11 +22,25 @@ function getSpeciesWithStatus(status: string, speciesById: Map<string, Species>)
 }
 
 export default function ConservationStatusSection({ expanded, onToggle, speciesById }: Props) {
-  const presentStatuses = CONSERVATION_ORDERED.filter(code => {
-    let found = false;
-    speciesById.forEach(s => { if (s.conservation_status === code) found = true; });
-    return found;
+  const presentStatuses = new Set<string>();
+  speciesById.forEach(s => {
+    if (s.conservation_status) presentStatuses.add(s.conservation_status);
   });
+
+  const visibleStatuses = CONSERVATION_ORDERED.filter(code => presentStatuses.has(code));
+
+  if (visibleStatuses.length === 0) {
+    return (
+      <div className="space-y-3">
+        <div>
+          <h2 className="text-lg font-bold text-stone-800">Conservation Status</h2>
+          <p className="text-sm text-stone-600 mt-1">
+            No species in this dataset have conservation status data from the IUCN Red List.
+          </p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-3">
@@ -39,12 +53,11 @@ export default function ConservationStatusSection({ expanded, onToggle, speciesB
       </div>
 
       <div>
-        {CONSERVATION_ORDERED.map(code => {
+        {visibleStatuses.map(code => {
           const def = CONSERVATION_DEFINITIONS[code];
           const icon = CONSERVATION_STATUS_ICONS[code] ?? '●';
           const isExpanded = expanded === code;
           const matchingSpecies = getSpeciesWithStatus(code, speciesById);
-          const inDataset = matchingSpecies.length > 0;
 
           return (
             <div key={code}>
@@ -59,7 +72,7 @@ export default function ConservationStatusSection({ expanded, onToggle, speciesB
                 <span className="text-xs text-stone-400 flex-shrink-0 italic">
                   {def?.shortDescription}
                 </span>
-                {inDataset && (
+                {matchingSpecies.length > 0 && (
                   <span className="text-xs text-stone-400 flex-shrink-0 ml-1">
                     {matchingSpecies.length}
                   </span>
