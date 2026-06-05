@@ -54,7 +54,7 @@ export const SpeciesSchema = z.object({
   keystone_type: z.string().optional().nullable(),
   keystone_description: z.string().optional().nullable(),
   active_months: z.array(z.string()).optional().nullable(),
-  invasive: z.boolean().optional(),
+  status: z.enum(['nb', 'nnna', 'i']).optional(),
   taxonomic_group: z.string().optional().nullable(),
   label: z.string().optional().nullable(),
   common_traits: z.string().optional().nullable(),

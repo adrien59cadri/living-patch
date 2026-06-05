@@ -5,12 +5,14 @@ import HabitatHierarchySection from '../components/HabitatHierarchySection';
 import KeystoneTypesSection from '../components/KeystoneTypesSection';
 import SymbiosisSection from '../components/SymbiosisSection';
 import ConservationStatusSection from '../components/ConservationStatusSection';
+import EcologicalStatusSection from '../components/EcologicalStatusSection';
 
 export default function LearnPage() {
   const { speciesById, symbiosis } = useDataset();
   const [expandedKeystoneType, setExpandedKeystoneType] = useState<string | null>(null);
   const [expandedSymbiosisType, setExpandedSymbiosisType] = useState<string | null>(null);
   const [expandedConservationStatus, setExpandedConservationStatus] = useState<string | null>(null);
+  const [expandedEcologicalStatus, setExpandedEcologicalStatus] = useState<string | null>(null);
 
   return (
     <div className="min-h-screen bg-stone-50 py-8 px-4">
@@ -43,6 +45,12 @@ export default function LearnPage() {
           <ConservationStatusSection
             expanded={expandedConservationStatus}
             onToggle={setExpandedConservationStatus}
+            speciesById={speciesById}
+          />
+
+          <EcologicalStatusSection
+            expanded={expandedEcologicalStatus}
+            onToggle={setExpandedEcologicalStatus}
             speciesById={speciesById}
           />
         </div>

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import type { FilterState } from '../lib/filters';
-import { formLabel, habitatLabel, keystoneLabel, areaLabel, formIcon, conservationStatusLabel } from '../lib/labels';
+import { formLabel, habitatLabel, keystoneLabel, areaLabel, formIcon, conservationStatusLabel, ecologicalStatusLabel } from '../lib/labels';
 import {
   getTopLevelForms, getChildForms,
   getTopLevelHabitats, getChildHabitats,
@@ -14,6 +14,7 @@ interface FilterOptions {
   keystone_types: string[];
   areas: string[];
   conservation_statuses: string[];
+  ecological_statuses: string[];
 }
 
 interface Props {
@@ -96,7 +97,8 @@ export function FilterPanel({ options, filters, onChange }: Props) {
     filters.habitats.length > 0 ||
     filters.keystone_types.length > 0 ||
     filters.areas.length > 0 ||
-    filters.conservation_statuses.length > 0;
+    filters.conservation_statuses.length > 0 ||
+    filters.ecological_statuses.length > 0;
 
   return (
     <div className="bg-stone-50 border border-stone-200 rounded-xl p-4 space-y-4">
@@ -274,6 +276,32 @@ export function FilterPanel({ options, filters, onChange }: Props) {
         </div>
       )}
 
+      {/* Ecological status */}
+      {options.ecological_statuses.length > 0 && (
+        <div className="space-y-1.5">
+          <span className="block text-xs font-medium text-stone-500 uppercase tracking-wide">
+            Ecological status
+          </span>
+          <div className="flex flex-col gap-1.5">
+            {options.ecological_statuses.map(code => (
+              <CheckboxItem
+                key={code}
+                label={ecologicalStatusLabel(code)}
+                checked={filters.ecological_statuses.includes(code)}
+                onChange={() =>
+                  onChange({
+                    ...filters,
+                    ecological_statuses: filters.ecological_statuses.includes(code)
+                      ? filters.ecological_statuses.filter(c => c !== code)
+                      : [...filters.ecological_statuses, code],
+                  })
+                }
+              />
+            ))}
+          </div>
+        </div>
+      )}
+
       {hasActive && (
         <button
           onClick={() =>
@@ -285,6 +313,7 @@ export function FilterPanel({ options, filters, onChange }: Props) {
               keystone_types: [],
               areas: [],
               conservation_statuses: [],
+              ecological_statuses: [],
             })
           }
           className="text-xs text-stone-400 hover:text-stone-700 underline"

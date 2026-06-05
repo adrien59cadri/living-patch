@@ -5125,7 +5125,7 @@
           "May-Jun",
           "Sep-Oct"
         ],
-        "invasive": true
+        "status": "i"
       },
       {
         "id": "plant_porcelainberry",
@@ -5164,7 +5164,7 @@
           "May-Jun",
           "Aug-Oct"
         ],
-        "invasive": true
+        "status": "i"
       },
       {
         "id": "plant_oriental-bittersweet",
@@ -5203,7 +5203,7 @@
           "May-Jun",
           "Sep-Nov"
         ],
-        "invasive": true
+        "status": "i"
       },
       {
         "id": "plant_canada-thistle",
@@ -5245,7 +5245,7 @@
         "active_months": [
           "Jun-Sep"
         ],
-        "invasive": true
+        "status": "i"
       },
       {
         "id": "plant_multiflora-rose",
@@ -5286,7 +5286,7 @@
           "May-Jun",
           "Sep-Feb"
         ],
-        "invasive": true
+        "status": "i"
       },
       {
         "id": "plant_common-periwinkle",
@@ -5322,7 +5322,7 @@
         "active_months": [
           "Mar-May"
         ],
-        "invasive": true
+        "status": "i"
       },
       {
         "id": "plant_japanese-wineberry",
@@ -5362,7 +5362,7 @@
           "May-Jun",
           "Jul-Aug"
         ],
-        "invasive": true
+        "status": "i"
       },
       {
         "id": "plant_garlic-mustard",
@@ -5403,7 +5403,7 @@
         "active_months": [
           "Apr-Jun"
         ],
-        "invasive": true
+        "status": "i"
       }
     ],
     "taxonomic_groups": [

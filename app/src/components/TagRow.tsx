@@ -9,6 +9,7 @@ import {
 } from '../lib/labels';
 import { KeystoneBadge } from './KeystoneBadge';
 import { ConservationBadge } from './ConservationBadge';
+import { EcologicalStatusBadge } from './EcologicalStatusBadge';
 
 function TagLink({ to, children }: { to?: string; children: React.ReactNode }) {
   if (!to) return <>{children}</>;
@@ -73,6 +74,11 @@ export function TagRow({ species, linkable }: TagRowProps) {
           to={linkable ? `/?conservation_status=${species.conservation_status}` : undefined}
         >
           <ConservationBadge status={species.conservation_status} />
+        </TagLink>
+      )}
+      {species.status && (
+        <TagLink to={linkable ? `/?ecological_status=${species.status}` : undefined}>
+          <EcologicalStatusBadge status={species.status} />
         </TagLink>
       )}
       {(species.habitat ?? []).map(h => (

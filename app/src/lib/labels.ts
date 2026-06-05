@@ -2,6 +2,9 @@ import {
   getFormIcon,
   getKeystoneLabel,
   getConservationStatusLabel,
+  getEcologicalStatusLabel,
+  ECOLOGICAL_STATUS_LABELS,
+  ECOLOGICAL_STATUS_DESCRIPTIONS,
   FORM_LABELS,
   SEASON_LABELS,
   HABITAT_LABELS,
@@ -10,6 +13,7 @@ import {
   SYMBIOSIS_LABELS,
   KEYSTONE_TYPE_LABELS,
 } from './designTokens';
+import type { EcologicalStatus } from '../types';
 
 /**
  * Format a slug string to a human-readable label.
@@ -84,6 +88,16 @@ export function keystoneLabel(type: string): string {
 export function conservationStatusLabel(status: string): string {
   return getConservationStatusLabel(status);
 }
+
+export function ecologicalStatusLabel(status: EcologicalStatus | string): string {
+  return getEcologicalStatusLabel(status);
+}
+
+export function ecologicalStatusDescription(status: EcologicalStatus | string): string {
+  return ECOLOGICAL_STATUS_DESCRIPTIONS[status] ?? status;
+}
+
+export { ECOLOGICAL_STATUS_LABELS, ECOLOGICAL_STATUS_DESCRIPTIONS };
 
 import type { CommonName } from '../types';
 
