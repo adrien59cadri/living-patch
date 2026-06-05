@@ -65,12 +65,40 @@ Add a new exported function `extractConservationStatus(html: string): Conservati
 
 1. Parses the HTML of a Wikipedia species page.
 2. Finds the IUCN status inside the infobox — Wikipedia wraps it in a `<td>` with class `iucn` or in an element with `data-iucn-status`, or as a short text like "Endangered" near the word "IUCN".
-3. Maps the text to one of the eight status codes (case-insensitive, handle aliases like "Near Threatened" → `NT`).
-4. Returns `null` if not found.
+3. Maps the full text to a **shorthand code** and returns that code — never the full text:
+
+   | Wikipedia text         | Stored value |
+   |------------------------|--------------|
+   | `Least Concern`        | `LC`         |
+   | `Near Threatened`      | `NT`         |
+   | `Vulnerable`           | `VU`         |
+   | `Endangered`           | `EN`         |
+   | `Critically Endangered`| `CR`         |
+   | `Extinct in the Wild`  | `EW`         |
+   | `Extinct`              | `EX`         |
+   | `Data Deficient`       | `DD`         |
+
+   The function is case-insensitive and also accepts the codes themselves as input (idempotent), so re-running the CLI on an already-populated pack is safe.
+
+4. Returns `null` if no recognisable status is found.
 
 > Wikipedia's species infoboxes consistently use a block like:
 > `<td class="iucn"><a …>Least Concern</a></td>`
 > The scraper should target that pattern first, then fall back to searching for the IUCN abbreviation badge image alt-text (e.g., `alt="NT"`).
+
+**Pack JSON storage format** — the shorthand is written directly to the field:
+
+```json
+{
+  "id": "eurasian_sparrowhawk",
+  "common_name": "Eurasian Sparrowhawk",
+  "latin_name": "Accipiter nisus",
+  "conservation_status": "LC",
+  "image": { "url": "https://…", "author": "…" }
+}
+```
+
+Full labels (e.g., "Least Concern") are resolved at render time via `CONSERVATION_STATUS_LABELS` in `designTokens.ts` — they are never stored in the pack.
 
 #### 2b. New CLI tool
 
