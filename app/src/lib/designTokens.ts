@@ -184,6 +184,32 @@ export const CONSERVATION_STATUS_LABELS: Record<string, string> = {
 };
 
 // ============================================================================
+// ECOLOGICAL STATUS - Regional standing of a species (native bully / non-native / invasive)
+// ============================================================================
+
+export const ECOLOGICAL_STATUS_LABELS: Record<string, string> = {
+  nb:   '⚠️ Native Bully',
+  nnna: '🌍 Non-Native',
+  i:    '🚫 Invasive',
+};
+
+export const ECOLOGICAL_STATUS_COLORS: Record<string, string> = {
+  nb:   '#b45309', // amber-700 — native concern
+  nnna: '#0369a1', // sky-700   — introduced, low threat
+  i:    '#b91c1c', // red-700   — active ecological threat
+};
+
+export const ECOLOGICAL_STATUS_DESCRIPTIONS: Record<string, string> = {
+  nb:   'Native species that spreads aggressively and outcompetes other natives, reducing local diversity.',
+  nnna: 'Non-native species introduced by humans but not spreading aggressively. Remains largely localized.',
+  i:    'Non-native species spreading aggressively and causing significant ecological damage. Requires management.',
+};
+
+export function getEcologicalStatusLabel(status: string): string {
+  return ECOLOGICAL_STATUS_LABELS[status] ?? status;
+}
+
+// ============================================================================
 // FORM CATEGORIZATION - Group specific forms into base categories
 // ============================================================================
 

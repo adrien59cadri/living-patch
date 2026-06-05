@@ -24,6 +24,7 @@ export default function HomePage() {
     keystone_types: searchParams.getAll('keystone_type'),
     areas: searchParams.getAll('area'),
     conservation_statuses: searchParams.getAll('conservation_status'),
+    ecological_statuses: searchParams.getAll('ecological_status'),
   }));
 
   // Sync filters to URL when they change (but not on mount)
@@ -37,6 +38,7 @@ export default function HomePage() {
     newFilters.keystone_types.forEach(kt => params.append('keystone_type', kt));
     newFilters.areas.forEach(a => params.append('area', a));
     newFilters.conservation_statuses.forEach(cs => params.append('conservation_status', cs));
+    newFilters.ecological_statuses.forEach(es => params.append('ecological_status', es));
     
     const queryString = params.toString();
     navigate(queryString ? `?${queryString}` : '/');
@@ -48,7 +50,7 @@ export default function HomePage() {
 
   const activeFilterCount =
     filters.forms.length + filters.habitats.length + filters.keystone_types.length +
-    filters.areas.length + filters.conservation_statuses.length;
+    filters.areas.length + filters.conservation_statuses.length + filters.ecological_statuses.length;
 
   return (
     <div className="space-y-4">

@@ -13,6 +13,12 @@ export type CommonName = string | { en: string; [lang: string]: string | undefin
 
 export type ConservationStatus = 'EX' | 'EW' | 'CR' | 'EN' | 'VU' | 'NT' | 'LC' | 'DD';
 
+/** Ecological standing relative to the pack's region.
+ * 'nb' = native bully (native but aggressive spreader)
+ * 'nnna' = non-native non-aggressive (introduced but stable)
+ * 'i' = invasive (non-native AND spreading aggressively or causing damage) */
+export type EcologicalStatus = 'nb' | 'nnna' | 'i';
+
 export interface Species {
   id: string;
   common_name: CommonName;
@@ -30,6 +36,7 @@ export interface Species {
   keystone_type?: string | null;
   keystone_description?: string | null;
   active_months?: string[] | null;
+  status?: EcologicalStatus;
   /** Wikipedia image if available */
   image?: {
     url: string;

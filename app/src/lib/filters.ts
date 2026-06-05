@@ -16,10 +16,11 @@ export interface FilterState {
   keystone_types: string[];
   areas: string[];
   conservation_statuses: string[];
+  ecological_statuses: string[];
 }
 
 export function filterSpecies(species: Species[], filters: FilterState): Species[] {
-  const { search, forms, seasons, habitats, keystone_types, areas, conservation_statuses } = filters;
+  const { search, forms, seasons, habitats, keystone_types, areas, conservation_statuses, ecological_statuses } = filters;
   const q = search.toLowerCase().trim().replace(/-/g, ' ');
 
   return species.filter(s => {
@@ -56,6 +57,9 @@ export function filterSpecies(species: Species[], filters: FilterState): Species
     if (conservation_statuses.length > 0) {
       if (!s.conservation_status || !conservation_statuses.includes(s.conservation_status)) return false;
     }
+    if (ecological_statuses.length > 0) {
+      if (!s.status || !ecological_statuses.includes(s.status)) return false;
+    }
 
     return true;
   });
@@ -87,5 +91,8 @@ export function getFilterOptions(species: Species[]) {
     species.flatMap(s => s.conservation_status ? [s.conservation_status] : []),
   );
   const conservation_statuses = CONSERVATION_ORDERED.filter(code => presentStatuses.has(code));
-  return { forms, seasons, habitats, keystone_types, areas, conservation_statuses };
+  const ecological_statuses = (['i', 'nb', 'nnna'] as const).filter(code =>
+    species.some(s => s.status === code),
+  );
+  return { forms, seasons, habitats, keystone_types, areas, conservation_statuses, ecological_statuses };
 }

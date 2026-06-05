@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import type { FilterState } from '../lib/filters';
-import { formLabel, habitatLabel, keystoneLabel, areaLabel, formIcon, conservationStatusLabel } from '../lib/labels';
+import { formLabel, habitatLabel, keystoneLabel, areaLabel, formIcon, conservationStatusLabel, ecologicalStatusLabel } from '../lib/labels';
 import {
   getTopLevelForms, getChildForms,
   getTopLevelHabitats, getChildHabitats,
@@ -13,6 +13,7 @@ interface FilterOptions {
   keystone_types: string[];
   areas: string[];
   conservation_statuses: string[];
+  ecological_statuses: string[];
 }
 
 interface Props {
@@ -140,8 +141,9 @@ export function QuickFilterBar({ options, filters, onChange }: Props) {
   const hasKeystone = visibleKeystoneTopLevels.length > 0;
   const hasArea = options.areas.length > 1;
   const hasConservation = options.conservation_statuses.length > 0;
+  const hasEcological = options.ecological_statuses.length > 0;
 
-  if (!hasForm && !hasHabitat && !hasKeystone && !hasArea && !hasConservation) return null;
+  if (!hasForm && !hasHabitat && !hasKeystone && !hasArea && !hasConservation && !hasEcological) return null;
 
   return (
     <div className="space-y-2">
@@ -249,6 +251,36 @@ export function QuickFilterBar({ options, filters, onChange }: Props) {
                 ].join(' ')}
               >
                 {conservationStatusLabel(code)}
+              </button>
+            );
+          })}
+        </div>
+      )}
+
+      {/* Ecological status chips – flat multi-select */}
+      {hasEcological && (
+        <div className="flex flex-wrap gap-1.5">
+          {options.ecological_statuses.map(code => {
+            const active = filters.ecological_statuses.includes(code);
+            return (
+              <button
+                key={code}
+                onClick={() =>
+                  onChange({
+                    ...filters,
+                    ecological_statuses: active
+                      ? filters.ecological_statuses.filter(c => c !== code)
+                      : [...filters.ecological_statuses, code],
+                  })
+                }
+                className={[
+                  'text-xs px-2 py-0.5 rounded-full transition-colors',
+                  active
+                    ? 'bg-red-700 text-white'
+                    : 'bg-red-100 text-red-800 hover:bg-red-200',
+                ].join(' ')}
+              >
+                {ecologicalStatusLabel(code)}
               </button>
             );
           })}

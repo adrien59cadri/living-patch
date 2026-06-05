@@ -2,14 +2,43 @@
 
 ## Planned Features (Next Priority)
 
-### 1. Native/Invasive Species Classification
-Add native/invasive and other species classification info to datasets:
-- Extend dataset schema to include species classification (native, invasive, endemic, etc.)
-- Display this information on the learning page using shorthand labels
-- Filter/highlight species by classification in the app
-- Support habitat-specific classifications (a species can be native in one region, invasive in another)
+### 1. Invasive Species Page
 
-**Impact**: Provides richer ecological context and educational value.
+A dedicated top-level page where the user picks a region and sees which species are invasive
+there. Kept entirely separate from the main browse list — invasive status is place-specific,
+not a universal species property.
+
+#### Data model
+
+One field added to `Species`, no new interface:
+
+```ts
+invasive?: boolean;   // default false; true = invasive in this pack's region
+```
+
+Invasive species are just species. The existing `id` is the key, `region` is the geo scope,
+and `functional_description` carries the ecological impact narrative (outcompetes, forms
+monocultures, etc.). No separate collection, no cross-references.
+
+#### New "Invasive Species" page
+
+- Top-level nav entry (alongside Learn, Life List, Packs)
+- Region picker: unique `region` values collected from loaded `invasives` entries
+- After picking: list of invasive entries for that region; tiles link to the detail page
+  if a matching `species_id` exists, otherwise show a minimal card
+- Brief intro: "These are documented invasives in [region]. Any non-native species could
+  also spread — check a local source for the full picture."
+- Region selector persists in user preferences
+
+#### Pack authoring
+
+- `pack-tools` Zod schema: add optional `invasive: true` to the `Species` schema.
+- Add invasive species entries to `0-base` for NE PA: porcelainberry, Japanese barberry,
+  garlic mustard, multiflora rose, tree-of-heaven, mile-a-minute, burning bush, Norway maple.
+- No deduplication concern: each pack's invasive species are scoped to that pack's region.
+
+**Impact**: Users walking in Pennypack PA open the page, pick their region, and immediately
+see what to watch out for. Zero changes to the main browse experience or existing species data.
 
 ### 2. Plant Trait Expansion: Allergen & Reproduction Info
 Extend plant species data with human health and reproduction information:
