@@ -2,14 +2,92 @@
 
 ## Planned Features (Next Priority)
 
-### 1. Native/Invasive Species Classification
-Add native/invasive and other species classification info to datasets:
-- Extend dataset schema to include species classification (native, invasive, endemic, etc.)
-- Display this information on the learning page using shorthand labels
-- Filter/highlight species by classification in the app
-- Support habitat-specific classifications (a species can be native in one region, invasive in another)
+### 1. Geo-Aware Species Status (Native / Invasive / Introduced)
 
-**Impact**: Provides richer ecological context and educational value.
+The same species can have completely different ecological standing depending on geography.
+Porcelainberry (*Ampelopsis glandulosa*) is an aggressive invasive in Pennypack PA — yet it
+is native and ecologically integrated in eastern Asia. The system must encode this without
+treating status as a global species property.
+
+#### Why "just add a status field" is not enough
+
+The current `Species` record is already region-scoped via `region: string`. Adding a flat
+`status` field to that record is correct and sufficient *within a single pack*. The real
+design challenge emerges when multiple packs are loaded simultaneously and the same Latin
+name appears with *different statuses* across regions. That cross-pack case needs explicit
+handling so the UI surfaces "invasive here, native there" rather than silently picking one.
+
+#### Proposed data model
+
+**On the `Species` record** (one status per region-scoped entry):
+
+```ts
+status?: 'native' | 'introduced' | 'naturalized' | 'invasive' | 'endemic' | 'extirpated';
+status_authority?: string;   // e.g. "PA DCNR", "USDA PLANTS", "IUCN"
+status_notes?: string;       // optional human-readable context
+```
+
+Because `region` already scopes the record, this is geo-specific with no additional key.
+A species that appears in two packs simply has two records with two statuses.
+
+**No new `geo_status` array needed at this stage.** The multi-region story is handled by the
+merged-dataset layer, not by embedding a region map inside each record.
+
+#### Cross-pack status collision handling
+
+When two loaded packs share the same `latin_name` with different `status` values, the
+merged dataset should *preserve both records* rather than deduplicate them. The app layer
+needs a new collision class — "status divergence" — distinct from true duplicates:
+
+- `pack-tools` conflict resolver: add `status_divergence` detection alongside existing
+  duplicate logic; emit a warning (not an error) so authors know the divergence is intentional.
+- App `useDataset` / index layer: when a species detail page is requested by Latin name
+  and multiple region records exist, aggregate them into a `StatusByRegion` view:
+  `[{ region: 'northeast_pa', status: 'invasive' }, { region: 'east_asia', status: 'native' }]`.
+
+#### Implementation phases
+
+**Phase A — Schema & pack data (no UI changes)**
+- Add `status`, `status_authority`, `status_notes` to the `Species` Zod schema (all optional).
+- Add status values to `pack-tools/lib/schema.ts` and regenerate JSON Schema.
+- Annotate existing `0-base` species that are known invasives in NE PA
+  (porcelainberry, Japanese barberry, garlic mustard, multiflora rose, tree-of-heaven, etc.).
+- Add `status_divergence` detection to `pack-tools/lib/conflicts.ts`.
+
+**Phase B — Display**
+- Status badge on `SpeciesTile` and `DetailPage`: coloured chip
+  (`invasive` → red-orange, `introduced` → amber, `native` → green, `endemic` → teal,
+  `naturalized` → blue-grey, `extirpated` → grey strikethrough).
+- On `DetailPage`, when multiple region records exist for the same Latin name, show a
+  "Status varies by region" section listing each region and its status.
+- Tooltip / expandable panel explaining what each status means ecologically.
+
+**Phase C — Filter & highlight**
+- Extend `FilterState` with `statuses: string[]`.
+- Filter chips in `FilterPanel` for status (multi-select).
+- "Invasives only" quick-filter shortcut on the home page.
+- Optional: highlight invasive species with a subtle visual treatment in the species list
+  (e.g., left border accent) so they stand out without requiring an active filter.
+
+**Phase D — Pack authoring guidance**
+- `pack-tools` lint rule: warn if a `form: 'plant'` or `form: 'tree'` species has no `status`
+  field (plants are the primary invasive concern).
+- CLI output for `status_divergence` collisions explains the intentional multi-region pattern.
+- Document the convention in pack authoring docs.
+
+#### Open questions
+- Should `status` be required for all species, or only for certain `form` values?
+  (Plants/trees are the clear priority; birds and mammals rarely classified as invasive in
+  the same legal/ecological sense, though brown-headed cowbirds and feral hogs are edge cases.)
+- When both packs are loaded and a species is `invasive` in the user's active region but
+  `native` elsewhere, should the badge show the *local* status, the *worst-case* status, or
+  both? Recommendation: default to active-region status; show full breakdown on detail page.
+- Authority field: free text for now; could become a controlled vocabulary later
+  (PA DCNR, NJ DEP, USDA PLANTS, iNaturalist status, etc.).
+
+**Impact**: Grounds species learning in place — the same plant can be a welcome wildflower or
+an ecological threat depending on where you are standing. Directly supports the Pennypack PA
+use case and generalises cleanly to any multi-region dataset.
 
 ### 2. Plant Trait Expansion: Allergen & Reproduction Info
 Extend plant species data with human health and reproduction information:
