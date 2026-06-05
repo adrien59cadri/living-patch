@@ -19,6 +19,7 @@ interface Invasive {
   common_name?: CommonName;
   region: string;           // where this species is invasive (e.g. "northeast_pa")
   description: string;      // ecological impact narrative — outcompetes, forms monocultures, etc.
+  species_id?: string;      // optional: links to a Species record in the same pack for full detail
 }
 ```
 
