@@ -4128,6 +4128,963 @@
           "url": "https://upload.wikimedia.org/wikipedia/commons/e/ee/Brook_trout_in_water.jpg",
           "author": "Jay Fleming (US Nat'l Park Svc)"
         }
+      },
+      {
+        "id": "plant_american-holly",
+        "common_name": "American Holly",
+        "latin_name": "Ilex opaca",
+        "form": "tree",
+        "habitat": [
+          "deciduous_forest",
+          "mixed_forest",
+          "forest_understory",
+          "riparian"
+        ],
+        "diet": [],
+        "behavior": [
+          "evergreen",
+          "fruit_producer"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "active_months": [
+          "Jan-Dec"
+        ],
+        "functional_description": "Medium evergreen tree with glossy dark green leaves and waxy thorny margins. Produces bright red berries in fall that persist through winter — key winter food for robins, cedar waxwings, and other birds. Dioecious — only female trees produce berries. Long-lived (100+ years). Important understory evergreen in NE PA forests.",
+        "life_stages": [
+          {
+            "icon": "🌱",
+            "name": "Seedling",
+            "description": "Shade-tolerant evergreen seedlings in forest understory",
+            "months": [
+              "Apr-Jun"
+            ]
+          },
+          {
+            "icon": "🌳",
+            "name": "Mature",
+            "description": "Full-grown tree with dark green glossy foliage",
+            "months": [
+              "Apr-Sep"
+            ]
+          },
+          {
+            "icon": "🫐",
+            "name": "Fruiting",
+            "description": "Bright red berries persist on female trees through winter",
+            "months": [
+              "Oct-Feb"
+            ]
+          }
+        ],
+        "region": "northeast_pa",
+        "ecological_role": "producer",
+        "is_keystone": false,
+        "keystone_type": null,
+        "keystone_description": null,
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Ilex_opaca_USDA.jpg/960px-Ilex_opaca_USDA.jpg",
+          "author": "Wikimedia Commons"
+        }
+      },
+      {
+        "id": "plant_bitternut-hickory",
+        "common_name": "Bitternut Hickory",
+        "latin_name": "Carya cordiformis",
+        "form": "tree",
+        "habitat": [
+          "deciduous_forest",
+          "mixed_forest",
+          "riparian",
+          "floodplain"
+        ],
+        "diet": [],
+        "behavior": [
+          "mast_producer",
+          "deep_rooted"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "functional_description": "Large deciduous tree with compound pinnate leaves and hard-shelled nuts encased in thin husks. Named for extremely bitter kernel — unpalatable to most wildlife. More abundant in NE PA than Shagbark. Produces prolific nut crops. Important timber tree; wood used for tool handles and smoking meats.",
+        "life_stages": [
+          {
+            "icon": "🌱",
+            "name": "Seedling",
+            "description": "Germinating from hard-shelled nuts",
+            "months": [
+              "Apr-Jun"
+            ]
+          },
+          {
+            "icon": "🌳",
+            "name": "Mature",
+            "description": "Large canopy tree with compound leaves",
+            "months": [
+              "Apr-Oct"
+            ]
+          },
+          {
+            "icon": "🌰",
+            "name": "Fruiting",
+            "description": "Hard nuts in thin husks — extremely bitter",
+            "months": [
+              "Aug-Oct"
+            ]
+          }
+        ],
+        "region": "northeast_pa",
+        "ecological_role": "producer",
+        "is_keystone": false,
+        "keystone_type": null,
+        "keystone_description": null,
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Carya_cordiformis.jpg/960px-Carya_cordiformis.jpg",
+          "author": "No machine-readable author provided. MPF"
+        }
+      },
+      {
+        "id": "plant_shagbark-hickory",
+        "common_name": "Shagbark Hickory",
+        "latin_name": "Carya ovata",
+        "form": "tree",
+        "habitat": [
+          "deciduous_forest",
+          "woodland",
+          "forest_edge"
+        ],
+        "diet": [],
+        "behavior": [
+          "mast_producer",
+          "shaggy_bark"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "functional_description": "Large deciduous tree with distinctive shaggy exfoliating bark (plates curling at edges). Produces large round nuts in thick husks with sweet edible kernels — preferred by squirrels, deer, and humans. Less common than Bitternut Hickory in NE PA. Iconic tree with high wildlife value. Excellent timber; hickory wood used for tool handles, furniture, and smoking meats.",
+        "life_stages": [
+          {
+            "icon": "🌱",
+            "name": "Seedling",
+            "description": "Growing from large sweet nuts",
+            "months": [
+              "Apr-Jun"
+            ]
+          },
+          {
+            "icon": "🌳",
+            "name": "Mature",
+            "description": "Tall tree with distinctive shaggy bark plates",
+            "months": [
+              "Apr-Oct"
+            ]
+          },
+          {
+            "icon": "🌰",
+            "name": "Fruiting",
+            "description": "Large round nuts in thick husks with sweet kernels",
+            "months": [
+              "Sep-Nov"
+            ]
+          }
+        ],
+        "region": "northeast_pa",
+        "ecological_role": "producer",
+        "is_keystone": true,
+        "keystone_type": "mast_producer",
+        "keystone_description": "Produces highly nutritious sweet nuts preferred by squirrels, deer, and other wildlife. Less abundant than White Oak but equally valuable where present. Critical fall food source for many mammal species.",
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/2021-03-03_10_34_58_Shagbark_Hickory_trunk_within_the_woodlands_along_the_West_Branch_Shabakunk_Creek_in_Ewing_Township%2C_Mercer_County%2C_New_Jersey.jpg/500px-2021-03-03_10_34_58_Shagbark_Hickory_trunk_within_the_woodlands_along_the_West_Branch_Shabakunk_Creek_in_Ewing_Township%2C_Mercer_County%2C_New_Jersey.jpg",
+          "author": "Famartin"
+        }
+      },
+      {
+        "id": "plant_black-gum",
+        "common_name": "Black Gum",
+        "latin_name": "Nyssa sylvatica",
+        "form": "tree",
+        "habitat": [
+          "deciduous_forest",
+          "mixed_forest",
+          "riparian",
+          "wetland_edge"
+        ],
+        "diet": [],
+        "behavior": [
+          "early_fall_color",
+          "fruit_producer"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "active_months": [
+          "Jan-Dec"
+        ],
+        "functional_description": "Medium deciduous tree with small oval leaves that turn brilliant deep red in early fall (August-September) before other trees — a striking fall indicator. Produces small dark blue fruits attractive to birds and wildlife. Prefers moist to wet soils. Long-lived (300+ years possible). Also called Black Tupelo.",
+        "life_stages": [
+          {
+            "icon": "🌱",
+            "name": "Seedling",
+            "description": "Growing in moist forest understory",
+            "months": [
+              "Apr-Jun"
+            ]
+          },
+          {
+            "icon": "🌳",
+            "name": "Mature",
+            "description": "Medium tree with small opposite leaves",
+            "months": [
+              "May-Oct"
+            ]
+          },
+          {
+            "icon": "🔴",
+            "name": "Fall Color",
+            "description": "Brilliant deep red foliage in early fall",
+            "months": [
+              "Aug-Sep"
+            ]
+          },
+          {
+            "icon": "🫐",
+            "name": "Fruiting",
+            "description": "Small dark blue fruits on female trees",
+            "months": [
+              "Aug-Oct"
+            ]
+          }
+        ],
+        "region": "northeast_pa",
+        "ecological_role": "producer",
+        "is_keystone": false,
+        "keystone_type": null,
+        "keystone_description": null,
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Nyssa_sylvatica_v_sylvatica.jpg/960px-Nyssa_sylvatica_v_sylvatica.jpg",
+          "author": "Eric Hunt"
+        }
+      },
+      {
+        "id": "plant_eastern-white-pine",
+        "common_name": "Eastern White Pine",
+        "latin_name": "Pinus strobus",
+        "form": "tree",
+        "habitat": [
+          "deciduous_forest",
+          "mixed_forest",
+          "woodland",
+          "disturbed_areas"
+        ],
+        "diet": [],
+        "behavior": [
+          "evergreen",
+          "pioneer",
+          "tall_growing"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "active_months": [
+          "Jan-Dec"
+        ],
+        "functional_description": "Tallest tree in eastern North America — can exceed 200 ft. Large evergreen conifer with soft needle bundles (fascicles of 5). Produces large winged seeds dispersed by wind. Pioneer species in disturbed areas. Prefers sandy well-drained soils. Important timber tree. Provides coniferous evergreen structure and seed food for wildlife.",
+        "life_stages": [
+          {
+            "icon": "🌲",
+            "name": "Seedling",
+            "description": "Small evergreen seedlings in open sunny areas",
+            "months": [
+              "Apr-Jun"
+            ]
+          },
+          {
+            "icon": "🌲",
+            "name": "Mature",
+            "description": "Tall straight tree with soft needle fascicles",
+            "months": [
+              "May-Oct"
+            ]
+          },
+          {
+            "icon": "🎄",
+            "name": "Coning",
+            "description": "Large cylindrical cones with winged seeds",
+            "months": [
+              "Aug-Oct"
+            ]
+          }
+        ],
+        "region": "northeast_pa",
+        "ecological_role": "producer",
+        "is_keystone": false,
+        "keystone_type": null,
+        "keystone_description": null,
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/4/48/Pinus_strobus_trees.jpg",
+          "author": "US FWS"
+        }
+      },
+      {
+        "id": "plant_norway-spruce",
+        "common_name": "Norway Spruce",
+        "latin_name": "Picea abies",
+        "form": "tree",
+        "habitat": [
+          "cultivated",
+          "forest_edge",
+          "disturbed_areas"
+        ],
+        "diet": [],
+        "behavior": [
+          "evergreen",
+          "ornamental",
+          "non-native"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "active_months": [
+          "Jan-Dec"
+        ],
+        "functional_description": "Large evergreen conifer native to Eurasia, commonly planted as ornamental and Christmas tree in NE PA. Pyramidal shape with drooping branches. Produces large cylindrical hanging cones. Non-native but widely cultivated. Less winter-hardy than native White Pine in exposed areas. Provides some wildlife value through seed production.",
+        "life_stages": [
+          {
+            "icon": "🌲",
+            "name": "Young Tree",
+            "description": "Dense pyramidal evergreen shape",
+            "months": [
+              "May-Oct"
+            ]
+          },
+          {
+            "icon": "🌲",
+            "name": "Mature",
+            "description": "Large symmetrical conifer with drooping branch tips",
+            "months": [
+              "May-Oct"
+            ]
+          },
+          {
+            "icon": "🎄",
+            "name": "Coning",
+            "description": "Large hanging cylindrical cones",
+            "months": [
+              "Aug-Oct"
+            ]
+          }
+        ],
+        "region": "northeast_pa",
+        "ecological_role": "producer",
+        "is_keystone": false,
+        "keystone_type": null,
+        "keystone_description": null,
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Kuusk_Keila-Paldiski_rdt_%C3%A4%C3%A4res.jpg/500px-Kuusk_Keila-Paldiski_rdt_%C3%A4%C3%A4res.jpg",
+          "author": "Ivar Leidus"
+        }
+      },
+      {
+        "id": "plant_flowering-dogwood",
+        "common_name": "Flowering Dogwood",
+        "latin_name": "Cornus florida",
+        "form": "tree",
+        "habitat": [
+          "deciduous_forest",
+          "woodland",
+          "forest_understory"
+        ],
+        "diet": [],
+        "behavior": [
+          "spring_bloomer",
+          "fruit_producer"
+        ],
+        "season": [
+          "spring",
+          "summer",
+          "fall",
+          "winter"
+        ],
+        "active_months": [
+          "Jan-Dec"
+        ],
+        "functional_description": "Small deciduous understory tree with showy spring flower bracts (white, pink, or red) appearing before leaves. Produces bright red berries in fall eaten by robins and thrushes. Susceptible to anthracnose fungal disease in NE PA — populations have declined. Excellent ornamental value.",
+        "life_stages": [
+          {
+            "icon": "🌱",
+            "name": "Seedling",
+            "description": "Shade-tolerant understory seedlings",
+            "months": [
+              "Apr-Jun"
+            ]
+          },
+          {
+            "icon": "🌸",
+            "name": "Flowering",
+            "description": "Showy flower bracts (white, pink, or red) before leaves",
+            "months": [
+              "Apr-May"
+            ]
+          },
+          {
+            "icon": "🫐",
+            "name": "Fruiting",
+            "description": "Bright red berries attractive to birds",
+            "months": [
+              "Aug-Oct"
+            ]
+          },
+          {
+            "icon": "🍂",
+            "name": "Fall Color",
+            "description": "Purple-red fall foliage",
+            "months": [
+              "Oct-Nov"
+            ]
+          }
+        ],
+        "region": "northeast_pa",
+        "ecological_role": "producer",
+        "is_keystone": false,
+        "keystone_type": null,
+        "keystone_description": null,
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Cornus_florida_Arkansas.jpg/960px-Cornus_florida_Arkansas.jpg",
+          "author": "Eric Hunt"
+        }
+      },
+      {
+        "id": "plant_sassafras",
+        "common_name": "Sassafras",
+        "latin_name": "Sassafras albidum",
+        "form": "tree",
+        "habitat": [
+          "deciduous_forest",
+          "woodland",
+          "forest_edge",
+          "disturbed_areas"
+        ],
+        "diet": [],
+        "behavior": [
+          "early_spring_bloomer",
+          "fruit_producer",
+          "aromatic"
+        ],
+        "season": [
+          "spring",
+          "summer",
+          "fall",
+          "winter"
+        ],
+        "active_months": [
+          "Jan-Dec"
+        ],
+        "functional_description": "Medium deciduous tree/large shrub with aromatic foliage and distinctive mitten-shaped leaves (some trees have 3 different leaf shapes). Early spring yellow flowers before leaves. Blue berries in fall on red stalks. Obligate host for Spicebush Swallowtail caterpillars. Historic source of sassafras tea and oil.",
+        "life_stages": [
+          {
+            "icon": "🌱",
+            "name": "Seedling",
+            "description": "Growing from blue berries; often suckering colonially",
+            "months": [
+              "Apr-Jun"
+            ]
+          },
+          {
+            "icon": "🌸",
+            "name": "Flowering",
+            "description": "Yellow flowers before leaves in early spring",
+            "months": [
+              "Mar-Apr"
+            ]
+          },
+          {
+            "icon": "🌳",
+            "name": "Summer Growth",
+            "description": "Mitten-shaped leaves; three different leaf shapes on same tree",
+            "months": [
+              "May-Sep"
+            ]
+          },
+          {
+            "icon": "🫐",
+            "name": "Fruiting",
+            "description": "Blue berries on red stalks",
+            "months": [
+              "Aug-Oct"
+            ]
+          }
+        ],
+        "region": "northeast_pa",
+        "ecological_role": "producer",
+        "is_keystone": true,
+        "keystone_type": "host_plant",
+        "keystone_description": "Obligate host plant for Spicebush Swallowtail butterfly caterpillars — along with Spicebush, one of only two native Lauraceae family members in NE PA. Berries provide fall food for songbirds during migration.",
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Sassafras_Leaves_June_Nbg_%28261691941%29.jpeg/960px-Sassafras_Leaves_June_Nbg_%28261691941%29.jpeg",
+          "author": "Photographer"
+        }
+      },
+      {
+        "id": "plant_eastern-redbud",
+        "common_name": "Eastern Redbud",
+        "latin_name": "Cercis canadensis",
+        "form": "tree",
+        "habitat": [
+          "woodland",
+          "forest_edge",
+          "riparian"
+        ],
+        "diet": [],
+        "behavior": [
+          "early_spring_bloomer",
+          "ornamental"
+        ],
+        "season": [
+          "spring",
+          "summer",
+          "fall",
+          "winter"
+        ],
+        "active_months": [
+          "Jan-Dec"
+        ],
+        "functional_description": "Small deciduous tree with showy magenta-pink flowers appearing directly on branches and trunk (cauliflorous) before leaves in early spring. Heart-shaped leaves. Produces flat brown seed pods. Excellent ornamental. Early nectar source for insects. Prefers rich moist soils.",
+        "life_stages": [
+          {
+            "icon": "🌱",
+            "name": "Seedling",
+            "description": "Growing from flat brown seed pods",
+            "months": [
+              "Apr-Jun"
+            ]
+          },
+          {
+            "icon": "🌸",
+            "name": "Flowering",
+            "description": "Magenta-pink flowers on branches before leaves",
+            "months": [
+              "Mar-Apr"
+            ]
+          },
+          {
+            "icon": "❤️",
+            "name": "Leafing",
+            "description": "Heart-shaped green foliage",
+            "months": [
+              "Apr-Sep"
+            ]
+          },
+          {
+            "icon": "🍂",
+            "name": "Fall Color",
+            "description": "Yellow fall foliage; flat brown seed pods",
+            "months": [
+              "Sep-Nov"
+            ]
+          }
+        ],
+        "region": "northeast_pa",
+        "ecological_role": "producer",
+        "is_keystone": false,
+        "keystone_type": null,
+        "keystone_description": null,
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/RedbudOhio02.jpg/960px-RedbudOhio02.jpg",
+          "author": "Greg Hume"
+        }
+      },
+      {
+        "id": "plant_hackberry",
+        "common_name": "Hackberry",
+        "latin_name": "Celtis occidentalis",
+        "form": "tree",
+        "habitat": [
+          "deciduous_forest",
+          "woodland",
+          "forest_edge",
+          "riparian"
+        ],
+        "diet": [],
+        "behavior": [
+          "fruit_producer",
+          "pioneer"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "functional_description": "Medium deciduous tree with small toothed leaves and distinctive smooth gray bark with warty protuberances ('warts'). Produces small dark berries on female trees eaten by birds. Pioneer species tolerant of urban and disturbed areas. Host plant for several butterfly species including Mourning Cloak. Fast-growing.",
+        "life_stages": [
+          {
+            "icon": "🌱",
+            "name": "Seedling",
+            "description": "Growing from small berries",
+            "months": [
+              "Apr-Jun"
+            ]
+          },
+          {
+            "icon": "🌳",
+            "name": "Mature",
+            "description": "Medium tree with distinctive warty gray bark",
+            "months": [
+              "Apr-Oct"
+            ]
+          },
+          {
+            "icon": "🫐",
+            "name": "Fruiting",
+            "description": "Small dark berries on female trees",
+            "months": [
+              "Aug-Oct"
+            ]
+          }
+        ],
+        "region": "northeast_pa",
+        "ecological_role": "producer",
+        "is_keystone": false,
+        "keystone_type": null,
+        "keystone_description": null,
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Celtis_occidentalis_20090606.jpg/500px-Celtis_occidentalis_20090606.jpg",
+          "author": "Chhe (talk)"
+        }
+      },
+      {
+        "id": "plant_tulip-poplar",
+        "common_name": "Tulip Poplar",
+        "latin_name": "Liriodendron tulipifera",
+        "form": "tree",
+        "habitat": [
+          "deciduous_forest",
+          "woodland"
+        ],
+        "diet": [],
+        "behavior": [
+          "tall_growing",
+          "spring_bloomer"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "active_months": [
+          "Jan-Dec"
+        ],
+        "functional_description": "Large tall deciduous tree (called Yellow Poplar or Tulip Tree). Distinctive cat-face or tulip-shaped leaves with flat tops. Showy greenish-yellow tulip-like flowers in spring. Important timber tree — wood used for furniture, siding, and other products. Host plant for Eastern Tiger Swallowtail caterpillars.",
+        "life_stages": [
+          {
+            "icon": "🌱",
+            "name": "Seedling",
+            "description": "Growing from winged seeds",
+            "months": [
+              "Apr-Jun"
+            ]
+          },
+          {
+            "icon": "🌸",
+            "name": "Flowering",
+            "description": "Showy greenish-yellow tulip-like flowers",
+            "months": [
+              "Apr-May"
+            ]
+          },
+          {
+            "icon": "🌳",
+            "name": "Summer Growth",
+            "description": "Tall tree with distinctive cat-face leaves",
+            "months": [
+              "May-Sep"
+            ]
+          },
+          {
+            "icon": "🍂",
+            "name": "Fall Color",
+            "description": "Golden yellow fall foliage",
+            "months": [
+              "Oct-Nov"
+            ]
+          }
+        ],
+        "region": "northeast_pa",
+        "ecological_role": "producer",
+        "is_keystone": false,
+        "keystone_type": null,
+        "keystone_description": null,
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Liriodendron_tulipifera_%28arbre%29_-_Laeken.JPG/500px-Liriodendron_tulipifera_%28arbre%29_-_Laeken.JPG",
+          "author": "Jean-Pol GRANDMONT"
+        }
+      },
+      {
+        "id": "plant_box-elder",
+        "common_name": "Box Elder",
+        "latin_name": "Acer negundo",
+        "form": "tree",
+        "habitat": [
+          "riparian",
+          "wetland",
+          "forest_edge",
+          "disturbed_areas"
+        ],
+        "diet": [],
+        "behavior": [
+          "pioneer",
+          "seed_producer",
+          "winged_seeds"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "functional_description": "Medium deciduous tree with compound leaves (unusual for maples). Pioneer species of moist riparian areas. Produces abundant winged seeds (samaras) dispersed by wind. Female trees produce heavy seed crops that seed into disturbed areas. Fast-growing but short-lived. Host plant for several insect species.",
+        "life_stages": [
+          {
+            "icon": "🌱",
+            "name": "Seedling",
+            "description": "Growing from winged seeds in disturbed wet areas",
+            "months": [
+              "Apr-Jun"
+            ]
+          },
+          {
+            "icon": "🌳",
+            "name": "Mature",
+            "description": "Medium tree with compound leaves",
+            "months": [
+              "Apr-Oct"
+            ]
+          },
+          {
+            "icon": "🌿",
+            "name": "Seeding",
+            "description": "Abundant winged seed pairs (samaras)",
+            "months": [
+              "May-Jun"
+            ]
+          },
+          {
+            "icon": "🍂",
+            "name": "Fall Color",
+            "description": "Yellow fall foliage",
+            "months": [
+              "Sep-Oct"
+            ]
+          }
+        ],
+        "region": "northeast_pa",
+        "ecological_role": "producer",
+        "is_keystone": false,
+        "keystone_type": null,
+        "keystone_description": null,
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Acer_negundo_44809168.jpg/960px-Acer_negundo_44809168.jpg",
+          "author": "CK Kelly"
+        }
+      },
+      {
+        "id": "plant_serviceberry",
+        "common_name": "Common Serviceberry",
+        "latin_name": "Amelanchier arborea",
+        "form": "tree",
+        "habitat": [
+          "woodland",
+          "forest_edge",
+          "riparian",
+          "disturbed_areas"
+        ],
+        "diet": [],
+        "behavior": [
+          "spring_bloomer",
+          "fruit_producer",
+          "pioneer"
+        ],
+        "season": [
+          "spring",
+          "summer",
+          "fall",
+          "winter"
+        ],
+        "active_months": [
+          "Jan-Dec"
+        ],
+        "functional_description": "Small deciduous tree with white spring flowers appearing with emerging leaves (before most other trees). Produces dark purple berries in early summer eaten by many bird species. Also called Downy Serviceberry for the fine hairs on young growth. Pioneer species. Important early season food resource.",
+        "life_stages": [
+          {
+            "icon": "🌱",
+            "name": "Seedling",
+            "description": "Growing from dark purple berries",
+            "months": [
+              "Apr-Jun"
+            ]
+          },
+          {
+            "icon": "🌸",
+            "name": "Flowering",
+            "description": "White flowers appearing with new leaves in spring",
+            "months": [
+              "Apr-May"
+            ]
+          },
+          {
+            "icon": "🫐",
+            "name": "Fruiting",
+            "description": "Dark purple berries eaten by birds",
+            "months": [
+              "May-Jun"
+            ]
+          },
+          {
+            "icon": "🍂",
+            "name": "Fall Color",
+            "description": "Orange-red fall foliage",
+            "months": [
+              "Oct-Nov"
+            ]
+          }
+        ],
+        "region": "northeast_pa",
+        "ecological_role": "producer",
+        "is_keystone": false,
+        "keystone_type": null,
+        "keystone_description": null,
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Amelanchier_arborea_leaves.JPG/960px-Amelanchier_arborea_leaves.JPG",
+          "author": "Dcrjsr"
+        }
+      },
+      {
+        "id": "plant_sweet-birch",
+        "common_name": "Sweet Birch",
+        "latin_name": "Betula lenta",
+        "form": "tree",
+        "habitat": [
+          "deciduous_forest",
+          "woodland",
+          "forest_edge"
+        ],
+        "diet": [],
+        "behavior": [
+          "aromatic_twigs",
+          "birch_catkins",
+          "pioneer"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "active_months": [
+          "Jan-Dec"
+        ],
+        "functional_description": "Medium deciduous tree with smooth reddish-brown bark and aromatic twigs that smell like wintergreen when crushed (due to methyl salicylate). Produces catkins in spring. Also called Black Birch. Wood used historically for tea and birch beer. Pioneer species of forest gaps. Important early catkin producer for pollinators.",
+        "life_stages": [
+          {
+            "icon": "🌱",
+            "name": "Seedling",
+            "description": "Growing from tiny birch seeds",
+            "months": [
+              "Apr-Jun"
+            ]
+          },
+          {
+            "icon": "🌳",
+            "name": "Mature",
+            "description": "Medium tree with reddish-brown smooth bark",
+            "months": [
+              "Apr-Oct"
+            ]
+          },
+          {
+            "icon": "🌿",
+            "name": "Catkins",
+            "description": "Pollen and seed catkins in spring and fall",
+            "months": [
+              "Mar-Apr",
+              "Aug-Sep"
+            ]
+          },
+          {
+            "icon": "🍂",
+            "name": "Fall Color",
+            "description": "Yellow fall foliage",
+            "months": [
+              "Oct-Nov"
+            ]
+          }
+        ],
+        "region": "northeast_pa",
+        "ecological_role": "producer",
+        "is_keystone": false,
+        "keystone_type": null,
+        "keystone_description": null,
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Betula_lenta_1.jpg/500px-Betula_lenta_1.jpg",
+          "author": "Lynk media"
+        }
+      },
+      {
+        "id": "plant_hophornbeam",
+        "common_name": "American Hophornbeam",
+        "latin_name": "Ostrya virginiana",
+        "form": "tree",
+        "habitat": [
+          "deciduous_forest",
+          "woodland",
+          "forest_understory",
+          "rocky_slopes"
+        ],
+        "diet": [],
+        "behavior": [
+          "understory_tree",
+          "hard_wood"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "active_months": [
+          "Jan-Dec"
+        ],
+        "functional_description": "Small deciduous understory tree with flaky gray bark resembling shagbark hickory. Produces distinctive cone-like clusters of papery bracts containing small hard seeds (resembling hops, hence the name). Also called Ironwood for its extremely hard, dense wood. Deep-rooted; tolerates rocky shallow soils. Shade-tolerant forest understory species.",
+        "life_stages": [
+          {
+            "icon": "🌱",
+            "name": "Seedling",
+            "description": "Shade-tolerant understory seedlings",
+            "months": [
+              "Apr-Jun"
+            ]
+          },
+          {
+            "icon": "🌳",
+            "name": "Mature",
+            "description": "Small understory tree with flaky gray bark",
+            "months": [
+              "Apr-Oct"
+            ]
+          },
+          {
+            "icon": "🌿",
+            "name": "Fruiting",
+            "description": "Cone-like clusters of papery bracts with hard seeds",
+            "months": [
+              "Aug-Oct"
+            ]
+          },
+          {
+            "icon": "🍂",
+            "name": "Fall Color",
+            "description": "Yellow-orange fall foliage",
+            "months": [
+              "Oct-Nov"
+            ]
+          }
+        ],
+        "region": "northeast_pa",
+        "ecological_role": "producer",
+        "is_keystone": false,
+        "keystone_type": null,
+        "keystone_description": null,
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Ostrya_virginiana_2.jpg/500px-Ostrya_virginiana_2.jpg",
+          "author": "Eric Hunt"
+        }
       }
     ],
     "taxonomic_groups": [
