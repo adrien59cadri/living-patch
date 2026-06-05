@@ -30,6 +30,7 @@ export interface Species {
   keystone_type?: string | null;
   keystone_description?: string | null;
   active_months?: string[] | null;
+  invasive?: boolean;
   /** Wikipedia image if available */
   image?: {
     url: string;
