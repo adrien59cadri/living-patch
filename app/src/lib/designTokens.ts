@@ -194,9 +194,9 @@ export const ECOLOGICAL_STATUS_LABELS: Record<string, string> = {
 };
 
 export const ECOLOGICAL_STATUS_COLORS: Record<string, string> = {
-  nb:   '#b45309', // amber-700 — native concern
-  nnna: '#0369a1', // sky-700   — introduced, low threat
-  i:    '#b91c1c', // red-700   — active ecological threat
+  nb:   '#b45309', // amber-700  — native concern
+  nnna: '#0369a1', // sky-700    — introduced, low threat
+  i:    '#7c3aed', // violet-700 — active ecological threat (distinct from conservation red)
 };
 
 export const ECOLOGICAL_STATUS_DESCRIPTIONS: Record<string, string> = {

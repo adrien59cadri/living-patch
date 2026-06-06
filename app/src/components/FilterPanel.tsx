@@ -108,22 +108,39 @@ export function FilterPanel({ options, filters, onChange }: Props) {
         <label className="block text-xs font-medium text-stone-500 uppercase tracking-wide">
           Form
         </label>
-        <select
-          value={activeFormTopLevel ?? ''}
-          onChange={e => {
-            const newTopLevel = e.target.value;
-            setSelectedFormTopLevel(newTopLevel || null);
-            onChange({ ...filters, forms: newTopLevel ? [newTopLevel] : [] });
-          }}
-          className="w-full text-sm border border-stone-200 rounded-lg px-3 py-1.5 bg-white text-stone-700 focus:outline-none focus:ring-2 focus:ring-emerald-400"
-        >
-          <option value="">All forms</option>
-          {topLevelForms.map(form => (
-            <option key={form} value={form}>
-              {`${formIcon(form)} ${formLabel(form)}`}
-            </option>
-          ))}
-        </select>
+        <div className="flex flex-wrap gap-1.5">
+          {topLevelForms.map(form => {
+            const childrenOfForm = getChildForms(form);
+            const isActive =
+              filters.forms.includes(form) ||
+              childrenOfForm.some(c => filters.forms.includes(c));
+            return (
+              <button
+                key={form}
+                onClick={() => {
+                  const preserved = filters.forms.filter(
+                    f => f !== form && !childrenOfForm.includes(f),
+                  );
+                  if (isActive) {
+                    if (selectedFormTopLevel === form) setSelectedFormTopLevel(null);
+                    onChange({ ...filters, forms: preserved });
+                  } else {
+                    setSelectedFormTopLevel(form);
+                    onChange({ ...filters, forms: [...preserved, form] });
+                  }
+                }}
+                className={[
+                  'text-xs px-2 py-0.5 rounded-full transition-colors',
+                  isActive
+                    ? 'bg-amber-600 text-white'
+                    : 'bg-amber-100 text-amber-800 hover:bg-amber-200',
+                ].join(' ')}
+              >
+                {`${formIcon(form)} ${formLabel(form)}`}
+              </button>
+            );
+          })}
+        </div>
 
         {/* Sub-category checkboxes */}
         {activeFormTopLevel && (
@@ -149,22 +166,39 @@ export function FilterPanel({ options, filters, onChange }: Props) {
           <label className="block text-xs font-medium text-stone-500 uppercase tracking-wide">
             Habitat
           </label>
-          <select
-            value={activeHabitatTopLevel ?? ''}
-            onChange={e => {
-              const newTopLevel = e.target.value;
-              setSelectedHabitatTopLevel(newTopLevel || null);
-              onChange({ ...filters, habitats: newTopLevel ? [newTopLevel] : [] });
-            }}
-            className="w-full text-sm border border-stone-200 rounded-lg px-3 py-1.5 bg-white text-stone-700 focus:outline-none focus:ring-2 focus:ring-emerald-400"
-          >
-            <option value="">All habitats</option>
-            {visibleHabitatTopLevels.map(habitat => (
-              <option key={habitat} value={habitat}>
-                {habitatLabel(habitat)}
-              </option>
-            ))}
-          </select>
+          <div className="flex flex-wrap gap-1.5">
+            {visibleHabitatTopLevels.map(habitat => {
+              const childrenOfHabitat = getChildHabitats(habitat);
+              const isActive =
+                filters.habitats.includes(habitat) ||
+                childrenOfHabitat.some(c => filters.habitats.includes(c));
+              return (
+                <button
+                  key={habitat}
+                  onClick={() => {
+                    const preserved = filters.habitats.filter(
+                      h => h !== habitat && !childrenOfHabitat.includes(h),
+                    );
+                    if (isActive) {
+                      if (selectedHabitatTopLevel === habitat) setSelectedHabitatTopLevel(null);
+                      onChange({ ...filters, habitats: preserved });
+                    } else {
+                      setSelectedHabitatTopLevel(habitat);
+                      onChange({ ...filters, habitats: [...preserved, habitat] });
+                    }
+                  }}
+                  className={[
+                    'text-xs px-2 py-0.5 rounded-full transition-colors',
+                    isActive
+                      ? 'bg-emerald-600 text-white'
+                      : 'bg-emerald-100 text-emerald-700 hover:bg-emerald-200',
+                  ].join(' ')}
+                >
+                  {habitatLabel(habitat)}
+                </button>
+              );
+            })}
+          </div>
 
           {/* Sub-category checkboxes */}
           {activeHabitatTopLevel && (
@@ -212,22 +246,39 @@ export function FilterPanel({ options, filters, onChange }: Props) {
           <label className="block text-xs font-medium text-stone-500 uppercase tracking-wide">
             Keystone type
           </label>
-          <select
-            value={activeKeystoneTopLevel ?? ''}
-            onChange={e => {
-              const newTopLevel = e.target.value;
-              setSelectedKeystoneTopLevel(newTopLevel || null);
-              onChange({ ...filters, keystone_types: newTopLevel ? [newTopLevel] : [] });
-            }}
-            className="w-full text-sm border border-stone-200 rounded-lg px-3 py-1.5 bg-white text-stone-700 focus:outline-none focus:ring-2 focus:ring-emerald-400"
-          >
-            <option value="">All keystone types</option>
-            {visibleKeystoneTopLevels.map(kt => (
-              <option key={kt} value={kt}>
-                {keystoneLabel(kt)}
-              </option>
-            ))}
-          </select>
+          <div className="flex flex-wrap gap-1.5">
+            {visibleKeystoneTopLevels.map(kt => {
+              const childrenOfKt = getChildKeystoneTypes(kt);
+              const isActive =
+                filters.keystone_types.includes(kt) ||
+                childrenOfKt.some(c => filters.keystone_types.includes(c));
+              return (
+                <button
+                  key={kt}
+                  onClick={() => {
+                    const preserved = filters.keystone_types.filter(
+                      k => k !== kt && !childrenOfKt.includes(k),
+                    );
+                    if (isActive) {
+                      if (selectedKeystoneTopLevel === kt) setSelectedKeystoneTopLevel(null);
+                      onChange({ ...filters, keystone_types: preserved });
+                    } else {
+                      setSelectedKeystoneTopLevel(kt);
+                      onChange({ ...filters, keystone_types: [...preserved, kt] });
+                    }
+                  }}
+                  className={[
+                    'text-xs px-2 py-0.5 rounded-full transition-colors',
+                    isActive
+                      ? 'bg-stone-600 text-white'
+                      : 'bg-stone-100 text-stone-600 hover:bg-stone-200',
+                  ].join(' ')}
+                >
+                  {keystoneLabel(kt)}
+                </button>
+              );
+            })}
+          </div>
 
           {/* Sub-category checkboxes */}
           {activeKeystoneTopLevel && (
