@@ -2,10 +2,16 @@ import { createContext, useContext } from 'react';
 
 export interface UserPreferences {
   showThumbnailsInList: boolean;
+  globalEcologicalStatusMode: 'native' | 'invasive' | 'both';
+  globalForms: string[];
+  globalRegions: string[];
 }
 
 export const defaultPreferences: UserPreferences = {
   showThumbnailsInList: false,
+  globalEcologicalStatusMode: 'both',
+  globalForms: [],
+  globalRegions: [],
 };
 
 export const STORAGE_KEY = 'living-patch-preferences';

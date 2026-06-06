@@ -1,7 +1,8 @@
 import { useState, useMemo } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import { useDataset } from '../hooks/useDataset';
-import { filterSpecies, getFilterOptions } from '../lib/filters';
+import { useUserPreferences } from '../hooks/useUserPreferences';
+import { filterSpecies, getFilterOptions, convertGlobalFiltersToFilterState } from '../lib/filters';
 import type { FilterState } from '../lib/filters';
 import { SearchBar } from '../components/SearchBar';
 import { FilterPanel } from '../components/FilterPanel';
@@ -13,19 +14,47 @@ export default function HomePage() {
   const { species, groups } = useDataset();
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
+  const { preferences } = useUserPreferences();
 
   const [isAdvancedOpen, setIsAdvancedOpen] = useState(false);
 
-  const [filters, setFilters] = useState<FilterState>(() => ({
-    search: '',
-    forms: searchParams.getAll('form'),
-    seasons: searchParams.getAll('season'),
-    habitats: searchParams.getAll('habitat'),
-    keystone_types: searchParams.getAll('keystone_type'),
-    areas: searchParams.getAll('area'),
-    conservation_statuses: searchParams.getAll('conservation_status'),
-    ecological_statuses: searchParams.getAll('ecological_status'),
-  }));
+  const [initData] = useState(() => {
+    const options = getFilterOptions(species);
+    const urlForms = searchParams.getAll('form');
+    const urlAreas = searchParams.getAll('area');
+    const urlEcologicalStatuses = searchParams.getAll('ecological_status');
+
+    // Has any URL params for filters
+    const hasUrlFilters = urlForms.length > 0 || urlAreas.length > 0 || urlEcologicalStatuses.length > 0 || searchParams.has('season') || searchParams.has('habitat') || searchParams.has('keystone_type') || searchParams.has('conservation_status');
+
+    // Apply global filters only if no URL params present
+    let globalDefaults: Partial<FilterState> = {};
+    let isApplyingGlobal = false;
+    if (!hasUrlFilters) {
+      globalDefaults = convertGlobalFiltersToFilterState(preferences, options.forms, options.areas);
+      // Check if any global filter is actually being applied
+      isApplyingGlobal = ((globalDefaults.forms?.length ?? 0) !== options.forms.length) ||
+                          ((globalDefaults.areas?.length ?? 0) !== options.areas.length) ||
+                          ((globalDefaults.ecological_statuses?.length ?? 0) > 0);
+    }
+
+    return {
+      filters: {
+        search: '',
+        forms: urlForms.length > 0 ? urlForms : (globalDefaults.forms ?? []),
+        seasons: searchParams.getAll('season'),
+        habitats: searchParams.getAll('habitat'),
+        keystone_types: searchParams.getAll('keystone_type'),
+        areas: urlAreas.length > 0 ? urlAreas : (globalDefaults.areas ?? []),
+        conservation_statuses: searchParams.getAll('conservation_status'),
+        ecological_statuses: urlEcologicalStatuses.length > 0 ? urlEcologicalStatuses : (globalDefaults.ecological_statuses ?? []),
+      } as FilterState,
+      isApplyingGlobal,
+    };
+  });
+
+  const [filters, setFilters] = useState<FilterState>(initData.filters);
+  const [usingGlobalFilters] = useState(initData.isApplyingGlobal);
 
   // Sync filters to URL when they change (but not on mount)
   const handleFilterChange = (newFilters: FilterState) => {
@@ -80,6 +109,12 @@ export default function HomePage() {
           <span className="text-[10px]">{isAdvancedOpen ? '▲' : '▼'}</span>
         </button>
       </div>
+
+      {usingGlobalFilters && (
+        <div className="bg-stone-50 border border-stone-200 rounded-lg p-3 text-xs text-stone-600">
+          🔒 Global filters applied
+        </div>
+      )}
 
       <QuickFilterBar options={options} filters={filters} onChange={handleFilterChange} />
 

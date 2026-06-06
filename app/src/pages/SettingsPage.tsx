@@ -2,7 +2,11 @@ import { useRef, useState } from 'react';
 import { useUserPreferences } from '../hooks/useUserPreferences';
 import { usePacksStore } from '../stores/packs';
 import { useLifeListStore } from '../stores/lifeList';
+import { useDataset } from '../hooks/useDataset';
+import { getFilterOptions } from '../lib/filters';
+import { formLabel, areaLabel } from '../lib/labels';
 import type { LifeListEntry, Sighting } from '../types';
+import { useMemo } from 'react';
 
 interface BackupFile {
   entries: LifeListEntry[];
@@ -31,12 +35,15 @@ export default function SettingsPage() {
   const { preferences, setPreferences } = useUserPreferences();
   const { entries, sightings, restoreFromBackup } = useLifeListStore();
   const manifest = usePacksStore(s => s.manifest);
+  const { species } = useDataset();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [pendingBackup, setPendingBackup] = useState<BackupFile | null>(null);
   const [importError, setImportError] = useState<string | null>(null);
   const [importSuccess, setImportSuccess] = useState(false);
 
   const isEmpty = entries.length === 0 && sightings.length === 0;
+
+  const filterOptions = useMemo(() => getFilterOptions(species), [species]);
 
   function handleExport() {
     const backup: BackupFile = {
@@ -97,6 +104,33 @@ export default function SettingsPage() {
     });
   };
 
+  const handleEcologicalStatusChange = (mode: 'native' | 'invasive' | 'both') => {
+    setPreferences({
+      ...preferences,
+      globalEcologicalStatusMode: mode,
+    });
+  };
+
+  const handleFormToggle = (form: string) => {
+    const updated = preferences.globalForms.includes(form)
+      ? preferences.globalForms.filter(f => f !== form)
+      : [...preferences.globalForms, form];
+    setPreferences({
+      ...preferences,
+      globalForms: updated,
+    });
+  };
+
+  const handleRegionToggle = (region: string) => {
+    const updated = preferences.globalRegions.includes(region)
+      ? preferences.globalRegions.filter(r => r !== region)
+      : [...preferences.globalRegions, region];
+    setPreferences({
+      ...preferences,
+      globalRegions: updated,
+    });
+  };
+
   return (
     <div className="space-y-8">
       <div>
@@ -127,6 +161,80 @@ export default function SettingsPage() {
             >
               {preferences.showThumbnailsInList ? 'Enabled' : 'Disabled'}
             </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Global Species Filters */}
+      <section className="bg-white rounded-lg border border-stone-200 p-6">
+        <h2 className="text-xl font-semibold text-emerald-900 mb-4">Global Species Filters</h2>
+        <p className="text-sm text-stone-600 mb-6">
+          Set default filters that apply when you visit the species list. These are separate from pack settings and can be overridden with URL parameters.
+        </p>
+
+        <div className="space-y-6">
+          {/* Ecological Status */}
+          <div>
+            <p className="font-medium text-stone-800 mb-3">Ecological Status</p>
+            <div className="space-y-2">
+              {(['native', 'invasive', 'both'] as const).map((mode) => (
+                <label key={mode} className="flex items-center gap-3 cursor-pointer">
+                  <input
+                    type="radio"
+                    name="ecological_status"
+                    value={mode}
+                    checked={preferences.globalEcologicalStatusMode === mode}
+                    onChange={() => handleEcologicalStatusChange(mode)}
+                    className="w-4 h-4 text-emerald-600"
+                  />
+                  <span className="text-stone-700 capitalize">
+                    {mode === 'native' ? 'Native species only' : mode === 'invasive' ? 'Invasive species only' : 'Both native and invasive'}
+                  </span>
+                </label>
+              ))}
+            </div>
+          </div>
+
+          {/* Forms */}
+          <div>
+            <p className="font-medium text-stone-800 mb-3">Species Forms</p>
+            <p className="text-xs text-stone-500 mb-3">
+              {preferences.globalForms.length === 0 ? 'All forms selected' : `${preferences.globalForms.length} of ${filterOptions.forms.length} selected`}
+            </p>
+            <div className="grid grid-cols-2 gap-2">
+              {filterOptions.forms.map((form) => (
+                <label key={form} className="flex items-center gap-2 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={preferences.globalForms.length === 0 || preferences.globalForms.includes(form)}
+                    onChange={() => handleFormToggle(form)}
+                    className="w-4 h-4 text-emerald-600 rounded"
+                  />
+                  <span className="text-stone-700 text-sm">{formLabel(form)}</span>
+                </label>
+              ))}
+            </div>
+          </div>
+
+          {/* Regions */}
+          <div>
+            <p className="font-medium text-stone-800 mb-3">Regions</p>
+            <p className="text-xs text-stone-500 mb-3">
+              {preferences.globalRegions.length === 0 ? 'All regions selected' : `${preferences.globalRegions.length} of ${filterOptions.areas.length} selected`}
+            </p>
+            <div className="space-y-2">
+              {filterOptions.areas.map((region) => (
+                <label key={region} className="flex items-center gap-2 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={preferences.globalRegions.length === 0 || preferences.globalRegions.includes(region)}
+                    onChange={() => handleRegionToggle(region)}
+                    className="w-4 h-4 text-emerald-600 rounded"
+                  />
+                  <span className="text-stone-700 text-sm">{areaLabel(region)}</span>
+                </label>
+              ))}
+            </div>
           </div>
         </div>
       </section>

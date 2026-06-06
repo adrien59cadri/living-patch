@@ -1,4 +1,5 @@
 import type { Species } from '../types';
+import type { UserPreferences } from '../hooks/useUserPreferences';
 import { getCommonName } from './labels';
 import {
   getTopLevelForms,
@@ -95,4 +96,25 @@ export function getFilterOptions(species: Species[]) {
     species.some(s => s.status === code),
   );
   return { forms, seasons, habitats, keystone_types, areas, conservation_statuses, ecological_statuses };
+}
+
+export function convertGlobalFiltersToFilterState(
+  globalPrefs: UserPreferences,
+  availableForms: string[],
+  availableRegions: string[],
+): Partial<FilterState> {
+  const filters: Partial<FilterState> = {};
+
+  if (globalPrefs.globalEcologicalStatusMode === 'native') {
+    filters.ecological_statuses = [];
+  } else if (globalPrefs.globalEcologicalStatusMode === 'invasive') {
+    filters.ecological_statuses = ['i', 'nb', 'nnna'];
+  } else {
+    filters.ecological_statuses = [];
+  }
+
+  filters.forms = globalPrefs.globalForms.length > 0 ? globalPrefs.globalForms : availableForms;
+  filters.areas = globalPrefs.globalRegions.length > 0 ? globalPrefs.globalRegions : availableRegions;
+
+  return filters;
 }
