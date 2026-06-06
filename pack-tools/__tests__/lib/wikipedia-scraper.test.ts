@@ -485,7 +485,7 @@ describe('Wikipedia Scraper', () => {
         <img src="//upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Real_photo.jpg" />
         <img src="//upload.wikimedia.org/wikipedia/en/thumb/logo.svg" />
         <table class="fileinfotpl-type-information">
-          <tr><td>Author</td><td>Photographer</td></tr>
+          <tr><td>Author</td><td>Wildlife Photographer</td></tr>
         </table>
         </body>
         </html>
@@ -525,7 +525,7 @@ describe('Wikipedia Scraper', () => {
       const result = await scrapeSpeciesImage('Test species', 'Test');
 
       expect(result?.url).toContain('Real_photo.jpg');
-      expect(result?.author).toBe('Photographer');
+      expect(result?.author).toBe('Wildlife Photographer');
     });
   });
 });
