@@ -167,6 +167,66 @@ describe('Wikipedia Scraper', () => {
       expect(result).toBeNull();
     });
 
+    it('should fall back to Source field when Author is a Wikimedia placeholder', async () => {
+      const htmlWithPlaceholderAuthor = `
+        <!DOCTYPE html>
+        <html>
+        <body>
+        <table class="fileinfotpl-type-information">
+          <tr>
+            <td>Author</td>
+            <td>This file is lacking author information.</td>
+          </tr>
+          <tr>
+            <td>Source</td>
+            <td>U.S. Fish &amp; Wildlife Service</td>
+          </tr>
+        </table>
+        <a href="https://upload.wikimedia.org/wikipedia/commons/b/bf/Indiana_Bat_FWS.jpg">Original file</a>
+        </body>
+        </html>
+      `;
+
+      fetchMock.mockResolvedValue({
+        ok: true,
+        text: async () => htmlWithPlaceholderAuthor,
+      });
+
+      const result = await fetchFilePageAndExtractData('/wiki/File:Indiana_Bat_FWS.jpg');
+
+      expect(result?.author).toBe('U.S. Fish & Wildlife Service');
+    });
+
+    it('should fall back to Source when Author is "unknown"', async () => {
+      const htmlWithUnknownAuthor = `
+        <!DOCTYPE html>
+        <html>
+        <body>
+        <table class="fileinfotpl-type-information">
+          <tr>
+            <td>Author</td>
+            <td>Unknown</td>
+          </tr>
+          <tr>
+            <td>Source</td>
+            <td>National Park Service</td>
+          </tr>
+        </table>
+        <a href="https://upload.wikimedia.org/wikipedia/commons/test.jpg">Original file</a>
+        </body>
+        </html>
+      `;
+
+      fetchMock.mockResolvedValue({
+        ok: true,
+        text: async () => htmlWithUnknownAuthor,
+      });
+
+      const result = await fetchFilePageAndExtractData('/wiki/File:Test.jpg');
+
+      expect(result?.author).toBe('National Park Service');
+    });
+
     it('should use "Wikimedia Commons" as author fallback when not found', async () => {
       const htmlWithoutAuthor = `
         <!DOCTYPE html>
