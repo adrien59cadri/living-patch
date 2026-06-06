@@ -171,12 +171,12 @@ test.describe('Search bar', () => {
     await expect(page.getByText('Cross Spider', { exact: true })).toBeVisible();
   });
 
-  test('"ORB WEAVER" (uppercase) finds Cross Spider', async ({ page }) => {
+  test('"CROSS" (uppercase) finds Cross Spider', async ({ page }) => {
     await page.goto('/');
     await page.waitForLoadState('networkidle');
 
     const searchBar = page.getByRole('searchbox');
-    await searchBar.fill('ORB WEAVER');
+    await searchBar.fill('CROSS');
     await page.waitForTimeout(400);
 
     await expect(page.getByText('Cross Spider', { exact: true })).toBeVisible();
