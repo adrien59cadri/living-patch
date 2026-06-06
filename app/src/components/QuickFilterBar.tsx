@@ -72,12 +72,19 @@ function HierarchicalFilterChips({
             <button
               key={item}
               onClick={() => {
-                if (isExpanded) {
-                  setExpandedTopLevel(null);
-                  onSelectedChange([]);
+                const childrenOfThis = getChildren(item);
+                const isCurrentlySelected =
+                  selectedItems.includes(item) ||
+                  childrenOfThis.some(c => selectedItems.includes(c));
+                const preserved = selectedItems.filter(
+                  s => s !== item && !childrenOfThis.includes(s),
+                );
+                if (isCurrentlySelected) {
+                  if (expandedTopLevel === item) setExpandedTopLevel(null);
+                  onSelectedChange(preserved);
                 } else {
                   setExpandedTopLevel(item);
-                  onSelectedChange([item]);
+                  onSelectedChange([...preserved, item]);
                 }
               }}
               className={[
@@ -276,8 +283,8 @@ export function QuickFilterBar({ options, filters, onChange }: Props) {
                 className={[
                   'text-xs px-2 py-0.5 rounded-full transition-colors',
                   active
-                    ? 'bg-red-700 text-white'
-                    : 'bg-red-100 text-red-800 hover:bg-red-200',
+                    ? 'bg-violet-700 text-white'
+                    : 'bg-violet-100 text-violet-800 hover:bg-violet-200',
                 ].join(' ')}
               >
                 {ecologicalStatusLabel(code)}
