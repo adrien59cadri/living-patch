@@ -188,18 +188,21 @@ export const CONSERVATION_STATUS_LABELS: Record<string, string> = {
 // ============================================================================
 
 export const ECOLOGICAL_STATUS_LABELS: Record<string, string> = {
+  n:    'Native',
   nb:   '⚠️ Native Bully',
   nnna: '🌍 Non-Native',
   i:    '🚫 Invasive',
 };
 
 export const ECOLOGICAL_STATUS_COLORS: Record<string, string> = {
+  n:    '#16a34a', // green-600  — native, no concern
   nb:   '#b45309', // amber-700  — native concern
   nnna: '#0369a1', // sky-700    — introduced, low threat
   i:    '#7c3aed', // violet-700 — active ecological threat (distinct from conservation red)
 };
 
 export const ECOLOGICAL_STATUS_DESCRIPTIONS: Record<string, string> = {
+  n:    'Native species that occurred naturally in this region before European contact. No management action needed.',
   nb:   'Native species that spreads aggressively and outcompetes other natives, reducing local diversity.',
   nnna: 'Non-native species introduced by humans but not spreading aggressively. Remains largely localized.',
   i:    'Non-native species spreading aggressively and causing significant ecological damage. Requires management.',
