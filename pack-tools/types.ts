@@ -65,7 +65,7 @@ export interface Species {
   /** IUCN Red List conservation status code */
   conservation_status?: 'EX' | 'EW' | 'CR' | 'EN' | 'VU' | 'NT' | 'LC' | 'DD' | null;
   /** Ecological standing relative to the pack's region */
-  status?: 'nb' | 'nnna' | 'i';
+  status?: 'n' | 'nb' | 'nnna' | 'i';
 }
 
 export type SymbiosisStrength = 'critical' | 'important' | 'incidental';
