@@ -2363,8 +2363,8 @@
       },
       {
         "id": "insect_beech-aphid",
-        "common_name": "Beech Aphid",
-        "latin_name": "Phyllaphis fagi (and related species)",
+        "common_name": "Beech blight aphid",
+        "latin_name": "Phyllaphis fagi",
         "form": "insect_group",
         "habitat": [
           "deciduous_forest",
@@ -3291,8 +3291,8 @@
       },
       {
         "id": "mammal_eastern-coyote",
-        "common_name": "Eastern Coyote",
-        "latin_name": "Canis latrans × lycaon",
+        "common_name": "Coyote",
+        "latin_name": "Canis latrans",
         "form": "mammal",
         "habitat": [
           "forest",
@@ -3325,7 +3325,7 @@
         ],
         "taxonomic_group": "group_canids",
         "image": {
-          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Standing_Coyote.jpg/960px-Standing_Coyote.jpg",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/9/9c/2009-Coyote-Yosemite.jpg",
           "author": "Yathin S Krishnappa"
         }
       },
@@ -5871,8 +5871,8 @@
       },
       {
         "id": "mammal_west-virginia-water-shrew",
-        "common_name": "West Virginia Water Shrew",
-        "latin_name": "Sorex palustris punctulatus",
+        "common_name": "Water Shrew",
+        "latin_name": "Sorex palustris",
         "form": "mammal",
         "habitat": [
           "stream",
@@ -5899,8 +5899,8 @@
         "keystone_type": null,
         "keystone_description": null,
         "image": {
-          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Sorex_palustris.jpg/500px-Sorex_palustris.jpg",
-          "author": "NPS"
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Water_shrew_on_Pebble_Creek_%2827952099349%29_%28cropped%29.jpg/960px-Water_shrew_on_Pebble_Creek_%2827952099349%29_%28cropped%29.jpg",
+          "author": "Yellowstone National Park"
         }
       },
       {
