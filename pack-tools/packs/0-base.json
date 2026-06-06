@@ -1585,8 +1585,8 @@
       },
       {
         "id": "insect_grasshopper",
-        "common_name": "Field Grasshopper",
-        "latin_name": "Acrididae family",
+        "common_name": "Red-legged Grasshopper",
+        "latin_name": "Melanoplus femurrubrum",
         "form": "grasshopper",
         "habitat": [
           "field",
@@ -1702,8 +1702,8 @@
       },
       {
         "id": "insect_orb-weaver-spider",
-        "common_name": "Common Orb-weaver Spider",
-        "latin_name": "Araneus species",
+        "common_name": "Cross Spider",
+        "latin_name": "Araneus diadematus",
         "form": "spider",
         "habitat": [
           "forest",
@@ -2363,8 +2363,8 @@
       },
       {
         "id": "insect_beech-aphid",
-        "common_name": "Beech Aphid",
-        "latin_name": "Phyllaphis fagi (and related species)",
+        "common_name": "Beech blight aphid",
+        "latin_name": "Phyllaphis fagi",
         "form": "insect_group",
         "habitat": [
           "deciduous_forest",
@@ -3291,8 +3291,8 @@
       },
       {
         "id": "mammal_eastern-coyote",
-        "common_name": "Eastern Coyote",
-        "latin_name": "Canis latrans × lycaon",
+        "common_name": "Coyote",
+        "latin_name": "Canis latrans",
         "form": "mammal",
         "habitat": [
           "forest",
@@ -3325,7 +3325,7 @@
         ],
         "taxonomic_group": "group_canids",
         "image": {
-          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Standing_Coyote.jpg/960px-Standing_Coyote.jpg",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/9/9c/2009-Coyote-Yosemite.jpg",
           "author": "Yathin S Krishnappa"
         }
       },
@@ -5549,8 +5549,8 @@
         "keystone_type": null,
         "keystone_description": null,
         "image": {
-          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Botaurus_lentiginosus_-_Bittern.jpg/500px-Botaurus_lentiginosus_-_Bittern.jpg",
-          "author": "Rhododendrites"
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Botaurus_lentiginosus_28079.JPG/500px-Botaurus_lentiginosus_28079.JPG",
+          "author": "Walter Siegmund"
         },
         "conservation_status": "LC"
       },
@@ -5583,8 +5583,8 @@
         "keystone_type": null,
         "keystone_description": null,
         "image": {
-          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Loggerhead_Shrike_-_Overton_Lake_WMA%2C_North_Carolina_10-06-2016.jpg/500px-Loggerhead_Shrike_-_Overton_Lake_WMA%2C_North_Carolina_10-06-2016.jpg",
-          "author": "Heather Paul"
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Shrike_Loggerhead_JG.jpg/960px-Shrike_Loggerhead_JG.jpg",
+          "author": "JeffreyGammon"
         },
         "conservation_status": "NT"
       },
@@ -5620,7 +5620,7 @@
         "keystone_type": null,
         "keystone_description": null,
         "image": {
-          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Piping_plover_%28female%29.jpg/500px-Piping_plover_%28female%29.jpg",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Charadrius-melodus-004_edit.jpg/960px-Charadrius-melodus-004_edit.jpg",
           "author": "Mdf"
         },
         "conservation_status": "NT"
@@ -5658,8 +5658,8 @@
         "keystone_type": null,
         "keystone_description": null,
         "image": {
-          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Short-eared_Owl_%28Asio_flammeus%29_%282%29.jpg/500px-Short-eared_Owl_%28Asio_flammeus%29_%282%29.jpg",
-          "author": "Francisco Mora"
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Short_Eared_Owl_on_the_Ground.jpg/960px-Short_Eared_Owl_on_the_Ground.jpg",
+          "author": "Sumeet Moghe"
         },
         "conservation_status": "LC"
       },
@@ -5692,8 +5692,8 @@
         "keystone_type": null,
         "keystone_description": null,
         "image": {
-          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Asio_otus1.jpg/500px-Asio_otus1.jpg",
-          "author": "Enn Tammik"
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Long-eared_Owl_-_Kisjuszallas_-_Hungary_S4E0920_%2815671750198%29.jpg/500px-Long-eared_Owl_-_Kisjuszallas_-_Hungary_S4E0920_%2815671750198%29.jpg",
+          "author": "Francesco Veronesi from Italy"
         },
         "conservation_status": "LC"
       },
@@ -5727,8 +5727,8 @@
         "keystone_type": null,
         "keystone_description": null,
         "image": {
-          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Circuscyaneus.jpg/500px-Circuscyaneus.jpg",
-          "author": "Luc SWindowlorf"
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Circus_cyaneus_265961899.jpg/960px-Circus_cyaneus_265961899.jpg",
+          "author": "Александр Чегодаев"
         },
         "conservation_status": "LC"
       },
@@ -5761,8 +5761,8 @@
         "keystone_type": null,
         "keystone_description": null,
         "image": {
-          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Myotis_sodalis.jpg/500px-Myotis_sodalis.jpg",
-          "author": "U.S. Fish and Wildlife Service"
+          "url": "https://upload.wikimedia.org/wikipedia/commons/b/bf/Indiana_Bat_FWS.jpg",
+          "author": "This file is lacking author information."
         },
         "conservation_status": "EN"
       },
@@ -5795,8 +5795,8 @@
         "keystone_type": null,
         "keystone_description": null,
         "image": {
-          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Northern_long-eared_bat.jpg/500px-Northern_long-eared_bat.jpg",
-          "author": "U.S. Fish and Wildlife Service"
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Myotis_septentrionalis_1870.jpg/500px-Myotis_septentrionalis_1870.jpg",
+          "author": "Jomegat"
         },
         "conservation_status": "NT"
       },
@@ -5831,8 +5831,8 @@
         "keystone_type": null,
         "keystone_description": null,
         "image": {
-          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Allegheny_woodrat.jpg/500px-Allegheny_woodrat.jpg",
-          "author": "Kentish Plover"
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Neotoma_magister.jpg/960px-Neotoma_magister.jpg",
+          "author": "Alan Cressler"
         },
         "conservation_status": "NT"
       },
@@ -5864,15 +5864,15 @@
         "keystone_type": null,
         "keystone_description": null,
         "image": {
-          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Myotis_leibii.jpg/500px-Myotis_leibii.jpg",
-          "author": "U.S. Fish and Wildlife Service"
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Eastern_small-footed_bat.jpg/960px-Eastern_small-footed_bat.jpg",
+          "author": "Paul Moosman"
         },
         "conservation_status": "EN"
       },
       {
         "id": "mammal_west-virginia-water-shrew",
-        "common_name": "West Virginia Water Shrew",
-        "latin_name": "Sorex palustris punctulatus",
+        "common_name": "Water Shrew",
+        "latin_name": "Sorex palustris",
         "form": "mammal",
         "habitat": [
           "stream",
@@ -5899,8 +5899,8 @@
         "keystone_type": null,
         "keystone_description": null,
         "image": {
-          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Sorex_palustris.jpg/500px-Sorex_palustris.jpg",
-          "author": "NPS"
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Water_shrew_on_Pebble_Creek_%2827952099349%29_%28cropped%29.jpg/960px-Water_shrew_on_Pebble_Creek_%2827952099349%29_%28cropped%29.jpg",
+          "author": "Yellowstone National Park"
         }
       },
       {
@@ -5931,7 +5931,11 @@
         "is_keystone": false,
         "keystone_type": null,
         "keystone_description": null,
-        "conservation_status": "LC"
+        "conservation_status": "LC",
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Strix-varia-005.jpg/960px-Strix-varia-005.jpg",
+          "author": "Mdf"
+        }
       },
       {
         "id": "bird_coopers-hawk",
@@ -5961,7 +5965,11 @@
         "is_keystone": false,
         "keystone_type": null,
         "keystone_description": null,
-        "conservation_status": "LC"
+        "conservation_status": "LC",
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Accipiter_cooperii_m_Sam_Smith_Toronto3.jpg/960px-Accipiter_cooperii_m_Sam_Smith_Toronto3.jpg",
+          "author": "Mykola Swarnyk"
+        }
       },
       {
         "id": "bird_northern-flicker",
@@ -5993,7 +6001,11 @@
         "keystone_type": null,
         "keystone_description": null,
         "taxonomic_group": "group_woodpeckers",
-        "conservation_status": "LC"
+        "conservation_status": "LC",
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Northern_yellow-shafted_flicker_male_%2833737%29_%28cropped%29.jpg/960px-Northern_yellow-shafted_flicker_male_%2833737%29_%28cropped%29.jpg",
+          "author": "Rhododendrites"
+        }
       },
       {
         "id": "mammal_striped-skunk",
@@ -6024,7 +6036,11 @@
         "is_keystone": false,
         "keystone_type": null,
         "keystone_description": null,
-        "conservation_status": "LC"
+        "conservation_status": "LC",
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Skunk_about_to_spray.jpg/500px-Skunk_about_to_spray.jpg",
+          "author": "Wallace Keck"
+        }
       },
       {
         "id": "mammal_cottontail-rabbit",
@@ -6055,7 +6071,11 @@
         "is_keystone": false,
         "keystone_type": null,
         "keystone_description": null,
-        "conservation_status": "LC"
+        "conservation_status": "LC",
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Eastern_cottontail_%28Sylvilagus_floridanus%29_foraging_on_ground_vegetation.jpg/960px-Eastern_cottontail_%28Sylvilagus_floridanus%29_foraging_on_ground_vegetation.jpg",
+          "author": "StBlueD"
+        }
       },
       {
         "id": "amphibian_wood-frog",
@@ -6088,7 +6108,11 @@
         "keystone_type": null,
         "keystone_description": null,
         "taxonomic_group": "group_frogs",
-        "conservation_status": "LC"
+        "conservation_status": "LC",
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Lithobates_sylvaticus_%28Woodfrog%29.jpg/960px-Lithobates_sylvaticus_%28Woodfrog%29.jpg",
+          "author": "Brian Gratwicke"
+        }
       }
     ],
     "taxonomic_groups": [

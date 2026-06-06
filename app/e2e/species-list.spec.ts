@@ -140,7 +140,7 @@ test.describe('Search bar', () => {
     expect(errors, `Console/page errors after search: ${errors.join(', ')}`).toHaveLength(0);
   });
 
-  test('single-char "o" finds Common Orb-weaver Spider without crashing', async ({ page }) => {
+  test('single-char "o" finds Cross Spider without crashing', async ({ page }) => {
     const errors: string[] = [];
     page.on('pageerror', err => errors.push(err.message));
     page.on('console', msg => { if (msg.type() === 'error') errors.push(msg.text()); });
@@ -156,11 +156,11 @@ test.describe('Search bar', () => {
     await expect(page.locator('#root > *')).toBeVisible();
     expect(errors, `Console/page errors after search: ${errors.join(', ')}`).toHaveLength(0);
 
-    // "o" matches "Common Orb-weaver Spider" via common_name
-    await expect(page.getByText('Common Orb-weaver Spider', { exact: true })).toBeVisible();
+    // "o" matches "Cross Spider" via common_name
+    await expect(page.getByText('Cross Spider', { exact: true })).toBeVisible();
   });
 
-  test('"orb" finds Common Orb-weaver Spider', async ({ page }) => {
+  test('"orb" finds Cross Spider', async ({ page }) => {
     await page.goto('/');
     await page.waitForLoadState('networkidle');
 
@@ -168,18 +168,18 @@ test.describe('Search bar', () => {
     await searchBar.fill('orb');
     await page.waitForTimeout(400);
 
-    await expect(page.getByText('Common Orb-weaver Spider', { exact: true })).toBeVisible();
+    await expect(page.getByText('Cross Spider', { exact: true })).toBeVisible();
   });
 
-  test('"ORB WEAVER" (uppercase) finds Common Orb-weaver Spider', async ({ page }) => {
+  test('"CROSS" (uppercase) finds Cross Spider', async ({ page }) => {
     await page.goto('/');
     await page.waitForLoadState('networkidle');
 
     const searchBar = page.getByRole('searchbox');
-    await searchBar.fill('ORB WEAVER');
+    await searchBar.fill('CROSS');
     await page.waitForTimeout(400);
 
-    await expect(page.getByText('Common Orb-weaver Spider', { exact: true })).toBeVisible();
+    await expect(page.getByText('Cross Spider', { exact: true })).toBeVisible();
   });
 
   test('search filters species list correctly', async ({ page }) => {
