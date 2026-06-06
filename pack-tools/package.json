@@ -9,6 +9,7 @@
     "validate:watch": "node --loader ts-node/esm --watch cli/validate.ts",
     "merge": "node --loader ts-node/esm cli/merge.ts",
     "fetch-images": "node --loader ts-node/esm cli/fetch-images.ts",
+    "fix-broken-images": "node --loader ts-node/esm cli/fix-broken-images.ts",
     "fetch-conservation-status": "node --loader ts-node/esm cli/fetch-conservation-status.ts",
     "fetch-names": "node --loader ts-node/esm cli/fetch-names.ts",
     "migrate": "node scripts/migrate-dataset.js",
