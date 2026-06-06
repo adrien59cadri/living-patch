@@ -4,13 +4,13 @@
 
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 
-// Must be hoisted before the import that uses node-fetch
-vi.mock('node-fetch', () => ({ default: vi.fn() }));
+// vi.hoisted ensures fetchMock is created before any imports run, so the
+// vi.mock factory can safely reference it in both Node 20 and Node 22 ESM.
+const fetchMock = vi.hoisted(() => vi.fn());
 
-import nodeFetch from 'node-fetch';
+vi.mock('node-fetch', () => ({ default: fetchMock }));
+
 import { extractImageLink, fetchFilePageAndExtractData, scrapeSpeciesImage } from '../../lib/wikipedia-scraper.js';
-
-const fetchMock = nodeFetch as ReturnType<typeof vi.fn>;
 
 // Mock HTML fixtures
 const mockInforboxWithImage = `
