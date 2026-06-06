@@ -2795,7 +2795,7 @@
           }
         ],
         "region": "northeast_pa",
-        "ecological_role": "insectivore",
+        "ecological_role": "carnivore",
         "is_keystone": false,
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Eastern_kingbird_on_the_hunt_%2856948%29.jpg/960px-Eastern_kingbird_on_the_hunt_%2856948%29.jpg",
@@ -2874,7 +2874,7 @@
           }
         ],
         "region": "northeast_pa",
-        "ecological_role": "insectivore",
+        "ecological_role": "carnivore",
         "is_keystone": true,
         "keystone_type": "aerial_insect_suppression",
         "keystone_description": "Critical aerial insectivore in open habitats and water margins. Single pair can consume thousands of mosquitoes and flies per season. Population health reflects water quality and insect abundance. Requires cavity nesting sites (dead trees or boxes) and open foraging habitat in proximity.",
@@ -2948,7 +2948,7 @@
           }
         ],
         "region": "northeast_pa",
-        "ecological_role": "insectivore",
+        "ecological_role": "carnivore",
         "is_keystone": false,
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Rauchschwalbe_Hirundo_rustica.jpg/960px-Rauchschwalbe_Hirundo_rustica.jpg",
@@ -3553,7 +3553,7 @@
           }
         ],
         "region": "northeast_pa",
-        "ecological_role": "insectivore",
+        "ecological_role": "carnivore",
         "is_keystone": true,
         "keystone_type": "predator",
         "keystone_description": "Critical nighttime insect suppressor. A single bat consumes 600–1,000 insects per hour; a maternity colony of 150 bats can eat 1.3 million insects per night. White-nose Syndrome has eliminated 90%+ of PA's Little Brown Bat populations since 2007 — the resulting insect release is measurable in agricultural pest damage data. Their loss represents one of the most severe ecological disruptions in recent PA natural history.",
@@ -3635,7 +3635,7 @@
           }
         ],
         "region": "northeast_pa",
-        "ecological_role": "insectivore",
+        "ecological_role": "carnivore",
         "is_keystone": false,
         "taxonomic_group": "group_bats",
         "image": {
@@ -4548,6 +4548,7 @@
         "is_keystone": false,
         "keystone_type": null,
         "keystone_description": null,
+        "status": "i",
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Kuusk_Keila-Paldiski_rdt_%C3%A4%C3%A4res.jpg/500px-Kuusk_Keila-Paldiski_rdt_%C3%A4%C3%A4res.jpg",
           "author": "Ivar Leidus"
@@ -5763,7 +5764,7 @@
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Myotis_sodalis.jpg/500px-Myotis_sodalis.jpg",
           "author": "U.S. Fish and Wildlife Service"
         },
-        "conservation_status": "NT"
+        "conservation_status": "EN"
       },
       {
         "id": "mammal_northern-long-eared-bat",
@@ -5901,6 +5902,193 @@
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Sorex_palustris.jpg/500px-Sorex_palustris.jpg",
           "author": "NPS"
         }
+      },
+      {
+        "id": "bird_barred-owl",
+        "common_name": "Barred Owl",
+        "latin_name": "Strix varia",
+        "form": "owl",
+        "habitat": [
+          "forest",
+          "woodland",
+          "riparian",
+          "wetland_edge"
+        ],
+        "diet": [
+          "predator"
+        ],
+        "behavior": [
+          "nocturnal",
+          "cavity_user"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "functional_description": "Large forest owl with a round head, no ear tufts, and brown barred plumage. Its 'Who cooks for you?' call is one of NE PA's most recognizable forest sounds. Hunts White-footed Mouse, shrews, frogs, and crayfish from perches over forest floor and stream edges. Nests in large tree cavities or abandoned Red-tailed Hawk nests. Dependent on mature forest with large-diameter snags.",
+        "life_stages": [],
+        "region": "northeast_pa",
+        "ecological_role": "carnivore",
+        "is_keystone": false,
+        "keystone_type": null,
+        "keystone_description": null,
+        "conservation_status": "LC"
+      },
+      {
+        "id": "bird_coopers-hawk",
+        "common_name": "Cooper's Hawk",
+        "latin_name": "Accipiter cooperii",
+        "form": "raptor",
+        "habitat": [
+          "forest",
+          "woodland",
+          "forest_edge",
+          "suburban"
+        ],
+        "diet": [
+          "predator"
+        ],
+        "behavior": [
+          "ambush_predator",
+          "agile_flyer"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "functional_description": "Medium accipiter with short rounded wings and a long tail for agile maneuvering through dense forest. Primary predator of medium-sized birds including American Robin, starlings, and American Kestrel. Has adapted well to suburban environments, hunting backyard feeders. Populations recovered strongly since DDT-era declines — increased Cooper's Hawk predation pressure is a documented contributor to American Kestrel's continuing PA decline.",
+        "life_stages": [],
+        "region": "northeast_pa",
+        "ecological_role": "carnivore",
+        "is_keystone": false,
+        "keystone_type": null,
+        "keystone_description": null,
+        "conservation_status": "LC"
+      },
+      {
+        "id": "bird_northern-flicker",
+        "common_name": "Northern Flicker",
+        "latin_name": "Colaptes auratus",
+        "form": "woodpecker",
+        "habitat": [
+          "forest_edge",
+          "woodland",
+          "open_woodland",
+          "field",
+          "garden"
+        ],
+        "diet": [
+          "insect_eater"
+        ],
+        "behavior": [
+          "cavity_excavator",
+          "ground_forager"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "functional_description": "Large brownish woodpecker with spotted underparts and a red nape crescent. Unlike most woodpeckers, forages primarily on the ground for ants — excavating ant colonies in soil. An important secondary cavity excavator: American Kestrel, Eastern Bluebird, White-breasted Nuthatch, and Wood Duck all rely on flicker-excavated nest holes. Declining in PA due to loss of open woodland snags.",
+        "life_stages": [],
+        "region": "northeast_pa",
+        "ecological_role": "carnivore",
+        "is_keystone": false,
+        "keystone_type": null,
+        "keystone_description": null,
+        "taxonomic_group": "group_woodpeckers",
+        "conservation_status": "LC"
+      },
+      {
+        "id": "mammal_striped-skunk",
+        "common_name": "Striped Skunk",
+        "latin_name": "Mephitis mephitis",
+        "form": "mammal",
+        "habitat": [
+          "field_edge",
+          "woodland",
+          "forest_edge",
+          "suburban"
+        ],
+        "diet": [
+          "insect_eater",
+          "omnivore"
+        ],
+        "behavior": [
+          "nocturnal",
+          "fossorial"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "functional_description": "Bold black-and-white mustelid with an effective sulfur-compound spray defense. Eats insects, white grubs, small rodents, bird eggs, berries, and carrion. Loosely hibernates through severe cold. Great Horned Owl is its primary predator — relying on vision rather than smell, owls are unaffected by the musk spray; adult Great Horned Owls frequently smell strongly of skunk. Important controller of ground-nesting yellowjacket colonies and white grub populations.",
+        "life_stages": [],
+        "region": "northeast_pa",
+        "ecological_role": "omnivore",
+        "is_keystone": false,
+        "keystone_type": null,
+        "keystone_description": null,
+        "conservation_status": "LC"
+      },
+      {
+        "id": "mammal_cottontail-rabbit",
+        "common_name": "Eastern Cottontail",
+        "latin_name": "Sylvilagus floridanus",
+        "form": "mammal",
+        "habitat": [
+          "field",
+          "meadow",
+          "forest_edge",
+          "shrubland",
+          "garden"
+        ],
+        "diet": [
+          "herbivore"
+        ],
+        "behavior": [
+          "crepuscular",
+          "ground_nester"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "functional_description": "Compact rabbit with a white cotton-ball tail. Among NE PA's most abundant herbivores — eats grasses, forbs, and in winter shifts to bark and woody stems. Produces 3–4 litters per year. Forms a critical dietary base for NE PA's predator community: Red-tailed Hawk, Great Horned Owl, Red Fox, Eastern Coyote, and Mink all depend on cottontail as primary prey at some point in the year.",
+        "life_stages": [],
+        "region": "northeast_pa",
+        "ecological_role": "herbivore",
+        "is_keystone": false,
+        "keystone_type": null,
+        "keystone_description": null,
+        "conservation_status": "LC"
+      },
+      {
+        "id": "amphibian_wood-frog",
+        "common_name": "Wood Frog",
+        "latin_name": "Rana sylvatica",
+        "form": "frog",
+        "habitat": [
+          "forest",
+          "vernal_pool",
+          "woodland",
+          "wetland"
+        ],
+        "diet": [
+          "insect_eater"
+        ],
+        "behavior": [
+          "seasonal_breeder",
+          "freeze_tolerant"
+        ],
+        "season": [
+          "spring",
+          "summer",
+          "fall"
+        ],
+        "functional_description": "Small brown frog with a dark eye mask, camouflaged like a dead leaf on the forest floor. First amphibian to emerge in NE PA each year — begins calling in late February to early March while snow remains. Uniquely freeze-tolerant: survives winter frozen solid under leaf litter using glucose as natural antifreeze. Co-breeds with Spotted Salamander in vernal pools. Its early-spring chorus is an iconic ecological signal of the season turning.",
+        "life_stages": [],
+        "region": "northeast_pa",
+        "ecological_role": "carnivore",
+        "is_keystone": false,
+        "keystone_type": null,
+        "keystone_description": null,
+        "taxonomic_group": "group_frogs",
+        "conservation_status": "LC"
       }
     ],
     "taxonomic_groups": [
@@ -7508,6 +7696,132 @@
         ],
         "strength": "critical",
         "notes": "Zebra Swallowtail is the only US butterfly obligate on genus Asimina (Pawpaw). Caterpillars sequester acetogenins from Pawpaw foliage, conferring predator protection throughout the butterfly's life. The butterfly's entire North American range is determined by Pawpaw distribution."
+      },
+      {
+        "type": "predation",
+        "source": "mammal_mink",
+        "targets": [
+          "fish_brook-trout"
+        ],
+        "strength": "important",
+        "notes": "American Mink is the primary mammalian predator of Brook Trout in NE PA cold-water streams. Mink dive and pursue fish in shallow riffles and pools — slender body and partially webbed feet make them effective aquatic hunters. Mink presence near cold headwater streams is an indirect indicator of healthy trout populations and stream quality."
+      },
+      {
+        "type": "predation",
+        "source": "bird_great-horned-owl",
+        "targets": [
+          "mammal_striped-skunk"
+        ],
+        "strength": "important",
+        "notes": "Great Horned Owl is the primary and nearly exclusive predator of Striped Skunk in NE PA. Owls rely on vision rather than smell — their poorly developed olfactory system renders the sulfur spray defense ineffective. Adult Great Horned Owls frequently smell strongly of musk, reflecting how regularly they take skunks."
+      },
+      {
+        "type": "predation",
+        "source": "bird_red-tailed-hawk",
+        "targets": [
+          "mammal_cottontail-rabbit"
+        ],
+        "strength": "important",
+        "notes": "Eastern Cottontail is a primary winter prey item for Red-tailed Hawk, especially when vole populations are low. Hawks hunt cottontails from elevated perches along field edges and brush piles, diving onto rabbits caught feeding in the open."
+      },
+      {
+        "type": "predation",
+        "source": "bird_great-horned-owl",
+        "targets": [
+          "mammal_cottontail-rabbit"
+        ],
+        "strength": "critical",
+        "notes": "Eastern Cottontail is among the most important prey species for Great Horned Owl in NE PA. Owls hunt cottontails along forest edges, meadows, and brush piles throughout the night. Cottontail availability is a key driver of Great Horned Owl breeding success — nest initiation timing tracks cottontail winter density."
+      },
+      {
+        "type": "predation",
+        "source": "mammal_eastern-coyote",
+        "targets": [
+          "mammal_cottontail-rabbit"
+        ],
+        "strength": "important",
+        "notes": "Eastern Cottontail is a major coyote prey item, particularly in winter and early spring when deer fawns are unavailable. Coyotes hunt cottontails through field edges and shrubby thickets, contributing to the population cycling pattern of cottontail numbers across NE PA."
+      },
+      {
+        "type": "predation",
+        "source": "mammal_red-fox",
+        "targets": [
+          "mammal_cottontail-rabbit"
+        ],
+        "strength": "important",
+        "notes": "Eastern Cottontail is the primary lagomorph prey of Red Fox in NE PA. Foxes stalk rabbits through field edges and brush patches, relying on speed and agility in the final chase. Cottontail availability directly influences Red Fox kit survival and litter size."
+      },
+      {
+        "type": "predation",
+        "source": "mammal_raccoon",
+        "targets": [
+          "amphibian_wood-frog"
+        ],
+        "strength": "important",
+        "notes": "Raccoon is a significant predator of Wood Frog during the brief late-winter breeding window. Raccoons learn to visit vernal pools when wood frogs call in late February–March, consuming egg masses, tadpoles, and adults. The explosive breeding aggregations make this a high-value, time-limited foraging opportunity."
+      },
+      {
+        "type": "commensalism",
+        "source": "amphibian_wood-frog",
+        "targets": [
+          "amphibian_spotted-salamander"
+        ],
+        "strength": "important",
+        "notes": "Wood Frog and Spotted Salamander are NE PA's two co-dominant vernal pool breeders, arriving simultaneously in late February–March and using the same seasonal pool habitat without significant prey competition. Their synchronized arrival means vernal pool integrity — ephemeral flooding timing, absence of fish — equally determines both species' reproductive success, making them paired bioindicators of intact seasonal wetlands."
+      },
+      {
+        "type": "predation",
+        "source": "bird_barred-owl",
+        "targets": [
+          "mammal_white-footed-mouse"
+        ],
+        "strength": "critical",
+        "notes": "White-footed Mouse is the primary prey of Barred Owl in NE PA forest habitats. Barred Owls hunt the forest floor and low canopy using sound localization and low-light vision, targeting the most abundant nocturnal forest mammal. Barred Owl territory size and density are strongly correlated with White-footed Mouse abundance."
+      },
+      {
+        "type": "predation",
+        "source": "bird_barred-owl",
+        "targets": [
+          "amphibian_wood-frog"
+        ],
+        "strength": "important",
+        "notes": "Barred Owl is a significant predator of Wood Frog during spring breeding aggregations. Owls forage along vernal pool margins during the late February–March calling window, taking frogs at the water surface. The brief, predictable breeding aggregation concentrates both prey and predators at the same locations annually."
+      },
+      {
+        "type": "predation",
+        "source": "bird_barred-owl",
+        "targets": [
+          "amphibian_american-bullfrog"
+        ],
+        "strength": "incidental",
+        "notes": "Barred Owl takes American Bullfrog from beaver pond edges and wetland margins. The owl's dietary breadth — including crayfish and fish alongside mammals and frogs, unusual among NE PA raptors — reflects its generalist foraging strategy across forest-water interfaces."
+      },
+      {
+        "type": "predation",
+        "source": "bird_coopers-hawk",
+        "targets": [
+          "bird_american-kestrel"
+        ],
+        "strength": "important",
+        "notes": "Cooper's Hawk is a primary avian predator of American Kestrel in NE PA. Recovery of Cooper's Hawk populations since the DDT era has increased predation pressure on kestrels — documented as a contributing factor in kestrel's ongoing PA population decline. Cooper's Hawks pursue kestrels aerially across open fields and intercept them at nesting cavities."
+      },
+      {
+        "type": "commensalism",
+        "source": "bird_northern-flicker",
+        "targets": [
+          "bird_american-kestrel"
+        ],
+        "strength": "important",
+        "notes": "American Kestrel regularly uses nest cavities excavated by Northern Flicker in open woodland snags. Flicker holes (3-inch entrance diameter) are sized for kestrel entry and are found at habitat edges in the open woodland settings kestrels prefer. This cavity dependency links kestrel breeding success to Flicker nest-site availability."
+      },
+      {
+        "type": "commensalism",
+        "source": "bird_northern-flicker",
+        "targets": [
+          "bird_eastern-bluebird"
+        ],
+        "strength": "important",
+        "notes": "Eastern Bluebird uses Northern Flicker cavities as nest sites in natural settings — Flicker excavations in dead trees at field edges provide alternatives to nest boxes where natural snags are retained in open woodland."
       }
     ],
     "relations": [
