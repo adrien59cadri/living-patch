@@ -1585,8 +1585,8 @@
       },
       {
         "id": "insect_grasshopper",
-        "common_name": "Field Grasshopper",
-        "latin_name": "Acrididae family",
+        "common_name": "Red-legged Grasshopper",
+        "latin_name": "Melanoplus femurrubrum",
         "form": "grasshopper",
         "habitat": [
           "field",
@@ -1702,8 +1702,8 @@
       },
       {
         "id": "insect_orb-weaver-spider",
-        "common_name": "Common Orb-weaver Spider",
-        "latin_name": "Araneus species",
+        "common_name": "Cross Spider",
+        "latin_name": "Araneus diadematus",
         "form": "spider",
         "habitat": [
           "forest",
