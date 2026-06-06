@@ -179,6 +179,7 @@ export async function fetchFilePageAndExtractData(fileLink: string): Promise<Scr
       'unbekannt',
       'inconnu',
       'desconocido',
+      'photographer',
     ];
     const isPlaceholder = (text: string) =>
       AUTHOR_PLACEHOLDERS.some(p => text.toLowerCase().startsWith(p));
@@ -187,6 +188,8 @@ export async function fetchFilePageAndExtractData(fileLink: string): Promise<Scr
     const cleanCellText = (raw: string): string => {
       let t = raw
         .split('\n')[0]
+        // Strip Wikimedia's "no machine-readable author" prefix, keeping the username after it
+        .replace(/^No machine-readable author provided\.\s*/i, '')
         .replace(/^\.mw-parser.*$/gm, '')
         .replace(/Picasa.*$/, '')
         .replace(/based on copyright claims.*$/i, '')

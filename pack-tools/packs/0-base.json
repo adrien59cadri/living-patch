@@ -538,7 +538,7 @@
         "taxonomic_group": "group_oaks",
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Quercus_rubra_%40_Tortworth_Court.jpg/960px-Quercus_rubra_%40_Tortworth_Court.jpg",
-          "author": "No machine-readable author provided. Velela",
+          "author": "Velela",
           "source_url": "https://en.wikipedia.org/wiki/Quercus_rubra"
         },
         "conservation_status": "LC"
@@ -1797,7 +1797,7 @@
         "is_keystone": false,
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Araneus_diadematus_MHNT_Femelle_Fronton.jpg/960px-Araneus_diadematus_MHNT_Femelle_Fronton.jpg",
-          "author": "Photographer",
+          "author": "Own work",
           "source_url": "https://en.wikipedia.org/wiki/Araneus_diadematus"
         }
       },
@@ -4168,7 +4168,7 @@
         "taxonomic_group": "group_songbirds",
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Poecile-atricapilla-001.jpg/960px-Poecile-atricapilla-001.jpg",
-          "author": "No machine-readable author provided. Mdf",
+          "author": "Mdf",
           "source_url": "https://en.wikipedia.org/wiki/Black-capped_Chickadee"
         },
         "conservation_status": "LC"
@@ -4392,7 +4392,7 @@
         "keystone_description": null,
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Carya_cordiformis.jpg/960px-Carya_cordiformis.jpg",
-          "author": "No machine-readable author provided. MPF",
+          "author": "MPF",
           "source_url": "https://en.wikipedia.org/wiki/Carya_cordiformis"
         },
         "conservation_status": "LC"
@@ -4786,7 +4786,7 @@
         "keystone_description": "Obligate host plant for Spicebush Swallowtail butterfly caterpillars — along with Spicebush, one of only two native Lauraceae family members in NE PA. Berries provide fall food for songbirds during migration.",
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Sassafras_Leaves_June_Nbg_%28261691941%29.jpeg/960px-Sassafras_Leaves_June_Nbg_%28261691941%29.jpeg",
-          "author": "Photographer",
+          "author": "Imported from 500px (archived version) by the Archive Team. (detail page)",
           "source_url": "https://en.wikipedia.org/wiki/Sassafras_albidum"
         },
         "conservation_status": "LC"
@@ -7972,6 +7972,46 @@
         ],
         "strength": "important",
         "notes": "Eastern Bluebird uses Northern Flicker cavities as nest sites in natural settings — Flicker excavations in dead trees at field edges provide alternatives to nest boxes where natural snags are retained in open woodland."
+      },
+      {
+        "type": "predation",
+        "source": "mammal_indiana-bat",
+        "targets": [
+          "insect_catalpa-sphinx-moth",
+          "insect_waved-sphinx-moth"
+        ],
+        "fulfillment": "any",
+        "strength": "important",
+        "notes": "Indiana Bat forages along forest edges and riparian corridors, taking large night-flying moths including sphingid moths. Aerial insectivory at canopy height distinguishes Indiana Bat from the lower-foraging Little Brown Bat, giving it access to moths that ascend into the upper forest story."
+      },
+      {
+        "type": "predation",
+        "source": "mammal_indiana-bat",
+        "targets": [
+          "insect_bark-beetle"
+        ],
+        "strength": "important",
+        "notes": "Indiana Bat is an opportunistic consumer of bark beetles emerging from stressed forest trees at dusk. Its forest-specialist foraging range brings it into contact with bark beetle emergence events more consistently than generalist bat species."
+      },
+      {
+        "type": "commensalism",
+        "source": "mammal_indiana-bat",
+        "targets": [
+          "bird_pileated-woodpecker"
+        ],
+        "strength": "important",
+        "notes": "Indiana Bat uses large-diameter snags and tree cavities — including those excavated or enlarged by Pileated Woodpecker — as summer day roosts and maternity colony sites. Maternity colonies of 100+ females require warm, sheltered cavities in dead or dying trees; loss of cavity-bearing snags is one of the two primary summer habitat threats, alongside White-nose Syndrome at winter hibernacula."
+      },
+      {
+        "type": "competition",
+        "source": "mammal_indiana-bat",
+        "targets": [
+          "mammal_little-brown-bat",
+          "mammal_northern-long-eared-bat"
+        ],
+        "fulfillment": "any",
+        "strength": "incidental",
+        "notes": "Indiana Bat, Little Brown Bat, and Northern Long-eared Bat co-hibernate in the same limestone caves and abandoned mines of NE PA, competing for optimal roost spots with stable low temperatures (37–50°F). All three species are devastated by White-nose Syndrome (Pseudogymnoascus destructans); the fungal pathogen propagates across the shared hibernaculum, linking the fate of the three species and amplifying colony loss beyond what any single-species model would predict."
       }
     ],
     "relations": [
@@ -8052,46 +8092,6 @@
           "insect_common-whitetail"
         ],
         "notes": "Two of the most abundant and visible dragonflies of NE PA ponds and slow streams. Both are perch-and-pursue hunters with strong sexual dimorphism — males brilliantly colored (blue in Pondhawk, chalky white in Whitetail), females cryptic green/brown. Nymphs are top invertebrate predators in lentic systems; adults control aerial insect populations including mosquitoes. Both species can be seen patrolling the same pond simultaneously."
-      },
-      {
-        "type": "predation",
-        "source": "mammal_indiana-bat",
-        "targets": [
-          "insect_catalpa-sphinx-moth",
-          "insect_waved-sphinx-moth"
-        ],
-        "fulfillment": "any",
-        "strength": "important",
-        "notes": "Indiana Bat forages along forest edges and riparian corridors, taking large night-flying moths including sphingid moths. Aerial insectivory at canopy height distinguishes Indiana Bat from the lower-foraging Little Brown Bat, giving it access to moths that ascend into the upper forest story."
-      },
-      {
-        "type": "predation",
-        "source": "mammal_indiana-bat",
-        "targets": [
-          "insect_bark-beetle"
-        ],
-        "strength": "important",
-        "notes": "Indiana Bat is an opportunistic consumer of bark beetles emerging from stressed forest trees at dusk. Its forest-specialist foraging range brings it into contact with bark beetle emergence events more consistently than generalist bat species."
-      },
-      {
-        "type": "commensalism",
-        "source": "mammal_indiana-bat",
-        "targets": [
-          "bird_pileated-woodpecker"
-        ],
-        "strength": "important",
-        "notes": "Indiana Bat uses large-diameter snags and tree cavities — including those excavated or enlarged by Pileated Woodpecker — as summer day roosts and maternity colony sites. Maternity colonies of 100+ females require warm, sheltered cavities in dead or dying trees; loss of cavity-bearing snags is one of the two primary summer habitat threats, alongside White-nose Syndrome at winter hibernacula."
-      },
-      {
-        "type": "competition",
-        "source": "mammal_indiana-bat",
-        "targets": [
-          "mammal_little-brown-bat",
-          "mammal_northern-long-eared-bat"
-        ],
-        "fulfillment": "any",
-        "strength": "incidental",
-        "notes": "Indiana Bat, Little Brown Bat, and Northern Long-eared Bat co-hibernate in the same limestone caves and abandoned mines of NE PA, competing for optimal roost spots with stable low temperatures (37–50°F). All three species are devastated by White-nose Syndrome (Pseudogymnoascus destructans); the fungal pathogen propagates across the shared hibernaculum, linking the fate of the three species and amplifying colony loss beyond what any single-species model would predict."
       }
     ]
   }
