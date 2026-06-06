@@ -39,7 +39,7 @@ Each species includes full ecological context in `functional_description` (e.g.,
 - **`pack-tools/types.ts`** — same `status?: 'nb' | 'nnna' | 'i'` field on Species interface
 
 #### Data
-- **`pack-tools/packs/0-base.json`** — 8 species updated to `"status": "i"` (total 109 species, 45+ taxonomic groups)
+- **`pack-tools/packs/0-base.json`** — 8 species updated to `"status": "i"` (total 120 species, 45+ taxonomic groups)
 
 #### Design & Labels
 - **`app/src/lib/designTokens.ts`** — `ECOLOGICAL_STATUS_LABELS`, `ECOLOGICAL_STATUS_COLORS`, `ECOLOGICAL_STATUS_DESCRIPTIONS` mappings
@@ -272,7 +272,19 @@ Follow the pattern of `KeystoneTypesSection.tsx`:
 
 ## Recent Changes
 
-### Ecological Status Taxonomy (latest)
+### PA Endangered & Threatened Species (June 6, 2026 — latest)
+- **Commit:** `96c8cef` — "feat(data): add 11 PA endangered and threatened species with conservation status"
+- **Branch:** `claude/pa-native-species-iucn-llbeS`
+- **Status:** ✓ Complete, pushed to origin
+- **Changes:** 1 file modified (pack-tools/packs/0-base.json)
+  - Dataset expanded: **109 → 120 species** (+11 from PA Game Commission official endangered/threatened list)
+  - **Birds:** American Bittern (LC), Loggerhead Shrike (NT), Piping Plover (NT), Short-eared Owl (LC), Long-eared Owl (LC), Northern Harrier (LC)
+  - **Mammals:** Indiana Bat (NT), Northern Long-eared Bat (NT), Allegheny Woodrat (NT), Eastern Small-footed Bat (EN), West Virginia Water Shrew (no status found)
+  - **Conservation status populated:** 10/11 species via Wikipedia scraper (`fetch-conservation-status` CLI)
+  - **Meaningful conservation levels:** 1 EN (Endangered), 5 NT (Near Threatened), 4 LC (Least Concern)
+  - **Key insight:** Addresses gap in conservation-focused species; previous dataset was dominated by common LC species. New species highlight real NE PA ecosystem vulnerabilities (white-nose syndrome in bats, wetland loss in wading birds, grassland fragmentation in raptors).
+
+### Ecological Status Taxonomy
 - **Commit:** `25111e0` — "feat(ecology): refactor invasive flag to full N/NB/NNNA/I taxonomy"
 - **Branch:** `claude/invasive-species-geo-plan-HKeWT`
 - **Status:** ✓ Complete, pushed to origin

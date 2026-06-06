@@ -5203,7 +5203,11 @@
           "May-Jun",
           "Sep-Oct"
         ],
-        "status": "i"
+        "status": "i",
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Honeysuckle-2.jpg/500px-Honeysuckle-2.jpg",
+          "author": "Aftabbanoori"
+        }
       },
       {
         "id": "plant_porcelainberry",
@@ -5242,7 +5246,11 @@
           "May-Jun",
           "Aug-Oct"
         ],
-        "status": "i"
+        "status": "i",
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Ampelopsis-brevipedunculata.JPG/960px-Ampelopsis-brevipedunculata.JPG",
+          "author": "Olivier Vanpé"
+        }
       },
       {
         "id": "plant_oriental-bittersweet",
@@ -5281,7 +5289,11 @@
           "May-Jun",
           "Sep-Nov"
         ],
-        "status": "i"
+        "status": "i",
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/b/b0/Celastrus_orbiculatus.jpg",
+          "author": "Wikimedia Commons"
+        }
       },
       {
         "id": "plant_canada-thistle",
@@ -5323,7 +5335,11 @@
         "active_months": [
           "Jun-Sep"
         ],
-        "status": "i"
+        "status": "i",
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Cirsium_arvense_with_Bees_Richard_Bartz.jpg/500px-Cirsium_arvense_with_Bees_Richard_Bartz.jpg",
+          "author": "Richard Bartz, Munich aka Makro Freak"
+        }
       },
       {
         "id": "plant_multiflora-rose",
@@ -5364,7 +5380,11 @@
           "May-Jun",
           "Sep-Feb"
         ],
-        "status": "i"
+        "status": "i",
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/2020-05-20_08_05_42_Multiflora_Rose_flowers_along_a_walking_path_within_Horsepen_Run_Stream_Valley_Park_in_Oak_Hill%2C_Fairfax_County%2C_Virginia.jpg/960px-2020-05-20_08_05_42_Multiflora_Rose_flowers_along_a_walking_path_within_Horsepen_Run_Stream_Valley_Park_in_Oak_Hill%2C_Fairfax_County%2C_Virginia.jpg",
+          "author": "Famartin"
+        }
       },
       {
         "id": "plant_common-periwinkle",
@@ -5400,7 +5420,11 @@
         "active_months": [
           "Mar-May"
         ],
-        "status": "i"
+        "status": "i",
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Vinca_minor_Nashville.jpg/960px-Vinca_minor_Nashville.jpg",
+          "author": "Ryan Kaldari"
+        }
       },
       {
         "id": "plant_japanese-wineberry",
@@ -5440,7 +5464,11 @@
           "May-Jun",
           "Jul-Aug"
         ],
-        "status": "i"
+        "status": "i",
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Japanse_wijnbes_rijpe_vruchten.jpg/500px-Japanse_wijnbes_rijpe_vruchten.jpg",
+          "author": "Rasbak"
+        }
       },
       {
         "id": "plant_garlic-mustard",
@@ -5481,7 +5509,11 @@
         "active_months": [
           "Apr-Jun"
         ],
-        "status": "i"
+        "status": "i",
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Alliaria_petiolata_marais-belloy-sur-somme_80_26042007_3.jpg/500px-Alliaria_petiolata_marais-belloy-sur-somme_80_26042007_3.jpg",
+          "author": "O. Pichard"
+        }
       },
       {
         "id": "bird_american-bittern",
