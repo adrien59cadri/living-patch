@@ -5,7 +5,6 @@
  * from the infobox and associated file pages on Wikimedia Commons
  */
 
-import fetch from 'node-fetch';
 import { load } from 'cheerio';
 
 interface ScrapedImage {
