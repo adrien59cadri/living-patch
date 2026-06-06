@@ -5877,7 +5877,7 @@
         "keystone_description": null,
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/b/bf/Indiana_Bat_FWS.jpg",
-          "author": "This file is lacking author information.",
+          "author": "U.S. Fish & Wildlife Service",
           "source_url": "https://en.wikipedia.org/wiki/Myotis_sodalis"
         },
         "conservation_status": "EN"
@@ -8052,6 +8052,46 @@
           "insect_common-whitetail"
         ],
         "notes": "Two of the most abundant and visible dragonflies of NE PA ponds and slow streams. Both are perch-and-pursue hunters with strong sexual dimorphism — males brilliantly colored (blue in Pondhawk, chalky white in Whitetail), females cryptic green/brown. Nymphs are top invertebrate predators in lentic systems; adults control aerial insect populations including mosquitoes. Both species can be seen patrolling the same pond simultaneously."
+      },
+      {
+        "type": "predation",
+        "source": "mammal_indiana-bat",
+        "targets": [
+          "insect_catalpa-sphinx-moth",
+          "insect_waved-sphinx-moth"
+        ],
+        "fulfillment": "any",
+        "strength": "important",
+        "notes": "Indiana Bat forages along forest edges and riparian corridors, taking large night-flying moths including sphingid moths. Aerial insectivory at canopy height distinguishes Indiana Bat from the lower-foraging Little Brown Bat, giving it access to moths that ascend into the upper forest story."
+      },
+      {
+        "type": "predation",
+        "source": "mammal_indiana-bat",
+        "targets": [
+          "insect_bark-beetle"
+        ],
+        "strength": "important",
+        "notes": "Indiana Bat is an opportunistic consumer of bark beetles emerging from stressed forest trees at dusk. Its forest-specialist foraging range brings it into contact with bark beetle emergence events more consistently than generalist bat species."
+      },
+      {
+        "type": "commensalism",
+        "source": "mammal_indiana-bat",
+        "targets": [
+          "bird_pileated-woodpecker"
+        ],
+        "strength": "important",
+        "notes": "Indiana Bat uses large-diameter snags and tree cavities — including those excavated or enlarged by Pileated Woodpecker — as summer day roosts and maternity colony sites. Maternity colonies of 100+ females require warm, sheltered cavities in dead or dying trees; loss of cavity-bearing snags is one of the two primary summer habitat threats, alongside White-nose Syndrome at winter hibernacula."
+      },
+      {
+        "type": "competition",
+        "source": "mammal_indiana-bat",
+        "targets": [
+          "mammal_little-brown-bat",
+          "mammal_northern-long-eared-bat"
+        ],
+        "fulfillment": "any",
+        "strength": "incidental",
+        "notes": "Indiana Bat, Little Brown Bat, and Northern Long-eared Bat co-hibernate in the same limestone caves and abandoned mines of NE PA, competing for optimal roost spots with stable low temperatures (37–50°F). All three species are devastated by White-nose Syndrome (Pseudogymnoascus destructans); the fungal pathogen propagates across the shared hibernaculum, linking the fate of the three species and amplifying colony loss beyond what any single-species model would predict."
       }
     ]
   }
