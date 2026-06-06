@@ -123,7 +123,7 @@ describe('Wikipedia Scraper', () => {
 
       const result = await fetchFilePageAndExtractData('/wiki/File:Test.jpg');
 
-      expect(result).toEqual({
+      expect(result).toMatchObject({
         url: 'https://upload.wikimedia.org/wikipedia/commons/2/23/Bubo_virginianus_06.jpg',
         author: 'John Doe',
       });
@@ -137,7 +137,7 @@ describe('Wikipedia Scraper', () => {
 
       const result = await fetchFilePageAndExtractData('/wiki/File:Test.jpg');
 
-      expect(result).toEqual({
+      expect(result).toMatchObject({
         url: 'https://upload.wikimedia.org/wikipedia/commons/3/33/Test_image.jpg',
         author: 'Jane Smith',
       });
@@ -375,6 +375,41 @@ describe('Wikipedia Scraper', () => {
       const result = await scrapeSpeciesImage('Fake species name', 'Also fake');
 
       expect(result).toBeNull();
+    });
+
+    it('should include source_url pointing to the Wikipedia page', async () => {
+      const mockPageWithImage = `
+        <!DOCTYPE html>
+        <html><body>
+        <table class="infobox biota">
+          <tr><td colspan="2">
+            <a href="/wiki/File:Quercus_alba.jpg" class="image"><img src="/test.jpg" /></a>
+          </td></tr>
+        </table>
+        </body></html>
+      `;
+      const mockFilePage = `
+        <!DOCTYPE html>
+        <html><body>
+        <img src="//upload.wikimedia.org/wikipedia/commons/thumb/q/qa/Quercus_alba.jpg" />
+        <table class="fileinfotpl-type-information">
+          <tr><td>Author</td><td>Forest Service</td></tr>
+        </table>
+        </body></html>
+      `;
+
+      global.fetch = vi.fn().mockImplementation(async (url: string | URL) => {
+        const urlStr = url.toString();
+        return {
+          ok: true,
+          text: async () => (urlStr.includes('File:') ? mockFilePage : mockPageWithImage),
+        };
+      });
+
+      const result = await scrapeSpeciesImage('Quercus alba', 'White Oak');
+
+      expect(result?.source_url).toMatch(/^https:\/\/en\.wikipedia\.org\/wiki\//);
+      expect(result?.source_url).toContain('Quercus_alba');
     });
 
     it('should prioritize commons images over other image sources', async () => {

@@ -97,6 +97,30 @@ test.describe('Edge cases', () => {
   });
 });
 
+test.describe('Image credit line', () => {
+  test('shows photo credit with author under the hero image', async ({ page }) => {
+    await page.goto(MONARCH_URL);
+    await page.waitForLoadState('networkidle');
+    // Author text is rendered as plain text in the credit line
+    await expect(page.getByText(/Photo:/)).toBeVisible();
+  });
+
+  test('Wikipedia link in credit line points to correct page', async ({ page }) => {
+    await page.goto(MONARCH_URL);
+    await page.waitForLoadState('networkidle');
+    const wikiLink = page.getByRole('link', { name: /Wikipedia/ });
+    await expect(wikiLink).toBeVisible();
+    await expect(wikiLink).toHaveAttribute('href', 'https://en.wikipedia.org/wiki/Danaus_plexippus');
+  });
+
+  test('Wikipedia link opens in a new tab', async ({ page }) => {
+    await page.goto(MONARCH_URL);
+    await page.waitForLoadState('networkidle');
+    const wikiLink = page.getByRole('link', { name: /Wikipedia/ });
+    await expect(wikiLink).toHaveAttribute('target', '_blank');
+  });
+});
+
 test.describe('Clickable tags — navigate to filtered list', () => {
   test('form tag on detail page is a link', async ({ page }) => {
     await page.goto(MONARCH_URL);
