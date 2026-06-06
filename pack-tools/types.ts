@@ -60,6 +60,7 @@ export interface Species {
   image?: {
     url: string;
     author: string;
+    source_url?: string;
   };
   /** IUCN Red List conservation status code */
   conservation_status?: 'EX' | 'EW' | 'CR' | 'EN' | 'VU' | 'NT' | 'LC' | 'DD' | null;

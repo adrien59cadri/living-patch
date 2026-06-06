@@ -207,6 +207,7 @@ async function main() {
           species.image = {
             url: imageData.url,
             author: imageData.author,
+            ...(imageData.source_url ? { source_url: imageData.source_url } : {}),
           };
         }
         successfulImages++;
