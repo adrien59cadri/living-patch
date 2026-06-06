@@ -100,10 +100,10 @@ export type GroupedRelations = Record<SymbiosisRole, RelatedEntry[]>;
 
 const ROLES: SymbiosisRole[] = [
   'mutualism',
+  'commensalism',
   'parasitism',
   'predation',
   'competition',
-  'commensalism',
   'related',
 ];
 
