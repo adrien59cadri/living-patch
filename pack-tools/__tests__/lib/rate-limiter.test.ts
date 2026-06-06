@@ -66,13 +66,14 @@ describe('Rate Limiter', () => {
       const spy = vi.fn();
 
       const promise = limiter.execute(fn).then(spy);
-      
+
+      // fn is called immediately; the post-call delay keeps spy pending
       expect(fn).toHaveBeenCalled();
       expect(spy).not.toHaveBeenCalled();
 
-      vi.advanceTimersByTime(100);
+      await vi.runAllTimersAsync();
       await promise;
-      
+
       expect(spy).toHaveBeenCalled();
     });
 
@@ -82,9 +83,9 @@ describe('Rate Limiter', () => {
       const fn = vi.fn(async () => testValue);
 
       const promise = limiter.execute(fn);
-      vi.advanceTimersByTime(100);
+      await vi.runAllTimersAsync();
       const result = await promise;
-      
+
       expect(result).toEqual(testValue);
     });
   });

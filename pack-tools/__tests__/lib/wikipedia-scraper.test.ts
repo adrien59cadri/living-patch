@@ -3,7 +3,14 @@
  */
 
 import { describe, it, expect, vi, beforeEach } from 'vitest';
+
+// Must be hoisted before the import that uses node-fetch
+vi.mock('node-fetch', () => ({ default: vi.fn() }));
+
+import nodeFetch from 'node-fetch';
 import { extractImageLink, fetchFilePageAndExtractData, scrapeSpeciesImage } from '../../lib/wikipedia-scraper.js';
+
+const fetchMock = nodeFetch as ReturnType<typeof vi.fn>;
 
 // Mock HTML fixtures
 const mockInforboxWithImage = `
@@ -116,7 +123,7 @@ describe('Wikipedia Scraper', () => {
 
     it('should extract author from fileinfotpl_aut id field', async () => {
       // Mock fetch
-      global.fetch = vi.fn().mockResolvedValue({
+      fetchMock.mockResolvedValue({
         ok: true,
         text: async () => mockFilePageWithAuthor,
       });
@@ -130,7 +137,7 @@ describe('Wikipedia Scraper', () => {
     });
 
     it('should extract author from Author row fallback', async () => {
-      global.fetch = vi.fn().mockResolvedValue({
+      fetchMock.mockResolvedValue({
         ok: true,
         text: async () => mockFilePageWithoutId,
       });
@@ -144,7 +151,7 @@ describe('Wikipedia Scraper', () => {
     });
 
     it('should return null when fetch fails', async () => {
-      global.fetch = vi.fn().mockRejectedValue(new Error('Network error'));
+      fetchMock.mockRejectedValue(new Error('Network error'));
 
       const result = await fetchFilePageAndExtractData('/wiki/File:Test.jpg');
 
@@ -152,7 +159,7 @@ describe('Wikipedia Scraper', () => {
     });
 
     it('should return null when response is not ok', async () => {
-      global.fetch = vi.fn().mockResolvedValue({
+      fetchMock.mockResolvedValue({
         ok: false,
         status: 404,
       });
@@ -162,7 +169,7 @@ describe('Wikipedia Scraper', () => {
       expect(result).toBeNull();
     });
 
-    it('should set author to Unknown if not found', async () => {
+    it('should use "Wikimedia Commons" as author fallback when not found', async () => {
       const htmlWithoutAuthor = `
         <!DOCTYPE html>
         <html>
@@ -172,14 +179,14 @@ describe('Wikipedia Scraper', () => {
         </html>
       `;
 
-      global.fetch = vi.fn().mockResolvedValue({
+      fetchMock.mockResolvedValue({
         ok: true,
         text: async () => htmlWithoutAuthor,
       });
 
       const result = await fetchFilePageAndExtractData('/wiki/File:Test.jpg');
 
-      expect(result?.author).toBe('Unknown');
+      expect(result?.author).toBe('Wikimedia Commons');
     });
 
     it('should convert relative URLs to absolute Wikimedia URLs', async () => {
@@ -192,7 +199,7 @@ describe('Wikipedia Scraper', () => {
         </html>
       `;
 
-      global.fetch = vi.fn().mockResolvedValue({
+      fetchMock.mockResolvedValue({
         ok: true,
         text: async () => htmlWithRelativeUrl,
       });
@@ -238,7 +245,7 @@ describe('Wikipedia Scraper', () => {
         </html>
       `;
 
-      global.fetch = vi.fn().mockImplementation(async (url: string | URL) => {
+      fetchMock.mockImplementation(async (url: string | URL) => {
         const urlStr = url.toString();
         if (urlStr.includes('File:')) {
           return {
@@ -288,7 +295,7 @@ describe('Wikipedia Scraper', () => {
         </html>
       `;
 
-      global.fetch = vi.fn().mockImplementation(async (url: string | URL) => {
+      fetchMock.mockImplementation(async (url: string | URL) => {
         const urlStr = url.toString();
         if (urlStr.includes('File:')) {
           return {
@@ -342,7 +349,7 @@ describe('Wikipedia Scraper', () => {
         </html>
       `;
 
-      global.fetch = vi.fn().mockImplementation(async (url: string | URL) => {
+      fetchMock.mockImplementation(async (url: string | URL) => {
         const urlStr = url.toString();
         if (urlStr.includes('File:')) {
           return {
@@ -367,7 +374,7 @@ describe('Wikipedia Scraper', () => {
     });
 
     it('should return null when all names fail', async () => {
-      global.fetch = vi.fn().mockResolvedValue({
+      fetchMock.mockResolvedValue({
         ok: false,
         status: 404,
       });
@@ -398,7 +405,7 @@ describe('Wikipedia Scraper', () => {
         </body></html>
       `;
 
-      global.fetch = vi.fn().mockImplementation(async (url: string | URL) => {
+      fetchMock.mockImplementation(async (url: string | URL) => {
         const urlStr = url.toString();
         return {
           ok: true,
@@ -443,7 +450,7 @@ describe('Wikipedia Scraper', () => {
         </html>
       `;
 
-      global.fetch = vi.fn().mockImplementation(async (url: string | URL) => {
+      fetchMock.mockImplementation(async (url: string | URL) => {
         const urlStr = url.toString();
         if (urlStr.includes('File:')) {
           return {

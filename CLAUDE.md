@@ -272,46 +272,35 @@ Follow the pattern of `KeystoneTypesSection.tsx`:
 
 ## Recent Changes
 
-### PA Endangered & Threatened Species (June 6, 2026 — latest)
+### Image Credit Line + Test Infrastructure (June 6, 2026 — latest)
+- **Branch:** `claude/wizardly-archimedes-BL71D`
+- **Status:** ✓ Complete, pushed to origin
+- **Changes:**
+  - `image` object gains `source_url?: string` — Wikipedia page URL for the species
+  - `app/src/components/SpeciesCard.tsx` — renders `Photo: [author] · Wikipedia ↗` under hero image; graceful fallback when missing
+  - `pack-tools/lib/wikipedia-scraper.ts` — `scrapeSpeciesImage()` now returns `source_url`
+  - `pack-tools/lib/schema.ts` — image URL validated as proper URL (`z.string().url()`); `source_url` added to schema
+  - `pack-tools/packs/0-base.json` — **126 species backfilled** with `source_url`
+  - `app/e2e/species-detail.spec.ts` — 3 new e2e tests for credit line (Photo: text, Wikipedia link href, target=_blank)
+  - `pack-tools/__tests__/lib/wikipedia-scraper.test.ts` — mocking fixed (`vi.mock('node-fetch')`), all 28 pack-tools tests now pass
+  - `pack-tools/__tests__/lib/rate-limiter.test.ts` — fake timer tests fixed using `vi.runAllTimersAsync()`
+  - `.github/workflows/ci.yml` — added `pack-tools-tests` job; e2e now depends on both `ci` and `pack-tools-tests`
+
+### PA Endangered & Threatened Species (June 6, 2026)
 - **Commit:** `96c8cef` — "feat(data): add 11 PA endangered and threatened species with conservation status"
-- **Branch:** `claude/pa-native-species-iucn-llbeS`
-- **Status:** ✓ Complete, pushed to origin
-- **Changes:** 1 file modified (pack-tools/packs/0-base.json)
-  - Dataset expanded: **109 → 120 species** (+11 from PA Game Commission official endangered/threatened list)
-  - **Birds:** American Bittern (LC), Loggerhead Shrike (NT), Piping Plover (NT), Short-eared Owl (LC), Long-eared Owl (LC), Northern Harrier (LC)
-  - **Mammals:** Indiana Bat (NT), Northern Long-eared Bat (NT), Allegheny Woodrat (NT), Eastern Small-footed Bat (EN), West Virginia Water Shrew (no status found)
-  - **Conservation status populated:** 10/11 species via Wikipedia scraper (`fetch-conservation-status` CLI)
-  - **Meaningful conservation levels:** 1 EN (Endangered), 5 NT (Near Threatened), 4 LC (Least Concern)
-  - **Key insight:** Addresses gap in conservation-focused species; previous dataset was dominated by common LC species. New species highlight real NE PA ecosystem vulnerabilities (white-nose syndrome in bats, wetland loss in wading birds, grassland fragmentation in raptors).
-
-### Ecological Status Taxonomy
-- **Commit:** `25111e0` — "feat(ecology): refactor invasive flag to full N/NB/NNNA/I taxonomy"
-- **Branch:** `claude/invasive-species-geo-plan-HKeWT`
-- **Status:** ✓ Complete, pushed to origin
-- **Changes:** 14 files modified/created
-  - `app/src/types/index.ts` — added `EcologicalStatus` type alias + `status?: EcologicalStatus` field
-  - `pack-tools/lib/schema.ts` — changed to `status: z.enum(['nb', 'nnna', 'i']).optional()`
-  - `pack-tools/types.ts` — added `status?: 'nb' | 'nnna' | 'i'`
-  - `pack-tools/packs/0-base.json` — updated 8 species from `invasive: true` to `status: "i"`
-  - `app/src/lib/designTokens.ts` — added `ECOLOGICAL_STATUS_LABELS`, `COLORS`, `DESCRIPTIONS`
-  - `app/src/lib/labels.ts` — added `ecologicalStatusLabel()` and `ecologicalStatusDescription()`
-  - `app/src/lib/filters.ts` — added `ecological_statuses: string[]` to FilterState + filter logic
-  - `app/src/components/EcologicalStatusBadge.tsx` (NEW) — red/amber/sky badge component
-  - `app/src/components/EcologicalStatusSection.tsx` (NEW) — Learn page section
-  - `app/src/components/TagRow.tsx` — added badge rendering + link
-  - `app/src/components/FilterPanel.tsx` — added ecological status checkboxes
-  - `app/src/components/QuickFilterBar.tsx` — added ecological status chips
-  - `app/src/pages/HomePage.tsx` — added URL param sync for `ecological_status`
-  - `app/src/pages/LearnPage.tsx` — added `EcologicalStatusSection` render
-
-### Invasive Species Annotations (preceding)
-- **Commit:** `e0538e3` — "feat(data): add 8 invasive species to 0-base pack; add invasive field to Species type"
-- **Status:** ✓ Complete (superseded by Ecological Status Taxonomy)
-- **Note:** Refactored from `invasive?: boolean` to `status?: EcologicalStatus` enum
-
-### Conservation Status Implementation (earlier)
 - **Status:** ✓ Complete
-- **Commits:** Multiple on branch `claude/endangered-species-roadmap-plan-eFtuk`
+- Dataset expanded: **120 → 126 species** total (including later additions)
+- Added 11 PA endangered/threatened: 6 birds (bittern, shrike, plover, owls, harrier), 5 mammals (bats, woodrat, water shrew)
+
+### Ecological Status Taxonomy (June 5, 2026)
+- **Commit:** `25111e0` — "feat(ecology): refactor invasive flag to full N/NB/NNNA/I taxonomy"
+- **Status:** ✓ Complete
+- Refactored `invasive?: boolean` → `status?: EcologicalStatus` (`'nb' | 'nnna' | 'i'`)
+- 8 invasive species updated to `status: "i"`; full UI: badges, filters, Learn page section
+
+### Conservation Status Implementation
+- **Status:** ✓ Complete
+- IUCN Red List codes scraped from Wikipedia, stored per species, displayed as badges and filterable
 
 ---
 

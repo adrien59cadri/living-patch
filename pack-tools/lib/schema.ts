@@ -59,7 +59,7 @@ export const SpeciesSchema = z.object({
   label: z.string().optional().nullable(),
   common_traits: z.string().optional().nullable(),
   notes: z.string().optional().nullable(),
-  image: z.object({ url: z.string(), author: z.string() }).optional(),
+  image: z.object({ url: z.string().url('Image URL must be a valid URL'), author: z.string(), source_url: z.string().url().optional() }).optional(),
 });
 
 export const TaxonomicGroupSchema = z.object({
