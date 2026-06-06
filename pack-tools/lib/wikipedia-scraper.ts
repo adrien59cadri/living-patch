@@ -11,6 +11,7 @@ import { load } from 'cheerio';
 interface ScrapedImage {
   url: string;
   author: string;
+  source_url?: string;
 }
 
 type ConservationStatus = 'EX' | 'EW' | 'CR' | 'EN' | 'VU' | 'NT' | 'LC' | 'DD';
@@ -361,20 +362,22 @@ export async function scrapeSpeciesImage(
   for (const name of namesToTry) {
     try {
       const pageHtml = await fetchWikipediaPage(name);
-      
+
       if (!pageHtml) {
         continue;
       }
 
       const fileLink = extractImageLink(pageHtml);
-      
+
       if (!fileLink) {
         continue;
       }
 
       const imageData = await fetchFilePageAndExtractData(fileLink);
-      
+
       if (imageData) {
+        const title = speciesNameToWikiTitle(name);
+        imageData.source_url = `https://en.wikipedia.org/wiki/${encodeURIComponent(title)}`;
         return imageData;
       }
     } catch (error) {

@@ -41,6 +41,7 @@ export interface Species {
   image?: {
     url: string;
     author: string;
+    source_url?: string;
   };
   /** IUCN Red List conservation status code */
   conservation_status?: ConservationStatus | null;

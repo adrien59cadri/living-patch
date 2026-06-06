@@ -53,6 +53,16 @@ export function SpeciesCard({ species, symbiotes, habitatNeighbors, related, spe
         )}
       </div>
 
+      {/* Image credit */}
+      {species.image?.author && (
+        <p className="text-xs text-stone-400 -mt-4 text-right">
+          Photo: {species.image.author}
+          {species.image.source_url && (
+            <> · <a href={species.image.source_url} target="_blank" rel="noopener noreferrer" className="underline hover:text-stone-600">Wikipedia ↗</a></>
+          )}
+        </p>
+      )}
+
       {/* 2. Name block */}
       <div>
         <div>
