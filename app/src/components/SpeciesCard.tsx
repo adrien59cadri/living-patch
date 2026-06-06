@@ -55,12 +55,14 @@ export function SpeciesCard({ species, symbiotes, habitatNeighbors, related, spe
 
       {/* Image credit */}
       {species.image?.author && (
-        <p className="text-xs text-stone-400 -mt-4 text-right">
-          Photo: {species.image.author}
+        <div className="text-xs text-stone-400 -mt-4 text-right">
+          <p>Photo: {species.image.author}</p>
           {species.image.source_url && (
-            <> · <a href={species.image.source_url} target="_blank" rel="noopener noreferrer" className="underline hover:text-stone-600">Wikipedia ↗</a></>
+            <p>
+              <a href={species.image.source_url} target="_blank" rel="noopener noreferrer" className="underline hover:text-stone-600">Wikipedia ↗</a>
+            </p>
           )}
-        </p>
+        </div>
       )}
 
       {/* 2. Name block */}
