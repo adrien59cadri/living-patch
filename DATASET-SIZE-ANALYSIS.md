@@ -1,178 +1,152 @@
-# Dataset Size Analysis & Reduction Options
+# Dataset Size Analysis — AI Processing Cost
 
-_Generated: 2026-06-07 — based on `pack-tools/packs/0-base.json` (126 species, 183 symbiosis, 9 relations)_
+_Generated: 2026-06-07 — `pack-tools/packs/0-base.json` (126 species, 183 symbiosis, 9 relations)_
 
----
-
-## Current Baseline
-
-| Format | Size |
-|---|---|
-| Raw JSON (pretty-printed) | **329 KB** |
-| Minified JSON | **244 KB** |
-| Minified + gzip | **62 KB** |
-| Minified + brotli | **50 KB** |
-
-**Key insight:** At serving time, HTTP compression (gzip/brotli) already cuts the payload to ~50–62 KB. That is well within normal static asset budgets. The "problem" is mostly at rest (repo size, dev tooling load) and at parse/hydration time, not wire size.
+**Goal:** Reduce token count and parsing cost when passing pack data to an LLM. Wire size / browser load is not the concern.
 
 ---
 
-## Where the bytes live
+## Baseline token estimates
 
-| Field | Raw bytes | % of total |
+| Format | Chars | Tokens (≈chars/3.5) |
 |---|---|---|
-| `functional_description` | 49 530 | **20.3 %** |
-| `image` (url + author + source_url) | 30 516 | **12.5 %** |
-| `life_stages` | 22 604 | **9.3 %** |
-| `keystone_description` | 8 128 | **3.3 %** |
-| `habitat` (arrays) | 5 685 | **2.3 %** |
-| `behavior` (arrays) | 5 038 | **2.1 %** |
-| All other enum fields combined | ~12 000 | **~5 %** |
-| Symbiosis + relations JSON | ~100 000 | **~41 %** |
+| Pretty-printed JSON | 329 K | **~94 000** |
+| Minified JSON | 244 K | **~70 000** |
 
-The prose fields (`functional_description`, `keystone_description`) and image URLs together dominate. Enum arrays are surprisingly small. Symbiosis records account for a large but already-dense share.
+Minification alone saves ~24 000 tokens — it should always be used for AI input.
 
 ---
 
-## Option A — Format change: TOML / YAML / MessagePack
+## Where the tokens live (minified)
 
-### TOML or YAML (human-readable alternatives)
-
-Both are more concise for multi-line text and avoid JSON's quote overhead — but the actual savings on a minified payload are negligible because whitespace is stripped anyway.
-
-| Format | Minified equivalent | Notes |
+| Field | Tokens | Notes |
 |---|---|---|
-| JSON (current) | 244 KB | Industry standard, zero parse overhead in browsers |
-| TOML | ~230 KB est. | No native browser parser; needs a ~15 KB library |
-| YAML | ~220 KB est. | No native browser parser; needs a ~40–60 KB library |
-| MessagePack | ~170 KB est. | Binary; not human-readable; requires library |
-
-**Verdict: not worth it.** The format overhead in JSON is small. Adding a parser library to the bundle partially or fully cancels the savings. TOML/YAML are better for source files edited by hand (readability) — but the pack JSON is machine-generated, so that benefit doesn't apply either.
+| `symbiosis[].notes` | **~11 700** | Free-text per-relationship comments |
+| `functional_description` | **~14 200** | Core prose, high semantic value |
+| `image.url` + `image.source_url` | **~6 900** | Opaque hash paths, zero semantic value to LLM |
+| `life_stages` | **~6 500** | Verbose objects, rarely queried |
+| `keystone_description` | **~2 300** | Useful but long |
+| `symbiosis` (structure, excl. notes) | **~6 700** | Relationship graph |
+| `habitat[]` arrays | **~1 600** | Verbose enum strings |
+| `behavior[]` arrays | **~1 400** | Very verbose enum strings (130+ unique values) |
+| `region` | **~500** | Same value for all 126 species |
+| `is_keystone` | **~170** | Redundant — derivable from `keystone_type` |
+| All other fields | ~16 000 | ids, names, enums |
 
 ---
 
-## Option B — Keyword shorthands for enum fields
+## Option A — Drop semantically empty fields
 
-Many fields are repeated string literals across 126 species. Replacing them with short tokens reduces raw JSON size and — crucially — also helps compression dictionaries.
+These fields add tokens but contribute no meaning to an LLM:
 
-### Fields that are good candidates
+### A1 — `image.url` and `image.source_url`
+Image URLs are long opaque hash paths (avg 141 chars each). An LLM cannot use them. `source_url` is derivable from `latin_name` anyway.
 
-| Field | Current values (sample) | Proposed shorthand |
-|---|---|---|
-| `form` | `"tree"`, `"songbird"`, `"wildflower"` | `"t"`, `"sb"`, `"wf"` |
-| `habitat[]` | `"woodland"`, `"forest_edge"`, `"riparian"` | `"wo"`, `"fe"`, `"rp"` |
-| `diet[]` | `"insect_eater"`, `"predator"`, `"herbivore"` | `"ie"`, `"pr"`, `"hb"` |
-| `behavior[]` | `"nocturnal"`, `"migratory"`, `"fruit_producer"` | `"nc"`, `"mg"`, `"fp"` |
-| `season[]` | `"year_round"`, `"summer"`, `"spring"` | `"yr"`, `"su"`, `"sp"` |
-| `ecological_role` | `"producer"`, `"carnivore"`, `"herbivore"` | `"pr"`, `"cv"`, `"hb"` |
-| `region` | `"northeast_pa"` (all 126) | `"nepa"` |
-| `keystone_type` | `"foundation_species"`, `"ecosystem_engineer"` | `"fs"`, `"ee"` |
-| `conservation_status` | `"LC"`, `"CR"`, `"VU"` | already short |
+**Savings: ~6 900 tokens (10 % of total)**. No information loss for AI tasks.
 
-### Estimated savings
+### A2 — `region` field
+Every single species in the pack has `"region": "northeast_pa"`. The pack itself declares its region at the top level.
 
-These fields together are ~25 KB raw. With 2–3 character shorthands replacing 8–20 character strings:
+**Savings: ~500 tokens**. Remove from species objects, keep at pack metadata level.
 
-- **habitat**: avg 10 chars → 3 chars, 54+ occurrences of `"woodland"` alone → **~4 KB saved**
-- **behavior**: 130+ unique values, avg 12 chars → 3–4 chars → **~3–4 KB saved**
-- **region**: `"northeast_pa"` × 126 = 1.7 KB → `"nepa"` × 126 = **~0.9 KB saved**
-- **season, diet, form, role**: combined **~4 KB saved**
+### A3 — `is_keystone` boolean
+Redundant: `keystone_type` being non-null already implies keystone status.
 
-Total raw savings: **~12–15 KB (~5–6 % of 244 KB minified).**
-After gzip, savings shrink to **~2–4 KB** (gzip already compresses repeated tokens well).
+**Savings: ~170 tokens**.
+
+**Combined A1+A2+A3: ~7 600 tokens saved (~11 %)**. These are purely structural — zero readability or information cost.
+
+---
+
+## Option B — Defer `life_stages`
+
+`life_stages` is 22 KB / ~6 500 tokens for 68 species, averaging ~330 chars per entry. It contains verbose timing and role descriptions rarely relevant to ecological queries.
+
+**Savings: ~6 500 tokens (9 %)** if omitted from the AI-facing dataset slice.
+
+If the LLM task needs life stage data, it can be passed selectively (one species at a time) rather than included in a full-pack context.
+
+---
+
+## Option C — Enum shorthands
+
+Unlike browser serving (where gzip handles repeated tokens), LLMs count every token individually. Replacing long repeated enum strings with short codes directly reduces token count.
+
+### High-value targets
+
+| Field | Example value | Tokens/occurrence | Short code | Tokens saved each |
+|---|---|---|---|---|
+| `habitat[]` | `"woodland"` (54×) | 2 | `"wo"` | 1 each → **54 saved** |
+| `habitat[]` | `"forest_edge"` (49×) | 3 | `"fe"` | 2 each → **98 saved** |
+| `behavior[]` | `"nocturnal"` (26×) | 3 | `"nc"` | 2 each → **52 saved** |
+| `behavior[]` | `"fruit_producer"` (15×) | 4 | `"fp"` | 3 each → **45 saved** |
+| `season[]` | `"year_round"` (67×) | 3 | `"yr"` | 2 each → **134 saved** |
+| `season[]` | `"summer"` (54×) | 2 | `"su"` | 1 each → **54 saved** |
+| `ecological_role` | `"producer"` (44×) | 2 | `"prod"` | 1 each → **44 saved** |
+| `region` | `"northeast_pa"` (126×) | 4 | eliminated by A2 | — |
+
+All habitat, behavior, season, diet, form, and ecological_role fields together: **~3 000 → ~1 000 tokens**.
+
+**Savings: ~2 000 tokens (3 %)** from enum shorthand alone.
 
 ### Readability tradeoff
 
-- Pack JSON becomes unreadable without a legend (`"wo"` — what is that?)
-- Every new contributor, scraper, or validator needs the mapping table
-- Tooling (validators, filters, labels) must reference the expansion map
-- **High maintenance cost for small gain**
+The pack JSON becomes unreadable to humans without a legend. This is acceptable if:
+- A separate human-readable source format is maintained (e.g., the pretty-printed pack is the "source of truth", the shorthand version is a derived AI-input artifact)
+- The legend/expansion map is prepended to the LLM context (costs ~200 tokens but saves 2 000)
 
-**Verdict: marginal value.** Worth considering only if the pack grows to 1 000+ species and is shipped as a bare HTTP resource without compression. At 126 species with brotli, the numbers don't justify the complexity.
-
----
-
-## Option C — Prose field compression (highest leverage)
-
-`functional_description` alone is **20 % of the dataset**. This is the best target.
-
-### C1 — Truncate to a character limit
-
-Average `functional_description` is ~390 chars. A hard cap of 200 chars (two sentences) would cut this field roughly in half: **~25 KB saved** (~10 % of total).
-
-- Tradeoff: ecological context is the core value proposition of the app. Truncation degrades quality.
-- **Only viable if descriptions are rewritten for density, not just cut.**
-
-### C2 — Move verbose text to a separate "details" pack
-
-Split the pack into a lean "index" pack (id, names, form, image, status, enums) and a "details" pack (descriptions, life stages, keystone notes). Load the details pack lazily on species detail page open.
-
-- Index pack estimated at ~80–100 KB minified
-- Details pack loaded on demand (~150 KB), cached after first load
-- **Best architectural option** if initial load time is the actual problem
-
-### C3 — life_stages restructuring
-
-`life_stages` is 22 KB for 68 species. Each entry is a verbose object with `stage`, `timing`, `description`, `role` strings. Example entry is ~330 chars. This data is rarely shown and could be:
-- Deferred (lazy-loaded in details pack, see C2)
-- Compressed to a flat string per stage with a separator
+Net gain: ~1 800 tokens. Moderate value, medium complexity.
 
 ---
 
-## Option D — Image URL deduplication
+## Option D — `symbiosis[].notes` compression
 
-All 126 image URLs are Wikimedia Commons URLs matching the pattern:
-```
-https://upload.wikimedia.org/wikipedia/commons/thumb/{hash}/{filename}/{size}-{filename}
-```
+The `notes` field on symbiosis entries is the second-largest field at **~11 700 tokens**. These are human-authored explanatory comments (e.g., "Kestrel uses abandoned pileated cavities for nesting").
 
-Average URL length: **141 characters**. Total image URL bytes: **~17 760 bytes** just for URLs.
+Options:
+1. **Drop notes entirely** — the `type`, `source`, `targets`, and `strength` fields already encode the relationship. Notes add nuance but are often redundant with `functional_description` on the species. **Saves ~11 700 tokens (17 %)**.
+2. **Truncate to 60 chars** — keeps the gist, cuts ~60 % of note tokens. **Saves ~7 000 tokens**.
+3. **Keep only notes that don't repeat species descriptions** — requires manual curation.
 
-### D1 — Store only the Wikimedia filename + size
+This is the single highest-leverage option if notes aren't essential to the query.
 
-```json
-{ "wm": "1/12/PileatedWoodpeckerFeedingonTree.jpg", "size": "960px" }
-```
+---
 
-Reconstruct the full URL at render time with a helper. Savings: ~60 chars × 126 = **~7.5 KB** (~3 %).
+## Option E — Task-specific dataset slices
 
-### D2 — Store only the hash + basename
+Rather than one monolithic pack, generate narrow projections for different AI tasks:
 
-The thumbnail URL is always `prefix + hash + filename + size + filename`. The `source_url` is always `https://en.wikipedia.org/wiki/{latin_name_underscored}` — it can be derived from `latin_name` entirely.
+| Task | Fields needed | Est. tokens |
+|---|---|---|
+| "What eats what?" | `id`, `common_name`, `symbiosis` (no notes) | ~10 000 |
+| "Which species are threatened?" | `id`, `common_name`, `conservation_status`, `status` | ~3 000 |
+| "Describe this species" | `id`, `common_name`, `latin_name`, `functional_description`, `form` | ~20 000 |
+| "Show ecological relationships" | `id`, `common_name`, `ecological_role`, `symbiosis` | ~15 000 |
+| Full pack (current) | everything | ~70 000 |
 
-Removing `source_url` from image objects: `latin_name` encodes this for free → **~5 KB saved**.
-
-**Verdict: D2 is a clean win** — derive `source_url` from `latin_name` at runtime, no data loss, removes 5 KB and a maintenance surface.
+A projection utility (a small JS function or CLI flag) that strips irrelevant fields before passing data to the LLM would be the highest-ROI improvement. No data loss in the source pack; the slimming happens at query time.
 
 ---
 
 ## Summary & Recommendations
 
-| Option | Savings (raw) | Savings (gzip) | Readability | Complexity |
+| Option | Token savings | Readability | Complexity | Recommendation |
 |---|---|---|---|---|
-| A — Format change (TOML/YAML/msgpack) | 15–30 % | ~0–2 % | neutral/worse | high |
-| B — Enum shorthands | 5–6 % | 1–2 % | worse | medium |
-| C1 — Truncate descriptions | ~10 % | ~8 % | neutral | low |
-| C2 — Lazy details pack | ~35 % initial | ~30 % initial | no change | medium |
-| C3 — Defer life_stages | ~9 % | ~7 % | no change | low |
-| D1 — Wikimedia URL shorthand | ~3 % | ~1 % | worse | low |
-| D2 — Derive source_url from latin_name | ~2 % | ~1 % | better | low |
+| Minify JSON | ~24 000 (34 %) | none | trivial | **Do immediately** |
+| A — Drop image URLs + region + is_keystone | ~7 600 (11 %) | better | trivial | **Do immediately** |
+| D — Drop symbiosis notes | ~11 700 (17 %) | minor loss | trivial | **Do if notes are redundant with descriptions** |
+| B — Defer life_stages | ~6 500 (9 %) | none | low | **Do for most queries** |
+| E — Task-specific slices | up to 85 % | none | medium | **Best long-term approach** |
+| C — Enum shorthands | ~2 000 (3 %) | worse | medium | Worth it only with a legend prepended |
 
-### Recommended path (priority order)
+### Quick wins (trivial changes, no data loss)
 
-1. **Do nothing for now** — with brotli, the wire payload is already 50 KB. This is not a performance problem.
-2. **D2 (derive source_url)** — free cleanup, no tradeoff. Remove `source_url` from pack JSON, generate it from `latin_name` in the scraper and render layer.
-3. **C2 (lazy details pack)** — pursue when the dataset grows past ~500 species or if TTI on mobile becomes a measured issue. The split is clean given the existing pack architecture.
-4. **C3 (defer life_stages)** — easy win paired with C2.
-5. **Avoid B (enum shorthands)** — the complexity cost outweighs 1–2 KB gzip savings. If a machine-readable shorthand scheme is ever needed, use the existing `id` field prefixes as canonical keys instead of inventing a new mapping.
-6. **Avoid A (format change)** — JSON is the right format for browser-consumed static data.
+1. **Always minify** before passing to an LLM → saves 24 000 tokens.
+2. **Strip `image.url`, `image.source_url`, `region`, `is_keystone`** → saves another 7 600 tokens.
+3. **Strip `life_stages`** unless the query specifically concerns life cycle → saves 6 500 tokens.
 
----
+These three steps alone reduce the pack from **~70 000 to ~35 000 tokens** — a 50 % cut with zero semantic loss for the vast majority of ecological queries.
 
-## If the dataset grows significantly (500+ species)
+### Structural win (medium effort)
 
-At that scale the calculus changes:
-- C2 becomes near-mandatory (lazy pack splitting)
-- Consider a binary columnar format (e.g., Arrow IPC) for the index with a thin JS reader
-- Prose fields should be stored in a separate content-addressed store (even a simple `descriptions.json` keyed by species ID)
-- Enum arrays become worth normalizing into integer bitmasks for the index pack
+4. **Build a `packSlice(fields[])` utility** that projects the pack to only the fields needed for a given query type. The source pack stays complete; AI inputs are generated on demand. This is cleaner than maintaining a permanently stripped pack and scales naturally as the dataset grows.
