@@ -200,6 +200,60 @@ living-patch/
 
 ---
 
+## Relationship Data Conventions
+
+### Two arrays, two shapes
+
+The pack JSON has two top-level relationship arrays with different schemas:
+
+| Array | Schema | Shape | Use for |
+|---|---|---|---|
+| `data.symbiosis` | `SymbiosisSchema` | `source` + `targets[]` + `fulfillment?` | Directional ecological interactions |
+| `data.relations` | `RelationSchema` | `members[]` | Undirected groupings (taxonomic, ecological guild) |
+
+### source / target convention
+
+**`source` = the species that benefits or acts. `targets` = the species being depended on or acted upon.**
+
+This applies across all symbiosis types:
+- **commensalism**: source = beneficiary (uses habitat/structure), target = provider (unaffected)
+- **predation**: source = predator, target = prey
+- **parasitism**: source = parasite/dependent, target = host/victim
+- **mutualism**: source = primary actor (e.g., pollinator), target = plant
+- **competition**: source = the challenger, target = the established species
+
+❌ Wrong: `{ source: "bird_pileated-woodpecker", targets: ["bird_american-kestrel"] }` — woodpecker doesn't benefit  
+✅ Right: `{ source: "bird_american-kestrel", targets: ["bird_pileated-woodpecker"] }` — kestrel benefits from cavity
+
+### fulfillment: "any" — one-of-N providers
+
+When a species can satisfy its dependency from **any one** of multiple providers, use a single entry with multiple targets and `fulfillment: "any"`:
+
+```json
+{
+  "type": "commensalism",
+  "source": "bird_american-kestrel",
+  "targets": ["bird_pileated-woodpecker", "bird_northern-flicker"],
+  "fulfillment": "any",
+  "strength": "important",
+  "notes": "..."
+}
+```
+
+Do **not** create two separate entries. The `fulfillment: "any"` pattern correctly models "needs one of these". Use `fulfillment: "all"` only when all targets are simultaneously required (rare).
+
+### Commensalism cavity-provider pattern
+
+Several cavity-nesting species depend on either Pileated Woodpecker or Northern Flicker. All are modelled as `source → [pileated, flicker]` with `fulfillment: "any"`:
+- `bird_american-kestrel`
+- `bird_great-crested-flycatcher`
+- `bird_white-breasted-nuthatch`
+
+Single-provider dependencies (pileated only) follow the same direction convention:
+- `bird_great-horned-owl`, `bird_wood-duck`, `mammal_flying-squirrel` → `[bird_pileated-woodpecker]`
+
+---
+
 ## Development Workflow
 
 ### Running the app
@@ -212,12 +266,19 @@ npm run test             # Run vitest (app/)
 
 ### Working with data packs
 ```bash
-npm run fetch-images <pack-file> --only-missing
+npm run fetch-images <pack-file> --only-missing      # Skip species with images
+npm run fetch-images <pack-file> --fix-authors       # Re-fetch only placeholder/bad authors
 npm run fetch-conservation-status <pack-file> --only-missing
 npm run pack:validate    # Validate pack structure
 npm run pack:merge       # Merge multiple packs
 npm run bundle:packs     # Rebuild dataset from packs
 ```
+
+### Image author conventions
+- `fetch-images` scraper: `source` = beneficiary, `target` = provider (same as symbiosis)
+- Placeholder authors recognized: `"This file is lacking author information."`, `"Unknown"`, `"Photographer"`, `"No machine-readable author provided. X"` (strips prefix, keeps X)
+- When author is a placeholder, scraper falls back to the **Source** field (e.g., `"U.S. Fish & Wildlife Service"`)
+- Use `--fix-authors` flag to re-scrape only the 3 remaining `"Wikimedia Commons"` fallbacks if better data becomes available
 
 ### Typical changes
 1. **Add a new species field** → update `app/src/types/index.ts` + `pack-tools/types.ts`
@@ -272,7 +333,19 @@ Follow the pattern of `KeystoneTypesSection.tsx`:
 
 ## Recent Changes
 
-### Image Credit Line + Test Infrastructure (June 6, 2026 — latest)
+### Symbiosis Convention Audit + Author Scraper Fixes (June 7, 2026 — latest)
+- **Branch:** `claude/indiana-bat-symbiosis-author-c4vxo`
+- **Status:** ✓ Complete, PR #60 open
+- **Changes:**
+  - Indiana Bat: added 4 symbiosis entries (predation on moths/beetles, commensalism with pileated, competition with cave-sharing bats); fixed image author to `"U.S. Fish & Wildlife Service"`
+  - Fixed 7 reversed commensalism entries (provider was listed as source; beneficiary should be source); 3 consolidated with `fulfillment: "any"` (kestrel, great crested flycatcher, white-breasted nuthatch all depend on pileated OR northern flicker)
+  - `wikipedia-scraper.ts`: author placeholder detection (`"This file is lacking author information."`, `"Photographer"`, `"No machine-readable author provided. X"`); falls back to Source field; strips prefix for "No machine-readable" to recover username
+  - `fetch-images.ts`: new `--fix-authors` flag re-fetches only species with placeholder/bad authors
+  - 8 species author values corrected across pack (Velela, Mdf, MPF, Own work, FWS, etc.)
+  - `SpeciesCard.tsx`: Wikipedia credit link moved to its own line below author text
+  - CLAUDE.md: added **Relationship Data Conventions** section documenting source/target direction, fulfillment: "any", and two-array structure
+
+### Image Credit Line + Test Infrastructure (June 6, 2026)
 - **Branch:** `claude/wizardly-archimedes-BL71D`
 - **Status:** ✓ Complete, pushed to origin
 - **Changes:**
