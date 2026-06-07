@@ -38,24 +38,25 @@ export type CommonName = string | { en: string; [lang: string]: string | undefin
 export interface Species {
   id: string;
   common_name: CommonName;
-  latin_name?: string | null;
+  latin_name?: string;
   form: string;
-  habitat: string[];
-  diet: string[];
-  behavior: string[];
-  season: string[];
+  habitat?: string[];
+  diet?: string[];
+  behavior?: string[];
+  season?: string[];
   functional_description: string;
-  life_stages: LifeStage[] | string[];
+  life_stages?: LifeStage[] | string[];
   region: string;
-  ecological_role?: string | null;
-  is_keystone?: boolean;
-  keystone_type?: string | null;
-  keystone_description?: string | null;
-  active_months?: string[] | null;
-  taxonomic_group?: string | null;
-  label?: string | null;
-  common_traits?: string | null;
-  notes?: string | null;
+  ecological_role?: string;
+  /** Only stored when true — absence means non-keystone */
+  is_keystone?: true;
+  keystone_type?: string;
+  keystone_description?: string;
+  active_months?: string[];
+  taxonomic_group?: string;
+  label?: string;
+  common_traits?: string;
+  notes?: string;
   /** Wikipedia image if available */
   image?: {
     url: string;
@@ -63,9 +64,9 @@ export interface Species {
     source_url?: string;
   };
   /** IUCN Red List conservation status code */
-  conservation_status?: 'EX' | 'EW' | 'CR' | 'EN' | 'VU' | 'NT' | 'LC' | 'DD' | null;
-  /** Ecological standing relative to the pack's region */
-  status?: 'n' | 'nb' | 'nnna' | 'i';
+  conservation_status?: 'EX' | 'EW' | 'CR' | 'EN' | 'VU' | 'NT' | 'LC' | 'DD';
+  /** Ecological standing relative to the pack's region. Absent = native. */
+  status?: 'nb' | 'nnna' | 'i';
 }
 
 export type SymbiosisStrength = 'critical' | 'important' | 'incidental';

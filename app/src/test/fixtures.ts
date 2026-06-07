@@ -9,15 +9,11 @@ export const mockPlantSpecies: Species = {
   latin_name: 'Asclepias syriaca',
   form: 'wildflower',
   habitat: ['field', 'meadow'],
-  diet: [],
   behavior: ['nectar_source'],
   season: ['summer'],
   functional_description: 'Primary milkweed for Monarch in NE PA.',
   life_stages: ['mature', 'flowering'],
   region: 'northeast_pa',
-  is_keystone: false,
-  keystone_type: null,
-  keystone_description: null,
   active_months: ['Jun-Sep'],
 };
 
@@ -31,11 +27,7 @@ export const mockBirdSpecies: Species = {
   behavior: ['ground_forager'],
   season: ['spring', 'summer'],
   functional_description: 'Common lawn thrush.',
-  life_stages: [],
   region: 'northeast_pa',
-  is_keystone: false,
-  keystone_type: null,
-  keystone_description: null,
   active_months: ['Mar-Nov'],
 };
 
@@ -44,11 +36,8 @@ export const mockGroupSpecies: Species = {
   common_name: 'Other Native Milkweeds',
   form: 'wildflower',
   habitat: ['field'],
-  diet: [],
-  behavior: [],
   season: ['summer'],
   functional_description: 'Group placeholder.',
-  life_stages: [],
   region: 'northeast_pa',
 };
 

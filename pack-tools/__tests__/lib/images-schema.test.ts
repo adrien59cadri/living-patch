@@ -24,7 +24,6 @@ describe('Species Images Validation', () => {
           behavior: ['cavity_excavator'],
           season: ['year_round'],
           functional_description: 'Test description',
-          life_stages: [],
           region: 'northeast_pa',
           image: {
             url: 'https://upload.wikimedia.org/wikipedia/commons/2/23/Bubo_virginianus_06.jpg',
@@ -41,7 +40,6 @@ describe('Species Images Validation', () => {
           behavior: ['forager'],
           season: ['year_round'],
           functional_description: 'Test description',
-          life_stages: [],
           region: 'northeast_pa',
           image: {
             url: 'https://upload.wikimedia.org/wikipedia/commons/test.jpg',
@@ -58,7 +56,6 @@ describe('Species Images Validation', () => {
           behavior: ['perch_hunter'],
           season: ['year_round'],
           functional_description: 'Test description',
-          life_stages: [],
           region: 'northeast_pa',
           // No image - testing species without images
         },
@@ -95,7 +92,6 @@ describe('Species Images Validation', () => {
               behavior: ['forager'],
               season: ['year_round'],
               functional_description: 'Test',
-              life_stages: [],
               region: 'northeast_pa',
               image: {
                 url: 'not-a-valid-url',
@@ -134,7 +130,6 @@ describe('Species Images Validation', () => {
               behavior: ['forager'],
               season: ['year_round'],
               functional_description: 'Test',
-              life_stages: [],
               region: 'northeast_pa',
               image: {
                 url: 'invalid-url',

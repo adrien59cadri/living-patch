@@ -14,6 +14,28 @@ import { z } from 'zod';
 const SPECIES_ID_PATTERN = /^[a-z]+_[a-z0-9-]+$/;
 
 /**
+ * Deprecated enum values that have been renamed or consolidated.
+ * Storing these in a pack is an error — use the canonical value instead.
+ */
+const DEPRECATED_VALUES: Record<string, string> = {
+  // diet synonyms → canonical -ivore names
+  insect_eater: 'insectivore',
+  fruit_eater: 'frugivore',
+  seed_eater: 'granivore',
+  nectar_feeder: 'nectarivore',
+  nectivore: 'nectarivore',
+  plant_sap_feeder: 'sap_feeder',
+  invertebrate_eater: 'invertivore',
+  // habitat duplicates
+  disturbed_areas: 'disturbed_site',
+  rocky_slopes: 'rocky_slope',
+  // behavior duplicates
+  migratory_seasonal: 'migratory',
+  colony_forming: 'colonial',
+  mast_producing: 'mast_producer',
+};
+
+/**
  * Regular expression for valid pack IDs
  * Format: lowercase-kebab-case or lowercase_snake_case
  */
@@ -40,26 +62,48 @@ export const SpeciesSchema = z.object({
     z.string().min(1),
     z.object({ en: z.string().min(1) }).catchall(z.string()),
   ]).optional(),
-  latin_name: z.string().optional().nullable(),
+  latin_name: z.string().optional(),
   form: z.string().optional(),
-  habitat: z.array(z.string()).optional(),
-  diet: z.array(z.string()).optional(),
-  behavior: z.array(z.string()).optional(),
-  season: z.array(z.string()).optional(),
+  habitat: z.array(z.string()).min(1, 'habitat must not be empty — omit the field instead').optional(),
+  diet: z.array(z.string()).min(1, 'diet must not be empty — omit the field instead').optional(),
+  behavior: z.array(z.string()).min(1, 'behavior must not be empty — omit the field instead').optional(),
+  season: z.array(z.string()).min(1, 'season must not be empty — omit the field instead').optional(),
   functional_description: z.string().optional(),
-  life_stages: z.union([z.array(LifeStageSchema), z.array(z.string())]).optional(),
+  life_stages: z.union([
+    z.array(LifeStageSchema).min(1, 'life_stages must not be empty — omit the field instead'),
+    z.array(z.string()).min(1, 'life_stages must not be empty — omit the field instead'),
+  ]).optional(),
   region: z.string().optional(),
-  ecological_role: z.string().optional().nullable(),
-  is_keystone: z.boolean().optional(),
-  keystone_type: z.string().optional().nullable(),
-  keystone_description: z.string().optional().nullable(),
-  active_months: z.array(z.string()).optional().nullable(),
-  status: z.enum(['n', 'nb', 'nnna', 'i']).optional(),
-  taxonomic_group: z.string().optional().nullable(),
-  label: z.string().optional().nullable(),
-  common_traits: z.string().optional().nullable(),
-  notes: z.string().optional().nullable(),
-  image: z.object({ url: z.string().url('Image URL must be a valid URL'), author: z.string(), source_url: z.string().url().optional() }).optional(),
+  ecological_role: z.string().optional(),
+  is_keystone: z.literal(true).optional(),
+  keystone_type: z.string().optional(),
+  keystone_description: z.string().optional(),
+  active_months: z.array(z.string()).min(1, 'active_months must not be empty — omit the field instead').optional(),
+  status: z.enum(['nb', 'nnna', 'i']).optional(),
+  taxonomic_group: z.string().optional(),
+  label: z.string().optional(),
+  common_traits: z.string().optional(),
+  notes: z.string().optional(),
+  image: z.object({
+    url: z.string().url('Image URL must be a valid URL'),
+    author: z.string(),
+    source_url: z.string().url().optional(),
+  }).optional(),
+}).superRefine((species, ctx) => {
+  const arrayFields: Array<keyof typeof species> = ['diet', 'habitat', 'behavior', 'season'];
+  for (const field of arrayFields) {
+    const arr = species[field] as string[] | undefined;
+    if (!arr) continue;
+    for (const val of arr) {
+      const canonical = DEPRECATED_VALUES[val];
+      if (canonical) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          message: `[${field}] deprecated value "${val}" — use "${canonical}" instead`,
+        });
+      }
+    }
+  }
 });
 
 export const TaxonomicGroupSchema = z.object({
