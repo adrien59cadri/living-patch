@@ -30,8 +30,8 @@ describe('habitatLabel', () => {
 
 describe('dietLabel', () => {
   test('returns label for known diet', () => {
-    expect(dietLabel('insect_eater')).toBe('Insect eater');
-    expect(dietLabel('nectar_feeder')).toBe('Nectar feeder');
+    expect(dietLabel('insectivore')).toBe('Insectivore');
+    expect(dietLabel('nectarivore')).toBe('Nectarivore');
   });
 });
 

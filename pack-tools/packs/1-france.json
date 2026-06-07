@@ -24,7 +24,7 @@
           "garden"
         ],
         "diet": [
-          "insect_eater",
+          "insectivore",
           "omnivore"
         ],
         "behavior": [
@@ -34,7 +34,6 @@
           "year_round"
         ],
         "functional_description": "Small passerine instantly recognisable by its orange breast, common in gardens and forests across France. Feeds mainly on earthworms, insects, and berries. Often follows gardeners and wild boar that turn over the soil.",
-        "life_stages": [],
         "region": "france",
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Erithacus_rubecula_with_cocked_head.jpg/960px-Erithacus_rubecula_with_cocked_head.jpg",
@@ -56,8 +55,8 @@
           "garden"
         ],
         "diet": [
-          "insect_eater",
-          "seed_eater"
+          "insectivore",
+          "granivore"
         ],
         "behavior": [
           "cavity_nester",
@@ -67,7 +66,6 @@
           "year_round"
         ],
         "functional_description": "Common passerine of forests and gardens. Nests in tree cavities, particularly in old beeches. Regulates insect populations in summer and switches to seeds in winter.",
-        "life_stages": [],
         "region": "france",
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Great_tit_%28Parus_major%29%2C_Parc_du_Rouge-Cloitre%2C_For%C3%AAt_de_Soignes%2C_Brussels_%2826194636951%29.jpg/960px-Great_tit_%28Parus_major%29%2C_Parc_du_Rouge-Cloitre%2C_For%C3%AAt_de_Soignes%2C_Brussels_%2826194636951%29.jpg",
@@ -89,7 +87,7 @@
           "meadow"
         ],
         "diet": [
-          "insect_eater"
+          "insectivore"
         ],
         "behavior": [
           "cavity_excavator",
@@ -99,7 +97,6 @@
           "year_round"
         ],
         "functional_description": "The most recognisable European woodpecker, known for its laughing call. Feeds mainly on ants, probing lawns and ant mounds. Excavates tree cavities that are later used by many other species.",
-        "life_stages": [],
         "region": "france",
         "is_keystone": true,
         "keystone_type": "ecosystem_engineer",
@@ -132,7 +129,6 @@
           "year_round"
         ],
         "functional_description": "Corvid renowned for its acorn-caching behaviour: a single bird buries several thousand acorns each autumn and forgets a portion, effectively planting oak trees. A key vector of forest regeneration.",
-        "life_stages": [],
         "region": "france",
         "is_keystone": true,
         "keystone_type": "seed_disperser",
@@ -157,7 +153,7 @@
           "meadow"
         ],
         "diet": [
-          "insect_eater"
+          "insectivore"
         ],
         "behavior": [
           "brood_parasite"
@@ -167,7 +163,6 @@
           "summer"
         ],
         "functional_description": "Famous brood parasite that lays its eggs in the nests of other birds. One of the few species that consumes hairy caterpillars such as the pine processionary moth, playing a role in regulating some forest pests.",
-        "life_stages": [],
         "region": "france",
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Cuckoo_%2851169010335%29.jpg/960px-Cuckoo_%2851169010335%29.jpg",
@@ -199,7 +194,6 @@
           "year_round"
         ],
         "functional_description": "Small falcon famous for its characteristic hovering flight. Feeds mainly on voles and small mammals, providing natural rodent control over farmland.",
-        "life_stages": [],
         "region": "france",
         "is_keystone": true,
         "keystone_type": "predator",
@@ -233,7 +227,6 @@
           "year_round"
         ],
         "functional_description": "Powerful rooter that turns over the soil in search of acorns, beech mast, and underground fungi. Soil disturbance promotes plant diversity and creates opportunities for many species.",
-        "life_stages": [],
         "region": "france",
         "is_keystone": true,
         "keystone_type": "ecosystem_engineer",
@@ -268,7 +261,6 @@
           "year_round"
         ],
         "functional_description": "Smallest native deer in France. Browses shoots, buds, and herbs, shaping the understorey vegetation. An important prey species for lynx and wolf where those predators are present.",
-        "life_stages": [],
         "region": "france",
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Roe_deer_%28Capreolus_capreolus%29_young_male_Cumnor.jpg/960px-Roe_deer_%28Capreolus_capreolus%29_young_male_Cumnor.jpg",
@@ -290,7 +282,7 @@
           "forest_edge"
         ],
         "diet": [
-          "insect_eater",
+          "insectivore",
           "omnivore"
         ],
         "behavior": [
@@ -303,7 +295,6 @@
           "autumn"
         ],
         "functional_description": "Nocturnal insectivore of gardens, hedgerows, and woodland edges. Feeds on slugs, beetles, earthworms, and caterpillars — a valuable garden ally. Hibernates from October to March.",
-        "life_stages": [],
         "region": "france",
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Erinaceus_europaeus_LC0119.jpg/960px-Erinaceus_europaeus_LC0119.jpg",
@@ -334,7 +325,6 @@
           "year_round"
         ],
         "functional_description": "Powerful mustelid that digs extensive setts, aerating the soil. Its diet is roughly 80% earthworms. Abandoned setts are used by foxes, rabbits, and other species.",
-        "life_stages": [],
         "region": "france",
         "is_keystone": true,
         "keystone_type": "ecosystem_engineer",
@@ -358,7 +348,7 @@
           "woodland"
         ],
         "diet": [
-          "seed_eater",
+          "granivore",
           "omnivore"
         ],
         "behavior": [
@@ -368,7 +358,6 @@
           "year_round"
         ],
         "functional_description": "Native squirrel of European forests. Caches seeds and nuts, a portion of which germinate and contribute to the dispersal of hazelnuts, acorns, and pine seeds. Depends on mature forest canopy.",
-        "life_stages": [],
         "region": "france",
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Squirrel_posing.jpg/960px-Squirrel_posing.jpg",
@@ -388,13 +377,10 @@
           "forest",
           "woodland"
         ],
-        "diet": [],
-        "behavior": [],
         "season": [
           "year_round"
         ],
         "functional_description": "Dominant tree of lowland French forests. Supports hundreds of insect species, nesting birds, and mammals. Acorns are a critical food resource for wild boar, deer, jays, and squirrels.",
-        "life_stages": [],
         "region": "france",
         "is_keystone": true,
         "keystone_type": "foundation_species",
@@ -417,13 +403,10 @@
           "forest",
           "woodland"
         ],
-        "diet": [],
-        "behavior": [],
         "season": [
           "year_round"
         ],
         "functional_description": "Climax dominant tree of many French hillside forests. Old beeches provide cavities for tits, owls, and bats. Beech mast feeds deer, wild boar, and small mammals in autumn.",
-        "life_stages": [],
         "region": "france",
         "is_keystone": true,
         "keystone_type": "foundation_species",
@@ -446,13 +429,10 @@
           "forest",
           "woodland"
         ],
-        "diet": [],
-        "behavior": [],
         "season": [
           "year_round"
         ],
         "functional_description": "Long cultivated and now naturalised across many French forests. Chestnuts provide an abundant autumn food resource for wild boar, deer, jays, and dormice.",
-        "life_stages": [],
         "region": "france",
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Chestnuts.jpg/960px-Chestnuts.jpg",
@@ -473,15 +453,12 @@
           "garden",
           "woodland"
         ],
-        "diet": [],
-        "behavior": [],
         "season": [
           "spring",
           "summer",
           "autumn"
         ],
         "functional_description": "Fast-growing shrub of forest edges and disturbed ground. Flowers attract pollinators; black berries feed blackbirds, thrushes, and small mammals in late summer.",
-        "life_stages": [],
         "region": "france",
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Sambucus_nigra_004.jpg/960px-Sambucus_nigra_004.jpg",
@@ -501,13 +478,10 @@
           "woodland",
           "garden"
         ],
-        "diet": [],
-        "behavior": [],
         "season": [
           "year_round"
         ],
         "functional_description": "Evergreen climber that flowers in autumn when few other plants are in bloom, offering late-season nectar to bees, hoverflies, and wasps. Winter berries feed pigeons and thrushes.",
-        "life_stages": [],
         "region": "france",
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Hedera_helix_Dover.jpg/960px-Hedera_helix_Dover.jpg",
@@ -528,14 +502,11 @@
           "garden",
           "meadow"
         ],
-        "diet": [],
-        "behavior": [],
         "season": [
           "spring",
           "summer"
         ],
         "functional_description": "Larval host plant for several butterfly species including the European Peacock, Red Admiral, and Small Tortoiseshell. Indicates nitrogen-rich soil. A pioneer plant that boosts edge biodiversity.",
-        "life_stages": [],
         "region": "france",
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/6/6f/Fen_nettle_%28Urtica_dioica_ssp._galeopsifolia%29_-_geograph.org.uk_-_5423125.jpg",
@@ -568,7 +539,6 @@
           "autumn"
         ],
         "functional_description": "Butterfly with distinctive eye-spot wings. Caterpillars feed exclusively on stinging nettles. Adults are important pollinators of wild and cultivated flowering plants.",
-        "life_stages": [],
         "region": "france",
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Peacock_butterfly_%28Aglais_io%29_2.jpg/960px-Peacock_butterfly_%28Aglais_io%29_2.jpg",
@@ -600,7 +570,6 @@
           "autumn"
         ],
         "functional_description": "Migratory butterfly that breeds on stinging nettles. Adults visit flowers and fermenting fruit. A regular garden visitor and generalist pollinator.",
-        "life_stages": [],
         "region": "france",
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/VanessaAtalanta_Closeup.jpg/960px-VanessaAtalanta_Closeup.jpg",
@@ -633,7 +602,6 @@
           "autumn"
         ],
         "functional_description": "Long-lived butterfly that overwinters as an adult. One of the first to appear in spring. Caterpillars feed on buckthorn and alder buckthorn; adults pollinate from the first spring flowers.",
-        "life_stages": [],
         "region": "france",
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Common_brimstone_butterfly_%28Gonepteryx_rhamni%29_male_in_flight.jpg/960px-Common_brimstone_butterfly_%28Gonepteryx_rhamni%29_male_in_flight.jpg",
@@ -664,7 +632,6 @@
           "summer"
         ],
         "functional_description": "France's largest butterfly, with yellow wings marked with black. Caterpillars feed on plants in the carrot family (Apiaceae), especially wild carrot. An important pollinator of flower-rich meadows.",
-        "life_stages": [],
         "region": "france",
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/PapilioMachaon2016_001.JPG/960px-PapilioMachaon2016_001.JPG",
@@ -695,7 +662,6 @@
           "year_round"
         ],
         "functional_description": "Fundamental soil engineer that aerates, drains, and fertilises the ground by transforming organic matter. Primary food source for the European Robin, badger, hedgehog, woodcock, and many birds.",
-        "life_stages": [],
         "region": "france",
         "is_keystone": true,
         "keystone_type": "ecosystem_engineer",
@@ -717,14 +683,11 @@
           "meadow",
           "field"
         ],
-        "diet": [],
-        "behavior": [],
         "season": [
           "spring",
           "summer"
         ],
         "functional_description": "Common wildflower of meadows and roadsides. Larval host plant of the Old World Swallowtail. The white umbel flowers attract a wide diversity of pollinators and hoverflies.",
-        "life_stages": [],
         "region": "france",
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Daucus_carota_May_2008-1_edit.jpg/960px-Daucus_carota_May_2008-1_edit.jpg",

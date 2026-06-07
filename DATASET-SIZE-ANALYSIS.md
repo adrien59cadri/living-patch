@@ -70,18 +70,19 @@ Every single species has `"region": "northeast_pa"`. The pack already declares i
 
 ## Total achievable reduction (no data loss, human-readable)
 
-| Change | Tokens saved |
-|---|---|
-| Minify (strip whitespace) | ~24 000 |
-| Drop empty arrays (`life_stages`, `active_months`, `diet`) | ~430 |
-| Drop null/false fields (keystone ×3, status, conservation, is_keystone) | ~2 686 |
-| Drop `region` (redundant) | ~864 |
-| Drop `image.url` + `image.source_url` | ~7 496 |
-| **Total** | **~35 476 tokens** |
+| Change | Tokens saved | Status |
+|---|---|---|
+| Minify (strip whitespace) | ~24 000 | applied at AI input time |
+| Drop empty arrays (`life_stages`, `active_months`, `diet`) | ~430 | ✅ done in source pack |
+| Drop null/false fields (keystone ×3, status, conservation, is_keystone) | ~2 686 | ✅ done in source pack |
+| Fix synonym drift (diet, habitat, behavior consolidation) | ~134 | ✅ done in source pack |
+| Drop `region` (redundant) | ~864 | applied at AI input time |
+| Drop `image.url` + `image.source_url` | ~7 496 | applied at AI input time |
+| **Total** | **~35 610 tokens** | |
 
-**Before: ~94 000 tokens → After: ~58 500 tokens (~38 % reduction)**
+**Before: ~94 000 tokens → After: ~58 400 tokens (~38 % reduction)**
 
-All actual content preserved. No shorthands. The output remains valid JSON, readable by a human or a machine.
+Source pack is now clean (empty/null/synonym free). The remaining gains (`region`, image URLs) are applied by `stripDefaults()` at AI input time — the source pack keeps them for the browser app.
 
 ---
 
@@ -173,3 +174,59 @@ These are renames worth doing for correctness, with a minor token benefit as a s
 | `keystone_type` | `ecosystem_engineer` | `engineer` | 10ch ×4 |
 
 **Bottom line:** Do these renames to fix the synonym drift. The token savings (~134) are negligible, but the data consistency improvement is real and directly affects filter correctness.
+
+---
+
+## Option G — TOML as AI-input format
+
+TOML is worth reconsidering specifically for the AI-input use case (not the source pack or browser bundle).
+
+### Why TOML reads better for LLMs
+
+JSON requires quoting every key, every string, and uses `null`/`[]` explicitly. TOML omits the noise:
+
+```toml
+# JSON (68 chars)
+{"id":"bird_pileated-woodpecker","form":"woodpecker","is_keystone":true}
+
+# TOML (53 chars, no quotes on keys, no braces)
+id = "bird_pileated-woodpecker"
+form = "woodpecker"
+is_keystone = true
+```
+
+Multi-line prose fields are dramatically cleaner:
+
+```toml
+# JSON
+"functional_description": "Largest woodpecker in PA. Black with red crest. Excavates large rectangular holes..."
+
+# TOML
+functional_description = """
+Largest woodpecker in PA. Black with red crest. Excavates large rectangular holes...
+"""
+```
+
+### Estimated savings vs minified JSON
+
+| Format | Tokens (est.) | Notes |
+|---|---|---|
+| Minified JSON (current baseline) | ~70 000 | |
+| Minified JSON after cleanup | ~58 400 | empty/null/synonym fixes applied |
+| TOML (AI-input version) | ~52 000 est. | key quotes removed, cleaner arrays |
+
+TOML would save roughly an additional **5–8 % vs cleaned-up JSON** for this dataset. The gain is real but not transformative.
+
+### Tradeoffs
+
+| | TOML | JSON |
+|---|---|---|
+| Human readability | better (no key quotes, cleaner arrays) | fine |
+| LLM parsing | slightly easier (less punctuation noise) | fine |
+| Tooling | needs a TOML library | native `JSON.parse` |
+| Source format | keep JSON — no change to source pack | — |
+| Arrays of objects (symbiosis) | awkward (`[[symbiosis]]` tables) | natural |
+
+### Verdict
+
+Not worth converting the source pack or build pipeline. But if a recurring AI workflow passes the full dataset as context, generating a TOML projection on demand is a reasonable next step after the JSON cleanup is in place. The `stripDefaults()` function could emit either format with a flag.

@@ -27,7 +27,7 @@ export const mockBirdSpecies: Species = {
   latin_name: 'Turdus migratorius',
   form: 'songbird',
   habitat: ['garden', 'woodland'],
-  diet: ['fruit_eater', 'insect_eater'],
+  diet: ['frugivore', 'insectivore'],
   behavior: ['ground_forager'],
   season: ['spring', 'summer'],
   functional_description: 'Common lawn thrush.',
@@ -65,7 +65,7 @@ export const mockMonarch: Species = {
   latin_name: 'Danaus plexippus',
   form: 'butterfly',
   habitat: ['field', 'meadow', 'garden'],
-  diet: ['nectar_feeder'],
+  diet: ['nectarivore'],
   behavior: ['long_distance_migrant'],
   season: ['spring', 'summer', 'fall_migrant'],
   functional_description:
