@@ -6564,21 +6564,23 @@
       },
       {
         "type": "commensalism",
-        "source": "bird_pileated-woodpecker",
+        "source": "bird_great-horned-owl",
         "targets": [
-          "bird_great-horned-owl"
+          "bird_pileated-woodpecker"
         ],
         "strength": "important",
-        "notes": "Pileated Woodpecker excavates cavities used by Great Horned Owl for nesting."
+        "notes": "Great Horned Owl uses abandoned Pileated Woodpecker cavities for nesting."
       },
       {
         "type": "commensalism",
-        "source": "bird_pileated-woodpecker",
+        "source": "bird_american-kestrel",
         "targets": [
-          "bird_american-kestrel"
+          "bird_pileated-woodpecker",
+          "bird_northern-flicker"
         ],
+        "fulfillment": "any",
         "strength": "important",
-        "notes": "American Kestrel uses abandoned Pileated Woodpecker cavities and Northern Flicker holes for nesting; also uses nest boxes."
+        "notes": "American Kestrel is an obligate cavity nester that cannot excavate its own holes. Relies on abandoned Pileated Woodpecker or Northern Flicker cavities for nesting; also accepts nest boxes. Flicker holes (3-inch entrance) are particularly well-matched in size and are found at the open woodland edges kestrels prefer."
       },
       {
         "type": "predation",
@@ -6753,21 +6755,21 @@
       },
       {
         "type": "commensalism",
-        "source": "bird_pileated-woodpecker",
+        "source": "bird_wood-duck",
         "targets": [
-          "bird_wood-duck"
+          "bird_pileated-woodpecker"
         ],
         "strength": "critical",
-        "notes": "Wood Duck nests in cavities excavated by Pileated Woodpecker. Woodpecker provides critical cavity homes in dead trees where wood ducks depend for successful breeding."
+        "notes": "Wood Duck is an obligate cavity nester that depends on Pileated Woodpecker cavities and nest boxes for successful breeding in NE PA."
       },
       {
         "type": "commensalism",
-        "source": "bird_pileated-woodpecker",
+        "source": "mammal_flying-squirrel",
         "targets": [
-          "mammal_flying-squirrel"
+          "bird_pileated-woodpecker"
         ],
         "strength": "critical",
-        "notes": "Northern Flying Squirrels nest in Pileated Woodpecker cavities. These large cavities (1.5 inches diameter) are critical winter shelter for flying squirrels — key to their survival in northern PA winters."
+        "notes": "Northern Flying Squirrels nest in Pileated Woodpecker cavities. These large cavities are critical winter shelter for flying squirrels — key to their survival in northern PA winters."
       },
       {
         "type": "parasitism",
@@ -6951,19 +6953,23 @@
       },
       {
         "type": "commensalism",
-        "source": "bird_pileated-woodpecker",
+        "source": "bird_white-breasted-nuthatch",
         "targets": [
-          "bird_white-breasted-nuthatch"
+          "bird_pileated-woodpecker",
+          "bird_northern-flicker"
         ],
+        "fulfillment": "any",
         "strength": "incidental",
         "notes": "White-breasted Nuthatch uses smaller abandoned cavities created by Pileated Woodpecker and Northern Flicker for roosting and winter insulation. Also forages in bark furrows opened by woodpecker excavation."
       },
       {
         "type": "commensalism",
-        "source": "bird_pileated-woodpecker",
+        "source": "bird_great-crested-flycatcher",
         "targets": [
-          "bird_great-crested-flycatcher"
+          "bird_pileated-woodpecker",
+          "bird_northern-flicker"
         ],
+        "fulfillment": "any",
         "strength": "important",
         "notes": "Great Crested Flycatcher is an obligate cavity nester — preferentially uses large abandoned Pileated Woodpecker cavities and Northern Flicker holes in NE PA. Famously lines nest with shed snakeskin."
       },
@@ -7954,15 +7960,6 @@
         ],
         "strength": "important",
         "notes": "Cooper's Hawk is a primary avian predator of American Kestrel in NE PA. Recovery of Cooper's Hawk populations since the DDT era has increased predation pressure on kestrels — documented as a contributing factor in kestrel's ongoing PA population decline. Cooper's Hawks pursue kestrels aerially across open fields and intercept them at nesting cavities."
-      },
-      {
-        "type": "commensalism",
-        "source": "bird_northern-flicker",
-        "targets": [
-          "bird_american-kestrel"
-        ],
-        "strength": "important",
-        "notes": "American Kestrel regularly uses nest cavities excavated by Northern Flicker in open woodland snags. Flicker holes (3-inch entrance diameter) are sized for kestrel entry and are found at habitat edges in the open woodland settings kestrels prefer. This cavity dependency links kestrel breeding success to Flicker nest-site availability."
       },
       {
         "type": "commensalism",
