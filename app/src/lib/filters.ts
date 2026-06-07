@@ -1,4 +1,4 @@
-import type { Species } from '../types';
+import type { Species, EcologicalStatusMode } from '../types';
 import { getCommonName } from './labels';
 import {
   getTopLevelForms,
@@ -64,6 +64,12 @@ export function filterSpecies(species: Species[], filters: FilterState): Species
 
     return true;
   });
+}
+
+export function ecologicalStatusModeToStatuses(mode: EcologicalStatusMode): string[] {
+  if (mode === 'native_only') return ['n', 'nb'];
+  if (mode === 'non_native_invasive') return ['nnna', 'i'];
+  return [];
 }
 
 /** Expand any top-level category keys to their leaf descendants. */

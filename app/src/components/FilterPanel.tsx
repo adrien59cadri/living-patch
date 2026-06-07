@@ -1,5 +1,7 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import type { FilterState } from '../lib/filters';
+import { useUserPreferences } from '../hooks/useUserPreferences';
 import { formLabel, habitatLabel, keystoneLabel, areaLabel, formIcon, conservationStatusLabel, ecologicalStatusLabel } from '../lib/labels';
 import {
   getTopLevelForms, getChildForms,
@@ -50,6 +52,10 @@ function CheckboxItem({
 }
 
 export function FilterPanel({ options, filters, onChange }: Props) {
+  const { preferences } = useUserPreferences();
+  const modeIsActive =
+    preferences.ecologicalStatusMode !== 'all' && filters.ecological_statuses.length > 0;
+
   const [selectedFormTopLevel, setSelectedFormTopLevel] = useState<string | null>(null);
   const [selectedHabitatTopLevel, setSelectedHabitatTopLevel] = useState<string | null>(null);
   const [selectedKeystoneTopLevel, setSelectedKeystoneTopLevel] = useState<string | null>(null);
@@ -333,6 +339,15 @@ export function FilterPanel({ options, filters, onChange }: Props) {
           <span className="block text-xs font-medium text-stone-500 uppercase tracking-wide">
             Ecological status
           </span>
+          {modeIsActive && (
+            <p className="text-xs text-violet-700 bg-violet-50 border border-violet-200 rounded px-2 py-1">
+              Pre-selected by your{' '}
+              <Link to="/settings" className="underline hover:text-violet-900">
+                global species view setting
+              </Link>
+              . Clear to override for this session.
+            </p>
+          )}
           <div className="flex flex-col gap-1.5">
             {options.ecological_statuses.map(code => (
               <CheckboxItem

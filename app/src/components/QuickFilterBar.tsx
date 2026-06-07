@@ -1,5 +1,7 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import type { FilterState } from '../lib/filters';
+import { useUserPreferences } from '../hooks/useUserPreferences';
 import { formLabel, habitatLabel, keystoneLabel, areaLabel, formIcon, conservationStatusLabel, ecologicalStatusLabel } from '../lib/labels';
 import {
   getTopLevelForms, getChildForms,
@@ -127,6 +129,10 @@ function HierarchicalFilterChips({
 }
 
 export function QuickFilterBar({ options, filters, onChange }: Props) {
+  const { preferences } = useUserPreferences();
+  const modeIsActive =
+    preferences.ecologicalStatusMode !== 'all' && filters.ecological_statuses.length > 0;
+
   const topLevelForms = getTopLevelForms();
   const topLevelHabitats = getTopLevelHabitats();
 
@@ -266,6 +272,15 @@ export function QuickFilterBar({ options, filters, onChange }: Props) {
 
       {/* Ecological status chips – flat multi-select */}
       {hasEcological && (
+        <div className="space-y-1">
+          {modeIsActive && (
+            <p className="text-xs text-violet-600">
+              Global filter active —{' '}
+              <Link to="/settings" className="underline hover:text-violet-800">
+                change in Settings
+              </Link>
+            </p>
+          )}
         <div className="flex flex-wrap gap-1.5">
           {options.ecological_statuses.map(code => {
             const active = filters.ecological_statuses.includes(code);
@@ -291,6 +306,7 @@ export function QuickFilterBar({ options, filters, onChange }: Props) {
               </button>
             );
           })}
+        </div>
         </div>
       )}
     </div>

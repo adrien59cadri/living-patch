@@ -20,6 +20,8 @@ export type ConservationStatus = 'EX' | 'EW' | 'CR' | 'EN' | 'VU' | 'NT' | 'LC' 
  * 'i' = invasive (non-native AND spreading aggressively or causing damage) */
 export type EcologicalStatus = 'n' | 'nb' | 'nnna' | 'i';
 
+export type EcologicalStatusMode = 'all' | 'native_only' | 'non_native_invasive';
+
 export interface Species {
   id: string;
   common_name: CommonName;

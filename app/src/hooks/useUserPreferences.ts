@@ -1,11 +1,14 @@
 import { createContext, useContext } from 'react';
+import type { EcologicalStatusMode } from '../types';
 
 export interface UserPreferences {
   showThumbnailsInList: boolean;
+  ecologicalStatusMode: EcologicalStatusMode;
 }
 
 export const defaultPreferences: UserPreferences = {
   showThumbnailsInList: false,
+  ecologicalStatusMode: 'all',
 };
 
 export const STORAGE_KEY = 'living-patch-preferences';

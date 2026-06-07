@@ -9,7 +9,7 @@ import {
 function getStoredPreferences(): UserPreferences {
   try {
     const stored = localStorage.getItem(STORAGE_KEY);
-    return stored ? JSON.parse(stored) : defaultPreferences;
+    return stored ? { ...defaultPreferences, ...JSON.parse(stored) } : defaultPreferences;
   } catch {
     return defaultPreferences;
   }

@@ -2,7 +2,25 @@ import { useRef, useState } from 'react';
 import { useUserPreferences } from '../hooks/useUserPreferences';
 import { usePacksStore } from '../stores/packs';
 import { useLifeListStore } from '../stores/lifeList';
-import type { LifeListEntry, Sighting } from '../types';
+import type { LifeListEntry, Sighting, EcologicalStatusMode } from '../types';
+
+const SPECIES_VIEW_MODES: { value: EcologicalStatusMode; label: string; description: string }[] = [
+  {
+    value: 'all',
+    label: 'All species',
+    description: 'Show every species regardless of origin or ecological status.',
+  },
+  {
+    value: 'native_only',
+    label: 'Native only',
+    description: 'Pre-select native and native bully species in the ecological filter.',
+  },
+  {
+    value: 'non_native_invasive',
+    label: 'Non-native & invasive',
+    description: 'Pre-select introduced and invasive species in the ecological filter.',
+  },
+];
 
 interface BackupFile {
   entries: LifeListEntry[];
@@ -102,6 +120,38 @@ export default function SettingsPage() {
       <div>
         <h1 className="text-3xl font-bold mb-6 text-emerald-900">Settings</h1>
       </div>
+
+      {/* Species View */}
+      <section className="bg-white rounded-lg border border-stone-200 p-6">
+        <h2 className="text-xl font-semibold text-emerald-900 mb-1">Species View</h2>
+        <p className="text-sm text-stone-600 mb-4">
+          Set which species appear by default in the list based on ecological status. You can still adjust the filter per session.
+        </p>
+        <div className="flex flex-col gap-3">
+          {SPECIES_VIEW_MODES.map(({ value, label, description }) => {
+            const isActive = preferences.ecologicalStatusMode === value;
+            return (
+              <button
+                key={value}
+                onClick={() => setPreferences({ ...preferences, ecologicalStatusMode: value })}
+                className={[
+                  'text-left px-4 py-3 rounded-lg border transition-colors',
+                  isActive
+                    ? 'bg-emerald-600 text-white border-emerald-600'
+                    : 'bg-white text-stone-700 border-stone-200 hover:border-emerald-300 hover:bg-emerald-50',
+                ].join(' ')}
+              >
+                <p className={`font-medium text-sm ${isActive ? 'text-white' : 'text-stone-800'}`}>
+                  {label}
+                </p>
+                <p className={`text-xs mt-0.5 ${isActive ? 'text-emerald-100' : 'text-stone-500'}`}>
+                  {description}
+                </p>
+              </button>
+            );
+          })}
+        </div>
+      </section>
 
       {/* Key Relations Settings */}
       <section className="bg-white rounded-lg border border-stone-200 p-6">
