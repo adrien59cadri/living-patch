@@ -1,8 +1,9 @@
 import { useState, useMemo } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import { useDataset } from '../hooks/useDataset';
-import { filterSpecies, getFilterOptions } from '../lib/filters';
+import { filterSpecies, getFilterOptions, ecologicalStatusModeToStatuses } from '../lib/filters';
 import type { FilterState } from '../lib/filters';
+import { useUserPreferences } from '../hooks/useUserPreferences';
 import { SearchBar } from '../components/SearchBar';
 import { FilterPanel } from '../components/FilterPanel';
 import { QuickFilterBar } from '../components/QuickFilterBar';
@@ -13,19 +14,26 @@ export default function HomePage() {
   const { species, groups } = useDataset();
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
+  const { preferences } = useUserPreferences();
 
   const [isAdvancedOpen, setIsAdvancedOpen] = useState(false);
 
-  const [filters, setFilters] = useState<FilterState>(() => ({
-    search: '',
-    forms: searchParams.getAll('form'),
-    seasons: searchParams.getAll('season'),
-    habitats: searchParams.getAll('habitat'),
-    keystone_types: searchParams.getAll('keystone_type'),
-    areas: searchParams.getAll('area'),
-    conservation_statuses: searchParams.getAll('conservation_status'),
-    ecological_statuses: searchParams.getAll('ecological_status'),
-  }));
+  const [filters, setFilters] = useState<FilterState>(() => {
+    const urlStatuses = searchParams.getAll('ecological_status');
+    return {
+      search: '',
+      forms: searchParams.getAll('form'),
+      seasons: searchParams.getAll('season'),
+      habitats: searchParams.getAll('habitat'),
+      keystone_types: searchParams.getAll('keystone_type'),
+      areas: searchParams.getAll('area'),
+      conservation_statuses: searchParams.getAll('conservation_status'),
+      ecological_statuses:
+        urlStatuses.length > 0
+          ? urlStatuses
+          : ecologicalStatusModeToStatuses(preferences.ecologicalStatusMode),
+    };
+  });
 
   // Sync filters to URL when they change (but not on mount)
   const handleFilterChange = (newFilters: FilterState) => {
