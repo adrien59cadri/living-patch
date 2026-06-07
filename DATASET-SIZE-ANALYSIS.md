@@ -123,3 +123,53 @@ function stripDefaults(species) {
 ```
 
 The source pack (`0-base.json`) stays untouched. The stripped version is produced on demand.
+
+---
+
+## Option F — Enum value renaming
+
+**Token savings: ~134 tokens (~0.2 % of total).** Not meaningful on its own.
+
+However, auditing enum values reveals a more useful finding: **synonym drift** — the same concept encoded as two different strings across species. This confuses filters, queries, and LLM reasoning regardless of token count.
+
+### Confirmed synonym duplicates (both values present in the pack)
+
+| Field | Value A | Count | Value B | Count | Canonical |
+|---|---|---|---|---|---|
+| `diet` | `insect_eater` | 27 | `insectivore` | 1 | `insectivore` |
+| `diet` | `fruit_eater` | 4 | `frugivore` | 2 | `frugivore` |
+| `diet` | `seed_eater` | 2 | `granivore` | 2 | `granivore` |
+| `diet` | `nectar_feeder` | 7 | `nectivore` | 2 | `nectarivore` |
+| `habitat` | `disturbed_site` | 9 | `disturbed_areas` | 5 | `disturbed` |
+| `habitat` | `rocky_slope` | 2 | `rocky_slopes` | 1 | `rocky_slope` |
+| `behavior` | `migratory` | 11 | `migratory_seasonal` | 1 | `migratory` |
+| `behavior` | `colonial` | 6 | `colony_forming` | 2 | `colonial` |
+| `behavior` | `mast_producer` | 4 | `mast_producing` | 1 | `mast_producer` |
+| `behavior` | `frugivore` | 1 | `fruit_producer` | 15 | `fruit_producer` |
+
+These duplicates cause silent filter failures today: a user filtering by `insectivore` misses 27 species tagged `insect_eater`.
+
+### Recommended renames (readability-preserving, shorter or same length)
+
+These are renames worth doing for correctness, with a minor token benefit as a side effect:
+
+| Field | Old value | New value | Savings |
+|---|---|---|---|
+| `diet` | `insect_eater` | `insectivore` | 1ch ×27 |
+| `diet` | `fruit_eater` | `frugivore` | 2ch ×4 |
+| `diet` | `seed_eater` | `granivore` | 1ch ×2 |
+| `diet` | `nectar_feeder` | `nectarivore` | 2ch ×7 |
+| `diet` | `plant_sap_feeder` | `sap_feeder` | 6ch ×1 |
+| `diet` | `invertebrate_eater` | `invertivore` | 7ch ×1 |
+| `habitat` | `disturbed_areas` | `disturbed_site` | consolidate duplicate |
+| `habitat` | `rocky_slopes` | `rocky_slope` | consolidate duplicate |
+| `behavior` | `migratory_seasonal` | `migratory` | consolidate duplicate |
+| `behavior` | `colony_forming` | `colonial` | consolidate duplicate |
+| `behavior` | `mast_producing` | `mast_producer` | consolidate duplicate |
+| `behavior` | `frugivore` | `fruit_producer` | consolidate duplicate |
+| `season` | `year_round` | `resident` | 2ch ×67 = 134ch |
+| `form` | `wading_bird` | `wader` | 6ch ×2 |
+| `keystone_type` | `foundation_species` | `foundation` | 8ch ×5 |
+| `keystone_type` | `ecosystem_engineer` | `engineer` | 10ch ×4 |
+
+**Bottom line:** Do these renames to fix the synonym drift. The token savings (~134) are negligible, but the data consistency improvement is real and directly affects filter correctness.
