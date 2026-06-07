@@ -13,8 +13,8 @@ interface Props {
   taxonomicGroupIds?: Set<string>;
 }
 
-const PRIMARY_ROLES: SymbiosisRole[] = ['mutualism', 'predation', 'parasitism'];
-const SECONDARY_ROLES: SymbiosisRole[] = ['commensalism', 'competition'];
+const PRIMARY_ROLES: SymbiosisRole[] = ['mutualism', 'commensalism', 'parasitism', 'predation'];
+const SECONDARY_ROLES: SymbiosisRole[] = ['competition'];
 
 export function KeyRelationshipsSection({ related, speciesById, taxonomicGroupIds }: Props) {
   const groups = groupByRole(related);
