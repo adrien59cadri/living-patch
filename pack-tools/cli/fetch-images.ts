@@ -27,6 +27,16 @@ function resolveCommonName(name: CommonName | undefined, fallback: string): stri
 
 const args = process.argv.slice(2);
 
+// Author values that are known placeholders and should be re-fetched
+const BAD_AUTHORS = new Set(['Wikimedia Commons', 'Photographer', 'photographer']);
+const hasBadAuthor = (author: string | undefined): boolean => {
+  if (!author) return true;
+  if (BAD_AUTHORS.has(author)) return true;
+  if (author.toLowerCase().startsWith('no machine-readable author')) return true;
+  if (author.toLowerCase().startsWith('this file is lacking')) return true;
+  return false;
+};
+
 /**
  * Print usage information
  */
@@ -34,11 +44,13 @@ function printUsage() {
   console.error(`${chalk.gray('Usage:')} npm run fetch-images <pack-file> [options]`);
   console.error(`${chalk.gray('Example:')} npm run fetch-images packs/0-base.json`);
   console.error(`${chalk.gray('Example:')} npm run fetch-images packs/0-base.json --only-missing`);
+  console.error(`${chalk.gray('Example:')} npm run fetch-images packs/0-base.json --fix-authors`);
   console.error(`${chalk.gray('Example:')} npm run fetch-images packs/0-base.json --check`);
   console.error();
   console.error(`${chalk.gray('Options:')}`);
   console.error(`  --check             Verify images for correctness without modifying pack`);
   console.error(`  --only-missing      Skip species that already have images (update mode)`);
+  console.error(`  --fix-authors       Re-fetch only species with missing or placeholder authors`);
   console.error(`  --delay <ms>        Delay between requests in milliseconds (default: 1000)`);
   console.error(`  --max <count>       Maximum number of species to process (for testing)`);
 }
@@ -51,6 +63,7 @@ function parseArgs(cliArgs: string[]): {
   delay: number;
   maxSpecies?: number;
   onlyMissing: boolean;
+  fixAuthors: boolean;
   checkMode: boolean;
 } | null {
   const packFile = cliArgs.find(arg => !arg.startsWith('--'));
@@ -64,6 +77,7 @@ function parseArgs(cliArgs: string[]): {
   let delay = 1000;
   let maxSpecies: number | undefined;
   let onlyMissing = false;
+  let fixAuthors = false;
   let checkMode = false;
 
   for (let i = 0; i < cliArgs.length; i++) {
@@ -75,12 +89,14 @@ function parseArgs(cliArgs: string[]): {
       i++;
     } else if (cliArgs[i] === '--only-missing') {
       onlyMissing = true;
+    } else if (cliArgs[i] === '--fix-authors') {
+      fixAuthors = true;
     } else if (cliArgs[i] === '--check') {
       checkMode = true;
     }
   }
 
-  return { packFile, delay, maxSpecies, onlyMissing, checkMode };
+  return { packFile, delay, maxSpecies, onlyMissing, fixAuthors, checkMode };
 }
 
 /**
@@ -122,7 +138,7 @@ async function main() {
     process.exit(1);
   }
 
-  const { packFile, delay: requestDelay, maxSpecies, onlyMissing, checkMode } = parsed;
+  const { packFile, delay: requestDelay, maxSpecies, onlyMissing, fixAuthors, checkMode } = parsed;
   const pack = loadPack(packFile);
 
   if (!pack) {
@@ -139,6 +155,9 @@ async function main() {
   }
   if (onlyMissing) {
     console.log(`${chalk.gray('Mode:')} Only missing images (--only-missing)`);
+  }
+  if (fixAuthors) {
+    console.log(`${chalk.gray('Mode:')} Fix placeholder authors (--fix-authors)`);
   }
   console.log();
 
@@ -174,6 +193,12 @@ async function main() {
     // Skip if --only-missing is set and species already has an image
     if (onlyMissing && species.image?.url) {
       console.log(`${chalk.gray(progress)} ${chalk.gray('✓')} Already has image: ${resolveCommonName(species.common_name, species.id)}`);
+      alreadyHadImages++;
+      continue;
+    }
+
+    // Skip if --fix-authors is set and this species already has a valid author
+    if (fixAuthors && species.image?.url && !hasBadAuthor(species.image?.author)) {
       alreadyHadImages++;
       continue;
     }

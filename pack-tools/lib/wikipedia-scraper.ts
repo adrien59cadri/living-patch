@@ -171,58 +171,77 @@ export async function fetchFilePageAndExtractData(fileLink: string): Promise<Scr
 
     // Extract author from file info template
     let author = 'Wikimedia Commons';
-    
+
+    // Wikimedia placeholder strings that mean "no author recorded"
+    const AUTHOR_PLACEHOLDERS = [
+      'this file is lacking author information',
+      'unknown',
+      'unbekannt',
+      'inconnu',
+      'desconocido',
+      'photographer',
+    ];
+    const isPlaceholder = (text: string) =>
+      AUTHOR_PLACEHOLDERS.some(p => text.toLowerCase().startsWith(p));
+
+    // Extracts and cleans raw cell text into a usable attribution string
+    const cleanCellText = (raw: string): string => {
+      let t = raw
+        .split('\n')[0]
+        // Strip Wikimedia's "no machine-readable author" prefix, keeping the username after it
+        .replace(/^No machine-readable author provided\.\s*/i, '')
+        .replace(/^\.mw-parser.*$/gm, '')
+        .replace(/Picasa.*$/, '')
+        .replace(/based on copyright claims.*$/i, '')
+        .replace(/\(based\s+on.*?\)/gi, '')
+        .replace(/\s+\(.*?(assumed|assumed.*based).*?\)/i, '')
+        .replace(/assumed.*$/i, '')
+        .trim();
+      if (t.length > 100) t = t.substring(0, 100).trim();
+      return t;
+    };
+
     // The file information is in a table with class fileinfotpl-type-information or similar
     // Structure: <td>Author</td><td>Name</td>
-    
-    // Approach 1: Look for "Author" text directly and get the next cells
+
+    // Approach 1: Look for "Author" / "Source" rows in the file info table.
+    // We collect both so we can fall back to Source when Author is a placeholder.
     const allTables = $('table.fileinfotpl-type-information, table[class*="fileinfo"]');
     let found = false;
-    
+    let sourceText = '';
+
     allTables.find('tr').each((i, row) => {
-      if (found) return false;
       const cells = $(row).find('th, td');
-      let authorText = '';
-      
-      // Look for a cell containing "Author"
+
       cells.each((j, cell) => {
-        const text = $(cell).text().trim();
-        if (text === 'Author' || text === 'Creator') {
-          // Get the next cell(s) for the actual author name
-          if (j + 1 < cells.length) {
-            authorText = $(cells[j + 1]).text().trim();
-            // Clean up the text (remove "Picasa", links, etc)
-            authorText = authorText
-              .split('\n')[0] // Take first line
-              .replace(/^\.mw-parser.*$/gm, '') // Remove CSS classes
-              .replace(/Picasa.*$/, '') // Remove Picasa reference
-              .replace(/based on copyright claims.*$/i, '') // Remove template text
-              .replace(/\(based\s+on.*?\)/gi, '') // Remove parenthetical claims
-              .replace(/\s+\(.*?(assumed|assumed.*based).*?\)/i, '') // Remove "assumed" text
-              .replace(/assumed.*$/i, '') // Remove "assumed" suffix
-              .replace(/\s+$/, '') // Remove trailing whitespace
-              .trim();
-            // Only keep first 100 chars to avoid truncation issues
-            if (authorText.length > 100) {
-              authorText = authorText.substring(0, 100).trim();
-            }
+        const label = $(cell).text().trim();
+        if (j + 1 >= cells.length) return;
+        const value = cleanCellText($(cells[j + 1]).text().trim());
+
+        if ((label === 'Author' || label === 'Creator') && !found) {
+          if (value && value !== 'Author' && value !== 'Creator' && !isPlaceholder(value)) {
+            author = value;
+            found = true;
+          }
+        } else if (label === 'Source' && !sourceText) {
+          if (value && !isPlaceholder(value)) {
+            sourceText = value;
           }
         }
       });
-      
-      if (authorText && authorText.length > 0 && authorText !== 'Author' && authorText !== 'Creator') {
-        author = authorText;
-        found = true;
-        return false;
-      }
     });
-    
+
+    // Fall back to Source field when Author was missing or a placeholder
+    if (!found && sourceText) {
+      author = sourceText;
+    }
+
     // Approach 2: If still not found, try looking in the old-style fileinfotpl structure
-    if (!found) {
+    if (!found && author === 'Wikimedia Commons') {
       const aut = $('#fileinfotpl_aut').first();
       if (aut.length > 0) {
         const authorText = aut.text().trim();
-        if (authorText && authorText !== 'Author' && authorText.length > 0) {
+        if (authorText && authorText !== 'Author' && authorText.length > 0 && !isPlaceholder(authorText)) {
           author = authorText;
         }
       }

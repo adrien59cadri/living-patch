@@ -538,7 +538,7 @@
         "taxonomic_group": "group_oaks",
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Quercus_rubra_%40_Tortworth_Court.jpg/960px-Quercus_rubra_%40_Tortworth_Court.jpg",
-          "author": "No machine-readable author provided. Velela",
+          "author": "Velela",
           "source_url": "https://en.wikipedia.org/wiki/Quercus_rubra"
         },
         "conservation_status": "LC"
@@ -1797,7 +1797,7 @@
         "is_keystone": false,
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Araneus_diadematus_MHNT_Femelle_Fronton.jpg/960px-Araneus_diadematus_MHNT_Femelle_Fronton.jpg",
-          "author": "Photographer",
+          "author": "Own work",
           "source_url": "https://en.wikipedia.org/wiki/Araneus_diadematus"
         }
       },
@@ -4168,7 +4168,7 @@
         "taxonomic_group": "group_songbirds",
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Poecile-atricapilla-001.jpg/960px-Poecile-atricapilla-001.jpg",
-          "author": "No machine-readable author provided. Mdf",
+          "author": "Mdf",
           "source_url": "https://en.wikipedia.org/wiki/Black-capped_Chickadee"
         },
         "conservation_status": "LC"
@@ -4392,7 +4392,7 @@
         "keystone_description": null,
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Carya_cordiformis.jpg/960px-Carya_cordiformis.jpg",
-          "author": "No machine-readable author provided. MPF",
+          "author": "MPF",
           "source_url": "https://en.wikipedia.org/wiki/Carya_cordiformis"
         },
         "conservation_status": "LC"
@@ -4786,7 +4786,7 @@
         "keystone_description": "Obligate host plant for Spicebush Swallowtail butterfly caterpillars — along with Spicebush, one of only two native Lauraceae family members in NE PA. Berries provide fall food for songbirds during migration.",
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Sassafras_Leaves_June_Nbg_%28261691941%29.jpeg/960px-Sassafras_Leaves_June_Nbg_%28261691941%29.jpeg",
-          "author": "Photographer",
+          "author": "Imported from 500px (archived version) by the Archive Team. (detail page)",
           "source_url": "https://en.wikipedia.org/wiki/Sassafras_albidum"
         },
         "conservation_status": "LC"
@@ -5877,7 +5877,7 @@
         "keystone_description": null,
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/b/bf/Indiana_Bat_FWS.jpg",
-          "author": "This file is lacking author information.",
+          "author": "U.S. Fish & Wildlife Service",
           "source_url": "https://en.wikipedia.org/wiki/Myotis_sodalis"
         },
         "conservation_status": "EN"
@@ -6564,21 +6564,23 @@
       },
       {
         "type": "commensalism",
-        "source": "bird_pileated-woodpecker",
+        "source": "bird_great-horned-owl",
         "targets": [
-          "bird_great-horned-owl"
+          "bird_pileated-woodpecker"
         ],
         "strength": "important",
-        "notes": "Pileated Woodpecker excavates cavities used by Great Horned Owl for nesting."
+        "notes": "Great Horned Owl uses abandoned Pileated Woodpecker cavities for nesting."
       },
       {
         "type": "commensalism",
-        "source": "bird_pileated-woodpecker",
+        "source": "bird_american-kestrel",
         "targets": [
-          "bird_american-kestrel"
+          "bird_pileated-woodpecker",
+          "bird_northern-flicker"
         ],
+        "fulfillment": "any",
         "strength": "important",
-        "notes": "American Kestrel uses abandoned Pileated Woodpecker cavities and Northern Flicker holes for nesting; also uses nest boxes."
+        "notes": "American Kestrel is an obligate cavity nester that cannot excavate its own holes. Relies on abandoned Pileated Woodpecker or Northern Flicker cavities for nesting; also accepts nest boxes. Flicker holes (3-inch entrance) are particularly well-matched in size and are found at the open woodland edges kestrels prefer."
       },
       {
         "type": "predation",
@@ -6753,21 +6755,21 @@
       },
       {
         "type": "commensalism",
-        "source": "bird_pileated-woodpecker",
+        "source": "bird_wood-duck",
         "targets": [
-          "bird_wood-duck"
+          "bird_pileated-woodpecker"
         ],
         "strength": "critical",
-        "notes": "Wood Duck nests in cavities excavated by Pileated Woodpecker. Woodpecker provides critical cavity homes in dead trees where wood ducks depend for successful breeding."
+        "notes": "Wood Duck is an obligate cavity nester that depends on Pileated Woodpecker cavities and nest boxes for successful breeding in NE PA."
       },
       {
         "type": "commensalism",
-        "source": "bird_pileated-woodpecker",
+        "source": "mammal_flying-squirrel",
         "targets": [
-          "mammal_flying-squirrel"
+          "bird_pileated-woodpecker"
         ],
         "strength": "critical",
-        "notes": "Northern Flying Squirrels nest in Pileated Woodpecker cavities. These large cavities (1.5 inches diameter) are critical winter shelter for flying squirrels — key to their survival in northern PA winters."
+        "notes": "Northern Flying Squirrels nest in Pileated Woodpecker cavities. These large cavities are critical winter shelter for flying squirrels — key to their survival in northern PA winters."
       },
       {
         "type": "parasitism",
@@ -6951,19 +6953,23 @@
       },
       {
         "type": "commensalism",
-        "source": "bird_pileated-woodpecker",
+        "source": "bird_white-breasted-nuthatch",
         "targets": [
-          "bird_white-breasted-nuthatch"
+          "bird_pileated-woodpecker",
+          "bird_northern-flicker"
         ],
+        "fulfillment": "any",
         "strength": "incidental",
         "notes": "White-breasted Nuthatch uses smaller abandoned cavities created by Pileated Woodpecker and Northern Flicker for roosting and winter insulation. Also forages in bark furrows opened by woodpecker excavation."
       },
       {
         "type": "commensalism",
-        "source": "bird_pileated-woodpecker",
+        "source": "bird_great-crested-flycatcher",
         "targets": [
-          "bird_great-crested-flycatcher"
+          "bird_pileated-woodpecker",
+          "bird_northern-flicker"
         ],
+        "fulfillment": "any",
         "strength": "important",
         "notes": "Great Crested Flycatcher is an obligate cavity nester — preferentially uses large abandoned Pileated Woodpecker cavities and Northern Flicker holes in NE PA. Famously lines nest with shed snakeskin."
       },
@@ -7959,19 +7965,50 @@
         "type": "commensalism",
         "source": "bird_northern-flicker",
         "targets": [
-          "bird_american-kestrel"
-        ],
-        "strength": "important",
-        "notes": "American Kestrel regularly uses nest cavities excavated by Northern Flicker in open woodland snags. Flicker holes (3-inch entrance diameter) are sized for kestrel entry and are found at habitat edges in the open woodland settings kestrels prefer. This cavity dependency links kestrel breeding success to Flicker nest-site availability."
-      },
-      {
-        "type": "commensalism",
-        "source": "bird_northern-flicker",
-        "targets": [
           "bird_eastern-bluebird"
         ],
         "strength": "important",
         "notes": "Eastern Bluebird uses Northern Flicker cavities as nest sites in natural settings — Flicker excavations in dead trees at field edges provide alternatives to nest boxes where natural snags are retained in open woodland."
+      },
+      {
+        "type": "predation",
+        "source": "mammal_indiana-bat",
+        "targets": [
+          "insect_catalpa-sphinx-moth",
+          "insect_waved-sphinx-moth"
+        ],
+        "fulfillment": "any",
+        "strength": "important",
+        "notes": "Indiana Bat forages along forest edges and riparian corridors, taking large night-flying moths including sphingid moths. Aerial insectivory at canopy height distinguishes Indiana Bat from the lower-foraging Little Brown Bat, giving it access to moths that ascend into the upper forest story."
+      },
+      {
+        "type": "predation",
+        "source": "mammal_indiana-bat",
+        "targets": [
+          "insect_bark-beetle"
+        ],
+        "strength": "important",
+        "notes": "Indiana Bat is an opportunistic consumer of bark beetles emerging from stressed forest trees at dusk. Its forest-specialist foraging range brings it into contact with bark beetle emergence events more consistently than generalist bat species."
+      },
+      {
+        "type": "commensalism",
+        "source": "mammal_indiana-bat",
+        "targets": [
+          "bird_pileated-woodpecker"
+        ],
+        "strength": "important",
+        "notes": "Indiana Bat uses large-diameter snags and tree cavities — including those excavated or enlarged by Pileated Woodpecker — as summer day roosts and maternity colony sites. Maternity colonies of 100+ females require warm, sheltered cavities in dead or dying trees; loss of cavity-bearing snags is one of the two primary summer habitat threats, alongside White-nose Syndrome at winter hibernacula."
+      },
+      {
+        "type": "competition",
+        "source": "mammal_indiana-bat",
+        "targets": [
+          "mammal_little-brown-bat",
+          "mammal_northern-long-eared-bat"
+        ],
+        "fulfillment": "any",
+        "strength": "incidental",
+        "notes": "Indiana Bat, Little Brown Bat, and Northern Long-eared Bat co-hibernate in the same limestone caves and abandoned mines of NE PA, competing for optimal roost spots with stable low temperatures (37–50°F). All three species are devastated by White-nose Syndrome (Pseudogymnoascus destructans); the fungal pathogen propagates across the shared hibernaculum, linking the fate of the three species and amplifying colony loss beyond what any single-species model would predict."
       }
     ],
     "relations": [
