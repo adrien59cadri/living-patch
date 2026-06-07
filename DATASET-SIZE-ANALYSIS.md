@@ -177,56 +177,57 @@ These are renames worth doing for correctness, with a minor token benefit as a s
 
 ---
 
-## Option G — TOML as AI-input format
+## Option G — TOON as AI-input format
 
-TOML is worth reconsidering specifically for the AI-input use case (not the source pack or browser bundle).
+**TOON** (Token-Oriented Object Notation) is a format designed specifically for LLM token efficiency. Its core innovation is a tabular layout for arrays of uniform objects: field names are declared once in a header row, then each record is a plain CSV line. This is a direct fit for species records, which all share the same schema.
 
-### Why TOML reads better for LLMs
+### How it works
 
-JSON requires quoting every key, every string, and uses `null`/`[]` explicitly. TOML omits the noise:
+```
+# JSON — field names repeated on every record
+[
+  {"id":"bird_pileated-woodpecker","form":"woodpecker","ecological_role":"carnivore","conservation_status":"LC"},
+  {"id":"bird_red-tailed-hawk","form":"raptor","ecological_role":"carnivore","conservation_status":"LC"}
+]
 
-```toml
-# JSON (68 chars)
-{"id":"bird_pileated-woodpecker","form":"woodpecker","is_keystone":true}
-
-# TOML (53 chars, no quotes on keys, no braces)
-id = "bird_pileated-woodpecker"
-form = "woodpecker"
-is_keystone = true
+# TOON — field names declared once as a header
+species[2]{id,form,ecological_role,conservation_status}:
+  bird_pileated-woodpecker,woodpecker,carnivore,LC
+  bird_red-tailed-hawk,raptor,carnivore,LC
 ```
 
-Multi-line prose fields are dramatically cleaner:
+For 126 species, field name repetition alone costs ~17 500 chars in JSON. In TOON that becomes a single 227-char header.
 
-```toml
-# JSON
-"functional_description": "Largest woodpecker in PA. Black with red crest. Excavates large rectangular holes..."
+### Estimated savings
 
-# TOML
-functional_description = """
-Largest woodpecker in PA. Black with red crest. Excavates large rectangular holes...
-"""
-```
+Benchmarks report ~40% token reduction vs JSON on uniform object arrays. Applied to the cleaned pack:
 
-### Estimated savings vs minified JSON
+| Format | Tokens (est.) |
+|---|---|
+| Pretty-printed JSON (current) | ~94 000 |
+| Minified JSON after cleanup | ~58 400 |
+| TOON (AI-input projection) | ~35 000 est. |
 
-| Format | Tokens (est.) | Notes |
-|---|---|---|
-| Minified JSON (current baseline) | ~70 000 | |
-| Minified JSON after cleanup | ~58 400 | empty/null/synonym fixes applied |
-| TOML (AI-input version) | ~52 000 est. | key quotes removed, cleaner arrays |
-
-TOML would save roughly an additional **5–8 % vs cleaned-up JSON** for this dataset. The gain is real but not transformative.
+That is an additional **~23 000 tokens** on top of the JSON cleanup — roughly equivalent to the whitespace savings, but from structure rather than formatting.
 
 ### Tradeoffs
 
-| | TOML | JSON |
+| | TOON | JSON |
 |---|---|---|
-| Human readability | better (no key quotes, cleaner arrays) | fine |
-| LLM parsing | slightly easier (less punctuation noise) | fine |
-| Tooling | needs a TOML library | native `JSON.parse` |
-| Source format | keep JSON — no change to source pack | — |
-| Arrays of objects (symbiosis) | awkward (`[[symbiosis]]` tables) | natural |
+| Token savings on uniform arrays | **~40 %** | baseline |
+| Human readability | good (tabular, readable) | verbose |
+| Prose fields (`functional_description`) | stays as a string value per row | same |
+| Nested objects (`image`, `life_stages`) | awkward — needs flattening or a separate block | natural |
+| Symbiosis records (variable fields, notes) | less suited | natural |
+| Tooling | `toon-format` npm package (TypeScript SDK) | native |
+| Source format | keep JSON — TOON is a derived AI-input artifact | — |
+
+### Fit for this dataset
+
+Species records are a strong fit: 126 rows, consistent fields, many short enum values. Symbiosis records are a weaker fit: each has a variable number of targets, optional `fulfillment`, and a long `notes` string — keeping those as JSON or a separate TOON block is reasonable.
 
 ### Verdict
 
-Not worth converting the source pack or build pipeline. But if a recurring AI workflow passes the full dataset as context, generating a TOML projection on demand is a reasonable next step after the JSON cleanup is in place. The `stripDefaults()` function could emit either format with a flag.
+Worth doing if the full pack is regularly passed as LLM context. The species table would convert cleanly; symbiosis records could stay as JSON or be a second TOON block. The `stripDefaults()` function could gain a `format: 'toon'` option. Source pack stays JSON — no change to the build pipeline.
+
+Spec and TypeScript SDK: https://github.com/toon-format/toon
