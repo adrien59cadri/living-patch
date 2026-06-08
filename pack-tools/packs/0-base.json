@@ -20,7 +20,7 @@
           "woodland"
         ],
         "diet": [
-          "insect_eater"
+          "insectivore"
         ],
         "behavior": [
           "cavity_excavator"
@@ -29,7 +29,6 @@
           "year_round"
         ],
         "functional_description": "Largest woodpecker in PA. Black with red crest. Excavates large rectangular holes in dead trees searching for carpenter ants, creating cavities used by owls, kestrels, and flying squirrels.",
-        "life_stages": [],
         "region": "northeast_pa",
         "ecological_role": "carnivore",
         "is_keystone": true,
@@ -64,7 +63,6 @@
           "year_round"
         ],
         "functional_description": "Large broad-winged hawk with rusty-red tail. Hunts from elevated perches and open soaring. Eats mostly small mammals; controls rodent and squirrel populations.",
-        "life_stages": [],
         "region": "northeast_pa",
         "ecological_role": "carnivore",
         "is_keystone": true,
@@ -98,7 +96,6 @@
           "year_round"
         ],
         "functional_description": "Largest owl in PA. Earlike tufts, yellow eyes. Hunts at night. Earliest-nesting PA bird — eggs laid January–February. Uniquely tolerates skunk spray.",
-        "life_stages": [],
         "region": "northeast_pa",
         "ecological_role": "carnivore",
         "is_keystone": true,
@@ -125,11 +122,11 @@
           "riparian"
         ],
         "diet": [
-          "fruit_eater",
-          "insect_eater"
+          "frugivore",
+          "insectivore"
         ],
         "behavior": [
-          "frugivore",
+          "fruit_producer",
           "flocking",
           "seed_disperser"
         ],
@@ -137,12 +134,8 @@
           "year_round"
         ],
         "functional_description": "Sleek crested bird with yellow tail tip, red wax wing spots. One of PA's latest-nesting birds — timed to summer fruit peak. Highly frugivorous; major seed disperser of native shrubs.",
-        "life_stages": [],
         "region": "northeast_pa",
         "ecological_role": "omnivore",
-        "is_keystone": false,
-        "keystone_type": null,
-        "keystone_description": null,
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Cedar_Waxwing_-_Bombycilla_cedrorum%2C_George_Washington%27s_Birthplace_National_Monument%2C_Colonial_Beach%2C_Virginia_%2839997434862%29.jpg/500px-Cedar_Waxwing_-_Bombycilla_cedrorum%2C_George_Washington%27s_Birthplace_National_Monument%2C_Colonial_Beach%2C_Virginia_%2839997434862%29.jpg",
           "author": "Judy Gallagher",
@@ -161,7 +154,7 @@
           "field_edge"
         ],
         "diet": [
-          "insect_eater"
+          "insectivore"
         ],
         "behavior": [
           "ground_nester",
@@ -173,12 +166,8 @@
           "fall_migrant"
         ],
         "functional_description": "Small warbler, male with black mask. Sings witchety-witchety-witch. Nests low in marsh vegetation. Host to Brown-headed Cowbird brood parasitism. Eats insects including butterflies.",
-        "life_stages": [],
         "region": "northeast_pa",
         "ecological_role": "carnivore",
-        "is_keystone": false,
-        "keystone_type": null,
-        "keystone_description": null,
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Common_yellowthroat_in_PP_%2814155%29.jpg/960px-Common_yellowthroat_in_PP_%2814155%29.jpg",
           "author": "Rhododendrites",
@@ -208,12 +197,8 @@
           "year_round"
         ],
         "functional_description": "Smallest falcon, robin-sized. Hovers over open fields. Eats grasshoppers in summer, voles year-round. Declining in PA due to farmland loss and Cooper's Hawk predation pressure. Uses nest boxes.",
-        "life_stages": [],
         "region": "northeast_pa",
         "ecological_role": "carnivore",
-        "is_keystone": false,
-        "keystone_type": null,
-        "keystone_description": null,
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Kestrel_by_Gravesend_Bay_%2882125%29.jpg/960px-Kestrel_by_Gravesend_Bay_%2882125%29.jpg",
           "author": "Rhododendrites",
@@ -233,8 +218,8 @@
           "open_woodland"
         ],
         "diet": [
-          "insect_eater",
-          "fruit_eater"
+          "insectivore",
+          "frugivore"
         ],
         "behavior": [
           "cavity_nester",
@@ -244,12 +229,8 @@
           "year_round"
         ],
         "functional_description": "Small thrush with electric blue back, rusty breast. Cavity nester; uses nest boxes. Eats insects in summer, native berries in winter. Secondary cavity user — depends on woodpecker holes.",
-        "life_stages": [],
         "region": "northeast_pa",
         "ecological_role": "omnivore",
-        "is_keystone": false,
-        "keystone_type": null,
-        "keystone_description": null,
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Sialia_sialis_-Michigan%2C_USA_-pair-8c.jpg/960px-Sialia_sialis_-Michigan%2C_USA_-pair-8c.jpg",
           "author": "Sandysphotos2009",
@@ -268,7 +249,7 @@
           "garden"
         ],
         "diet": [
-          "insect_eater"
+          "insectivore"
         ],
         "behavior": [
           "cavity_nester"
@@ -277,12 +258,8 @@
           "year_round"
         ],
         "functional_description": "Smallest PA woodpecker. Black-and-white with small bill. Joins mixed winter flocks. Key winter forager: excavates goldenrod galls to eat Eurosta gall fly larvae inside — a critical food-web link.",
-        "life_stages": [],
         "region": "northeast_pa",
         "ecological_role": "carnivore",
-        "is_keystone": false,
-        "keystone_type": null,
-        "keystone_description": null,
         "taxonomic_group": "group_woodpeckers",
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Dryobates_pubescens_UL_03.jpg/960px-Dryobates_pubescens_UL_03.jpg",
@@ -301,8 +278,8 @@
           "forest_edge"
         ],
         "diet": [
-          "nectar_feeder",
-          "insect_eater"
+          "nectarivore",
+          "insectivore"
         ],
         "behavior": [
           "pollinator",
@@ -314,12 +291,8 @@
           "fall_migrant"
         ],
         "functional_description": "Only breeding hummingbird in eastern NA. Arrives late April coinciding with Eastern Columbine bloom. Primary pollinator of red tubular native flowers. Also eats insects for protein; uses Yellow-bellied Sapsucker sap wells in spring.",
-        "life_stages": [],
         "region": "northeast_pa",
         "ecological_role": "omnivore",
-        "is_keystone": false,
-        "keystone_type": null,
-        "keystone_description": null,
         "active_months": [
           "May-Sep"
         ],
@@ -354,12 +327,8 @@
           "fall"
         ],
         "functional_description": "Largest heron in NA — 4 ft tall. Stands motionless in shallows then strikes. Eats fish, frogs, snakes, rodents. Nests colonially in heronries of up to 500 nests. Strongly associated with beaver ponds in PA.",
-        "life_stages": [],
         "region": "northeast_pa",
         "ecological_role": "carnivore",
-        "is_keystone": false,
-        "keystone_type": null,
-        "keystone_description": null,
         "taxonomic_group": "group_herons-and-egrets",
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/GreatBlueHeronInARiver.jpg/960px-GreatBlueHeronInARiver.jpg",
@@ -389,7 +358,6 @@
           "year_round"
         ],
         "functional_description": "Largest NA rodent. Fells trees, builds dams, creates ponds. Transforms streams into wetland habitat that supports herons, ducks, frogs, and countless other species. Kits born April–June in lodge.",
-        "life_stages": [],
         "region": "northeast_pa",
         "ecological_role": "herbivore",
         "is_keystone": true,
@@ -423,12 +391,8 @@
           "year_round"
         ],
         "functional_description": "Gray bushy-tailed rodent. Buries acorns in scatter-hoards, forgetting many — making it a critical oak regenerator alongside Blue Jays. Prefers White Oak acorns (lower tannins). Active year-round; no hibernation.",
-        "life_stages": [],
         "region": "northeast_pa",
         "ecological_role": "herbivore",
-        "is_keystone": false,
-        "keystone_type": null,
-        "keystone_description": null,
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/EasternGraySquirrel_GAm.jpg/960px-EasternGraySquirrel_GAm.jpg",
           "author": "JeffreyGammon",
@@ -457,7 +421,6 @@
           "year_round"
         ],
         "functional_description": "Most abundant large mammal in PA. Overabundant in absence of natural predators. Suppresses oak seedlings, eliminates native wildflowers (Trillium, orchids), and facilitates invasive plants. Fawns born (spotted) late May–June.",
-        "life_stages": [],
         "region": "northeast_pa",
         "ecological_role": "herbivore",
         "is_keystone": true,
@@ -480,7 +443,6 @@
           "woodland",
           "field_edge"
         ],
-        "diet": [],
         "behavior": [
           "mast_producer"
         ],
@@ -516,7 +478,6 @@
           "forest",
           "woodland"
         ],
-        "diet": [],
         "behavior": [
           "mast_producer"
         ],
@@ -553,7 +514,6 @@
           "wetland",
           "streamside"
         ],
-        "diet": [],
         "behavior": [
           "pioneer",
           "soil_stabilizer",
@@ -570,9 +530,6 @@
         ],
         "region": "northeast_pa",
         "ecological_role": "producer",
-        "is_keystone": false,
-        "keystone_type": null,
-        "keystone_description": null,
         "active_months": [
           "Mar-Jun"
         ],
@@ -595,7 +552,6 @@
           "garden",
           "roadside"
         ],
-        "diet": [],
         "behavior": [
           "nectar_source",
           "toxin_producer"
@@ -636,7 +592,6 @@
           "dry_meadow",
           "garden"
         ],
-        "diet": [],
         "behavior": [
           "nectar_source"
         ],
@@ -651,9 +606,6 @@
         ],
         "region": "northeast_pa",
         "ecological_role": "producer",
-        "is_keystone": false,
-        "keystone_type": null,
-        "keystone_description": null,
         "taxonomic_group": "group_milkweeds",
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Asclepias_tuberosa_interior.jpg/960px-Asclepias_tuberosa_interior.jpg",
@@ -671,7 +623,6 @@
           "riparian",
           "wet_meadow"
         ],
-        "diet": [],
         "behavior": [
           "nectar_source"
         ],
@@ -686,9 +637,6 @@
         ],
         "region": "northeast_pa",
         "ecological_role": "producer",
-        "is_keystone": false,
-        "keystone_type": null,
-        "keystone_description": null,
         "taxonomic_group": "group_milkweeds",
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/2/21/Swamp_milkweed_monarch.jpg",
@@ -708,7 +656,6 @@
           "meadow",
           "woodland_edge"
         ],
-        "diet": [],
         "behavior": [
           "nectar_source",
           "fall_bloomer",
@@ -749,7 +696,6 @@
           "woodland",
           "garden"
         ],
-        "diet": [],
         "behavior": [
           "nectar_source",
           "spring_bloomer"
@@ -765,9 +711,6 @@
         ],
         "region": "northeast_pa",
         "ecological_role": "producer",
-        "is_keystone": false,
-        "keystone_type": null,
-        "keystone_description": null,
         "active_months": [
           "Apr-May"
         ],
@@ -788,7 +731,6 @@
           "forest_edge",
           "riparian"
         ],
-        "diet": [],
         "behavior": [
           "early_bloomer",
           "fruit_producer"
@@ -804,9 +746,6 @@
         ],
         "region": "northeast_pa",
         "ecological_role": "producer",
-        "is_keystone": false,
-        "keystone_type": null,
-        "keystone_description": null,
         "active_months": [
           "Mar-Apr",
           "Sep-Oct"
@@ -828,7 +767,6 @@
           "woodland",
           "forest_edge"
         ],
-        "diet": [],
         "behavior": [
           "fruit_producer",
           "mast_host"
@@ -868,7 +806,7 @@
           "meadow"
         ],
         "diet": [
-          "nectar_feeder"
+          "nectarivore"
         ],
         "behavior": [
           "long_distance_migrant",
@@ -941,7 +879,7 @@
           "wet_meadow"
         ],
         "diet": [
-          "nectar_feeder"
+          "nectarivore"
         ],
         "behavior": [
           "pollinator"
@@ -989,9 +927,6 @@
         ],
         "region": "northeast_pa",
         "ecological_role": "herbivore",
-        "is_keystone": false,
-        "keystone_type": null,
-        "keystone_description": null,
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Black_Swallowtail%2C_male%2C_Ottawa.jpg/960px-Black_Swallowtail%2C_male%2C_Ottawa.jpg",
           "author": "D. Gordon E. Robertson",
@@ -1011,7 +946,7 @@
           "meadow"
         ],
         "diet": [
-          "nectar_feeder"
+          "nectarivore"
         ],
         "behavior": [
           "pollinator",
@@ -1059,9 +994,6 @@
         ],
         "region": "northeast_pa",
         "ecological_role": "herbivore",
-        "is_keystone": false,
-        "keystone_type": null,
-        "keystone_description": null,
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Pristine_Eastern_Tiger_Swallowtail.jpg/960px-Pristine_Eastern_Tiger_Swallowtail.jpg",
           "author": "HaarFager at English Wikipedia",
@@ -1079,7 +1011,7 @@
           "riparian"
         ],
         "diet": [
-          "nectar_feeder"
+          "nectarivore"
         ],
         "behavior": [
           "pollinator"
@@ -1126,9 +1058,6 @@
         ],
         "region": "northeast_pa",
         "ecological_role": "herbivore",
-        "is_keystone": false,
-        "keystone_type": null,
-        "keystone_description": null,
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Spicebush02.jpg/960px-Spicebush02.jpg",
           "author": "Greg Hume",
@@ -1176,9 +1105,6 @@
         ],
         "region": "northeast_pa",
         "ecological_role": "herbivore",
-        "is_keystone": false,
-        "keystone_type": null,
-        "keystone_description": null,
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Red_Milkweed_Beetle_%28Tetraopes_tetrophthalmus%29_Consuming_Common_Milkweed_Flower.jpg/960px-Red_Milkweed_Beetle_%28Tetraopes_tetrophthalmus%29_Consuming_Common_Milkweed_Flower.jpg",
           "author": "Rbreidbrown",
@@ -1227,9 +1153,6 @@
         ],
         "region": "northeast_pa",
         "ecological_role": "herbivore",
-        "is_keystone": false,
-        "keystone_type": null,
-        "keystone_description": null,
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Large_milkweed_bug_%2823188%29.jpg/960px-Large_milkweed_bug_%2823188%29.jpg",
           "author": "Rhododendrites",
@@ -1249,7 +1172,7 @@
           "wetland"
         ],
         "diet": [
-          "nectar_feeder",
+          "nectarivore",
           "pollen_eater"
         ],
         "behavior": [
@@ -1360,9 +1283,6 @@
         ],
         "region": "northeast_pa",
         "ecological_role": "carnivore",
-        "is_keystone": false,
-        "keystone_type": null,
-        "keystone_description": null,
         "active_months": [
           "Apr-Oct"
         ],
@@ -1396,12 +1316,8 @@
           "fall"
         ],
         "functional_description": "Most colorful NA duck. Males iridescent green head, females brown with white teardrop eye-patch. Nests in cavities — depends on large cavities like those excavated by Pileated Woodpeckers or created by beavers. Perches on branches.",
-        "life_stages": [],
         "region": "northeast_pa",
         "ecological_role": "herbivore",
-        "is_keystone": false,
-        "keystone_type": null,
-        "keystone_description": null,
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Wood_Duck_Wissahickon_Creek.png/960px-Wood_Duck_Wissahickon_Creek.png",
           "author": "Chuck Homler d/b/a FocusOnwWildlife",
@@ -1429,12 +1345,8 @@
           "year_round"
         ],
         "functional_description": "Nocturnal gliding squirrel. Stretches patagium (skin between limbs) to glide up to 150 feet. Nests in cavities created by Pileated Woodpeckers. Active at night hunting seeds, nuts, fungi, and insects.",
-        "life_stages": [],
         "region": "northeast_pa",
         "ecological_role": "omnivore",
-        "is_keystone": false,
-        "keystone_type": null,
-        "keystone_description": null,
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Northern_Flying_Squirrel%2C_D%27Alembert%2C_6400_Route_d%27Aiguebelle%2C_Rouyn-Noranda%2C_QC%2C_Canada_imported_from_iNaturalist_photo_41110662.jpg/960px-Northern_Flying_Squirrel%2C_D%27Alembert%2C_6400_Route_d%27Aiguebelle%2C_Rouyn-Noranda%2C_QC%2C_Canada_imported_from_iNaturalist_photo_41110662.jpg",
           "author": "(c) Louis Imbeau, some rights reserved (CC BY)",
@@ -1464,10 +1376,8 @@
           "summer"
         ],
         "functional_description": "Social caterpillars that build conspicuous silk tents in tree crotches during spring. Silk tents attract parasitoids and predatory wasps. Mass outbreaks occur cyclically (every 10-12 years). Important food source for birds.",
-        "life_stages": [],
         "region": "northeast_pa",
         "ecological_role": "herbivore",
-        "is_keystone": false,
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Malacosoma_americanum_caterpillar.jpg/500px-Malacosoma_americanum_caterpillar.jpg",
           "author": "СССР",
@@ -1487,7 +1397,7 @@
         ],
         "diet": [
           "granivore",
-          "insect_eater"
+          "insectivore"
         ],
         "behavior": [
           "seed_feeder",
@@ -1498,10 +1408,8 @@
           "year_round"
         ],
         "functional_description": "Brilliant red male with black face mask; duller tan female. Thick conical bill adapted for cracking seeds. Year-round resident eating primarily seeds from grasses, forbs, and shrubs; supplements with insects during breeding season. Males sing year-round from exposed perches. Strong pair bond; both parents feed fledglings.",
-        "life_stages": [],
         "region": "northeast_pa",
         "ecological_role": "omnivore",
-        "is_keystone": false,
         "taxonomic_group": "group_songbirds",
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Male_northern_cardinal_in_Central_Park_%2852612%29.jpg/500px-Male_northern_cardinal_in_Central_Park_%2852612%29.jpg",
@@ -1535,7 +1443,6 @@
           "year_round"
         ],
         "functional_description": "Striking blue, white, and black jay with prominent crest. Loud, harsh calls and excellent mimicry of hawk calls. Caches 3,000–5,000 acorns per fall — carrying up to 5 in its expandable throat pouch, transporting them up to 1 mile from source trees. In fragmented NE PA where forest patches are isolated by farms, roads, and development, blue jays are the primary mechanism connecting and regenerating oak stands. Also eats insects, eggs, and nestlings.",
-        "life_stages": [],
         "region": "northeast_pa",
         "ecological_role": "omnivore",
         "is_keystone": true,
@@ -1560,7 +1467,7 @@
           "garden"
         ],
         "diet": [
-          "insect_eater",
+          "insectivore",
           "granivore"
         ],
         "behavior": [
@@ -1572,10 +1479,8 @@
           "year_round"
         ],
         "functional_description": "Small, sleek, gray and white nuthatch that forages headfirst down tree trunks probing bark crevices for insects and spiders. Males have black caps; females gray. Acrobatic climber moving in all directions unlike other songbirds. Wedges sunflower seeds in bark crevices and hammers them open. Year-round resident that supplements winter diet with cached seeds.",
-        "life_stages": [],
         "region": "northeast_pa",
         "ecological_role": "carnivore",
-        "is_keystone": false,
         "taxonomic_group": "group_songbirds",
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/White-breasted_nuthatch_%2826471%29.jpg/960px-White-breasted_nuthatch_%2826471%29.jpg",
@@ -1596,7 +1501,7 @@
           "park"
         ],
         "diet": [
-          "insect_eater"
+          "insectivore"
         ],
         "behavior": [
           "aerial_hunter",
@@ -1609,10 +1514,8 @@
           "fall"
         ],
         "functional_description": "Crested flycatcher with yellowish belly and russet tail. Hunts flying insects from exposed perches using aerial sallies — sallying up to 100 feet to catch flying insects in mid-air. Loud, sharp 'wheep' call. Nests in tree cavities, often using shed snake skin as lining material — function unknown but possibly deters predators. Migratory; arrives late April, departs by early September.",
-        "life_stages": [],
         "region": "northeast_pa",
         "ecological_role": "carnivore",
-        "is_keystone": false,
         "taxonomic_group": "group_songbirds",
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/GreatCrestedFlycatcher.jpg/960px-GreatCrestedFlycatcher.jpg",
@@ -1674,7 +1577,6 @@
         ],
         "region": "northeast_pa",
         "ecological_role": "herbivore",
-        "is_keystone": false,
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Red-legged_grasshopper_%2872625%29.jpg/960px-Red-legged_grasshopper_%2872625%29.jpg",
           "author": "Rhododendrites",
@@ -1733,7 +1635,6 @@
         ],
         "region": "northeast_pa",
         "ecological_role": "decomposer",
-        "is_keystone": false,
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Ips_pini_adult_in_gallery.jpg/960px-Ips_pini_adult_in_gallery.jpg",
           "author": "Ron Long, Simon Fraser University, Bugwood.org",
@@ -1794,7 +1695,6 @@
         ],
         "region": "northeast_pa",
         "ecological_role": "predator",
-        "is_keystone": false,
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Araneus_diadematus_MHNT_Femelle_Fronton.jpg/960px-Araneus_diadematus_MHNT_Femelle_Fronton.jpg",
           "author": "Own work",
@@ -1854,9 +1754,6 @@
         ],
         "region": "northeast_pa",
         "ecological_role": "carnivore",
-        "is_keystone": false,
-        "keystone_type": null,
-        "keystone_description": null,
         "active_months": [
           "Apr-Oct"
         ],
@@ -1921,9 +1818,6 @@
         ],
         "region": "northeast_pa",
         "ecological_role": "omnivore",
-        "is_keystone": false,
-        "keystone_type": null,
-        "keystone_description": null,
         "active_months": [
           "Apr-Oct"
         ],
@@ -1986,9 +1880,6 @@
         ],
         "region": "northeast_pa",
         "ecological_role": "predator",
-        "is_keystone": false,
-        "keystone_type": null,
-        "keystone_description": null,
         "active_months": [
           "May-Sep"
         ],
@@ -2057,7 +1948,6 @@
         ],
         "region": "northeast_pa",
         "ecological_role": "predator",
-        "is_keystone": false,
         "taxonomic_group": "group_dragonflies",
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/c/c8/Common_whitetail.jpg",
@@ -2076,11 +1966,10 @@
           "pond",
           "stream_edge"
         ],
-        "diet": [],
         "behavior": [
           "rhizome_spreader",
           "wind_dispersed",
-          "colony_forming"
+          "colonial"
         ],
         "season": [
           "year_round"
@@ -2160,9 +2049,6 @@
         ],
         "region": "northeast_pa",
         "ecological_role": "carnivore",
-        "is_keystone": false,
-        "keystone_type": null,
-        "keystone_description": null,
         "active_months": [
           "Feb-Mar",
           "Oct-Nov"
@@ -2217,9 +2103,6 @@
         ],
         "region": "northeast_pa",
         "ecological_role": "carnivore",
-        "is_keystone": false,
-        "keystone_type": null,
-        "keystone_description": null,
         "active_months": [
           "Apr-Oct"
         ],
@@ -2283,9 +2166,6 @@
         ],
         "region": "northeast_pa",
         "ecological_role": "carnivore",
-        "is_keystone": false,
-        "keystone_type": null,
-        "keystone_description": null,
         "active_months": [
           "Jan-Dec"
         ],
@@ -2319,12 +2199,8 @@
           "year_round"
         ],
         "functional_description": "Sleek, dark-brown semi-aquatic mustelid. Excellent swimmer; hunts along stream banks and pond edges. Eats frogs, fish, crayfish, muskrat, ducks, and small mammals. Dens in muskrat lodges and stream bank burrows. Year-round resident; active in winter under ice. Strongly associated with Beaver pond complexes and healthy stream corridors — presence indicates good water quality and prey base.",
-        "life_stages": [],
         "region": "northeast_pa",
         "ecological_role": "carnivore",
-        "is_keystone": false,
-        "keystone_type": null,
-        "keystone_description": null,
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/MinkforWiki.jpg/960px-MinkforWiki.jpg",
           "author": "Needsmoreritalin",
@@ -2342,10 +2218,9 @@
           "mixed_forest",
           "forest_understory"
         ],
-        "diet": [],
         "behavior": [
           "deciduous",
-          "mast_producing",
+          "mast_producer",
           "smooth_bark"
         ],
         "season": [
@@ -2422,7 +2297,7 @@
           "mixed_forest"
         ],
         "diet": [
-          "plant_sap_feeder"
+          "sap_feeder"
         ],
         "behavior": [
           "colonial",
@@ -2473,7 +2348,6 @@
         ],
         "region": "northeast_pa",
         "ecological_role": "herbivore",
-        "is_keystone": false,
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Aphididae_-_Phyllaphis_fagi_%28Winged_Aphid%29.JPG/960px-Aphididae_-_Phyllaphis_fagi_%28Winged_Aphid%29.JPG",
           "author": "Hectonichus",
@@ -2545,7 +2419,6 @@
         ],
         "region": "northeast_pa",
         "ecological_role": "predator",
-        "is_keystone": false,
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Harvester%2C_Mer_Bleue.jpg/960px-Harvester%2C_Mer_Bleue.jpg",
           "author": "D. Gordon E. Robertson",
@@ -2563,7 +2436,6 @@
           "garden",
           "woodland_edge"
         ],
-        "diet": [],
         "behavior": [
           "deciduous",
           "large_flowers",
@@ -2622,7 +2494,6 @@
         ],
         "region": "northeast_pa",
         "ecological_role": "producer",
-        "is_keystone": false,
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Catalpa_bignonioides_inflorescence.jpg/960px-Catalpa_bignonioides_inflorescence.jpg",
           "author": "Le.Loup.Gris",
@@ -2693,7 +2564,6 @@
         ],
         "region": "northeast_pa",
         "ecological_role": "herbivore",
-        "is_keystone": false,
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/b/bd/Ceratomia_catalpaePCCA20040801-3816A.jpg",
           "author": "Patrick Coin (Patrick Coin)",
@@ -2762,7 +2632,6 @@
         ],
         "region": "northeast_pa",
         "ecological_role": "herbivore",
-        "is_keystone": false,
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Ceratomia_undulosa_SERC_06-16-15_%2827715030655%29.jpg/960px-Ceratomia_undulosa_SERC_06-16-15_%2827715030655%29.jpg",
           "author": "Smithsonian Environmental Research Center",
@@ -2782,7 +2651,7 @@
           "farmland"
         ],
         "diet": [
-          "insect_eater"
+          "insectivore"
         ],
         "behavior": [
           "aerial_hunter",
@@ -2852,7 +2721,6 @@
         ],
         "region": "northeast_pa",
         "ecological_role": "carnivore",
-        "is_keystone": false,
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Eastern_kingbird_on_the_hunt_%2856948%29.jpg/960px-Eastern_kingbird_on_the_hunt_%2856948%29.jpg",
           "author": "Rhododendrites",
@@ -2871,7 +2739,7 @@
           "water"
         ],
         "diet": [
-          "insect_eater"
+          "insectivore"
         ],
         "behavior": [
           "cavity_nester",
@@ -2954,7 +2822,7 @@
           "farmland"
         ],
         "diet": [
-          "insect_eater"
+          "insectivore"
         ],
         "behavior": [
           "mud_nest_builder",
@@ -3007,7 +2875,6 @@
         ],
         "region": "northeast_pa",
         "ecological_role": "carnivore",
-        "is_keystone": false,
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Rauchschwalbe_Hirundo_rustica.jpg/960px-Rauchschwalbe_Hirundo_rustica.jpg",
           "author": "Andreas Trepte",
@@ -3027,8 +2894,8 @@
           "garden"
         ],
         "diet": [
-          "insect_eater",
-          "nectivore",
+          "insectivore",
+          "nectarivore",
           "frugivore"
         ],
         "behavior": [
@@ -3098,7 +2965,6 @@
         ],
         "region": "northeast_pa",
         "ecological_role": "omnivore",
-        "is_keystone": false,
         "taxonomic_group": "group_songbirds",
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Baltimore_Oriole-_dorsum.jpg/960px-Baltimore_Oriole-_dorsum.jpg",
@@ -3119,8 +2985,8 @@
           "meadow"
         ],
         "diet": [
-          "insect_eater",
-          "nectivore",
+          "insectivore",
+          "nectarivore",
           "frugivore"
         ],
         "behavior": [
@@ -3180,7 +3046,6 @@
         ],
         "region": "northeast_pa",
         "ecological_role": "omnivore",
-        "is_keystone": false,
         "taxonomic_group": "group_songbirds",
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Orchard_Oriole_by_Dan_Pancamo_1.jpg/500px-Orchard_Oriole_by_Dan_Pancamo_1.jpg",
@@ -3200,7 +3065,6 @@
           "north_facing_slope",
           "ravine"
         ],
-        "diet": [],
         "behavior": [
           "evergreen",
           "thermal_cover_provider",
@@ -3247,19 +3111,15 @@
         "behavior": [
           "browser",
           "grazer",
-          "migratory_seasonal",
+          "migratory",
           "rutting"
         ],
         "season": [
           "year_round"
         ],
         "functional_description": "North America's second-largest deer species. Extirpated from PA by 1877; successfully reintroduced in Elk County (north-central PA) starting 1913. Current PA population ~1,500 animals centered on Clearfield, Cameron, Clinton, and Elk counties — edges of NE PA range. Bulls carry massive antlers shed each spring; rut occurs September–October with bugling calls. Elk graze meadows and browse forest edges, heavily cropping grasses, sedges, and forbs. Winter herds congregate in open fields near Benezette. Calves born May–June; vulnerable to coyote and black bear predation for first weeks of life.",
-        "life_stages": [],
         "region": "northeast_pa",
         "ecological_role": "herbivore",
-        "is_keystone": false,
-        "keystone_type": null,
-        "keystone_description": null,
         "active_months": [
           "Jan-Dec"
         ],
@@ -3297,12 +3157,8 @@
           "fall"
         ],
         "functional_description": "Largest land predator in PA. Black bears are omnivores with diet shifting seasonally: spring brings carrion, emerging vegetation, and insects (especially ant colonies and grubs); summer focuses on berries and soft mast; fall hyperphagia drives heavy acorn, beechnut, and wild cherry consumption to build fat for winter. Dens November–March (females with cubs remain dormant longer). Cubs born January–February in den; 1–4 per litter. Sow defends cubs aggressively. Important predator of White-tailed Deer fawns in May–June and Elk calves. PA black bear population ~20,000; one of the highest densities in the eastern US.",
-        "life_stages": [],
         "region": "northeast_pa",
         "ecological_role": "omnivore",
-        "is_keystone": false,
-        "keystone_type": null,
-        "keystone_description": null,
         "active_months": [
           "Apr-Nov"
         ],
@@ -3338,12 +3194,8 @@
           "year_round"
         ],
         "functional_description": "Medium-sized masked omnivore abundant throughout NE PA. Highly adaptable; thrives in forests, wetlands, and suburban edges. Diet includes crayfish, frogs, turtle eggs, salamander egg masses, bird eggs, invertebrates, fruit, acorns, and carrion. Den in tree cavities (especially Pileated Woodpecker excavations), hollow logs, and groundhog burrows. Litters of 2–5 kits born April–May. Major predator of wetland amphibian eggs (spotted salamander, wood frog) and painted turtle nests. Raccoon density in NE PA has increased substantially with forest fragmentation and suburban expansion.",
-        "life_stages": [],
         "region": "northeast_pa",
         "ecological_role": "omnivore",
-        "is_keystone": false,
-        "keystone_type": null,
-        "keystone_description": null,
         "active_months": [
           "Jan-Dec"
         ],
@@ -3379,12 +3231,8 @@
           "year_round"
         ],
         "functional_description": "The Eastern Coyote is a hybrid of western Coyote and Eastern Wolf, larger than its western counterpart (35–55 lbs). Colonized PA by the 1980s following wolf extirpation. Now established throughout NE PA. Primary predators of White-tailed Deer fawns (May–June) and weakened adults in winter, providing a partial top-down check on deer populations in the absence of wolves. Also takes Elk calves, rabbits, groundhogs, raccoons, and carrion. Pair-bonds year-round; pups born April–May in earthen dens. Howling choruses audible year-round. Suppresses Red Fox through direct competition — foxes retreat to more suburban edges where coyote pressure is lower.",
-        "life_stages": [],
         "region": "northeast_pa",
         "ecological_role": "carnivore",
-        "is_keystone": false,
-        "keystone_type": null,
-        "keystone_description": null,
         "active_months": [
           "Jan-Dec"
         ],
@@ -3421,12 +3269,8 @@
           "fall"
         ],
         "functional_description": "PA's largest ground squirrel. Excavates extensive burrow systems (5+ ft deep, 25+ ft long) with multiple entrances — creating shelter used by Virginia Opossum, Raccoon, Red Fox, Cottontail Rabbit, and numerous snake and invertebrate species long after the groundhog vacates or dies. True hibernator: enters torpor October–November and emerges February–March. Primarily a grazer and browser of grasses, clovers, and garden crops. 2–6 young born April–May underground. Major prey base for Red-tailed Hawk, Eastern Coyote, Red Fox, and Black Bear throughout the active season.",
-        "life_stages": [],
         "region": "northeast_pa",
         "ecological_role": "herbivore",
-        "is_keystone": false,
-        "keystone_type": null,
-        "keystone_description": null,
         "active_months": [
           "Mar-Oct"
         ],
@@ -3461,12 +3305,8 @@
           "year_round"
         ],
         "functional_description": "North America's only marsupial; young complete development in mother's pouch. Diet is extremely broad: carrion, invertebrates, fruit, bird eggs, ticks (a single opossum consumes 5,000+ ticks per season), frogs, snakes, and garbage. Highly resistant to rabies due to lower body temperature. Immune to pit viper venom. Famously 'plays dead' (thanatosis) when threatened. Den in hollow logs, brush piles, and abandoned groundhog or skunk burrows. Litters of 6–20 joeys born after 13-day gestation; 8–9 survive on average attached to nipples in pouch for 2 months. Expanded northward in PA with warming winters over past 40 years.",
-        "life_stages": [],
         "region": "northeast_pa",
         "ecological_role": "omnivore",
-        "is_keystone": false,
-        "keystone_type": null,
-        "keystone_description": null,
         "active_months": [
           "Jan-Dec"
         ],
@@ -3486,7 +3326,6 @@
           "forest",
           "woodland"
         ],
-        "diet": [],
         "behavior": [
           "holoparasitic",
           "spring_ephemeral"
@@ -3499,10 +3338,8 @@
           "Apr-Jun"
         ],
         "functional_description": "A holoparasitic plant with no chlorophyll — steals carbohydrates entirely from the roots of oaks (Quercus spp.). Emerges as pale yellow-brown, corn-cob-like clusters from the forest floor in April–June. Cannot photosynthesize; its entire carbon budget comes from host root connections that develop as a dense underground tuber-like mass. One of the most important early-spring food sources for American Black Bear: bears emerge from dens in late March–April when calorie-rich foods are scarce and actively seek bear corn patches, which recur in the same locations year to year. The plant's common name derives directly from this relationship.",
-        "life_stages": [],
         "region": "northeast_pa",
         "ecological_role": "parasite",
-        "is_keystone": false,
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Conopholis_americana_-_Bear_Corn.jpg/500px-Conopholis_americana_-_Bear_Corn.jpg",
           "author": "Fritzflohrreynolds",
@@ -3534,12 +3371,8 @@
           "year_round"
         ],
         "functional_description": "Rusty-red medium canid with white-tipped tail. Highly adaptable generalist predator of forest edges and open habitats. Diet includes voles, meadow mice, cottontail rabbits, groundhogs, birds, insects, berries, and carrion. Uses a distinctive pouncing 'mousing' technique to catch prey under snow. Monogamous pairs den in earthen burrows February–May; 4–6 kits per litter. Eastern Coyote is a dominant competitor — coyote colonization of NE PA since the 1980s has displaced Red Fox from core forest habitats into suburban fringes where coyote pressure is reduced. Red Fox in turn suppresses populations of smaller predators like weasels.",
-        "life_stages": [],
         "region": "northeast_pa",
         "ecological_role": "carnivore",
-        "is_keystone": false,
-        "keystone_type": null,
-        "keystone_description": null,
         "active_months": [
           "Jan-Dec"
         ],
@@ -3563,7 +3396,7 @@
           "suburban"
         ],
         "diet": [
-          "insect_eater"
+          "insectivore"
         ],
         "behavior": [
           "nocturnal",
@@ -3648,7 +3481,7 @@
           "farmland"
         ],
         "diet": [
-          "insect_eater"
+          "insectivore"
         ],
         "behavior": [
           "nocturnal",
@@ -3707,7 +3540,6 @@
         ],
         "region": "northeast_pa",
         "ecological_role": "carnivore",
-        "is_keystone": false,
         "taxonomic_group": "group_bats",
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Big_brown_bat_crawl.png/960px-Big_brown_bat_crawl.png",
@@ -3728,10 +3560,9 @@
           "forest_edge",
           "riparian"
         ],
-        "diet": [],
         "behavior": [
           "late_blooming",
-          "colony_forming",
+          "colonial",
           "bee_magnet"
         ],
         "season": [
@@ -3741,7 +3572,6 @@
           "Sep-Oct"
         ],
         "functional_description": "One of the most ecologically critical native wildflowers in NE PA. Tall (2–6 ft) with deep purple ray flowers and yellow disk centers. Blooms September–October — among the very last native plants to flower before frost, providing an irreplaceable nectar bridge for migrating Monarchs, native bumble bees building winter fat reserves, and dozens of butterfly and beetle species. A single aster plant can produce thousands of florets. Colonizes roadsides, wet meadows, and disturbed edges; thrives in full sun to light shade.",
-        "life_stages": [],
         "region": "northeast_pa",
         "ecological_role": "producer",
         "is_keystone": true,
@@ -3764,7 +3594,6 @@
           "forest_edge",
           "dry_meadow"
         ],
-        "diet": [],
         "behavior": [
           "early_summer_blooming",
           "clump_forming"
@@ -3777,10 +3606,8 @@
           "May-Jul"
         ],
         "functional_description": "Tall native wildflower (2–4 ft) with showy white-to-pale-pink tubular flowers that closely resemble true foxglove (Digitalis). One of the most common native Penstemon in eastern North America. Blooms May–July in open meadows, forest edges, and roadsides. Tubular flowers with a hairy lower lip ('beardtongue') are precisely shaped for bumble bee pollination — large bees force entry and contact anthers on their backs. Also visited by Ruby-throated Hummingbirds probing for nectar. Long-lived perennial forming attractive clumps. Critical bridge-season pollinator plant between spring ephemerals and summer wildflowers.",
-        "life_stages": [],
         "region": "northeast_pa",
         "ecological_role": "producer",
-        "is_keystone": false,
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Penstemon_digitalis.jpg/500px-Penstemon_digitalis.jpg",
           "author": "Eric Hunt",
@@ -3797,7 +3624,6 @@
           "woodland",
           "shrubland"
         ],
-        "diet": [],
         "behavior": [
           "early_successional",
           "bird_dispersed",
@@ -3810,10 +3636,8 @@
           "Apr-Sep"
         ],
         "functional_description": "Small fast-growing tree (15–35 ft) that is the first woody plant to colonize clear-cuts, burns, and forest disturbances in NE PA. Named for its tiny bright-red cherries borne in clusters along the branches in July–August. Among the first trees to bloom in spring (April–May), providing critical early nectar when bumble bee queens are newly emerged. Supports a rich caterpillar community on Prunus foliage. Tiny cherries are eagerly eaten by Cedar Waxwings, American Robins, thrushes, and Black Bears — making Pin Cherry one of the most important wildlife food trees in early successional habitat.",
-        "life_stages": [],
         "region": "northeast_pa",
         "ecological_role": "producer",
-        "is_keystone": false,
         "taxonomic_group": "group_prunus",
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Prunus_pensylvanica_Cleaned.jpg/500px-Prunus_pensylvanica_Cleaned.jpg",
@@ -3833,7 +3657,6 @@
           "riparian",
           "woodland_edge"
         ],
-        "diet": [],
         "behavior": [
           "thicket_forming",
           "bird_dispersed",
@@ -3846,10 +3669,8 @@
           "May-Sep"
         ],
         "functional_description": "Large native shrub or small tree (up to 30 ft) bearing dense clusters of dark red-to-black astringent cherries in late summer. One of the most important wildlife food shrubs in NE PA: the fruits are heavily used by Cedar Waxwings, American Robins, thrushes, Black Bear, and other frugivores from August through September. Blooms in May with showy white cylindrical flower clusters that attract bumble bees and other pollinators. Major larval host for Eastern Tent Caterpillar — silk tents in branch forks are a classic spring sight. The name 'chokecherry' reflects the fruit's intense astringency when raw; the same compounds (cyanogenic glycosides) deter most mammal herbivores but don't stop birds.",
-        "life_stages": [],
         "region": "northeast_pa",
         "ecological_role": "producer",
-        "is_keystone": false,
         "taxonomic_group": "group_prunus",
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Prunus_virginiana_flowers.jpg/960px-Prunus_virginiana_flowers.jpg",
@@ -3869,7 +3690,6 @@
           "forest_edge",
           "riparian"
         ],
-        "diet": [],
         "behavior": [
           "mast_host",
           "cavity_provider",
@@ -3882,7 +3702,6 @@
           "Jan-Dec"
         ],
         "functional_description": "Large forest tree (60–120 ft) known throughout NE PA as the 'bee tree.' Produces dense clusters of pale yellow, intensely fragrant flowers in late June–early July — among the most productive nectar sources of any eastern North American tree. A single basswood in full bloom can be heard buzzing from 50 feet away as hundreds of bees work it simultaneously. The bloom is brief (7–10 days) but immense: a single mature tree can produce more nectar during its bloom than an acre of clover. Soft, light wood decays relatively quickly, creating hollow trunks and cavity-rich snags. Hosts 130+ Lepidoptera species including Eastern Tiger Swallowtail. Inner bark (bast) was used by Indigenous peoples for rope, cordage, and baskets — the source of the name 'basswood.'",
-        "life_stages": [],
         "region": "northeast_pa",
         "ecological_role": "producer",
         "is_keystone": true,
@@ -3921,7 +3740,6 @@
           "Jan-Dec"
         ],
         "functional_description": "Small, stout, short-tailed vole abundant in grassy fields, meadows, and wet meadow edges throughout NE PA. Creates dense surface runway networks through grass and under snow. Herbivore eating grasses, sedges, roots, and bulbs — capable of significant vegetation impacts at high densities. Population undergoes boom-bust cycles every 2–4 years, with peak years reaching 1,000+ individuals per acre. These cycles drive corresponding fluctuations in predator populations across open habitats: Red-tailed Hawk, American Kestrel, Red Fox, and American Mink all increase when voles peak. Active year-round including under snow, where subnivean runway systems provide winter foraging. Among the most important prey species in NE PA food webs.",
-        "life_stages": [],
         "region": "northeast_pa",
         "ecological_role": "consumer",
         "is_keystone": true,
@@ -3947,8 +3765,8 @@
           "garden"
         ],
         "diet": [
-          "insect_eater",
-          "fruit_eater"
+          "insectivore",
+          "frugivore"
         ],
         "behavior": [
           "nocturnal",
@@ -3962,12 +3780,8 @@
           "Jan-Dec"
         ],
         "functional_description": "Perhaps Pennsylvania's most abundant wild mammal, found in virtually every woodland, forest edge, and brushy habitat in NE PA. Eats insects, acorns, berries, mushrooms, and seeds — an omnivore linking plant and animal food webs. Scatter-hoards thousands of acorns per fall, caching more than it retrieves and acting as a secondary oak disperser. Active year-round with population peaks in late fall following mast years. Primary reservoir host for the Lyme disease bacterium (Borrelia burgdorferi): larval deer ticks feed on white-footed mice in July, pick up the spirochete, and molt into infectious nymphs the following spring. Prey for Great Horned Owl, Barred Owl, Red Fox, and Weasels.",
-        "life_stages": [],
         "region": "northeast_pa",
         "ecological_role": "consumer",
-        "is_keystone": false,
-        "keystone_type": null,
-        "keystone_description": null,
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/White-footed_Mouse%2C_Cantley%2C_Quebec.jpg/960px-White-footed_Mouse%2C_Cantley%2C_Quebec.jpg",
           "author": "D. Gordon E. Robertson",
@@ -4002,7 +3816,6 @@
           "Jan-Dec"
         ],
         "functional_description": "Largest member of the weasel family (mustelidae) in NE PA. Superbly adapted swimmer — dense waterproof fur, webbed feet, and muscular tail enable pursuit of fish at up to 6 mph underwater. Primarily eats fish, crayfish, and frogs; opportunistically takes muskrat and water birds. Lives in family groups; highly playful and social compared to other mustelids. The Pocono Mountains historically harbored one of Pennsylvania's last non-extirpated otter populations during the 19th-20th century pollution era; wild Pocono otters served as founder stock for statewide reintroduction efforts beginning in 1982. Now reestablished throughout the Delaware River watershed and major NE PA streams. Presence indicates high water quality and abundant fish prey.",
-        "life_stages": [],
         "region": "northeast_pa",
         "ecological_role": "carnivore",
         "is_keystone": true,
@@ -4027,8 +3840,8 @@
           "forest_edge"
         ],
         "diet": [
-          "insect_eater",
-          "fruit_eater"
+          "insectivore",
+          "frugivore"
         ],
         "behavior": [
           "migratory",
@@ -4044,12 +3857,8 @@
           "May-Sep"
         ],
         "functional_description": "Electric-blue songbird of brushy fields and forest edges — one of the most visually striking summer residents of NE PA. Males are unmistakably iridescent cobalt blue in breeding plumage (actually structural color; the feathers contain no blue pigment). Breeds in early-successional habitats: brushy roadsides, powerline corridors, forest clearcuts, and old field edges with shrubby structure. Diet shifts seasonally: insects dominate in summer (protein for nestlings), seeds and small berries in migration. Males sing persistently from exposed perches throughout June and July, navigating by the stars during nocturnal migration to Central America. One of the most abundant breeding songbirds in disturbed and edge habitats in NE PA.",
-        "life_stages": [],
         "region": "northeast_pa",
         "ecological_role": "consumer",
-        "is_keystone": false,
-        "keystone_type": null,
-        "keystone_description": null,
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Indigo_Bunting_by_Dan_Pancamo_4.jpg/960px-Indigo_Bunting_by_Dan_Pancamo_4.jpg",
           "author": "Dan Pancamo",
@@ -4068,7 +3877,6 @@
           "open_woodland",
           "rocky_slope"
         ],
-        "diet": [],
         "behavior": [
           "nitrogen_fixer",
           "drought_tolerant",
@@ -4082,12 +3890,8 @@
           "May-Aug"
         ],
         "functional_description": "Clump-forming native wildflower of dry, acidic, open ground — tolerant of poor sandy or rocky soils where few other wildflowers establish. Yellow pea-like flowers bloom in June–July, followed by inflated black seed pods that rattle in fall. Fixes atmospheric nitrogen via root bacteria, enriching thin soils. The foliage turns charcoal black upon frost. Leaves are bluish-green and slightly waxy, giving the plant a distinctive cool tone in the landscape. Deer resistant due to alkaloids. Larval host for Wild Indigo Duskywing skipper and Frosted Elfin butterfly — both specialists that cannot complete their life cycles without Baptisia. Provides nectar for bumble bees, which are its primary pollinators. Long-lived once established; plants may persist 20+ years from a single root crown.",
-        "life_stages": [],
         "region": "northeast_pa",
         "ecological_role": "producer",
-        "is_keystone": false,
-        "keystone_type": null,
-        "keystone_description": null,
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Baptisia_tinctoria.jpg/960px-Baptisia_tinctoria.jpg",
           "author": "Mason Brock (Masebrock)",
@@ -4105,7 +3909,6 @@
           "riparian",
           "forest_edge"
         ],
-        "diet": [],
         "behavior": [
           "fruit_producer",
           "early_bloomer"
@@ -4122,9 +3925,6 @@
         ],
         "region": "northeast_pa",
         "ecological_role": "producer",
-        "is_keystone": false,
-        "keystone_type": null,
-        "keystone_description": null,
         "active_months": [
           "Apr-May",
           "Aug-Oct"
@@ -4147,8 +3947,8 @@
           "garden"
         ],
         "diet": [
-          "insect_eater",
-          "seed_eater"
+          "insectivore",
+          "granivore"
         ],
         "behavior": [
           "cavity_nester",
@@ -4159,7 +3959,6 @@
           "year_round"
         ],
         "functional_description": "Small, active songbird with black cap and bib, white cheeks. Year-round PA resident in northeastern white pine and mixed forests. Acrobatic feeder — hangs upside-down to extract insects from bark and twigs. Winter diet switches to seeds; critical goldenrod gall excavator alongside Downy Woodpecker. Joins mixed-species winter flocks. Cavity nester using woodpecker holes and nest boxes. Highly social; chickadees maintain complex dominance hierarchies and share information about food sources and predators through vocalizations (including the distinctive 'chick-a-dee-dee-dee' call).",
-        "life_stages": [],
         "region": "northeast_pa",
         "ecological_role": "consumer",
         "is_keystone": true,
@@ -4184,7 +3983,7 @@
           "woodland"
         ],
         "diet": [
-          "nectar_feeder"
+          "nectarivore"
         ],
         "behavior": [
           "pollinator",
@@ -4232,9 +4031,6 @@
         ],
         "region": "northeast_pa",
         "ecological_role": "herbivore",
-        "is_keystone": false,
-        "keystone_type": null,
-        "keystone_description": null,
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Zebra_Swallowtail%2C_Megan_McCarty69.jpg/960px-Zebra_Swallowtail%2C_Megan_McCarty69.jpg",
           "author": "Megan McCarty",
@@ -4252,7 +4048,7 @@
           "spring_fed_pond"
         ],
         "diet": [
-          "insect_eater",
+          "insectivore",
           "predator"
         ],
         "behavior": [
@@ -4264,7 +4060,6 @@
           "year_round"
         ],
         "functional_description": "Small salmonid trout endemic to northeastern North America. Native to NE PA cold-water streams and headwater creeks — requires water below 65°F year-round. Distinctive coloring: dark back with light wavy 'vermiculated' markings; red-orange spots ringed in blue on sides. Top and middle predators in stream food webs — feeds on aquatic insect nymphs (mayflies, caddisflies, stoneflies) as juveniles; larger adults take sculpin, other small fish, and terrestrial insects. Brook Trout presence is an indicator of clean, well-oxygenated, cold water with intact riparian forest providing leaf-litter input and temperature regulation. Once abundant throughout NE PA but now restricted to headwater tributaries due to stream warming and siltation from deforestation and agriculture.",
-        "life_stages": [],
         "region": "northeast_pa",
         "ecological_role": "carnivore",
         "is_keystone": true,
@@ -4289,7 +4084,6 @@
           "forest_understory",
           "riparian"
         ],
-        "diet": [],
         "behavior": [
           "evergreen",
           "fruit_producer"
@@ -4329,9 +4123,6 @@
         ],
         "region": "northeast_pa",
         "ecological_role": "producer",
-        "is_keystone": false,
-        "keystone_type": null,
-        "keystone_description": null,
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Ilex_opaca_USDA.jpg/960px-Ilex_opaca_USDA.jpg",
           "author": "Wikimedia Commons",
@@ -4350,7 +4141,6 @@
           "riparian",
           "floodplain"
         ],
-        "diet": [],
         "behavior": [
           "mast_producer",
           "deep_rooted"
@@ -4387,9 +4177,6 @@
         ],
         "region": "northeast_pa",
         "ecological_role": "producer",
-        "is_keystone": false,
-        "keystone_type": null,
-        "keystone_description": null,
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Carya_cordiformis.jpg/960px-Carya_cordiformis.jpg",
           "author": "MPF",
@@ -4407,7 +4194,6 @@
           "woodland",
           "forest_edge"
         ],
-        "diet": [],
         "behavior": [
           "mast_producer",
           "shaggy_bark"
@@ -4465,7 +4251,6 @@
           "riparian",
           "wetland_edge"
         ],
-        "diet": [],
         "behavior": [
           "early_fall_color",
           "fruit_producer"
@@ -4513,9 +4298,6 @@
         ],
         "region": "northeast_pa",
         "ecological_role": "producer",
-        "is_keystone": false,
-        "keystone_type": null,
-        "keystone_description": null,
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Nyssa_sylvatica_v_sylvatica.jpg/960px-Nyssa_sylvatica_v_sylvatica.jpg",
           "author": "Eric Hunt",
@@ -4532,9 +4314,8 @@
           "deciduous_forest",
           "mixed_forest",
           "woodland",
-          "disturbed_areas"
+          "disturbed_site"
         ],
-        "diet": [],
         "behavior": [
           "evergreen",
           "pioneer",
@@ -4575,9 +4356,6 @@
         ],
         "region": "northeast_pa",
         "ecological_role": "producer",
-        "is_keystone": false,
-        "keystone_type": null,
-        "keystone_description": null,
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/4/48/Pinus_strobus_trees.jpg",
           "author": "US FWS",
@@ -4593,9 +4371,8 @@
         "habitat": [
           "cultivated",
           "forest_edge",
-          "disturbed_areas"
+          "disturbed_site"
         ],
-        "diet": [],
         "behavior": [
           "evergreen",
           "ornamental",
@@ -4636,9 +4413,6 @@
         ],
         "region": "northeast_pa",
         "ecological_role": "producer",
-        "is_keystone": false,
-        "keystone_type": null,
-        "keystone_description": null,
         "status": "i",
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Kuusk_Keila-Paldiski_rdt_%C3%A4%C3%A4res.jpg/500px-Kuusk_Keila-Paldiski_rdt_%C3%A4%C3%A4res.jpg",
@@ -4657,7 +4431,6 @@
           "woodland",
           "forest_understory"
         ],
-        "diet": [],
         "behavior": [
           "spring_bloomer",
           "fruit_producer"
@@ -4708,9 +4481,6 @@
         ],
         "region": "northeast_pa",
         "ecological_role": "producer",
-        "is_keystone": false,
-        "keystone_type": null,
-        "keystone_description": null,
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Cornus_florida_Arkansas.jpg/960px-Cornus_florida_Arkansas.jpg",
           "author": "Eric Hunt",
@@ -4727,9 +4497,8 @@
           "deciduous_forest",
           "woodland",
           "forest_edge",
-          "disturbed_areas"
+          "disturbed_site"
         ],
-        "diet": [],
         "behavior": [
           "early_spring_bloomer",
           "fruit_producer",
@@ -4801,7 +4570,6 @@
           "forest_edge",
           "riparian"
         ],
-        "diet": [],
         "behavior": [
           "early_spring_bloomer",
           "ornamental"
@@ -4852,9 +4620,6 @@
         ],
         "region": "northeast_pa",
         "ecological_role": "producer",
-        "is_keystone": false,
-        "keystone_type": null,
-        "keystone_description": null,
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/RedbudOhio02.jpg/960px-RedbudOhio02.jpg",
           "author": "Greg Hume",
@@ -4873,7 +4638,6 @@
           "forest_edge",
           "riparian"
         ],
-        "diet": [],
         "behavior": [
           "fruit_producer",
           "pioneer"
@@ -4910,9 +4674,6 @@
         ],
         "region": "northeast_pa",
         "ecological_role": "producer",
-        "is_keystone": false,
-        "keystone_type": null,
-        "keystone_description": null,
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Celtis_occidentalis_20090606.jpg/500px-Celtis_occidentalis_20090606.jpg",
           "author": "Chhe (talk)",
@@ -4929,7 +4690,6 @@
           "deciduous_forest",
           "woodland"
         ],
-        "diet": [],
         "behavior": [
           "tall_growing",
           "spring_bloomer"
@@ -4977,9 +4737,6 @@
         ],
         "region": "northeast_pa",
         "ecological_role": "producer",
-        "is_keystone": false,
-        "keystone_type": null,
-        "keystone_description": null,
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Liriodendron_tulipifera_%28arbre%29_-_Laeken.JPG/500px-Liriodendron_tulipifera_%28arbre%29_-_Laeken.JPG",
           "author": "Jean-Pol GRANDMONT",
@@ -4996,9 +4753,8 @@
           "riparian",
           "wetland",
           "forest_edge",
-          "disturbed_areas"
+          "disturbed_site"
         ],
-        "diet": [],
         "behavior": [
           "pioneer",
           "seed_producer",
@@ -5044,9 +4800,6 @@
         ],
         "region": "northeast_pa",
         "ecological_role": "producer",
-        "is_keystone": false,
-        "keystone_type": null,
-        "keystone_description": null,
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Acer_negundo_44809168.jpg/960px-Acer_negundo_44809168.jpg",
           "author": "CK Kelly",
@@ -5063,9 +4816,8 @@
           "woodland",
           "forest_edge",
           "riparian",
-          "disturbed_areas"
+          "disturbed_site"
         ],
-        "diet": [],
         "behavior": [
           "spring_bloomer",
           "fruit_producer",
@@ -5117,9 +4869,6 @@
         ],
         "region": "northeast_pa",
         "ecological_role": "producer",
-        "is_keystone": false,
-        "keystone_type": null,
-        "keystone_description": null,
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Amelanchier_arborea_leaves.JPG/960px-Amelanchier_arborea_leaves.JPG",
           "author": "Dcrjsr",
@@ -5137,7 +4886,6 @@
           "woodland",
           "forest_edge"
         ],
-        "diet": [],
         "behavior": [
           "aromatic_twigs",
           "birch_catkins",
@@ -5187,9 +4935,6 @@
         ],
         "region": "northeast_pa",
         "ecological_role": "producer",
-        "is_keystone": false,
-        "keystone_type": null,
-        "keystone_description": null,
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Betula_lenta_1.jpg/500px-Betula_lenta_1.jpg",
           "author": "Lynk media",
@@ -5206,9 +4951,8 @@
           "deciduous_forest",
           "woodland",
           "forest_understory",
-          "rocky_slopes"
+          "rocky_slope"
         ],
-        "diet": [],
         "behavior": [
           "understory_tree",
           "hard_wood"
@@ -5256,9 +5000,6 @@
         ],
         "region": "northeast_pa",
         "ecological_role": "producer",
-        "is_keystone": false,
-        "keystone_type": null,
-        "keystone_description": null,
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Ostrya_virginiana_2.jpg/500px-Ostrya_virginiana_2.jpg",
           "author": "Eric Hunt",
@@ -5278,7 +5019,6 @@
           "disturbed_site",
           "woodland_edge"
         ],
-        "diet": [],
         "behavior": [
           "fast_growing",
           "bird_dispersed",
@@ -5298,9 +5038,6 @@
         ],
         "region": "northeast_pa",
         "ecological_role": "producer",
-        "is_keystone": false,
-        "keystone_type": null,
-        "keystone_description": null,
         "active_months": [
           "May-Jun",
           "Sep-Oct"
@@ -5324,7 +5061,6 @@
           "shrubland",
           "stream_edge"
         ],
-        "diet": [],
         "behavior": [
           "fast_growing",
           "bird_dispersed",
@@ -5342,9 +5078,6 @@
         ],
         "region": "northeast_pa",
         "ecological_role": "producer",
-        "is_keystone": false,
-        "keystone_type": null,
-        "keystone_description": null,
         "active_months": [
           "May-Jun",
           "Aug-Oct"
@@ -5368,7 +5101,6 @@
           "disturbed_site",
           "shrubland"
         ],
-        "diet": [],
         "behavior": [
           "fast_growing",
           "bird_dispersed",
@@ -5386,9 +5118,6 @@
         ],
         "region": "northeast_pa",
         "ecological_role": "producer",
-        "is_keystone": false,
-        "keystone_type": null,
-        "keystone_description": null,
         "active_months": [
           "May-Jun",
           "Sep-Nov"
@@ -5413,7 +5142,6 @@
           "roadside",
           "grassland"
         ],
-        "diet": [],
         "behavior": [
           "rhizome_spreader",
           "wind_dispersed",
@@ -5434,9 +5162,6 @@
         ],
         "region": "northeast_pa",
         "ecological_role": "producer",
-        "is_keystone": false,
-        "keystone_type": null,
-        "keystone_description": null,
         "active_months": [
           "Jun-Sep"
         ],
@@ -5460,7 +5185,6 @@
           "riparian",
           "field_edge"
         ],
-        "diet": [],
         "behavior": [
           "thicket_forming",
           "bird_dispersed",
@@ -5479,9 +5203,6 @@
         ],
         "region": "northeast_pa",
         "ecological_role": "producer",
-        "is_keystone": false,
-        "keystone_type": null,
-        "keystone_description": null,
         "active_months": [
           "May-Jun",
           "Sep-Feb"
@@ -5505,7 +5226,6 @@
           "disturbed_site",
           "garden"
         ],
-        "diet": [],
         "behavior": [
           "evergreen",
           "rhizome_spreader",
@@ -5521,9 +5241,6 @@
         ],
         "region": "northeast_pa",
         "ecological_role": "producer",
-        "is_keystone": false,
-        "keystone_type": null,
-        "keystone_description": null,
         "active_months": [
           "Mar-May"
         ],
@@ -5546,7 +5263,6 @@
           "shrubland",
           "stream_edge"
         ],
-        "diet": [],
         "behavior": [
           "thicket_forming",
           "bird_dispersed",
@@ -5565,9 +5281,6 @@
         ],
         "region": "northeast_pa",
         "ecological_role": "producer",
-        "is_keystone": false,
-        "keystone_type": null,
-        "keystone_description": null,
         "active_months": [
           "May-Jun",
           "Jul-Aug"
@@ -5592,7 +5305,6 @@
           "disturbed_site",
           "woodland"
         ],
-        "diet": [],
         "behavior": [
           "fast_growing",
           "wind_dispersed",
@@ -5612,9 +5324,6 @@
         ],
         "region": "northeast_pa",
         "ecological_role": "producer",
-        "is_keystone": false,
-        "keystone_type": null,
-        "keystone_description": null,
         "active_months": [
           "Apr-Jun"
         ],
@@ -5651,12 +5360,8 @@
           "fall_migrant"
         ],
         "functional_description": "Cryptic wetland specialist requiring intact cattail marshes. Endangered due to 50%+ loss of Pennsylvania wetlands; remaining marshes threatened by sedimentation and eutrophication. Booming call advertising in breeding season indicates marsh health.",
-        "life_stages": [],
         "region": "northeast_pa",
         "ecological_role": "carnivore",
-        "is_keystone": false,
-        "keystone_type": null,
-        "keystone_description": null,
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Botaurus_lentiginosus_28079.JPG/500px-Botaurus_lentiginosus_28079.JPG",
           "author": "Walter Siegmund",
@@ -5686,12 +5391,8 @@
           "year_round"
         ],
         "functional_description": "Grassland predator hunting birds, small mammals, and insects from open perches. Unique behavior of impaling prey on thorns or barbed wire. Endangered by grassland habitat loss and West Nile virus susceptibility.",
-        "life_stages": [],
         "region": "northeast_pa",
         "ecological_role": "carnivore",
-        "is_keystone": false,
-        "keystone_type": null,
-        "keystone_description": null,
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Shrike_Loggerhead_JG.jpg/960px-Shrike_Loggerhead_JG.jpg",
           "author": "JeffreyGammon",
@@ -5711,8 +5412,8 @@
           "sandy_shore"
         ],
         "diet": [
-          "insect_eater",
-          "invertebrate_eater"
+          "insectivore",
+          "invertivore"
         ],
         "behavior": [
           "ground_nester",
@@ -5724,12 +5425,8 @@
           "fall_migrant"
         ],
         "functional_description": "Shorebird indicator of intact Great Lakes sandy habitat. Extirpated from PA 1955-2017; recolonization 2017 represents major recovery success. Requires predator protection and disturbance-free nesting areas.",
-        "life_stages": [],
         "region": "northeast_pa",
         "ecological_role": "omnivore",
-        "is_keystone": false,
-        "keystone_type": null,
-        "keystone_description": null,
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Charadrius-melodus-004_edit.jpg/960px-Charadrius-melodus-004_edit.jpg",
           "author": "Mdf",
@@ -5763,12 +5460,8 @@
           "winter"
         ],
         "functional_description": "Grassland predator specializing in voles. Hovers over open fields hunting at low altitude. Endangered by habitat loss (forest succession, intensive agriculture) and grassland fragmentation.",
-        "life_stages": [],
         "region": "northeast_pa",
         "ecological_role": "carnivore",
-        "is_keystone": false,
-        "keystone_type": null,
-        "keystone_description": null,
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Short_Eared_Owl_on_the_Ground.jpg/960px-Short_Eared_Owl_on_the_Ground.jpg",
           "author": "Sumeet Moghe",
@@ -5798,12 +5491,8 @@
           "year_round"
         ],
         "functional_description": "Old-growth forest specialist indicating healthy coniferous forest structure. Threatened by loss of dense conifer cover and eastern hemlock decline from pest and disease pressure.",
-        "life_stages": [],
         "region": "northeast_pa",
         "ecological_role": "carnivore",
-        "is_keystone": false,
-        "keystone_type": null,
-        "keystone_description": null,
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Long-eared_Owl_-_Kisjuszallas_-_Hungary_S4E0920_%2815671750198%29.jpg/500px-Long-eared_Owl_-_Kisjuszallas_-_Hungary_S4E0920_%2815671750198%29.jpg",
           "author": "Francesco Veronesi from Italy",
@@ -5834,12 +5523,8 @@
           "year_round"
         ],
         "functional_description": "Open habitat predator relying on small mammals (95% voles, cotton rats). Low, buoyant flight with auditory hunting. Endangered by fragmentation of open wetland/grassland mosaic and wetland loss.",
-        "life_stages": [],
         "region": "northeast_pa",
         "ecological_role": "carnivore",
-        "is_keystone": false,
-        "keystone_type": null,
-        "keystone_description": null,
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Circus_cyaneus_265961899.jpg/960px-Circus_cyaneus_265961899.jpg",
           "author": "Александр Чегодаев",
@@ -5858,7 +5543,7 @@
           "cave"
         ],
         "diet": [
-          "insect_eater"
+          "insectivore"
         ],
         "behavior": [
           "nocturnal",
@@ -5869,12 +5554,8 @@
           "year_round"
         ],
         "functional_description": "Insect pest controller; forest canopy indicator. Endangered by white-nose syndrome fungus causing 95% cave bat population mortality in PA. Also threatened by summer roost loss (dead tree snag removal).",
-        "life_stages": [],
         "region": "northeast_pa",
         "ecological_role": "carnivore",
-        "is_keystone": false,
-        "keystone_type": null,
-        "keystone_description": null,
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/b/bf/Indiana_Bat_FWS.jpg",
           "author": "U.S. Fish & Wildlife Service",
@@ -5893,7 +5574,7 @@
           "cave"
         ],
         "diet": [
-          "insect_eater"
+          "insectivore"
         ],
         "behavior": [
           "nocturnal",
@@ -5904,12 +5585,8 @@
           "year_round"
         ],
         "functional_description": "Moth specialist insect predator; forest health indicator. Severely endangered by white-nose syndrome; 97-100% population decline across entire range with Pennsylvania heavily impacted.",
-        "life_stages": [],
         "region": "northeast_pa",
         "ecological_role": "carnivore",
-        "is_keystone": false,
-        "keystone_type": null,
-        "keystone_description": null,
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Myotis_septentrionalis_1870.jpg/500px-Myotis_septentrionalis_1870.jpg",
           "author": "Jomegat",
@@ -5930,7 +5607,7 @@
         ],
         "diet": [
           "herbivore",
-          "seed_eater"
+          "granivore"
         ],
         "behavior": [
           "nocturnal",
@@ -5941,12 +5618,8 @@
           "year_round"
         ],
         "functional_description": "Forest floor detritus processor and seed disperser. Threatened by decline in hard mast production (chestnut blight, spongy moth defoliation), habitat fragmentation, and raccoon roundworm parasite vulnerability.",
-        "life_stages": [],
         "region": "northeast_pa",
         "ecological_role": "omnivore",
-        "is_keystone": false,
-        "keystone_type": null,
-        "keystone_description": null,
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Neotoma_magister.jpg/960px-Neotoma_magister.jpg",
           "author": "Alan Cressler",
@@ -5965,7 +5638,7 @@
           "forest"
         ],
         "diet": [
-          "insect_eater"
+          "insectivore"
         ],
         "behavior": [
           "nocturnal",
@@ -5975,12 +5648,8 @@
           "year_round"
         ],
         "functional_description": "Small insect specialist; cave/mine ecosystem indicator. Threatened by cave/mine destruction, habitat loss from mining and development, and white-nose syndrome secondary threat.",
-        "life_stages": [],
         "region": "northeast_pa",
         "ecological_role": "carnivore",
-        "is_keystone": false,
-        "keystone_type": null,
-        "keystone_description": null,
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Eastern_small-footed_bat.jpg/960px-Eastern_small-footed_bat.jpg",
           "author": "Paul Moosman",
@@ -6011,12 +5680,8 @@
           "year_round"
         ],
         "functional_description": "High-elevation stream health indicator; water quality sentinel. Threatened by stream warming, sedimentation from logging, pH alteration from acid rain, and habitat fragmentation.",
-        "life_stages": [],
         "region": "northeast_pa",
         "ecological_role": "carnivore",
-        "is_keystone": false,
-        "keystone_type": null,
-        "keystone_description": null,
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Water_shrew_on_Pebble_Creek_%2827952099349%29_%28cropped%29.jpg/960px-Water_shrew_on_Pebble_Creek_%2827952099349%29_%28cropped%29.jpg",
           "author": "Yellowstone National Park",
@@ -6045,12 +5710,8 @@
           "year_round"
         ],
         "functional_description": "Large forest owl with a round head, no ear tufts, and brown barred plumage. Its 'Who cooks for you?' call is one of NE PA's most recognizable forest sounds. Hunts White-footed Mouse, shrews, frogs, and crayfish from perches over forest floor and stream edges. Nests in large tree cavities or abandoned Red-tailed Hawk nests. Dependent on mature forest with large-diameter snags.",
-        "life_stages": [],
         "region": "northeast_pa",
         "ecological_role": "carnivore",
-        "is_keystone": false,
-        "keystone_type": null,
-        "keystone_description": null,
         "conservation_status": "LC",
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Strix-varia-005.jpg/960px-Strix-varia-005.jpg",
@@ -6080,12 +5741,8 @@
           "year_round"
         ],
         "functional_description": "Medium accipiter with short rounded wings and a long tail for agile maneuvering through dense forest. Primary predator of medium-sized birds including American Robin, starlings, and American Kestrel. Has adapted well to suburban environments, hunting backyard feeders. Populations recovered strongly since DDT-era declines — increased Cooper's Hawk predation pressure is a documented contributor to American Kestrel's continuing PA decline.",
-        "life_stages": [],
         "region": "northeast_pa",
         "ecological_role": "carnivore",
-        "is_keystone": false,
-        "keystone_type": null,
-        "keystone_description": null,
         "conservation_status": "LC",
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Accipiter_cooperii_m_Sam_Smith_Toronto3.jpg/960px-Accipiter_cooperii_m_Sam_Smith_Toronto3.jpg",
@@ -6106,7 +5763,7 @@
           "garden"
         ],
         "diet": [
-          "insect_eater"
+          "insectivore"
         ],
         "behavior": [
           "cavity_excavator",
@@ -6116,12 +5773,8 @@
           "year_round"
         ],
         "functional_description": "Large brownish woodpecker with spotted underparts and a red nape crescent. Unlike most woodpeckers, forages primarily on the ground for ants — excavating ant colonies in soil. An important secondary cavity excavator: American Kestrel, Eastern Bluebird, White-breasted Nuthatch, and Wood Duck all rely on flicker-excavated nest holes. Declining in PA due to loss of open woodland snags.",
-        "life_stages": [],
         "region": "northeast_pa",
         "ecological_role": "carnivore",
-        "is_keystone": false,
-        "keystone_type": null,
-        "keystone_description": null,
         "taxonomic_group": "group_woodpeckers",
         "conservation_status": "LC",
         "image": {
@@ -6142,7 +5795,7 @@
           "suburban"
         ],
         "diet": [
-          "insect_eater",
+          "insectivore",
           "omnivore"
         ],
         "behavior": [
@@ -6153,12 +5806,8 @@
           "year_round"
         ],
         "functional_description": "Bold black-and-white mustelid with an effective sulfur-compound spray defense. Eats insects, white grubs, small rodents, bird eggs, berries, and carrion. Loosely hibernates through severe cold. Great Horned Owl is its primary predator — relying on vision rather than smell, owls are unaffected by the musk spray; adult Great Horned Owls frequently smell strongly of skunk. Important controller of ground-nesting yellowjacket colonies and white grub populations.",
-        "life_stages": [],
         "region": "northeast_pa",
         "ecological_role": "omnivore",
-        "is_keystone": false,
-        "keystone_type": null,
-        "keystone_description": null,
         "conservation_status": "LC",
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Skunk_about_to_spray.jpg/500px-Skunk_about_to_spray.jpg",
@@ -6189,12 +5838,8 @@
           "year_round"
         ],
         "functional_description": "Compact rabbit with a white cotton-ball tail. Among NE PA's most abundant herbivores — eats grasses, forbs, and in winter shifts to bark and woody stems. Produces 3–4 litters per year. Forms a critical dietary base for NE PA's predator community: Red-tailed Hawk, Great Horned Owl, Red Fox, Eastern Coyote, and Mink all depend on cottontail as primary prey at some point in the year.",
-        "life_stages": [],
         "region": "northeast_pa",
         "ecological_role": "herbivore",
-        "is_keystone": false,
-        "keystone_type": null,
-        "keystone_description": null,
         "conservation_status": "LC",
         "image": {
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Eastern_cottontail_%28Sylvilagus_floridanus%29_foraging_on_ground_vegetation.jpg/960px-Eastern_cottontail_%28Sylvilagus_floridanus%29_foraging_on_ground_vegetation.jpg",
@@ -6214,7 +5859,7 @@
           "wetland"
         ],
         "diet": [
-          "insect_eater"
+          "insectivore"
         ],
         "behavior": [
           "seasonal_breeder",
@@ -6226,12 +5871,8 @@
           "fall"
         ],
         "functional_description": "Small brown frog with a dark eye mask, camouflaged like a dead leaf on the forest floor. First amphibian to emerge in NE PA each year — begins calling in late February to early March while snow remains. Uniquely freeze-tolerant: survives winter frozen solid under leaf litter using glucose as natural antifreeze. Co-breeds with Spotted Salamander in vernal pools. Its early-spring chorus is an iconic ecological signal of the season turning.",
-        "life_stages": [],
         "region": "northeast_pa",
         "ecological_role": "carnivore",
-        "is_keystone": false,
-        "keystone_type": null,
-        "keystone_description": null,
         "taxonomic_group": "group_frogs",
         "conservation_status": "LC",
         "image": {

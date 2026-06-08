@@ -327,11 +327,17 @@ export const HABITAT_ICONS: Record<string, string> = {
 };
 
 export const DIET_LABELS: Record<string, string> = {
-  insect_eater: 'Insect eater',
+  insectivore: 'Insectivore',
   predator: 'Predator',
-  fruit_eater: 'Fruit eater',
-  nectar_feeder: 'Nectar feeder',
+  frugivore: 'Frugivore',
+  nectarivore: 'Nectarivore',
   herbivore: 'Herbivore',
+  granivore: 'Granivore',
+  omnivore: 'Omnivore',
+  piscivore: 'Piscivore',
+  sap_feeder: 'Sap feeder',
+  invertivore: 'Invertivore',
+  carnivore: 'Carnivore',
   pollen_eater: 'Pollen eater',
 };
 

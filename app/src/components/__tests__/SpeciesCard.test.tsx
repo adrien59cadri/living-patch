@@ -51,8 +51,10 @@ describe('SpeciesCard', () => {
     expect(screen.getByText(/🤝 Mutualist/i)).toBeInTheDocument();
   });
 
-  test('does not show keystone badge when is_keystone is false', () => {
-    renderCard({ ...mockMonarch, is_keystone: false });
+  test('does not show keystone badge when is_keystone is absent', () => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { is_keystone, keystone_type, keystone_description, ...nonKeystoneSpecies } = mockMonarch;
+    renderCard(nonKeystoneSpecies);
     expect(screen.queryByText(/Keystone/i)).not.toBeInTheDocument();
   });
 

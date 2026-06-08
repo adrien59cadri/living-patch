@@ -14,7 +14,7 @@ export type CommonName = string | { en: string; [lang: string]: string | undefin
 export type ConservationStatus = 'EX' | 'EW' | 'CR' | 'EN' | 'VU' | 'NT' | 'LC' | 'DD';
 
 /** Ecological standing relative to the pack's region.
- * 'n' = native (default; no status specified)
+ * 'n' = native (default — pack data omits this field rather than storing 'n', but code uses it explicitly)
  * 'nb' = native bully (native but aggressive spreader)
  * 'nnna' = non-native non-aggressive (introduced but stable)
  * 'i' = invasive (non-native AND spreading aggressively or causing damage) */
@@ -25,20 +25,20 @@ export type EcologicalStatusMode = 'all' | 'native_only' | 'non_native_invasive'
 export interface Species {
   id: string;
   common_name: CommonName;
-  latin_name?: string | null;
+  latin_name?: string;
   form: string;
-  habitat: string[];
-  diet: string[];
-  behavior: string[];
-  season: string[];
+  habitat?: string[];
+  diet?: string[];
+  behavior?: string[];
+  season?: string[];
   functional_description: string;
-  life_stages: LifeStage[] | string[];
+  life_stages?: LifeStage[] | string[];
   region: string;
-  ecological_role?: string | null;
-  is_keystone?: boolean;
-  keystone_type?: string | null;
-  keystone_description?: string | null;
-  active_months?: string[] | null;
+  ecological_role?: string;
+  is_keystone?: true;
+  keystone_type?: string;
+  keystone_description?: string;
+  active_months?: string[];
   status?: EcologicalStatus;
   /** Wikipedia image if available */
   image?: {
@@ -47,7 +47,7 @@ export interface Species {
     source_url?: string;
   };
   /** IUCN Red List conservation status code */
-  conservation_status?: ConservationStatus | null;
+  conservation_status?: ConservationStatus;
 }
 
 export type SymbiosisStrength = 'critical' | 'important' | 'incidental';
