@@ -180,9 +180,9 @@ test.describe('Area filtering (Item 11)', () => {
 
   test('area filter works from advanced filter panel', async ({ page }) => {
     // First enable France pack (using same logic as enableFrancePack helper)
-    await page.goto('/#/packs');
+    await page.goto('/#/settings');
     await page.waitForLoadState('networkidle');
-    await page.getByRole('heading', { name: 'france-base', level: 2 }).waitFor({ timeout: 10000 });
+    await page.getByRole('heading', { name: 'france-base', level: 3 }).waitFor({ timeout: 10000 });
     
     const disableButton = page.getByRole('button', { name: 'Disable france-base' });
     const isEnabled = await disableButton.isVisible().catch(() => false);
@@ -370,8 +370,8 @@ test.describe('Pack management (Item 9)', () => {
     await page.getByRole('button', { name: 'Disable france-base' }).click();
     await page.waitForLoadState('networkidle');
 
-    // Card root is 3 levels above the <h2> heading
-    const cardRoot = page.getByRole('heading', { name: 'france-base', level: 2 }).locator('xpath=../../..');
+    // Card root is 3 levels above the <h3> heading
+    const cardRoot = page.getByRole('heading', { name: 'france-base', level: 3 }).locator('xpath=../../..');
     // Check the card has the disabled opacity class (Tailwind v4 uses class-based opacity)
     await expect(cardRoot).toHaveClass(/opacity-60/);
   });

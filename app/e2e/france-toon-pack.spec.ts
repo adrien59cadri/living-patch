@@ -37,7 +37,8 @@ test.describe('France pack (Toon format source)', () => {
 
   test('french species detail shows correct latin name and habitat', async ({ page }) => {
     await enableFrancePack(page);
-    await page.goto('/#/species/bird_european-robin');
+    // Click through from home (avoids full-page reload / persist hydration race)
+    await page.getByText(/European Robin/i).first().click();
     await page.waitForLoadState('networkidle');
     await expect(page.getByText(/Erithacus rubecula/i)).toBeVisible();
     await expect(page.getByText(/forest/i).first()).toBeVisible();
@@ -45,19 +46,22 @@ test.describe('France pack (Toon format source)', () => {
 
   test('french species detail shows bilingual common name', async ({ page }) => {
     await enableFrancePack(page);
-    await page.goto('/#/species/bird_european-robin');
+    // Click through from home (avoids full-page reload / persist hydration race)
+    await page.getByText(/European Robin/i).first().click();
     await page.waitForLoadState('networkidle');
-    // Multilingual common_name object must survive toon decode
+    // Multilingual common_name object must survive toon decode — French alt name shown in detail
     await expect(page.getByText(/Rougegorge familier/i)).toBeVisible();
   });
 
   test('france pack loads at least 20 species', async ({ page }) => {
     await enableFrancePack(page);
-    // Filter to France region to count only france-base species
-    await page.goto('/#/?region=france');
+    // Click France area chip to filter to france-base only
+    await page.getByRole('button', { name: 'France' }).click();
     await page.waitForLoadState('networkidle');
-    const tiles = page.locator('[data-testid="species-tile"], .species-tile, article');
-    // At least 20 france species rendered — guards against silent truncation
-    await expect(tiles).toHaveCount(20, { timeout: 10000 });
+    // Count species count text — guards against silent truncation during toon decode
+    const speciesCountText = await page.getByText(/\d+ species/i).first().textContent();
+    const match = speciesCountText?.match(/(\d+)/);
+    const count = match ? parseInt(match[1], 10) : 0;
+    expect(count).toBeGreaterThanOrEqual(20);
   });
 });
