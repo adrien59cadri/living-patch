@@ -4,10 +4,10 @@ import { test, expect, Page } from '@playwright/test';
 // data is structurally identical to the original JSON (no field loss, correct types).
 
 async function enableFrancePack(page: Page) {
-  await page.goto('/#/packs');
+  await page.goto('/#/settings');
   await page.waitForLoadState('networkidle');
 
-  await page.getByRole('heading', { name: 'france-base', level: 2 }).waitFor({ timeout: 10000 });
+  await page.getByRole('heading', { name: 'france-base', level: 3 }).waitFor({ timeout: 10000 });
 
   const disableButton = page.getByRole('button', { name: 'Disable france-base' });
   const isEnabled = await disableButton.isVisible().catch(() => false);
@@ -24,10 +24,10 @@ async function enableFrancePack(page: Page) {
 }
 
 test.describe('France pack (Toon format source)', () => {
-  test('france-base pack appears in pack list', async ({ page }) => {
-    await page.goto('/#/packs');
+  test('france-base pack appears in settings', async ({ page }) => {
+    await page.goto('/#/settings');
     await page.waitForLoadState('networkidle');
-    await expect(page.getByRole('heading', { name: 'france-base', level: 2 })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'france-base', level: 3 })).toBeVisible();
   });
 
   test('European Robin appears after enabling france-base', async ({ page }) => {
