@@ -59,6 +59,7 @@ try {
       const filePath = path.join(PACKS_DIR, file);
       const rawData = fs.readFileSync(filePath, 'utf-8');
       const data = file.endsWith('.toon') ? decode(rawData) : JSON.parse(rawData);
+      data._sourceFormat = file.endsWith('.toon') ? 'toon' : 'json';
 
       // Validate pack structure
       if (!data.metadata || !data.data) {
@@ -142,6 +143,7 @@ try {
   // Build clean pack objects (strip image pack entries, keep images attached to species)
   const packsForOutput = dataPacks.map(pack => ({
     metadata: pack.metadata,
+    _sourceFormat: pack._sourceFormat ?? 'json',
     data: {
       species: pack.data.species,
       taxonomic_groups: pack.data.taxonomic_groups,
@@ -164,6 +166,7 @@ try {
   // Write manifest (metadata + counts only, no species data)
   const manifest = packsForOutput.map(pack => ({
     ...pack.metadata,
+    format: pack._sourceFormat ?? 'json',
     speciesCount: pack.data.species?.length ?? 0,
     groupCount: pack.data.taxonomic_groups?.length ?? 0,
     symbiosisCount: pack.data.symbiosis?.length ?? 0,

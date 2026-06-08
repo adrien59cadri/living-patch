@@ -2,6 +2,7 @@ import { useRef, useState } from 'react';
 import { useUserPreferences } from '../hooks/useUserPreferences';
 import { usePacksStore } from '../stores/packs';
 import { useLifeListStore } from '../stores/lifeList';
+import type { PackManifestEntry } from '../data';
 import type { LifeListEntry, Sighting, EcologicalStatusMode } from '../types';
 
 const SPECIES_VIEW_MODES: { value: EcologicalStatusMode; label: string; description: string }[] = [
@@ -45,10 +46,25 @@ function isValidBackup(data: unknown): data is BackupFile {
   return true;
 }
 
+function FormatBadge({ format }: { format?: PackManifestEntry['format'] }) {
+  if (format === 'toon') {
+    return (
+      <span className="text-xs font-medium px-2 py-1 rounded bg-violet-100 text-violet-700">
+        toon
+      </span>
+    );
+  }
+  return (
+    <span className="text-xs font-medium px-2 py-1 rounded bg-sky-100 text-sky-700">
+      json
+    </span>
+  );
+}
+
 export default function SettingsPage() {
   const { preferences, setPreferences } = useUserPreferences();
   const { entries, sightings, restoreFromBackup } = useLifeListStore();
-  const manifest = usePacksStore(s => s.manifest);
+  const { manifest, enabledPackIds, loadingPackIds, errorPackIds, togglePack, retryPack } = usePacksStore();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [pendingBackup, setPendingBackup] = useState<BackupFile | null>(null);
   const [importError, setImportError] = useState<string | null>(null);
@@ -277,71 +293,105 @@ export default function SettingsPage() {
 
       {/* Data Packs Section */}
       <section className="bg-white rounded-lg border border-stone-200 p-6">
-        <h2 className="text-xl font-semibold text-emerald-900 mb-4">Data Packs</h2>
-
+        <h2 className="text-xl font-semibold text-emerald-900 mb-1">Data Packs</h2>
         <p className="text-stone-600 mb-6">
           {manifest.length} pack{manifest.length !== 1 ? 's' : ''} available.
+          Enabled packs are loaded into memory; only <strong>0-base</strong> loads by default.
         </p>
 
         <div className="grid gap-4">
-          {manifest.map((entry) => (
-            <div
-              key={entry.id}
-              className="bg-stone-50 rounded-lg border border-stone-100 p-4 hover:shadow-sm transition-shadow"
-            >
-              <div className="flex items-start justify-between mb-3">
-                <div>
-                  <h3 className="font-semibold text-emerald-900">
-                    {entry.id}
-                  </h3>
-                  <p className="text-xs text-stone-500 mt-1">
-                    v{entry.version}
-                  </p>
+          {manifest.map((entry) => {
+            const isEnabled = enabledPackIds.includes(entry.id);
+            const isLoading = loadingPackIds.includes(entry.id);
+            const hasError = errorPackIds.includes(entry.id);
+
+            return (
+              <div
+                key={entry.id}
+                className={[
+                  'rounded-lg border p-4 transition-all relative',
+                  isEnabled && !isLoading
+                    ? 'bg-stone-50 border-stone-200 hover:shadow-sm'
+                    : 'bg-stone-50 border-stone-100 opacity-60',
+                ].join(' ')}
+              >
+                {isLoading && (
+                  <div className="absolute inset-0 bg-white/70 flex items-center justify-center rounded-lg z-10">
+                    <span className="text-sm text-stone-500 animate-pulse">Loading pack…</span>
+                  </div>
+                )}
+
+                <div className="flex items-start justify-between mb-3">
+                  <div className="flex-1">
+                    <h3 className="font-semibold text-emerald-900">{entry.id}</h3>
+                    <p className="text-xs text-stone-500 mt-1">v{entry.version}</p>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <FormatBadge format={entry.format} />
+                    <span className={`text-xs font-medium px-2 py-1 rounded ${
+                      entry.status === 'published'
+                        ? 'bg-emerald-100 text-emerald-700'
+                        : 'bg-amber-100 text-amber-700'
+                    }`}>
+                      {entry.status || 'published'}
+                    </span>
+                    <button
+                      onClick={() => { void togglePack(entry.id); }}
+                      disabled={isLoading}
+                      aria-label={isEnabled ? `Disable ${entry.id}` : `Enable ${entry.id}`}
+                      className={[
+                        'relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2 disabled:cursor-not-allowed',
+                        isEnabled ? 'bg-emerald-500' : 'bg-stone-300',
+                      ].join(' ')}
+                    >
+                      <span
+                        className={[
+                          'inline-block h-4 w-4 transform rounded-full bg-white shadow transition-transform',
+                          isEnabled ? 'translate-x-6' : 'translate-x-1',
+                        ].join(' ')}
+                      />
+                    </button>
+                  </div>
                 </div>
-                <span className={`text-xs font-medium px-2 py-1 rounded ${
-                  entry.status === 'published'
-                    ? 'bg-emerald-100 text-emerald-700'
-                    : 'bg-amber-100 text-amber-700'
-                }`}>
-                  {entry.status || 'published'}
-                </span>
-              </div>
 
-              {entry.description && (
-                <p className="text-sm text-stone-600 mb-3">
-                  {entry.description}
-                </p>
-              )}
+                {entry.description && (
+                  <p className="text-sm text-stone-600 mb-3">{entry.description}</p>
+                )}
 
-              <div className="flex flex-wrap gap-3 text-xs text-stone-600">
-                {entry.speciesCount > 0 && (
-                  <div>
-                    <span className="font-medium text-emerald-700">{entry.speciesCount}</span> species
+                {hasError && (
+                  <div className="mb-3 flex items-center gap-3 text-sm text-red-600 bg-red-50 rounded px-3 py-2">
+                    <span>Failed to load pack.</span>
+                    <button
+                      onClick={() => { void retryPack(entry.id); }}
+                      className="underline hover:no-underline text-red-700 font-medium"
+                    >
+                      Retry
+                    </button>
                   </div>
                 )}
-                {entry.groupCount > 0 && (
-                  <div>
-                    <span className="font-medium text-emerald-700">{entry.groupCount}</span> taxonomic group{entry.groupCount !== 1 ? 's' : ''}
-                  </div>
-                )}
-                {entry.symbiosisCount > 0 && (
-                  <div>
-                    <span className="font-medium text-emerald-700">{entry.symbiosisCount}</span> symbiosis relation{entry.symbiosisCount !== 1 ? 's' : ''}
-                  </div>
-                )}
-                {entry.relationsCount > 0 && (
-                  <div>
-                    <span className="font-medium text-emerald-700">{entry.relationsCount}</span> relation{entry.relationsCount !== 1 ? 's' : ''}
-                  </div>
-                )}
-              </div>
 
-              <div className="mt-3 pt-3 border-t border-stone-200 text-xs text-stone-500">
-                <p>Author: {entry.author}</p>
-                <p>Created: {new Date(entry.createdDate).toLocaleDateString()}</p>
+                <div className="flex flex-wrap gap-3 text-xs text-stone-600">
+                  {entry.speciesCount > 0 && (
+                    <div><span className="font-medium text-emerald-700">{entry.speciesCount}</span> species</div>
+                  )}
+                  {entry.groupCount > 0 && (
+                    <div><span className="font-medium text-emerald-700">{entry.groupCount}</span> taxonomic group{entry.groupCount !== 1 ? 's' : ''}</div>
+                  )}
+                  {entry.symbiosisCount > 0 && (
+                    <div><span className="font-medium text-emerald-700">{entry.symbiosisCount}</span> symbiosis relation{entry.symbiosisCount !== 1 ? 's' : ''}</div>
+                  )}
+                  {entry.relationsCount > 0 && (
+                    <div><span className="font-medium text-emerald-700">{entry.relationsCount}</span> relation{entry.relationsCount !== 1 ? 's' : ''}</div>
+                  )}
+                </div>
+
+                <div className="mt-3 pt-3 border-t border-stone-200 text-xs text-stone-500">
+                  <p>Author: {entry.author}</p>
+                  <p>Created: {new Date(entry.createdDate).toLocaleDateString()}</p>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </section>
     </div>
