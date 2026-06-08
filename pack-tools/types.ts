@@ -65,8 +65,10 @@ export interface Species {
   };
   /** IUCN Red List conservation status code */
   conservation_status?: 'EX' | 'EW' | 'CR' | 'EN' | 'VU' | 'NT' | 'LC' | 'DD';
-  /** Ecological standing relative to the pack's region. Absent = native. */
-  status?: 'nb' | 'nnna' | 'i';
+  /** Ecological standing relative to the pack's region.
+   * 'n' = native (valid value in code; pack data omits field instead of storing 'n')
+   * 'nb' | 'nnna' | 'i' = non-native/invasive variants */
+  status?: 'n' | 'nb' | 'nnna' | 'i';
 }
 
 export type SymbiosisStrength = 'critical' | 'important' | 'incidental';

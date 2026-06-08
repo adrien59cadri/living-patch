@@ -14,11 +14,11 @@ export type CommonName = string | { en: string; [lang: string]: string | undefin
 export type ConservationStatus = 'EX' | 'EW' | 'CR' | 'EN' | 'VU' | 'NT' | 'LC' | 'DD';
 
 /** Ecological standing relative to the pack's region.
- * Absent/undefined = native (default).
+ * 'n' = native (default — pack data omits this field rather than storing 'n', but code uses it explicitly)
  * 'nb' = native bully (native but aggressive spreader)
  * 'nnna' = non-native non-aggressive (introduced but stable)
  * 'i' = invasive (non-native AND spreading aggressively or causing damage) */
-export type EcologicalStatus = 'nb' | 'nnna' | 'i';
+export type EcologicalStatus = 'n' | 'nb' | 'nnna' | 'i';
 
 export type EcologicalStatusMode = 'all' | 'native_only' | 'non_native_invasive';
 

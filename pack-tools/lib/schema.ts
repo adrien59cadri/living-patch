@@ -79,7 +79,7 @@ export const SpeciesSchema = z.object({
   keystone_type: z.string().optional(),
   keystone_description: z.string().optional(),
   active_months: z.array(z.string()).min(1, 'active_months must not be empty — omit the field instead').optional(),
-  status: z.enum(['nb', 'nnna', 'i']).optional(),
+  status: z.enum(['n', 'nb', 'nnna', 'i']).optional(),
   taxonomic_group: z.string().optional(),
   label: z.string().optional(),
   common_traits: z.string().optional(),
