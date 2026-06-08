@@ -21,6 +21,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { decode } from '@toon-format/toon';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -42,7 +43,7 @@ try {
 
   // Load all packs (unified format: data packs and image packs share the same schema)
   const files = fs.readdirSync(PACKS_DIR)
-    .filter(f => f.endsWith('.json'));
+    .filter(f => f.endsWith('.json') || f.endsWith('.toon'));
 
   if (files.length === 0) {
     throw new Error(`No pack files found in ${PACKS_DIR}`);
@@ -57,7 +58,7 @@ try {
     try {
       const filePath = path.join(PACKS_DIR, file);
       const rawData = fs.readFileSync(filePath, 'utf-8');
-      const data = JSON.parse(rawData);
+      const data = file.endsWith('.toon') ? decode(rawData) : JSON.parse(rawData);
 
       // Validate pack structure
       if (!data.metadata || !data.data) {

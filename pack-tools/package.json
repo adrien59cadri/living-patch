@@ -15,7 +15,9 @@
     "migrate": "node scripts/migrate-dataset.js",
     "test": "vitest",
     "test:run": "vitest run",
-    "lint": "eslint . --ext .ts"
+    "lint": "eslint . --ext .ts",
+    "pack:toon-convert": "npx @toon-format/cli",
+    "pack:toon-verify": "node scripts/verify-toon.js"
   },
   "keywords": ["livingpatch", "data", "pack", "validation"],
   "author": "LivingPatch Contributors",
