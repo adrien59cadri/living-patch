@@ -5906,7 +5906,12 @@
         "functional_description": "Small skipper butterfly with rapid, darting flight characteristic of the Hesperiidae family. Larvae feed on Lovegrasses (Eragrostis) and Purpletop (Tridens flavus). Adults are active in late May and later, patrolling grassy forest edges and wetland margins where they visit flowers like Pickerelweed for nectar.",
         "region": "northeast_pa",
         "ecological_role": "herbivore",
-        "conservation_status": "LC"
+        "conservation_status": "LC",
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Female_Zabulon_Skipper.jpg/960px-Female_Zabulon_Skipper.jpg",
+          "author": "Kenneth Dwain Harrelson, aka HaarFager at en.wikipedia",
+          "source_url": "https://en.wikipedia.org/wiki/Poanes_zabulon"
+        }
       },
       {
         "id": "insect_eastern-carpenter-bee",
@@ -5935,7 +5940,12 @@
         "functional_description": "Large carpenter bee, largest bee species in NE PA. Black body with males displaying yellow face markings. Solitary nester — excavates galleries in dead wood for nesting, unlike social honeybees. Males are territorial and aggressively guard nesting areas despite lacking stinging capability. Important pollinator of native plants despite popular misconception about wood damage.",
         "region": "northeast_pa",
         "ecological_role": "omnivore",
-        "conservation_status": "LC"
+        "conservation_status": "LC",
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Carpenter_bee.jpg/960px-Carpenter_bee.jpg",
+          "author": "Daniel Schwen",
+          "source_url": "https://en.wikipedia.org/wiki/Xylocopa_virginica"
+        }
       },
       {
         "id": "insect_rusty-patched-bumble-bee",
@@ -5965,7 +5975,13 @@
         "functional_description": "Native bumble bee species with distinctive rusty-red patches on its abdomen against dark brown body. Once abundant across NE PA and the eastern US. Now federally endangered — the first bee species to receive protection under the Endangered Species Act. Last confirmed in Pennsylvania in 2006. Capable of buzz-pollinating flowers like blueberry and tomato. Colony collapse linked to disease and habitat loss.",
         "region": "northeast_pa",
         "ecological_role": "omnivore",
-        "conservation_status": "EN"
+        "conservation_status": "EN",
+        "taxonomic_group": "group_bumble-bees",
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Bombus_affinis%2C_F%2C_side%2C_sky_meadows%2C_virginia_2014-09-22-18.05.02_ZS_PMax_%2815169110488%29.jpg/960px-Bombus_affinis%2C_F%2C_side%2C_sky_meadows%2C_virginia_2014-09-22-18.05.02_ZS_PMax_%2815169110488%29.jpg",
+          "author": "USGS Bee Inventory and Monitoring Lab from Beltsville, Maryland, USA",
+          "source_url": "https://en.wikipedia.org/wiki/Bombus_affinis"
+        }
       },
       {
         "id": "insect_american-bumble-bee",
@@ -5994,7 +6010,13 @@
         "functional_description": "Native bumble bee with black body and yellow face and leg markings. Once very common throughout NE PA. Populations have declined precipitously — last documented in Pennsylvania in 2018. Particularly vulnerable due to rapid population collapse from unknown causes, possibly linked to pathogen spread. Critical pollinator of late-season wildflowers and agricultural crops.",
         "region": "northeast_pa",
         "ecological_role": "omnivore",
-        "conservation_status": "VU"
+        "conservation_status": "VU",
+        "taxonomic_group": "group_bumble-bees",
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Bombus_pensylvanicus_queen_Virginia.jpg/960px-Bombus_pensylvanicus_queen_Virginia.jpg",
+          "author": "Louise Woodrich",
+          "source_url": "https://en.wikipedia.org/wiki/Bombus_pensylvanicus"
+        }
       },
       {
         "id": "insect_yellow-bumble-bee",
@@ -6024,7 +6046,13 @@
         "functional_description": "Native bumble bee with bright yellow and black coloration. Historically present across NE PA. Populations have crashed — last recorded in Pennsylvania in 2018. Rapid decline mirrors broader bumble bee population collapse across eastern North America. Specialized for flowers with tubular or complex morphology. May have been displaced by Bombus impatiens in some regions.",
         "region": "northeast_pa",
         "ecological_role": "omnivore",
-        "conservation_status": "VU"
+        "conservation_status": "VU",
+        "taxonomic_group": "group_bumble-bees",
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Golden_Northern_Bumble_Bee_%28Bombus_fervidus%29_%2814855286195%29.jpg/960px-Golden_Northern_Bumble_Bee_%28Bombus_fervidus%29_%2814855286195%29.jpg",
+          "author": "Andrew C",
+          "source_url": "https://en.wikipedia.org/wiki/Bombus_fervidus"
+        }
       },
       {
         "id": "insect_yellow-banded-bumble-bee",
@@ -6054,12 +6082,18 @@
         "functional_description": "Native bumble bee with alternating bands of yellow and black. Historically abundant throughout NE PA and widespread across eastern North America. Populations have experienced dramatic decline — last detected in Pennsylvania in 2009. May have harbored or transmitted pathogens (particularly Nosema bombi) that spread to other bumble bee species. Specialized pollinator of diverse wildflowers.",
         "region": "northeast_pa",
         "ecological_role": "omnivore",
-        "conservation_status": "VU"
+        "conservation_status": "VU",
+        "taxonomic_group": "group_bumble-bees",
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Bombus_terricola_86642514.jpg/960px-Bombus_terricola_86642514.jpg",
+          "author": "Rob Foster",
+          "source_url": "https://en.wikipedia.org/wiki/Bombus_terricola"
+        }
       },
       {
         "id": "insect_squash-bee",
         "common_name": "Squash Bee",
-        "latin_name": "Eucera pruinosa",
+        "latin_name": "Peponapis pruinosa",
         "form": "bee",
         "habitat": [
           "agricultural",
@@ -6079,7 +6113,12 @@
         "functional_description": "Specialist solitary bee found primarily in cultivated areas where its host plants are grown. Exclusively forages on pollen from squash, pumpkin, and melon flowers (Cucurbitaceae family) — cannot complete lifecycle without these crops. Nests in ground burrows. Emerges early in the morning to forage before flowers close. One of the most efficient pollinators of squash and pumpkin crops in NE PA and across North America.",
         "region": "northeast_pa",
         "ecological_role": "omnivore",
-        "conservation_status": "LC"
+        "conservation_status": "LC",
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Peponapis_pruinosa_-_Pruinose_Squash_Bee_01.jpg/960px-Peponapis_pruinosa_-_Pruinose_Squash_Bee_01.jpg",
+          "author": "USGS Bee Inventory and Monitoring Lab",
+          "source_url": "https://en.wikipedia.org/wiki/Peponapis_pruinosa"
+        }
       },
       {
         "id": "insect_cuckoo-bee",
@@ -6104,7 +6143,12 @@
         "functional_description": "Rare cleptoparasitic bee with an extreme conservation crisis — last recorded in Pennsylvania in 1911 and presumed extirpated from the state. These 'cuckoo' bees lay their eggs in the nests of host bee species, where the cuckoo larvae consume the host's provisions. Considered a species of concern due to extreme rarity and uncertain population status. Its disappearance may reflect broader collapse of wild bee communities upon which it depends.",
         "region": "northeast_pa",
         "ecological_role": "cleptoparasite",
-        "conservation_status": "CR"
+        "conservation_status": "CR",
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Epeoloides_pilosula_f.jpg/960px-Epeoloides_pilosula_f.jpg",
+          "author": "The Packer Lab",
+          "source_url": "https://en.wikipedia.org/wiki/Epeoloides_pilosulus"
+        }
       }
     ],
     "taxonomic_groups": [
@@ -6197,6 +6241,12 @@
         "label": "Cold-water Fish",
         "common_traits": "Native salmonids and other fish of cold, high-quality streams; require well-oxygenated water below 65°F; indicator species for watershed health; top aquatic predators controlling insect populations",
         "notes": "Family Salmonidae; Brook Trout is the primary native cold-water fish of NE PA headwater streams and indicates intact riparian forest and minimal pollution"
+      },
+      {
+        "id": "group_bumble-bees",
+        "label": "Bumble Bees",
+        "common_traits": "Social bees with annual colonies; queens overwinter in soil; only females sting; capable of buzz pollination (sonication) critical for blueberry, tomato, and other plants; declining sharply across NE PA due to pathogen spread, habitat loss, and competition with managed honey bees",
+        "notes": "Genus Bombus; PA historically had 7+ resident species; at least 4 now extirpated or nearly so"
       }
     ],
     "symbiosis": [
@@ -7875,6 +7925,141 @@
         "fulfillment": "any",
         "strength": "incidental",
         "notes": "Indiana Bat, Little Brown Bat, and Northern Long-eared Bat co-hibernate in the same limestone caves and abandoned mines of NE PA, competing for optimal roost spots with stable low temperatures (37–50°F). All three species are devastated by White-nose Syndrome (Pseudogymnoascus destructans); the fungal pathogen propagates across the shared hibernaculum, linking the fate of the three species and amplifying colony loss beyond what any single-species model would predict."
+      },
+      {
+        "type": "mutualism",
+        "source": "insect_zabulon-skipper",
+        "targets": [
+          "plant_goldenrod"
+        ],
+        "strength": "incidental",
+        "notes": "Adult Zabulon Skippers visit Goldenrod as a nectar source in late summer and fall. As a small pollinator with limited range, their contribution to goldenrod pollination is incidental relative to bumble bees and other specialists."
+      },
+      {
+        "type": "mutualism",
+        "source": "insect_zabulon-skipper",
+        "targets": [
+          "plant_new-england-aster"
+        ],
+        "strength": "incidental",
+        "notes": "Zabulon Skippers regularly nectar on New England Aster in late summer, one of their preferred late-season nectar plants along forest edges and wetland margins in NE PA."
+      },
+      {
+        "type": "mutualism",
+        "source": "insect_eastern-carpenter-bee",
+        "targets": [
+          "plant_american-basswood"
+        ],
+        "strength": "important",
+        "notes": "Eastern Carpenter Bees are major pollinators of American Basswood flowers in early summer. Their large body size efficiently transfers pollen between basswood flowers, which produce abundant nectar and attract many bee species."
+      },
+      {
+        "type": "mutualism",
+        "source": "insect_eastern-carpenter-bee",
+        "targets": [
+          "plant_eastern-columbine"
+        ],
+        "strength": "important",
+        "notes": "Eastern Carpenter Bees are known nectar robbers of Eastern Columbine — piercing the spur base rather than entering the flower correctly. However, their visits to flowers where the spur is absent or damaged provide some incidental pollination."
+      },
+      {
+        "type": "mutualism",
+        "source": "insect_eastern-carpenter-bee",
+        "targets": [
+          "plant_black-willow"
+        ],
+        "strength": "important",
+        "notes": "Eastern Carpenter Bees are among the first large bees to emerge in spring, foraging on Black Willow catkins in March–April alongside bumble bee queens. Their large body size makes them effective pollen carriers between willow catkins."
+      },
+      {
+        "type": "mutualism",
+        "source": "insect_rusty-patched-bumble-bee",
+        "targets": [
+          "plant_goldenrod"
+        ],
+        "strength": "critical",
+        "notes": "Historically, Rusty Patched Bumble Bee was one of the most important fall pollinators of Goldenrod in NE PA, building fat reserves for overwintering queens. Its federal endangerment represents a significant loss of buzz-pollination capacity for late-season plants."
+      },
+      {
+        "type": "mutualism",
+        "source": "insect_rusty-patched-bumble-bee",
+        "targets": [
+          "plant_new-england-aster"
+        ],
+        "strength": "critical",
+        "notes": "New England Aster is a critical late-season nectar and pollen source for Rusty Patched Bumble Bee queens before winter dormancy. The species' federally endangered status makes restoration of aster-rich habitats a conservation priority."
+      },
+      {
+        "type": "competition",
+        "source": "insect_rusty-patched-bumble-bee",
+        "targets": [
+          "insect_native-bumble-bees"
+        ],
+        "strength": "important",
+        "notes": "Rusty Patched Bumble Bee competed with common bumble bees (especially Bombus impatiens) for floral resources and nesting sites. The expansion of Bombus impatiens, which appears resistant to the pathogen Nosema bombi, may have contributed to displacement of Rusty Patched and other declining species."
+      },
+      {
+        "type": "mutualism",
+        "source": "insect_american-bumble-bee",
+        "targets": [
+          "plant_goldenrod"
+        ],
+        "strength": "critical",
+        "notes": "American Bumble Bee was a major late-season pollinator of Goldenrod in NE PA. Its disappearance from Pennsylvania by 2018 has reduced pollinator redundancy for late-blooming plants dependent on buzz pollination."
+      },
+      {
+        "type": "mutualism",
+        "source": "insect_american-bumble-bee",
+        "targets": [
+          "plant_new-england-aster"
+        ],
+        "strength": "important",
+        "notes": "American Bumble Bee foraged heavily on New England Aster as a fall pollen and nectar source. One of several Bombus species whose loss diminishes pollinator diversity available to late-season wildflowers."
+      },
+      {
+        "type": "mutualism",
+        "source": "insect_yellow-bumble-bee",
+        "targets": [
+          "plant_goldenrod"
+        ],
+        "strength": "critical",
+        "notes": "Yellow Bumble Bee historically relied on Goldenrod as one of its most important late-summer pollen sources for colony development and gyne fattening. Its disappearance from PA by 2018 has reduced the diversity of bumble bees visiting goldenrod fields."
+      },
+      {
+        "type": "mutualism",
+        "source": "insect_yellow-bumble-bee",
+        "targets": [
+          "plant_foxglove-beardtongue"
+        ],
+        "strength": "important",
+        "notes": "Yellow Bumble Bee is a specialist visitor of tubular flowers including Foxglove Beardtongue (Penstemon digitalis), which requires a large bee capable of entering the corolla tube to effect pollination. Long-tongued bumble bees like B. fervidus are among this plant's most effective pollinators."
+      },
+      {
+        "type": "mutualism",
+        "source": "insect_yellow-banded-bumble-bee",
+        "targets": [
+          "plant_goldenrod"
+        ],
+        "strength": "critical",
+        "notes": "Yellow-banded Bumble Bee historically foraged on Goldenrod across NE PA. Last detected in 2009 in Pennsylvania, its decline — possibly linked to pathogen spread from commercially reared bumble bees — represents an irreversible loss of pollinator diversity."
+      },
+      {
+        "type": "competition",
+        "source": "insect_yellow-banded-bumble-bee",
+        "targets": [
+          "insect_native-bumble-bees"
+        ],
+        "strength": "important",
+        "notes": "Yellow-banded Bumble Bee co-foraged with Bombus impatiens and other resident bumble bees on shared floral resources. B. terricola is suspected of acting as an amplifying host for Nosema bombi, potentially spreading pathogen pressure to co-occurring species including B. affinis and B. pensylvanicus."
+      },
+      {
+        "type": "parasitism",
+        "source": "insect_cuckoo-bee",
+        "targets": [
+          "insect_native-bumble-bees"
+        ],
+        "strength": "incidental",
+        "notes": "Epeoloides pilosulus is specifically a cleptoparasite of Macropis oil-collecting bees (family Melittidae), not bumble bees. However, its disappearance from PA (last recorded 1911) directly mirrors the collapse of wild ground-nesting bee communities it depends on. Listed here to flag its dependency on specialist native bees whose populations have declined in NE PA."
       }
     ],
     "relations": [
