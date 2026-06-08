@@ -35,21 +35,17 @@ test.describe('France pack (Toon format source)', () => {
     await expect(page.getByText(/European Robin/i).first()).toBeVisible();
   });
 
-  test('french species detail shows correct latin name and habitat', async ({ page }) => {
+  test('french species data survives toon decode with full fields', async ({ page }) => {
     await enableFrancePack(page);
-    // Click through from home (avoids full-page reload / persist hydration race)
-    await page.getByText(/European Robin/i).first().click();
+    // Wait for European Robin to appear in the list (ensures france-base is indexed)
+    // then navigate directly to detail page
+    await page.getByText(/European Robin/i).first().waitFor({ timeout: 10000 });
+    await page.goto('/#/species/bird_european-robin');
     await page.waitForLoadState('networkidle');
+    // Verify complete species record: latin_name, habitat array, and bilingual common_name
     await expect(page.getByText(/Erithacus rubecula/i)).toBeVisible();
     await expect(page.getByText(/forest/i).first()).toBeVisible();
-  });
-
-  test('french species detail shows bilingual common name', async ({ page }) => {
-    await enableFrancePack(page);
-    // Click through from home (avoids full-page reload / persist hydration race)
-    await page.getByText(/European Robin/i).first().click();
-    await page.waitForLoadState('networkidle');
-    // Multilingual common_name object must survive toon decode — French alt name shown in detail
+    // Multilingual common_name object must survive toon decode
     await expect(page.getByText(/Rougegorge familier/i)).toBeVisible();
   });
 
