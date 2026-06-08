@@ -5,7 +5,7 @@
   "type": "module",
   "description": "Ecological literacy tool for NE Pennsylvania species",
   "dependencies": {
-    "@toon-format/toon": "^2.0.0"
+    "@toon-format/toon": "^2.3.0"
   },
   "scripts": {
     "dev": "cd app && npm run dev",
