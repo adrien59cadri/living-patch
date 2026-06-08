@@ -4,6 +4,9 @@
   "private": true,
   "type": "module",
   "description": "Ecological literacy tool for NE Pennsylvania species",
+  "dependencies": {
+    "@toon-format/toon": "^2.3.0"
+  },
   "scripts": {
     "dev": "cd app && npm run dev",
     "build:dataset": "node build-dataset.js",
@@ -20,6 +23,8 @@
     "pack:merge": "cd pack-tools && npm run merge",
     "bundle:packs": "node build-dataset.js",
     "bundle:app": "npm run bundle:packs && cd app && npx vite build",
-    "bundle:single-file": "npm run bundle:packs && cd app && VITE_SINGLE_FILE=true npx vite build --outDir dist-single-file && rm -f dist-single-file/favicon.svg"
+    "bundle:single-file": "npm run bundle:packs && cd app && VITE_SINGLE_FILE=true npx vite build --outDir dist-single-file && rm -f dist-single-file/favicon.svg",
+    "pack:toon-convert": "cd pack-tools && npm run pack:toon-convert",
+    "pack:toon-verify": "cd pack-tools && npm run pack:toon-verify"
   }
 }

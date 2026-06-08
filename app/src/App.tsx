@@ -7,7 +7,6 @@ import NeighborListView from './pages/NeighborListView';
 import LearnPage from './pages/LearnPage';
 import SettingsPage from './pages/SettingsPage';
 import LifeListPage from './pages/LifeListPage';
-import PacksPage from './pages/PacksPage';
 import { UserPreferencesProvider } from './stores/userPreferences';
 import { usePacksStore } from './stores/packs';
 
@@ -60,12 +59,6 @@ export default function App() {
                         Life List
                       </Link>
                       <Link
-                        to="/packs"
-                        className="text-sm text-stone-600 hover:text-emerald-700 no-underline"
-                      >
-                        Packs
-                      </Link>
-                      <Link
                         to="/learn"
                         className="text-sm text-stone-600 hover:text-emerald-700 no-underline"
                       >
@@ -84,7 +77,6 @@ export default function App() {
                   <Routes>
                     <Route path="/" element={<HomePage />} />
                     <Route path="/life-list" element={<LifeListPage />} />
-                    <Route path="/packs" element={<PacksPage />} />
                     <Route path="/learn" element={<LearnPage />} />
                     <Route path="/settings" element={<SettingsPage />} />
                     <Route path="/species/:id" element={<DetailPage />} />

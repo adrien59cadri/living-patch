@@ -2,11 +2,11 @@ import { test, expect, Page } from '@playwright/test';
 
 // Helper to enable the France pack via the UI toggle (reliable: uses togglePack in-memory, no hydration race)
 async function enableFrancePack(page: Page) {
-  await page.goto('/#/packs');
+  await page.goto('/#/settings');
   await page.waitForLoadState('networkidle');
 
   // Wait for packs page to fully render
-  await page.getByRole('heading', { name: 'france-base', level: 2 }).waitFor({ timeout: 10000 });
+  await page.getByRole('heading', { name: 'france-base', level: 3 }).waitFor({ timeout: 10000 });
 
   const disableButton = page.getByRole('button', { name: 'Disable france-base' });
   const isEnabled = await disableButton.isVisible().catch(() => false);
@@ -180,9 +180,9 @@ test.describe('Area filtering (Item 11)', () => {
 
   test('area filter works from advanced filter panel', async ({ page }) => {
     // First enable France pack (using same logic as enableFrancePack helper)
-    await page.goto('/#/packs');
+    await page.goto('/#/settings');
     await page.waitForLoadState('networkidle');
-    await page.getByRole('heading', { name: 'france-base', level: 2 }).waitFor({ timeout: 10000 });
+    await page.getByRole('heading', { name: 'france-base', level: 3 }).waitFor({ timeout: 10000 });
     
     const disableButton = page.getByRole('button', { name: 'Disable france-base' });
     const isEnabled = await disableButton.isVisible().catch(() => false);
@@ -305,16 +305,16 @@ test.describe('French species (Item 10)', () => {
 
 test.describe('Pack management (Item 9)', () => {
   test('packs page displays both packs', async ({ page }) => {
-    await page.goto('/#/packs');
+    await page.goto('/#/settings');
     await page.waitForLoadState('networkidle');
 
     await expect(page.getByText(/2 pack/)).toBeVisible();
-    await expect(page.getByRole('heading', { name: '0-base' })).toBeVisible();
-    await expect(page.getByRole('heading', { name: 'france-base' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: '0-base', level: 3 })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'france-base', level: 3 })).toBeVisible();
   });
 
   test('pack cards show toggle switches', async ({ page }) => {
-    await page.goto('/#/packs');
+    await page.goto('/#/settings');
     await page.waitForLoadState('networkidle');
 
     const toggleSwitches = page.locator('button[aria-label*="Disable"], button[aria-label*="Enable"]');
@@ -325,7 +325,7 @@ test.describe('Pack management (Item 9)', () => {
   test('toggling France pack removes French species from list', async ({ page }) => {
     await enableFrancePack(page);
 
-    await page.goto('/#/packs');
+    await page.goto('/#/settings');
     await page.waitForLoadState('networkidle');
 
     await page.getByRole('button', { name: 'Disable france-base' }).click();
@@ -344,7 +344,7 @@ test.describe('Pack management (Item 9)', () => {
   test('toggling France pack back on restores French species', async ({ page }) => {
     await enableFrancePack(page);
 
-    await page.goto('/#/packs');
+    await page.goto('/#/settings');
     await page.waitForLoadState('networkidle');
 
     await page.getByRole('button', { name: 'Disable france-base' }).click();
@@ -364,14 +364,14 @@ test.describe('Pack management (Item 9)', () => {
   test('disabled pack card shows grayed out state', async ({ page }) => {
     await enableFrancePack(page);
 
-    await page.goto('/#/packs');
+    await page.goto('/#/settings');
     await page.waitForLoadState('networkidle');
 
     await page.getByRole('button', { name: 'Disable france-base' }).click();
     await page.waitForLoadState('networkidle');
 
-    // Card root is 3 levels above the <h2> heading
-    const cardRoot = page.getByRole('heading', { name: 'france-base', level: 2 }).locator('xpath=../../..');
+    // Card root is 3 levels above the <h3> heading
+    const cardRoot = page.getByRole('heading', { name: 'france-base', level: 3 }).locator('xpath=../../..');
     // Check the card has the disabled opacity class (Tailwind v4 uses class-based opacity)
     await expect(cardRoot).toHaveClass(/opacity-60/);
   });
@@ -379,7 +379,7 @@ test.describe('Pack management (Item 9)', () => {
   test('pack toggle state persists after page reload', async ({ page }) => {
     await enableFrancePack(page);
 
-    await page.goto('/#/packs');
+    await page.goto('/#/settings');
     await page.waitForLoadState('networkidle');
 
     await page.getByRole('button', { name: 'Disable france-base' }).click();
@@ -397,7 +397,7 @@ test.describe('Pack management (Item 9)', () => {
   test('disabled base pack removes US species', async ({ page }) => {
     await enableFrancePack(page);
 
-    await page.goto('/#/packs');
+    await page.goto('/#/settings');
     await page.waitForLoadState('networkidle');
 
     await page.getByRole('button', { name: 'Disable 0-base' }).click();
@@ -414,7 +414,7 @@ test.describe('Pack management (Item 9)', () => {
   });
 
   test('packs page shows species count for active packs', async ({ page }) => {
-    await page.goto('/#/packs');
+    await page.goto('/#/settings');
     await page.waitForLoadState('networkidle');
 
     // Each pack card shows its own species count in the manifest
