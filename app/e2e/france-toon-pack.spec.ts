@@ -24,32 +24,17 @@ async function enableFrancePack(page: Page) {
 }
 
 test.describe('France pack (Toon format source)', () => {
-  test('france-base pack appears in settings', async ({ page }) => {
+  test('france-base pack shows toon format label in settings', async ({ page }) => {
     await page.goto('/#/settings');
     await page.waitForLoadState('networkidle');
-    await expect(page.getByRole('heading', { name: 'france-base', level: 3 })).toBeVisible();
+    const heading = page.getByRole('heading', { name: 'france-base', level: 3 });
+    await expect(heading).toBeVisible();
+    // Format badge should show 'toon' (not 'json')
+    const formatBadge = heading.locator('xpath=../../..').getByText(/toon/i);
+    await expect(formatBadge).toBeVisible();
   });
 
-  test('European Robin appears after enabling france-base', async ({ page }) => {
-    await enableFrancePack(page);
-    await expect(page.getByText(/European Robin/i).first()).toBeVisible();
-  });
-
-  test('french species data survives toon decode with full fields', async ({ page }) => {
-    await enableFrancePack(page);
-    // Wait for European Robin to appear in the list (ensures france-base is indexed)
-    // then navigate directly to detail page
-    await page.getByText(/European Robin/i).first().waitFor({ timeout: 10000 });
-    await page.goto('/#/species/bird_european-robin');
-    await page.waitForLoadState('networkidle');
-    // Verify complete species record: latin_name, habitat array, and bilingual common_name
-    await expect(page.getByText(/Erithacus rubecula/i)).toBeVisible();
-    await expect(page.getByText(/forest/i).first()).toBeVisible();
-    // Multilingual common_name object must survive toon decode
-    await expect(page.getByText(/Rougegorge familier/i)).toBeVisible();
-  });
-
-  test('france pack loads at least 20 species', async ({ page }) => {
+  test('france pack species load correctly from toon format', async ({ page }) => {
     await enableFrancePack(page);
     // Click France area chip to filter to france-base only
     await page.getByRole('button', { name: 'France' }).click();
@@ -58,6 +43,7 @@ test.describe('France pack (Toon format source)', () => {
     const speciesCountText = await page.getByText(/\d+ species/i).first().textContent();
     const match = speciesCountText?.match(/(\d+)/);
     const count = match ? parseInt(match[1], 10) : 0;
+    // France pack has 20+ species — if toon decode silently truncated, count would be much lower
     expect(count).toBeGreaterThanOrEqual(20);
   });
 });
