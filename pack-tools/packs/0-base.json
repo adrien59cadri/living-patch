@@ -5880,6 +5880,231 @@
           "author": "Brian Gratwicke",
           "source_url": "https://en.wikipedia.org/wiki/Rana_sylvatica"
         }
+      },
+      {
+        "id": "insect_zabulon-skipper",
+        "common_name": "Zabulon Skipper",
+        "latin_name": "Poanes zabulon",
+        "form": "butterfly",
+        "habitat": [
+          "forest_edge",
+          "meadow",
+          "wetland",
+          "riparian"
+        ],
+        "diet": [
+          "nectarivore"
+        ],
+        "behavior": [
+          "rapid_flight",
+          "mate_seeking"
+        ],
+        "season": [
+          "late_spring",
+          "summer"
+        ],
+        "functional_description": "Small skipper butterfly with rapid, darting flight characteristic of the Hesperiidae family. Larvae feed on Lovegrasses (Eragrostis) and Purpletop (Tridens flavus). Adults are active in late May and later, patrolling grassy forest edges and wetland margins where they visit flowers like Pickerelweed for nectar.",
+        "region": "northeast_pa",
+        "ecological_role": "herbivore",
+        "conservation_status": "LC"
+      },
+      {
+        "id": "insect_eastern-carpenter-bee",
+        "common_name": "Eastern Carpenter Bee",
+        "latin_name": "Xylocopa virginica",
+        "form": "bee",
+        "habitat": [
+          "forest_edge",
+          "garden",
+          "open_woodland"
+        ],
+        "diet": [
+          "nectarivore",
+          "pollen_eater"
+        ],
+        "behavior": [
+          "solitary",
+          "pollinator",
+          "cavity_nester"
+        ],
+        "season": [
+          "spring",
+          "summer",
+          "fall"
+        ],
+        "functional_description": "Large carpenter bee, largest bee species in NE PA. Black body with males displaying yellow face markings. Solitary nester — excavates galleries in dead wood for nesting, unlike social honeybees. Males are territorial and aggressively guard nesting areas despite lacking stinging capability. Important pollinator of native plants despite popular misconception about wood damage.",
+        "region": "northeast_pa",
+        "ecological_role": "omnivore",
+        "conservation_status": "LC"
+      },
+      {
+        "id": "insect_rusty-patched-bumble-bee",
+        "common_name": "Rusty Patched Bumble Bee",
+        "latin_name": "Bombus affinis",
+        "form": "bee",
+        "habitat": [
+          "meadow",
+          "prairie",
+          "field",
+          "forest_edge"
+        ],
+        "diet": [
+          "nectarivore",
+          "pollen_eater"
+        ],
+        "behavior": [
+          "social",
+          "pollinator",
+          "buzz_pollinator"
+        ],
+        "season": [
+          "spring",
+          "summer",
+          "fall"
+        ],
+        "functional_description": "Native bumble bee species with distinctive rusty-red patches on its abdomen against dark brown body. Once abundant across NE PA and the eastern US. Now federally endangered — the first bee species to receive protection under the Endangered Species Act. Last confirmed in Pennsylvania in 2006. Capable of buzz-pollinating flowers like blueberry and tomato. Colony collapse linked to disease and habitat loss.",
+        "region": "northeast_pa",
+        "ecological_role": "omnivore",
+        "conservation_status": "EN"
+      },
+      {
+        "id": "insect_american-bumble-bee",
+        "common_name": "American Bumble Bee",
+        "latin_name": "Bombus pensylvanicus",
+        "form": "bee",
+        "habitat": [
+          "meadow",
+          "field",
+          "forest_edge",
+          "agricultural"
+        ],
+        "diet": [
+          "nectarivore",
+          "pollen_eater"
+        ],
+        "behavior": [
+          "social",
+          "pollinator",
+          "buzz_pollinator"
+        ],
+        "season": [
+          "summer",
+          "fall"
+        ],
+        "functional_description": "Native bumble bee with black body and yellow face and leg markings. Once very common throughout NE PA. Populations have declined precipitously — last documented in Pennsylvania in 2018. Particularly vulnerable due to rapid population collapse from unknown causes, possibly linked to pathogen spread. Critical pollinator of late-season wildflowers and agricultural crops.",
+        "region": "northeast_pa",
+        "ecological_role": "omnivore",
+        "conservation_status": "VU"
+      },
+      {
+        "id": "insect_yellow-bumble-bee",
+        "common_name": "Yellow Bumble Bee",
+        "latin_name": "Bombus fervidus",
+        "form": "bee",
+        "habitat": [
+          "meadow",
+          "field",
+          "prairie",
+          "forest_edge"
+        ],
+        "diet": [
+          "nectarivore",
+          "pollen_eater"
+        ],
+        "behavior": [
+          "social",
+          "pollinator",
+          "buzz_pollinator"
+        ],
+        "season": [
+          "spring",
+          "summer",
+          "fall"
+        ],
+        "functional_description": "Native bumble bee with bright yellow and black coloration. Historically present across NE PA. Populations have crashed — last recorded in Pennsylvania in 2018. Rapid decline mirrors broader bumble bee population collapse across eastern North America. Specialized for flowers with tubular or complex morphology. May have been displaced by Bombus impatiens in some regions.",
+        "region": "northeast_pa",
+        "ecological_role": "omnivore",
+        "conservation_status": "VU"
+      },
+      {
+        "id": "insect_yellow-banded-bumble-bee",
+        "common_name": "Yellow-banded Bumble Bee",
+        "latin_name": "Bombus terricola",
+        "form": "bee",
+        "habitat": [
+          "meadow",
+          "field",
+          "forest_edge",
+          "woodland"
+        ],
+        "diet": [
+          "nectarivore",
+          "pollen_eater"
+        ],
+        "behavior": [
+          "social",
+          "pollinator",
+          "buzz_pollinator"
+        ],
+        "season": [
+          "spring",
+          "summer",
+          "fall"
+        ],
+        "functional_description": "Native bumble bee with alternating bands of yellow and black. Historically abundant throughout NE PA and widespread across eastern North America. Populations have experienced dramatic decline — last detected in Pennsylvania in 2009. May have harbored or transmitted pathogens (particularly Nosema bombi) that spread to other bumble bee species. Specialized pollinator of diverse wildflowers.",
+        "region": "northeast_pa",
+        "ecological_role": "omnivore",
+        "conservation_status": "VU"
+      },
+      {
+        "id": "insect_squash-bee",
+        "common_name": "Squash Bee",
+        "latin_name": "Eucera pruinosa",
+        "form": "bee",
+        "habitat": [
+          "agricultural",
+          "garden",
+          "cultivated_field"
+        ],
+        "diet": [
+          "pollen_eater"
+        ],
+        "behavior": [
+          "solitary",
+          "specialist_pollinator"
+        ],
+        "season": [
+          "early_summer"
+        ],
+        "functional_description": "Specialist solitary bee found primarily in cultivated areas where its host plants are grown. Exclusively forages on pollen from squash, pumpkin, and melon flowers (Cucurbitaceae family) — cannot complete lifecycle without these crops. Nests in ground burrows. Emerges early in the morning to forage before flowers close. One of the most efficient pollinators of squash and pumpkin crops in NE PA and across North America.",
+        "region": "northeast_pa",
+        "ecological_role": "omnivore",
+        "conservation_status": "LC"
+      },
+      {
+        "id": "insect_cuckoo-bee",
+        "common_name": "Cuckoo Bee",
+        "latin_name": "Epeoloides pilosulus",
+        "form": "bee",
+        "habitat": [
+          "meadow",
+          "field",
+          "forest_edge"
+        ],
+        "diet": [
+          "cleptoparasitic"
+        ],
+        "behavior": [
+          "cleptoparasitic",
+          "nest_usurper"
+        ],
+        "season": [
+          "summer"
+        ],
+        "functional_description": "Rare cleptoparasitic bee with an extreme conservation crisis — last recorded in Pennsylvania in 1911 and presumed extirpated from the state. These 'cuckoo' bees lay their eggs in the nests of host bee species, where the cuckoo larvae consume the host's provisions. Considered a species of concern due to extreme rarity and uncertain population status. Its disappearance may reflect broader collapse of wild bee communities upon which it depends.",
+        "region": "northeast_pa",
+        "ecological_role": "cleptoparasite",
+        "conservation_status": "CR"
       }
     ],
     "taxonomic_groups": [
