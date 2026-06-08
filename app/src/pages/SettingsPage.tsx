@@ -2,6 +2,7 @@ import { useRef, useState } from 'react';
 import { useUserPreferences } from '../hooks/useUserPreferences';
 import { usePacksStore } from '../stores/packs';
 import { useLifeListStore } from '../stores/lifeList';
+import { formatTokens } from '../lib/labels';
 import type { PackManifestEntry } from '../data';
 import type { LifeListEntry, Sighting, EcologicalStatusMode } from '../types';
 
@@ -382,6 +383,14 @@ export default function SettingsPage() {
                   )}
                   {entry.relationsCount > 0 && (
                     <div><span className="font-medium text-emerald-700">{entry.relationsCount}</span> relation{entry.relationsCount !== 1 ? 's' : ''}</div>
+                  )}
+                  {(entry.rawTokenEstimate || entry.bundledTokenEstimate) && (
+                    <div>
+                      <span className="font-medium text-emerald-700">{formatTokens(entry.rawTokenEstimate ?? 0)}</span>
+                      {' tokens (raw) / '}
+                      <span className="font-medium text-emerald-700">{formatTokens(entry.bundledTokenEstimate ?? 0)}</span>
+                      {' tokens (bundled)'}
+                    </div>
                   )}
                 </div>
 

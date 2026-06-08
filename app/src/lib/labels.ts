@@ -97,6 +97,13 @@ export function ecologicalStatusDescription(status: EcologicalStatus | string): 
   return ECOLOGICAL_STATUS_DESCRIPTIONS[status] ?? status;
 }
 
+export function formatTokens(tokens: number): string {
+  if (tokens >= 1000) {
+    return (tokens / 1000).toFixed(1) + 'K';
+  }
+  return tokens.toString();
+}
+
 export { ECOLOGICAL_STATUS_LABELS, ECOLOGICAL_STATUS_DESCRIPTIONS };
 
 import type { CommonName } from '../types';
