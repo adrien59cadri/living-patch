@@ -67,6 +67,7 @@ try {
       const data = file.endsWith('.toon') ? decode(rawData) : JSON.parse(rawData);
       data._sourceFormat = file.endsWith('.toon') ? 'toon' : 'json';
       data._rawTokenEstimate = estimateTokens(rawData);
+      data._rawBytes = Buffer.byteLength(rawData, 'utf-8');
 
       // Validate pack structure
       if (!data.metadata || !data.data) {
@@ -177,7 +178,9 @@ try {
       ...pack.metadata,
       format: pack._sourceFormat ?? 'json',
       rawTokenEstimate: dataPacks[idx]._rawTokenEstimate,
+      rawBytes: dataPacks[idx]._rawBytes,
       bundledTokenEstimate: estimateTokens(bundledJson),
+      bundledBytes: Buffer.byteLength(bundledJson, 'utf-8'),
       speciesCount: pack.data.species?.length ?? 0,
       groupCount: pack.data.taxonomic_groups?.length ?? 0,
       symbiosisCount: pack.data.symbiosis?.length ?? 0,
