@@ -18,7 +18,7 @@ const SECONDARY_ROLES: SymbiosisRole[] = ['competition'];
 
 export function KeyRelationshipsSection({ related, speciesById, taxonomicGroupIds }: Props) {
   const groups = groupByRole(related);
-  const [expandedRole, setExpandedRole] = useState<SymbiosisRole | null>(PRIMARY_ROLES[0] ?? null);
+  const [expandedRoles, setExpandedRoles] = useState<Set<SymbiosisRole>>(new Set([PRIMARY_ROLES[0]]));
   const [showSecondary, setShowSecondary] = useState(false);
 
   const primaryRelations = PRIMARY_ROLES.map(role => ({
@@ -36,7 +36,7 @@ export function KeyRelationshipsSection({ related, speciesById, taxonomicGroupId
   }
 
   const renderRoleRow = (role: SymbiosisRole, entries: RelatedEntry[]) => {
-    const isExpanded = expandedRole === role;
+    const isExpanded = expandedRoles.has(role);
     const resolved = resolveRelationGroups(entries, speciesById, taxonomicGroupIds);
     const firstTwo = resolved.slice(0, 2);
     const remainingCount = Math.max(0, resolved.length - 2);
@@ -47,7 +47,12 @@ export function KeyRelationshipsSection({ related, speciesById, taxonomicGroupId
       <div key={role}>
         <div className="flex items-center justify-between">
           <button
-            onClick={() => setExpandedRole(isExpanded ? null : role)}
+            onClick={() => {
+              const newRoles = new Set(expandedRoles);
+              if (isExpanded) newRoles.delete(role);
+              else newRoles.add(role);
+              setExpandedRoles(newRoles);
+            }}
             className="text-left flex-1"
           >
             <div className="flex items-center gap-2 flex-wrap">
@@ -95,7 +100,12 @@ export function KeyRelationshipsSection({ related, speciesById, taxonomicGroupId
             </div>
           </button>
           <button
-            onClick={() => setExpandedRole(isExpanded ? null : role)}
+            onClick={() => {
+              const newRoles = new Set(expandedRoles);
+              if (isExpanded) newRoles.delete(role);
+              else newRoles.add(role);
+              setExpandedRoles(newRoles);
+            }}
             className="ml-2 text-xs text-stone-500 hover:text-stone-700 font-medium whitespace-nowrap"
           >
             {isExpanded ? '−' : '+'}
