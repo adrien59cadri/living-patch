@@ -2,16 +2,7 @@ import { describe, test, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter, Routes, Route } from 'react-router-dom';
 import NeighborListView from '../NeighborListView';
-import basePack from '../../../../pack-tools/packs/0-base.json';
-import type { LoadedPack } from '../../data';
-
-// Provide the base pack so useDataset() returns real species data
-vi.mock('../../stores/packs', () => ({
-  usePacksStore: (selector?: (s: { loadedPacks: LoadedPack[] }) => unknown) => {
-    const state = { loadedPacks: [basePack as unknown as LoadedPack] };
-    return selector ? selector(state) : state;
-  },
-}));
+vi.mock('../../stores/packs');
 
 function renderNeighborList(speciesId: string, category: string) {
   return render(

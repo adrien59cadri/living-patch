@@ -5,25 +5,8 @@ import {
   getRelatedEntries,
 } from '../relationships';
 import type { RelatedEntry } from '../relationships';
-import type { Species, Symbiosis, Relation } from '../../types';
-
-// ── Minimal inline fixtures ──────────────────────────────────────────────────
-
-function makeSpecies(id: string, form: string, extra: Partial<Species> = {}): Species {
-  return {
-    id,
-    common_name: id,
-    form,
-    habitat: [],
-    diet: [],
-    behavior: [],
-    season: [],
-    functional_description: '',
-    life_stages: [],
-    region: 'northeast_pa',
-    ...extra,
-  };
-}
+import type { Relation } from '../../types';
+import { makeSpecies, makeSymbiosis } from '../../test/fixtures';
 
 function makeEntry(
   form: string,
@@ -144,13 +127,7 @@ describe('getRelatedEntries', () => {
   const speciesB = makeSpecies('species_b', 'wildflower');
   const speciesC = makeSpecies('species_c', 'songbird');
 
-  const symbiosis: Symbiosis = {
-    type: 'mutualism',
-    source: 'species_a',
-    targets: ['species_b'],
-    strength: 'incidental',
-    notes: 'Mutualism AB',
-  };
+  const symbiosis = makeSymbiosis('mutualism', 'species_a', ['species_b'], { notes: 'Mutualism AB' });
 
   const relation: Relation = {
     type: 'taxonomic_group',
@@ -187,7 +164,7 @@ describe('getRelatedEntries', () => {
   });
 
   test('assigns strength from symbiosis', () => {
-    const criticalSym: Symbiosis = { ...symbiosis, strength: 'critical' };
+    const criticalSym = makeSymbiosis('mutualism', 'species_a', ['species_b'], { strength: 'critical' });
     const symMap = new Map([['species_a', [criticalSym]]]);
     const result = getRelatedEntries('species_a', symMap, new Map(), speciesById);
     expect(result[0].strength).toBe('critical');
@@ -204,13 +181,7 @@ describe('getRelatedEntries', () => {
   });
 
   test('skips entries for unknown partner ids', () => {
-    const badSym: Symbiosis = {
-      type: 'mutualism',
-      source: 'species_a',
-      targets: ['nonexistent'],
-      strength: 'incidental',
-      notes: '',
-    };
+    const badSym = makeSymbiosis('mutualism', 'species_a', ['nonexistent']);
     const result = getRelatedEntries(
       'species_a',
       new Map([['species_a', [badSym]]]),

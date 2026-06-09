@@ -13,19 +13,7 @@ import {
 } from '../../test/fixtures';
 import type { RelatedEntry } from '../../lib/relationships';
 
-// Mock life list hooks so SpeciesCard unit tests don't depend on Zustand/localStorage
-vi.mock('../../hooks/useLifeList', () => ({
-  useLifeList: () => ({
-    addSighting: vi.fn(),
-    setTier: vi.fn(),
-    getTier: () => null,
-    entries: [],
-    sightings: [],
-  }),
-  useSpeciesTier: () => null,
-  useSpeciesSightings: () => [],
-  useSpeciesSightingCount: () => 0,
-}));
+vi.mock('../../hooks/useLifeList');
 
 function renderCard(
   species = mockMonarch,
@@ -128,13 +116,11 @@ describe('SpeciesCard', () => {
   });
 
   describe('Hero image rendering', () => {
-    test('shows emoji placeholder when no image data', () => {
-      renderCard({ ...mockMonarch, image: undefined });
-      expect(screen.getByText('📷')).toBeInTheDocument();
-    });
-
-    test('shows emoji placeholder when image URL is empty', () => {
-      renderCard({ ...mockMonarch, image: { url: '', author: 'Unknown' } });
+    test.each([
+      ['no image data', undefined],
+      ['empty image URL', { url: '', author: 'Unknown' }],
+    ])('shows emoji placeholder when %s', (_, image) => {
+      renderCard({ ...mockMonarch, image });
       expect(screen.getByText('📷')).toBeInTheDocument();
     });
 

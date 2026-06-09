@@ -1,21 +1,10 @@
-import { describe, test, expect } from 'vitest';
+import { describe, test, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import App from '../App';
 
+vi.mock('../stores/packs');
+
 describe('App component mounting', () => {
-  test('mounts without errors', () => {
-    const { container } = render(<App />);
-    expect(container).toBeTruthy();
-  });
-
-  test('renders the component with content', () => {
-    const { container } = render(<App />);
-    // Check that something rendered
-    const content = container.innerHTML;
-    expect(content).toBeTruthy();
-    expect(content.length).toBeGreaterThan(0);
-  });
-
   test('renders header with LivingPatch title', () => {
     render(<App />);
     const header = screen.getByRole('banner');
