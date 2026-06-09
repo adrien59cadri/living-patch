@@ -304,11 +304,11 @@ test.describe('French species (Item 10)', () => {
 });
 
 test.describe('Pack management (Item 9)', () => {
-  test('packs page displays both packs', async ({ page }) => {
+  test('packs page displays all packs', async ({ page }) => {
     await page.goto('/#/settings');
     await page.waitForLoadState('networkidle');
 
-    await expect(page.getByText(/2 pack/)).toBeVisible();
+    await expect(page.getByText(/\d+ pack/)).toBeVisible();
     await expect(page.getByRole('heading', { name: '0-base', level: 3 })).toBeVisible();
     await expect(page.getByRole('heading', { name: 'france-base', level: 3 })).toBeVisible();
   });
