@@ -30,6 +30,12 @@ const PACKS_DIR = path.join(__dirname, 'pack-tools', 'packs');
 const OUTPUT_DIR = path.join(__dirname, 'app', 'public', 'packs');
 const INCLUDE_DRAFTS = process.env.INCLUDE_DRAFTS === 'true';
 
+// Estimate tokens from text (roughly 1.3 words per token)
+function estimateTokens(text) {
+  const wordCount = text.trim().split(/\s+/).length;
+  return Math.ceil(wordCount / 1.3);
+}
+
 console.log(`🔄 Building dataset from packs...`);
 console.log(`   Packs dir: ${PACKS_DIR}`);
 console.log(`   Output dir: ${OUTPUT_DIR}`);
@@ -60,6 +66,7 @@ try {
       const rawData = fs.readFileSync(filePath, 'utf-8');
       const data = file.endsWith('.toon') ? decode(rawData) : JSON.parse(rawData);
       data._sourceFormat = file.endsWith('.toon') ? 'toon' : 'json';
+      data._rawTokenEstimate = estimateTokens(rawData);
 
       // Validate pack structure
       if (!data.metadata || !data.data) {
@@ -164,14 +171,19 @@ try {
   }
 
   // Write manifest (metadata + counts only, no species data)
-  const manifest = packsForOutput.map(pack => ({
-    ...pack.metadata,
-    format: pack._sourceFormat ?? 'json',
-    speciesCount: pack.data.species?.length ?? 0,
-    groupCount: pack.data.taxonomic_groups?.length ?? 0,
-    symbiosisCount: pack.data.symbiosis?.length ?? 0,
-    relationsCount: pack.data.relations?.length ?? 0,
-  }));
+  const manifest = packsForOutput.map((pack, idx) => {
+    const bundledJson = JSON.stringify(pack);
+    return {
+      ...pack.metadata,
+      format: pack._sourceFormat ?? 'json',
+      rawTokenEstimate: dataPacks[idx]._rawTokenEstimate,
+      bundledTokenEstimate: estimateTokens(bundledJson),
+      speciesCount: pack.data.species?.length ?? 0,
+      groupCount: pack.data.taxonomic_groups?.length ?? 0,
+      symbiosisCount: pack.data.symbiosis?.length ?? 0,
+      relationsCount: pack.data.relations?.length ?? 0,
+    };
+  });
   const manifestPath = path.join(OUTPUT_DIR, 'manifest.json');
   fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 2));
 

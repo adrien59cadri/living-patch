@@ -13,6 +13,8 @@ interface PackMetadata {
 /** Entry in manifest.json — metadata + counts, no species data. */
 export interface PackManifestEntry extends PackMetadata {
   format?: 'json' | 'toon';
+  rawTokenEstimate?: number;
+  bundledTokenEstimate?: number;
   speciesCount: number;
   groupCount: number;
   symbiosisCount: number;
