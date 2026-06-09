@@ -29,7 +29,7 @@ export const RELATIONSHIP_COLORS: Record<string, string> = {
   parasitism: '#FFB366',     // pastel orange
   competition: '#D3D3D3',    // pastel gray
   commensalism: '#87CEEB',   // pastel blue
-  amensalism: '#E8C4E8',     // pastel purple
+  amensalism: '#C8E6A0',     // pastel chartreuse (matches mutualism)
 };
 
 // Saturated relationship colors for critical strength (full intensity)
@@ -39,7 +39,7 @@ export const RELATIONSHIP_COLORS_CRITICAL: Record<string, string> = {
   parasitism: '#cc6600',     // deep orange
   competition: '#555555',    // dark gray
   commensalism: '#0077bb',   // deep blue
-  amensalism: '#8b2eb8',     // deep purple
+  amensalism: '#3a9e1a',     // deep green (matches mutualism)
 };
 
 // Medium-saturation relationship colors for important strength
@@ -49,7 +49,7 @@ export const RELATIONSHIP_COLORS_IMPORTANT: Record<string, string> = {
   parasitism: '#e08800',     // medium amber
   competition: '#999999',    // medium gray
   commensalism: '#2299dd',   // medium blue
-  amensalism: '#b055cc',     // medium purple
+  amensalism: '#6dc040',     // medium green (matches mutualism)
 };
 
 // ============================================================================
@@ -95,7 +95,7 @@ export const SYMBIOSIS_ICONS: Record<string, string> = {
   'predation-nectar_feeding': '🌼',
   competition: '⚡',
   commensalism: '↗️',
-  amensalism: '🚫',
+  amensalism: '🤝',
 };
 
 // ============================================================================
@@ -351,7 +351,7 @@ export const SYMBIOSIS_LABELS: Record<string, string> = {
   predation: 'Predation',
   competition: 'Competition',
   commensalism: 'Commensalism',
-  amensalism: 'Amensalism',
+  amensalism: 'Suppresses',
   related: 'Related Species',
 };
 
