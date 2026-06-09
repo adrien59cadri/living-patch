@@ -51,7 +51,7 @@ describe('seasonLabel', () => {
 describe('symbiosisLabel', () => {
   test('returns label for known type', () => {
     expect(symbiosisLabel('mutualism')).toBe('Mutualism');
-    expect(symbiosisLabel('parasitism')).toBe('Parasitism & Hosting');
+    expect(symbiosisLabel('parasitism')).toBe('Parasitism');
   });
 
   test('returns type itself for unknown', () => {

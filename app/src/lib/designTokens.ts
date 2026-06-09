@@ -347,7 +347,7 @@ export const DIET_LABELS: Record<string, string> = {
 
 export const SYMBIOSIS_LABELS: Record<string, string> = {
   mutualism: 'Mutualism',
-  parasitism: 'Parasitism & Hosting',
+  parasitism: 'Parasitism',
   predation: 'Predation',
   competition: 'Competition',
   commensalism: 'Commensalism',

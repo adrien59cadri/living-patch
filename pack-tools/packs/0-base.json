@@ -6524,6 +6524,44 @@
           "author": "Jerzy Opioła",
           "source_url": "https://en.wikipedia.org/wiki/Trametes_versicolor"
         }
+      },
+      {
+        "id": "plant_stinging-nettle",
+        "common_name": "Stinging Nettle",
+        "latin_name": "Urtica dioica",
+        "form": "wildflower",
+        "habitat": [
+          "riparian",
+          "disturbed",
+          "field_edge",
+          "meadow"
+        ],
+        "behavior": [
+          "stinging"
+        ],
+        "season": [
+          "spring",
+          "summer",
+          "fall"
+        ],
+        "functional_description": "Tall perennial with hollow stinging hairs (trichomes) containing formic acid, histamine, and serotonin that cause immediate skin irritation. Native throughout NE PA in rich, disturbed soils along stream banks and field edges. Ecologically critical as the primary larval host for Red Admiral and Eastern Comma butterflies — both require Urtica to complete their life cycle. Young spring shoots are highly nutritious and historically harvested as a cooked green. Spreads by rhizomes forming dense patches. A strong nutrient indicator: dense nettles mark historically fertilized or disturbed soils.",
+        "life_stages": [
+          "seedling",
+          "shoot",
+          "flowering",
+          "seeding"
+        ],
+        "region": "northeast_pa",
+        "ecological_role": "producer",
+        "active_months": [
+          "Apr-Oct"
+        ],
+        "conservation_status": "LC",
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Brennnessel_fg01.jpg/960px-Brennnessel_fg01.jpg",
+          "author": "Franz Xaver",
+          "source_url": "https://en.wikipedia.org/wiki/Urtica_dioica"
+        }
       }
     ],
     "taxonomic_groups": [
@@ -8535,6 +8573,83 @@
         ],
         "strength": "critical",
         "notes": "Garlic mustard exudes allelopathic glucosinolate-breakdown chemicals from its roots that disrupt both arbuscular and ectomycorrhizal fungal networks. By degrading the soil fungal community, garlic mustard starves native plants of their fungal partners — creating a reinforcing invasion cycle. This is one of the most ecologically destructive mechanisms of any NE PA invasive species: it attacks the invisible infrastructure the entire native plant community depends on."
+      },
+      {
+        "type": "amensalism",
+        "source": "plant_oriental-bittersweet",
+        "targets": [
+          "plant_white-oak",
+          "plant_northern-red-oak",
+          "plant_american-beech",
+          "plant_black-cherry"
+        ],
+        "strength": "critical",
+        "notes": "Oriental Bittersweet coils tightly around tree trunks and branches, girdling the cambium and cutting off nutrient transport. The vine's weight also breaks limbs and topples canopy trees. Targeted trees are killed over years, not decades — one of the few invasive plants that directly and reliably kills mature forest trees."
+      },
+      {
+        "type": "amensalism",
+        "source": "plant_japanese-honeysuckle",
+        "targets": [
+          "plant_spicebush",
+          "plant_flowering-dogwood",
+          "plant_serviceberry"
+        ],
+        "strength": "critical",
+        "notes": "Japanese Honeysuckle overtops and smothers native understory shrubs and saplings under a dense twining canopy, blocking light and preventing regeneration. Unlike competition for a shared resource, the harm is structural — the honeysuckle uses the native plant as scaffolding while suppressing it. Spicebush, flowering dogwood, and serviceberry are heavily impacted in NE PA forest edges."
+      },
+      {
+        "type": "amensalism",
+        "source": "plant_porcelainberry",
+        "targets": [
+          "plant_spicebush",
+          "plant_black-willow",
+          "plant_box-elder"
+        ],
+        "strength": "critical",
+        "notes": "Porcelainberry rapidly blankets shrubs, fences, and forest-edge trees in a dense vine canopy, cutting off sunlight to native vegetation beneath. Grows up to 15 feet per season. Particularly damaging to riparian shrubs: spicebush, willows, and box elders along stream banks are smothered before they can be re-established. The vine mimics wild grape, delaying removal until already dominant."
+      },
+      {
+        "type": "amensalism",
+        "source": "plant_multiflora-rose",
+        "targets": [
+          "plant_spicebush",
+          "plant_serviceberry",
+          "plant_flowering-dogwood"
+        ],
+        "strength": "important",
+        "notes": "Multiflora Rose forms dense impenetrable thickets that crowd out native understory shrubs through shading and physical exclusion rather than competition for a specific resource. A single plant can spread to cover hundreds of square feet within a decade. Suppresses the shrub layer that provides nesting habitat for migratory songbirds and larval host habitat for multiple butterfly species."
+      },
+      {
+        "type": "amensalism",
+        "source": "plant_common-periwinkle",
+        "targets": [
+          "plant_white-turtlehead",
+          "plant_common-violet",
+          "plant_eastern-columbine"
+        ],
+        "strength": "important",
+        "notes": "Common Periwinkle forms a persistent evergreen ground mat that prevents native wildflower seeds from reaching soil, blocks light from reaching seedlings, and intercepts soil moisture. Unlike competition, the harm is not over a shared resource but through total physical suppression of the forest floor layer. Spring ephemerals and native wildflowers are eliminated within a few seasons of periwinkle establishment."
+      },
+      {
+        "type": "amensalism",
+        "source": "plant_japanese-wineberry",
+        "targets": [
+          "plant_serviceberry",
+          "plant_chokecherry"
+        ],
+        "strength": "important",
+        "notes": "Japanese Wineberry outcompetes native cane shrubs (blackberries, raspberries) and edge shrubs through faster growth, higher fruit set, and denser cane architecture that excludes native plants from riparian and forest-edge habitats. The sticky red hairs on stems trap and kill small insects. Displaces native Rubus species that are larval hosts for multiple native bee and butterfly species."
+      },
+      {
+        "type": "amensalism",
+        "source": "plant_canada-thistle",
+        "targets": [
+          "plant_goldenrod",
+          "plant_new-england-aster",
+          "plant_foxglove-beardtongue"
+        ],
+        "strength": "important",
+        "notes": "Canada Thistle spreads via deep creeping rhizomes that form a persistent underground network, physically suppressing native forbs by occupying root space and intercepting soil nutrients before they are accessible to shallower-rooted natives. The harm is not simple resource competition but rhizome-mediated exclusion. Dense Canada Thistle monocultures eliminate the goldenrod and aster fields that late-season pollinators depend on in NE PA meadows."
       }
     ],
     "relations": [
