@@ -168,7 +168,7 @@ try {
   // Write individual pack files
   for (const pack of packsForOutput) {
     const packPath = path.join(OUTPUT_DIR, `${pack.metadata.id}.json`);
-    fs.writeFileSync(packPath, JSON.stringify(pack, null, 2));
+    fs.writeFileSync(packPath, JSON.stringify(pack));
   }
 
   // Write manifest (metadata + counts only, no species data)
