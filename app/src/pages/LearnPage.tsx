@@ -6,6 +6,7 @@ import KeystoneTypesSection from '../components/KeystoneTypesSection';
 import SymbiosisSection from '../components/SymbiosisSection';
 import ConservationStatusSection from '../components/ConservationStatusSection';
 import EcologicalStatusSection from '../components/EcologicalStatusSection';
+import SpecialistDependenciesSection from '../components/SpecialistDependenciesSection';
 
 export default function LearnPage() {
   const { speciesById, symbiosis } = useDataset();
@@ -13,6 +14,7 @@ export default function LearnPage() {
   const [expandedSymbiosisType, setExpandedSymbiosisType] = useState<string | null>(null);
   const [expandedConservationStatus, setExpandedConservationStatus] = useState<string | null>(null);
   const [expandedEcologicalStatus, setExpandedEcologicalStatus] = useState<string | null>(null);
+  const [expandedSpecialistKey, setExpandedSpecialistKey] = useState<string | null>(null);
 
   return (
     <div className="min-h-screen bg-stone-50 py-8 px-4">
@@ -51,6 +53,12 @@ export default function LearnPage() {
           <EcologicalStatusSection
             expanded={expandedEcologicalStatus}
             onToggle={setExpandedEcologicalStatus}
+            speciesById={speciesById}
+          />
+
+          <SpecialistDependenciesSection
+            expanded={expandedSpecialistKey}
+            onToggle={setExpandedSpecialistKey}
             speciesById={speciesById}
           />
         </div>
