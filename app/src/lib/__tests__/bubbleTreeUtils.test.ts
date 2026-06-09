@@ -7,6 +7,7 @@ import {
   getFormColor,
   getLinkStrokeWidth,
 } from '../bubbleTreeUtils';
+import type { SymbiosisStrength } from '../../types';
 import { makeSpecies, makeSymbiosis } from '../../test/fixtures';
 
 describe('bubbleTreeUtils - Nodes/Edges Model', () => {
@@ -150,7 +151,7 @@ describe('bubbleTreeUtils - Nodes/Edges Model', () => {
   });
 
   describe('getLinkStrokeWidth', () => {
-    it.each([
+    it.each<[SymbiosisStrength, number]>([
       ['critical', 3],
       ['important', 2],
       ['incidental', 1.5],
