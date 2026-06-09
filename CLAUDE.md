@@ -193,7 +193,7 @@ living-patch/
 │
 ├── build-dataset.js               # Merge packs into public/packs/
 ├── package.json
-├── ROADMAP.md                     # Conservation status implementation plan
+├── roadmap.md                     # Project roadmap: completed & planned features
 └── CLAUDE.md                      # This file
 
 ```
