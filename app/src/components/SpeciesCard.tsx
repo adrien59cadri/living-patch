@@ -31,7 +31,7 @@ interface Props {
 export function SpeciesCard({ species, symbiotes, habitatNeighbors, related, speciesById, taxonomicGroupIds }: Props) {
   const [showScientificName, setShowScientificName] = useState(false);
   const [sightingModalOpen, setSightingModalOpen] = useState(false);
-  const stages = (species.life_stages as LifeStage[]).filter(
+  const stages = ((species.life_stages ?? []) as LifeStage[]).filter(
     s => typeof s === 'object' && s !== null
   );
 
