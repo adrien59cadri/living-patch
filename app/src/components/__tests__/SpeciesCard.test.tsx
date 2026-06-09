@@ -116,13 +116,11 @@ describe('SpeciesCard', () => {
   });
 
   describe('Hero image rendering', () => {
-    test('shows emoji placeholder when no image data', () => {
-      renderCard({ ...mockMonarch, image: undefined });
-      expect(screen.getByText('📷')).toBeInTheDocument();
-    });
-
-    test('shows emoji placeholder when image URL is empty', () => {
-      renderCard({ ...mockMonarch, image: { url: '', author: 'Unknown' } });
+    test.each([
+      ['no image data', undefined],
+      ['empty image URL', { url: '', author: 'Unknown' }],
+    ])('shows emoji placeholder when %s', (_, image) => {
+      renderCard({ ...mockMonarch, image });
       expect(screen.getByText('📷')).toBeInTheDocument();
     });
 

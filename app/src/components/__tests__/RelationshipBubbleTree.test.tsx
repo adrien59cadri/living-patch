@@ -15,20 +15,6 @@ const symbiosisBySpeciesId = buildSymbiosisMap([
 ]);
 
 describe('RelationshipBubbleTree', () => {
-  it('should render without crashing', () => {
-    const { container } = render(
-      <RelationshipBubbleTree
-        focalId="bird_focal"
-        speciesById={speciesById}
-        symbiosisBySpeciesId={symbiosisBySpeciesId}
-      />
-    );
-
-    expect(container).toBeTruthy();
-    const svg = container.querySelector('svg');
-    expect(svg).toBeTruthy();
-  });
-
   it('should render SVG with proper structure', () => {
     const { container } = render(
       <RelationshipBubbleTree
@@ -120,32 +106,19 @@ describe('RelationshipBubbleTree', () => {
     }
   });
 
-  it('should respect height prop', () => {
+  it.each([
+    ['height', { height: 500 }, 'height', '500'],
+    ['width', { width: 800 }, 'width', '800'],
+  ])('should respect %s prop', (_, props, attr, expected) => {
     const { container } = render(
       <RelationshipBubbleTree
         focalId="bird_focal"
         speciesById={speciesById}
         symbiosisBySpeciesId={symbiosisBySpeciesId}
-        height={500}
+        {...props}
       />
     );
-
-    const svg = container.querySelector('svg');
-    expect(svg?.getAttribute('height')).toBe('500');
-  });
-
-  it('should respect width prop', () => {
-    const { container } = render(
-      <RelationshipBubbleTree
-        focalId="bird_focal"
-        speciesById={speciesById}
-        symbiosisBySpeciesId={symbiosisBySpeciesId}
-        width={800}
-      />
-    );
-
-    const svg = container.querySelector('svg');
-    expect(svg?.getAttribute('width')).toBe('800');
+    expect(container.querySelector('svg')?.getAttribute(attr)).toBe(expected);
   });
 
   it('should respect maxDepth prop', () => {

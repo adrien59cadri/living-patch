@@ -60,12 +60,14 @@ describe('symbiosisLabel', () => {
 });
 
 describe('formIcon', () => {
-  test('returns emoji for known forms', () => {
-    expect(formIcon('butterfly')).toBe('🦋');
-    expect(formIcon('bee')).toBe('🐝');
-    expect(formIcon('owl')).toBe('🦉');
-    expect(formIcon('tree')).toBe('🌳');
-    expect(formIcon('frog')).toBe('🐸');
+  test.each([
+    ['butterfly', '🦋'],
+    ['bee', '🐝'],
+    ['owl', '🦉'],
+    ['tree', '🌳'],
+    ['frog', '🐸'],
+  ])('%s → %s', (form, expected) => {
+    expect(formIcon(form)).toBe(expected);
   });
 
   test('returns fallback emoji for unknown form', () => {
@@ -83,11 +85,7 @@ describe('activeMonthsLabel', () => {
     expect(activeMonthsLabel(['Apr-May'])).toBe('Apr-May');
   });
 
-  test('returns null for empty array', () => {
-    expect(activeMonthsLabel([])).toBeNull();
-  });
-
-  test('returns null for undefined', () => {
-    expect(activeMonthsLabel(undefined)).toBeNull();
+  test.each([[[] as string[]], [undefined]])('returns null for %s', (input) => {
+    expect(activeMonthsLabel(input)).toBeNull();
   });
 });
