@@ -19,7 +19,7 @@ export default function SymbiosisSection({
 }: SymbiosisSectionProps) {
   const symbiosisTypes = Object.entries(SYMBIOSIS_DEFINITIONS) as Array<
     [
-      'mutualism' | 'parasitism' | 'predation' | 'competition' | 'commensalism',
+      'mutualism' | 'parasitism' | 'predation' | 'competition' | 'commensalism' | 'amensalism',
       (typeof SYMBIOSIS_DEFINITIONS)[keyof typeof SYMBIOSIS_DEFINITIONS],
     ]
   >;

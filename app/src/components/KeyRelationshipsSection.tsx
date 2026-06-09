@@ -14,7 +14,7 @@ interface Props {
 }
 
 const PRIMARY_ROLES: SymbiosisRole[] = ['mutualism', 'commensalism', 'parasitism', 'predation'];
-const SECONDARY_ROLES: SymbiosisRole[] = ['competition'];
+const SECONDARY_ROLES: SymbiosisRole[] = ['competition', 'amensalism'];
 
 export function KeyRelationshipsSection({ related, speciesById, taxonomicGroupIds }: Props) {
   const groups = groupByRole(related);

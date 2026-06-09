@@ -69,6 +69,6 @@ describe('NeighborListView', () => {
   test('renders symbiosis type badge for entries with roles', () => {
     renderNeighborList('insect_monarch-butterfly', 'plants');
     // Monarch→milkweed is parasitism
-    expect(screen.getAllByText('Parasitism & Hosting').length).toBeGreaterThan(0);
+    expect(screen.getAllByText('Parasitism').length).toBeGreaterThan(0);
   });
 });

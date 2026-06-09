@@ -7,7 +7,7 @@ metadata:
   createdDate: "2026-06-01T00:00:00Z"
   status: published
 data:
-  species[23]:
+  species[22]:
     - id: bird_european-robin
       common_name:
         en: European Robin
@@ -273,20 +273,6 @@ data:
       image:
         url: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Hedera_helix_Dover.jpg/960px-Hedera_helix_Dover.jpg"
         author: kallerna
-      conservation_status: LC
-    - id: plant_stinging-nettle
-      common_name:
-        en: Stinging Nettle
-        fr: Grande ortie
-      latin_name: Urtica dioica
-      form: plant
-      habitat[3]: forest_edge,garden,meadow
-      season[2]: spring,summer
-      functional_description: "Larval host plant for several butterfly species including the European Peacock, Red Admiral, and Small Tortoiseshell. Indicates nitrogen-rich soil. A pioneer plant that boosts edge biodiversity."
-      region: france
-      image:
-        url: "https://upload.wikimedia.org/wikipedia/commons/6/6f/Fen_nettle_%28Urtica_dioica_ssp._galeopsifolia%29_-_geograph.org.uk_-_5423125.jpg"
-        author: Evelyn Simak
       conservation_status: LC
     - id: butterfly_european-peacock
       common_name:

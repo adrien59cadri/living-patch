@@ -74,7 +74,7 @@ export interface Species {
 export type SymbiosisStrength = 'critical' | 'important' | 'incidental';
 
 export interface Symbiosis {
-  type: 'mutualism' | 'parasitism' | 'predation' | 'competition' | 'commensalism';
+  type: 'mutualism' | 'parasitism' | 'predation' | 'competition' | 'commensalism' | 'amensalism';
   /** The actor or needing party: predator, parasite, or species whose requirement this describes */
   source: string;
   /** One or more partner species. Single entry for standard pairwise; multiple for one-to-many */
