@@ -3241,7 +3241,8 @@
           "url": "https://upload.wikimedia.org/wikipedia/commons/9/9c/2009-Coyote-Yosemite.jpg",
           "author": "Yathin S Krishnappa",
           "source_url": "https://en.wikipedia.org/wiki/Canis_latrans"
-        }
+        },
+        "conservation_status": "LC"
       },
       {
         "id": "mammal_groundhog",
@@ -5686,7 +5687,8 @@
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Water_shrew_on_Pebble_Creek_%2827952099349%29_%28cropped%29.jpg/960px-Water_shrew_on_Pebble_Creek_%2827952099349%29_%28cropped%29.jpg",
           "author": "Yellowstone National Park",
           "source_url": "https://en.wikipedia.org/wiki/Sorex_palustris"
-        }
+        },
+        "conservation_status": "LC"
       },
       {
         "id": "bird_barred-owl",
@@ -6148,6 +6150,379 @@
           "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Epeoloides_pilosula_f.jpg/960px-Epeoloides_pilosula_f.jpg",
           "author": "The Packer Lab",
           "source_url": "https://en.wikipedia.org/wiki/Epeoloides_pilosulus"
+        }
+      },
+      {
+        "id": "plant_white-turtlehead",
+        "common_name": "White Turtlehead",
+        "latin_name": "Chelone glabra",
+        "form": "wildflower",
+        "habitat": [
+          "wetland",
+          "riparian",
+          "stream_edge",
+          "meadow_wet"
+        ],
+        "behavior": [
+          "wetland_indicator"
+        ],
+        "season": [
+          "summer",
+          "fall"
+        ],
+        "functional_description": "Wetland wildflower with distinctive white snapdragon-like flowers that bloom August–October along stream banks and in wet meadows. The sole larval host plant of the Baltimore Checkerspot butterfly in Pennsylvania — that butterfly cannot complete its life cycle without Chelone glabra. Flowers require bee buzz-pollination to release pollen effectively; bumble bees are the primary pollinators. An important indicator species: its presence signals a healthy, connected wetland with clean, slow-moving water.",
+        "life_stages": [
+          "seedling",
+          "rosette",
+          "flowering"
+        ],
+        "region": "northeast_pa",
+        "ecological_role": "producer",
+        "active_months": [
+          "Aug-Oct"
+        ],
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Chelone_glabra_Red_River_Gorge.JPG/960px-Chelone_glabra_Red_River_Gorge.JPG",
+          "author": "Mason Brock (Masebrock)",
+          "source_url": "https://en.wikipedia.org/wiki/Chelone_glabra"
+        }
+      },
+      {
+        "id": "plant_common-violet",
+        "common_name": "Common Blue Violet",
+        "latin_name": "Viola sororia",
+        "form": "wildflower",
+        "habitat": [
+          "forest_floor",
+          "meadow",
+          "forest_edge",
+          "lawn"
+        ],
+        "behavior": [
+          "early_bloomer"
+        ],
+        "season": [
+          "spring",
+          "summer"
+        ],
+        "functional_description": "Low-growing wildflower with heart-shaped leaves and distinctive purple flowers in April–May. The primary larval host plant for multiple fritillary butterflies: Great Spangled Fritillary, Meadow Fritillary, Variegated Fritillary, and Silver-bordered Fritillary all require Viola leaves as their sole caterpillar food. Adults of these butterflies nectar widely, but reproduction is entirely contingent on violet availability. Also produces cleistogamous (self-fertilizing, never-opening) seeds on the ground in summer, ensuring reproduction even in shaded conditions. Found in almost every NE PA habitat type.",
+        "life_stages": [
+          "seedling",
+          "rosette",
+          "flowering"
+        ],
+        "region": "northeast_pa",
+        "ecological_role": "producer",
+        "active_months": [
+          "Apr-Jun"
+        ],
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Viola_sororia_in_Wisconsin.jpg/960px-Viola_sororia_in_Wisconsin.jpg",
+          "author": "James Steakley",
+          "source_url": "https://en.wikipedia.org/wiki/Viola_sororia"
+        }
+      },
+      {
+        "id": "insect_baltimore-checkerspot",
+        "common_name": "Baltimore Checkerspot",
+        "latin_name": "Euphydryas phaeton",
+        "form": "butterfly",
+        "habitat": [
+          "wetland",
+          "riparian",
+          "meadow_wet",
+          "bog"
+        ],
+        "diet": [
+          "nectarivore"
+        ],
+        "behavior": [
+          "specialist",
+          "colonial_larval"
+        ],
+        "season": [
+          "summer"
+        ],
+        "functional_description": "Striking orange-and-white-checkered butterfly and Pennsylvania Species of Greatest Conservation Need. Caterpillars are obligate specialists on White Turtlehead (Chelone glabra) in wetland habitats — the butterfly cannot exist where this plant is absent. Early instar caterpillars feed gregariously in a silk nest on turtlehead, overwintering in leaf litter as a group, then dispersing in spring to finish development. Adults fly June–July and nectar on milkweeds, wild roses, and viburnum. A wetland integrity indicator: Baltimore Checkerspot populations signal high-quality connected riparian corridors. Listed as a Species of Greatest Conservation Need in PA due to wetland loss and turtlehead habitat fragmentation.",
+        "life_stages": [
+          {
+            "icon": "🥚",
+            "name": "Egg",
+            "description": "Laid in clusters on White Turtlehead leaves",
+            "months": [
+              "Jun-Jul"
+            ]
+          },
+          {
+            "icon": "🐛",
+            "name": "Caterpillar",
+            "description": "Early instars colonial on turtlehead; overwinters as group in leaf litter",
+            "months": [
+              "Jul-May"
+            ]
+          },
+          {
+            "icon": "🫘",
+            "name": "Chrysalis",
+            "description": "White and orange chrysalis formed on low vegetation near host plant",
+            "months": [
+              "May-Jun"
+            ]
+          },
+          {
+            "icon": "🦋",
+            "name": "Adult",
+            "description": "Orange, black, and white checkered; nectar on milkweed and viburnum",
+            "months": [
+              "Jun-Jul"
+            ]
+          }
+        ],
+        "region": "northeast_pa",
+        "ecological_role": "herbivore",
+        "active_months": [
+          "Jun-Jul"
+        ],
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/BaltimoreDS.jpg/960px-BaltimoreDS.jpg",
+          "author": "Alison Hunter",
+          "source_url": "https://en.wikipedia.org/wiki/Euphydryas_phaeton"
+        }
+      },
+      {
+        "id": "insect_silver-bordered-fritillary",
+        "common_name": "Silver-bordered Fritillary",
+        "latin_name": "Boloria selene",
+        "form": "butterfly",
+        "habitat": [
+          "meadow_wet",
+          "bog",
+          "forest_edge",
+          "riparian"
+        ],
+        "diet": [
+          "nectarivore"
+        ],
+        "behavior": [
+          "specialist"
+        ],
+        "season": [
+          "summer"
+        ],
+        "functional_description": "Small orange-and-black fritillary butterfly with distinctive silver spots on the hindwing underside. One of the more wetland-dependent fritillaries in NE PA. Caterpillars are obligate on violet leaves (Viola spp.) — adults lay eggs near but not on violet plants, and newly hatched caterpillars must locate violet foliage quickly. Two broods in NE PA (June and August). Declining across the northeastern US as wet meadow habitat and violet-rich ground cover are lost to succession and invasive plant encroachment. A useful indicator of diverse, open wetland-edge habitats.",
+        "life_stages": [
+          {
+            "icon": "🥚",
+            "name": "Egg",
+            "description": "Laid singly on or near violet plants",
+            "months": [
+              "Jun",
+              "Aug"
+            ]
+          },
+          {
+            "icon": "🐛",
+            "name": "Caterpillar",
+            "description": "Spiny, dark; feeds exclusively on violet leaves",
+            "months": [
+              "Jun-Sep"
+            ]
+          },
+          {
+            "icon": "🫘",
+            "name": "Chrysalis",
+            "description": "Hangs from low vegetation",
+            "months": [
+              "Jul",
+              "Sep"
+            ]
+          },
+          {
+            "icon": "🦋",
+            "name": "Adult",
+            "description": "Orange and black with silver underwing spots",
+            "months": [
+              "Jun-Sep"
+            ]
+          }
+        ],
+        "region": "northeast_pa",
+        "ecological_role": "herbivore",
+        "active_months": [
+          "Jun-Sep"
+        ],
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Small_pearl-bordered_fritillary_%28Boloria_selene%29.jpg/960px-Small_pearl-bordered_fritillary_%28Boloria_selene%29.jpg",
+          "author": "Own work, from Sharp Photography, sharpphotography",
+          "source_url": "https://en.wikipedia.org/wiki/Boloria_selene"
+        }
+      },
+      {
+        "id": "insect_red-admiral",
+        "common_name": "Red Admiral",
+        "latin_name": "Vanessa atalanta",
+        "form": "butterfly",
+        "habitat": [
+          "forest_edge",
+          "garden",
+          "meadow",
+          "riparian",
+          "woodland"
+        ],
+        "diet": [
+          "nectarivore",
+          "frugivore"
+        ],
+        "behavior": [
+          "territorial",
+          "migratory"
+        ],
+        "season": [
+          "spring",
+          "summer",
+          "fall"
+        ],
+        "functional_description": "Bold black butterfly with bright red-orange bands and white spots near the wingtips. One of the first butterflies to appear in NE PA spring and one of the last in fall — partial migrants that overwinter as adults in southern states and return north. Caterpillars obligate on stinging nettle family (Urticaceae) — primarily Stinging Nettle (Urtica dioica) and False Nettle (Boehmeria cylindrica) in PA. Larvae build individual leaf-roll shelters by tying nettle leaves with silk. Highly territorial adults defend sun patches and frequently perch conspicuously. Adults feed on rotting fruit, tree sap, and flower nectar. Common and widespread but entirely dependent on nettle patches for reproduction.",
+        "life_stages": [
+          {
+            "icon": "🥚",
+            "name": "Egg",
+            "description": "Single egg laid on top of stinging nettle leaf",
+            "months": [
+              "May-Sep"
+            ]
+          },
+          {
+            "icon": "🐛",
+            "name": "Caterpillar",
+            "description": "Spiny, variable coloring; inside silk-rolled nettle leaf",
+            "months": [
+              "Jun-Oct"
+            ]
+          },
+          {
+            "icon": "🫘",
+            "name": "Chrysalis",
+            "description": "Hanging from nettle stem or nearby structure",
+            "months": [
+              "Jul-Oct"
+            ]
+          },
+          {
+            "icon": "🦋",
+            "name": "Adult",
+            "description": "Black with red-orange bands; territorial, sun-basking",
+            "months": [
+              "Apr-Nov"
+            ]
+          }
+        ],
+        "region": "northeast_pa",
+        "ecological_role": "herbivore",
+        "active_months": [
+          "Apr-Nov"
+        ],
+        "conservation_status": "LC",
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/VanessaAtalanta_Closeup.jpg/960px-VanessaAtalanta_Closeup.jpg",
+          "author": "Christian Fischer",
+          "source_url": "https://en.wikipedia.org/wiki/Vanessa_atalanta"
+        }
+      },
+      {
+        "id": "fungus_arbuscular-mycorrhizal",
+        "common_name": "Arbuscular Mycorrhizal Fungi",
+        "latin_name": "Glomeromycota (phylum)",
+        "form": "fungus",
+        "habitat": [
+          "forest",
+          "forest_floor",
+          "meadow",
+          "woodland",
+          "wetland"
+        ],
+        "behavior": [
+          "mycorrhizal",
+          "belowground"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "functional_description": "Invisible yet foundational: Arbuscular Mycorrhizal Fungi (AMF) form symbiotic networks with the roots of approximately 80% of land plant species, including most wildflowers, shrubs, grasses, and agricultural crops. Fungal threads (hyphae) penetrate plant root cells and extend far into surrounding soil, dramatically expanding the plant's ability to absorb phosphorus, water, and micronutrients in exchange for plant-produced sugars. AMF networks underpin plant community diversity and ecosystem productivity. Critically threatened by garlic mustard: this invasive plant exudes allelopathic chemicals (glucosinolate breakdown products) that disrupt AMF networks, starving native plants of fungal partners and creating a reinforcing invasion cycle. AMF cannot be seen without laboratory analysis, making them one of the most ecologically important invisible forces in NE PA forests.",
+        "region": "northeast_pa",
+        "ecological_role": "decomposer",
+        "is_keystone": true,
+        "keystone_type": "mutualist",
+        "keystone_description": "Partners with ~80% of land plant species. AMF networks determine plant community diversity, enable nutrient cycling, and are directly disrupted by garlic mustard invasion.",
+        "active_months": [
+          "year_round"
+        ],
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Arbuscular_mycorrhiza_diagram.svg/960px-Arbuscular_mycorrhiza_diagram.svg.png",
+          "author": "LadyofHats",
+          "source_url": "https://en.wikipedia.org/wiki/Arbuscular_mycorrhiza"
+        }
+      },
+      {
+        "id": "fungus_ectomycorrhizal",
+        "common_name": "Ectomycorrhizal Fungi",
+        "latin_name": "Basidiomycota / Ascomycota (multiple orders)",
+        "form": "fungus",
+        "habitat": [
+          "forest",
+          "woodland",
+          "forest_floor"
+        ],
+        "behavior": [
+          "mycorrhizal",
+          "belowground",
+          "fruiting_body"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "functional_description": "Ectomycorrhizal Fungi (EMF) form mutualistic networks with forest trees — primarily oaks, beeches, birches, pines, and spruces. Unlike arbuscular mycorrhizal fungi, EMF wrap around root tips rather than entering cells, extending mycelial networks through the forest floor and connecting multiple trees in what ecologists call the \"wood wide web.\" Trees share carbon, water, and nutrients through these networks, with large trees subsidizing seedlings in low-light conditions. EMF produce visible mushrooms (boletes, chanterelles, amanitas, russulas) that are the reproductive bodies of these underground networks. Essential for oak and beech forest regeneration: seedlings that cannot connect to EMF networks have dramatically reduced survival. One reason forest fragmentation is so damaging — isolated soil patches may lack the EMF inoculum needed for tree establishment.",
+        "region": "northeast_pa",
+        "ecological_role": "decomposer",
+        "is_keystone": true,
+        "keystone_type": "mutualist",
+        "keystone_description": "Forms the underground mycelial network connecting forest trees. Enables oak and beech forest regeneration; produces the fruiting bodies (mushrooms) of the forest floor.",
+        "active_months": [
+          "year_round"
+        ],
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Ectomycorrhizae_labeled.jpg/960px-Ectomycorrhizae_labeled.jpg",
+          "author": "Mycoepiphyte",
+          "source_url": "https://en.wikipedia.org/wiki/Ectomycorrhiza"
+        }
+      },
+      {
+        "id": "fungus_turkey-tail",
+        "common_name": "Turkey Tail",
+        "latin_name": "Trametes versicolor",
+        "form": "fungus",
+        "habitat": [
+          "forest",
+          "woodland",
+          "forest_floor"
+        ],
+        "behavior": [
+          "saprotrophic",
+          "fruiting_body"
+        ],
+        "season": [
+          "year_round"
+        ],
+        "functional_description": "Thin, fan-shaped bracket fungus with concentric rings of brown, tan, and rust that resemble turkey feathers — one of the most common and recognizable fungi in NE PA forests, found year-round on dead hardwood logs and stumps. Turkey Tail is a white-rot decomposer: it produces enzymes that break down lignin, the tough polymer in wood cell walls, recycling locked carbon back into the soil food web. This decomposition is essential — without fungi like Turkey Tail, dead wood would accumulate indefinitely, nutrients would remain bound in inert wood, and forest soil productivity would collapse. A gateway species for ecological literacy: visible, striking, and deeply connected to forest nutrient cycling.",
+        "region": "northeast_pa",
+        "ecological_role": "decomposer",
+        "active_months": [
+          "year_round"
+        ],
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Trametes_versicolor_G4_%281%29.JPG/960px-Trametes_versicolor_G4_%281%29.JPG",
+          "author": "Jerzy Opioła",
+          "source_url": "https://en.wikipedia.org/wiki/Trametes_versicolor"
         }
       }
     ],
@@ -8060,6 +8435,106 @@
         ],
         "strength": "incidental",
         "notes": "Epeoloides pilosulus is specifically a cleptoparasite of Macropis oil-collecting bees (family Melittidae), not bumble bees. However, its disappearance from PA (last recorded 1911) directly mirrors the collapse of wild ground-nesting bee communities it depends on. Listed here to flag its dependency on specialist native bees whose populations have declined in NE PA."
+      },
+      {
+        "type": "parasitism",
+        "source": "insect_spicebush-swallowtail",
+        "targets": [
+          "plant_sassafras"
+        ],
+        "strength": "critical",
+        "notes": "Sassafras is a co-primary larval host for Spicebush Swallowtail alongside Spicebush — both are Lauraceae family. Larvae build silk-sealed folded-leaf shelters and bear spectacular false eyespots in late instars. Sassafras is often used where Spicebush is less abundant."
+      },
+      {
+        "type": "parasitism",
+        "source": "insect_baltimore-checkerspot",
+        "targets": [
+          "plant_white-turtlehead"
+        ],
+        "strength": "critical",
+        "notes": "Baltimore Checkerspot is obligate on White Turtlehead in PA wetlands. Early instars feed gregariously in a silk nest; overwintering as a colonial group in leaf litter. The butterfly cannot exist without Chelone glabra — its range in NE PA is entirely determined by turtlehead distribution in connected riparian corridors."
+      },
+      {
+        "type": "parasitism",
+        "source": "insect_silver-bordered-fritillary",
+        "targets": [
+          "plant_common-violet"
+        ],
+        "strength": "critical",
+        "notes": "Silver-bordered Fritillary caterpillars are obligate on violet leaves (Viola spp.), primarily Common Blue Violet. Adults lay eggs near violet plants; newly hatched caterpillars must locate foliage quickly. The decline of open, violet-rich wet meadow habitat is a primary driver of this butterfly's range contraction in the northeastern US."
+      },
+      {
+        "type": "parasitism",
+        "source": "insect_red-admiral",
+        "targets": [
+          "plant_stinging-nettle"
+        ],
+        "strength": "critical",
+        "notes": "Red Admiral caterpillars are obligate on the nettle family (Urticaceae). In NE PA, Stinging Nettle (Urtica dioica) and False Nettle (Boehmeria cylindrica) are primary hosts. Larvae build individual silk-rolled leaf shelters. The butterfly's reproductive success depends on the presence of nettle patches in riparian and disturbed habitats."
+      },
+      {
+        "type": "mutualism",
+        "source": "plant_white-oak",
+        "targets": [
+          "fungus_ectomycorrhizal"
+        ],
+        "strength": "critical",
+        "notes": "White Oak depends on ectomycorrhizal fungal networks for phosphorus and water uptake. EMF dramatically expand the root's effective surface area. Oak seedlings that cannot connect to EMF inoculum in soil have severely reduced survival — a key reason oak regeneration fails in isolated forest patches."
+      },
+      {
+        "type": "mutualism",
+        "source": "plant_northern-red-oak",
+        "targets": [
+          "fungus_ectomycorrhizal"
+        ],
+        "strength": "critical",
+        "notes": "Northern Red Oak forms obligate ectomycorrhizal associations for establishment and growth. The visible mushrooms of the forest floor — boletes, amanitas, russulas — are the fruiting bodies of these networks. Red Oak's dominance in NE PA is partly a function of its deep integration with EMF communities in mature forest soils."
+      },
+      {
+        "type": "mutualism",
+        "source": "plant_american-beech",
+        "targets": [
+          "fungus_ectomycorrhizal"
+        ],
+        "strength": "critical",
+        "notes": "American Beech is one of the most EMF-dependent trees in the NE PA forest. Beech can share carbon with neighboring trees through shared EMF networks — large trees subsidize seedlings in deep shade. The smooth gray beech root tips, densely colonized by EMF, are visible in exposed forest soils."
+      },
+      {
+        "type": "mutualism",
+        "source": "plant_common-milkweed",
+        "targets": [
+          "fungus_arbuscular-mycorrhizal"
+        ],
+        "strength": "important",
+        "notes": "Common Milkweed forms arbuscular mycorrhizal associations that enhance phosphorus uptake in the poor, disturbed soils where it grows. AMF colonization increases milkweed biomass and flower production, indirectly supporting Monarch caterpillar development and adult nectar availability."
+      },
+      {
+        "type": "mutualism",
+        "source": "plant_goldenrod",
+        "targets": [
+          "fungus_arbuscular-mycorrhizal"
+        ],
+        "strength": "important",
+        "notes": "Goldenrod forms AMF associations that improve drought tolerance and nutrient acquisition in open meadow soils. AMF colonization is one reason goldenrod dominates in disturbed but not completely degraded soils. The disruption of AMF networks by garlic mustard invasion can reduce goldenrod vigor in forest edges."
+      },
+      {
+        "type": "mutualism",
+        "source": "plant_new-england-aster",
+        "targets": [
+          "fungus_arbuscular-mycorrhizal"
+        ],
+        "strength": "important",
+        "notes": "New England Aster depends on AMF for phosphorus acquisition in meadow and forest-edge soils. A healthy AMF network in open habitats supports the aster-dominated late-season wildflower communities that are critical for pollinators."
+      },
+      {
+        "type": "competition",
+        "source": "plant_garlic-mustard",
+        "targets": [
+          "fungus_arbuscular-mycorrhizal",
+          "fungus_ectomycorrhizal"
+        ],
+        "strength": "critical",
+        "notes": "Garlic mustard exudes allelopathic glucosinolate-breakdown chemicals from its roots that disrupt both arbuscular and ectomycorrhizal fungal networks. By degrading the soil fungal community, garlic mustard starves native plants of their fungal partners — creating a reinforcing invasion cycle. This is one of the most ecologically destructive mechanisms of any NE PA invasive species: it attacks the invisible infrastructure the entire native plant community depends on."
       }
     ],
     "relations": [
