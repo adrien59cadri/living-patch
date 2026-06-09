@@ -54,6 +54,10 @@ export default function LearnPage() {
             speciesById={speciesById}
           />
         </div>
+
+        <p className="mt-10 text-xs text-stone-400 text-center">
+          Your data stays on your device — life list and sightings are stored locally in your browser only. Species images load from Wikimedia Commons.
+        </p>
       </div>
     </div>
   );
