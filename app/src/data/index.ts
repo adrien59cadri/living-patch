@@ -14,7 +14,9 @@ interface PackMetadata {
 export interface PackManifestEntry extends PackMetadata {
   format?: 'json' | 'toon';
   rawTokenEstimate?: number;
+  rawBytes?: number;
   bundledTokenEstimate?: number;
+  bundledBytes?: number;
   speciesCount: number;
   groupCount: number;
   symbiosisCount: number;

@@ -97,6 +97,12 @@ export function ecologicalStatusDescription(status: EcologicalStatus | string): 
   return ECOLOGICAL_STATUS_DESCRIPTIONS[status] ?? status;
 }
 
+export function formatBytes(bytes: number): string {
+  if (bytes >= 1_000_000) return (bytes / 1_000_000).toFixed(1) + ' MB';
+  if (bytes >= 1_000) return (bytes / 1_000).toFixed(1) + ' KB';
+  return bytes + ' B';
+}
+
 export function formatTokens(tokens: number): string {
   if (tokens >= 1000) {
     return (tokens / 1000).toFixed(1) + 'K';
