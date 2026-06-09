@@ -389,8 +389,8 @@ export default function SettingsPage() {
                       <span className="font-medium text-emerald-700">{formatTokens(entry.rawTokenEstimate ?? 0)}</span>
                       {' tokens'}
                       {entry.rawBytes ? <> · <span className="font-medium text-emerald-700">{formatBytes(entry.rawBytes)}</span></> : null}
-                      {' (raw) / '}
-                      {entry.bundledBytes ? <><span className="font-medium text-emerald-700">{formatBytes(entry.bundledBytes)}</span>{' (bundled)'}</> : null}
+                      {' (raw)'}
+                      {entry.bundledBytes ? <> / <span className="font-medium text-emerald-700">{formatBytes(entry.bundledBytes)}</span>{' (bundled)'}</> : null}
                     </div>
                   )}
                 </div>
