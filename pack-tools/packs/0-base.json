@@ -8527,7 +8527,7 @@
         "notes": "New England Aster depends on AMF for phosphorus acquisition in meadow and forest-edge soils. A healthy AMF network in open habitats supports the aster-dominated late-season wildflower communities that are critical for pollinators."
       },
       {
-        "type": "competition",
+        "type": "amensalism",
         "source": "plant_garlic-mustard",
         "targets": [
           "fungus_arbuscular-mycorrhizal",

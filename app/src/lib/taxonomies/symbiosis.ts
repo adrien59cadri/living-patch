@@ -37,17 +37,23 @@ export const SYMBIOSIS_DEFINITIONS: Record<string, SymbiosisDefinition> = {
     explanation:
       'One partner gains while the other neither benefits nor is harmed. Epiphytes (plants growing on trees) use trees for support without damaging them. Remora fish attach to sharks for transport without harming the shark.',
   },
+  amensalism: {
+    label: 'Amensalism',
+    description: 'One species harms another without competing for the same resource.',
+    explanation:
+      'One species is suppressed or harmed while the other is unaffected or gains indirectly. Unlike competition, the two parties are not vying for the same resource — the harm is one-sided and often chemical or structural. Garlic mustard releases allelopathic compounds that destroy mycorrhizal fungal networks, starving native trees without competing with them directly. Invasive vines that smother native shrubs follow the same pattern.',
+  },
 };
 
 export function getSymbiosisByType(
-  type: 'mutualism' | 'parasitism' | 'predation' | 'competition' | 'commensalism',
+  type: 'mutualism' | 'parasitism' | 'predation' | 'competition' | 'commensalism' | 'amensalism',
   symbiosis: Symbiosis[],
 ): Symbiosis[] {
   return symbiosis.filter((s) => s.type === type);
 }
 
 export function getSymbiosisExample(
-  type: 'mutualism' | 'parasitism' | 'predation' | 'competition' | 'commensalism',
+  type: 'mutualism' | 'parasitism' | 'predation' | 'competition' | 'commensalism' | 'amensalism',
   symbiosis: Symbiosis[],
 ): Symbiosis | undefined {
   const matches = getSymbiosisByType(type, symbiosis);

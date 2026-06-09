@@ -104,6 +104,7 @@ const ROLES: SymbiosisRole[] = [
   'parasitism',
   'predation',
   'competition',
+  'amensalism',
   'related',
 ];
 
