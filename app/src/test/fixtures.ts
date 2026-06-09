@@ -1,6 +1,44 @@
 import type { Species, LifeStage, Symbiosis } from '../types';
 import type { RelatedEntry } from '../lib/relationships';
 
+// ── Builder helpers ──────────────────────────────────────────────────────────
+
+export function makeSpecies(id: string, form: string, overrides: Partial<Species> = {}): Species {
+  return {
+    id,
+    common_name: id,
+    form,
+    habitat: [],
+    diet: [],
+    behavior: [],
+    season: [],
+    functional_description: '',
+    life_stages: [],
+    region: 'northeast_pa',
+    ...overrides,
+  };
+}
+
+export function makeSymbiosis(
+  type: Symbiosis['type'],
+  source: string,
+  targets: string[],
+  overrides: Partial<Symbiosis> = {}
+): Symbiosis {
+  return { type, source, targets, strength: 'incidental', notes: '', ...overrides };
+}
+
+export function buildSymbiosisMap(symbioses: Symbiosis[]): Map<string, Symbiosis[]> {
+  const map = new Map<string, Symbiosis[]>();
+  for (const sym of symbioses) {
+    for (const id of [sym.source, ...sym.targets]) {
+      if (!map.has(id)) map.set(id, []);
+      map.get(id)!.push(sym);
+    }
+  }
+  return map;
+}
+
 // ── Species fixtures ────────────────────────────────────────────────────────
 
 export const mockPlantSpecies: Species = {

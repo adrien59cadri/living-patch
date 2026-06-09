@@ -4,29 +4,9 @@ import userEvent from '@testing-library/user-event';
 import { MemoryRouter, Routes, Route } from 'react-router-dom';
 import DetailPage from '../DetailPage';
 import { UserPreferencesProvider } from '../../stores/userPreferences';
-import basePack from '../../../../pack-tools/packs/0-base.json';
-import type { LoadedPack } from '../../data';
 
-// Provide the base pack so useDataset() returns real species data
-vi.mock('../../stores/packs', () => ({
-  usePacksStore: (selector?: (s: { loadedPacks: LoadedPack[] }) => unknown) => {
-    const state = { loadedPacks: [basePack as unknown as LoadedPack] };
-    return selector ? selector(state) : state;
-  },
-}));
-
-// Mock life list hooks so DetailPage unit tests don't depend on Zustand/localStorage
-vi.mock('../../hooks/useLifeList', () => ({
-  useLifeList: () => ({
-    addSighting: vi.fn(),
-    getTier: () => null,
-    entries: [],
-    sightings: [],
-  }),
-  useSpeciesTier: () => null,
-  useSpeciesSightings: () => [],
-  useSpeciesSightingCount: () => 0,
-}));
+vi.mock('../../stores/packs');
+vi.mock('../../hooks/useLifeList');
 
 function renderDetailPage(speciesId: string) {
   return render(

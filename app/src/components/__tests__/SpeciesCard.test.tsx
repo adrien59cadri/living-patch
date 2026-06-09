@@ -13,19 +13,7 @@ import {
 } from '../../test/fixtures';
 import type { RelatedEntry } from '../../lib/relationships';
 
-// Mock life list hooks so SpeciesCard unit tests don't depend on Zustand/localStorage
-vi.mock('../../hooks/useLifeList', () => ({
-  useLifeList: () => ({
-    addSighting: vi.fn(),
-    setTier: vi.fn(),
-    getTier: () => null,
-    entries: [],
-    sightings: [],
-  }),
-  useSpeciesTier: () => null,
-  useSpeciesSightings: () => [],
-  useSpeciesSightingCount: () => 0,
-}));
+vi.mock('../../hooks/useLifeList');
 
 function renderCard(
   species = mockMonarch,

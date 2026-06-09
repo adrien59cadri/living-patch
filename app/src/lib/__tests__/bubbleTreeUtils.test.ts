@@ -7,37 +7,12 @@ import {
   getFormColor,
   getLinkStrokeWidth,
 } from '../bubbleTreeUtils';
-import type { Species, Symbiosis } from '../../types';
-
-const createMockSpecies = (id: string, name: string, form: string = 'animal'): Species => ({
-  id,
-  common_name: name,
-  form,
-  habitat: ['forest'],
-  diet: [],
-  behavior: [],
-  season: [],
-  functional_description: 'Test species',
-  life_stages: [],
-  region: 'test',
-});
-
-const createMockSymbiosis = (
-  type: 'mutualism' | 'predation' | 'parasitism' | 'competition' | 'commensalism',
-  source: string,
-  targets: string[]
-): Symbiosis => ({
-  type,
-  source,
-  targets,
-  strength: 'incidental' as const,
-  notes: 'Test relationship',
-});
+import { makeSpecies, makeSymbiosis } from '../../test/fixtures';
 
 describe('bubbleTreeUtils - Nodes/Edges Model', () => {
   describe('transformToNodesEdges', () => {
     it('should create focal node at depth 0', () => {
-      const focal = createMockSpecies('focal-1', 'Focal Species');
+      const focal = makeSpecies('focal-1', 'animal', { common_name: 'Focal Species' });
       const speciesById = new Map([['focal-1', focal]]);
       const symbiosisBySpeciesId = new Map();
 
@@ -50,8 +25,8 @@ describe('bubbleTreeUtils - Nodes/Edges Model', () => {
     });
 
     it('should create depth-1 nodes for direct relationships', () => {
-      const focal = createMockSpecies('focal-1', 'Focal Species');
-      const partner = createMockSpecies('partner-1', 'Partner Species');
+      const focal = makeSpecies('focal-1', 'animal');
+      const partner = makeSpecies('partner-1', 'animal');
 
       const speciesById = new Map([
         ['focal-1', focal],
@@ -59,7 +34,7 @@ describe('bubbleTreeUtils - Nodes/Edges Model', () => {
       ]);
 
       const symbiosisBySpeciesId = new Map([
-        ['focal-1', [createMockSymbiosis('mutualism', 'focal-1', ['partner-1'])]],
+        ['focal-1', [makeSymbiosis('mutualism', 'focal-1', ['partner-1'])]],
       ]);
 
       const { nodes, links } = transformToNodesEdges('focal-1', speciesById, symbiosisBySpeciesId, 1);
@@ -70,9 +45,9 @@ describe('bubbleTreeUtils - Nodes/Edges Model', () => {
     });
 
     it('should filter links to only forward edges in BFS tree', () => {
-      const focal = createMockSpecies('focal-1', 'Focal');
-      const level1 = createMockSpecies('level1-1', 'Level 1');
-      const level2 = createMockSpecies('level2-1', 'Level 2');
+      const focal = makeSpecies('focal-1', 'animal');
+      const level1 = makeSpecies('level1-1', 'animal');
+      const level2 = makeSpecies('level2-1', 'animal');
 
       const speciesById = new Map([
         ['focal-1', focal],
@@ -81,8 +56,8 @@ describe('bubbleTreeUtils - Nodes/Edges Model', () => {
       ]);
 
       const symbiosisBySpeciesId = new Map([
-        ['focal-1', [createMockSymbiosis('mutualism', 'focal-1', ['level1-1'])]],
-        ['level1-1', [createMockSymbiosis('mutualism', 'level1-1', ['level2-1'])]],
+        ['focal-1', [makeSymbiosis('mutualism', 'focal-1', ['level1-1'])]],
+        ['level1-1', [makeSymbiosis('mutualism', 'level1-1', ['level2-1'])]],
       ]);
 
       const { links } = transformToNodesEdges('focal-1', speciesById, symbiosisBySpeciesId, 2);
@@ -94,9 +69,9 @@ describe('bubbleTreeUtils - Nodes/Edges Model', () => {
     });
 
     it('should respect maxDepth parameter', () => {
-      const focal = createMockSpecies('focal-1', 'Focal');
-      const level1 = createMockSpecies('level1-1', 'Level 1');
-      const level2 = createMockSpecies('level2-1', 'Level 2');
+      const focal = makeSpecies('focal-1', 'animal');
+      const level1 = makeSpecies('level1-1', 'animal');
+      const level2 = makeSpecies('level2-1', 'animal');
 
       const speciesById = new Map([
         ['focal-1', focal],
@@ -105,8 +80,8 @@ describe('bubbleTreeUtils - Nodes/Edges Model', () => {
       ]);
 
       const symbiosisBySpeciesId = new Map([
-        ['focal-1', [createMockSymbiosis('mutualism', 'focal-1', ['level1-1'])]],
-        ['level1-1', [createMockSymbiosis('mutualism', 'level1-1', ['level2-1'])]],
+        ['focal-1', [makeSymbiosis('mutualism', 'focal-1', ['level1-1'])]],
+        ['level1-1', [makeSymbiosis('mutualism', 'level1-1', ['level2-1'])]],
       ]);
 
       const { nodes: nodes1 } = transformToNodesEdges('focal-1', speciesById, symbiosisBySpeciesId, 1);
