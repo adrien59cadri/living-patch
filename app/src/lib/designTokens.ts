@@ -351,7 +351,7 @@ export const SYMBIOSIS_LABELS: Record<string, string> = {
   predation: 'Predation',
   competition: 'Competition',
   commensalism: 'Commensalism',
-  amensalism: 'Amensalism',
+  amensalism: 'Suppresses',
   related: 'Related Species',
 };
 
