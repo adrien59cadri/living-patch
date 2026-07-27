@@ -6562,6 +6562,184 @@
           "author": "Franz Xaver",
           "source_url": "https://en.wikipedia.org/wiki/Urtica_dioica"
         }
+      },
+      {
+        "id": "insect_broad-headed-sharpshooter",
+        "common_name": "Broad-headed Sharpshooter",
+        "latin_name": "Oncometopia orbona",
+        "form": "bug",
+        "habitat": [
+          "field_edge",
+          "forest_edge",
+          "garden",
+          "riparian"
+        ],
+        "diet": [
+          "sap_feeder"
+        ],
+        "behavior": [
+          "xylem_feeder"
+        ],
+        "season": [
+          "summer",
+          "fall"
+        ],
+        "active_months": [
+          "Jun-Oct"
+        ],
+        "functional_description": "Large, brightly marked leafhopper (blue-green head, orange-red wing margins) in the 'sharpshooter' group (tribe Proconiini) — named for the fine jet of excess fluid nymphs and adults expel after filtering huge volumes of dilute xylem sap through the gut. Polyphagous xylem feeder on trees, shrubs, and herbaceous plants along NE PA field edges and woodland margins. Feeding and salivary secretions can transmit Xylella fastidiosa, the bacterium behind bacterial leaf scorch in oaks, sycamores, and other landscape trees. Preyed on by orb-weaver spiders, robber flies, and insectivorous songbirds.",
+        "region": "northeast_pa",
+        "ecological_role": "herbivore",
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Oncometopia_orbona_P1160195a.jpg/960px-Oncometopia_orbona_P1160195a.jpg",
+          "author": "xpda",
+          "source_url": "https://en.wikipedia.org/wiki/Oncometopia_orbona"
+        }
+      },
+      {
+        "id": "insect_oleander-aphid",
+        "common_name": "Oleander Aphid",
+        "latin_name": "Aphis nerii",
+        "form": "insect_group",
+        "habitat": [
+          "wetland",
+          "riparian",
+          "wet_meadow",
+          "garden"
+        ],
+        "diet": [
+          "sap_feeder"
+        ],
+        "behavior": [
+          "colonial",
+          "host_specific",
+          "aposematic"
+        ],
+        "season": [
+          "summer",
+          "fall"
+        ],
+        "active_months": [
+          "Jun-Sep"
+        ],
+        "functional_description": "Bright yellow-orange aphid forming dense clonal colonies on stems, buds, and flower heads of milkweeds — Swamp Milkweed is a favored host alongside Common Milkweed. Reproduces by parthenogenesis (live-bearing females, no males needed); a single founder can seed a colony of hundreds within weeks. Sequesters cardenolide toxins from host sap, becoming distasteful to generalist predators. Introduced to North America with ornamental oleander plantings and now naturalized on native Asclepias continent-wide; heavy infestations can stunt stems and reduce seed pod production. Honeydew excretion attracts tending ants.",
+        "region": "northeast_pa",
+        "ecological_role": "herbivore",
+        "status": "nnna",
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Oleander_aphids_on_milkweed_%2830467%29.jpg/500px-Oleander_aphids_on_milkweed_%2830467%29.jpg",
+          "author": "Rhododendrites",
+          "source_url": "https://en.wikipedia.org/wiki/Aphis_nerii"
+        }
+      },
+      {
+        "id": "insect_aphid-parasitic-wasp",
+        "common_name": "Aphid Parasitic Wasp",
+        "latin_name": "Lysiphlebus testaceipes",
+        "form": "insect",
+        "habitat": [
+          "field",
+          "field_edge",
+          "garden",
+          "wet_meadow"
+        ],
+        "diet": [
+          "parasitoid"
+        ],
+        "behavior": [
+          "host_specific"
+        ],
+        "season": [
+          "spring",
+          "summer",
+          "fall"
+        ],
+        "active_months": [
+          "Apr-Oct"
+        ],
+        "functional_description": "Minute braconid wasp (subfamily Aphidiinae, ~2-3mm) with an exceptionally broad host range — over 100 aphid species, including Oleander Aphid colonies on milkweed. Female injects a single egg into a living aphid; the larva develops for 6-8 days as a koinobiont endoparasitoid (the aphid keeps feeding and moving while parasitized), then kills the host and hollows it into a swollen, papery 'mummy' to pupate inside. One of the most widely used biological control agents against aphid outbreaks worldwide.",
+        "region": "northeast_pa",
+        "ecological_role": "parasite",
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Lysephlebus_testaceipes_habitus.jpg/960px-Lysephlebus_testaceipes_habitus.jpg",
+          "author": "United States. Bureau of Entomology",
+          "source_url": "https://en.wikipedia.org/wiki/Lysiphlebus_testaceipes"
+        }
+      },
+      {
+        "id": "insect_green-lacewing",
+        "common_name": "Red-lipped Green Lacewing",
+        "latin_name": "Chrysoperla rufilabris",
+        "form": "insect",
+        "habitat": [
+          "field",
+          "field_edge",
+          "garden",
+          "wet_meadow",
+          "forest_edge"
+        ],
+        "diet": [
+          "predator",
+          "nectarivore"
+        ],
+        "behavior": [
+          "larvae_aphid_predator",
+          "nocturnal"
+        ],
+        "season": [
+          "spring",
+          "summer",
+          "fall"
+        ],
+        "active_months": [
+          "Apr-Oct"
+        ],
+        "functional_description": "Delicate pale-green lacewing native to eastern North America; adults have lacy transparent wings and golden eyes. Larvae ('aphid lions') are the true predators — alligator-shaped, with sickle-shaped hollow jaws that inject digestive enzymes and drain prey, including Oleander Aphid colonies on milkweed, plus mites, thrips, whiteflies, and small caterpillars. A single larva can destroy an entire aphid colony before pupating. Adults feed mainly on nectar, pollen, and honeydew rather than prey. Widely reared and released commercially as a biological control agent.",
+        "life_stages": [
+          {
+            "id": "egg",
+            "icon": "🥚",
+            "name": "Egg",
+            "description": "Laid singly on a long silk stalk that deters ants and cannibalism",
+            "months": [
+              "Apr-Oct"
+            ]
+          },
+          {
+            "id": "larva",
+            "icon": "🐛",
+            "name": "Larva (Aphid Lion)",
+            "description": "Predatory — alligator-shaped, sickle-jawed hunter of aphids and other soft-bodied prey",
+            "months": [
+              "Apr-Oct"
+            ]
+          },
+          {
+            "id": "pupa",
+            "icon": "🛡",
+            "name": "Pupa",
+            "description": "Silk cocoon, often spun on the underside of a leaf near the former aphid colony",
+            "months": [
+              "Jun-Oct"
+            ]
+          },
+          {
+            "id": "adult",
+            "icon": "🦋",
+            "name": "Adult",
+            "description": "Feeds mainly on nectar, pollen, and honeydew rather than prey",
+            "months": [
+              "May-Oct"
+            ]
+          }
+        ],
+        "region": "northeast_pa",
+        "ecological_role": "predator",
+        "image": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Lacewing_lays_an_egg_on_the_sheet_%2843462609315%29.jpg/960px-Lacewing_lays_an_egg_on_the_sheet_%2843462609315%29.jpg",
+          "author": "Andy Reago & Chrissy McClarren",
+          "source_url": "https://en.wikipedia.org/wiki/Chrysoperla_rufilabris"
+        }
       }
     ],
     "taxonomic_groups": [
@@ -8650,6 +8828,53 @@
         ],
         "strength": "important",
         "notes": "Canada Thistle spreads via deep creeping rhizomes that form a persistent underground network, physically suppressing native forbs by occupying root space and intercepting soil nutrients before they are accessible to shallower-rooted natives. The harm is not simple resource competition but rhizome-mediated exclusion. Dense Canada Thistle monocultures eliminate the goldenrod and aster fields that late-season pollinators depend on in NE PA meadows."
+      },
+      {
+        "type": "parasitism",
+        "source": "insect_oleander-aphid",
+        "targets": [
+          "plant_swamp-milkweed",
+          "plant_common-milkweed"
+        ],
+        "fulfillment": "any",
+        "strength": "important",
+        "notes": "Oleander Aphid colonies feed on stem, bud, and flower-head sap of milkweeds; Swamp Milkweed is a favored host in wet meadows. Sequesters cardenolides from sap. Heavy colonies can stunt growth and reduce seed pod set."
+      },
+      {
+        "type": "predation",
+        "source": "insect_green-lacewing@larva",
+        "targets": [
+          "insect_oleander-aphid"
+        ],
+        "strength": "important",
+        "notes": "Green Lacewing larvae ('aphid lions') — not the nectar-feeding adults — are voracious predators of Oleander Aphid colonies on milkweed, each destroying an entire colony before pupating. A key natural check on aphid outbreaks."
+      },
+      {
+        "type": "parasitism",
+        "source": "insect_aphid-parasitic-wasp",
+        "targets": [
+          "insect_oleander-aphid"
+        ],
+        "strength": "important",
+        "notes": "Female wasps oviposit single eggs into living Oleander Aphids; the larva develops inside as an endoparasitoid, eventually killing and mummifying the host. Major natural regulator of aphid colonies on milkweed."
+      },
+      {
+        "type": "competition",
+        "source": "insect_aphid-parasitic-wasp",
+        "targets": [
+          "insect_green-lacewing"
+        ],
+        "strength": "incidental",
+        "notes": "Wasp and lacewing larvae both exploit the same Oleander Aphid colonies as a shared food source; heavy parasitism can reduce prey available to lacewing larvae, though the two act as complementary rather than directly competing biological control agents."
+      },
+      {
+        "type": "predation",
+        "source": "insect_orb-weaver-spider",
+        "targets": [
+          "insect_broad-headed-sharpshooter"
+        ],
+        "strength": "incidental",
+        "notes": "Orb-weaver webs in field-edge and woodland-margin vegetation opportunistically intercept sharpshooters and other leafhoppers moving between host plants."
       }
     ],
     "relations": [

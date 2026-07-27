@@ -1,6 +1,7 @@
 import React from 'react';
 import type { Species, Symbiosis } from '../types';
 import RelationshipBubbleTree from './RelationshipBubbleTree';
+import { parseSpeciesRef } from '../lib/speciesRef';
 
 interface SpeciesBubbleTreeProps {
   /** ID of focal (center) species */
@@ -48,11 +49,12 @@ export const SpeciesBubbleTree: React.FC<SpeciesBubbleTreeProps> = ({
   // Build symbiosis index: speciesId → [all symbioses involving that species]
   const symbiosisBySpeciesId = new Map<string, Symbiosis[]>();
   for (const symbiosis of data.symbiosis) {
-    for (const id of [symbiosis.source, ...symbiosis.targets]) {
-      if (!symbiosisBySpeciesId.has(id)) {
-        symbiosisBySpeciesId.set(id, []);
+    for (const raw of [symbiosis.source, ...symbiosis.targets]) {
+      const { speciesId } = parseSpeciesRef(raw);
+      if (!symbiosisBySpeciesId.has(speciesId)) {
+        symbiosisBySpeciesId.set(speciesId, []);
       }
-      symbiosisBySpeciesId.get(id)!.push(symbiosis);
+      symbiosisBySpeciesId.get(speciesId)!.push(symbiosis);
     }
   }
 

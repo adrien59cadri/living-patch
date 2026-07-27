@@ -1,4 +1,4 @@
-import type { Species, Symbiosis, Relation, SymbiosisStrength } from '../types';
+import type { Species, Symbiosis, Relation, SymbiosisStrength, LifeStage } from '../types';
 import { formLabel, formIcon } from './labels';
 import {
   BIRD_FORMS,
@@ -6,6 +6,7 @@ import {
   INSECT_FORMS,
   WILDLIFE_FORMS,
 } from './designTokens';
+import { parseSpeciesRef, resolveStage } from './speciesRef';
 
 export type SymbiosisRole = string;
 
@@ -19,6 +20,10 @@ export interface RelatedEntry {
   notes: string;
   isImpacted: boolean;
   isGroup?: boolean;
+  /** The viewed species' own life stage, when the reference pointing at it was stage-qualified */
+  ownStage?: LifeStage;
+  /** The partner species' life stage, when the reference pointing at it was stage-qualified */
+  partnerStage?: LifeStage;
 }
 
 export function getRelatedEntries(
@@ -35,10 +40,13 @@ export function getRelatedEntries(
     type === 'predation' || type === 'parasitism' || type.startsWith('predation-');
 
   for (const sym of symbiosisBySpeciesId.get(speciesId) ?? []) {
-    if (sym.source === speciesId) {
+    const sourceRef = parseSpeciesRef(sym.source);
+    if (sourceRef.speciesId === speciesId) {
       // We are the actor — one entry per target
-      for (const targetId of sym.targets) {
-        const partner = speciesById.get(targetId);
+      const ownStage = resolveStage(speciesById.get(speciesId), sourceRef.stageId);
+      for (const rawTarget of sym.targets) {
+        const targetRef = parseSpeciesRef(rawTarget);
+        const partner = speciesById.get(targetRef.speciesId);
         if (!partner) continue;
         entries.push({
           species: partner,
@@ -48,15 +56,18 @@ export function getRelatedEntries(
           fulfillment: sym.fulfillment,
           notes: sym.notes,
           isImpacted: false,
-          isGroup: groupIds.has(targetId),
+          isGroup: groupIds.has(targetRef.speciesId),
+          ownStage,
+          partnerStage: resolveStage(partner, targetRef.stageId),
         });
       }
     } else {
       // We are a target — one entry for the source
-      const partner = speciesById.get(sym.source);
+      const partner = speciesById.get(sourceRef.speciesId);
       if (!partner) continue;
       // We are the prey/host when the relationship is directional
       const isImpacted = isDirectional(sym.type);
+      const ownTargetRef = sym.targets.map(parseSpeciesRef).find(t => t.speciesId === speciesId);
       entries.push({
         species: partner,
         symbiosis: sym,
@@ -65,13 +76,16 @@ export function getRelatedEntries(
         fulfillment: sym.fulfillment,
         notes: sym.notes,
         isImpacted,
-        isGroup: groupIds.has(sym.source),
+        isGroup: groupIds.has(sourceRef.speciesId),
+        ownStage: resolveStage(speciesById.get(speciesId), ownTargetRef?.stageId),
+        partnerStage: resolveStage(partner, sourceRef.stageId),
       });
     }
   }
 
   for (const rel of relationsBySpeciesId.get(speciesId) ?? []) {
-    for (const memberId of rel.members) {
+    for (const rawMemberId of rel.members) {
+      const { speciesId: memberId } = parseSpeciesRef(rawMemberId);
       if (memberId === speciesId) continue;
       const partner = speciesById.get(memberId);
       if (!partner) continue;
@@ -265,9 +279,12 @@ export function getSymbiotes(
     type === 'predation' || type === 'parasitism' || type.startsWith('predation-');
 
   for (const sym of symbiosisBySpeciesId.get(speciesId) ?? []) {
-    if (sym.source === speciesId) {
-      for (const targetId of sym.targets) {
-        const partner = speciesById.get(targetId);
+    const sourceRef = parseSpeciesRef(sym.source);
+    if (sourceRef.speciesId === speciesId) {
+      const ownStage = resolveStage(speciesById.get(speciesId), sourceRef.stageId);
+      for (const rawTarget of sym.targets) {
+        const targetRef = parseSpeciesRef(rawTarget);
+        const partner = speciesById.get(targetRef.speciesId);
         if (!partner) continue;
         entries.push({
           species: partner,
@@ -277,12 +294,15 @@ export function getSymbiotes(
           fulfillment: sym.fulfillment,
           notes: sym.notes,
           isImpacted: false,
+          ownStage,
+          partnerStage: resolveStage(partner, targetRef.stageId),
         });
       }
     } else {
-      const partner = speciesById.get(sym.source);
+      const partner = speciesById.get(sourceRef.speciesId);
       if (!partner) continue;
       const isImpacted = isDirectional(sym.type);
+      const ownTargetRef = sym.targets.map(parseSpeciesRef).find(t => t.speciesId === speciesId);
       entries.push({
         species: partner,
         symbiosis: sym,
@@ -291,6 +311,8 @@ export function getSymbiotes(
         fulfillment: sym.fulfillment,
         notes: sym.notes,
         isImpacted,
+        ownStage: resolveStage(speciesById.get(speciesId), ownTargetRef?.stageId),
+        partnerStage: resolveStage(partner, sourceRef.stageId),
       });
     }
   }
@@ -314,8 +336,10 @@ export function getHabitatNeighbors(
   // Get all symbiote IDs to exclude them
   const symbiotesSet = new Set<string>();
   for (const sym of symbiosisBySpeciesId.get(speciesId) ?? []) {
-    if (sym.source !== speciesId) symbiotesSet.add(sym.source);
-    for (const targetId of sym.targets) {
+    const sourceId = parseSpeciesRef(sym.source).speciesId;
+    if (sourceId !== speciesId) symbiotesSet.add(sourceId);
+    for (const rawTarget of sym.targets) {
+      const targetId = parseSpeciesRef(rawTarget).speciesId;
       if (targetId !== speciesId) symbiotesSet.add(targetId);
     }
   }

@@ -1,4 +1,5 @@
 import type { Species, Symbiosis, Relation } from '../types';
+import { parseSpeciesRef } from '../lib/speciesRef';
 
 interface PackMetadata {
   id: string;
@@ -68,19 +69,21 @@ export function buildIndexes(packs: LoadedPack[]): DatasetIndexes {
 
   const symbiosisBySpeciesId = new Map<string, Symbiosis[]>();
   for (const sym of symbiosis) {
-    for (const id of [sym.source, ...sym.targets]) {
-      const existing = symbiosisBySpeciesId.get(id) ?? [];
+    for (const raw of [sym.source, ...sym.targets]) {
+      const { speciesId } = parseSpeciesRef(raw);
+      const existing = symbiosisBySpeciesId.get(speciesId) ?? [];
       existing.push(sym);
-      symbiosisBySpeciesId.set(id, existing);
+      symbiosisBySpeciesId.set(speciesId, existing);
     }
   }
 
   const relationsBySpeciesId = new Map<string, Relation[]>();
   for (const rel of relations) {
-    for (const memberId of rel.members) {
-      const existing = relationsBySpeciesId.get(memberId) ?? [];
+    for (const rawMemberId of rel.members) {
+      const { speciesId } = parseSpeciesRef(rawMemberId);
+      const existing = relationsBySpeciesId.get(speciesId) ?? [];
       existing.push(rel);
-      relationsBySpeciesId.set(memberId, existing);
+      relationsBySpeciesId.set(speciesId, existing);
     }
   }
 
@@ -89,11 +92,11 @@ export function buildIndexes(packs: LoadedPack[]): DatasetIndexes {
       if (!sym.strength) {
         console.warn(`[symbiosis] missing strength on entry: source=${sym.source}`);
       }
-      if (!speciesById.has(sym.source)) {
+      if (!speciesById.has(parseSpeciesRef(sym.source).speciesId)) {
         console.warn(`[symbiosis] unknown source id "${sym.source}"`);
       }
       for (const targetId of sym.targets) {
-        if (!speciesById.has(targetId)) {
+        if (!speciesById.has(parseSpeciesRef(targetId).speciesId)) {
           console.warn(`[symbiosis] unknown target id "${targetId}"`);
         }
       }
