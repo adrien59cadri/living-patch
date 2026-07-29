@@ -118,6 +118,20 @@ export const SpeciesSchema = z.object({
       }
     }
   }
+
+  if (Array.isArray(species.life_stages)) {
+    const seenStageIds = new Set<string>();
+    for (const stage of species.life_stages) {
+      if (typeof stage !== 'object' || stage === null || !stage.id) continue;
+      if (seenStageIds.has(stage.id)) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          message: `[life_stages] duplicate stage id "${stage.id}" — ids must be unique within a species`,
+        });
+      }
+      seenStageIds.add(stage.id);
+    }
+  }
 });
 
 export const TaxonomicGroupSchema = z.object({
