@@ -266,6 +266,45 @@ describe('Wikipedia Scraper', () => {
 
       expect(result?.url).toMatch(/^https:/);
     });
+
+    // Wikipedia infobox markup has been observed to link file pages as
+    // relative ("/wiki/File:..."), protocol-relative ("//en.wikipedia.org/...")
+    // or fully absolute ("https://en.wikipedia.org/..."). fetchFilePageAndExtractData
+    // must resolve all three to the same real URL instead of naively
+    // prefixing the site origin (which previously produced malformed URLs
+    // like "https://en.wikipedia.orghttps://en.wikipedia.org/...").
+    describe('fileLink URL resolution', () => {
+      beforeEach(() => {
+        fetchMock.mockResolvedValue({
+          ok: true,
+          text: async () => mockFilePageWithAuthor,
+        });
+      });
+
+      it('resolves a relative fileLink against the Wikipedia origin', async () => {
+        await fetchFilePageAndExtractData('/wiki/File:Test.jpg');
+        expect(fetchMock).toHaveBeenCalledWith(
+          'https://en.wikipedia.org/wiki/File:Test.jpg',
+          expect.anything()
+        );
+      });
+
+      it('does not double-prefix an already-absolute fileLink', async () => {
+        await fetchFilePageAndExtractData('https://en.wikipedia.org/wiki/File:Test.jpg');
+        expect(fetchMock).toHaveBeenCalledWith(
+          'https://en.wikipedia.org/wiki/File:Test.jpg',
+          expect.anything()
+        );
+      });
+
+      it('resolves a protocol-relative fileLink to https', async () => {
+        await fetchFilePageAndExtractData('//en.wikipedia.org/wiki/File:Test.jpg');
+        expect(fetchMock).toHaveBeenCalledWith(
+          'https://en.wikipedia.org/wiki/File:Test.jpg',
+          expect.anything()
+        );
+      });
+    });
   });
 
   describe('scrapeSpeciesImage', () => {

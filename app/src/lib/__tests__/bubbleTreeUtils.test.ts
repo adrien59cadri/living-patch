@@ -91,6 +91,48 @@ describe('bubbleTreeUtils - Nodes/Edges Model', () => {
       expect(nodes1.length).toBe(2); // focal + level1
       expect(nodes2.length).toBe(3); // focal + level1 + level2
     });
+
+    it('includes an edge when the symbiosis source is stage-qualified (species_id@stage_id)', () => {
+      const focal = makeSpecies('focal-1', 'insect');
+      const partner = makeSpecies('partner-1', 'insect');
+
+      const speciesById = new Map([
+        ['focal-1', focal],
+        ['partner-1', partner],
+      ]);
+
+      const symbiosisBySpeciesId = new Map([
+        ['focal-1', [makeSymbiosis('predation', 'focal-1@larva', ['partner-1'])]],
+      ]);
+
+      const { nodes, links } = transformToNodesEdges('focal-1', speciesById, symbiosisBySpeciesId, 1);
+
+      expect(nodes.map(n => n.id)).toContain('partner-1');
+      expect(links).toHaveLength(1);
+      expect(links[0].source).toBe('focal-1');
+      expect(links[0].target).toBe('partner-1');
+      expect(links[0].direction).toBe('outward');
+    });
+
+    it('includes an edge when the symbiosis target is stage-qualified', () => {
+      const focal = makeSpecies('focal-1', 'insect');
+      const partner = makeSpecies('partner-1', 'insect');
+
+      const speciesById = new Map([
+        ['focal-1', focal],
+        ['partner-1', partner],
+      ]);
+
+      const symbiosisBySpeciesId = new Map([
+        ['focal-1', [makeSymbiosis('predation', 'focal-1', ['partner-1@adult'])]],
+      ]);
+
+      const { nodes, links } = transformToNodesEdges('focal-1', speciesById, symbiosisBySpeciesId, 1);
+
+      expect(nodes.map(n => n.id)).toContain('partner-1');
+      expect(links).toHaveLength(1);
+      expect(links[0].target).toBe('partner-1');
+    });
   });
 
   describe('getRelationshipColor', () => {

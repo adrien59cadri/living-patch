@@ -1,5 +1,6 @@
 import type { Species, LifeStage, Symbiosis } from '../types';
 import type { RelatedEntry } from '../lib/relationships';
+import { parseSpeciesRef } from '../lib/speciesRef';
 
 // ── Builder helpers ──────────────────────────────────────────────────────────
 
@@ -31,9 +32,10 @@ export function makeSymbiosis(
 export function buildSymbiosisMap(symbioses: Symbiosis[]): Map<string, Symbiosis[]> {
   const map = new Map<string, Symbiosis[]>();
   for (const sym of symbioses) {
-    for (const id of [sym.source, ...sym.targets]) {
-      if (!map.has(id)) map.set(id, []);
-      map.get(id)!.push(sym);
+    for (const raw of [sym.source, ...sym.targets]) {
+      const { speciesId } = parseSpeciesRef(raw);
+      if (!map.has(speciesId)) map.set(speciesId, []);
+      map.get(speciesId)!.push(sym);
     }
   }
   return map;
