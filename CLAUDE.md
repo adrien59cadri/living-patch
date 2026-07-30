@@ -252,6 +252,19 @@ Several cavity-nesting species depend on either Pileated Woodpecker or Northern 
 Single-provider dependencies (pileated only) follow the same direction convention:
 - `bird_great-horned-owl`, `bird_wood-duck`, `mammal_flying-squirrel` → `[bird_pileated-woodpecker]`
 
+### Stage-qualified references: `species_id@stage_id`
+
+When a relationship's ecological role genuinely differs by life stage — e.g. a lacewing's predatory larva vs. its nectar-feeding adult — a `source`, `targets[]`, or `members[]` entry can be qualified with a stage slug:
+
+```json
+{ "type": "predation", "source": "insect_green-lacewing@larva", "targets": ["insect_oleander-aphid"], "strength": "important", "notes": "Green Lacewing larvae ('aphid lions') — not the nectar-feeding adults — prey on aphid colonies." }
+```
+
+Rules:
+- The `stage_id` must match the `id` of an entry in that species' `life_stages` array (e.g. `{ "id": "larva", "icon": "🐛", "name": "Larva (Aphid Lion)", ... }`). Plain stage `name` text is not a valid reference — it's display-only and varies too much across taxa ("Larva" vs "Caterpillar" vs "Nymph" vs "Tadpole" all describe the same juvenile concept). `npm run pack:validate` reports an `orphaned_stage_reference` error if the id doesn't exist.
+- A stage-qualified reference **always also counts as a reference to the species as a whole** — it shows up in that species' relationship list like any other entry, just with a small stage badge. Indexing/lookup code resolves the base species id first; the stage is a display-only annotation carried alongside.
+- Only qualify a stage when it changes the ecological claim being made. Don't add `@adult` to every entry "for completeness" — most relationships apply to the species as a whole and should stay unqualified.
+
 ---
 
 ## Development Workflow

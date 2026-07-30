@@ -124,7 +124,10 @@ export function extractImageLink(html: string): string | null {
  */
 export async function fetchFilePageAndExtractData(fileLink: string): Promise<ScrapedImage | null> {
   try {
-    const fileUrl = `https://en.wikipedia.org${fileLink}`;
+    // fileLink may be a relative path ("/wiki/File:..."), protocol-relative
+    // ("//en.wikipedia.org/..."), or already absolute, depending on how Wikipedia
+    // rendered the page — resolve against the site origin to handle all three.
+    const fileUrl = new URL(fileLink, 'https://en.wikipedia.org').toString();
     
     const response = await fetch(fileUrl, {
       headers: {

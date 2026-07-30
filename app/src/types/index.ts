@@ -1,4 +1,6 @@
 export interface LifeStage {
+  /** Stable slug (e.g. "larva") — required for a stage to be referenceable via species_id@stage_id */
+  id?: string;
   icon: string;
   name: string;
   description: string;

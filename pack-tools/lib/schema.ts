@@ -14,6 +14,19 @@ import { z } from 'zod';
 const SPECIES_ID_PATTERN = /^[a-z]+_[a-z0-9-]+$/;
 
 /**
+ * Regular expression for stable life-stage slugs (e.g. "larva")
+ */
+const STAGE_ID_PATTERN = /^[a-z][a-z0-9_]*$/;
+
+/**
+ * A species reference used in symbiosis/relation source, targets, and members.
+ * Either a plain species ID, or a species ID qualified with a stage slug
+ * (e.g. "insect_green-lacewing@larva") to scope the relationship to one life stage.
+ * A stage-qualified reference always also counts as a reference to the species itself.
+ */
+const SPECIES_REF_PATTERN = /^[a-z]+_[a-z0-9-]+(@[a-z][a-z0-9_]*)?$/;
+
+/**
  * Deprecated enum values that have been renamed or consolidated.
  * Storing these in a pack is an error — use the canonical value instead.
  */
@@ -47,6 +60,7 @@ const PACK_ID_PATTERN = /^[a-z0-9_-]+$/;
 const SEMVER_PATTERN = /^\d+\.\d+\.\d+$/;
 
 export const LifeStageSchema = z.object({
+  id: z.string().regex(STAGE_ID_PATTERN, 'Stage id must be a lowercase slug (e.g. "larva")').optional(),
   icon: z.string().optional(),
   name: z.string().min(1),
   description: z.string().min(1),
@@ -104,6 +118,20 @@ export const SpeciesSchema = z.object({
       }
     }
   }
+
+  if (Array.isArray(species.life_stages)) {
+    const seenStageIds = new Set<string>();
+    for (const stage of species.life_stages) {
+      if (typeof stage !== 'object' || stage === null || !stage.id) continue;
+      if (seenStageIds.has(stage.id)) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          message: `[life_stages] duplicate stage id "${stage.id}" — ids must be unique within a species`,
+        });
+      }
+      seenStageIds.add(stage.id);
+    }
+  }
 });
 
 export const TaxonomicGroupSchema = z.object({
@@ -115,8 +143,8 @@ export const TaxonomicGroupSchema = z.object({
 
 export const SymbiosisSchema = z.object({
   type: z.string().min(1),
-  source: z.string().min(1),
-  targets: z.array(z.string()).min(1, 'Symbiosis must have at least one target'),
+  source: z.string().min(1).regex(SPECIES_REF_PATTERN, 'source must be a species ID, optionally qualified as species_id@stage_id'),
+  targets: z.array(z.string().regex(SPECIES_REF_PATTERN, 'target must be a species ID, optionally qualified as species_id@stage_id')).min(1, 'Symbiosis must have at least one target'),
   fulfillment: z.enum(['any', 'all']).optional(),
   strength: z.enum(['critical', 'important', 'incidental']),
   notes: z.string().min(1),
@@ -138,7 +166,7 @@ export const SymbiosisSchema = z.object({
 
 export const RelationSchema = z.object({
   type: z.string().min(1),
-  members: z.array(z.string()).min(2, 'Relation must have at least 2 members'),
+  members: z.array(z.string().regex(SPECIES_REF_PATTERN, 'member must be a species ID, optionally qualified as species_id@stage_id')).min(2, 'Relation must have at least 2 members'),
   notes: z.string().min(1),
 });
 

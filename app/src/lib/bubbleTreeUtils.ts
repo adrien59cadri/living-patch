@@ -6,6 +6,7 @@ import {
   RELATIONSHIP_COLORS_CRITICAL,
   RELATIONSHIP_COLORS_IMPORTANT,
 } from './designTokens';
+import { parseSpeciesRef } from './speciesRef';
 
 // ============================================================================
 // Re-export from designTokens for backwards compatibility
@@ -171,10 +172,13 @@ export function transformToNodesEdges(
       const symbioses = symbiosisBySpeciesId.get(currentId) || [];
 
       for (const symbiosis of symbioses) {
-        // Find the other species in this relationship
-        const otherIds = symbiosis.source === currentId
-          ? symbiosis.targets
-          : [symbiosis.source];
+        // Find the other species in this relationship (species_id@stage_id
+        // references are resolved to their base species id for graph purposes —
+        // a life stage never gets its own node)
+        const sourceId = parseSpeciesRef(symbiosis.source).speciesId;
+        const otherIds = sourceId === currentId
+          ? symbiosis.targets.map(t => parseSpeciesRef(t).speciesId)
+          : [sourceId];
 
         for (const otherId of otherIds) {
           const otherSpecies = speciesById.get(otherId);
@@ -184,7 +188,7 @@ export function transformToNodesEdges(
             currentId,
             otherId,
             symbiosis.type,
-            symbiosis.source
+            sourceId
           );
 
           links.push({

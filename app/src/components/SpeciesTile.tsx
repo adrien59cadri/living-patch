@@ -21,6 +21,10 @@ export function SpeciesTile({ species, related, isGroup }: Props) {
   // Choose description text based on whether we have relationship data
   const description = related?.notes ?? species.functional_description;
 
+  // Stage the relationship is scoped to, if either side was stage-qualified
+  // (e.g. "Larva" preys on X — most entries have neither side qualified)
+  const stage = related?.ownStage ?? related?.partnerStage;
+
   const { preferences } = useUserPreferences();
   const tier = useSpeciesTier(species.id);
   const sightingCount = useSpeciesSightingCount(species.id);
@@ -79,6 +83,11 @@ export function SpeciesTile({ species, related, isGroup }: Props) {
           {related?.isImpacted && (
             <span className="text-xs bg-red-100 text-red-700 px-2 py-0.5 rounded font-medium">
               Impacted
+            </span>
+          )}
+          {stage && (
+            <span className="text-xs bg-stone-100 text-stone-500 px-2 py-0.5 rounded-full">
+              {stage.icon} {stage.name}
             </span>
           )}
           {!actualIsGroup && tier && <SpeciesTierBadge tier={tier} />}

@@ -7,8 +7,9 @@
  * - ID format violations
  */
 
-import type { DataPack } from './schema.js';
+import type { DataPack, Species } from './schema.js';
 import type { CommonName } from '../types.js';
+import { parseSpeciesRef } from './speciesRef.js';
 
 function resolveCommonName(name: CommonName | undefined, fallback: string): string {
   if (!name) return fallback;
@@ -16,7 +17,7 @@ function resolveCommonName(name: CommonName | undefined, fallback: string): stri
 }
 
 export interface Conflict {
-  type: 'duplicate_species_id' | 'duplicate_group_id' | 'orphaned_reference' | 'id_format_violation' | 'invalid_date_format';
+  type: 'duplicate_species_id' | 'duplicate_group_id' | 'orphaned_reference' | 'orphaned_stage_reference' | 'id_format_violation' | 'invalid_date_format';
   severity: 'error' | 'warning';
   message: string;
   packId?: string;
@@ -41,6 +42,7 @@ export function checkInternalConflicts(pack: DataPack): ConflictReport {
     ...(pack.data.species || []),
     ...(pack.data.taxonomic_groups || []),
   ];
+  const speciesById = new Map<string, Species>(allSpecies.map(s => [s.id, s]));
 
   for (const species of allSpecies) {
     if (allSpeciesIds.has(species.id)) {
@@ -55,20 +57,43 @@ export function checkInternalConflicts(pack: DataPack): ConflictReport {
     allSpeciesIds.add(species.id);
   }
 
+  // A stage-qualified reference ("species_id@stage_id") must resolve to a real species
+  // AND that species must define a life_stages entry with a matching id.
+  function checkRef(ref: string, location: string) {
+    const { speciesId, stageId } = parseSpeciesRef(ref);
+    if (!allSpeciesIds.has(speciesId)) {
+      conflicts.push({
+        type: 'orphaned_reference',
+        severity: 'error',
+        message: `Reference to non-existent species: ${speciesId}`,
+        packId: pack.metadata.id,
+        affectedIds: [speciesId],
+        location,
+      });
+      return;
+    }
+    if (stageId) {
+      const species = speciesById.get(speciesId);
+      const stages = Array.isArray(species?.life_stages) ? (species!.life_stages as Array<{ id?: string }>) : [];
+      const hasStage = stages.some(s => typeof s === 'object' && s !== null && s.id === stageId);
+      if (!hasStage) {
+        conflicts.push({
+          type: 'orphaned_stage_reference',
+          severity: 'error',
+          message: `Reference to non-existent life stage "${stageId}" on species: ${speciesId}`,
+          packId: pack.metadata.id,
+          affectedIds: [ref],
+          location,
+        });
+      }
+    }
+  }
+
   // Check all symbiosis references exist
   if (pack.data.symbiosis) {
     for (const symbiosis of pack.data.symbiosis) {
       for (const id of [symbiosis.source, ...symbiosis.targets]) {
-        if (!allSpeciesIds.has(id)) {
-          conflicts.push({
-            type: 'orphaned_reference',
-            severity: 'error',
-            message: `Symbiosis references non-existent species: ${id}`,
-            packId: pack.metadata.id,
-            affectedIds: [id],
-            location: `symbiosis[type=${symbiosis.type}]`,
-          });
-        }
+        checkRef(id, `symbiosis[type=${symbiosis.type}]`);
       }
     }
   }
@@ -77,16 +102,7 @@ export function checkInternalConflicts(pack: DataPack): ConflictReport {
   if (pack.data.relations) {
     for (const relation of pack.data.relations) {
       for (const memberId of relation.members) {
-        if (!allSpeciesIds.has(memberId)) {
-          conflicts.push({
-            type: 'orphaned_reference',
-            severity: 'error',
-            message: `Relation references non-existent species: ${memberId}`,
-            packId: pack.metadata.id,
-            affectedIds: [memberId],
-            location: `relations[type=${relation.type}]`,
-          });
-        }
+        checkRef(memberId, `relations[type=${relation.type}]`);
       }
     }
   }

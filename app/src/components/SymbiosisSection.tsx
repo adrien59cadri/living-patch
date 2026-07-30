@@ -2,6 +2,7 @@ import type { Species, Symbiosis } from '../types';
 import { SYMBIOSIS_DEFINITIONS, getSymbiosisByType, getSymbiosisExample } from '../lib/taxonomies';
 import { getSymbiosisIcon } from '../lib/designTokens';
 import { getCommonName } from '../lib/labels';
+import { parseSpeciesRef } from '../lib/speciesRef';
 import ExampleSpeciesLink from './ExampleSpeciesLink';
 
 interface SymbiosisSectionProps {
@@ -73,7 +74,7 @@ export default function SymbiosisSection({
                       </p>
                       <div className="text-xs text-stone-500 flex flex-wrap items-center gap-x-1">
                         {[example.source, ...example.targets].map((memberId, index, arr) => {
-                          const member = speciesById.get(memberId);
+                          const member = speciesById.get(parseSpeciesRef(memberId).speciesId);
                           return (
                             <span key={memberId} className="flex items-center gap-x-1">
                               {member && <ExampleSpeciesLink species={member} />}
@@ -100,7 +101,10 @@ export default function SymbiosisSection({
                       <div className="mt-1 space-y-0.5 ml-2 pl-2 border-l border-stone-200">
                         {relationships.map((rel, idx) => (
                           <div key={idx} className="text-xs text-stone-500">
-                            {[rel.source, ...rel.targets].map((m) => getCommonName(speciesById.get(m)?.common_name ?? m)).join(' ↔ ')}
+                            {[rel.source, ...rel.targets].map((m) => {
+                              const { speciesId } = parseSpeciesRef(m);
+                              return getCommonName(speciesById.get(speciesId)?.common_name ?? speciesId);
+                            }).join(' ↔ ')}
                             {rel.strength !== 'incidental' ? ` (${rel.strength})` : ''}
                           </div>
                         ))}

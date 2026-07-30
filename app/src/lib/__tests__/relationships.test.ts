@@ -191,3 +191,82 @@ describe('getRelatedEntries', () => {
     expect(result).toHaveLength(0);
   });
 });
+
+// ── getRelatedEntries — stage-qualified references ──────────────────────────
+
+describe('getRelatedEntries with species_id@stage_id references', () => {
+  const larvaStage = { id: 'larva', icon: '🐛', name: 'Larva', description: '', months: [] };
+  const adultStage = { id: 'adult', icon: '🦋', name: 'Adult', description: '', months: [] };
+
+  const predator = makeSpecies('insect_predator', 'insect', {
+    life_stages: [larvaStage, adultStage],
+  });
+  const prey = makeSpecies('insect_prey', 'insect', {
+    life_stages: [larvaStage, adultStage],
+  });
+  const speciesById = new Map([
+    ['insect_predator', predator],
+    ['insect_prey', prey],
+  ]);
+
+  test('a stage-qualified source still resolves as a relationship of the base species (source side)', () => {
+    const sym = makeSymbiosis('predation', 'insect_predator@larva', ['insect_prey']);
+    const symbiosisBySpeciesId = new Map([
+      ['insect_predator', [sym]],
+      ['insect_prey', [sym]],
+    ]);
+
+    const result = getRelatedEntries('insect_predator', symbiosisBySpeciesId, new Map(), speciesById);
+    expect(result).toHaveLength(1);
+    expect(result[0].species.id).toBe('insect_prey');
+    expect(result[0].ownStage?.id).toBe('larva');
+    expect(result[0].partnerStage).toBeUndefined();
+  });
+
+  test('a stage-qualified source is reflected as partnerStage from the target side', () => {
+    const sym = makeSymbiosis('predation', 'insect_predator@larva', ['insect_prey']);
+    const symbiosisBySpeciesId = new Map([
+      ['insect_predator', [sym]],
+      ['insect_prey', [sym]],
+    ]);
+
+    const result = getRelatedEntries('insect_prey', symbiosisBySpeciesId, new Map(), speciesById);
+    expect(result).toHaveLength(1);
+    expect(result[0].species.id).toBe('insect_predator');
+    expect(result[0].partnerStage?.id).toBe('larva');
+    expect(result[0].ownStage).toBeUndefined();
+    expect(result[0].isImpacted).toBe(true); // predation is directional — prey is impacted
+  });
+
+  test('a stage-qualified target is reflected as partnerStage from the source side', () => {
+    const sym = makeSymbiosis('predation', 'insect_predator', ['insect_prey@adult']);
+    const symbiosisBySpeciesId = new Map([
+      ['insect_predator', [sym]],
+      ['insect_prey', [sym]],
+    ]);
+
+    const result = getRelatedEntries('insect_predator', symbiosisBySpeciesId, new Map(), speciesById);
+    expect(result).toHaveLength(1);
+    expect(result[0].partnerStage?.id).toBe('adult');
+  });
+
+  test('a stage-qualified target is reflected as ownStage from the target side', () => {
+    const sym = makeSymbiosis('predation', 'insect_predator', ['insect_prey@adult']);
+    const symbiosisBySpeciesId = new Map([
+      ['insect_predator', [sym]],
+      ['insect_prey', [sym]],
+    ]);
+
+    const result = getRelatedEntries('insect_prey', symbiosisBySpeciesId, new Map(), speciesById);
+    expect(result).toHaveLength(1);
+    expect(result[0].ownStage?.id).toBe('adult');
+  });
+
+  test('an unresolvable stage id leaves ownStage/partnerStage undefined without crashing', () => {
+    const sym = makeSymbiosis('predation', 'insect_predator@nonexistent-stage', ['insect_prey']);
+    const symbiosisBySpeciesId = new Map([['insect_predator', [sym]]]);
+
+    const result = getRelatedEntries('insect_predator', symbiosisBySpeciesId, new Map(), speciesById);
+    expect(result[0].ownStage).toBeUndefined();
+  });
+});
